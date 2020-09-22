@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <TableRow>
+        <TextView
+            android:id="@+id/text1"
+            android:text="texto 1"
+            android:layout_height="20dp"
+            android:layout_margin="20dp"
+            />
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="end"
+            android:background="@color/colorAccent"
+
+            />
+    </TableRow>
+    <TableRow>
+        <TextView
+            android:id="@+id/text2"
+            android:text="texto 2"
+            android:layout_height="20dp"
+            android:layout_margin="20dp"
+            />
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="end"
+            android:background="@color/colorAccent"
+
+            />
+    </TableRow>
+    <TableRow>
+        <TextView
+            android:id="@+id/text3"
+            android:text="tetxto 3"
+            android:layout_height="20dp"
+            android:layout_margin="20dp"
+            />
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="end"
+            android:background="@color/colorAccent"
+
+            />
+    </TableRow>
+    <TableRow>
+        <TextView
+            android:id="@+id/text4"
+            android:text="texto 4"
+            android:layout_height="20dp"
+            android:layout_margin="20dp"
+            />
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="end"
+            android:background="@color/colorAccent"
+
+            />
+    </TableRow>
+
+
+</TableLayout>
