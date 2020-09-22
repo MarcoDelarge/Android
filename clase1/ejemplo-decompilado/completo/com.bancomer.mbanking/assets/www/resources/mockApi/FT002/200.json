@@ -1,0 +1,30 @@
+{
+    "data": {
+      "detail": {
+        "netAssetValue": {
+          "amount": "141.87359971",
+          "currency": "PEN"
+        },
+        "ownedShares": 70.1580000001
+      },
+      "operationDate": "2018-02-13",
+      "id": "001101308000009707014120180213140350403",
+      "concept": "SUSCRIPCION",
+      "localAmount": {
+        "amount": 1570,
+        "currency": "PEN"
+      },
+      "transactionType": {
+        "id": "SUBSCRIPTION",
+        "name": "SUSCRIPTION"
+      },
+      "contract": {
+        "id": "00110130238000009707",
+        "number": "00110130238000009707",
+        "numberType": {
+          "id": "LIC",
+          "name": "CODIGO INTERNO DEL BBVA"
+        }
+      }
+    }
+  }

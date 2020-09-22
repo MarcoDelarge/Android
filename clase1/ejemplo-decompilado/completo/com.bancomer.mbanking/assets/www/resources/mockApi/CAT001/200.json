@@ -1,0 +1,190 @@
+{
+    "data": [
+        {
+            "id": "001",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "LIMA Y CALLAO"
+                }
+            ]
+        },
+        {
+            "id": "041",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "AMAZONAS"
+                }
+            ]
+        },
+        {
+            "id": "042",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "SAN MARTIN"
+                }
+            ]
+        },
+        {
+            "id": "043",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "ANCASH"
+                }
+            ]
+        },
+        {
+            "id": "044",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "LA LIBERTAD"
+                }
+            ]
+        },
+        {
+            "id": "051",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "PUNO"
+                }
+            ]
+        },
+        {
+            "id": "052",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "TACNA"
+                }
+            ]
+        },
+        {
+            "id": "053",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "MOQUEGUA"
+                }
+            ]
+        },
+        {
+            "id": "054",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "AREQUIPA"
+                }
+            ]
+        },
+        {
+            "id": "056",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "ICA"
+                }
+            ]
+        },
+        {
+            "id": "061",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "UCAYALI"
+                }
+            ]
+        },
+        {
+            "id": "062",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "HUANUCO"
+                }
+            ]
+        },
+        {
+            "id": "063",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "PASCO"
+                }
+            ]
+        },
+        {
+            "id": "064",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "JUNIN"
+                }
+            ]
+        },
+        {
+            "id": "065",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "LORETO"
+                }
+            ]
+        },
+        {
+            "id": "066",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "AYACUCHO"
+                }
+            ]
+        },
+        {
+            "id": "067",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "HUANCAVELICA"
+                }
+            ]
+        },
+        {
+            "id": "072",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "TUMBES"
+                }
+            ]
+        },
+        {
+            "id": "073",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "PIURA"
+                }
+            ]
+        },
+        {
+            "id": "074",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "LAMBAYEQUE"
+                }
+            ]
+        }
+    ],
+    "pagination": {
+        "lastPage": "/catalogs/v0/catalogs/0890/records?paginationKey=LAST",
+        "firstPage": "/catalogs/v0/catalogs/0890/records",
+        "nextPage": "/catalogs/v0/catalogs/0890/records?paginationKey=074&pageSize=20",
+        "pageSize": 20
+    }
+}

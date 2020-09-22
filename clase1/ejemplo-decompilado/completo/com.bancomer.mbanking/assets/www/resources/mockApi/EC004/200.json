@@ -1,0 +1,112 @@
+{
+    "data": [
+        {
+            "id": "Td-tykaA8ApjoOOlyGqzVzqfJj91-Jxa",
+            "number": "2134743210",
+            "numberType": {
+                "id": "CCC",
+                "name": "Customer Account Code"
+            },
+            "portfolioValue": {
+                "amount": 41018.11,
+                "currency": "MXN"
+            },
+            "riskProfile": {
+                "id": "TRADITIONAL",
+                "description": "TRADICIONAL"
+            },
+            "participants": [
+                {
+                    "id": "mhgfjytdtr3355634",
+                    "firstName": "Holder",
+                    "participantType": {
+                        "id": "HOLDER"
+                    },
+                    "levelOwnership": "01"
+                }
+            ],
+            "relatedContracts": [
+                {
+                    "id": "1521063820",
+                    "number": "1521063820",
+                    "productType": {
+                        "id": "ACCOUNTS",
+                        "name": "Cuenta eje"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "Td-tykaA8ApjoOOlyGqzV7QoUD9f4lun",
+            "number": "2134743229",
+            "numberType": {
+                "id": "CCC",
+                "name": "Customer Account Code"
+            },
+            "portfolioValue": {
+                "amount": 0,
+                "currency": "MXN"
+            },
+            "riskProfile": {
+                "id": "MODERATE",
+                "description": "MODERADO"
+            },
+            "participants": [
+                {
+                    "id": "xxHYp_0vXq9mH2ZH4hTNhg",
+                    "firstName": "Holder",
+                    "participantType": {
+                        "id": "HOLDER"
+                    },
+                    "levelOwnership": "01"
+                }
+            ],
+            "relatedContracts": [
+                {
+                    "id": "1500001510",
+                    "number": "1500001510",
+                    "productType": {
+                        "id": "ACCOUNTS",
+                        "name": "Cuenta eje"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "Td-tykaA8ApjoOOlyGqzV4moiyIGRxbp",
+            "number": "2134743237",
+            "numberType": {
+                "id": "CCC",
+                "name": "Customer Account Code"
+            },
+            "portfolioValue": {
+                "amount": 0,
+                "currency": "MXN"
+            },
+            "riskProfile": {
+                "id": "CONSERVATIVE",
+                "description": "CONSERVADOR"
+            },
+            "participants": [
+                {
+                    "id": "xxHYp_0vXq9mH2ZH4hTNhg",
+                    "firstName": "Holder",
+                    "participantType": {
+                        "id": "HOLDER"
+                    },
+                    "levelOwnership": "01"
+                }
+            ],
+            "relatedContracts": [
+                {
+                    "id": "1521063820",
+                    "number": "1521063820",
+                    "productType": {
+                        "id": "ACCOUNTS",
+                        "name": "Cuenta eje"
+                    }
+                }
+            ]
+        }
+    ]
+}

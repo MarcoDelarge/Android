@@ -1,0 +1,10 @@
+{
+  "consumer-request-id": "91306418-7d43-4051-bab6-25a04a775947",
+  "error-code": "70",
+  "error-message": "No autorizado",
+  "http-status": 401,
+  "severity": "FATAL",
+  "system-error-code": "unauthorized",
+  "system-error-description": "No autorizado",
+  "version": 1
+}

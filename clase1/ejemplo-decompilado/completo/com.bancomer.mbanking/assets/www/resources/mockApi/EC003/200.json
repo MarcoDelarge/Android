@@ -1,0 +1,32 @@
+{
+    "data": {
+        "id": "00740680002134743210",
+        "number": "2134743210",
+        "numberType": {
+            "id": "CCC",
+            "name": "Código Cuenta Cliente"
+        },
+        "portfolioValue": {
+            "amount": 41018.11,
+            "currency": "MXN"
+        },
+        "relatedContracts": [
+            {
+                "id": "1500001510",
+                "number": "1500001510",
+                "productType": {
+                    "id": "ACCOUNTS",
+                    "name": "Cuenta eje"
+                }
+            }
+        ],
+        "riskProfile": {
+            "id": "TRADITIONAL",
+            "description": "TRADICIONAL"
+        },
+        "managementServices": {
+            "name": "ASESORIA"
+        },
+        "isSalesPracticesProfile": true
+    }
+}

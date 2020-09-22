@@ -1,0 +1,64 @@
+{
+  "maturityDate": "2019-10-25",
+  "title": {
+      "id": "0003"
+  },
+  "initialAmount": {
+      "amount": 150000,
+      "currency": "MXN"
+  },
+  "term": {
+      "number": "28",
+      "depositTimeType": {
+          "id": "DAY"
+      }
+  },
+  "totalNetBenefits": {
+      "amount": 735.50,
+      "currency": "MXN"
+  },
+  "taxes": {
+      "itemizeTaxes": {
+          "amount": 119.67,
+          "currency": "MXN",
+          "percentage": 4.00,
+          "taxType": {
+              "id": "ISR",
+              "name": "ISR"
+          }
+      }
+  },
+  "totalGrossBenefits": {
+      "amount": 855.17,
+      "currency": "MXN"
+  },
+  "annualRate": 7,
+  "contributionRate": 3.33,
+  "scheduledInterestPayments": [
+      {
+          "settlementDate": "2019-11-22T00:00:00.0-0600",
+          "capital": {
+              "amount": 150735.50,
+              "currency": "MXN"
+          }
+      }
+  ],
+  "annualTotalProfit": {
+      "rates": [
+          {
+              "rateType": "NOMINAL_ANNUAL_TOTAL_PROFIT",
+              "unit": {
+                  "unitType": "PERCENTAGE",
+                  "percentage": 7.58
+              }
+          },
+          {
+              "rateType": "REAL_ANNUAL_TOTAL_PROFIT",
+              "unit": {
+                  "unitType": "PERCENTAGE",
+                  "percentage": 3
+              }
+          }
+      ]
+  }
+}

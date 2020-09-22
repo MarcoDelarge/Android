@@ -1,0 +1,138 @@
+{
+  "data": {
+    "id": "11ed2e7f-66cb-68ef-99d9-2291cf9c3233",
+    "description": "Financing plan",
+    "financingType": {
+      "id": "MONTHS_WITH_INTERESTS",
+      "name": "Months with interest."
+    },
+    "offerId": "A35",
+    "transactionId": "e673d0a2-2f4c-11e7-93ae-92361f002671",
+    "startDate": "2017-06-24T16:41:41.090Z",
+    "firstInstallmentDate": "2017-07-24",
+    "maturityDate": "2020-07-24",
+    "terms": {
+      "number": 6,
+      "frequency": "MONTHLY"
+    },
+    "total": {
+      "amount": 3000,
+      "currency": "PEN"
+    },
+    "capital": {
+      "amount": 2500,
+      "currency": "PEN"
+    },
+    "interest": {
+      "amount": 500,
+      "currency": "PEN"
+    },
+    "outstandingBalance": {
+      "amount": 0,
+      "currency": "MXN"
+    },
+    "amortizedAmount": {
+      "amount": 0,
+      "currency": "MXN"
+    },
+    "amortizedPercentage": 0,
+    "rates": [
+      {
+        "rateType": {
+          "id": "CAT",
+          "name": "CAT"
+        },
+        "mode": {
+          "id": "PERCENTAGE",
+          "name": "Percentage"
+        },
+        "unit": {
+          "percentage": "30"
+        }
+      },
+      {
+        "rateType": {
+          "id": "TEA",
+          "name": "Tasa Efectivo Anual"
+        }
+      },
+      {
+        "rateType": {
+          "id": "TCEA",
+          "name": "Tasa Costo Efectivo Anual"
+        },
+        "mode": {
+          "id": "PERCENTAGE",
+          "name": "Percentage"
+        },
+        "unit": {
+          "percentage": "30"
+        }
+      }
+    ],
+    "fees": [
+      {
+        "type": {
+          "id": "COMMISSION_DISPOSITION",
+          "name": "Commission disposition"
+        },
+        "mode": {
+          "id": "PERCENTAGE",
+          "name": "Percentage mode"
+        },
+        "unit": {
+          "percentage": 0
+        }
+      }
+    ],
+    "scheduledPayments": [
+      {
+        "maturityDate": "2017-07-17",
+        "total": {
+          "amount": 100,
+          "currency": "MXN"
+        },
+        "capital": {
+          "amount": 60,
+          "currency": "MXN"
+        },
+        "interest": {
+          "amount": 30,
+          "currency": "MXN"
+        },
+        "fee": {
+          "amount": 10,
+          "currency": "MXN"
+        }
+      }
+    ],
+    "downPayment": {
+      "amount": 1500,
+      "currency": "MXN"
+    },
+    "previousPayments": {
+      "amount": 3500,
+      "currency": "MXN"
+    },
+    "downPaymentPending": {
+      "amount": 1500,
+      "currency": "MXN"
+    },
+    "balanceDueAtCutOff": {
+      "amount": 6000,
+      "currency": "MXN"
+    },
+    "overdueAtCutOff": {
+      "amount": 3000,
+      "currency": "MXN"
+    },
+    "totalBalanceDueAtCutOff": {
+      "amount": 2500,
+      "currency": "MXN"
+    },
+    "firstInstallment": {
+      "amount": 1000,
+      "currency": "MXN"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "data": {
+    "delivery": {
+      "destination": {
+        "id": "HOME",
+        "name": "El envío de la tarjeta de crédito está en casa."
+      }
+    },
+    "operationNumber": "0683247658",
+    "operationDate": "2018-11-08T00:00:00.000-06:00",
+    "descriptionCurrentCard": "BCMR ORO INTERN",
+    "descriptionOfferCard": "TARJETA PLATINUM",
+    "grantedCredits": [
+      {
+        "amount": 157500,
+        "currency": "MXN"
+      },
+      {
+        "amount": 177500,
+        "currency": "MXN"
+      }
+    ],
+    "relatedContracts": []
+  }
+}

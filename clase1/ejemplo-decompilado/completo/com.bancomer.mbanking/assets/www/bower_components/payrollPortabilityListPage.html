@@ -1,0 +1,82 @@
+<html><head></head><body><div hidden="" by-polymer-bundler=""><dom-module id="glomo-payroll-portability-list-styles" assetpath="glomo-payroll-portability-list/"><template><style>:host{display:block;box-sizing:border-box;font-family:var(--cells-fontDefault, sans-serif);@apply --glomo-payroll-portability-list;}:host([hidden]), [hidden]{display:none !important;}*, *:before, *:after{box-sizing:inherit;}cells-group-product-item{--cells-group-product-item-transaction-list-item-content-button:unquote('{
+    outline: none;
+  }');--cells-product-item-item-label:unquote('{
+    display:flex;
+  }');--cells-group-product-item-icon-message:unquote('{
+    height: auto;
+  }');--cells-group-product-item-text:unquote('{
+    display: none;
+  }');--cells-icon-message-icon-inline:unquote('{
+    height: 1.125rem;
+    width: 1.125rem;
+  }');--cells-icon-message-icon-color-info:rgba(#5BBEFF, 0.6);}</style></template></dom-module><script>'use strict';/**
+   * # CellsGlomoSpinnerBehavior
+   *
+   * show or hide the spinner
+   *
+   * Example:
+   * ```html
+   * <link rel="import" href="../cells-glomo-spinner-behavior/cells-glomo-spinner-behavior.html">
+   * ```
+   *
+   * ```js
+   * behaviors: [
+   *   CellsBehaviors.CellsGlomoSpinnerBehavior
+   * ]
+   * ```
+   *
+   * @polymerBehavior CellsBehaviors.CellsGlomoSpinnerBehavior
+   * @demo demo/index.html
+   */window.CellsBehaviors=window.CellsBehaviors||{};window.CellsBehaviors.CellsGlomoSpinnerBehavior={/**
+     * function to show spinner
+     * @param {Object} config { target, opacity, background }
+     * @type {Object} element
+     */showSpinner:function showSpinner(){var config=0<arguments.length&&arguments[0]!==void 0?arguments[0]:{};this._verifyConfigValues(config);var target=config.target,spinner=this._getSpinner(target);if(null===spinner){spinner=document.createElement("cells-spinner-stripes");if(target===this.root.host.parentNode){spinner.style.top="0";spinner.style.left="0";spinner.style.right="0";spinner.style.bottom="0";spinner.setAttribute("slot","");spinner.slot="app__main";spinner.style.position="fixed"}else{spinner.style.position="absolute"}target.appendChild(this._createBackground(config));target.appendChild(spinner)}else{var background=target.querySelector(".spinner-background");this._applyBackgroundValues(background,config);background.style.display="block"}spinner.removeAttribute("paused")},/**
+     * function to hide spinner
+     * @type {Object} element
+     */hideSpinner:function hideSpinner(){var config=0<arguments.length&&arguments[0]!==void 0?arguments[0]:{};this._verifyConfigValues(config);var target=config.target,spinner=this._getSpinner(target);if(null!==spinner){var background=target.querySelector(".spinner-background");background.style.display="none";spinner.setAttribute("paused","")}},_getSpinner:function _getSpinner(target){var targetElem=target||target.shadowRoot;return targetElem.querySelector("cells-spinner-stripes")},_createBackground:function _createBackground(config){var div=document.createElement("div");div.className="spinner-background";div.style.position="absolute";div.style.width="100%";div.style.height="100%";div.style.top="0";div.style.left="0";if(config.target===this.root.host.parentNode){div.setAttribute("slot","");div.slot="app__main";div.style.position="fixed";div.style.marginTop="var(--header-height, 0px)"}div.style.opacity=config.opacity;div.style.background=config.background;return div},_verifyConfigValues:function _verifyConfigValues(config){config.target=config.target||this.root.host.parentNode;config.opacity=config.opacity||0;config.background=config.background||"white";config.opacity=config.opacity+""},_applyBackgroundValues:function _applyBackgroundValues(backgroundElem,config){backgroundElem.style.opacity=config.opacity;backgroundElem.style.background=config.background}};</script><dom-module id="glomo-payroll-portability-list" assetpath="glomo-payroll-portability-list/"><template><style include="glomo-payroll-portability-list-styles glomo-payroll-portability-list-shared-styles"></style><cells-group-product-item class$="[[className]]" on-tap="requestTermsAndConditionsPdf" transactions="[[portabilitiesList]]"></cells-group-product-item></template><script>var GlomoPayrollPortabilityList=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(GlomoPayrollPortabilityList,_Polymer$mixinBehavio);function GlomoPayrollPortabilityList(){babelHelpers.classCallCheck(this,GlomoPayrollPortabilityList);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(GlomoPayrollPortabilityList).apply(this,arguments))}babelHelpers.createClass(GlomoPayrollPortabilityList,[{key:"_boot",/**
+     * this method sets layout texts
+     * @param {Object} pageActive if page active aren't empty
+     */value:function _boot(pageActive){if(pageActive&&pageActive.value){this.set("headerTitleText",this.t("glomo-payroll-portability-list-header"))}}/**
+   * this method sets potabilities list
+   * @param {Object} data get response data
+   */},{key:"setPortabilitiesList",value:function setPortabilitiesList(data){var _this=this,statusId="",classStatus="",mappedItem={},mappedArray=data.portabilitiesList.map(function(item){mappedItem={};mappedItem.transactionId=item.id;mappedItem.availableDate=item.applicationDate;mappedItem.extraInfo=[{description:_this.t("glomo-payroll-portability-list-folio")+":",value:item.operationNumber}];mappedItem.name=item.senderContract.bank.name;mappedItem.description={value:_this.t("glomo-payroll-portability-list-folio")+" : "+item.operationNumber,mask:!1};switch(item.status.id){case _this.pendingStatusFlag:case _this.sendingStatusFlag:statusId=_this.t("glomo-payroll-portability-list-pending-label");classStatus="portability-pending";break;case _this.acceptedStatusFlag:statusId=_this.t("glomo-payroll-portability-list-accepted-label");classStatus="portability-accepted";break;case _this.rejectedStatusFlag:statusId=_this.t("glomo-payroll-portability-list-rejected-label");classStatus="portability-rejected";break;}mappedItem.status={value:statusId,class:classStatus};if(item&&item.status&&item.status.description&&_this._mustShowStatusWarning(item.status)){mappedItem.iconMessage={class:"inline",type:"info",message:_this.t(_this.messageInfo),icon:"coronita:info"}}return mappedItem});this.set("portabilitiesList",mappedArray)}/**
+   * to request pdf template id
+   * @event 'request-terms-and-conditions-pdf'
+   */},{key:"requestTermsAndConditionsPdf",value:function requestTermsAndConditionsPdf(){this.dispatchEvent(new CustomEvent("request-terms-and-conditions-pdf",{detail:{title:this.t("glomo-payroll-portability-list-pdf-header"),productId:this.pdfProductId},bubbles:!0,composed:!0}))}/**
+   * to validate if status mus be show
+   * @param {Object} status
+   */},{key:"_mustShowStatusWarning",value:function _mustShowStatusWarning(status){var arr=[this.acceptedStatusFlag];return arr.includes(status.id)}}],[{key:"is",get:function get(){return"glomo-payroll-portability-list"}},{key:"properties",get:function get(){return{/*
+       * title of the page header
+       * @type {String}
+       */headerTitleText:{type:String,notify:!0},/**
+       * portabilities list
+       * @type {Array}
+       */portabilitiesList:Array,/**
+       * pdf product id for request id of document
+       * @type {String}
+       */pdfProductId:String,/**
+       * format for item date
+       * @type {String}
+       */transactionDateFormat:{type:String,value:"DD MMMM"},/**
+       * icon for item icon message
+       * @type {String}
+       */iconMessageIcon:{type:String,value:"coronita:info"},/**
+       * Flag for validate pending clarification
+       * @type {String}
+       */pendingStatusFlag:String,/**
+       * Flag for validate sending clarification
+       * @type {String}
+       */sendingStatusFlag:String,/**
+       * Flag for validate accepted clarification
+       * @type {String}
+       */acceptedStatusFlag:String,/**
+       * Flag for validate rejected clarification
+       * @type {String}
+       */rejectedStatusFlag:String,/**
+       * Message to show in icon-message
+       * @type {String}
+       */messageInfo:String,/**
+       * Class name to component
+       * @type {String}
+       */className:String}}}]);return GlomoPayrollPortabilityList}(Polymer.mixinBehaviors([CellsBehaviors.i18nBehavior],Polymer.Element));customElements.define(GlomoPayrollPortabilityList.is,GlomoPayrollPortabilityList);</script></dom-module></div></body></html>

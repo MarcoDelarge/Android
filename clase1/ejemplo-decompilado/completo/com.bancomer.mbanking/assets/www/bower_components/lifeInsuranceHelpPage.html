@@ -1,0 +1,53 @@
+<html><head></head><body><div hidden="" by-polymer-bundler=""><dom-module id="glomo-life-insurance-helps-styles" assetpath="glomo-life-insurance-helps/"><template><style>:host{display:block;box-sizing:border-box;font-family:var(--cells-fontDefault, sans-serif);@apply --glomo-life-insurance-helps;--cells-icon-message-icon-info-color:var(--bbva-light-blue);--cells-icon-message-icon-info-opacity:1;--cells-icon-message-background-color-info:var(--bbva-white);}:host([hidden]), [hidden]{display:none !important;}*, *:before, *:after{box-sizing:inherit;}.blue-font{font-weight:bold;color:var(--bbva-glomo-dark-medium-blue);}.slot-message{margin:0;}.helps-tittle{margin-top:0px;margin-bottom:0px;font-size:16px;}.helps-content{margin-top:20px;margin-bottom:0px;font-size:14px;}.helps-content-top-30{margin-top:30px;margin-bottom:0px;font-size:14px;}.bullet{width:7px;height:0px;border-left:2px solid transparent;border-bottom:7px solid var(--bbva-300);display:inline-block;margin-bottom:1px;margin-right:10px;}.help-message{padding-top:30px;padding-left:30px;padding-right:30px;}</style></template></dom-module><dom-module id="glomo-life-insurance-helps" assetpath="glomo-life-insurance-helps/"><template><style include="glomo-life-insurance-helps-styles glomo-life-insurance-helps-shared-styles"></style><slot></slot><template is="dom-if" if="[[showDeath]]"><cells-icon-message class="help-message" type="info" icon="coronita:help"><div class="slot-message" slot="actions"><p class="helps-tittle">[[t('glomo-life-insurance-helps-death-title')]]</p><p class="helps-content">[[t('glomo-life-insurance-helps-death-application-cases')]]</p><p class="helps-content">[[t('glomo-life-insurance-helps-death-suicide-cases')]]</p></div></cells-icon-message></template><template is="dom-if" if="[[showFuneralExpenses]]"><cells-icon-message class="help-message" type="info" icon="coronita:help"><div class="slot-message" slot="actions"><p class="helps-tittle">[[t('glomo-life-insurance-helps-funeral-expenses-title')]]</p><p class="helps-content">[[t('glomo-life-insurance-helps-funeral-expenses-additional-amount')]]</p><p class="helps-content">[[t('glomo-life-insurance-helps-funeral-expenses-first-renewal')]]</p></div></cells-icon-message></template><template is="dom-if" if="[[showAccidentalDeath]]"><cells-icon-message class="help-message" type="info" icon="coronita:help"><div class="slot-message" slot="actions"><p class="helps-tittle">[[t('glomo-life-insurance-helps-growing-plan-accidental-death')]]</p><p class="helps-content">[[t('glomo-life-insurance-helps-accidental-death-accidental-event')]]</p><p class="helps-content">[[t('glomo-life-insurance-helps-accidental-death-general-conditions')]]<span class="blue-font" data-notice$="[[opCodeGeneralConditions]]" data-doc="CONDICIONES GENERALES VIDA SEGURA BANCOMER" on-tap="viewGeneralConditionsPdf">[[t('glomo-life-insurance-helps-accidental-death-general-conditions-doc')]]</span></p></div></cells-icon-message></template><template is="dom-if" if="[[showGrowingPlan]]"><cells-icon-message class="help-message" type="info" icon="coronita:help"><div class="slot-message" slot="actions"><p class="helps-tittle">[[t('glomo-life-insurance-helps-growing-plan-title')]]</p><p class="helps-content">[[t('glomo-life-insurance-helps-growing-plan-will-increase')]]</p><p class="helps-content"><span class="bullet"></span>[[t('glomo-life-insurance-helps-growing-plan-death')]]</p><p class="helps-content"><span class="bullet"></span>[[t('glomo-life-insurance-helps-growing-plan-accidental-death')]]</p><p class="helps-content">[[t('glomo-life-insurance-helps-growing-plan-amount-to-pay')]]</p><p class="helps-content-top-30">[[t('glomo-life-insurance-helps-growing-plan-no-matter')]]</p></div></cells-icon-message></template><template is="dom-if" if="[[showFixedPlan]]"><cells-icon-message class="help-message" type="info" icon="coronita:help"><div class="slot-message" slot="actions"><p class="helps-tittle">[[t('glomo-life-insurance-helps-fixed-plan-title')]]</p><p class="helps-content">[[t('glomo-life-insurance-helps-fixed-plan-same-amount')]]</p><p class="helps-content-top-30">[[t('glomo-life-insurance-helps-growing-plan-no-matter')]]</p></div></cells-icon-message></template><cells-glomo-cta-container show-buttons="[[showButton]]" primary-button-text="[[primaryButtonText]]" primary-button-enable="true" on-tap="returnMain"></cells-glomo-cta-container></template><script>var GlomoLifeInsuranceHelps=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(GlomoLifeInsuranceHelps,_Polymer$mixinBehavio);function GlomoLifeInsuranceHelps(){babelHelpers.classCallCheck(this,GlomoLifeInsuranceHelps);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(GlomoLifeInsuranceHelps).apply(this,arguments))}babelHelpers.createClass(GlomoLifeInsuranceHelps,[{key:"_boot",/**
+   * Method to assign the text to the header and the main button
+   */value:function _boot(){this.set("headerTitleText",this.t("glomo-life-insurance-helps-title-coverages"));this.set("primaryButtonText",this.t("glomo-life-insurance-helps-st-button"))}/**
+   * Method to see what help will be shown
+   * @param {Object} payLoad
+   */},{key:"showHelp",value:function showHelp(payLoad){this.set("showDeath",payLoad.help===this.helpCodeDeath);this.set("showFuneralExpenses",payLoad.help===this.helpCodeFuneralExpenses);this.set("showAccidentalDeath",payLoad.help===this.helpAccidentalDeath);this.set("showGrowingPlan",payLoad.help===this.helpCodeGrowingPlan);this.set("showFixedPlan",payLoad.help===this.helpCodeFixedPlan);this.set("showButton",!0)}/**
+   * Method to return to main
+   */},{key:"returnMain",value:function returnMain(){this.set("showButton",!1);this.set("showDeath",!1);this.set("showFuneralExpenses",!1);this.set("showAccidentalDeath",!1);this.set("showGrowingPlan",!1);this.set("showFixedPlan",!1);this.dispatchEvent(new CustomEvent("return-main-lim"))}/**
+   * Method to show the pdf of general conditions
+   * @param {Object} event
+   */},{key:"viewGeneralConditionsPdf",value:function viewGeneralConditionsPdf(event){this.dispatchEvent(new CustomEvent("show-general-conditions-pdf",{detail:{notice:event.currentTarget.dataset.notice,document:event.currentTarget.dataset.doc}}))}}],[{key:"is",get:function get(){return"glomo-life-insurance-helps"}},{key:"properties",get:function get(){return{/**
+       * Title of the page header
+       * @type {String}
+       */headerTitleText:{type:String,notify:!0},/**
+       * Text for the main button
+       * @type {String}
+       */primaryButtonText:{type:String,notify:!0},/**
+       * Flag to show the button
+       * @type {Boolean}
+       */showButton:{type:Boolean,value:!1,notify:!0},/**
+       * Flag to show support for natural death
+       * @type {Boolean}
+       */showDeath:{type:Boolean,value:!1},/**
+       * Flag to show aid for funeral expenses
+       * @type {Boolean}
+       */showFuneralExpenses:{type:Boolean,value:!1},/**
+       * Flag to show the help of accidental death
+       * @type {Boolean}
+       */showAccidentalDeath:{type:Boolean,value:!1},/**
+       * Flag to show incremental plan help
+       * @type {Boolean}
+       */showGrowingPlan:{type:Boolean,value:!1},/**
+       * Flag to show fixed plan help without increments
+       * @type {Boolean}
+       */showFixedPlan:{type:Boolean,value:!1},/**
+       * Help for death coverage
+       * @type {Strigng}
+       */helpCodeDeath:{type:String,value:"001"},/**
+       * Help to cover funeral expenses
+       * @type {String}
+       */helpCodeFuneralExpenses:{type:String,value:"002"},/**
+       * Help for accidental death coverage
+       * @type {String}
+       */helpAccidentalDeath:{type:String,value:"003"},/**
+       * Help for the incremental plan
+       * @type {String}
+       */helpCodeGrowingPlan:{type:String,value:"LIH004"},/**
+       * Help for the fixed plan without increments
+       * @type {String}
+       */helpCodeFixedPlan:{type:String,value:"LIH005"},/**
+       * Option code for general conditions
+       * @type {String}
+       */opCodeGeneralConditions:{type:String,value:"LIN005"}}}}]);return GlomoLifeInsuranceHelps}(Polymer.mixinBehaviors([CellsBehaviors.i18nBehavior,CellsBehaviors.CellsGlomoUtilsBehavior,CellsBehaviors.CellsGlomoSpinnerBehavior],Polymer.Element));customElements.define(GlomoLifeInsuranceHelps.is,GlomoLifeInsuranceHelps);</script></dom-module></div></body></html>

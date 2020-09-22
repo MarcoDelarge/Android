@@ -1,0 +1,76 @@
+<html><head></head><body><div hidden="" by-polymer-bundler=""><dom-module id="glomo-pockets-edit-unprogrammer-styles" assetpath="glomo-pockets-edit-unprogrammer/"><template><style>:host{display:block;box-sizing:border-box;font-family:var(--cells-fontDefault, sans-serif);padding:0 20px;@apply --glomo-pockets-edit-unprogrammer;}:host([hidden]), [hidden]{display:none !important;}*, *:before, *:after{font:inherit;box-sizing:inherit;}.header-title{opacity:1;padding:1.875rem 1rem 0rem 1rem;font-size:var(--cells-text-size-ml, 0.9375rem);font-weight:bold;line-height:1.6;margin-right:0.25rem;text-transform:uppercase;transition:all 0.5s ease-in-out;@apply --glomo-pockets-edit-unprogrammer-header-title;}.pocket-edit-no-payroll{--glomo-edit-alias-input:{border-bottom:1px solid #666666;};--cells-molecule-input-has-content-invalid-icon:#666666;--cells-molecule-input-button-color:#666666;}</style></template></dom-module><dom-module id="glomo-pockets-edit-unprogrammer" assetpath="glomo-pockets-edit-unprogrammer/"><template><style include="glomo-pockets-edit-unprogrammer-styles glomo-pockets-edit-unprogrammer-shared-styles"></style><slot></slot><p class="header-title">[[t(headerTitle)]]</p><glomo-edit-alias class="pocket-edit-no-payroll" max-length="[[maxLength]]" input-label="[[pocketInputLabel]]" current-alias="{{currentPocketAlias}}" original-alias="[[originalPocketAlias]]" allowed-value="[[allowedValue]]" is-invalid="{{isInvalid}}" central-label="[[!topLabel]]" btn-disabled="[[!currentPocketAlias]]" edit-alias-message="[[pocketAliasMessage]]" edit-alias-primary-button="[[primaryButtonText]]" edit-alias-secondary-button="[[secondaryButtonText]]" on-save-alias="_savePocketAlias" on-cancel-edit-alias="_cancelAliasUpdate"></glomo-edit-alias></template><script>{var _Polymer=Polymer,html=_Polymer.html,GlomoPocketsEditUnprogrammer=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(GlomoPocketsEditUnprogrammer,_Polymer$mixinBehavio);function GlomoPocketsEditUnprogrammer(){babelHelpers.classCallCheck(this,GlomoPocketsEditUnprogrammer);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(GlomoPocketsEditUnprogrammer).apply(this,arguments))}babelHelpers.createClass(GlomoPocketsEditUnprogrammer,[{key:"reset",/**
+     * @desc reset
+     * @param {Object} pageValue
+     */value:function reset(pageValue){if(!pageValue.value){this.set("originalPocketAlias",null);this.set("currentPocketAlias",null);this.set("pocketNameUpdate",!1)}}/**
+     * @desc method to check if pocket name is changed
+     * @param {Boolean}
+     */},{key:"_isPocketNameChanged",value:function _isPocketNameChanged(originalPocketAlias,currentPocketAlias){return originalPocketAlias!==currentPocketAlias}/**
+     * @desc method to set alias based on payload received
+     * @param {Object} payload
+     */},{key:"pocketEditPayload",value:function pocketEditPayload(payload){if(payload){this.dispatchEvent(new CustomEvent("pocket-edit-payload-received"));this.set("originalPocketAlias",payload.alias);this.set("currentPocketAlias",payload.alias)}}/**
+       * @desc method to fire @event save-pocket-alias with updated alias String
+       * @param {Object} e
+       */},{key:"_savePocketAlias",value:function _savePocketAlias(){var e=0<arguments.length&&arguments[0]!==void 0?arguments[0]:{};this.dispatchEvent(new CustomEvent("save-pocket-alias",{detail:e.detail}))}/**
+       * @desc method to fire @event cancel-pocket-alias-update on pressing cancel button
+       */},{key:"_cancelAliasUpdate",value:function _cancelAliasUpdate(){this.dispatchEvent(new CustomEvent("cancel-pocket-alias-update"))}}],[{key:"is",get:function get(){return"glomo-pockets-edit-unprogrammer"}},{key:"properties",get:function get(){return{/**
+         * @desc title
+         * @type {String}
+         */headerTitle:{type:String},/**
+         * @desc pocket input label
+         * @type {String}
+         */pocketInputLabel:String,/**
+         * @desc pocket alias
+         * @type {String}
+         */currentPocketAlias:String,/**
+         * @desc pocket alias to check against original one
+         * @type {String}
+         */originalPocketAlias:String,/**
+         * @desc allowed value
+         * @type {String}
+         */allowedValue:String,/**
+         * @desc invalid flag
+         * @type {Boolean}
+         */isInvalid:Boolean,/**
+         * @desc boolean to position label
+         * @type {Boolean}
+         */topLabel:Boolean,/**
+         * @desc pocket alias message
+         * @type {String}
+         */pocketAliasMessage:String,/**
+         * @desc Primary button text
+         * @type {String}
+         */primaryButtonText:String,/**
+         * @desc secondary buton text
+         * @type {String}
+         */secondaryButtonText:String,/**
+         * @desc Boolean to check if the pocket name was changed
+         * @type {Boolean}
+         */pocketNameUpdate:{type:Boolean,notify:!0,computed:"_isPocketNameChanged(originalPocketAlias, currentPocketAlias)"},/**
+         * @desc parameter maxLength
+         * @type {String}
+         */maxLength:{type:String,value:"18"}}}}]);return GlomoPocketsEditUnprogrammer}(Polymer.mixinBehaviors([CellsBehaviors.i18nBehavior],Polymer.Element));/**
+    `<glomo-pockets-edit-unprogrammer>` Description.
+
+    Example:
+
+    ```html
+    <glomo-pockets-edit-unprogrammer></glomo-pockets-edit-unprogrammer>
+    ```
+
+    ## Styling
+    The following custom properties and mixins are available for styling:
+
+    ### Custom Properties
+    | Custom Property     | Selector | CSS Property | Value       |
+    | ------------------- | -------- | ------------ | ----------- |
+    | --cells-fontDefault | :host    | font-family  |  sans-serif |
+    ### @apply
+    | Mixins    | Selector | Value |
+    | --------- | -------- | ----- |
+    | --glomo-pockets-edit-unprogrammer | :host    | {} |
+
+    * @customElement
+    * @polymer
+    * @extends {Polymer.Element}
+    * @demo demo/index.html
+  */customElements.define(GlomoPocketsEditUnprogrammer.is,GlomoPocketsEditUnprogrammer)}</script></dom-module></div></body></html>

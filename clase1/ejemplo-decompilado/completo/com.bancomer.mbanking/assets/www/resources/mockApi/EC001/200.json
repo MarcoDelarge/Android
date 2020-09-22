@@ -1,0 +1,110 @@
+{
+    "data": {
+        "portfolioValue": {
+            "amount": 700.00,
+            "currency": "MXN"
+        },
+        "assets": [
+            {
+                "assetType": {
+                    "id": "MONEY_MARKET",
+                    "name": "Mercado de dinero"
+                },
+                "amount": {
+                    "amount": -28340.00,
+                    "currency": "MXN"
+                }
+            },
+            {
+                "assetType": {
+                    "id": "EQUITY_INVESTMENT_FUNDS",
+                    "name": "Fondos de inversión renta variable"
+                },
+                "amount": {
+                    "amount": 10.00,
+                    "currency": "MXN"
+                }
+            },
+            {
+                "assetType": {
+                    "id": "DEBT_INVESTMENT_FUNDS",
+                    "name": "Fondos de inversión deuda"
+                },
+                "amount": {
+                    "amount": 46746520.00,
+                    "currency": "MXN"
+                }
+            },
+            {
+                "assetType": {
+                    "id": "CAPITAL_MARKET",
+                    "name": "Mercado de capitales"
+                },
+                "amount": {
+                    "amount": 78250.00,
+                    "currency": "MXN"
+                }
+            },
+            {
+                "assetType": {
+                    "id": "STRATEGY_INVESTMENTS",
+                    "name": "Inversiones Multi-Estrategia"
+                },
+                "amount": {
+                    "amount": 981241230.00,
+                    "currency": "MXN"
+                }
+            },
+            {
+                "assetType": {
+                    "id": "BANK_INVESTMENTS",
+                    "name": "Inversiones Bancarias"
+                },
+                "amount": {
+                    "amount": -10.00,
+                    "currency": "MXN"
+                }
+            },
+            {
+                "assetType": {
+                    "id": "OTHERS",
+                    "name": "Otros"
+                },
+                "amount": {
+                    "amount": 11280.00,
+                    "currency": "MXN"
+                }
+            },
+            {
+                "assetType": {
+                    "id": "CASH",
+                    "name": "Efectivo"
+                },
+                "amount": {
+                    "amount": 700.00,
+                    "currency": "MXN"
+                }
+            },
+            {
+                "assetType": {
+                    "id": "DEBT_SECURITIES",
+                    "name": "Obligaciones"
+                },
+                "amount": {
+                    "amount": 660.00,
+                    "currency": "MXN"
+                }
+            },
+            {
+                "assetType": {
+                    "id": "STRUCTURED_PRODUCTS",
+                    "name": "Estructurados"
+                },
+                "amount": {
+                    "amount": 170.00,
+                    "currency": "MXN"
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,53 @@
+{
+    "data": {
+        "id": "115",
+        "alias": "TAR REG",
+        "operationType": {
+            "id": "GIFT_CARD_TOP_UP",
+            "description": "RECARGA DE TARJETA REGALO"
+        },
+        "notification": {
+            "notificationDay": 0,
+            "isActive": false,
+            "contactInformation": {
+                "contactDetailId": "0"
+            }
+        },
+        "contract": {
+            "number": "001101300105026738"
+        },
+        "operationDetail": {
+            "receiver": {
+                "contract": {
+                    "number": "4771130010012312",
+                    "numberType": {
+                        "id": "PAN",
+                        "name": "PAN"
+                    },
+                    "productType": {
+                        "id": "CARD",
+                        "name": "CARD"
+                    }
+                }
+            }
+        },
+        "operationImport": {
+            "currency": "PEN",
+            "amount": 100
+        },
+        "availableChannels": [
+            {
+                "availableChannel": {
+                    "id": "BMOV",
+                    "name": "BANCA MOVIL"
+                }
+            },
+            {
+                "availableChannel": {
+                    "id": "BMOV",
+                    "name": "BANCA MOVIL"
+                }
+            }
+        ]
+    }
+}

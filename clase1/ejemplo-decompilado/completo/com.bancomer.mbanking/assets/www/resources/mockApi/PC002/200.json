@@ -1,0 +1,34 @@
+{
+    "data": {
+        "id": "DP1Z4HNV7FMRX3TF6T6QABDEHC",
+        "openingDate": "2018-06-19",
+        "operationNumber": "6818909522",
+        "claimedAmount": {
+            "amount": 25.1,
+            "currency": "MXN"
+        },
+        "contract": {
+            "id": "B2DR8Y7C4SDE78EV4VWCAC97RBA34KBTMCE0A4KW4H0B8R21QJY0",
+            "number": 4555193000013056,
+            "product": {
+                "numberType": {
+                    "id": "PAN",
+                    "name": "Número de cuenta principal. Consiste en números de 14, 15 o 16 dígitos que están grabados y / o codificados en una tarjeta de plástico que identifica al emisor y la cuenta particular del titular de la tarjeta."
+                },
+                "productType": {
+                    "id": "CARDS",
+                    "name": "Una tarjeta como el producto financiero asociado al contrato."
+                },
+                "subProductType": {
+                    "id": "CREDIT_CARD",
+                    "name": "Tarjeta de Crédito."
+                }
+            }
+        },
+        "status": {
+            "id": "APPROVED",
+            "name": "A Favor",
+            "date": "2018-06-19"
+        }
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "data": [
+        {
+            "title": "Localización de sucursales",
+            "description": "¿Requieres atención personalizada de uno de nuestros ejecutivos?\n<ul>\n\t<li>\n\t\tEncuentra los cajeros, sucursales y practicajas más cercanos de BBVA Bancomer, a través del geolocalizador de App Línea Bancomer.\n\t</li>\n</ul>",
+            "operationId": "10013",
+            "channel": "ML",
+            "contactCenterId": "3001"
+        },
+        {
+            "title": "Buscar cajeros y sucursales",
+            "description": "Encuentra los cajeros y sucursales más cercanos de BBVA Bancomer, a través del geolocalizador de App Línea Bancomer.",
+            "operationId": "10012",
+            "channel": "ML",
+            "contactCenterId": "3001"
+        },
+        {
+            "title": "¿Por qué no puedo recoger mi chequera de Libretón Premium en cualquier sucursal?",
+            "description": "La chequera de Libretón Premium se deberá recoger en la sucursal en donde se abrió la cuenta, ya que el gestor que te atendió en el momento de la apertura es el responsable de que te entregue la chequera con el fin de evitar el mal uso de la misma y protegerte."
+        },
+        {
+            "title": "¿Por qué no puedo recoger mi chequera de la cuenta Maestra Particulares en cualquier sucursal?",
+            "description": "Invariablemente se deberá recoger la chequera en la sucursal en donde se abrió la cuenta Maestra Particulares, ya que el gestor que te atendió en el momento de la apertura es el responsable de que te entregue la chequera con el fin de evitar el mal uso de la misma y protegerte."
+        },
+        {
+            "title": "¿Qué operaciones se pueden realizar con el servicio Bancomer Móvil?",
+            "description": "Con el servicio Bancomer Móvil se pueden realizar las siguientes operaciones:n<ul>nt<li>\n\t\tHacer transferencias a cuentas Bancomer, propias o de terceros, los 365 días del año.\n\t</li>\n\t<li>\n\t\tRealizar transferencias a cuentas de otros bancos, cualquier día de la semana, las 24 horas del día. Para esto, deberás asociar tu número de celular a tu cuenta.\n\t</li>\n\t<li>\n\t\tPagar servicios como agua, luz, teléfono, etc., hasta las 20:00 horas.\n\t</li>\n\t<li>\n\t\tDisponer de tu Tarjeta de Crédito Bancomer.\n\t</li>\n\t<li>\n\t\tComprar tiempo aire.\n\t</li>\n\t<li>\n\t\tPagar tarjetas de crédito Bancomer y de otros bancos.\n\t</li>\n\t<li>\n\t\tEnviar Dinero Móvil y retiro sin tarjeta.\n\t</li>\n\t<li>\n\t\tPersonalizar el límite de operación diario en el servicio, dentro del máximo permitido.\n\t</li>\n\t<li>\n\t\tRealizar operaciones con un límite máximo de $500,000 al día y de $2,000,000 al mes.\n\t</li>\n\t<li>\n\t\tApartados: Si tienes tu nómina en Bancomer, Bancomer Móvil te da la opción de separar tus ingresos en montos destinados a cubrir los gastos que tú elijas. Podrás:\n\t\t<ul>\n\t\t\t<li>\n\t\t\t\tApartar tu dinero de forma manual, cada que lo requieras.\n\t\t\t</li>\n\t\t\t<li>\n\t\t\t\tProgramar apartados. Así, cada vez que recibas tu nómina, nosotros separaremos automáticamente la cantidad que hayas determinado.\n\t\t\t</li>\n\t\t\t<li>\n\t\t\t\tCrear hasta 7 apartados con opción a personalizar, modificar, priorizar, programar o desprogramar cuando necesites, sin límite de horarios, cobro de comisiones o plazos forzosos.\n\t\t\t</li>\n\t\t</ul>\n\t</li>\n</ul>\nRecuerda que tu apartado se encontrará resguardado a menos que lo devuelvas al disponible de tu cuenta a través de Bancomer Móvil o bancomer.com"
+        }
+    ]
+}

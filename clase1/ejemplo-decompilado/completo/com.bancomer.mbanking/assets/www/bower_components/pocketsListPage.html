@@ -1,0 +1,202 @@
+<html><head></head><body><div hidden="" by-polymer-bundler=""><dom-module id="cells-draggable-list-styles" assetpath="cells-draggable-list/"><template><style>:host{display:inline-block;box-sizing:border-box;font-family:var(--cells-fontDefault, sans-serif);touch-action:pan-y;@apply --cells-draggable-list;}:host([hidden]), [hidden]{display:none !important;}*, *:before, *:after{box-sizing:inherit;}::slotted(*){user-drag:none;user-select:none;-moz-user-select:none;-ms-user-select:none;-webkit-user-drag:none;-webkit-user-select:none;-webkit-tap-highlight-color:rgba(255, 255, 255, 0);}::slotted(.item--transform){left:0;margin:0 !important;position:fixed !important;top:0;-webkit-transition:-webkit-transform 0.2s cubic-bezier(0.333, 0, 0, 1);transition:-webkit-transform 0.2s cubic-bezier(0.333, 0, 0, 1);transition:transform 0.2s cubic-bezier(0.333, 0, 0, 1);transition:transform 0.2s cubic-bezier(0.333, 0, 0, 1), -webkit-transform 0.2s cubic-bezier(0.333, 0, 0, 1);will-change:transform;@apply --cells-draggable-list-item--transform;}::slotted(.item--pressed){-webkit-transition:none !important;transition:none !important;@apply --cells-draggable-list-item--pressed;}::slotted(.item--dragged){box-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.15);-webkit-filter:brightness(1.1);filter:brightness(1.1);z-index:2;@apply --cells-draggable-list-item--dragged;}</style></template></dom-module><dom-module id="cells-draggable-list" assetpath="cells-draggable-list/"><template><style include="cells-draggable-list-styles cells-draggable-list-shared-styles"></style><div id="items"><slot id="slot"></slot></div></template><script>var CellsDraggableList=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(CellsDraggableList,_Polymer$mixinBehavio);babelHelpers.createClass(CellsDraggableList,null,[{key:"is",get:function get(){return"cells-draggable-list"}},{key:"properties",get:function get(){return{/**
+       * This is a CSS selector string. If this is set, only items that
+       * match the CSS selector are sortable.
+       */sortable:String,/**
+       * The list of sortable items.
+       * @type Array
+       */items:{type:Array,notify:!0},/**
+      * Returns true when an item is being drag.
+      * @type Boolean
+      */dragging:{type:Boolean,notify:!0,readOnly:!0,reflectToAttribute:!0,value:!1},/**
+       * Disables the draggable if set to true.
+       * @type Boolean
+       */disabled:{type:Boolean,reflectToAttribute:!0,value:!1},/**
+       * Time for the drag to activate after the user tap on each item
+       * The time must be specified in milliseconds
+       * @type Number
+       */delayDragTime:{type:Number,value:1e3}}}/**
+   * @desc add values initials
+   */}]);function CellsDraggableList(){var _this;babelHelpers.classCallCheck(this,CellsDraggableList);_this=babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(CellsDraggableList).call(this));_this._observer=null;_this._target=null;_this._targetRect=null;_this._rects=null;_this._onTrack=_this._onTrack.bind(babelHelpers.assertThisInitialized(_this));_this._onDragStart=_this._onDragStart.bind(babelHelpers.assertThisInitialized(_this));_this._onTransitionEnd=_this._onTransitionEnd.bind(babelHelpers.assertThisInitialized(_this));_this._onTouchMove=_this._onTouchMove.bind(babelHelpers.assertThisInitialized(_this));_this._onDown=_this._onDown.bind(babelHelpers.assertThisInitialized(_this));_this._onUp=_this._onUp.bind(babelHelpers.assertThisInitialized(_this));return _this}/**
+   * @desc initialize the observer, add values to array of items taken from slot, add listeners to the slot
+   */babelHelpers.createClass(CellsDraggableList,[{key:"connectedCallback",value:function connectedCallback(){var _this2=this;babelHelpers.get(babelHelpers.getPrototypeOf(CellsDraggableList.prototype),"connectedCallback",this).call(this);Polymer.Async.idlePeriod.run(function(_){_this2._observeItems();_this2._updateItems();_this2._toggleListeners({enable:!0})})}/**
+   * @desc disable the observer, remove listeners to the slot
+   */},{key:"disconnectedCallback",value:function disconnectedCallback(){babelHelpers.get(babelHelpers.getPrototypeOf(CellsDraggableList.prototype),"disconnectedCallback",this).call(this);this._unobserveItems();this._toggleListeners({enable:!1})}/**
+   * @desc add or remove listeners of the list
+   * @param {Boolean}
+   */},{key:"_toggleListeners",value:function _toggleListeners(_ref){var enable=_ref.enable,m=enable?"addEventListener":"removeEventListener";this.$.items[m]("dragstart",this._onDragStart);this.$.items[m]("transitionend",this._onTransitionEnd);this.$.items[m]("touchmove",this._onTouchMove);if(enable){Polymer.Gestures.addListener(this,"track",this._onTrack);Polymer.Gestures.addListener(this,"down",this._onDown);Polymer.Gestures.addListener(this,"up",this._onUp);Polymer.Gestures.setTouchAction(this,"pan-y")}else{Polymer.Gestures.removeListener(this,"track",this._onTrack);Polymer.Gestures.removeListener(this,"down",this._onDown);Polymer.Gestures.removeListener(this,"up",this._onUp)}}/**
+   * @desc activate the drag after the specific time
+   * @param {Event}
+   */},{key:"_onDown",value:function _onDown(event){var _this3=this;this._timeOut=setTimeout(function(){_this3.set("disabled",!1)},this.delayDragTime)}/**
+   * @desc does not activate the drag if the user did not leave the item pressed for a defined time
+   * @param {Event}
+   */},{key:"_onUp",value:function _onUp(event){clearTimeout(this._timeOut);this.set("disabled",!0)}/**
+   * @desc receive the status of the element and handle the action
+   * https://polymer-library.polymer-project.org/2.0/docs/devguide/gesture-events
+   * @param {event}
+   */},{key:"_onTrack",value:function _onTrack(event){switch(event.detail.state){case"start":this._trackStart(event);break;case"track":this._track(event);break;case"end":this._trackEnd(event);break;}}/**
+   * @desc tracking started
+   * https://polymer-library.polymer-project.org/2.0/docs/devguide/gesture-events
+   * @param {event}
+   */},{key:"_trackStart",value:function _trackStart(event){var _this4=this;if(this.disabled){return}var path=event.composedPath();this._target=this._itemFromEvent(event,path);if(!this._target){return}event.stopPropagation();this._rects=this._getItemsRects();this._targetRect=this._rects[this.items.indexOf(this._target)];this._target.classList.add("item--dragged","item--pressed");var rect=this.getBoundingClientRect();this.style.height=rect.height+"px";this.style.width=rect.width+"px";this.items.forEach(function(item,idx){var rect=_this4._rects[idx];item.classList.add("item--transform");if(item!==_this4._target){item.classList.add("item--drop")}item.style.transition="none";item.__originalWidth=item.style.width;item.__originalHeight=item.style.height;item.style.width=rect.width+"px";item.style.height=rect.height+"px";_this4._translateY(rect.top,item);setTimeout(function(_){item.style.transition=null},20)});this._setDragging(!0)}/**
+   * @desc tracking in course
+   * https://polymer-library.polymer-project.org/2.0/docs/devguide/gesture-events
+   * @param {event}
+   */},{key:"_track",value:function _track(event){var _this5=this;if(!this.dragging){return}var top=this._targetRect.top+event.detail.dy;this._translateY(top,this._target);var overItem=this._itemFromCoords(event.detail);if(overItem&&overItem!==this._target){var overItemIndex=this.items.indexOf(overItem),targetIndex=this.items.indexOf(this._target);this._moveItemArray(this.items,targetIndex,overItemIndex);for(var _loop=function _loop(i){if(_this5.items[i]!==_this5._target){var rect=_this5._rects[i];requestAnimationFrame(function(_){_this5._translateY(rect.top,_this5.items[i])})}},i=0;i<this.items.length;i++){_loop(i)}}}/**
+   * @desc tracking end
+   * https://polymer-library.polymer-project.org/2.0/docs/devguide/gesture-events
+   * @param {event}
+   */},{key:"_trackEnd",value:function _trackEnd(event){if(!this.dragging){return}var rect=this._rects[this.items.indexOf(this._target)];this._target.classList.remove("item--pressed");this._setDragging(!1);this._translateY(rect.top,this._target);this.set("disabled",!0)}/**
+   * @desc transition end
+   */},{key:"_onTransitionEnd",value:function _onTransitionEnd(){var _this6=this;if(this.dragging||!this._target){return}var fragment=document.createDocumentFragment();this.items.forEach(function(item){item.style.transform="";item.style.width=item.__originalWidth;item.style.height=item.__originalHeight;item.classList.remove("item--transform");if(item!==_this6._target){item.classList.remove("item--drop")}fragment.appendChild(item)});if(this.children[0]){this.insertBefore(fragment,this.children[0])}else{this.appendChild(fragment)}this.style.height="";this._target.classList.remove("item--dragged");this._rects=null;this._targetRect=null;this.dispatchEvent(new CustomEvent("sort-finish",{composed:!0,detail:{targetId:this._target.id,newIndex:this._getUpdatedItemIndex(this.items,this._target.id)}}));this._target=null}/**
+   * @desc function to return updated item index
+   */},{key:"_getUpdatedItemIndex",value:function _getUpdatedItemIndex(items,id){var updatedIndex;if(Array.isArray(items)&&(id||0===id)){items.forEach(function(item,index){if(item.id===id){updatedIndex=index}})}return updatedIndex}/**
+   * @desc handler in start drag
+   * @param {Event}
+   */},{key:"_onDragStart",value:function _onDragStart(event){event.preventDefault()}/**
+   * @desc handler in touch move
+   * @param {Event}
+   */},{key:"_onTouchMove",value:function _onTouchMove(event){if(!this.disabled){event.preventDefault()}}/**
+   * @desc update the items by doing a filter if the items are of type element
+   */},{key:"_updateItems",value:function _updateItems(){var _this7=this;if(this.dragging){return}var items=this.$.slot.assignedNodes().filter(function(node){if(node.nodeType===Node.ELEMENT_NODE&&(!_this7.sortable||node.matches(_this7.sortable))){return!0}});this.set("items",items)}/**
+   * @desc get the item that is in motion
+   * @returns {Element}
+   */},{key:"_itemFromCoords",value:function _itemFromCoords(_ref2){var _this8=this,x=_ref2.x,y=_ref2.y;if(!this._rects){return}var match=null;this._rects.forEach(function(rect,i){if(x>=rect.left&&x<=rect.left+rect.width&&y>=rect.top&&y<=rect.top+rect.height){match=_this8.items[i]}});return match}/**
+   * @desc Get the item that is being tracked
+   * @param {Event}
+   * @returns {Object}
+   */},{key:"_itemFromEvent",value:function _itemFromEvent(event,path){for(var i=0;i<path.length;i++){if(-1<this.items.indexOf(path[i])){return path[i]}}}/**
+   * @desc get the rects of the elements
+   * @returns {Array}
+   */},{key:"_getItemsRects",value:function _getItemsRects(){return this.items.map(function(item){return item.getBoundingClientRect()})}/**
+   * @desc Assign an observer for changes in the DOM in cells-draggable-list
+   */},{key:"_observeItems",value:function _observeItems(){var _this9=this;if(!this._observer){this._observer=new MutationObserver(function(_){_this9._updateItems()});this._observer.observe(this,{childList:!0})}}/**
+   * @desc Disconnect the observer (MutationObserver)
+   */},{key:"_unobserveItems",value:function _unobserveItems(){if(this._observer){this._observer.disconnect();this._observer=null}}/**
+   * @desc Move an array item from one position to another.
+   * Source: http://stackoverflow.com/questions/5306680/move-an-array-element-from-one-array-position-to-another
+   * @returns {Array}
+   */},{key:"_moveItemArray",value:function _moveItemArray(array,oldIndex,newIndex){if(newIndex>=array.length){var k=newIndex-array.length;while(k--+1){array.push(void 0)}}array.splice(newIndex,0,array.splice(oldIndex,1)[0]);return array}/**
+   * @desc add trnsform to element
+   */},{key:"_translateY",value:function _translateY(y,el){el.style.transform="translateY(".concat(y,"px)")}}]);return CellsDraggableList}(Polymer.mixinBehaviors([CellsBehaviors.i18nBehavior],Polymer.Element));customElements.define(CellsDraggableList.is,CellsDraggableList);</script></dom-module><dom-module id="glomo-pockets-list-styles" assetpath="glomo-pockets-list/"><template><style>@charset "UTF-8";:host{display:block;box-sizing:border-box;font-family:var(--cells-fontDefault, sans-serif);@apply --glomo-pockets-list;}:host([hidden]), [hidden]{display:none !important;}*, *:before, *:after{font:inherit;box-sizing:inherit;}.savings-header{background-color:var(--bbva-white, #FFFFFF);padding:1.875rem;box-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.15);}.key-value-balance{font-size:0.8125rem;font-weight:bold;color:var(--bbva-500,   #666666);--cells-key-values-key-color:var(--bbva-500,   #666666);--cells-key-values-key-span:{letter-spacing:0.3px;text-transform:uppercase;};}.instructions-card{padding:0.625rem;font-size:0.875rem;color:var(--bbva-600);background-color:var(--bbva-100, #F4F4F4);--cells-oc-banner-hero:{background:transparent;};--cells-oc-banner__banner__image:{margin-left:15px;width:46px;height:47px;};--cells-oc-banner-exit:{--cells-st-button-text-color-transparent:var(--bbva-500);};}.draggable-list{width:100%;}.saving-item{padding:1.25rem 1.875rem 1.25rem 1.875rem;width:100%;border-bottom:solid 1px var(--bbva-200, #E9E9E9);}.saving-title{display:flex;margin-bottom:1rem;align-items:center;justify-content:space-between;}.saving-alias__label{text-align:left;min-height:0px;padding:0px;font-size:1.125rem;font-weight:var(--cells-text-weight-medium, 500);color:var(--bbva-glomo-dark-medium-blue, #1973B8);}.saving-btn__more{margin:0px;padding:0px;min-width:1.625rem;min-height:1.625rem;color:var(--bbva-500);background-color:transparent;}.key-values{margin-bottom:5px;}.primary{font-weight:var(--cells-text-weight-book, 400);--cells-key-values-key-color:var(--bbva-600,   #121212);--cells-atom-amount-huge:{font-size:24px;};--cells-atom-amount-huge-currency:{font-size:16px;};--cells-atom-amount-huge-fractional:{font-size:16px;};}.secondary{color:var(--bbva-500,   #666666);--cells-atom-amount-large:{font-size:22px;color:var(--bbva-500, #666666);};}.saving-btn-container{background-color:var(--bbva-white, #FFFFFF);padding:1.25rem;width:100%;display:flex;align-items:center;}.saving-icon{color:var(--bbva-medium-aqua);min-width:2.5rem;min-height:2.5rem;margin-left:1rem;margin-right:1rem;padding:0px;-webkit-transform:rotate(-90deg);transform:rotate(-90deg);}.add-saving-btn{height:40px;margin:0px;font-weight:var(--cells-text-weight-medium, 500);color:var(--bbva-glomo-dark-medium-blue, #1973B8);font-size:18px;}.add-saving-btn:focus{text-decoration:none;outline:none;border:none;box-shadow:none;}</style></template></dom-module><dom-module id="glomo-pockets-list" assetpath="glomo-pockets-list/"><template><style include="glomo-pockets-list-styles glomo-pockets-list-shared-styles"></style><slot></slot><div class="content"><div class="savings-header"><cells-key-values class="inline key-value-balance" key="[[t(totalSavingsKey)]]" local-currency="[[localCurrency]]" value$="[[totalSavingsAmount]]" language="[[language]]"></cells-key-values></div><div class="savings-body"><div hidden$="[[hideInfoCard]]" class="instructions-card"><cells-oc-banner config="[[infoCardConfig]]"></cells-oc-banner></div></div><div class="savings-list"><cells-draggable-list on-sort-finish="_onSortFinish" dragging="{{isDragging}}" class="draggable-list" delay-drag-time="[[delayDragTime]]"><template is="dom-repeat" items="[[savingsList]]" as="saving"><div class="saving-item" id="[[saving.id]]"><div class="saving-title"><div class="saving-alias"><label class="saving-alias__label">[[saving.alias]]</label></div><cells-st-button class="saving-btn" on-tap="_linkButtonTap"><iron-icon icon="coronita:more" class="saving-btn__more"></iron-icon></cells-st-button></div><template is="dom-repeat" items="[[saving.balances]]"><div class="key-values"><cells-key-values class$="inline [[item.className]]" key="[[item.label]]" local-currency="[[localCurrency]]" language="[[language]]" value="[[item.value]]"></cells-key-values></div></template></div></template></cells-draggable-list></div><div class="savings-footer" hidden$="[[hideFooter]]"><cells-st-button id="addNewSaving" class="link saving-btn-container" on-tap="_footerButtonTap"><iron-icon icon="[[newSavingIcon]]" class="icon saving-icon"></iron-icon><button class="add-saving-btn">[[t(footerBtnText)]]</button></cells-st-button></div></div></template><script>{var _Polymer=Polymer,html=_Polymer.html,GlomoPocketsList=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(GlomoPocketsList,_Polymer$mixinBehavio);function GlomoPocketsList(){babelHelpers.classCallCheck(this,GlomoPocketsList);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(GlomoPocketsList).apply(this,arguments))}babelHelpers.createClass(GlomoPocketsList,[{key:"reset",/**
+     * reset method to reset savings list and total amount object on page out
+     */value:function reset(pageActive){if(pageActive&&!pageActive.value){this.set("savingsList",void 0);this.set("totalSavingsAmount",void 0)}}/**
+     * click event handler for when the link icon on a saving is tapped
+     */},{key:"_linkButtonTap",value:function _linkButtonTap(e){e.stopPropagation();this.dispatchEvent(new CustomEvent("savings-link-button-tap",{detail:(e.model||{}).saving,bubbles:!0,composed:!0}))}/**
+     * click event handler for when the footer button is tapped
+     */},{key:"_footerButtonTap",value:function _footerButtonTap(){this.dispatchEvent(new CustomEvent("savings-footer-button-tap"))}/**
+     * function to rearrange existing list
+     */},{key:"_onSortFinish",value:function _onSortFinish(e){var arr=babelHelpers.toConsumableArray(this.savingsList),currIndex=this._getIndex(babelHelpers.toConsumableArray(arr),(e.detail||{}).targetId),removedElement=arr.splice(currIndex,1)[0];arr.splice((e.detail||{}).newIndex,0,removedElement);this.set("savingsList",arr);this.dispatchEvent(new CustomEvent("sort-pockets-list",{detail:e.detail,bubbles:!0,composed:!0}))}/**
+     * function to return index of item with given id
+     */},{key:"_getIndex",value:function _getIndex(list,id){var currIndex;list.forEach(function(item,index){if(item.id===id){currIndex=index}});return currIndex}}],[{key:"is",get:function get(){return"glomo-pockets-list"}},{key:"properties",get:function get(){return{/**
+         * @desc total savings key from composer mocks
+         * @type String
+         */totalSavingsKey:String,/**
+         * @desc total amount of the pockets from dm
+         * @type Object
+         */totalSavingsAmount:Object,/**
+         * @desc local currency from composer mocks
+         * @type String
+         */localCurrency:String,/**
+         * @desc language from composermocks
+         * @type String
+         */language:String,/**
+         * @desc flag to hide info card from dm
+         * @type Boolean
+         */hideInfoCard:Boolean,/**
+         * @desc config sent to cells-oc-banner from dm
+         * @type Object
+         */infoCardConfig:Object,/**
+         * @desc list of savings from dm
+         * @type Array
+         */savingsList:Array,/**
+         * @desc flag to hide footer from dm
+         * @type Boolean
+         */hideFooter:Boolean,/**
+         * @desc icon to add new saving from composermocks
+         * @type String
+         */newSavingIcon:String,/**
+         * @desc footer button text from composermocks
+         * @type String
+         */footerBtnText:String,/**
+         * @desc drag delay time to drag and drop elements
+         * @type Number
+         */delayDragTime:Number,/**
+         * @desc flag to determine if the item is currently being dragged
+         * @type Number
+         */isDragging:{type:Boolean,value:!1}}}}]);return GlomoPocketsList}(Polymer.mixinBehaviors([CellsBehaviors.i18nBehavior],Polymer.Element));/**
+    `<glomo-pockets-list>` Description.
+
+    Example:
+
+    ```html
+    <glomo-pockets-list></glomo-pockets-list>
+    ```
+
+    ## Styling
+    The following custom properties and mixins are available for styling:
+
+    ### Custom Properties
+    | Custom Property     | Selector | CSS Property | Value       |
+    | ------------------- | -------- | ------------ | ----------- |
+    | --cells-fontDefault | :host    | font-family  |  sans-serif |
+    ### @apply
+    | Mixins    | Selector | Value |
+    | --------- | -------- | ----- |
+    | --glomo-pockets-list | :host    | {} |
+
+    * @customElement
+    * @polymer
+    * @extends {Polymer.Element}
+    * @demo demo/index.html
+  */customElements.define(GlomoPocketsList.is,GlomoPocketsList)}</script></dom-module><dom-module id="glomo-modal-operations-list-styles" assetpath="glomo-modal-operations-list/"><template><style>:host{position:fixed;bottom:0;width:100%;font-family:var(--cells-fontDefault, sans-serif);--iron-overlay-backdrop-background-color:var(--bbva-navy, #072146);--iron-overlay-backdrop-opacity:0.8;@apply --glomo-modal-operations-list;}:host([hidden]), [hidden]{display:none !important;}*, *:before, *:after{font:inherit;box-sizing:inherit;}.bottom-modal{--cells-bottom-modal-body-padding:0 0 20px 0;--cells-bottom-modal-dark-bg-color:var(--bbva-white-core-blue, #1464A5);@apply --glomo-modal-operations-list-bottom-modal;}.modal-operations-title{margin:0;padding:30px 0 0 10px;position:relative;font-weight:700;font-size:15px;letter-spacing:0.3px;text-transform:uppercase;text-align:left;@apply --glomo-modal-operations-list-modal-operations-title;}.modal-operations-list{--cells-operations-list-list:{margin:0;-webkit-box-pack:left;justify-content:left;background-color:var(--bbva-white-core-blue, #1464A5);@apply --glomo-modal-operations-list-modal-operations-list-list;};--cells-operations-list-list__item:{min-height:-webkit-fit-content;min-height:-moz-fit-content;min-height:fit-content;@apply --glomo-modal-operations-list-modal-operations-list-item;};--cells-operations-list-list__link__icon:{border-radius:50px;background:var(--bbva-medium-blue, #1973B8);width:60px;height:60px;display:-webkit-box;display:flex;padding:0;-webkit-box-align:center;align-items:center;-webkit-box-pack:center;justify-content:center;@apply --glomo-modal-operations-list-modal-operations-list-link-icon;};@apply --glomo-modal-operations-list-modal-operations-list;}</style></template></dom-module><dom-module id="glomo-modal-operations-list" assetpath="glomo-modal-operations-list/"><template><style include="glomo-modal-operations-list-styles glomo-modal-operations-list-shared-styles"></style><slot></slot><cells-bottom-modal id="modal" expand="" class="modal--dark bottom-modal" opened="{{opened}}" with-backdrop="" hide-close-icon=""><p slot="heading" class="modal-operations-title">[[t(listTitle)]]</p><cells-operations-list class$="modal-operations-list [[operationsClassName]]" operations="[[operations]]" grid-columns="[[gridColumns]]" on-operation-click="_onOperationClick" layout="[[layout]]"></cells-operations-list></cells-bottom-modal></template><script>{var _Polymer=Polymer,html=_Polymer.html,GlomoModalOperationsList=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(GlomoModalOperationsList,_Polymer$mixinBehavio);function GlomoModalOperationsList(){babelHelpers.classCallCheck(this,GlomoModalOperationsList);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(GlomoModalOperationsList).apply(this,arguments))}babelHelpers.createClass(GlomoModalOperationsList,[{key:"close",/**
+     * Closes the modal.
+     */value:function close(){this.set("opened",!1)}/**
+     * opens the modal.
+     */},{key:"open",value:function open(){this.set("opened",!0)}/**
+     * on click of an operation, dispatches an event.
+     */},{key:"_onOperationClick",value:function _onOperationClick(e){this.dispatchEvent(new CustomEvent("modal-operation-click",{detail:(e.detail||{}).id,bubbles:!0,composed:!0}));if(this.closeOnOperationClick){this.close()}}/**
+     * Fired when an operation is clicked.
+     * @event modal-operation-click
+     * @param {String} detail.id {id: 'operation-id'}
+     */}],[{key:"is",get:function get(){return"glomo-modal-operations-list"}},{key:"properties",get:function get(){return{/**
+         * Title of list
+         */listTitle:String,/**
+         * List of available operations on a product.
+         */operations:Array,/**
+         * Class assigned to set shared styles from app
+         */operationsClassName:String,/**
+         * Sets the modal visibility.
+         */opened:{type:Boolean,value:!1,reflectToAttribute:!0,notify:!0},/**
+         * Sets whether to close the modal after clicking on an operation.
+         */closeOnOperationClick:{type:Boolean,value:!1},/**
+         * Number of columns in grid mode.
+         */gridColumns:{type:Number,value:4},/**
+         * List disposition: "grid" or "list".
+         */layout:{type:String,value:"grid",reflectToAttribute:!0},/**
+         * Sets whether to show the modal close icon only when is fully opened.
+         */iconOnlyFullHeight:{type:Boolean,value:!1}}}}]);return GlomoModalOperationsList}(Polymer.mixinBehaviors([CellsBehaviors.i18nBehavior],Polymer.Element));/**
+    `<glomo-modal-operations-list>` Description.
+
+    Example:
+
+    ```html
+    <glomo-modal-operations-list></glomo-modal-operations-list>
+    ```
+
+    ## Styling
+    The following custom properties and mixins are available for styling:
+
+    ### Custom Properties
+    | Custom Property     | Selector | CSS Property | Value       |
+    | ------------------- | -------- | ------------ | ----------- |
+    | --cells-fontDefault | :host    | font-family  |  sans-serif |
+    ### @apply
+    | Mixins    | Selector | Value |
+    | --------- | -------- | ----- |
+    | --glomo-modal-operations-list | :host    | {} |
+
+    * @customElement
+    * @polymer
+    * @extends {Polymer.Element}
+    * @demo demo/index.html
+  */customElements.define(GlomoModalOperationsList.is,GlomoModalOperationsList)}</script></dom-module></div></body></html>

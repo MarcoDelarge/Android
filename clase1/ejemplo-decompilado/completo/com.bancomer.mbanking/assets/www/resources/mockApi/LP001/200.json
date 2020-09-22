@@ -1,0 +1,196 @@
+{
+  "data": {
+    "id": "50834",
+    "creationDate": "2020-05-10",
+    "expirationDate": "2020-05-11",
+    "status": {
+      "id": "APPROVED",
+      "description": "APROBADO : APROBADO"
+    },
+    "product": {
+      "id": "NUEVO",
+      "name": "NUEVO"
+    },
+    "requestedAmount": {
+      "amount": 302204.13,
+      "currency": "MXN"
+    },
+    "totalAmount": {
+      "amount": 496386.46,
+      "currency": "MXN"
+    },
+    "downPayment": {
+      "amount": 73180,
+      "currency": "MXN"
+    },
+    "fees": {
+      "totalFees": {
+        "amount": 0,
+        "currency": "MXN"
+      },
+      "itemizeFees": [
+        {
+          "name": "% Comision por apertura",
+          "feeType": {
+            "id": "PTJ_SERV_FINAN",
+            "name": "% Comision por apertura"
+          },
+          "feeAmount": {
+            "amount": 0,
+            "currency": "MXN"
+          },
+          "percentage": 2,
+          "paymentMethod": {
+            "id": "CONTADO",
+            "name": "Contado"
+          }
+        },
+        {
+          "name": "% Subsidio Armadora",
+          "feeType": {
+            "id": "PorSubsidioArmadora",
+            "name": "% Subsidio Armadora"
+          },
+          "feeAmount": {
+            "amount": 0,
+            "currency": "MXN"
+          },
+          "percentage": 0,
+          "paymentMethod": {
+            "id": "CONTADO",
+            "name": "Contado"
+          }
+        },
+        {
+          "name": "% Subsidio Agencia",
+          "feeType": {
+            "id": "PorSubsidioAgencia",
+            "name": "% Subsidio Agencia"
+          },
+          "feeAmount": {
+            "amount": 0,
+            "currency": "MXN"
+          },
+          "percentage": 0,
+          "paymentMethod": {
+            "id": "CONTADO",
+            "name": "Contado"
+          }
+        },
+        {
+          "name": "% UDI",
+          "feeType": {
+            "id": "ComisionVtaSeg",
+            "name": "% UDI"
+          },
+          "feeAmount": {
+            "amount": 0,
+            "currency": "MXN"
+          },
+          "percentage": 17
+        },
+        {
+          "name": "% Comision Vendedor",
+          "feeType": {
+            "id": "PorComisionVendedor",
+            "name": "% Comision Vendedor"
+          },
+          "feeAmount": {
+            "amount": 0,
+            "currency": "MXN"
+          },
+          "percentage": 0
+        },
+        {
+          "name": "% Comision Agencia",
+          "feeType": {
+            "id": "PorMaxComisionAgencia",
+            "name": "% Comision Agencia"
+          },
+          "feeAmount": {
+            "amount": 0,
+            "currency": "MXN"
+          },
+          "percentage": 2
+        }
+      ]
+    },
+    "additionalProducts": [
+      {
+        "id": "SEG_DANIOS",
+        "managementCompany": {
+          "id": "SEG_DANIOS"
+        },
+        "isMandatory": false,
+        "productType": {
+          "id": "INSURANCES",
+          "name": "INSURANCES"
+        },
+        "isDefaultSelected": false,
+        "paymentMethod": {
+          "id": "SEG_DANIOS"
+        },
+        "amount": {
+          "currency": "MXN",
+          "value": 0,
+          "percentage": 0
+        }
+      },
+      {
+        "id": "SEG_VIDA",
+        "managementCompany": {
+          "id": "SEG_VIDA"
+        },
+        "isMandatory": false,
+        "productType": {
+          "id": "INSURANCES",
+          "name": "INSURANCES"
+        },
+        "isDefaultSelected": false,
+        "paymentMethod": {
+          "id": "SEG_VIDA"
+        },
+        "amount": {
+          "currency": "MXN",
+          "value": 0,
+          "percentage": 0
+        }
+      }
+    ],
+    "rates": [
+      {
+        "rateType": {
+          "id": "TIN",
+          "name": "Tasa de Interes Nominal"
+        },
+        "calculationDate": "2020-05-11",
+        "mode": {
+          "id": "PERCENTAGE",
+          "name": "PERCENTAGE"
+        },
+        "unit": {
+          "percentage": 15.25
+        },
+        "expirationDate": "2020-05-12"
+      }
+    ],
+    "installmentPlan": {
+      "terms": {
+        "number": 72,
+        "frequency": "MONTHLY"
+      },
+      "installmentAmount": {
+        "amount": 6824.57,
+        "currency": "MXN"
+      }
+    },
+    "loanType": {
+      "id": "CONSUME_CAR",
+      "name": "CONSUME_CAR"
+    },
+    "financedAmount": {
+      "amount": 292720,
+      "currency": "MXN"
+    }
+  }
+}

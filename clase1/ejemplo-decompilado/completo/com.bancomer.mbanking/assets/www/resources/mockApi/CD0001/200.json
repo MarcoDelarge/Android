@@ -1,0 +1,103 @@
+{
+  "data" : {
+    "availableBalance" : {
+      "postedBalances" : [
+        {
+          "amount" : 91341,
+          "currency" : "MXN"
+        }
+      ],
+      "currentBalances" : [
+        {
+          "amount" : 91341,
+          "currency" : "MXN"
+        }
+      ],
+      "pendingBalances" : [
+        {
+          "amount" : 0,
+          "currency" : "MXN"
+        }
+      ]
+    },
+    "issueDate" : "2017-12-18T00:00:00.000-06:00",
+    "disposedBalance" : {
+      "postedBalances" : [
+        {
+          "amount" : 12759,
+          "currency" : "MXN"
+        }
+      ],
+      "currentBalances" : [
+        {
+          "amount" : 12759,
+          "currency" : "MXN"
+        }
+      ],
+      "pendingBalances" : [
+        {
+          "amount" : 0,
+          "currency" : "MXN"
+        }
+      ]
+    },
+    "title" : {
+      "id" : "AV",
+      "name" : "ORO BBVA"
+    },
+    "expirationDate" : "2022-08-31",
+    "grantedCredits" : [
+      {
+        "amount" : 104100,
+        "currency" : "MXN"
+      }
+    ],
+    "status" : {
+      "id" : "OPERATIVE",
+      "name" : "OPERATIVE"
+    },
+    "cardId" : "U8Nql9MmjH-jopGQhfj-l_o-Bh8PPqjTK-VUZj2K6eQ",
+    "openingDate" : "2002-02-18T00:00:00.000-06:00",
+    "holderName" : "JUANGA HISTERI MTP",
+    "currencies" : [
+      {
+        "currency" : "MXN",
+        "isMajor" : true
+      }
+    ],
+    "images" : [
+      {
+        "id" : "FRONT_CARD",
+        "name" : "Front face of the card",
+        "url" : "https:\/\/openapi.bbva.com\/ccds\/covers?pg=AV&bin=477213&default_image=true&v=4&country=mx&app_id=com.bbva.glomo_mx"
+      }
+    ],
+    "alias" : "0002TC3185",
+    "cutOffDate" : "2017-12-11",
+    "numberType" : {
+      "id" : "PAN",
+      "name" : "Número de Cuenta Principal"
+    },
+    "activationDate" : "2017-12-19",
+    "cardType" : {
+      "id" : "CREDIT_CARD",
+      "name" : "CREDIT_CARD"
+    },
+    "number" : "4772133027493185",
+    "brandAssociation" : {
+      "id" : "VISA",
+      "name" : "VISA"
+    },
+    "relatedContracts" : [
+
+    ],
+    "bank" : {
+      "id" : "0074",
+      "name" : "BBVA BANCOMER"
+    },
+    "physicalSupport" : {
+      "id" : "NORMAL_PLASTIC",
+      "name" : "NORMAL_PLASTIC"
+    }
+  }
+}

@@ -1,0 +1,1145 @@
+<html><head></head><body><div hidden="" by-polymer-bundler=""><dom-module id="cells-timeout-handler" assetpath="cells-timeout-handler/"><template></template><script>/**
+* @summary Time out handler sesion.
+* @customElement
+* @polymer
+* @extends {Polymer.Element}
+*/var CellsTimeoutHandler=/*#__PURE__*/function(_Polymer$Element){babelHelpers.inherits(CellsTimeoutHandler,_Polymer$Element);babelHelpers.createClass(CellsTimeoutHandler,null,[{key:"is",get:function get(){return"cells-timeout-handler"}},{key:"properties",get:function get(){return{foregroundTimeout:{type:Number,value:12e4},backgroundTimeout:{type:Number,value:3e5},_lastActivityTimestamp:{type:Number}}}}]);function CellsTimeoutHandler(){var _this;babelHelpers.classCallCheck(this,CellsTimeoutHandler);_this=babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(CellsTimeoutHandler).call(this));_this._onVisibilityChanged=_this._onVisibilityChanged.bind(babelHelpers.assertThisInitialized(_this));_this._setActivityDebounce=_this._setActivityDebounce.bind(babelHelpers.assertThisInitialized(_this));return _this}babelHelpers.createClass(CellsTimeoutHandler,[{key:"disconnectedCallback",value:function disconnectedCallback(){babelHelpers.get(babelHelpers.getPrototypeOf(CellsTimeoutHandler.prototype),"disconnectedCallback",this).call(this);this.stop()}},{key:"start",value:function start(){document.addEventListener("visibilitychange",this._onVisibilityChanged);document.addEventListener("click",this._setActivityDebounce);document.addEventListener("scroll",this._setActivityDebounce);document.addEventListener("template-content-scroll",this._setActivityDebounce);this._setActivityDebounce()}},{key:"stop",value:function stop(){document.removeEventListener("visibilitychange",this._onVisibilityChanged);document.removeEventListener("click",this._setActivityDebounce);document.removeEventListener("scroll",this._setActivityDebounce);document.removeEventListener("template-content-scroll",this._setActivityDebounce);this._cancelActivityDebounce()}},{key:"_setActivityDebounce",value:function _setActivityDebounce(){var _this2=this;this._lastActivityTimestamp=Date.now();this._debouncerForegroundTimeoutExpired=Polymer.Debouncer.debounce(this._debouncerForegroundTimeoutExpired,Polymer.Async.timeOut.after(this.foregroundTimeout),function(){_this2._onForegroundTimeoutExpired()})}},{key:"_cancelActivityDebounce",value:function _cancelActivityDebounce(){if(this._debouncerForegroundTimeoutExpired&&this._debouncerForegroundTimeoutExpired.cancel){this._debouncerForegroundTimeoutExpired.cancel()}}},{key:"_onForegroundTimeoutExpired",value:function _onForegroundTimeoutExpired(){this._fireTimeoutEvent("foreground")}},{key:"_isHidden",value:function _isHidden(){return document.hidden}},{key:"_onVisibilityChanged",value:function _onVisibilityChanged(){if(this._isHidden()){this._onHide()}else{this._onShow()}}},{key:"_onHide",value:function _onHide(){this._cancelActivityDebounce()}},{key:"_onShow",value:function _onShow(){var msecsHidden=Date.now()-this._lastActivityTimestamp;if(msecsHidden>this.backgroundTimeout){this._fireTimeoutEvent("background")}else{this._setActivityDebounce()}}},{key:"_fireTimeoutEvent",value:function _fireTimeoutEvent(detail){this.dispatchEvent(new CustomEvent("timeout-expired",{detail:detail,bubbles:!0,composed:!0}))}}]);return CellsTimeoutHandler}(Polymer.Element);window.customElements.define(CellsTimeoutHandler.is,CellsTimeoutHandler);</script></dom-module><dom-module id="cells-organism-menu-sidebar-styles" assetpath="cells-organism-menu-sidebar/"><template><style>:host{--general-dimension-avatar:5rem;--cells-st-button-text-color-transparent:var(--cells-organism-menu-sidebar-user-info-color, var(--bbva-white, #fff));--cells-st-button-text-color-transparent-hover:var(--cells-organism-menu-sidebar-user-info-hover, var(--bbva-white, #fff));--cells-st-button-text-color-transparent-active:var(--cells-organism-menu-sidebar-user-info-active, var(--bbva-white, #fff));display:flex;flex-direction:column;justify-content:space-between;position:relative;z-index:1;box-sizing:border-box;height:100%;font-family:var(--cells-fontDefault, sans-serif);font-size:0.8125rem;font-weight:400;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;color:var(--cells-organism-menu-sidebar-color, var(--bbva-white, #fff));padding:1.875rem calc(20.3vw + 0.625rem) 1.875rem 1.875rem;background:var(--cells-organism-menu-sidebar-bg, #062146 url("https://bbva-files.s3.amazonaws.com/cells/assets/glomo/images/access/fractal-bbva-navy.svg") bottom left no-repeat);background-size:cover;@apply --cells-organism-menu-sidebar;}@supports (background-blend-mode: multiply){:host{background-color:transparent;background-image:linear-gradient(to top left, rgba(7, 33, 70, 0.1) 50%, transparent 50%), linear-gradient(to top left, rgba(7, 33, 70, 0.1) 50%, transparent 50%), linear-gradient(to bottom left, rgba(7, 33, 70, 0.1) 50%, transparent 50%), linear-gradient(to top left, rgba(7, 33, 70, 0.1) 50%, transparent 50%), linear-gradient(#072146 100%, transparent 0);background-size:92.5% 12%, 92.5% 30%, 100% 100%, 100% 100%, 100% 100%;background-repeat:no-repeat;background-position:right bottom, right bottom, left top, left top, 0 0;background-blend-mode:multiply;}}:host([hidden]), [hidden]{display:none !important;}*, *:before, *:after{box-sizing:inherit;}:host([user-reminded]){background:var(--cells-organism-menu-sidebar-user-logged-bg, url("https://bbva-files.s3.amazonaws.com/cells/assets/glomo/images/access/fractal-bbva-core-blue.svg") bottom left no-repeat);background-size:cover;@apply --cells-organism-menu-sidebar-user-logged;}@supports (background-blend-mode: multiply){:host([user-reminded]){background-color:transparent;background-image:linear-gradient(to top left, rgba(0, 68, 129, 0.1) 50%, transparent 50%), linear-gradient(to top left, rgba(0, 68, 129, 0.1) 50%, transparent 50%), linear-gradient(to bottom left, rgba(0, 68, 129, 0.1) 50%, transparent 50%), linear-gradient(to top left, rgba(0, 68, 129, 0.1) 50%, transparent 50%), linear-gradient(#004481 100%, transparent 0);background-size:92.5% 12%, 92.5% 30%, 100% 100%, 100% 100%, 100% 100%;background-repeat:no-repeat;background-position:right bottom, right bottom, left top, left top, 0 0;background-blend-mode:multiply;}}:host:before{content:"";position:absolute;top:-12px;left:0;right:0;height:200px;background-color:var(--cells-organism-menu-sidebar-before-bg-color, var(--bbva-navy, #072146));-webkit-transform:skewY(3.1deg);transform:skewY(3.1deg);z-index:-1;opacity:.7;@apply --cells-organism-menu-sidebar-before;}.user{padding-bottom:1.625rem;flex:0 1 auto;display:flex;justify-content:flex-start;align-items:center;@apply --cells-organism-menu-sidebar-user;}.user--not-avatar{padding-left:2.9375rem;@apply --cells-organism-menu-sidebar-user-not-avatar;}.user--not-avatar .user__info{width:100%;}.user.disabled{pointer-events:none;cursor:none;@apply --cells-organism-menu-sidebar-text-user-disabled;}.user.disabled .user__info-profile{opacity:.35;@apply --cells-organism-menu-sidebar-text-user-disabled-info-profile;}.user__avatar{border-radius:50%;margin-right:0.9375rem;min-width:var(--general-dimension-avatar);min-height:var(--general-dimension-avatar);@apply --cells-organism-menu-sidebar-user-avatar;}.user__info{width:calc(100% - var(--general-dimension-avatar));@apply --cells-organism-menu-sidebar-user-info;}.user__info-name, .user__info-profile{display:block;text-align:left;}.user__info-name{font-size:1.25rem;font-weight:700;@apply --cells-organism-menu-sidebar-user-info-name;}.user__info-profile{color:var(--bbva-light-blue, #5BBEFF);font-size:0.8125rem;font-weight:500;margin-top:0.3125rem;@apply --cells-organism-menu-sidebar-user-info-profile;}.user__info-button{width:100%;text-align:left;@apply --cells-organism-menu-sidebar-user-info-button;}.nav-list{list-style:none;margin:0;padding:0;flex:1 1 auto;margin:0;overflow-y:auto;overflow-x:visible;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding-left:0;position:relative;z-index:1;@apply --cells-organism-menu-sidebar-nav-list;}:host([user-reminded]) .nav-list{justify-content:flex-start;padding-left:2.9375rem;@apply --cells-organism-menu-sidebar-nav-list-user-logged;}.nav-list-li{display:block;width:100%;@apply --cells-organism-menu-sidebar-nav-list-user-logged-li;}.nav-list-li [disabled]{pointer-events:none;cursor:none;opacity:.35;}.link-item{margin-bottom:0.375rem;display:flex;align-items:center;color:var(--cells-organism-menu-sidebar-link-item-color, inherit);padding:0.9375rem;margin:0 -0.9375rem;text-decoration:none;background:var(--cells-organism-menu-sidebar-link-item-bg, transparent);border:none;text-align:left;font-size:0.8125rem;font-weight:500;width:100%;@apply --cells-organism-menu-sidebar-link-item;}.link-item.disabled{opacity:0.3;pointer-events:none;cursor:none;@apply --cells-organism-menu-sidebar-link-item-disabled;}.link-item-icon{flex:0 0 3rem;display:block;@apply --cells-organism-menu-sidebar-link-item-icon;}.link-item-text{@apply --cells-organism-menu-sidebar-link-item-text;}.link-item-count{font-weight:400;background-color:var(--cells-organism-menu-sidebar-link-item-count-bg-color, var(--bbva-red, #DA3851));padding:0.125rem 0.375rem;border-radius:0.625rem;position:relative;@apply --cells-organism-menu-sidebar-link-item-count;}.link-item-count iron-icon{position:absolute;bottom:-0.25rem;right:-0.625rem;-webkit-transform:scale(0.8);transform:scale(0.8);-webkit-filter:drop-shadow(0px 0px 2px var(--cells-organism-menu-sidebar-link-item-count-icon-color, var(--bbva-navy, #072146)));filter:drop-shadow(0px 0px 2px var(--cells-organism-menu-sidebar-link-item-count-icon-color, var(--bbva-navy, #072146)));@apply --cells-organism-menu-sidebar-link-item-count-icon;}.footer{flex:0 1 auto;padding-left:2.9375rem;@apply --cells-organism-menu-sidebar-footer;}.text-ellipsis{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;width:100%;@apply --cells-organism-menu-sidebar-text-ellipsis;}.user-profile{display:inline;}</style></template></dom-module><dom-module id="cells-organism-menu-sidebar" assetpath="cells-organism-menu-sidebar/"><template><style include="cells-organism-menu-sidebar-styles cells-organism-menu-sidebar-shared-styles"></style><div class$="user [[_checkedHideAvatart(hideAvatar)]] [[_checkedReminded(userLogged, userReminded)]]" hidden$="[[!userReminded]]"><img class="user__avatar" aria-hidden="true" src$="[[_avatarUrl]]" height$="[[avatarSize]]" width$="[[avatarSize]]" on-error="_avatarUrlError" hidden$="[[hideAvatar]]" alt$="[[user.firstName]]"><div class="user__info"><template is="dom-if" if="[[disableProfileLink]]"><span class="user__info-name text-ellipsis">[[user.firstName]]</span></template><template is="dom-if" if="[[!disableProfileLink]]"><cells-st-button class="transparent user-profile"><button class="user__info-button" on-click="_profile"><span class="user__info-name text-ellipsis">[[user.firstName]]</span> <span class="user__info-profile">[[t('cells-organism-menu-sidebar-profile-settings', 'Profile')]]</span></button></cells-st-button></template></div></div><ul class="nav-list"><template is="dom-repeat" items="[[availableSections]]"><li class="nav-list-li"><template is="dom-if" if="[[_linkIsButton(item)]]"><button class="link-item" on-click="_linkClicked" disabled$="[[_checkButtonDisabled(item,userLogged)]]" data-selector$="[[item.label]]"><span class="link-item-icon"><template is="dom-if" if="[[item.count]]"><span class="link-item-count">[[item.count]]<iron-icon icon="[[item.icon]]" style$="width: [[sectionIconSize]]px; height: [[sectionIconSize]]px;" aria-hidden="true"></iron-icon></span></template><template is="dom-if" if="[[!item.count]]"><iron-icon icon="[[item.icon]]" style$="width: [[sectionIconSize]]px; height: [[sectionIconSize]]px;" aria-hidden="true"></iron-icon></template></span><span class="link-item-text">[[t(item.label)]]</span></button></template><template is="dom-if" if="[[!_linkIsButton(item)]]"><a href$="[[item.link]]" class$="link-item [[_checkLinkDisabled(item,userLogged)]]" tabindex$="[[_checktabIndex(item,userLogged)]]" on-click="_linkClicked"><span class="link-item-icon"><template is="dom-if" if="[[item.count]]"><span class="link-item-count">[[item.count]]<iron-icon icon="[[item.icon]]" style$="width: [[sectionIconSize]]px; height: [[sectionIconSize]]px;" aria-hidden="true"></iron-icon></span></template><template is="dom-if" if="[[!item.count]]"><iron-icon icon="[[item.icon]]" style$="width: [[sectionIconSize]]px; height: [[sectionIconSize]]px;" aria-hidden="true"></iron-icon></template></span><span class="link-item-text">[[t(item.label)]]</span></a></template></li></template></ul><div class="footer" hidden$="[[!userLogged]]"><button id="btnLogout" on-click="doLogout" class="link-item"><span class="link-item-icon"><iron-icon icon="[[iconLogoutId]]" style$="width: [[sectionIconSize]]px; height: [[sectionIconSize]]px;" aria-hidden="true"></iron-icon></span><span class="link-item-text">[[t('cells-organism-menu-sidebar-dialog-logout', 'Logout')]]</span></button></div></template><script>/**
+* @demo demo/index.html
+* @summary `cells-organism-menu-sidebar` is the component for the sidebar menu with app logo and
+* links to login/logout, profile settings and contact..
+* @customElement
+* @polymer
+* @extends {Polymer.Element}
+*/var CellsOrganismMenuSidebar=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(CellsOrganismMenuSidebar,_Polymer$mixinBehavio);function CellsOrganismMenuSidebar(){babelHelpers.classCallCheck(this,CellsOrganismMenuSidebar);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(CellsOrganismMenuSidebar).apply(this,arguments))}babelHelpers.createClass(CellsOrganismMenuSidebar,[{key:"reset",/**
+   * Initializes component back to default state
+   */value:function reset(){this.userId="";this.user={};this.userLogged=!1;this.userReminded=!1;this.dispatchEvent(new CustomEvent("reset-menu-sidebar",{bubbles:!0,composed:!0}))}/**
+   * Toggle styles when user is logged and set the userLogged
+    * @param {String} user
+   */},{key:"_userObserver",value:function _userObserver(user){if(user.firstName&&!this.hideAvatar){this._avatarUrl=this.get("user.avatar.url")||this.defaultAvatarUrl}this.userReminded=!!user.firstName}/**
+   * Set user when userCached exists
+    * @param {String} user
+   */},{key:"_userCachedObserver",value:function _userCachedObserver(user){var _this=this;Polymer.Async.timeOut.run(function(){if(user){_this.user=user}},200)}/**
+   * If user is not setted, the user is not logged
+   */},{key:"cleanUserLogged",value:function cleanUserLogged(){this.userLogged=!1}/**
+   * Toggle the menu sidebar
+   * @event toggle-menu
+   */},{key:"toggle",value:function toggle(){var _this2=this;this._debouncerToggle=Polymer.Debouncer.debounce(this._debouncerToggle,Polymer.Async.timeOut.after(this.debounceDuration),function(){_this2.dispatchEvent(new CustomEvent("toggle-menu",{bubbles:!0,composed:!0}))})}/**
+   * Fired when user press to logout button
+   * @event logout
+   */ /**
+   * Closes menu and fires 'logout' 224ms after to avoid transition collisions
+   */},{key:"doLogout",value:function doLogout(){var _this3=this;this.toggle();setTimeout(function(){if(!_this3.preventLogout){_this3.onLogout()}else{_this3.dispatchEvent(new CustomEvent("do-logout",{bubbles:!0,composed:!0}))}},224)}/**
+   * Do a navigation to access
+   */},{key:"onLogout",value:function onLogout(){this.reset();this.dispatchEvent(new CustomEvent("launch-logout",{bubbles:!0,composed:!0}))}/**
+   * Fired when siderbar has been closed due to 'Close Session' / 'Logout' pressing
+   * @event launch-logout
+   */ /**
+   * Fired when user press on an item that has action. The item will name the event.
+   * @event item.action
+   */ /**
+   * Fired when user press on an item that has action. The item will name the event.
+   * @event link-clicked
+   * @param action indicates the action to perform within the link
+   */ /**
+   * Perform a custom action if item said so. If not it will navigate (default behavior),
+   * then it closes the menu.
+   * @param {Event} e
+   */},{key:"_linkClicked",value:function _linkClicked(e){if(e.model.item.action){this.toggle();this.dispatchEvent(new CustomEvent(e.model.item.action,{bubbles:!0,composed:!0,detail:e.model.item.linkParams}));e.preventDefault();this.dispatchEvent(new CustomEvent("link-clicked",{bubbles:!0,composed:!0,detail:e.model.item.action}))}}},{key:"_profile",value:function _profile(){this.toggle();this.dispatchEvent(new CustomEvent("link-profile",{bubbles:!0,composed:!0}))}/**
+   * Change the avatar when the image can not be loaded for a local image
+   */},{key:"_avatarUrlError",value:function _avatarUrlError(){if(this._avatarUrl===this.defaultAvatarUrl){this._avatarUrl=Polymer.ResolveUrl.resolveUrl("./images/user-avatar-default.svg")}else{this._avatarUrl=this.defaultAvatarUrl}}/**
+   * Checked Action
+   * @param {String} item
+   * @return {String}
+   */},{key:"_linkIsButton",value:function _linkIsButton(item){return item.action||!item.link}/**
+   * Checked hideAvatar, and return class
+   * @param {Boolean} hide
+   * @return {String}
+   */},{key:"_checkedHideAvatart",value:function _checkedHideAvatart(hide){return hide?"user--not-avatar":""}/**
+   * Set disabled atrribute depends on status of item and user. If item hasn't status or status.showNoLogged or
+   * status.showLogged is false the item will be disabled.
+   * @param {String} item
+   * @param {Boolean} userLogged
+   * @return {Boolean}
+   */},{key:"_checkButtonDisabled",value:function _checkButtonDisabled(item,userLogged){return!item.status||item.status&&!item.status.showNoLogged&&!userLogged||item.status&&!item.status.showLogged&&userLogged}/**
+   * Set disabled class depends on status of item and user. If item hasn't status or status.showNoLogged or
+   * status.showLogged are false the item will be disabled.
+   * @param {String} item
+   * @param {Boolean} userLogged
+   * @return {String}
+   */},{key:"_checkLinkDisabled",value:function _checkLinkDisabled(item,userLogged){if(!item.status||item.status&&!item.status.showNoLogged&&!userLogged||item.status&&!item.status.showLogged&&userLogged){return"disabled"}}/**
+   * Set tabindex depends on status of item and user
+   * @param {String} item
+   * @param {Boolean} userLogged
+   * @return {Boolean}
+   */},{key:"_checktabIndex",value:function _checktabIndex(item,userLogged){if(!item.status||!item.status.showNoLogged&&!userLogged||item.status&&!item.status.showLogged&&userLogged){return-1}}/**
+   * Checked userReminded and loggged, and return class
+   * @param {Boolean} logged
+   * @param {Boolean} userReminded
+   * @return {String}
+   */},{key:"_checkedReminded",value:function _checkedReminded(logged,userReminded){return userReminded&&!logged?"disabled":""}}],[{key:"is",get:function get(){return"cells-organism-menu-sidebar"}},{key:"properties",get:function get(){return{/**
+       * set the userCached object
+       *
+       * @example
+       * {
+       *    firstName: 'María',
+       *    avatar: {
+       *      url: './user-avatar.jpg'
+       *    }
+       * }
+       */userCached:{type:Object,observer:"_userCachedObserver"},/**
+       * user CDM
+       */userId:{type:String},/**
+       * set the user object
+       *
+       * @example
+       * {
+       *    firstName: 'María',
+       *    avatar: {
+       *      url: './user-avatar.jpg'
+       *    }
+       * }
+       */user:{type:Object,value:function value(){return{}},observer:"_userObserver"},/**
+       * set true if user is logged
+       */userLogged:{type:Boolean,value:!1},/**
+       * True if the user is reminded, false otherwise.
+       */userReminded:{type:Boolean,value:!1,reflectToAttribute:!0},/**
+       * A fallback avatar that could be configurated from outside
+       */defaultAvatarUrl:{type:String,value:"../images/user-avatar-default.svg"},/**
+       * Size for the avatar image. The size is applied to width and height.
+       */avatarSize:{type:Number,value:80},/**
+       * The avatar to use in html, fetched from user or default
+       */_avatarUrl:{type:String},/**
+       * Show or hide the link down name profile
+       */disableProfileLink:{type:Boolean,value:!1},/**
+       * Sections inyected from outside. However, there is a default value in case. Each item can have a status property
+       * to indicate it is disabled when user is logged or not (status.showNoLogged and status.showLogged).
+       * It's an array of object that looks like:
+       * {{ label: {String}, icon: {String}, link: {String} linkParams: {Object}, action: {String}, status:{Object}  }}
+       *
+       * @example
+       * [{
+       *    label: 'changeuser-translationKey-label',
+       *    icon: 'coronita:on',
+       *    link: '#',
+       *    action: 'change-user',
+       *    status: {
+       *     showNoLogged: false,
+       *     showLogged: true
+       *    }
+       * },
+       * {
+       *    label: 'about-translationKey-label',
+       *    icon: 'coronita:bar',
+       *    link: '#/about',
+       *    linkParams: {  // OPTIONAL //
+       *      continue: 'page'
+       *    }
+       * }]
+       */availableSections:{type:Array},/**
+       * Icon size for menu items.
+       */sectionIconSize:{type:Number,value:18},/**
+       * this is used for icon loggout.
+       */iconLogoutId:{type:String},/**
+       * Set the debounce duration, delaying the toggle effect
+       */debounceDuration:{type:Number,value:0},/**
+       * Prevent default logout
+       */preventLogout:Boolean,/**
+       * Hide Avatar
+       */hideAvatar:Boolean}}}]);return CellsOrganismMenuSidebar}(Polymer.mixinBehaviors([CellsBehaviors.i18nBehavior],Polymer.Element));window.customElements.define(CellsOrganismMenuSidebar.is,CellsOrganismMenuSidebar);</script></dom-module><script>window.CellsBehaviors=window.CellsBehaviors||{};/**
+ *
+ *
+ * # cells-input-validations-behavior
+ *
+ * ![Certificated](https://img.shields.io/badge/certificated-yes-brightgreen.svg) ![Polymer 2.x](https://img.shields.io/badge/Polymer-2.x-green.svg)
+ *
+ * [Demo of component in Cells Catalog](https://catalogs.platform.bbva.com/cells)
+ *
+ * cells-input-validations-behavior is a behaviour to format and validate custom user logins. This component receives a configuration object with validation and one mask parameters.
+ *
+ * Example config object to *validate* input value:
+ * ```js
+ *   {
+ *     autoValidate: false,
+ *     inputStatusValidate: true,
+ *     inputType: 'text',
+ *     allowedValue: "rut",
+ *     errorMessage: 'rutMsg',
+ *     errorMessageIcon: 'coronita:error',
+ *     mask: 'rut',
+ *     maxLength: '13'
+ *   }
+ * ```
+ * Example config object to validate and *apply masked format (maskEnabled)* input value:
+ *
+ * ```js
+ *   {
+ *     autoValidate: false,
+ *     inputStatusValidate: true,
+ *     inputType: 'text',
+ *     allowedValue: "rut",
+ *     errorMessage: 'rutMsg',
+ *     errorMessageIcon: 'coronita:error',
+ *     mask: 'rut',
+ *     maxLength: '13',
+ *     maskEnabled: true
+ *   }
+ * ```
+ *
+ * In possible validate more than one regular expression setting on array to property allowedValue or allowedPassword value
+ *
+ * ```js
+ *     {
+ *     autoValidate: true,
+ *     inputType: 'password',
+ *     allowedPasswordValue: ['mxRepeatPassword', 'mxFollowedPassword'],
+ *     errorPasswordMessage: ['mxRepeatPassword', 'mxFollowedPassword'],
+ *   }
+ * ```
+ *
+ * @polymer
+ * @customElement
+ * @summary Behavior to mask and or validate input value from app configuration pages
+ * @extends {Polymer.Element}
+ * @polymerBehavior Cells.InputValidationsBehavior
+ * @demo demo/index.html
+ * @hero cells-input-validations-behavior.png
+ */window.CellsBehaviors.InputValidationsBehavior={properties:{/**
+     * Regex pattern for each validation type.
+     */regexps:{type:Object,value:{rut:"\\d{3}.\\d{3}.\\d{3}-k|\\d{3}.\\d{3}.\\d{3}-\\d{1}|\\d{9}?k|\\d{10}",mxPhone:"\\d{2}\\s\\d{8}|\\d{10}",ciUruguay:"^\\d{7}-\\d{1}?$",mxRepeatPassword:"^(?!.*(.)\\1{3})",mxFollowedPassword:"^(?!.*(0123|1234|2345|3456|4567|5678|6789))",uyMinPassword:"^[\\d\\w]{8,}$",uyMinSpaPassword:"^[\\w\xF1\xD1,.\\-\u2013\xA1%<\u2018\xB1\u201C\u02C6\u2019\xAB\xAF\u201E\u2039]{8,}$",peMinPassword:"^[\\d\\w]{6,9}$",emailCiUser:"^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$|^\\d{8}$",// eslint-disable-line no-useless-escape
+email:"^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$",// eslint-disable-line no-useless-escape
+ci:"^\\d{8}$",arPassword:"^[0-9a-zA-Z]+$"}},/**
+     * Translation keys for each validation type.
+     */messages:{type:Object,value:{rutMsg:"cells-rut-error-message",mxPhoneMsg:"cells-mx-phone-error-message",ciUruguayMsg:"cells-ciUruguay-error-message",mxRepeatPassword:"cells-mx-password-repeat-error-message",mxFollowedPassword:"cells-mx-password-followed-error-message",uyMinPassword:"cells-change-password-enough-characters-error-message",peMinPassword:"cells-password-incorrect-characters-error-message",emailMsg:"cells-email-error-message",ciLengthMsg:"cells-ci-length-error-message",arPassword:"cells-password-incorrect-characters-error-message"}},/**
+     * Mask formats for each validation type.
+     */masks:{type:Object,value:{rut:["","","",".","","","",".","","","","-",""],mxPhone:["",""," ","","","","","","","",""],peAccountNumber:["","","","","-","","","","","-","","","","","","","","","",""],peInterbankAccountNumber:["","","","-","","","","-","","","","","","","","","","","","","-","",""],peCardNumberWithSpace:["","","",""," ","","","",""," ","","","",""," ","","","",""],peCardNumberKebabCase:["","","","","-","","","","","-","","","","","-","","","",""],ciUruguay:["","","","","","","","-",""],mxPassword:["","","","","",""]}}},_getPattern:function _getPattern(value){return this.regexps[value]||value},_getMultiplePattern:function _getMultiplePattern(value){if(!Array.isArray(value)){value=[value]}return value&&value.length&&value.reduce(function(acc,item){acc.push(this.regexps[item]);return acc}.bind(this),[])},_getErrorMessages:function _getErrorMessages(value){return this.t(this.messages[value]||value)||""},_getMultipleErrorMessages:function _getMultipleErrorMessages(value){return this.t(this.messages[value]||value)||""},_getMasked:function _getMasked(value,type,maskEnabled){if(value&&type&&maskEnabled){value=value.replace(/[^a-zA-Z 0-9.]|\s/g,"");var pattern=this.masks[type],aux=value.split("").slice(0,pattern.length),mask=[],acc=0;aux.some(function(item){if(!pattern[acc]){mask.push(item)}else{if(pattern[acc]!==item){// copy
+mask.push(pattern[acc],item);acc++}else{// write
+mask.push(item)}}acc++});return mask.join("").toString()}return value},_getUnMasked:function _getUnMasked(value,type){if(value&&type){var aux=value.split(""),pattern=this.masks[type],input="",acc=0;aux.some(function(item){if(!pattern[acc]||pattern[acc]!==item){input+=item}acc++});return input}}};</script><dom-module id="cells-credentials-form-styles" assetpath="cells-credentials-form/"><template><style>:host{display:block;font-family:var(--cells-fontDefault, sans-serif);box-sizing:border-box;--cells-molecule-input-field-min-height:var(--cells-credentials-form-input-min-height, 3.75rem);--cells-molecule-input-withcontent-field-input:{padding-bottom:10px;@apply --cells-credentials-form-input-field-withcontent;};--cells-molecule-input-wrapper:{border-radius:2px;@apply --cells-credentials-form-input-wrapper;};@apply --cells-credentials-form;}:host([hidden]), [hidden]{display:none !important;}*, *:before, *:after{box-sizing:inherit;}.credentials-form{display:block;margin:0;--cells-credentials-form-cells-molecule-input-has-content-wrapper:{border-bottom:10px solid red;@apply --cells-molecule-input-has-content-wrapper;};@apply --cells-credentials-form-form;}.credentials-form__inputs{margin-bottom:1.25rem;@apply --cells-credentials-form-inputs;}.credentials-form__inputs .step_2{@apply --cells-credentials-form-inputs-step-step2;}.credentials-form__inputs cells-molecule-input{margin-bottom:0.625rem;@apply --cells-credentials-form-inputs-input;}.credentials-form__inputs cells-molecule-input[has-content]{@apply --cells-credentials-form-inputs-input-withcontent;}.credentials-form__submit{text-align:center;margin:1.25rem 0 2.5rem;@apply --cells-credentials-form-submit;}.credentials-form__submit button[type="submit"]{width:50%;font-weight:500;@apply --cells-credentials-form-submit-button;}.credentials-form__submit button[type="submit"][disabled]{@apply --cells-credentials-form-submit-button-disabled;}.credentials-form__forgotten-pwd, .credentials-form__forgotten-login-name, .credentials-form__change-user, .credentials-form__register, .credentials-form__continue, .credentials-form__go-back{margin:0 0 1.875rem;text-align:center;font-size:0.8125rem;@apply --cells-credentials-form-actions;}.credentials-form__forgotten-pwd cells-st-button, .credentials-form__forgotten-login-name cells-st-button, .credentials-form__change-user cells-st-button, .credentials-form__register cells-st-button, .credentials-form__continue cells-st-button, .credentials-form__go-back cells-st-button{@apply --cells-credentials-form-button;}.credentials-form__forgotten-pwd cells-st-button[disabled], .credentials-form__forgotten-login-name cells-st-button[disabled], .credentials-form__change-user cells-st-button[disabled], .credentials-form__register cells-st-button[disabled], .credentials-form__continue cells-st-button[disabled], .credentials-form__go-back cells-st-button[disabled]{@apply --cells-credentials-form-button-disabled;}.credentials-form__forgotten-pwd button, .credentials-form__forgotten-login-name button, .credentials-form__change-user button, .credentials-form__register button, .credentials-form__continue button, .credentials-form__go-back button{font-weight:500;@apply --cells-credentials-form-actions-buttons;}.credentials-form__forgotten-pwd{@apply --cells-credentials-form-forgotten-pwd;}.credentials-form__forgotten-login-name{@apply --cells-credentials-form-forgotten-login-name;}.credentials-form__change-user{margin:0.625rem 0 2.5rem;@apply --cells-credentials-form-change-user;}.credentials-form__register{@apply --cells-credentials-form-register;}:host([is-logged]) .credentials-form__register{display:none;@apply --cells-credentials-form-register-is-logged;}.credentials-form__register span{@apply --cells-credentials-form-register-info;}.credentials-form__register cells-st-button{@apply --cells-credentials-form-register-button;}.credentials-form__continue{@apply --cells-credentials-form-continue;}.credentials-form__go-back{@apply --cells-credentials-form-go-back;}.credentials-form__user{text-align:center;@apply --cells-credentials-form-user;}.credentials-form__user__image{width:110px;height:110px;border-radius:50%;margin-bottom:10px;@apply --cells-credentials-form-user-image;}.credentials-form__user__greeting{display:block;font-size:2.5rem;font-weight:700;margin-bottom:0.625rem;@apply --cells-credentials-form-user-greeting;}.credentials-form__user__name{display:block;font-size:1rem;font-weight:400;margin:0.625rem 0;@apply --cells-credentials-form-user-name;}.credentials-form__user__lite{display:block;font-size:1rem;font-weight:400;margin-bottom:2.5rem;margin-top:1rem;@apply --cells-credentials-form-user-name;}.credentials-form .fake-selector{-webkit-box-align:center;align-items:center;background-color:var(--cells-credentials-form-fake-selector-bg-color, var(--bbva-100, #F4F4F4));height:3.75rem;border:0;padding-left:1.25rem;margin-bottom:1rem;display:-webkit-box;display:flex;width:100%;@apply --cells-credentials-form-fake-selector;}.credentials-form .fake-selector:focus{@apply --cells-credentials-form-fake-selector-focus;}.credentials-form .fake-selector .modal-icon{width:2.5rem;height:1.5rem;color:var(--cells-credentials-form-fake-selector-modal-icon-color, var(--bbva-white, #fff));@apply --cells-credentials-form-fake-selector-modal-icon;}.credentials-form .fake-selector .header-texts{width:100%;@apply --layout-vertical;}.credentials-form .fake-selector .label{margin-bottom:0.3125rem;font-size:0.75rem;line-height:0.75rem;color:var(--cells-credentials-form-fake-selector-label-color, var(--bbva-500, #666666));text-align:left;@apply --cells-credentials-form-fake-selector-label;}.credentials-form .fake-selector .label.selected{margin-bottom:0.3125rem;font-size:0.75rem;color:var(--cells-credentials-form-fake-selector-label-selected-color, var(--bbva-400, #BDBDBD));}.credentials-form .fake-selector .placeholder{width:100%;margin:0;font-size:0.9375rem;font-weight:200;line-height:1rem;text-align:left;color:var(--cells-credentials-form-fake-selector-placeholder-color, var(--bbva-600, #121212));@apply --cells-credentials-form-fake-selector-placeholder;}.credentials-form .fake-selector .placeholder.selected{color:var(--cells-credentials-form-fake-selector-placeholder-selected-icon-color, var(--bbva-white, #fff));}:host([animated]) .credentials-form__user{-webkit-animation:fadeInUp50 0.4s cubic-bezier(0.39, 0.58, 0.57, 1);animation:fadeInUp50 0.4s cubic-bezier(0.39, 0.58, 0.57, 1);-webkit-animation-fill-mode:forwards;animation-fill-mode:forwards;-webkit-animation-delay:.2s;animation-delay:.2s;-webkit-transform:translateY(50%);transform:translateY(50%);opacity:0;will-change:opacity, transform;@apply --cells-credentials-form-animated-user;}:host([animated]) .credentials-form__change-user{-webkit-animation:fadeInUp50 0.4s cubic-bezier(0.39, 0.58, 0.57, 1);animation:fadeInUp50 0.4s cubic-bezier(0.39, 0.58, 0.57, 1);-webkit-animation-fill-mode:forwards;animation-fill-mode:forwards;-webkit-animation-delay:.2s;animation-delay:.2s;-webkit-transform:translateY(50%);transform:translateY(50%);opacity:0;will-change:opacity, transform;@apply --cells-credentials-form-animated-change-user;}:host([animated]) .credentials-form__inputs button{-webkit-animation:fadeInUp50 0.4s cubic-bezier(0.39, 0.58, 0.57, 1);animation:fadeInUp50 0.4s cubic-bezier(0.39, 0.58, 0.57, 1);-webkit-animation-fill-mode:forwards;animation-fill-mode:forwards;-webkit-animation-delay:.2s;animation-delay:.2s;-webkit-transform:translateY(50%);transform:translateY(50%);opacity:0;will-change:opacity, transform;@apply --cells-credentials-form-animated-inputs-button;}:host([animated]) .credentials-form__inputs button ~ cells-molecule-input:not(:last-of-type){-webkit-animation:fadeIn 0.4s cubic-bezier(0.39, 0.58, 0.57, 1);animation:fadeIn 0.4s cubic-bezier(0.39, 0.58, 0.57, 1);-webkit-animation-fill-mode:forwards;animation-fill-mode:forwards;-webkit-animation-delay:.3s;animation-delay:.3s;-webkit-transform:translateY(0);transform:translateY(0);opacity:0;will-change:opacity;@apply --cells-credentials-form-animated-inputs-button-molecule-input-not-last;}:host([animated]) .credentials-form__inputs cells-molecule-input:first-of-type{-webkit-animation:fadeInUp50 0.4s cubic-bezier(0.39, 0.58, 0.57, 1);animation:fadeInUp50 0.4s cubic-bezier(0.39, 0.58, 0.57, 1);-webkit-animation-fill-mode:forwards;animation-fill-mode:forwards;-webkit-animation-delay:.2s;animation-delay:.2s;-webkit-transform:translateY(50%);transform:translateY(50%);opacity:0;will-change:opacity, transform;@apply --cells-credentials-form-animated-cells-molecule-input-first;}:host([animated]) .credentials-form__inputs cells-molecule-input:last-of-type{-webkit-animation:fadeInDown50 0.4s cubic-bezier(0.39, 0.58, 0.57, 1);animation:fadeInDown50 0.4s cubic-bezier(0.39, 0.58, 0.57, 1);-webkit-animation-fill-mode:forwards;animation-fill-mode:forwards;-webkit-animation-delay:.2s;animation-delay:.2s;-webkit-transform:translateY(-50%);transform:translateY(-50%);opacity:0;will-change:opacity, transform;@apply --cells-credentials-form-animated-cells-molecule-input-last;}:host([animated]) .credentials-form__submit cells-st-button{-webkit-animation:scalex .5s ease;animation:scalex .5s ease;-webkit-animation-fill-mode:forwards;animation-fill-mode:forwards;-webkit-transform:scale(0);transform:scale(0);-webkit-transform-origin:left center;transform-origin:left center;will-change:transform;@apply --cells-credentials-form-animated-submit-button;}@-webkit-keyframes fadeIn{0%{opacity:0;}100%{opacity:1;}}@keyframes fadeIn{0%{opacity:0;}100%{opacity:1;}}@-webkit-keyframes fadeInDown50{0%{opacity:0;-webkit-transform:translateY(-50%);transform:translateY(-50%);}100%{opacity:1;-webkit-transform:translateY(0);transform:translateY(0);}}@keyframes fadeInDown50{0%{opacity:0;-webkit-transform:translateY(-50%);transform:translateY(-50%);}100%{opacity:1;-webkit-transform:translateY(0);transform:translateY(0);}}@-webkit-keyframes fadeInUp50{0%{opacity:0;-webkit-transform:translateY(50%);transform:translateY(50%);}100%{opacity:1;-webkit-transform:translateY(0);transform:translateY(0);}}@keyframes fadeInUp50{0%{opacity:0;-webkit-transform:translateY(50%);transform:translateY(50%);}100%{opacity:1;-webkit-transform:translateY(0);transform:translateY(0);}}@-webkit-keyframes fadeInUp100{0%{opacity:0;-webkit-transform:translateY(100%);transform:translateY(100%);}100%{opacity:1;-webkit-transform:translateY(0);transform:translateY(0);}}@keyframes fadeInUp100{0%{opacity:0;-webkit-transform:translateY(100%);transform:translateY(100%);}100%{opacity:1;-webkit-transform:translateY(0);transform:translateY(0);}}@-webkit-keyframes scalex{0%{-webkit-transform:scaleX(0);transform:scaleX(0);}100%{-webkit-transform:scaleX(1);transform:scaleX(1);}}@keyframes scalex{0%{-webkit-transform:scaleX(0);transform:scaleX(0);}100%{-webkit-transform:scaleX(1);transform:scaleX(1);}}:host([steps]){@apply --cells-credential-form-steps;}:host([steps]) .step-container{position:absolute;top:0;left:0;display:-webkit-box;display:flex;-webkit-box-pack:center;justify-content:center;-webkit-transform:translateX(0);transform:translateX(0);-webkit-transition:-webkit-transform .5s ease-in-out;transition:-webkit-transform .5s ease-in-out;transition:transform .5s ease-in-out;transition:transform .5s ease-in-out, -webkit-transform .5s ease-in-out;@apply --cells-credential-form-step-container;}:host([steps]) .step-container.move-right{-webkit-transform:translateX(-50%);transform:translateX(-50%);}:host([steps]) .step-container.move-left{-webkit-transform:translateX(0%);transform:translateX(0%);}:host([steps]) .step-container .step{position:relative;width:100vw;height:100vh;padding:2.5rem 1rem 1.875rem;@apply --cells-credential-form-step-container-step;}:host([steps]) .step-container .step_1{width:100vw;text-align:center;-webkit-animation:fadeIn 0.2s cubic-bezier(0.39, 0.58, 0.57, 1);animation:fadeIn 0.2s cubic-bezier(0.39, 0.58, 0.57, 1);-webkit-animation-fill-mode:forwards;animation-fill-mode:forwards;-webkit-transform:translateY(0);transform:translateY(0);opacity:0;will-change:opacity;@apply --cells-credential-form-step-container-step-step1;}:host([steps]) .step-container .step_2{left:50%;@apply --cells-credential-form-step-container-step-step2;}:host([steps]) .step-container .step_2.active{display:block;left:50%;@apply --cells-credential-form-step-container-step-step2-active;}:host([steps]) .step-container .step_2.inactive{display:none;@apply --cells-credential-form-step-container-step-step2-inactive;}:host([steps][is-logged]) .step-container .step_2{left:0;@apply --cells-credential-form-step-container-step-step2-logged;}:host([onefield]){@apply --cells-credential-form-steps-one-field;}:host([onefield]) .step-container{@apply --cells-credential-form-step-container;}:host([onefield]) .step-container .step{@apply --cells-credential-form-steps;}:host([onefield]) .step-container .step_1{@apply --cells-credential-form-steps-step1;}:host([onefield]) .step-container .step_1 cells-molecule-input{margin-top:4.6875rem;margin-bottom:2.5rem;@apply --cells-credential-form-steps-step1-input;}</style></template></dom-module><dom-module id="cells-credentials-form" assetpath="cells-credentials-form/"><template><style include="cells-credentials-form-styles cells-credentials-form-shared-styles"></style><form action="" on-submit="_doCredentialsUserPwd" class="credentials-form" on-keypress="_onKeyPress" novalidate=""><div class="credentials-form__inputs step-container" id="containerSteps"><div class="step step_1" hidden$="[[!_isFirstStep]]" id="step_1" on-cells-molecule-input-blur="_onInputBlur"><dom-if if="[[documentType]]"><template><button id="documentTypeSelector" class="fake-selector" on-click="_openDocumentTypeSelector" type="button"><div class="header-texts"><span id="label" class="label selected">[[t('cells-credentials-form-user-document-type')]]</span> <span class="placeholder">[[t(documentType.name)]]</span></div><iron-icon icon="coronita:unfold" class="modal-icon"></iron-icon></button></template></dom-if><dom-if if="[[showSecondaryId]]"><template><cells-molecule-input id="user-input-secondary-id" value="{{secondaryUserId}}" type="[[inputSecondaryIdOptions.inputType]]" label="[[t('cells-credentials-form-user-secondary-id', labelUserSecondaryId)]]" icon="[[clearIdIcon]]" icon-label="[[t('cells-credentials-form-user-id-clear-icon', labelUserIdClearIcon)]]" icon-size="[[iconsSize]]" auto-validate="[[inputSecondaryIdOptions.autoValidate]]" input-status-validate="[[inputSecondaryIdOptions.inputStatusValidate]]" custom-pattern="[[inputSecondaryIdOptions.customPattern]]" allowed-value="[[inputSecondaryIdOptions.allowedValue]]" error-message="[[_getErrorMessages(inputSecondaryIdOptions.errorMessage)]]" error-message-icon="[[inputSecondaryIdOptions.errorMessageIcon]]" max-length="[[inputSecondaryIdOptions.maxLength]]" min="{{inputSecondaryIdOptions.min}}" on-invalid-changed="_onValidateInputSecondaryId"></cells-molecule-input></template></dom-if><cells-molecule-input id="user-input-id" value="{{_userId}}" type="[[inputUserOptions.inputType]]" bind-value="{{_getMasked(_userId, inputUserOptions.mask, inputUserOptions.maskEnabled)}}" label="[[t('cells-credentials-form-user-id', labelUserId)]]" icon="[[clearIdIcon]]" icon-label="[[t('cells-credentials-form-user-id-clear-icon', labelUserIdClearIcon)]]" icon-size="[[iconsSize]]" auto-validate="[[inputUserOptions.autoValidate]]" input-status-validate="[[inputUserOptions.inputStatusValidate]]" custom-pattern="[[inputUserOptions.customPattern]]" allowed-value="[[_getPattern(inputUserOptions.allowedValue)]]" error-message="[[_getErrorMessages(inputUserOptions.errorMessage)]]" error-message-icon="[[inputUserOptions.errorMessageIcon]]" max-length="[[inputUserOptions.maxLength]]" on-focus="_onFocusInput" on-invalid-changed="_onValidateInputId"></cells-molecule-input><dom-if if="[[showUserLoginName]]"><template><cells-molecule-input id="user-input-login-name" value="{{_loginName}}" type="[[inputLoginNameOptions.inputType]]" bind-value="{{_getMasked(_loginName, inputLoginNameOptions.mask, inputLoginNameOptions.maskEnabled)}}" label="[[t('cells-credentials-form-user-login-name', labelUserLoginName)]]" icon="[[clearLoginNameIcon]]" icon-label="[[t('cells-credentials-form-user-login-name-clear-icon', labelLoginNameClearIcon)]]" icon-size="[[iconsSize]]" auto-validate="[[inputLoginNameOptions.autoValidate]]" input-status-validate="[[inputLoginNameOptions.inputStatusValidate]]" custom-pattern="[[inputLoginNameOptions.customPattern]]" allowed-value="[[_getPattern(inputLoginNameOptions.allowedValue)]]" error-message="[[inputLoginNameOptions.errorMessage]]" error-message-icon="[[inputLoginNameOptions.errorMessageIcon]]" max-length="[[inputLoginNameOptions.maxLength]]" on-invalid-changed="_onValidateInputLoginName"></cells-molecule-input><p class="credentials-form__forgotten-login-name"><cells-st-button class="transparent"><button on-click="_onForgetLoginName" type="button">{{t('cells-credentials-form-forgotten-login-name', labelForgetLoginName)}}</button></cells-st-button></p></template></dom-if><template is="dom-if" if="[[!_isLastStep]]"><div class="credentials-form__continue"><cells-st-button class="secondary" disabled$="[[!_isContinueEnabled]]"><button id="continueBtn" on-click="_onClickContinueButton" disabled$="[[!_isContinueEnabled]]">[[t('cells-credentials-form-button-continue', labelContinue)]]</button></cells-st-button></div></template><dom-if if="[[_registerInStep1]]"><template><p class="credentials-form__register"><span hidden$="[[!showRegisterInfo]]">{{t('cells-credentials-form-new-user', labelNewUser)}}</span><cells-st-button class="transparent"><button on-click="_doRegister" type="button">{{t('cells-credentials-form-register', labelRegister)}}</button></cells-st-button></p></template></dom-if></div><div class="step step_2 inactive" id="step_2"><dom-if if="[[userName]]"><template><dom-if if="[[!lite]]"><template><div class="credentials-form__user"><dom-if if="[[userAvatar]]"><template><img class="credentials-form__user__image" src$="[[userAvatar]]" alt=""></template></dom-if><cells-heading level="[[headingLevel]]"><span class="credentials-form__user__greeting">[[t('cells-credentials-form-greeting', labelGreeting)]]</span> <span class="credentials-form__user__name">[[_userName]]</span></cells-heading></div><div class="credentials-form__change-user"><cells-st-button class="transparent"><button on-click="_changeUser" type="button">[[t('cells-credentials-form-change-user', labelLogout)]]</button></cells-st-button></div></template></dom-if><dom-if if="[[lite]]"><template><div class="credentials-form__user"><span class="credentials-form__user__lite">[[t(greetingKey)]]</span></div></template></dom-if></template></dom-if><cells-molecule-input id="user-input-pwd" value="{{userPassword}}" type="[[inputPasswordType]]" bind-value="{{_getMasked(userPassword, inputUserOptions.passwordMask, inputUserOptions.maskEnabled)}}" label="[[t('cells-credentials-form-user-password', labelPassword)]]" icon="[[togglePwdIcon]]" icon-size="[[iconsSize]]" icon-toggled="[[togglePwdIconToggled]]" icon-label="[[t('cells-credentials-form-user-password-toggle-icon', passwordInputToggleIconLabel)]]" icon-visibility="[[inputUserOptions.iconVisibility]]" auto-validate="[[inputUserOptions.autoValidatePassword]]" extra-icon="[[clearPwdIcon]]" extra-icon-label="[[t('cells-credentials-form-user-password-clear-icon', passwordInputClearIconLabel)]]" input-status-validate="[[inputUserOptions.inputStatusValidate]]" allowed-value="[[_getPattern(inputUserOptions.allowedPasswordValue)]]" allowed-multiples-values="[[_getMultiplePattern(inputUserOptions.allowedPasswordValues)]]" error-message="[[_getMultipleErrorMessages(errorPasswordMessage)]]" error-message-icon="[[inputUserOptions.errorMessageIcon]]" autocapitalize$="[[autocapitalize]]" max-length="[[inputUserOptions.passwordMaxLength]]" backspace-pwd-full-delete="[[backspacePwdFullDelete]]" on-invalid-changed="_onValidateInputPwd"></cells-molecule-input><p class="credentials-form__forgotten-pwd" hidden$="[[hiddenForgottenPwd]]"><cells-st-button class="transparent"><button on-click="_onForgetPwd" type="button">{{t('cells-credentials-form-forgotten-pwd', labelForgetPassword)}}</button></cells-st-button></p><div class="credentials-form__submit"><cells-st-button class="secondary" disabled$="[[!_isSubmitEnabled]]"><button id="loginBtn" type="submit" disabled$="[[!_isSubmitEnabled]]">[[t('cells-credentials-form-button-login', labelLogin)]]</button></cells-st-button></div><dom-if if="[[_hasGoBack]]"><template><p class="credentials-form__go-back"><cells-st-button class="transparent"><button id="goBackBtn" on-click="_onClickGoBackButton" type="button">{{t('cells-credentials-form-go-back', labelGoBack)}}</button></cells-st-button></p></template></dom-if><dom-if if="[[_registerInStep2]]"><template><p class="credentials-form__register"><span hidden$="[[!showRegisterInfo]]">{{t('cells-credentials-form-new-user', labelNewUser)}}</span><cells-st-button class="transparent"><button on-click="_doRegister" type="button">{{t('cells-credentials-form-register', labelRegister)}}</button></cells-st-button></p></template></dom-if></div></div></form></template><script>/**
+ *
+ * # cells-credentials-form
+ *
+ * ![Certificated](https://img.shields.io/badge/certificated-yes-brightgreen.svg) ![Polymer 2.x](https://img.shields.io/badge/Polymer-2.x-green.svg)
+ *
+ * [Demo of component in Cells Catalog](https://catalogs.platform.bbva.com/cells)
+ *
+ * This component provides a form with basic user-password authentication.
+ *
+ * It uses `cells-molecule-input` to present an ID field and a password field. ID field can receive a clear field icon; password field can receive both a clear field and a toggle password icon.
+ *
+ * ```html
+ * <cells-credentials-form clear-id-icon="coronita:close" clear-pwd-icon="coronita:close" toggle-pwd-icon="coronita:visualize" toggle-pwd-icon-toggled="coronita:hide"></cells-credentials-form>
+ * ```
+ *
+ * It can also show an extra loginName field in the first step that will be added to the detail of the 'login' event.
+ *
+ * ```html
+ * <cells-credentials-form show-user-login-name clear-id-icon="coronita:close" clear-login-name-icon="coronita:close" clear-pwd-icon="coronita:close" toggle-pwd-icon="coronita:visualize" toggle-pwd-icon-toggled="coronita:hide"></cells-credentials-form>
+ * ```
+ *
+ * The form will show a "Did you forget your password?" button. You can show also a "Are you not an user? Register" button adding the `register` attribute.
+ *
+ * ```html
+ * <cells-credentials-form register clear-id-icon="coronita:close" clear-pwd-icon="coronita:close" toggle-pwd-icon="coronita:visualize" toggle-pwd-icon-toggled="coronita:hide"></cells-credentials-form>
+ * ```
+ *
+ * If the form is configured to show two steps the step that will show the register button can be configured with the registerStep property.
+ *
+ * ```html
+ * <cells-credentials-form steps register register-step="1"></cells-credentials-form>
+ * ```
+ *
+ * Also, using the `autofocus` attribute, the user Id field will receive focus when the page is loaded.
+ *
+ * ```html
+ * <cells-credentials-form autofocus clear-id-icon="coronita:close" clear-pwd-icon="coronita:close" toggle-pwd-icon="coronita:visualize" toggle-pwd-icon-toggled="coronita:hide"></cells-credentials-form>
+ * ```
+ *
+ * Tapping any of the buttons will fire an event. Activating the submit button will fire an event passing the user Id and user Password field values as payload. The submit button will be disabled until both fields are filled.
+ *
+ * The component uses the attribute `user-name`, with the user name as value, to treat the user as already logged. This will hide the userId field and show a user greeting and a "change user" button above the password field.
+ *
+ * ```html
+ * <cells-credentials-form user-name="John" user-id="loremipsum" clear-pwd-icon="coronita:close" toggle-pwd-icon="coronita:visualize" toggle-pwd-icon-toggled="coronita:hide"></cells-credentials-form>
+ * ```
+ *
+ * When showing an already logged in user the shortUserName can be set to show only the user first name.
+ *
+ * ```html
+ * <cells-credentials-form user-name="John Paul" short-user-name="true"></cells-credentials-form>
+ * ```
+ *
+ * The component can optional use cells-input-validation-behavior to validate and mask input user login value.
+ *
+ * ```html
+ * <cells-credentials-form user-name="John" user-id="loremipsum"  input-user-options="[[inputUserOptions]]"></cells-credentials-form>
+ * ```
+ * ```js
+ *   {
+ *     autoValidate: true,
+ *     inputStatusValidate: true,
+ *     inputType: 'text',
+ *     allowedValue: "rut",
+ *     errorMessage: 'rutMsg',
+ *     errorMessageIcon: 'coronita:error',
+ *     mask: 'rut',
+ *     maxLength: '13'
+ *   }
+ *
+ * ```
+ *
+ * Also, the component can show a selector for select a document type and validate the identity of the user. The selector is shown when document-type property is filled.
+ *
+ * ````html
+ *  <cells-credentials-form id="ui"
+ *     document-type="{{itemSelected}}"
+ *     clear-id-icon="coronita:close"
+ *     clear-pwd-icon="coronita:close"
+ *     toggle-pwd-icon="coronita:visualize"
+ *     toggle-pwd-icon-toggled="coronita:hide">
+ *   </cells-credentials-form>
+ * ````
+ *
+ * Document type is an object that has the rules to validate username, error message and other stuff related with the userId validation.
+ *
+ * ````json
+ * {
+ *     id: 'M',
+ *     allowedValue: '^[\\w-_/.]{3,15}$',
+ *     maxLength: 15,
+ *     max: 15,
+ *     min: 3,
+ *     type: 'text',
+ *     errorMessageIcon: 'coronita:alert',
+ *     errorMessage: 'glomo-login-generic-error-message',
+ *     name: 'glomo-login-document-type-M'
+ *   }
+ * ````
+ *
+ * Document type can have an additional externalValidation object specifying that an external validation request needs to be made if a condition is reached.
+ * If externalValidation is present, the specified matchingField value will be tested with the specified regex matcher. If it matches, the current form navigation flow will be interrupted after the specified step and an event will be emitted with the eventFields values as the detail.
+ * The form flow will continue after the externalValidationSuccess method is called, setting the component extraField with the received value.
+ *
+ * ````json
+ *  {
+ *     id: 'DNI',
+ *     allowedValue: '^\\d{1,13}$',
+ *     maxLength: 13,
+ *     max: 13,
+ *     min: 1,
+ *     inputType: 'tel',
+ *     errorMessageIcon: 'coronita:alert',
+ *     errorMessage: 'cells-credentials-form-user-error-message',
+ *     name: 'cells-credentials-form-document-type-DNI',
+ *     passwordMinLength: '8',
+ *     passwordMaxLength: '8',
+ *     autoValidatePassword: false,
+ *     allowedPasswordValues: [ 'arPassword' ],
+ *     errorPasswordMessage: [ 'arPassword' ],
+ *     externalValidation: {
+ *       matchingField: 'userId',
+ *       matcher: '^\\d{1,7}$',
+ *       event: 'document-type-dni-external-validation',
+ *       eventFields: [ 'userId', 'documentType', 'loginName', 'password', 'gender' ],
+ *       extraField: 'gender',
+ *       step: 2
+ *     }
+ *   }
+ * ````
+ *
+ * The selector shown is a fake selector that fires an "select-document-type" event when is clicked. Usually the selector values are represented in into a cells-modal-selector as it can be seen in the demo.
+ *
+ * The method goBack allows the component container to request a back navigation from step 2 to step 1.
+ *
+ * Additional events are dispatched when moving forward or backwards between steps, one for each step with the current visibility status in the event detail.
+ *
+ * ## Icons
+ *
+ * Since this component uses icons, it will need an [iconset](https://bbva.cellsjs.com/guides/best-practices/cells-icons.html) in your project as an [application level dependency](https://bbva.cellsjs.com/guides/advanced-guides/application-level-dependencies.html). In fact, this component uses an iconset in its demo.
+ *
+ * ## Styling
+ *
+ * The following custom properties and mixins are available for styling:
+ *
+ * ### Custom Properties
+ * | Custom Property                                                        | Selector                                               | CSS Property                            | Value        |
+ * | ---------------------------------------------------------------------- | ------------------------------------------------------ | --------------------------------------- | ------------ |
+ * | --cells-fontDefault                                                    | :host                                                  | font-family                             | sans-serif   |
+ * | --cells-credentials-form-input-min-height                              | :host                                                  | --cells-molecule-input-field-min-height | 3.75rem      |
+ * | --cells-credentials-form-fake-selector-bg-color                        | .credentials-form .fake-selector                       | background-color                        | --bbva-100   |
+ * | --cells-credentials-form-fake-selector-modal-icon-color                | .credentials-form .fake-selector .modal-icon           | color                                   | --bbva-white |
+ * | --cells-credentials-form-fake-selector-label-color                     | .credentials-form .fake-selector .label                | color                                   | --bbva-500   |
+ * | --cells-credentials-form-fake-selector-label-selected-color            | .credentials-form .fake-selector .label.selected       | color                                   | --bbva-400   |
+ * | --cells-credentials-form-fake-selector-placeholder-color               | .credentials-form .fake-selector .placeholder          | color                                   | --bbva-600   |
+ * | --cells-credentials-form-fake-selector-placeholder-selected-icon-color | .credentials-form .fake-selector .placeholder.selected | color                                   | --bbva-white |
+ * ### @apply
+ * | Mixins                                                                  | Selector                                                                                     | Value |
+ * | ----------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | ----- |
+ * | --cells-credentials-form-input-field-withcontent                        | :host > --cells-molecule-input-withcontent-field-input:                                      | {}    |
+ * | --cells-credentials-form-input-wrapper                                  | :host > --cells-molecule-input-wrapper:                                                      | {}    |
+ * | --cells-credentials-form                                                | :host                                                                                        | {}    |
+ * | --cells-credentials-form-inputs-step-step2                              | :host .step-container .step_2                                                                | {}    |
+ * | --cells-molecule-input-has-content-wrapper                              | .credentials-form > --cells-credentials-form-cells-molecule-input-has-content-wrapper:       | {}    |
+ * | --cells-credentials-form-form                                           | .credentials-form                                                                            | {}    |
+ * | --cells-credentials-form-inputs                                         | .credentials-form__inputs                                                                    | {}    |
+ * | --cells-credentials-form-inputs-input                                   | .credentials-form__inputs cells-molecule-input                                               | {}    |
+ * | --cells-credentials-form-inputs-input-withcontent                       | .credentials-form__inputs cells-molecule-input[has-content]                                  | {}    |
+ * | --cells-credentials-form-submit                                         | .credentials-form__submit                                                                    | {}    |
+ * | --cells-credentials-form-submit-button                                  | .credentials-form__submit button[type="submit"]                                              | {}    |
+ * | --cells-credentials-form-submit-button-disabled                         | .credentials-form__submit button[type="submit"][disabled]                                    | {}    |
+ * | --cells-credentials-form-extra-actions                                  | .credentials-form__extra-actions                                                             | {}    |
+ * | --cells-credentials-form-extra-actions-logged                           | :host([is-logged]) .credentials-form__extra-actions                                          | {}    |
+ * | --cells-credentials-form-actions                                        | .credentials-form__forgotten-pwd                                                             | {}    |
+ * | --cells-credentials-form-actions                                        | .credentials-form__forgotten-login-name                                                      | {}    |
+ * | --cells-credentials-form-actions                                        | .credentials-form__change-user                                                               | {}    |
+ * | --cells-credentials-form-actions                                        | .credentials-form__register                                                                  | {}    |
+ * | --cells-credentials-form-actions-buttons                                | .credentials-form__forgotten-pwd button                                                      | {}    |
+ * | --cells-credentials-form-actions-buttons                                | .credentials-form__forgotten-login-name button                                               | {}    |
+ * | --cells-credentials-form-actions-buttons                                | .credentials-form__change-user button                                                        | {}    |
+ * | --cells-credentials-form-actions-buttons                                | .credentials-form__register button                                                           | {}    |
+ * | --cells-credentials-form-forgotten-pwd                                  | .credentials-form__forgotten-pwd                                                             | {}    |
+ * | --cells-credentials-form-forgotten-login-name                           | .credentials-form__forgotten-login-name                                                      | {}    |
+ * | --cells-credentials-form-change-user                                    | .credentials-form__change-user                                                               | {}    |
+ * | --cells-credentials-form-register                                       | .credentials-form__register                                                                  | {}    |
+ * | --cells-credentials-form-register-is-logged                             | :host([is-logged]) .credentials-form__register                                               | {}    |
+ * | --cells-credentials-form-register-info                                  | .credentials-form__register span                                                             | {}    |
+ * | --cells-credentials-form-register-button                                | .credentials-form__register cells-st-button                                                  | {}    |
+ * | --cells-credentials-form-continue                                       | .credentials-form__continue                                                                  | {}    |
+ * | --cells-credentials-form-go-back                                        | .credentials-form__go-back                                                                   | {}    |
+ * | --cells-credentials-form-user                                           | .credentials-form__user                                                                      | {}    |
+ * | --cells-credentials-form-user-image                                     | .credentials-form__user__image                                                               | {}    |
+ * | --cells-credentials-form-user-greeting                                  | .credentials-form__user__greeting                                                            | {}    |
+ * | --cells-credentials-form-user-name                                      | .credentials-form__user__name                                                                | {}    |
+ * | --cells-credentials-form-fake-selector                                  | .credentials-form .fake-selector                                                             | {}    |
+ * | --cells-credentials-form-fake-selector-focus                            | .credentials-form .fake-selector:focus                                                       | {}    |
+ * | --cells-credentials-form-fake-selector-modal-icon                       | .credentials-form .fake-selector .modal-icon                                                 | {}    |
+ * | --layout-vertical                                                       | .credentials-form .fake-selector .header-texts                                               | {}    |
+ * | --cells-credentials-form-fake-selector-label                            | .credentials-form .fake-selector .label                                                      | {}    |
+ * | --cells-credentials-form-fake-selector-placeholder                      | .credentials-form .fake-selector .placeholder                                                | {}    |
+ * | --cells-credentials-form-animated-user                                  | :host([animated]) .credentials-form__user                                                    | {}    |
+ * | --cells-credentials-form-animated-change-user                           | :host([animated]) .credentials-form__change-user                                             | {}    |
+ * | --cells-credentials-form-animated-inputs-button                         | :host([animated]) .credentials-form__inputs button                                           | {}    |
+ * | --cells-credentials-form-animated-inputs-button-molecule-input-not-last | :host([animated]) .credentials-form__inputs button ~ cells-molecule-input:not(:last-of-type) | {}    |
+ * | --cells-credentials-form-animated-cells-molecule-input-first            | :host([animated]) .credentials-form__inputs cells-molecule-input:first-of-type               | {}    |
+ * | --cells-credentials-form-animated-cells-molecule-input-last             | :host([animated]) .credentials-form__inputs cells-molecule-input:last-of-type                | {}    |
+ * | --cells-credentials-form-animated-submit-button                         | :host([animated]) .credentials-form__submit button                                           | {}    |
+ * | --cells-credential-form-step-container-step-step1                       | :host([steps]) .step-container .step_1                                                       | {}    |
+ * | --cells-credential-form-step-container-step-step2                       | :host([steps]) .step-container .step_2                                                       | {}    |
+ * | --cells-credential-form-step-container-step                             | :host([steps]) .step-container .step                                                         | {}    |
+ * | --cells-credential-form-step-container                                  | :host([steps]) .step-container                                                               | {}    |
+ * | --cells-credential-form-steps                                           | :host([steps])                                                                               | {}    |
+ * | --cells-credential-form-steps-step1-input                               | :host([onefield]) .step-container .step_1 cells-molecule-input                               | {}    |
+ * | --cells-credential-form-steps-step1                                     | :host([onefield]) .step-container .step_1                                                    | {}    |
+ * | --cells-credential-form-steps                                           | :host([onefield]) .step-container .step                                                      | {}    |
+ * | --cells-credential-form-step-container                                  | :host([onefield]) .step-container                                                            | {}    |
+ * | --cells-credential-form-steps-one-field                                 | :host([onefield])                                                                            | {}    |
+ * | --cells-credential-form-step-container-step-step2-active                | :host([steps]) .step-container .step_2.active                                                | {}    |
+ * | --cells-credential-form-step-container-step-step2-inactive              | :host([steps]) .step-container .step_2.inactive                                              | {}    |
+ * | --cells-credential-form-step-container-step-step2-logged                | :host([steps][is-logged]) .step-container .step_2                                            | {}    |
+ * | --cells-credentials-form-button                                         | .credentials-form__forgotten-pwd cells-st-button                                             | {}    |
+ * | --cells-credentials-form-button                                         | .credentials-form__forgotten-login-name cells-st-button                                      | {}    |
+ * | --cells-credentials-form-button                                         | .credentials-form__change-user cells-st-button                                               | {}    |
+ * | --cells-credentials-form-button                                         | .credentials-form__register cells-st-button                                                  | {}    |
+ * | --cells-credentials-form-button                                         | .credentials-form__continue cells-st-button                                                  | {}    |
+ * | --cells-credentials-form-button                                         | .credentials-form__go-back cells-st-button                                                   | {}    |
+ * | --cells-credentials-form-button-disabled                                | .credentials-form__forgotten-pwd cells-st-button[disabled]                                   | {}    |
+ * | --cells-credentials-form-button-disabled                                | .credentials-form__forgotten-login-name cells-st-button[disabled]                            | {}    |
+ * | --cells-credentials-form-button-disabled                                | .credentials-form__change-user cells-st-button[disabled]                                     | {}    |
+ * | --cells-credentials-form-button-disabled                                | .credentials-form__register cells-st-button[disabled]                                        | {}    |
+ * | --cells-credentials-form-button-disabled                                | .credentials-form__continue cells-st-button[disabled]                                        | {}    |
+ * | --cells-credentials-form-button-disabled                                | .credentials-form__go-back cells-st-button[disabled]                                         | {}    |
+ *
+ * @polymer
+ * @customElement
+ * @summary Provides a form for user:password credentials authentication
+ * @extends {Polymer.Element}
+ * @polymerBehavior Cells.CellsCredentialsForm
+ * @demo demo/index.html
+ * @hero cells-credentials-form.png
+ */var CellsCredentialsForm=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(CellsCredentialsForm,_Polymer$mixinBehavio);function CellsCredentialsForm(){babelHelpers.classCallCheck(this,CellsCredentialsForm);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(CellsCredentialsForm).apply(this,arguments))}babelHelpers.createClass(CellsCredentialsForm,[{key:"ready",value:function ready(){var _this=this;babelHelpers.get(babelHelpers.getPrototypeOf(CellsCredentialsForm.prototype),"ready",this).call(this);this.addEventListener("user-auto-mask",function(e){return _this.autoMaskStatus(e)});this.addEventListener("cells-molecule-input-validate",function(e){return _this._onInputValidate(e)});this.addEventListener("validation-error-type",function(e){return _this._setErrorMessage(e)})}},{key:"connectedCallback",value:function connectedCallback(){babelHelpers.get(babelHelpers.getPrototypeOf(CellsCredentialsForm.prototype),"connectedCallback",this).call(this);this._setAutofocus();this.setGreetingMessage()}/**
+   * Resets user to initial state.
+   */},{key:"resetUser",value:function resetUser(){this.userId="";this._userId="";this.userName="";this.userAvatar="";this.documentType=null;this.gender=null;this.loginName="";this._loginName="";this.secondaryUserId="";if(this.shadowRoot.querySelector("#user-input-id")){this.shadowRoot.querySelector("#user-input-id").validate()}if(this.shadowRoot.querySelector("#user-input-secondary-id")){this.shadowRoot.querySelector("#user-input-secondary-id").validate()}}/**
+   * Resets document type dependant fields only
+   */},{key:"onDocumentTypeSelected",value:function onDocumentTypeSelected(){this.userId="";this._userId="";this.secondaryUserId=""}/**
+   * Resets password to initial state.
+   */},{key:"resetPassword",value:function resetPassword(){this.userPassword="";if(this.shadowRoot.querySelector("#user-input-pwd")){this.shadowRoot.querySelector("#user-input-pwd").validate()}}/**
+   * Resets component to initial state.
+   */},{key:"reset",value:function reset(){this.resetUser();this.resetPassword();if(this.steps&&1<this.maxSteps){this._move(!1)}}/**
+   * Change (enable and disable) automask user input data
+   */},{key:"autoMaskStatus",value:function autoMaskStatus(autoMask){if(autoMask&&this.inputUserOptions){var mask=!autoMask.detail?this.inputUserOptions.maskEnabled=null:this.inputUserOptions.maskEnabled=this.inputUserOptions.mask;return mask}}/**
+   * Focus on specific input
+   * @param {String} input
+   */},{key:"focusInput",value:function focusInput(input){this.shadowRoot.querySelector("#user-input-"+input).focus()}/**
+   * Set greeting message according to current time
+   */},{key:"setGreetingMessage",value:function setGreetingMessage(){var currentTime=moment(new Date),morning=currentTime.clone().hour(this.hourGreetingMorning).minutes(0).seconds(0),noon=currentTime.clone().hour(this.hourGreetingNoon).minutes(0).seconds(0),night=currentTime.clone().hour(this.hourGreetingNight).minutes(0).seconds(0);if(currentTime.isBetween(morning,noon,null,"[)")){this.greetingKey="cells-greeting-morning"}else if(currentTime.isBetween(noon,night,null,"[)")){this.greetingKey="cells-greeting-evening"}else{this.greetingKey="cells-greeting-night"}}/**
+   * Fire corresponding actions/events on enter keypress
+   */},{key:"_onKeyPress",value:function _onKeyPress(e){if(13===e.keyCode){e.preventDefault();if(!this._isLastStep&&this._isContinueEnabled){this._move(!0)}else if(this._isLastStep&&this._isSubmitEnabled){this._doCredentialsUserPwd(e)}}}/**
+   * Returns boolean for isLogged based on userName property
+   * @param {String} userName
+   * @return {Boolean}
+   */},{key:"_computeIsLogged",value:function _computeIsLogged(userName){return"-"===userName?!1:!!userName}/**
+   * validate secondaryId option to continue
+   * @param {String} _invalidSecondaryId
+   * @param {String} secondaryUserId
+   */},{key:"_isSecondaryIdOk",value:function _isSecondaryIdOk(_invalidSecondaryId,secondaryUserId){return(!this.showSecondaryId||secondaryUserId)&&!(this.showSecondaryId&&_invalidSecondaryId)}/**
+   * Returns true if user, password and documentType (only if it is required)
+   * @param {String} userId
+   * @param {String} userPwd
+   * @param {Boolean} _invalidId
+   * @param {Boolean} _invalidPwd
+   * @param {Boolean} _invalidLoginName
+   * @param {Boolean} _invalidSecondaryId
+   * @param {String}  secondaryUserId
+   * @return {Boolean}
+   */},{key:"_computeIsSubmitEnabled",value:function _computeIsSubmitEnabled(userId,userPwd,_invalidId,_invalidPwd,_invalidLoginName,_invalidSecondaryId,secondaryUserId){return!_invalidId&&!_invalidPwd&&!(this.showUserLoginName&&_invalidLoginName)&&!!(this.documentType?userId&&userPwd&&this.documentType.id:userId&&userPwd)&&this._isSecondaryIdOk(_invalidSecondaryId,secondaryUserId)}/**
+   * Returns boolean for isLogged based on userName property
+   * @param {String} userName
+   * @return {Boolean}
+   */},{key:"_setAutofocus",value:function _setAutofocus(){Polymer.RenderStatus.afterNextRender(this,function(){var input;if(this.autofocus&&(input=this.shadowRoot.querySelector("#user-input-id:not([hidden])"))){this.async(input.focus.bind(input),500)}})}/**
+   * Toggles invalid state on input fields
+   * @param {String} newvalue
+   */},{key:"_invalidObserver",value:function _invalidObserver(newvalue){this.shadowRoot.querySelector("#user-input-id").invalid=newvalue;this.shadowRoot.querySelector("#user-input-pwd").invalid=newvalue}/**
+   * Change form invalid property when an input changes
+   */},{key:"_clearInvalid",value:function _clearInvalid(){if(this.invalid){this.invalid=!1}}/**
+   * Continue with submit when no external validation needed or when external validation succeeded
+   */},{key:"_submitContinue",value:function _submitContinue(){var detail={userId:this.userId,password:this.userPassword,username:this.userName,documentType:this.documentType,gender:this.gender};if(this.showUserLoginName){detail.loginName=this.loginName}if(this.documentType&&this.documentType.externalValidation){detail[this.documentType.externalValidation.extraField]=this.get(this.documentType.externalValidation.extraField)}if(this.secondaryUserId){detail.secondaryUserId=this.secondaryUserId}this.dispatchEvent(new CustomEvent("login",{bubbles:!0,composed:!0,detail:detail}))}/**
+   * Action done when submitting the form.
+   * @param {Event} e
+   */},{key:"_doCredentialsUserPwd",value:function _doCredentialsUserPwd(e){e.preventDefault();if(this._checkIfSubmit()){if(this.documentType&&this.documentType.externalValidation&&2===this.documentType.externalValidation.step&&!this.get(this.documentType.externalValidation.extraField)){var matcher=new RegExp(this.documentType.externalValidation.matcher);if(matcher.test(this.get(this.documentType.externalValidation.matchingField))){var detail={};this.documentType.externalValidation.eventFields.forEach(function(ef){detail[ef]=this.get(ef)},this);this.dispatchEvent(new CustomEvent(this.documentType.externalValidation.event,{bubbles:!0,composed:!0,detail:detail}));this.dispatchEvent(new CustomEvent("credentials-external-validation",{bubbles:!0,composed:!0,detail:detail}))}else{this._submitContinue()}}else{this._submitContinue()}/**
+       * Fired when submit button is activated, gets userId and userPassword as payload
+       * @event login
+       */}}/**
+   * Checks if user/password fields are invalid before form submission
+   */},{key:"_checkIfSubmit",value:function _checkIfSubmit(){if(this.invalid!==void 0&&this.invalid){return!1}else{var userInvalid=!1;if(!this.isLogged){this.shadowRoot.querySelector("#user-input-id").validate();userInvalid=this.shadowRoot.querySelector("#user-input-id").invalid}this.shadowRoot.querySelector("#user-input-pwd").validate();if(userInvalid||this.shadowRoot.querySelector("#user-input-pwd").invalid){return!1}}return!0}/**
+   * Sets username input validation according to the document type selected and set cursor focus
+   * @param {String} documentType
+   */},{key:"_onDocumentTypeChanged",value:function _onDocumentTypeChanged(documentType,previousDocumentType){if(documentType){this.resetPassword();this.set("inputUserOptions",{allowedValue:documentType.allowedValue,maxLength:documentType.maxLength||"",inputStatusValidate:documentType.inputStatusValidate||!0,errorMessageIcon:documentType.errorMessageIcon,errorMessage:documentType.errorMessage,inputType:documentType.inputType,max:documentType.max,min:documentType.min,passwordMinLength:documentType.passwordMinLength||"",passwordMaxLength:documentType.passwordMaxLength||"",autoValidatePassword:documentType.autoValidatePassword||!1,allowedPasswordValues:documentType.allowedPasswordValues||"",errorPasswordMessage:documentType.errorPasswordMessage||""});if(previousDocumentType&&documentType.id!==previousDocumentType.id){this.autofocus=!0;this._setAutofocus()}}}/**
+   * Set validation error message
+   * @param {String} type
+   */},{key:"_setErrorMessage",value:function _setErrorMessage(type){this.errorPasswordMessage=((this.inputUserOptions||{}).errorPasswordMessage||{})[type.detail]||""}/**
+   * Fires event when register button is activated
+   * @param {Event} e
+   */},{key:"_doRegister",value:function _doRegister(e){e.preventDefault();this.dispatchEvent(new CustomEvent("request-register",{bubbles:!0,composed:!0}));/**
+     * Fired when register button is activated
+     * @event request-register
+     */}/**
+   * Fires event when forget password button is activated
+   * @param {Event} e
+   */},{key:"_onForgetPwd",value:function _onForgetPwd(e){e.preventDefault();this.dispatchEvent(new CustomEvent("request-password-recover",{bubbles:!0,composed:!0}));/**
+     * Fired when forget password button is activated
+     * @event request-password-recover
+     */}/**
+   * Fires event when forget login name button is activated
+   * @param {Event} e
+   */},{key:"_onForgetLoginName",value:function _onForgetLoginName(e){e.preventDefault();this.dispatchEvent(new CustomEvent("request-login-name-recover",{bubbles:!0,composed:!0}));/**
+     * Fired when forget login name button is activated
+     * @event request-login-name-recover
+     */}/**
+   * Fires event when change user button is activated
+   * @param {Event} e
+   */},{key:"_changeUser",value:function _changeUser(e){e.preventDefault();this.dispatchEvent(new CustomEvent("request-change-user",{bubbles:!0,composed:!0}));/**
+     * Fired when change user button is activated
+     * @event request-change-user
+     */}/**
+   * Unmask temporal _userId
+   * @param {String} _userId
+   */},{key:"_onUserIdChanged",value:function _onUserIdChanged(_userId){if(!this.isLogged){var type=(this.inputUserOptions||{}).mask;this.userId=this._getUnMasked(_userId,type)||_userId}}/**
+   * Unmask temporal _loginName
+   * @param {String} _loginName
+   */},{key:"_onUserLoginNameChanged",value:function _onUserLoginNameChanged(_loginName){if(!this.isLogged){var type=(this.inputLoginNameOptions||{}).mask;this.loginName=this._getUnMasked(_loginName,type)||_loginName}}/**
+   * Fires event when user taps in document type select
+   * @param {Event} e
+   */},{key:"_openDocumentTypeSelector",value:function _openDocumentTypeSelector(e){e.preventDefault();this.dispatchEvent(new CustomEvent("select-document-type",{bubbles:!0,composed:!0}));/**
+     * Fired when user clicks in document type selector
+     * @event on-click-document-type
+     */}/**
+   * Show corresponding error message
+   * @param {Event} ev
+   */},{key:"_onInputValidate",value:function _onInputValidate(ev){if(ev.detail&&!ev.detail.valid){var message;if("user-input-pwd"===ev.detail.id){if(ev.detail.value.length<this.inputUserOptions.passwordMinLength){message=this.t("cells-credentials-form-min-characters-error-password-message")}else{message=this._getErrorMessages(this.inputUserOptions.errorPasswordMessage)}}else if("user-input-login-name"===ev.detail.id){if(ev.detail.value.length<this.inputLoginNameOptions.min){message=this.t("cells-credentials-form-min-characters-error-message")}else{message=this._getErrorMessages(this.inputLoginNameOptions.errorMessage)}}else if("user-input-secondary-id"===ev.detail.id){if(ev.detail.value.length<this.inputSecondaryIdOptions.min){message=this.t("cells-credentials-form-secondary-min-characters-error-message")}else{message=this._getErrorMessages(this.inputSecondaryIdOptions.errorMessage)}}else{if(ev.detail.value.length<this.inputUserOptions.min){message=this.t("cells-credentials-form-min-characters-error-message")}else{message=this._getErrorMessages(this.inputUserOptions.errorMessage)}}this.shadowRoot.querySelector("#"+ev.detail.id).set("errorMessage",message)}}/**
+   * Compute if login process is on first step
+   * @param {Number} currentStep
+   * @param {String} userName
+   */},{key:"_computeIsFirstStep",value:function _computeIsFirstStep(currentStep,userName){var isFirstStep=("-"===userName?!0:!userName)&&1===currentStep;if(!isFirstStep){this.$.step_2.classList.remove("inactive")}return isFirstStep}/**
+   * Compute if login process is on last step
+   * @param {Number} currentStep
+   * @param {String} userName
+   */},{key:"_computeIsLastStep",value:function _computeIsLastStep(steps,maxSteps,currentStep){return steps?currentStep===maxSteps:!0}/**
+   * Compute if go-back button is visible
+   * @param {Number} currentStep
+   * @param {String} userName
+   */},{key:"_computeHasGoBack",value:function _computeHasGoBack(currentStep,userName){return 1<currentStep&&("-"===userName?!0:!userName)}/**
+   * Compute if continue button is enable
+   * @param {String} documentType
+   * @param {String} userId
+   * @param {Number} currentStep
+   * @param {Number} maxSteps
+   * @param {Boolean} _invalidId
+   * @param {Boolean} _invalidLoginName
+   * @param {String} secondaryUserId
+   * @param {Boolean} _invalidSecondaryId
+   */},{key:"_computeIsContinueEnabled",value:function _computeIsContinueEnabled(documentType,userId,loginName,currentStep,maxSteps,_invalidId,_invalidLoginName,secondaryUserId,_invalidSecondaryId){return!_invalidId&&!(this.showUserLoginName&&_invalidLoginName)&&currentStep<maxSteps&&!!(documentType?documentType.id&&userId:userId)&&(!this.showUserLoginName||loginName)&&this._isSecondaryIdOk(_invalidSecondaryId,secondaryUserId)}/**
+   * Move forward after clicking continue button
+   * @param {Event} e
+   */},{key:"_onClickContinueButton",value:function _onClickContinueButton(e){e.preventDefault();if(this.shadowRoot.querySelector("#user-input-id")){var valid=this.shadowRoot.querySelector("#user-input-id").validate();if(this.showUserLoginName){valid=valid&&this.shadowRoot.querySelector("#user-input-login-name").validate()}if(valid&&this.documentType&&this.documentType.externalValidation&&1===this.documentType.externalValidation.step&&!this.get(this.documentType.externalValidation.extraField)){var matcher=new RegExp(this.documentType.externalValidation.matcher);if(matcher.test(this.get(this.documentType.externalValidation.matchingField))){var detail={};this.documentType.externalValidation.eventFields.forEach(function(ef){detail[ef]=this.get(ef)},this);this.dispatchEvent(new CustomEvent(this.documentType.externalValidation.event,{bubbles:!0,composed:!0,detail:detail}));valid=!1;this.dispatchEvent(new CustomEvent("credentials-external-validation",{bubbles:!0,composed:!0,detail:detail}))}}if(valid){this._move(!0)}}}/**
+   * Move forward after external validation success
+   */},{key:"externalValidationSuccess",value:function externalValidationSuccess(detail){if(this.documentType&&this.documentType.externalValidation){this.set(this.documentType.externalValidation.extraField,detail||null);if(1===this.documentType.externalValidation.step){this._move(!0)}else{this._submitContinue()}}}/**
+   * Move backwards after clicking go-back button
+   * @param {Event} e
+   */},{key:"_onClickGoBackButton",value:function _onClickGoBackButton(e){e.preventDefault();this._move(!1)}/**
+   * Increment current step
+   */},{key:"_incrementCurrentStep",value:function _incrementCurrentStep(){if(this.currentStep+1<=this.maxSteps){this.currentStep++}}/**
+   * Decrement current step
+   */},{key:"_decrementCurrentStep",value:function _decrementCurrentStep(){if(0<this.currentStep-1){this.currentStep--}}/**
+   * Focus on input
+   * @param {Event} e
+   */},{key:"_onFocusInput",value:function _onFocusInput(e){e.preventDefault();if(!this._hasBeenFocusedInputId){this._onFirstFocusInput(e)}this._hasBeenFocusedInputId=!0}/**
+   * Dispatch event on input focus
+   */},{key:"_onFirstFocusInput",value:function _onFirstFocusInput(){this.dispatchEvent(new CustomEvent("cells-credentials-form-first-input-focus",{bubbles:!0,composed:!0}))}/**
+   * Move to second step or back to first step
+   * @param {Boolean} forward
+   */},{key:"_move",value:function _move(forward){if(forward){this.$.step_2.classList.remove("inactive");this.$.step_2.classList.add("active");this.shadowRoot.querySelector("#user-input-id").focus();this.userName="-";this.lite=!0;this.$.containerSteps.classList.remove("move-left");this.$.containerSteps.classList.add("move-right");setTimeout(function(){this._incrementCurrentStep();this.shadowRoot.querySelector("#user-input-pwd").focus()}.bind(this),1e3)}else{this.$.containerSteps.classList.remove("move-right");this.$.containerSteps.classList.add("move-left");this.shadowRoot.querySelector("#user-input-id").focus();setTimeout(function(){this.$.step_2.classList.remove("active");this.$.step_2.classList.add("inactive");this._decrementCurrentStep()}.bind(this),300)}this.dispatchEvent(new CustomEvent("login-step-1-visible",{bubbles:!0,composed:!0,detail:!forward}));this.dispatchEvent(new CustomEvent("login-step-2-visible",{bubbles:!0,composed:!0,detail:forward}))}/**
+   * Assign if userId is valid
+   * @param {Event} e
+   */},{key:"_onValidateInputId",value:function _onValidateInputId(e){this._invalidId=e.detail.value}/**
+   * Assign if loginName is valid
+   * @param {Event} e
+   */},{key:"_onValidateInputLoginName",value:function _onValidateInputLoginName(e){this._invalidLoginName=e.detail.value}/**
+   * Assign if secondaryId is valid
+   * @param {Event} e
+   */},{key:"_onValidateInputSecondaryId",value:function _onValidateInputSecondaryId(e){this._invalidSecondaryId=e.detail.value}/**
+   * Assign if password is valid
+   * @param {Event} e
+   */},{key:"_onValidateInputPwd",value:function _onValidateInputPwd(e){this._invalidPwd=e.detail.value}/**
+   * Compute if register button should be shown in step 1
+   */},{key:"_computeRegisterInStep1",value:function _computeRegisterInStep1(){return this.register&&1===this.registerStep}/**
+   * Compute if register button should be shown in step 2
+   */},{key:"_computeRegisterInStep2",value:function _computeRegisterInStep2(){return this.register&&2===this.registerStep}/**
+   * Move from step 2 to step 1
+   */},{key:"goBack",value:function goBack(){this._move(!1)}/**
+   * Compute the password copy
+   */},{key:"_computePassword",value:function _computePassword(userPassword){return userPassword}/**
+   * Compute the displayed user name
+   */},{key:"_computeUserName",value:function _computeUserName(userName,shortUserName){if(shortUserName){return(userName||"").split(" ")[0]}return userName||""}}],[{key:"is",get:function get(){return"cells-credentials-form"}/* global moment */},{key:"properties",get:function get(){return{/**
+       * User first name
+       */userName:{type:String,notify:!0,value:""},/**
+       * User avatar
+       */userAvatar:{type:String,value:""},/**
+       * Heading level to apply to user name and greeting
+       */headingLevel:{type:Number,value:1},/**
+       * Invalid status of the form
+       */invalid:{type:Boolean,reflectToAttribute:!0,notify:!0},/**
+       * User identification
+       */userId:{type:String,value:""},/**
+       * Temporal User identification
+       */_userId:{type:String,notify:!0,observer:"_onUserIdChanged"},/**
+       * User password, access key or similar
+       */userPassword:{type:String,notify:!0,value:""},/**
+       * User password copy for external validation detail
+       */password:{type:String,value:"",computed:"_computePassword(userPassword)"},/**
+       * Document Type
+       */documentType:{type:Object,value:null,observer:"_onDocumentTypeChanged"},/**
+       * Secondary user identification
+       */secondaryUserId:{type:String,value:""},/**
+       * Size icons
+       */iconsSize:{type:Number,value:18},/**
+       * Clear icon for user field
+       */clearIdIcon:{type:String,value:""},/**
+       * Clear icon for password field
+       */clearPwdIcon:{type:String,value:""},/**
+       * Clear icon for login name field
+       */clearLoginNameIcon:{type:String,value:""},/**
+       * Toggle icon for password field
+       */togglePwdIcon:{type:String,value:""},/**
+       * Toggle icon for password field, toggled version
+       */togglePwdIconToggled:{type:String,value:""},/**
+       * Returns true if userId and userPassword are not null.
+       */_isSubmitEnabled:{type:Boolean,computed:"_computeIsSubmitEnabled(userId, userPassword, _invalidId, _invalidPwd, _invalidLoginName, _invalidSecondaryId, secondaryUserId)"},/**
+       * Returns true if userId is valid.
+       */_isContinueEnabled:{type:Boolean,computed:"_computeIsContinueEnabled(documentType, userId, loginName, currentStep, maxSteps, _invalidId, _invalidLoginName, secondaryUserId, _invalidSecondaryId)"},/**
+       * If currentStep === 1 is true
+       */_isFirstStep:{type:Boolean,computed:"_computeIsFirstStep(currentStep, userName)"},/**
+       * If currentStep === maxSteps is true
+       */_isLastStep:{type:Boolean,computed:"_computeIsLastStep(steps, maxSteps, currentStep)"},/**
+       * Is true if currentStep > 1 or userName is saved. It is used to show go back button
+       */_hasGoBack:{type:Boolean,computed:"_computeHasGoBack(currentStep, userName)"},/**
+       * If true, autofocus in user ID field, if available
+       */autofocus:{type:Boolean,value:!1},/**
+       * Shows a register button
+       */register:{type:Boolean,value:!1},/**
+       * Step to show the register button
+       */registerStep:{type:Number,value:2},/**
+       * Shows the register button in step 1?
+       */_registerInStep1:{type:Boolean,computed:"_computeRegisterInStep1(register, registerStep)"},/**
+       * Shows the register button in step 2?
+       */_registerInStep2:{type:Boolean,computed:"_computeRegisterInStep2(register, registerStep)"},/**
+       * Indicates if user is logged or not
+       */isLogged:{type:String,reflectToAttribute:!0,computed:"_computeIsLogged(userName)"},/**
+       * Translation key for user input
+       */labelUserId:{type:String,value:"NIF, NIE, Passport, email"},labelSecondaryUserId:{type:String,value:"RUC"},/**
+       * Translation key for user login name input
+       */labelUserLoginName:{type:String,value:"User"},/**
+       * Translation key for user password
+       */labelPassword:{type:String,value:"Access key"},/**
+       * Translation key for user password
+       */labelUserIdClearIcon:{type:String,value:"Clear field"},/**
+       * Translation key for user name clear icon
+       */labelLoginNameClearIcon:{type:String,value:"Clear field"},/**
+       * Translation key for user password
+       */labelPasswordToggleIcon:{type:String,value:"Show/hide password"},/**
+       * Translation key for user password
+       */labelPasswordClearIcon:{type:String,value:"Clear field"},/**
+       * Translation key for button
+       */labelLogin:{type:String,value:"Login"},/**
+       * Translation key for 'forget your password?' button
+       */labelForgetPassword:{type:String,value:"Did you forget your access key?"},/**
+       * Translation key for 'forgot your login name?' button
+       */labelForgetLoginName:{type:String,value:"Did you forget your login name?"},/**
+       * Translation key for user not logged
+       */labelNewUser:{type:String,value:"Are you not an user?"},/**
+       * Translation key for user registration
+       */labelRegister:{type:String,value:"Register"},/**
+       * Translation key for user logout
+       */labelLogout:{type:String,value:"Change user"},/**
+       * Translation key for greeting
+       */labelGreeting:{type:String,value:"Hi"},/**
+       * Translation key for button
+       */labelContinue:{type:String,value:"Continue"},/**
+       * Translation key for button
+       */labelGoBack:{type:String,value:"Go Back"},/**
+       * Error password validation message
+       */errorPasswordMessage:{type:String,value:""},/**
+       * Input password type
+       */inputPasswordType:{type:String,value:"password"},/**
+       * input user login field validations
+       */inputUserOptions:{type:Object,value:function value(){return{autoValidate:!1,autoValidatePassword:!1,inputStatusValidate:!1,autoMask:!0,inputType:"",inputPasswordType:"",allowedValue:"",allowedPasswordValue:"",errorMessage:"",errorPasswordMessage:[],errorMessageIcon:"",mask:"",passwordMask:"",maxLength:"",customPattern:"",customPasswordPattern:""}}},/**
+       * Autocapitalize input
+       */autocapitalize:{type:String,value:"none"},/**
+       * Motion to show of all the elements
+       */animated:{type:Boolean,value:!1,reflectToAttribute:!0},/**
+       * Allow complete value removal if backspace key is pressed and input type is password
+       */backspacePwdFullDelete:{type:Boolean,value:!1},/**
+       * Show lite or full greetings heading
+       */lite:{type:Boolean,value:!1},/**
+       * Show or hide info next to register button
+       */showRegisterInfo:{type:Boolean,value:!1},/**
+       * Hour to set greeting morning
+       */hourGreetingMorning:{type:Number,value:5},/**
+       * Hour to set greeteng noon
+       */hourGreetingNoon:{type:Number,value:13},/**
+       * Hour to ser greeting nigth
+       */hourGreetingNight:{type:Number,value:21},/**
+       * Internationalization key for greeting
+       */greetingKey:{type:String,value:""},/**
+       * If login has more than one step
+       */steps:{type:Boolean,value:!1},/**
+       * Number of max steps
+       */maxSteps:{type:Number,value:2},/**
+       * Current step
+       */currentStep:{type:Number,value:1,notify:!0},/**
+       * Indicates if inputId has been focused any time
+       */_hasBeenFocusedInputId:{type:Boolean,value:!1},/**
+       * Indicates if inputId is invalid
+       */_invalidId:{type:Boolean,value:!1},/**
+       * Indicates if login name is invalid
+       */_invalidLoginName:{type:Boolean,value:!1},/**
+       * Indicates if secondaryId is invalid
+       */_invalidSecondaryId:{type:Boolean,value:!1},/**
+      /**
+       * Indicates if inputPwd is invalid
+       */_invalidPwd:{type:Boolean,value:!1},/**
+       * Property to add special styles to step-1 with only one field
+       */onefield:{type:Boolean,value:!1},/**
+       * Show user login name input field
+       */showUserLoginName:{type:Boolean,value:!1},showSecondaryId:{type:Boolean,value:!1},/**
+       * User login name
+       */loginName:{type:String,value:""},/**
+       * Gender
+       */gender:{type:String,value:null},/**
+       * Temporal user login name
+       */_loginName:{type:String,notify:!0,observer:"_onUserLoginNameChanged"},/**
+       * User login name input field validations
+       */inputLoginNameOptions:{type:Object,value:function value(){return{autoValidate:!1,autoValidatePassword:!1,inputStatusValidate:!0,autoMask:!1,inputType:"text",inputPasswordType:"",allowedValue:"^[a-z|A-Z]{6,20}$",allowedPasswordValue:"",errorMessage:"cells-credentials-form-user-login-name-error-message",errorPasswordMessage:[],errorMessageIcon:"coronita:alert",mask:"",passwordMask:"",maxLength:"20",customPattern:"",customPasswordPattern:"",min:6}}},inputSecondaryIdOptions:{type:Object,value:function value(){return{autoValidate:!1,autoValidatePassword:!1,inputStatusValidate:!0,inputType:"",errorMessage:"",errorPasswordMessage:[],errorMessageIcon:"",min:5}}},/**
+       * Display short user name
+       */shortUserName:{type:Boolean,default:!1},/**
+       * Computed user name
+       */_userName:{type:String,computed:"_computeUserName(userName, shortUserName)"},/**
+       * Hidden Forgotten Password
+       */hiddenForgottenPwd:{type:Boolean,value:!1}}}},{key:"observers",get:function get(){return["_clearInvalid(userId, userPassword)","_invalidObserver(invalid)"]}}]);return CellsCredentialsForm}(Polymer.mixinBehaviors([CellsBehaviors.i18nBehavior,CellsBehaviors.InputValidationsBehavior],Polymer.Element));window.customElements.define(CellsCredentialsForm.is,CellsCredentialsForm);</script></dom-module><dom-module id="cells-molecule-spinner-styles" assetpath="cells-molecule-spinner/"><template><style>:host{display:block;height:100%;box-sizing:border-box;@apply --layout-horizontal;@apply --layout-center;@apply --cells-molecule-spinner;--iron-icon-fill-color:currentColor;}*, *:before, *:after{box-sizing:inherit;}:host([hidden]), [hidden]{display:none;}.wrapper{width:100%;text-align:center;@apply --cells-molecule-spinner-wrapper;}.spinner{position:relative;display:flex;flex-flow:column nowrap;align-items:center;margin-bottom:var(--gutter-width-3, 1.875rem);}.spinner__ring{width:var(--cells-molecule-spinner-size, 9.375rem);height:var(--cells-molecule-spinner-size, 9.375rem);border-radius:calc(var(--cells-molecule-spinner-size, 150px) / 2);border:var(--cells-molecule-spinner-ring-border-width, 0.1875rem) solid var(--cells-molecule-spinner-ring-content-color, #E9E9E9);border-top:0.1875rem solid var(--cells-molecule-spinner-ring-color, #2dcccd);-webkit-animation:spinner__ring--anim 2s linear infinite;animation:spinner__ring--anim 2s linear infinite;}.spinner__icon{position:absolute;top:50%;left:50%;-webkit-transform:translate3d(-50%, -50%, 0);transform:translate3d(-50%, -50%, 0);color:var(--cells-molecule-spinner-icon-color, #2dcccd);@apply --cells-molecule-spinner-icon;}.spinner__message{color:var(--cells-molecule-spinner-message-color, #fff);text-align:center;font-size:0.875rem;max-width:var(--cells-molecule-spinner-size, 9.375rem);@apply --cells-fontDefaultNormal;@apply --cells-molecule-spinner-message;}.spinner__message:empty{margin-top:0;}.spinner bbva-spinner{--bbva-spinner-background-color:var(--bbva-navy, #072146);--bbva-spinner-size:4.5rem;}:host([process]){overflow:hidden;color:var(--cells-molecule-spinner-process-message-color, #fff);background:var(--cells-molecule-spinner-process-background, #072146);@apply --cells-molecule-spinner-process;}:host([process]) .wrapper{display:flex;flex-direction:column;height:100%;@apply --cells-molecule-spinner-process-wrapper;}:host([process]) .spinner{justify-content:center;flex:1;margin:0;@apply --cells-molecule-spinner-process-spinner;}:host([process]) .text{padding:4.375rem 1rem;background:var(--cells-molecule-spinner-process-text-background, #0c386f);@apply --cells-molecule-spinner-process-text;}:host([process]) .text span{display:block;min-width:100%;font-weight:500;-webkit-animation-name:text__appears;animation-name:text__appears;-webkit-animation-duration:1s;animation-duration:1s;@apply --cells-molecule-spinner-process-text-span;}.text{text-align:center;@apply --cells-molecule-spinner-text;}.text cells-atom-icon{margin:0 0 1rem 0;@apply --cells-molecule-spinner-text-icon;}.text span{display:block;min-width:100%;font-weight:500;@apply --cells-molecule-spinner-text-span;}:host([finish]) .spinner__ring{-webkit-animation-play-state:paused;animation-play-state:paused;border:var(--cells-molecule-spinner-ring-border-width--finished, 0.1875rem) solid var(--cells-molecule-spinner-ring-color, #2dcccd);}:host([finish]) .spinner__icon{color:var(--cells-molecule-spinner-ring-color, #2dcccd);}:host([not-visible]){opacity:0;visibility:hidden;}:host([not-visible]) .spinner__ring{-webkit-animation-play-state:paused;animation-play-state:paused;}:host([finish][process]){@apply --cells-molecule-spinner-process-finish;}:host([finish][process]) .text{height:100%;position:absolute;width:100%;z-index:1;top:0;padding-top:50vh;-webkit-animation-name:spinner__end--anim;animation-name:spinner__end--anim;-webkit-animation-duration:2s;animation-duration:2s;@apply --cells-molecule-spinner-process-finish-text;}@-webkit-keyframes spinner__end--anim{0%{-webkit-transform:translate(0, 400px);transform:translate(0, 400px);}100%{-webkit-transform:translate(0, 0);transform:translate(0, 0);}}@keyframes spinner__end--anim{0%{-webkit-transform:translate(0, 400px);transform:translate(0, 400px);}100%{-webkit-transform:translate(0, 0);transform:translate(0, 0);}}@-webkit-keyframes spinner__ring--anim{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg);}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg);}}@keyframes spinner__ring--anim{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg);}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg);}}@-webkit-keyframes text__appears{0%{-webkit-transform:translate(0, 200px);transform:translate(0, 200px);}100%{-webkit-transform:translate(0, 0);transform:translate(0, 0);}}@keyframes text__appears{0%{-webkit-transform:translate(0, 200px);transform:translate(0, 200px);}100%{-webkit-transform:translate(0, 0);transform:translate(0, 0);}}</style></template></dom-module><dom-module id="cells-molecule-spinner" assetpath="cells-molecule-spinner/"><template><style include="cells-molecule-spinner-styles cells-molecule-spinner-shared-styles"></style><div class="wrapper"><div class="spinner"><template is="dom-if" if="[[!process]]"><div id="progressRing" class="spinner__ring"></div><cells-atom-icon icon="[[_icon]]" class="icon-size-34 spinner__icon"></cells-atom-icon></template><template is="dom-if" if="[[process]]"><bbva-spinner></bbva-spinner></template></div><div class="text"><cells-atom-icon icon="[[_icon]]" class="icon-size-34" hidden$="[[!process]]"></cells-atom-icon><span class="spinner__message">[[t(message)]]</span></div></div></template><script>/**
+ *
+ *
+ * # cells-spinner-stripes
+ *
+ * ![Certificated](https://img.shields.io/badge/certificated-yes-brightgreen.svg)
+ * ![Polymer 2.x](https://img.shields.io/badge/Polymer-2.x-green.svg)
+ *
+ * [Demo of component in Cells Catalog](https://catalogs.platform.bbva.com/cells)
+ *
+ * Spinner with icon and informative message
+ *
+ * Example:
+ * ```html
+ * <cells-molecule-spinner message="Loading data"></cells-molecule-spinner>
+ * ```
+ *
+ * The finish property can be set to true or false with the setFinished and unsetFinished methods.
+ *
+ * ## Styling
+ *
+ * The following custom properties and mixins are available for styling:
+ *
+ * | Custom property | Description     | Default        |
+ * |:----------------|:----------------| :--------------|
+ * | --cells-molecule-spinner-size      | spinner size | 150px  |
+ * | --cells-molecule-spinner-ring-content-color      | ring background color | #E9E9E9  |
+ * | --cells-molecule-spinner-ring-color      | ring color | #2dcccd  |
+ * | --cells-molecule-spinner-ring-border-width | ring border width | 3px |
+ * | --cells-molecule-spinner-ring-border-width--finished | ring border width in finished state | 3px |
+ * | --cells-molecule-spinner-icon-color      | icon color | #fff  |
+ * | --cells-molecule-spinner-message-color      | message color | #fff  |
+ * | --cells-molecule-spinner-process-message-color | color for :host([process]) | #fff |
+ * | --cells-molecule-spinner-process-background | background color for :host([process]) | #072146 |
+ * | --cells-molecule-spinner-process-text-background | background color for text area in :host([process]) | #0c386f |
+ * | --cells-molecule-spinner-icon      | mixin for icon | {} |
+ * | --cells-molecule-spinner-message      | mixin for message | {} |
+ * | --cells-molecule-spinner  | empty mixin     | {}             |
+ * | --cells-molecule-spinner-wrapper | mixin applied to .wrapper | {} |
+ * | --cells-molecule-spinner-process-wrapper | mixin applied to .wrapper in :host([process]) | {} |
+ * | --cells-molecule-spinner-process-spinner | mixin applied to .spinner in :host([process]) | {} |
+ * | --cells-molecule-spinner-process-text-span | mixin applied to .text span in :host([process]) | {} |
+ * | --cells-molecule-spinner-process-text | mixin applied to .text in :host([process]) | {} |
+ * | --cells-molecule-spinner-process | mixin applied to :host([process]) | {} |
+ * | --cells-molecule-spinner-text-icon | mixin applied to icon in :host([process]) | {} |
+ * | --cells-molecule-spinner-text-span | mixin applied to span in :host([process]) | {} |
+ * | --cells-molecule-spinner-text | mixin applied to text in :host([process]) | {} |
+ * | --cells-molecule-spinner-process-finish-text | mixin applied to text in :host([process][finish]) | {} |
+ * | --cells-molecule-spinner-process-finish | mixin applied to :host([process][finish]) | {} |
+ *
+ * @polymer
+ * @customElement
+ * @extend {Polymer.Element}
+ * @demo demo/index.html
+ * @hero cells-molecule-spinner.png
+ */var CellsMoleculeSpinner=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(CellsMoleculeSpinner,_Polymer$mixinBehavio);function CellsMoleculeSpinner(){babelHelpers.classCallCheck(this,CellsMoleculeSpinner);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(CellsMoleculeSpinner).apply(this,arguments))}babelHelpers.createClass(CellsMoleculeSpinner,[{key:"_iconChange",/**
+   * Icon Change after set finish
+   */value:function _iconChange(startIcon,endIcon,finish){this._icon=finish?endIcon:startIcon}/**
+   * Init process
+   */},{key:"init",value:function init(enabled){if(enabled){this.reset()}}/**
+   * Reset process
+   */},{key:"reset",value:function reset(){this.currentProcess=0;this.message=this.messages&&this.messages[0]}/**
+   * Start spinner process and move the fake first step after delay
+   */},{key:"startProcess",value:function startProcess(){var _this=this;setTimeout(function(){_this.nextProcess()},this.delay)}/**
+   * Next step in spinner process
+   */},{key:"nextProcess",value:function nextProcess(){this.currentProcess=this.currentProcess+1;this.message=this.messages&&this.messages[this.currentProcess]}/**
+   * Set finish to true
+   */},{key:"setFinished",value:function setFinished(){this.finish=!0}/**
+   * Set finish to false
+   */},{key:"unsetFinished",value:function unsetFinished(){this.finish=!1}}],[{key:"is",get:function get(){return"cells-molecule-spinner"}},{key:"properties",get:function get(){return{/**
+       * Informative message.
+       */message:{type:String,value:""},/**
+       * Informative messages of process spinner.
+       */messages:{type:Array,observer:"reset",value:function value(){return["cells-molecule-spinner-loading-products","cells-molecule-spinner-loading-credentials","cells-molecule-spinner-loading-connection"]}},/**
+       * Type Process Spinner
+       */process:{type:Boolean,value:!1,reflectToAttribute:!0,observer:"init"},/**
+       * Current Process
+       */currentProcess:Number,/**
+       * Delay first process
+       */delay:Number,/**
+       * If true, pause spinner and show finish tick.
+       */finish:{type:Boolean,value:!1,reflectToAttribute:!0},/**
+       * Icon to show while spinner play.
+       */startIcon:{type:String,value:""},/**
+       * Icon to show when spinner finish.
+       */endIcon:{type:String,value:""},_icon:String}}},{key:"observers",get:function get(){return["_iconChange(startIcon, endIcon, finish)"]}}]);return CellsMoleculeSpinner}(Polymer.mixinBehaviors([CellsBehaviors.i18nBehavior],Polymer.Element));window.customElements.define(CellsMoleculeSpinner.is,CellsMoleculeSpinner);</script></dom-module><dom-module id="cells-login-view-styles" assetpath="cells-login-view/"><template><style>:host{align-items:center;box-sizing:border-box;display:flex;flex-direction:column;height:100%;justify-content:center;overflow:hidden;background-color:var(--cells-login-view-background-color, var(--bbva-core-blue, #004481));--image-height:var(--cells-login-view-login-image-height, 40vh);--cells-molecule-input-has-content-wrapper:{border-bottom:1px solid var(--bbva-white, #ffffff);};--cells-molecule-input-text-error-message-wrapper:{color:var(--bbva-light-coral, #f79698);margin-bottom:rem(10px);};--cells-molecule-input-text-error-message-wrapper_-_margin-bottom:0.625rem;--cells-molecule-input-text-error:{color:var(--bbva-white, #ffffff);font-size:var(--cells-text-size-14);};--cells-st-button-secondary-disabled:{background-color:rgba(233, 233, 233, .5);opacity:.8;};@apply --cells-login-view;}:host([hidden]),
+[hidden]{display:none !important;}*,
+*:before,
+*:after{box-sizing:inherit;}.login-view,
+.spinner-view{display:flex;flex:1;flex-direction:column;position:relative;height:100%;width:100%;@apply --cells-login-view-views;}.login-view{@apply --cells-login-view-login-view;}.login-view .header{height:var(--image-height);position:relative;@apply --cells-login-view-login-header;}.login-view .header .before{display:block;content:"";height:50px;width:50px;position:absolute;bottom:0;left:0;background-color:var(--bbva-dark-teal, #02A5A5);z-index:1;transition:-webkit-transform .3s;transition:transform .3s;transition:transform .3s, -webkit-transform .3s;will-change:transform;@apply --cells-login-view-login-header-before;}.login-view .header-bg{display:block;height:100%;image-rendering:-webkit-optimize-contrast;-o-object-fit:cover;object-fit:cover;-o-object-position:50% 0;object-position:50% 0;transition:opacity 300ms cubic-bezier(0.39, 0.58, 0.57, 1), -webkit-transform 200ms cubic-bezier(0.39, 0.58, 0.57, 1);transition:transform 200ms cubic-bezier(0.39, 0.58, 0.57, 1), opacity 300ms cubic-bezier(0.39, 0.58, 0.57, 1);transition:transform 200ms cubic-bezier(0.39, 0.58, 0.57, 1), opacity 300ms cubic-bezier(0.39, 0.58, 0.57, 1), -webkit-transform 200ms cubic-bezier(0.39, 0.58, 0.57, 1);opacity:1;width:100%;will-change:transform;@apply --cells-login-view-login-header-bg;}.login-view .form{bottom:0;left:0;padding:2rem 2.5rem 0.625rem;position:absolute;right:0;top:0;-webkit-transform:translateY(var(--image-height));transform:translateY(var(--image-height));transition:-webkit-transform 200ms cubic-bezier(0.39, 0.58, 0.57, 1);transition:transform 200ms cubic-bezier(0.39, 0.58, 0.57, 1);transition:transform 200ms cubic-bezier(0.39, 0.58, 0.57, 1), -webkit-transform 200ms cubic-bezier(0.39, 0.58, 0.57, 1);will-change:transform;background-image:linear-gradient(to top left, rgba(0, 68, 129, 0.1) 50%, transparent 50%), linear-gradient(to top left, rgba(0, 68, 129, 0.1) 50%, transparent 50%), linear-gradient(to bottom left, rgba(0, 68, 129, 0.1) 50%, transparent 50%), linear-gradient(to top left, rgba(0, 68, 129, 0.1) 50%, transparent 50%), linear-gradient(#004481 100%, transparent 0);background-size:92.5% 12%, 92.5% 30%, 100% 100%, 100% 100%, 100% 100%;background-repeat:no-repeat;background-position:right bottom, right bottom, left top, left top, 0 0;background-blend-mode:multiply;--cells-molecule-input-invalid-field-label:{color:var(--bbva-white, #fff);};--cells-molecule-input-wrapper:{border-bottom:1px solid var(--bbva-medium-blue, #237ABA);};--cells-molecule-input-invalid-wrapper:{background-color:var(--bbva-light-coral, #ffffff);border-bottom:1px solid var(--bbva-white, #ffffff);};--cells-credentials-form-fake-selector:{border-bottom:1px solid var(--bbva-white, #237ABA);};--cells-credentials-form-fake-selector-placeholder:{color:var(--bbva-white);};--cells-credentials-form-fake-selector-label-selected-color:var(--bbva-white, #ffffff);--cells-credentials-form-fake-selector-bg-color:var(--bbva-core-blue, #004481);--cells-molecule-input-invalid-field-label_-_color:var(--bbva-white, #ffffff);--cells-molecule-input-background-color:var(--cells-login-view-login-form-input-background-color, var(--bbva-core-blue, #004481));--cells-molecule-input-field-label-color:var(--cells-login-view-login-form-input-label-color, var(--bbva-white, #fff));--cells-molecule-input-field-label:{color:var(--bbva-white, #fff);opacity:1;font-size:var(--cells-text-size-16, 1rem);@apply --cells-fontDefaultLight;@apply --cells-login-view-login-form-input-label;};--cells-molecule-input-field-input-color:var(--cells-login-view-login-form-input-text-color, var(--bbva-white, #fff));--cells-molecule-input-button-color:var(--cells-login-view-login-form-input-icon-color, var(--bbva-white, #fff));--cells-molecule-input-button-hover-color:var(--cells-login-view-login-form-input-icon-hover-color, var(--bbva-white, #fff));--cells-molecule-input-button-active-color:var(--cells-login-view-login-form-input-icon-active-color, var(--bbva-white, #fff));--cells-molecule-input-button-focus-color:var(--cells-login-view-login-form-input-icon-focus-color, var(--bbva-white, #fff));--cells-st-button-bg-color-secondary-disabled:var(--cells-login-view-login-form-submit-disabled-bg-color, var(--bbva-teal, #2dcccd));--cells-st-button-secondary:{border-radius:2px;min-height:3.125rem;@apply --cells-login-view-login-form-submit;};--cells-st-button-text-color-transparent:var(--cells-login-view-login-form-link-color, var(--bbva-white, #fff));--cells-st-button-text-color-transparent-hover:var(--cells-login-view-login-form-link-hover-color, var(--bbva-white, #fff));--cells-st-button-text-color-transparent-active:var(--cells-login-view-login-form-link-active-color, var(--bbva-white, #fff));--cells-credentials-form-user:{color:var(--cells-login-view-login-form-user-color, var(--bbva-white, #fff));@apply --cells-login-view-login-form-user;};--cells-credentials-form-extra-actions:{flex-direction:column-reverse;@apply --cells-login-view-login-form-extra-actions;};--cells-credentials-form-forgotten-pwd:{margin-bottom:20px;@apply --cells-login-view-login-form-forgotten-pwd;};--cells-credentials-form-actions-buttons:{font-weight:700;@apply --cells-login-view-login-form-links;};--cells-credentials-form-register:{color:var(--cells-login-view-login-form-register-color, var(--bbva-white, #fff));position:absolute;bottom:calc(0px + 40vh);left:50%;-webkit-transform:translateX(-50%) translateY(0);transform:translateX(-50%) translateY(0);width:100%;transition:opacity 333ms 300ms, -webkit-transform 300ms 300ms;transition:opacity 333ms 300ms, transform 300ms 300ms;transition:opacity 333ms 300ms, transform 300ms 300ms, -webkit-transform 300ms 300ms;@apply --cells-login-view-login-form-register-text;};--cells-credentials-form-submit:{margin:0;@apply --cells-login-view-login-form-submit;};--cells-credentials-form-submit:{margin:0;@apply --cells-login-view-login-form-submit;};@apply --cells-login-view-login-form;}@supports not (background-blend-mode: multiply){.login-view .form{background-color:var(--cells-login-view-background-color, var(--bbva-core-blue, #004481));background-image:var(--cells-login-view-background-image, url("//bbva-files.s3.amazonaws.com/cells/assets/glomo/images/access/fractal-bbva-core-blue.svg"));background-repeat:no-repeat;background-size:cover;background-position:center;}}.login-view.non-move-up.maximized{@apply --cells-login-view-login-nonmoveup-maximized;}.login-view.non-move-up.maximized .header{@apply --cells-login-view-login-nonmoveup-maximized-header;}.login-view.non-move-up.maximized .header .before{@apply --cells-login-view-login-nonmoveup-maximized-header-before;}.login-view.non-move-up.maximized .header .header-bg{@apply --cells-login-view-login-nonmoveup-maximized-header-bg;}.login-view.move-up{@apply --cells-login-view-login-moveup;}.login-view.move-up .form{--cells-credentials-form-extra-actions:{flex-direction:column-reverse;@apply --cells-login-view-login-form-extra-actions;};@apply --cells-login-view-login-moveup-form;}.login-view.move-up.maximized{@apply --cells-login-view-login-moveup-maximized;}.login-view.move-up.maximized .header{@apply --cells-login-view-login-moveup-maximized-header;}.login-view.move-up.maximized .header .before{-webkit-transform:translateX(-100%);transform:translateX(-100%);@apply --cells-login-view-login-moveup-maximized-header-before;}.login-view.move-up.maximized .header .header-bg{opacity:0;-webkit-transform:translateY(-1rem);transform:translateY(-1rem);@apply --cells-login-view-login-moveup-maximized-header-bg;}.login-view.move-up.maximized .form{-webkit-transform:translateY(0);transform:translateY(0);--cells-credentials-form-form:{-webkit-transform:translateY(2.5rem);transform:translateY(2.5rem);transition:-webkit-transform 210ms cubic-bezier(0.39, 0.58, 0.57, 1);transition:transform 210ms cubic-bezier(0.39, 0.58, 0.57, 1);transition:transform 210ms cubic-bezier(0.39, 0.58, 0.57, 1), -webkit-transform 210ms cubic-bezier(0.39, 0.58, 0.57, 1);will-change:transform;@apply --cells-login-view-login-moveup-maximized-form-form;};--cells-credentials-form-register:{opacity:0;-webkit-transform:translateX(-50%) translateY(10px);transform:translateX(-50%) translateY(10px);@apply --cells-login-view-login-moveup-maximized-form-register;};--cells-credentials-form-extra-actions:{flex-direction:column-reverse;@apply --cells-login-view-login-form-extra-actions;};@apply --cells-login-view-login-moveup-maximized-form;}.login-view.move-up.maximized.is-logged{@apply --cells-login-view-login-moveup-maximized-islogged;}.login-view.move-up.maximized.is-logged .form{--cells-credentials-form-extra-actions:{flex-direction:column-reverse;@apply --cells-login-view-login-form-extra-actions;};--cells-credentials-form-form:{@apply --cells-login-view-login-moveup-maximized-islogged-form;-webkit-transform:translateY(2.25rem);transform:translateY(2.25rem);transition:-webkit-transform 200ms cubic-bezier(0.39, 0.58, 0.57, 1);transition:transform 200ms cubic-bezier(0.39, 0.58, 0.57, 1);transition:transform 200ms cubic-bezier(0.39, 0.58, 0.57, 1), -webkit-transform 200ms cubic-bezier(0.39, 0.58, 0.57, 1);will-change:transform;};@apply --cells-login-view-login-moveup-maximized-islogged-form-form;}.login-view.small-thumb{--image-height:var(--cells-login-view-login-image-height-small, 27vh);}.login-view.small-thumb .header .header-bg{-o-object-position:inherit;object-position:inherit;}.login-view.small-thumb .form{--cells-credentials-form-extra-actions:{flex-direction:column-reverse;@apply --cells-login-view-login-form-extra-actions;};--cells-credentials-form-register:{color:var(--cells-login-view-login-form-register-color, var(--bbva-white, #fff));position:absolute;bottom:calc(0px + 27vh);left:50%;-webkit-transform:translateX(-50%) translateY(0);transform:translateX(-50%) translateY(0);width:100%;transition:opacity 333ms 300ms, -webkit-transform 300ms 300ms;transition:opacity 333ms 300ms, transform 300ms 300ms;transition:opacity 333ms 300ms, transform 300ms 300ms, -webkit-transform 300ms 300ms;};}.spinner-view{--cells-molecule-spinner-ring-content-color:var(--cells-login-view-spinner-ring-content-color, rgba(255, 255, 255, 0.2));--cells-molecule-spinner-ring-border-width--finished:2px;@apply --cells-login-view-spinner;}.spinner-view .spinner{min-height:14rem;position:absolute;top:300px;-webkit-transform:translateY(-50%);transform:translateY(-50%);width:100%;@apply --cells-login-view-spinner-spinner;}.spinner-view .spinner[process]{top:0;-webkit-transform:inherit;transform:inherit;--cells-molecule-spinner-wrapper:{height:100%;};@apply --cells-login-view-spinner-spinner;}:host(.animated) .login-view .header .before,
+:host([animated]) .login-view .header .before{height:100%;width:100%;-webkit-transform:translateX(100%);transform:translateX(100%);will-change:transform, width;-webkit-animation:translateBox 0.4s ease-in-out 0.3s, widthAquaBox 0.5s cubic-bezier(0.77, 0, 0.175, 1) 0.7s, heightAquaBox 0.5s cubic-bezier(0.77, 0, 0.175, 1) 1.1s;animation:translateBox 0.4s ease-in-out 0.3s, widthAquaBox 0.5s cubic-bezier(0.77, 0, 0.175, 1) 0.7s, heightAquaBox 0.5s cubic-bezier(0.77, 0, 0.175, 1) 1.1s;-webkit-animation-fill-mode:forwards;animation-fill-mode:forwards;opacity:1;transition:opacity .3s;@apply --cells-login-view-animated-header-before;}@-webkit-keyframes translateBox{0%{-webkit-transform:translateX(100%);transform:translateX(100%);}100%{-webkit-transform:translateX(0);transform:translateX(0);}}@keyframes translateBox{0%{-webkit-transform:translateX(100%);transform:translateX(100%);}100%{-webkit-transform:translateX(0);transform:translateX(0);}}@-webkit-keyframes widthAquaBox{0%{width:100%;}100%{width:50px;}}@keyframes widthAquaBox{0%{width:100%;}100%{width:50px;}}@-webkit-keyframes heightAquaBox{0%{height:100%;}100%{height:50px;}}@keyframes heightAquaBox{0%{height:100%;}100%{height:50px;}}:host(.animated) .login-view .header .header-bg,
+:host([animated]) .login-view .header .header-bg{opacity:0;-webkit-animation:showImg .2s ease-in-out .7s;animation:showImg .2s ease-in-out .7s;-webkit-animation-fill-mode:forwards;animation-fill-mode:forwards;@apply --cells-login-view-animated-header-bg;}@-webkit-keyframes showImg{0%{opacity:0;}100%{opacity:1;}}@keyframes showImg{0%{opacity:0;}100%{opacity:1;}}:host(.animated) .login-view .form .before,
+:host(.animated) .login-view .form .after,
+:host([animated]) .login-view .form .before,
+:host([animated]) .login-view .form .after{position:absolute;content:"";display:block;opacity:1;top:0;left:0;@apply --cells-login-view-animated-cells-credential-form-before-after;}:host(.animated) .login-view .form .before,
+:host([animated]) .login-view .form .before{background-color:var(--bbva-dark-core-blue, #043263);height:100%;width:100%;z-index:2;will-change:opacity, height;-webkit-animation:hideBlock .5s ease 2s;animation:hideBlock .5s ease 2s;-webkit-animation-fill-mode:forwards;animation-fill-mode:forwards;@apply --cells-login-view-animated-cells-credential-form-before;}:host(.animated) .login-view .form .after,
+:host([animated]) .login-view .form .after{background-color:var(--bbva-core-blue, #004481);height:50px;width:0;z-index:3;will-change:transform, opacity, height, width;-webkit-animation:widthBlueBox 0.5s cubic-bezier(0.77, 0, 0.175, 1) 1.2s, heightBlueBox 0.5s cubic-bezier(0.77, 0, 0.175, 1) 1.7s, hideBlock 0.5s ease 2s;animation:widthBlueBox 0.5s cubic-bezier(0.77, 0, 0.175, 1) 1.2s, heightBlueBox 0.5s cubic-bezier(0.77, 0, 0.175, 1) 1.7s, hideBlock 0.5s ease 2s;-webkit-animation-fill-mode:forwards;animation-fill-mode:forwards;@apply --cells-login-view-animated-cells-credential-form-after;}@-webkit-keyframes hideBlock{0%{opacity:1;height:100%;}99%{opacity:0;height:100%;}100%{opacity:0;height:0;}}@keyframes hideBlock{0%{opacity:1;height:100%;}99%{opacity:0;height:100%;}100%{opacity:0;height:0;}}@-webkit-keyframes widthBlueBox{0%{width:0;}100%{width:100%;}}@keyframes widthBlueBox{0%{width:0;}100%{width:100%;}}@-webkit-keyframes heightBlueBox{0%{height:50px;}100%{height:100%;}}@keyframes heightBlueBox{0%{height:50px;}100%{height:100%;}}:host(.animated) .login-view.move-up.maximized .header .before,
+:host([animated]) .login-view.move-up.maximized .header .before{opacity:0;transition:opacity .1s;@apply --cells-login-view-animated-move-up-maximized-header-before;}:host(.animated) .login-view.move-up.maximized cells-credentials-form[animated],
+:host([animated]) .login-view.move-up.maximized cells-credentials-form[animated]{--cells-credentials-form-animated-extra-actions-p:{color:var(--cells-login-view-login-form-register-color, var(--bbva-white, #fff));left:-100%;};--cells-credentials-form-register:{position:absolute;};@apply --cells-login-view-animated-move-up-maximized-credentials-form;}cells-credentials-form[animated]{--cells-credentials-form-animated-user:{-webkit-animation-delay:2.2s;animation-delay:2.2s;};--cells-credentials-form-animated-change-user:{-webkit-animation-delay:2.2s;animation-delay:2.2s;};--cells-credentials-form-animated-inputs-button:{-webkit-animation-delay:2.2s;animation-delay:2.2s;};--cells-credentials-form-animated-inputs-button-molecule-input-not-last:{-webkit-animation-delay:2.3s;animation-delay:2.3s;};--cells-credentials-form-animated-cells-molecule-input-first:{-webkit-animation-delay:2.2s;animation-delay:2.2s;};--cells-credentials-form-animated-cells-molecule-input-last:{-webkit-animation-delay:2.2s;animation-delay:2.2s;};--cells-credentials-form-animated-submit-button:{-webkit-animation-delay:2s;animation-delay:2s;};--cells-credentials-form-animated-extra-actions-p:{-webkit-animation-delay:2s;animation-delay:2s;left:0;color:var(--cells-login-view-login-form-register-color, var(--bbva-white, #fff));};@apply --cells-login-view-animated-credentials-form;}</style></template></dom-module><dom-module id="cells-login-view" assetpath="cells-login-view/"><template><style include="cells-login-view-styles cells-login-view-shared-styles"></style><div id="loginView" class$="login-view [[_checkedMaximized(maximized)]] [[_checkedUsername(user.username)]] [[_checkIOS(isIOS)]] {{smallThumb}}" hidden$="[[loading]]"><dom-if if="[[headerImage]]"><template><div class="header"><div class="before"></div><img class="header-bg" id="heroImage" src$="[[headerImage]]" alt="[[headerImageAlt]]"></div></template></dom-if><div class="form"><div class="before"></div><cells-credentials-form id="credentialsUserPwd" on-login="_doLogin" on-request-change-user="_changeUser" autofocus="[[autofocus]]" icons-size="[[iconsSize]]" user-name="{{user.username}}" user-id="[[user.userId]]" user-password="{{user.password}}" document-type="[[user.documentType]]" register="[[allowRegistration]]" clear-id-icon="[[clearIdIcon]]" clear-pwd-icon="[[clearPwdIcon]]" toggle-pwd-icon="[[togglePwdIcon]]" toggle-pwd-icon-toggled="[[togglePwdIconToggled]]" on-cells-molecule-input-focus="_onInputFocus" on-cells-molecule-input-blur="_onInputBlur" input-user-options="[[inputUserOptions]]" autocapitalize$="[[autocapitalize]]" animated$="[[animated]]" backspace-pwd-full-delete="[[backspacePwdFullDelete]]"><slot></slot></cells-credentials-form><div class="after"></div></div></div><div class="spinner-view" hidden$="[[!loading]]"><cells-molecule-spinner id="spinner" class="spinner" start-icon="[[startIcon]]" end-icon="[[endIcon]]" finish="[[loadingEnd]]" messages="[[messages]]" delay="[[loadingDelay]]" current-process="[[loadingCurrentProcess]]" process="[[loadingProcess]]"></cells-molecule-spinner></div></template><script>/**
+ * ![cells-login-view screenshot](cells-login-view.png)
+ *
+ * # cells-login-view
+ *
+ * ![Certificated](https://img.shields.io/badge/certificated-yes-brightgreen.svg) ![Polymer 2.x](https://img.shields.io/badge/Polymer-2.x-green.svg)
+ *
+ * [Demo of component in Cells Catalog](https://catalogs.platform.bbva.com/cells)
+ *
+ * `cells-login-view` contains fields, buttons and links to show a complete login process view. It is mainly composed by a header image, `cells-credentials-form` for the login form, and `cells-molecule-spinner` for the waiting animation. The component applies animations to the login form when the inputs are focused.
+ *
+ * The component can receive the login event from `cells-credentials-form` and fires it upwards. `loading` boolean attribute can be used to show or hide the spinner.
+ *
+ * Register button can be hidden or shown using the `allow-registration` attribute.
+ *
+ * Icons can be passed to the component in order to show clear and toggle icons in the inputs fields (as in `cells-credentials-form`), and start/end icons in the spinner (as in `cells-molecule-spinner`).
+ *
+ * Use the 'animated' property to apply an initial visual animation to the login and the form or the class animated just to animate the login not the form
+ *
+ * Example:
+ * ```html
+ * <cells-login-view
+ *   allow-registration
+ *   clear-id-icon="coronita:close"
+ *   clear-pwd-icon="coronita:close"
+ *   toggle-pwd-icon="coronita:visualize"
+ *   toggle-pwd-icon-toggled="coronita:hide"
+ *   start-icon="coronita:lock"
+ *   end-icon="coronita:unlock"
+ *   header-image="http://bbva-files.s3.amazonaws.com/cells/assets/glomo/images/access/bg-login.jpg">
+ * </cells-login-view>
+ * ```
+ *
+ * The component can optional use inputUserOptions configuration object to validate and mask input user login value.
+ *
+ * ```html
+ * <cells-login-view
+ *   allow-registration
+ *   clear-id-icon="coronita:close"
+ *   clear-pwd-icon="coronita:close"
+ *   toggle-pwd-icon="coronita:visualize"
+ *   toggle-pwd-icon-toggled="coronita:hide"
+ *   start-icon="coronita:lock"
+ *   end-icon="coronita:unlock"
+ *   input-user-options="[[inputUserOptions]]">
+ * </cells-login-view>
+ * ```
+ * ```js
+ *   {
+ *     autoValidate: true,
+ *     inputStatusValidate: true,
+ *     inputType: 'text',
+ *     allowedValue: "rut",
+ *     errorMessage: 'rutMsg',
+ *     errorMessageIcon: 'coronita:error',
+ *     mask: 'rut',
+ *     maxLength: '13'
+ *   }
+ *
+ * ```
+ *
+ * ## Animation in iOS devices
+ * iOS tries to natively center in screen an input field when it's focused and keyboard is shown. So, running translate animations on input fields depending on focus events can cause the input to be non-centered or even off-screen.
+ *
+ * To prevent this, `cells-device-behavior` is used to detect iOS devices, and to not apply translate animations in those cases. By default, opacity is changed on the header image when input is focused.
+ *
+ * ## Icons
+ *
+ * Since this component uses icons, it will need an [iconset](https://bbva.cellsjs.com/guides/best-practices/cells-icons.html) in your project as an [application level dependency](https://bbva.cellsjs.com/guides/advanced-guides/application-level-dependencies.html). In fact, this component uses an iconset in its demo.
+ *
+ *
+ * ## Styling
+ *
+ * The following custom properties and mixins are available for styling:
+ *
+ * ### Custom Properties
+ * | Custom Property                                        | Selector                                                                | CSS Property                                                | Value                                                                                             |
+ * | ------------------------------------------------------ | ----------------------------------------------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+ * | --bbva-white                                           | :host > --cells-molecule-input-has-content-wrapper:                     | border-bottom                                               |  ![#ffffff](https://placehold.it/15/ffffff/000000?text=+) #ffffff                                 |
+ * | --bbva-light-coral                                     | :host > --cells-molecule-input-text-error-message-wrapper:              | color                                                       |  ![#f79698](https://placehold.it/15/f79698/000000?text=+) #f79698                                 |
+ * | --bbva-white                                           | :host > --cells-molecule-input-text-error:                              | color                                                       |  ![#ffffff](https://placehold.it/15/ffffff/000000?text=+) #ffffff                                 |
+ * | --cells-text-size-14                                   | :host > --cells-molecule-input-text-error:                              | font-size                                                   | `No fallback value`                                                                               |
+ * | --cells-login-view-background-color                    | :host                                                                   | background-color                                            | --bbva-core-blue                                                                                  |
+ * | --cells-login-view-login-image-height                  | :host                                                                   | --image-height                                              |  40vh                                                                                             |
+ * | --image-height                                         | .login-view .header                                                     | height                                                      | `No fallback value`                                                                               |
+ * | --bbva-dark-teal                                       | .login-view .header .before                                             | background-color                                            |  ![#02A5A5](https://placehold.it/15/02A5A5/000000?text=+) #02A5A5                                 |
+ * | --bbva-white                                           | .login-view .form > --cells-molecule-input-invalid-field-label:         | color                                                       |  ![#fff](https://placehold.it/15/fff/000000?text=+) #fff                                          |
+ * | --bbva-medium-blue                                     | .login-view .form > --cells-molecule-input-wrapper:                     | border-bottom                                               |  ![#237ABA](https://placehold.it/15/237ABA/000000?text=+) #237ABA                                 |
+ * | --bbva-light-coral                                     | .login-view .form > --cells-molecule-input-invalid-wrapper:             | background-color                                            |  ![#ffffff](https://placehold.it/15/ffffff/000000?text=+) #ffffff                                 |
+ * | --bbva-white                                           | .login-view .form > --cells-molecule-input-invalid-wrapper:             | border-bottom                                               |  ![#ffffff](https://placehold.it/15/ffffff/000000?text=+) #ffffff                                 |
+ * | --bbva-white                                           | .login-view .form > --cells-credentials-form-fake-selector:             | border-bottom                                               |  ![#237ABA](https://placehold.it/15/237ABA/000000?text=+) #237ABA                                 |
+ * | --bbva-white                                           | .login-view .form > --cells-credentials-form-fake-selector-placeholder: | color                                                       | `No fallback value`                                                                               |
+ * | --bbva-white                                           | .login-view .form > --cells-molecule-input-field-label:                 | color                                                       |  ![#fff](https://placehold.it/15/fff/000000?text=+) #fff                                          |
+ * | --cells-text-size-16                                   | .login-view .form > --cells-molecule-input-field-label:                 | font-size                                                   |  1rem                                                                                             |
+ * | --cells-login-view-login-form-user-color               | .login-view .form > --cells-credentials-form-user:                      | color                                                       | --bbva-white                                                                                      |
+ * | --cells-login-view-login-form-register-color           | .login-view .form > --cells-credentials-form-register:                  | color                                                       | --bbva-white                                                                                      |
+ * | --image-height                                         | .login-view .form                                                       | -webkit-transform                                           | `No fallback value`                                                                               |
+ * | --image-height                                         | .login-view .form                                                       | transform                                                   | `No fallback value`                                                                               |
+ * | --cells-login-view-background-color                    | .login-view .form                                                       | background-color                                            | --bbva-core-blue                                                                                  |
+ * | --cells-login-view-background-image                    | .login-view .form                                                       | background-image                                            |  url("//bbva-files.s3.amazonaws.com/cells/assets/glomo/images/access/fractal-bbva-core-blue.svg") |
+ * | --bbva-white                                           | .login-view .form                                                       | --cells-credentials-form-fake-selector-label-selected-color |  ![#ffffff](https://placehold.it/15/ffffff/000000?text=+) #ffffff                                 |
+ * | --bbva-core-blue                                       | .login-view .form                                                       | --cells-credentials-form-fake-selector-bg-color             |  ![#004481](https://placehold.it/15/004481/000000?text=+) #004481                                 |
+ * | --bbva-white                                           | .login-view .form                                                       | color                                                       |  ![#ffffff](https://placehold.it/15/ffffff/000000?text=+) #ffffff                                 |
+ * | --cells-login-view-login-form-input-background-color   | .login-view .form                                                       | --cells-molecule-input-background-color                     | --bbva-core-blue                                                                                  |
+ * | --cells-login-view-login-form-input-label-color        | .login-view .form                                                       | --cells-molecule-input-field-label-color                    | --bbva-white                                                                                      |
+ * | --cells-login-view-login-form-input-text-color         | .login-view .form                                                       | --cells-molecule-input-field-input-color                    | --bbva-white                                                                                      |
+ * | --cells-login-view-login-form-input-icon-color         | .login-view .form                                                       | --cells-molecule-input-button-color                         | --bbva-white                                                                                      |
+ * | --cells-login-view-login-form-input-icon-hover-color   | .login-view .form                                                       | --cells-molecule-input-button-hover-color                   | --bbva-white                                                                                      |
+ * | --cells-login-view-login-form-input-icon-active-color  | .login-view .form                                                       | --cells-molecule-input-button-active-color                  | --bbva-white                                                                                      |
+ * | --cells-login-view-login-form-input-icon-focus-color   | .login-view .form                                                       | --cells-molecule-input-button-focus-color                   | --bbva-white                                                                                      |
+ * | --cells-login-view-login-form-submit-disabled-bg-color | .login-view .form                                                       | --cells-st-button-bg-color-secondary-disabled               | --bbva-teal                                                                                       |
+ * | --cells-login-view-login-form-link-color               | .login-view .form                                                       | --cells-st-button-text-color-transparent                    | --bbva-white                                                                                      |
+ * | --cells-login-view-login-form-link-hover-color         | .login-view .form                                                       | --cells-st-button-text-color-transparent-hover              | --bbva-white                                                                                      |
+ * | --cells-login-view-login-form-link-active-color        | .login-view .form                                                       | --cells-st-button-text-color-transparent-active             | --bbva-white                                                                                      |
+ * | --cells-login-view-login-image-height-small            | .login-view.small-thumb                                                 | --image-height                                              |  27vh                                                                                             |
+ * | --cells-login-view-login-form-register-color           | .login-view.small-thumb .form > --cells-credentials-form-register:      | color                                                       | --bbva-white                                                                                      |
+ * | --cells-login-view-spinner-ring-content-color          | .spinner-view                                                           | --cells-molecule-spinner-ring-content-color                 |  rgba(255, 255, 255, 0.2)                                                                         |
+ * | --bbva-dark-core-blue                                  | :host(.animated) .login-view .form .before                              | background-color                                            |  ![#043263](https://placehold.it/15/043263/000000?text=+) #043263                                 |
+ * | --bbva-core-blue                                       | :host(.animated) .login-view .form .after                               | background-color                                            |  ![#004481](https://placehold.it/15/004481/000000?text=+) #004481                                 |
+ * ### @apply
+ * | Mixins                                                         | Selector                                                                                | Value |
+ * | -------------------------------------------------------------- | --------------------------------------------------------------------------------------- | ----- |
+ * | --cells-login-view                                             | :host                                                                                   | {}    |
+ * | --cells-login-view-views                                       | .spinner-view                                                                           | {}    |
+ * | --cells-login-view-login-view                                  | .login-view                                                                             | {}    |
+ * | --cells-login-view-login-header                                | .login-view .header                                                                     | {}    |
+ * | --cells-login-view-login-header-before                         | .login-view .header .before                                                             | {}    |
+ * | --cells-login-view-login-header-bg                             | .login-view .header-bg                                                                  | {}    |
+ * | --cells-fontDefaultLight                                       | .login-view .form > --cells-molecule-input-field-label:                                 | {}    |
+ * | --cells-login-view-login-form-input-label                      | .login-view .form > --cells-molecule-input-field-label:                                 | {}    |
+ * | --cells-login-view-login-form-submit                           | .login-view .form > --cells-st-button-secondary:                                        | {}    |
+ * | --cells-login-view-login-form-user                             | .login-view .form > --cells-credentials-form-user:                                      | {}    |
+ * | --cells-login-view-login-form-extra-actions                    | .login-view .form > --cells-credentials-form-extra-actions:                             | {}    |
+ * | --cells-login-view-login-form-forgotten-pwd                    | .login-view .form > --cells-credentials-form-forgotten-pwd:                             | {}    |
+ * | --cells-login-view-login-form-links                            | .login-view .form > --cells-credentials-form-actions-buttons:                           | {}    |
+ * | --cells-login-view-login-form-register-text                    | .login-view .form > --cells-credentials-form-register:                                  | {}    |
+ * | --cells-login-view-login-form-submit                           | .login-view .form > --cells-credentials-form-submit:                                    | {}    |
+ * | --cells-login-view-login-form-submit                           | .login-view .form > --cells-credentials-form-submit:                                    | {}    |
+ * | --cells-login-view-login-form                                  | .login-view .form                                                                       | {}    |
+ * | --cells-login-view-login-nonmoveup-maximized                   | .login-view.non-move-up.maximized                                                       | {}    |
+ * | --cells-login-view-login-nonmoveup-maximized-header            | .login-view.non-move-up.maximized .header                                               | {}    |
+ * | --cells-login-view-login-nonmoveup-maximized-header-before     | .login-view.non-move-up.maximized .header .before                                       | {}    |
+ * | --cells-login-view-animated-move-up-maximized-credentials-form | .login-view.non-move-up.maximized cells-credentials-form[animated]                      | {}    |
+ * | --cells-login-view-animated-credentials-form                   | cells-credentials-form[animated]                                                        | {}    |
+ * | --cells-login-view-login-nonmoveup-maximized-header-bg         | .login-view.non-move-up.maximized .header .header-bg                                    | {}    |
+ * | --cells-login-view-login-moveup                                | .login-view.move-up                                                                     | {}    |
+ * | --cells-login-view-login-form-extra-actions                    | .login-view.move-up .form > --cells-credentials-form-extra-actions:                     | {}    |
+ * | --cells-login-view-login-moveup-form                           | .login-view.move-up .form                                                               | {}    |
+ * | --cells-login-view-login-moveup-maximized                      | .login-view.move-up.maximized                                                           | {}    |
+ * | --cells-login-view-login-moveup-maximized-header               | .login-view.move-up.maximized .header                                                   | {}    |
+ * | --cells-login-view-login-moveup-maximized-header-before        | .login-view.move-up.maximized .header .before                                           | {}    |
+ * | --cells-login-view-login-moveup-maximized-header-bg            | .login-view.move-up.maximized .header .header-bg                                        | {}    |
+ * | --cells-login-view-login-moveup-maximized-form-form            | .login-view.move-up.maximized .form > --cells-credentials-form-form:                    | {}    |
+ * | --cells-login-view-login-moveup-maximized-form-register        | .login-view.move-up.maximized .form > --cells-credentials-form-register:                | {}    |
+ * | --cells-login-view-login-form-extra-actions                    | .login-view.move-up.maximized .form > --cells-credentials-form-extra-actions:           | {}    |
+ * | --cells-login-view-login-moveup-maximized-form                 | .login-view.move-up.maximized .form                                                     | {}    |
+ * | --cells-login-view-login-moveup-maximized-islogged             | .login-view.move-up.maximized.is-logged                                                 | {}    |
+ * | --cells-login-view-login-form-extra-actions                    | .login-view.move-up.maximized.is-logged .form > --cells-credentials-form-extra-actions: | {}    |
+ * | --cells-login-view-login-moveup-maximized-islogged-form        | .login-view.move-up.maximized.is-logged .form > --cells-credentials-form-form:          | {}    |
+ * | --cells-login-view-login-moveup-maximized-islogged-form-form   | .login-view.move-up.maximized.is-logged .form                                           | {}    |
+ * | --cells-login-view-login-form-extra-actions                    | .login-view.small-thumb .form > --cells-credentials-form-extra-actions:                 | {}    |
+ * | --cells-login-view-spinner                                     | .spinner-view                                                                           | {}    |
+ * | --cells-login-view-spinner-spinner                             | .spinner-view .spinner                                                                  | {}    |
+ * | --cells-login-view-spinner-spinner                             | .spinner-view .spinner[process]                                                         | {}    |
+ * | --cells-login-view-animated-header-before                      | :host(.animated) .login-view .header .before                                            | {}    |
+ * | --cells-login-view-animated-header-bg                          | :host(.animated) .login-view .header .header-bg                                         | {}    |
+ * | --cells-login-view-animated-cells-credential-form-before-after | :host(.animated) .login-view .form .after                                               | {}    |
+ * | --cells-login-view-animated-cells-credential-form-before       | :host(.animated) .login-view .form .before                                              | {}    |
+ * | --cells-login-view-animated-cells-credential-form-after        | :host(.animated) .login-view .form .after                                               | {}    |
+ * | --cells-login-view-animated-move-up-maximized-header-before    | :host(.animated) .login-view.move-up.maximized .header .before                          | {}    |
+ *
+ * @polymer
+ * @cumtomElement
+ * @summary contains fields, buttons and links to show a complete login process view. It is mainly composed by a header image, `cells-credentials-form` for the login form, and `cells-molecule-spinner` for the waiting animation. The component applies animations to the login form when the inputs are focused.
+ * @extends {Polymer.Element}
+ * @demo demo/index.html
+ * @hero cells-login-view.png
+ * @composer
+ * @description Login component.
+ * @type UI
+ * @platforms android, ios, desktop
+ * @family cells-catalog-forms-family
+ */var CellsLoginView=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(CellsLoginView,_Polymer$mixinBehavio);function CellsLoginView(){babelHelpers.classCallCheck(this,CellsLoginView);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(CellsLoginView).apply(this,arguments))}babelHelpers.createClass(CellsLoginView,[{key:"reset",/*
+   * Reset login
+   */value:function reset(){this.animated=!1;this.loading=!1;this.user={};this.$.credentialsUserPwd.reset();if(this.documentType){this.set("user.documentType",this.documentType)}this.loadingEnd=!1;this.maximized=!1;this.$.spinner.reset()}/**
+   * On login error event
+   */},{key:"loginError",value:function loginError(){this.loading=!1;this.$.credentialsUserPwd.resetPassword()}/*
+   * On login event
+   */},{key:"_doLogin",value:function _doLogin(e){e.stopPropagation();this.cancelDebouncer("restore");this.set("user",e.detail);this.loading=!0;this.dispatchEvent(new CustomEvent("login",{bubbles:!0,composed:!0,detail:e.detail}));if(this.loadingProcess){this.$.spinner.startProcess()}}},{key:"loadingSuccess",value:function loadingSuccess(data){var _this=this;this.loadingEnd=!0;if(this.loadingProcess){this.$.spinner.nextProcess()}this._cacheUser(data);/**
+     * @event login
+     * Fired on login submit
+     */setTimeout(function(){_this.dispatchEvent(new CustomEvent("navigate-from-login",{bubbles:!0,composed:!0}))},this.delayNavigation)}/*
+   * The user data is correct and the login has occurred
+   */},{key:"loadingProcessNextStep",value:function loadingProcessNextStep(){this.$.spinner.nextProcess()}/**
+   * Save username. Next time user only needs to set the password.
+   * @param {Object} data
+   */},{key:"_cacheUser",value:function _cacheUser(data){if(data){/**
+       * @event navigate-from-login
+       * Fired when login has occurred
+       */this.dispatchEvent(new CustomEvent("register-device",{bubbles:!0,composed:!0,detail:{customerId:this.user.userId,firstName:data.firstName,lastName:data.lastName}}))}}/*
+   * Animate on blur input
+   */},{key:"_onInputBlur",value:function _onInputBlur(){var _this2=this;this.debounce("restore",function(){_this2.maximized=!1},100)}/*
+   * Animate on focus input
+   */},{key:"_onInputFocus",value:function _onInputFocus(){this.cancelDebouncer("restore");this.maximized=!0}/*
+   * On change user
+   */},{key:"_changeUser",value:function _changeUser(){if(!this.disableResetOnChangeUser){this.reset()}}/*
+   * Checked username
+   */},{key:"_checkedMaximized",value:function _checkedMaximized(maximized){return maximized?"maximized":""}/*
+   * Checked username
+   */},{key:"_checkedUsername",value:function _checkedUsername(username){return username?"is-logged":""}/*
+   * Checks if device is IOS and returns className
+   */},{key:"_checkIOS",value:function _checkIOS(isIOS){return isIOS?"non-move-up":"move-up"}/*
+   * Checked username and set isLogged
+   */},{key:"_IsLogged",value:function _IsLogged(username){return!!username}/**
+   * Sets document type in the user object
+   * @param {String} detail
+   */},{key:"_onDocumentTypeSelected",value:function _onDocumentTypeSelected(detail){if(!this.isLogged){this.$.credentialsUserPwd.set("documentType",detail)}}/**
+   * Computed method to check if the image thumb must be smaller.
+   * @param {String} documentType
+   * @return {String}
+   */},{key:"_computeSmallThumb",value:function _computeSmallThumb(documentType){return documentType?"small-thumb":""}}],[{key:"is",get:function get(){return"cells-login-view"}},{key:"properties",get:function get(){return{/**
+       * User to login
+       * {
+       *  userId: userId,
+       *  username: username,
+       *  password: password
+       * }
+       */user:{type:Object,notify:!0},/**
+       * Informative messages of process spinner.
+       */messages:{type:Array},/**
+       * Selected Document type.
+       */documentType:{type:Object,observer:"_onDocumentTypeSelected"},/**
+       Checks when image thumb must be smaller
+       */smallThumb:{type:String,computed:"_computeSmallThumb(documentType)"},/**
+       * Shows a register button
+       */allowRegistration:{type:Boolean,value:!1},/**
+       * Header image URL
+       */headerImage:{type:String,value:function value(){return Polymer.ResolveUrl.resolveUrl("/images/bg-login.jpg")}},/**
+       * Alt text for header image
+       */headerImageAlt:{type:String,value:""},/**
+       * Defines if the login is maximized (full screen). This will be set
+       * when the inputs are focused.
+       */maximized:{type:Boolean},/*
+       * Defines if username is currently stored
+       */isLogged:{type:Boolean,computed:"_IsLogged(user.username)"},/**
+       * Defines the loading state.
+       */loading:{type:Boolean,value:!1},/**
+       * Loading process in spinner
+       */loadingProcess:{type:Boolean,value:!1},/**
+       * Number of current process
+       */loadingCurrentProcess:Number,/**
+       * Delay of first process in spinner
+       */loadingDelay:{type:Number,value:1500},/*
+       * Ends loading login
+       */loadingEnd:{type:Boolean,value:!1},/**
+       * Size of icons
+       */iconsSize:{type:Number,value:18},/*
+       * Start icon for spinner
+       */startIcon:{type:String},/*
+       * End icon for spinner
+       */endIcon:{type:String},/*
+       * Clear icon for ID field
+       */clearIdIcon:{type:String},/*
+       * Clear icon for Password field
+       */clearPwdIcon:{type:String},/*
+       * Toggle icon for Password field
+       */togglePwdIcon:{type:String},/*
+       * Toggle icon for Password field when it's toggled
+       */togglePwdIconToggled:{type:String},/**
+       * If true, autofocus on first available input
+       */autofocus:{type:Boolean,value:!1},/**
+       * Cells molecule input validate options
+       */inputUserOptions:{type:Object,value:function value(){return{autoValidate:!1,autoValidatePassword:!1,inputStatusValidate:!1,autoMask:!0,inputType:"",allowedValue:"",allowedPasswordValue:"",errorMessage:"",errorPasswordMessage:[],errorMessageIcon:"",mask:"",passwordMask:"",maxLength:""}}},/**
+       * Delay before navigation on login success, to show the animation
+       */delayNavigation:{type:Number},/**
+       * Disabled reset on-request-change-user
+       */disableResetOnChangeUser:Boolean,/**
+       * Autocapitalize input
+       */autocapitalize:{type:String,value:"none"},/**
+       * Motion to show all the elements
+       */animated:{type:Boolean,reflectToAttribute:!0},/**
+       * Allow complete value removal if backspace key is pressed and input type is password
+       */backspacePwdFullDelete:{type:Boolean,value:!1}}}}]);return CellsLoginView}(Polymer.mixinBehaviors([CellsBehaviors.DeviceBehavior],Polymer.Element));window.customElements.define(CellsLoginView.is,CellsLoginView);</script></dom-module></div></body></html>

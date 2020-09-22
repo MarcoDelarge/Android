@@ -1,0 +1,14 @@
+<html><head></head><body><div hidden="" by-polymer-bundler=""><link rel="import" href="./cells-pdf-viewer/cells-pdf-viewer.html"><dom-module id="glomo-pdf-viewer-dm" assetpath="glomo-pdf-viewer-dm/"><template></template><script>var GlomoPdfViewerDm=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(GlomoPdfViewerDm,_Polymer$mixinBehavio);function GlomoPdfViewerDm(){babelHelpers.classCallCheck(this,GlomoPdfViewerDm);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(GlomoPdfViewerDm).apply(this,arguments))}babelHelpers.createClass(GlomoPdfViewerDm,[{key:"_srcChanged",/**
+   * @desc Setting property values with payload and dispatching event for extracted base64 value
+   * @param { Object } newVal
+   * newVal = payload binded to src property from global_doc_channel
+   */value:function _srcChanged(newVal){if(newVal){this.set("pdfTitle",newVal.title);this.set("baseSrc",this.extractBase64(newVal.multipart))}}}],[{key:"is",get:function get(){return"glomo-pdf-viewer-dm"}},{key:"properties",get:function get(){return{/**
+       * @desc Payload that contains the base64 to be extracted
+       * @type { Object }
+       */src:{type:Object,observer:"_srcChanged"},/**
+       * @desc Title extracted from multipart to be sent to header UI
+       * @type { String }
+       */pdfTitle:{type:String,notify:!0},/**
+       * @desc Extracted base64 from multipart
+       * @type { String }
+       */baseSrc:{type:String,notify:!0}}}}]);return GlomoPdfViewerDm}(Polymer.mixinBehaviors(CellsBehaviors.CellsGlomoUtilsBehavior,Polymer.Element));customElements.define(GlomoPdfViewerDm.is,GlomoPdfViewerDm);</script></dom-module></div></body></html>

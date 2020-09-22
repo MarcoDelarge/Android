@@ -1,0 +1,65 @@
+<html><head></head><body><div hidden="" by-polymer-bundler=""><dom-module id="glomo-about-info-styles" assetpath="glomo-about-info/"><template><style>:host{display:-webkit-box;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;flex-direction:column;-webkit-box-pack:center;justify-content:center;-webkit-box-align:center;align-items:center;-webkit-box-flex:1;flex:1;box-sizing:border-box;margin:0 1rem;font-family:var(--cells-fontDefault, sans-serif);--cells-key-values:{display:-webkit-box;display:flex;-webkit-box-pack:justify;justify-content:space-between;};--cells-key-values-key-span:{font-size:var(--cells-text-size-ml, 0.9375rem);line-height:1.6;};--cells-key-values-value:{font-size:var(--cells-text-size-ml, 0.9375rem);line-height:1.6;};--cells-key-values-key-color:var(--bbva-500, #666);--cells-key-values-color:var(--bbva-500, #666);--cells-key-values-key-value-margin:0;@apply --glomo-about-info;}:host([hidden]), [hidden]{display:none;}*, *:before, *:after{box-sizing:inherit;}.about-info__header{margin:1.5rem 0;max-width:4rem;}.about-info__content{width:100%;text-align:center;}.about-info__content--list{list-style:none;padding:0;margin:0;}.about-info__content--list li{margin-bottom:1rem;}*:focus{@apply --cells-global-focus;}*:active{@apply --cells-global-active;}button:active{@apply --cells-global-active;}</style></template></dom-module><dom-module id="glomo-about-info" assetpath="glomo-about-info/"><template><style include="glomo-about-info-styles glomo-about-info-shared-styles"></style><div class="about-info__header" on-click="dispatchIconClick"><img src$="[[appImage]]" alt$="[[t(appImageLabel)]]"></div><div class="about-info__content"><ul class="about-info__content--list"><template is="dom-repeat" items="[[deviceInfo]]"><li><cells-key-values key="[[t(item.key)]]" value="[[item.value]]"></cells-key-values></li></template></ul></div><template is="dom-if" if="[[showTermsConditionsButton]]"><cells-st-button class$="[[showTermsConditionsClass]]"><button on-click="_goTermsConditions">[[t(showTermsConditionsText, '_Legal conditions')]]</button></cells-st-button></template></template><script>/**
+ * @summary Component to show info about current device
+ * @customElement
+ * @polymer
+ * @extends(Polymer.Element)
+ */ /* global CellsMixins */var GlomoAboutInfo=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(GlomoAboutInfo,_Polymer$mixinBehavio);function GlomoAboutInfo(){babelHelpers.classCallCheck(this,GlomoAboutInfo);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(GlomoAboutInfo).apply(this,arguments))}babelHelpers.createClass(GlomoAboutInfo,[{key:"_goTermsConditions",/**
+    * Navigation to Conditions
+    */value:function _goTermsConditions(){this.dispatchEvent(new CustomEvent("toggle-header",{bubbles:!0,composed:!0}));this.dispatchEvent(new CustomEvent("about-open-conditions-modal",{bubbles:!0,composed:!0}))}/**
+  * Dispatch event on about icon click
+  */},{key:"dispatchIconClick",value:function dispatchIconClick(){this.dispatchEvent(new CustomEvent("about-click-icon",{bubbles:!0,composed:!0}))}}],[{key:"is",get:function get(){return"glomo-about-info"}},{key:"properties",get:function get(){return{/**
+       * Device info
+       */deviceInfo:{type:Array},/**
+       * Device info header image
+       */appImage:{type:String,value:""},/**
+       * Header image alt text
+       */appImageLabel:{type:String,value:"glomo-about-logo-label"},/**
+       * Button if
+       */showTermsConditionsButton:{type:Boolean,value:!1},/**
+       * Button text
+       */showTermsConditionsText:{type:String,value:"glomo-about-info-show-term-conditions-text"},/**
+       * Button class
+       */showTermsConditionsClass:{type:String}}}}]);return GlomoAboutInfo}(Polymer.mixinBehaviors([CellsBehaviors.i18nBehavior],Polymer.Element));window.customElements.define(GlomoAboutInfo.is,GlomoAboutInfo);</script></dom-module><dom-module id="glomo-image-modal-styles" assetpath="glomo-image-modal/"><template><style>:host{display:block;box-sizing:border-box;font-family:var(--cells-fontDefault, sans-serif);--cells-alert-box-slot-container:{display:flex;};--cells-alert-box-content-container:{display:none;};@apply --glomo-image-modal;}:host div{display:flex;}:host div img{width:100%;height:auto;}:host([hidden]), [hidden]{display:none !important;}*, *:before, *:after{font:inherit;box-sizing:inherit;}</style></template></dom-module><dom-module id="glomo-image-modal" assetpath="glomo-image-modal/"><template strip-whitespace=""><style include="glomo-image-modal-styles glomo-image-modal-shared-styles"></style><cells-alert-box id="modal" full-height="" opened="{{openModal}}" title="[[nameTitle]]" class$="[[modalClass]]"><div><img src$="[[imageAsBody]]" alt$="[[imageAsBodyAlt]]" width$="[[imageAsBodyWidth]]"></div></cells-alert-box></template><script>/**
+  `<glomo-image-modal>` Description.
+
+  Example:
+
+  ```html
+  <glomo-image-modal></glomo-image-modal>
+  ```
+
+  ## Styling
+  The following custom properties and mixins are available for styling:
+
+  ### Custom Properties
+  | Custom Property     | Selector | CSS Property | Value       |
+  | ------------------- | -------- | ------------ | ----------- |
+  | --cells-fontDefault | :host    | font-family  |  sans-serif |
+  ### @apply
+  | Mixins    | Selector | Value |
+  | --------- | -------- | ----- |
+  | --glomo-image-modal | :host    | {} |
+
+  * @customElement
+  * @polymer
+  * @extends {Polymer.Element}
+  * @demo demo/index.html
+*/var GlomoImageModal=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(GlomoImageModal,_Polymer$mixinBehavio);function GlomoImageModal(){babelHelpers.classCallCheck(this,GlomoImageModal);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(GlomoImageModal).apply(this,arguments))}babelHelpers.createClass(GlomoImageModal,null,[{key:"is",get:function get(){return"glomo-image-modal"}},{key:"properties",get:function get(){return{/**
+       * Open modal state
+       * @type {Boolean}
+       */openModal:{type:Boolean,value:!1},/**
+      * Name title
+      * @type {String}
+      */nameTitle:{type:String,value:"glomo-image-modal-title"},/**
+      * Image to show in body
+      * @type {String}
+      */imageAsBody:{type:String},/**
+      * Body image alt
+      * @type {String}
+      */imageAsBodyAlt:{type:String,value:""},/**
+      * Width image body
+      * @type {String}
+      */imageAsBodyWidth:{type:String,value:"auto"},/**
+      * Class applied to cells alert box
+      * @type {Number}
+      */modalClass:{type:String,value:"blue-header"}}}}]);return GlomoImageModal}(Polymer.mixinBehaviors([CellsBehaviors.i18nBehavior],Polymer.Element));customElements.define(GlomoImageModal.is,GlomoImageModal);</script></dom-module></div></body></html>

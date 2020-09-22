@@ -1,0 +1,66 @@
+{
+  "data": {
+    "contracts": [{
+      "id": "Uvn6wi1Rh6AlpuolQNJFQW4AgznVmiRMQY2nEA1NXo_Mh0o8unWHCw",
+      "number": "00740010001100249762",
+      "numberType": {
+        "id": "CCC",
+        "name": "CCC"
+      },
+      "status": {
+        "id": "ACTIVE",
+        "name": "CUENTA ACTIVA"
+      },
+      "alias": "0008AH9762",
+      "singnedAuthorization": {
+        "id": "SIMPLE",
+        "name": "Cuenta Simple"
+      },
+      "product": {
+        "id": "AH",
+        "name": "Cuenta de Ahorro"
+      },
+      "productType": "ACCOUNTS",
+      "subProductType": {
+        "id": "0230",
+        "name": "TARJETA NOMINA BASIC"
+      },
+      "detail": {
+        "level": "04",
+        "indicators": [{
+            "id": "IS_PAYROLL_ACCOUNT",
+            "name": "Indica si la cuenta es de nómina",
+            "isActive": false
+          },
+          {
+            "id": "IS_PRINCIPAL_ACCOUNT",
+            "name": "Indica si la cuenta es eje",
+            "isActive": false
+          },
+          {
+            "id": "HAS_POCKETS",
+            "name": "Indica si la cuenta tiene pockets",
+            "isActive": false
+          }
+        ],
+        "specificAmounts": [{
+            "id": "CURRENT_BALANCE",
+            "name": "Saldo actual",
+            "amounts": [{
+              "amount": 123456214450.00,
+              "currency": "MXN"
+            }]
+          },
+          {
+            "id": "PENDING_DEPOSIT_BALANCE",
+            "name": "Saldo buen cobro",
+            "amounts": [{
+              "amount": 0.00,
+              "currency": "MXN"
+            }]
+          }
+        ]
+      }
+    }]
+  }
+}

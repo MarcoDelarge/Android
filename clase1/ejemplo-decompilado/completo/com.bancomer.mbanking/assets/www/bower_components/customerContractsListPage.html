@@ -1,0 +1,43 @@
+<html><head></head><body><div hidden="" by-polymer-bundler=""><dom-module id="glomo-customer-contracts-styles" assetpath="glomo-customer-contracts/"><template><style>:host{display:block;box-sizing:border-box;font-family:var(--cells-fontDefault, sans-serif);@apply --glomo-customer-contracts;}:host([hidden]), [hidden]{display:none !important;}*, *:before, *:after{font:inherit;box-sizing:inherit;}*:focus{@apply --cells-global-focus;}*:active{@apply --cells-global-active;}button:active{@apply --cells-global-active;}.contracts-note{text-align:center;padding:var(--gutter-height-3);font-size:var(--cells-text-size-m);background:var(--bbva-white);@apply --glomo-customer-contracts-contracts-note;}.contracts-list-wrapper{background:var(--bbva-100);height:-webkit-fill-available;@apply --glomo-customer-contracts-contracts-list-wrapper;}.contracts-list{background-color:var(--bbva-100);padding:30px;height:100%;@apply --glomo-customer-contracts-contracts-list;}.contracts-list-item{padding:30px;background-color:var(--bbva-white);border-radius:1px;margin:5px;@apply --glomo-customer-contracts-contracts-list-item;}.contracts-list-item-content{color:var(--bbva-dark-medium-blue);display:flex;@apply (--cells-fontDefaultBold);font-size:var(--cells-text-size-14);@apply --glomo-customer-contracts-contracts-list-item-content;}.contracts-list-item-title{padding-left:var(--gutter-width-1);@apply --glomo-customer-contracts-list-title-content;}</style></template></dom-module><dom-module id="glomo-customer-contracts" assetpath="glomo-customer-contracts/"><template><style include="glomo-customer-contracts-styles glomo-customer-contracts-shared-styles"></style><div class="contracts-list-wrapper"><div class="contracts-note"><p>[[t('customer-contracts-list-note')]]</p></div><div class="contracts-list"><template is="dom-repeat" items="[[contractsData]]"><div class="contracts-list-item" on-tap="openDocument"><div class="contracts-list-item-content"><div><cells-atom-icon icon="coronita:pdf" class="icon-size-18"></cells-atom-icon></div><div class="contracts-list-item-title">[[t(item.title)]]</div></div></div></template></div></div></template><script>{var _Polymer=Polymer,html=_Polymer.html,GlomoCustomerContracts=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(GlomoCustomerContracts,_Polymer$mixinBehavio);function GlomoCustomerContracts(){babelHelpers.classCallCheck(this,GlomoCustomerContracts);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(GlomoCustomerContracts).apply(this,arguments))}babelHelpers.createClass(GlomoCustomerContracts,[{key:"openDocument",/**
+     * dispatch an event for getting the document content on clicking any customer contracts document
+     */value:function openDocument(e){this.dispatchEvent(new CustomEvent("customer-contracts-document-clicked",{detail:e.model.item}))}}],[{key:"is",get:function get(){return"glomo-customer-contracts"}},{key:"properties",get:function get(){return{/**
+         * title of the customerContractsListpage
+         * @type {String}
+         */title:{type:String,notify:!0},/**
+         * customer contracts list data from dm
+         * @type {Object}
+         */contractsData:{type:Object,notify:!0}}}}]);return GlomoCustomerContracts}(Polymer.mixinBehaviors([CellsBehaviors.i18nBehavior],Polymer.Element));/**
+    `<glomo-customer-contracts>` Description.
+
+    Example:
+
+    ```html
+    <glomo-customer-contracts></glomo-customer-contracts>
+    ```
+
+    ## Styling
+    The following custom properties and mixins are available for styling:
+
+    ### Custom Properties
+    | Custom Property     | Selector | CSS Property | Value       |
+    | ------------------- | -------- | ------------ | ----------- |
+    | --cells-fontDefault | :host    | font-family  |  sans-serif |
+    ### @apply
+    | Mixins    | Selector | Value |
+    | --------- | -------- | ----- |
+    | --glomo-customer-contracts | :host    | {} |
+    | --cells-global-focus | cells global status focus | {} |
+    | --cells-global-active | cells global status active | {} |
+    | --cells-global-active | cells global button active | {} |
+    | --glomo-customer-contracts-contracts-note | :host .contracts-note | {} |
+    | --glomo-customer-contracts-contracts-list-wrapper | :host .contracts-list-wrapper | {} |
+    | --glomo-customer-contracts-contracts-list | :host .contracts-list | {} |
+    | --glomo-customer-contracts-contracts-list-item | :host .contracts-list-item | {} |
+    | --glomo-customer-contracts-contracts-list-item-content | :host .contracts-list-item-content | {} |
+    | --glomo-customer-contracts-list-title-content | :host .list-title-content | {} |
+
+    * @customElement
+    * @polymer
+    * @extends {Polymer.Element}
+    * @demo demo/index.html
+  */customElements.define(GlomoCustomerContracts.is,GlomoCustomerContracts)}</script></dom-module></div></body></html>

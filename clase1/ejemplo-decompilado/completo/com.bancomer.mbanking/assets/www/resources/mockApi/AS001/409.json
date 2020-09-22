@@ -1,0 +1,10 @@
+{
+    "version": 1,
+    "severity": "FATAL",
+    "http-status": 409,
+    "error-code": "UGE5941",
+    "error-message": "Tu préstamo no permite este tipo de anticipo. Selecciona la opción 'Reducción de cuota' para continuar'",
+    "consumer-request-id": "5F40559E-AA86-4B43-8521-0771B81074BD",
+    "system-error-code": "functionalError",
+    "system-error-description": "Error funcional por defecto."
+}

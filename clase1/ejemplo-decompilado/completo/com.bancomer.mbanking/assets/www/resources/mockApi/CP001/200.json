@@ -1,0 +1,326 @@
+{
+  "data": [
+    {
+      "id": "i6cv-78o7-67vic-3ur4i",
+      "contract": {
+        "id": "Td-tykaA8AqyStgMO4CRuC7BrEYc3EMRFeN0wO7Q4BopsvQzL7urOg",
+        "number": "00740680001100099638",
+        "numberType": {
+          "id": "CCC",
+          "name": "CCC"
+        },
+        "productType": "ACCOUNT",
+        "product": {
+          "id": "CH",
+          "name": "Ahorro",
+          "description": "Ahorro"
+        }
+      },
+      "channel": {
+        "id": "MB",
+        "name": "GLOMO"
+      },
+      "isVisible": true,
+      "isEditable": false
+    },
+    {
+      "id": "i6cv-78o7-67vic-ai3mnm",
+      "contract": {
+        "id": "Td-tykaA8AqyStgMO4CRuC7BrEYc3EMRFeN0wO7Q4BopsvQzL7urOg",
+        "number": "00740680001100091234",
+        "numberType": {
+          "id": "CCC",
+          "name": "CCC"
+        },
+        "productType": "ACCOUNT",
+        "product": {
+          "id": "CH",
+          "name": "La poderosa",
+          "description": "La poderosa"
+        }
+      },
+      "channel": {
+        "id": "MB",
+        "name": "GLOMO"
+      },
+      "isVisible": false,
+      "isEditable": true
+    },
+    {
+      "id": "i6cv-78o7-67vic-121asgh",
+      "contract": {
+        "id": "Td-tykaA8AqyStgMO4CRuC7BrEYc3EMRFeN0wO7Q4BopsvQzL7urOg",
+        "number": "00740680001100091234",
+        "numberType": {
+          "id": "CCC",
+          "name": "CCC"
+        },
+        "productType": "CARD",
+        "product": {
+          "id": "TC",
+          "name": "Oro internacional",
+          "description": "Oro internacional"
+        }
+      },
+      "channel": {
+        "id": "MB",
+        "name": "GLOMO"
+      },
+      "isVisible": true,
+      "isEditable": true
+    },
+    {
+      "id": "i6cv-78o7-67vic-gb23fs",
+      "contract": {
+        "id": "Td-tykaA8AqyStgMO4CRuC7BrEYc3EMRFeN0wO7Q4BopsvQzL7urOg",
+        "number": "00740680001100091234",
+        "numberType": {
+          "id": "CCC",
+          "name": "CCC"
+        },
+        "productType": "CARD",
+        "product": {
+          "id": "TC",
+          "name": "Premium",
+          "description": "Premium"
+        }
+      },
+      "channel": {
+        "id": "MB",
+        "name": "GLOMO"
+      },
+      "isVisible": true,
+      "isEditable": true
+    },
+    {
+      "id": "i6cv-78o7-67vic-lisdj",
+      "contract": {
+        "id": "Td-tykaA8AqyStgMO4CRuC7BrEYc3EMRFeN0wO7Q4BopsvQzL7urOg",
+        "number": "00740680001100091234",
+        "numberType": {
+          "id": "CCC",
+          "name": "CCC"
+        },
+        "productType": "CARD",
+        "product": {
+          "id": "TP",
+          "name": "Platinum",
+          "description": "Platinum"
+        }
+      },
+      "channel": {
+        "id": "MB",
+        "name": "GLOMO"
+      },
+      "isVisible": true,
+      "isEditable": true
+    },
+    {
+      "id": "i6cv-78o7-67vic-asdnba",
+      "contract": {
+        "id": "Td-tykaA8AqyStgMO4CRuC7BrEYc3EMRFeN0wO7Q4BopsvQzL7urOg",
+        "number": "00740680001100091234",
+        "numberType": {
+          "id": "CCC",
+          "name": "CCC"
+        },
+        "productType": "INVESTMENT_FUND",
+        "product": {
+          "id": "SI",
+          "name": "Fondos de inversión",
+          "description": "Fondos de inversión"
+        }
+      },
+      "channel": {
+        "id": "MB",
+        "name": "GLOMO"
+      },
+      "isVisible": true,
+      "isEditable": true
+    },
+    {
+      "id": "i6cv-78o7-67vic-kweu33",
+      "contract": {
+        "id": "Td-tykaA8AqyStgMO4CRuC7BrEYc3EMRFeN0wO7Q4BopsvQzL7urOg",
+        "number": "00740680001100091234",
+        "numberType": {
+          "id": "CCC",
+          "name": "CCC"
+        },
+        "productType": "INVESTMENT_FUND",
+        "product": {
+          "id": "SI",
+          "name": "Fondo B+2",
+          "description": "Fondo B+2"
+        }
+      },
+      "channel": {
+        "id": "MB",
+        "name": "GLOMO"
+      },
+      "isVisible": true,
+      "isEditable": true
+    },
+    {
+      "id": "i6cv-78o7-67vic-4753nds",
+      "contract": {
+        "id": "Td-tykaA8AqyStgMO4CRuC7BrEYc3EMRFeN0wO7Q4BopsvQzL7urOg",
+        "number": "00740680002100091234",
+        "numberType": {
+          "id": "CCC",
+          "name": "CCC"
+        },
+        "productType": "ACCOUNT",
+        "product": {
+          "id": "PT",
+          "name": "Contrato 1",
+          "description": "Contrato 1"
+        }
+      },
+      "channel": {
+        "id": "MB",
+        "name": "GLOMO"
+      },
+      "isVisible": true,
+      "isEditable": true
+    },
+    {
+      "id": "i6cv-78o7-67vic-be23js",
+      "contract": {
+        "id": "Td-tykaA8AqyStgMO4CRuC7BrEYc3EMRFeN0wO7Q4BopsvQzL7urOg",
+        "number": "00740680002100091234",
+        "numberType": {
+          "id": "CCC",
+          "name": "CCC"
+        },
+        "productType": "ACCOUNT",
+        "product": {
+          "id": "PT",
+          "name": "Contrato 2",
+          "description": "Contrato 2"
+        }
+      },
+      "channel": {
+        "id": "MB",
+        "name": "GLOMO"
+      },
+      "isVisible": true,
+      "isEditable": true
+    },
+    {
+      "id": "Tasdfa234234tgsg",
+      "contract": {
+        "id": "Td-tykaA8AqyStgMO4CRuC7BrEYc3EMRFeN0wO7Q4BopsvQzL7urOg",
+        "number": "00740680002100091234",
+        "numberType": {
+          "id": "CCC",
+          "name": "CCC"
+        },
+        "productType": "ACCOUNT",
+        "product": {
+          "id": "LP",
+          "name": "Inversion libre 1",
+          "description": "Inversion libre 1"
+        }
+      },
+      "channel": {
+        "id": "MB",
+        "name": "GLOMO"
+      },
+      "isVisible": true,
+      "isEditable": true
+    },
+    {
+      "id": "ASF3456sqNT5hdrg",
+      "contract": {
+        "id": "Td-tykaA8AqyStgMO4CRuC7BrEYc3EMRFeN0wO7Q4BopsvQzL7urOg",
+        "number": "00740680002100091234",
+        "numberType": {
+          "id": "CCC",
+          "name": "CCC"
+        },
+        "productType": "ACCOUNT",
+        "product": {
+          "id": "LP",
+          "name": "Inversion libre 2",
+          "description": "Inversion libre 2"
+        }
+      },
+      "channel": {
+        "id": "MB",
+        "name": "GLOMO"
+      },
+      "isVisible": true,
+      "isEditable": true
+    },
+    {
+      "id": "sdfg-234a41124",
+      "contract": {
+        "id": "Td-tykaA8AqyStgMO4CRuC7BrEYc3EMRFeN0wO7Q4g",
+        "number": "00740680002100091234",
+        "numberType": {
+          "id": "CCC",
+          "name": "CCC"
+        },
+        "productType": "ACCOUNT",
+        "product": {
+          "id": "CE",
+          "name": "Cuenta en dolares 1",
+          "description": "Cuenta en dolares 1"
+        }
+      },
+      "channel": {
+        "id": "MB",
+        "name": "GLOMO"
+      },
+      "isVisible": true,
+      "isEditable": true
+    },
+    {
+      "id": "i6cv-78o7-67vic-324fdj",
+      "contract": {
+        "id": "Td-tykaA8AqyStgMO4CRuC7BrEYc3EMRFeN0wO7Q4BopsvQzL7urOg",
+        "number": "00740680001100091234",
+        "numberType": {
+          "id": "CCC",
+          "name": "CCC"
+        },
+        "productType": "SECURITY_ACCOUNT",
+        "product": {
+          "id": "CV",
+          "name": "Seguro de vida",
+          "description": "Seguro de vida"
+        }
+      },
+      "channel": {
+        "id": "MB",
+        "name": "GLOMO"
+      },
+      "isVisible": true,
+      "isEditable": true
+    },
+    {
+      "id": "i6cv-78o7-67vic-nbju32",
+      "contract": {
+        "id": "Td-tykaA8AqyStgMO4CRuC7BrEYc3EMRFeN0wO7Q4BopsvQzL7urOg",
+        "number": "00740680001100091234",
+        "numberType": {
+          "id": "CCC",
+          "name": "CCC"
+        },
+        "productType": "SECURITY_ACCOUNT",
+        "product": {
+          "id": "CV",
+          "name": "Seguro Viajero",
+          "description": "Savings Account."
+        }
+      },
+      "channel": {
+        "id": "MB",
+        "name": "GLOMO"
+      },
+      "isVisible": true,
+      "isEditable": true
+    }
+  ]
+}

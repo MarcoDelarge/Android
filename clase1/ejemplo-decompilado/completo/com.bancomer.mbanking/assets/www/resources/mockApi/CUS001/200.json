@@ -1,0 +1,27 @@
+{
+  "data":[
+    {
+        "addressId": "JV691FZXQ7Y682YXE014DQ1MW9QWVANSYE0VFJK73CYA72S7PHV0",
+        "addressType": {
+        "id": "HOME",
+        "name": "Hogar"
+        },
+        "ownershipType": {
+        "id": "OTHER",
+        "name": "Otro"
+        },
+        "location": {
+        "addressName": "Address Name",
+        "state": {
+            "id": "DF",
+            "name": "Sate Name"
+        },
+        "country": {
+            "id": "MEX",
+            "name": "MEXICO"
+        },
+        "zipCode": "089789"
+        }
+    }
+  ]
+}

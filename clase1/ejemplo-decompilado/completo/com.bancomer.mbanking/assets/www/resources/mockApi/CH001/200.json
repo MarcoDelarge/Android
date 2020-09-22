@@ -1,0 +1,117 @@
+{
+  "data": {
+    "cardType": {
+      "id": "CREDIT_CARD",
+      "name": "Tarjeta de Crédito"
+    },
+    "offerType": {
+      "id": "CARD_HOLDER",
+      "name": "Card Holder"
+    },
+    "isEditable": false,
+    "origin": {
+            "id": "ALT",
+            "description": "ALTERNATIVE"
+    },
+    "image": {
+      "id": "CARD_HOLDER",
+      "name": "Card Holder",
+            "url": "https://openapi.bbva.com/ccds/covers?pg=PT&bin=477211&default_image=true&v=4&country=mx&app_id=com.bbva.glomo_mx"
+    },
+    "details": {
+      "minimumAmount": {
+        "amount": 2525,
+        "currency": "MXN"
+      },
+      "maximumAmount": {
+        "amount": 4525,
+        "currency": "MXN"
+      },
+      "suggestedAmount": {
+        "amount": 4525,
+        "currency": "MXN"
+      },
+      "title": {
+                "id": "AG",
+                "name": "CONGELADA"
+      },
+      "product": {
+          "id": "0TDC",
+          "name": "TARJETA DE CREDITO",
+          "subproduct": {
+              "id": "AG"
+          }
+      },
+      "relatedContracts": [
+        {
+          "contractId": "YPH6N8KR2ATSR4595XD23FHG19XY6X3PFG7GSSCX8D6T6CTY91B0",
+          "number": "00740010001500000644",
+          "productType": {
+            "id": "ACCOUNTS",
+            "name": "Accounts"
+          }
+        }
+      ]
+    },
+    "fees": {
+      "itemizeFees": [
+        {
+          "feeType": "SPECIFIC_TRANSACTION",
+          "name": "Transacción específica",
+          "mode": {
+            "id": "AMOUNT",
+            "name": "amount"
+          },
+          "itemizeFeeUnit": {
+            "import": {
+              "amount": 610,
+              "currency": "MXN"
+            }
+          }
+        }
+      ]
+    },
+    "rates": [
+      {
+        "rateType": {
+          "id": "CAT",
+          "name": "CAT"
+        },
+        "calculationDate": "2017-12-01",
+        "mode": {
+          "id": "PERCENTAGE",
+          "name": "Porcentaje"
+        },
+        "unit": {
+          "percentage": 94.1
+        }
+      },
+      {
+        "rateType": {
+          "id": "Tasa",
+          "name": "Tasa"
+        },
+        "mode": {
+          "id": "PERCENTAGE",
+          "name": "Porcentaje"
+        },
+        "unit": {
+          "percentage": 60
+        }
+      },
+      {
+        "rateType": {
+          "id": "POINTS",
+          "name": "Points"
+        },
+        "mode": {
+          "id": "PERCENTAGE",
+          "name": "Porcentaje"
+        },
+        "unit": {
+          "percentage": 9
+        }
+      }
+    ]
+  }
+}

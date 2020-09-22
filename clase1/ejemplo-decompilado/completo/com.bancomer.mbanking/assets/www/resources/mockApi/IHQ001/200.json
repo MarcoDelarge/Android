@@ -1,0 +1,109 @@
+{
+    "data": [
+      {
+        "id": "0034",
+        "description": "Seguro de vida",
+        "questionnaireType": {
+          "id": "003044",
+          "description": "Seguro de vida individual"
+        },
+        "questions": [
+          {
+            "id": "C001",
+            "description": "¿Cáncer, tumores malignos, leucemia o lupus?",
+            "questionType": {
+              "id": "SINGLE_CHOICE"
+            },
+            "questionOptions": [
+              {
+                "id": "001",
+                "description": "Si",
+                "isSelected": "true"
+              },
+              {
+                "id": "002",
+                "description": "No",
+                "isSelected": "false"
+              }
+            ]
+          },
+          {
+            "id": "C002",
+            "description": "¿Aneurisma, trombosis, embolia, derrame cerebral o cardiopatia (infarto o isquemia o arritmia)?",
+            "questionType": {
+              "id": "SINGLE_CHOICE"
+            },
+            "questionOptions": [
+              {
+                "id": "001",
+                "description": "Si",
+                "isSelected": "true"
+              },
+              {
+                "id": "002",
+                "description": "No",
+                "isSelected": "false"
+              }
+            ]
+          },
+          {
+            "id": "C003",
+            "description": "¿Enfisema pulmonar, bronquitis crónica o tuberculosis?",
+            "questionType": {
+              "id": "SINGLE_CHOICE"
+            },
+            "questionOptions": [
+              {
+                "id": "001",
+                "description": "Si",
+                "isSelected": "true"
+              },
+              {
+                "id": "002",
+                "description": "No",
+                "isSelected": "false"
+              }
+            ]
+          },
+          {
+            "id": "C004",
+            "description": "¿Insuficiencia hepática, cirrosis hepática, hepátitis crónica (B o C), insuficiencia renal crónica o pancreatitis?",
+            "questionType": {
+              "id": "SINGLE_CHOICE"
+            },
+            "questionOptions": [
+              {
+                "id": "001",
+                "description": "Si",
+                "isSelected": "true"
+              },
+              {
+                "id": "002",
+                "description": "No",
+                "isSelected": "false"
+              }
+            ]
+          },
+          {
+            "id": "C005",
+            "description": "No tengo ni he tenido ninguna de las enfermedades anteriores",
+            "questionType": {
+              "id": "SINGLE_CHOICE"
+            },
+            "questionOptions": [
+              {
+                "id": "001",
+                "description": "Si",
+                "isSelected": "true"
+              },
+              {
+                "id": "002",
+                "description": "No",
+                "isSelected": "false"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }

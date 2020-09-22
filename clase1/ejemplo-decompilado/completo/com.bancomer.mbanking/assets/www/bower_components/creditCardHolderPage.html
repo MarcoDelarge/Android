@@ -1,0 +1,741 @@
+<html><head></head><body><div hidden="" by-polymer-bundler=""><dom-module id="credit-card-holder-offer-styles" assetpath="credit-card-holder-offer/"><template><style>:host{display:block;box-sizing:border-box;font-family:var(--cells-fontDefault, sans-serif);@apply --credit-card-holder-offer;}:host([hidden]), [hidden]{display:none !important;}*, *:before, *:after{box-sizing:inherit;}h1{font-size:20px;font-weight:450;color:#fff;}p, label{font-size:14px;line-height:1.43;@apply --credit-card-holder-offer-edit-text;}cells-glomo-offer-edit{background:var(--bbva-white, #FFFFFF);text-align:center;align-items:center;color:var(--bbva-white, #FFFFFF);padding:0px;--cells-glomo-offer-edit-atom-amount-amount-huge:{text-align:left;color:var(--bbva-600, #121212);padding:0px;};--cells-glomo-offer-edit-content-label:{padding:30px;padding-top:50px;color:var(--bbva-600, #121212);text-align:left;};--cells-glomo-offer-edit-cells-molecule-amount-input:{--cells-molecule-amount-input-background-color:var(--bbva-100, #F4F4F4);--cells-molecule-amount-input-input-color:var(--bbva-600, #121212);--cells-molecule-amount-input-disabled-color:var(--bbva-600, #121212);--cells-molecule-amount-input-currency-label-left_-_color:var(--bbva-600, #121212);--cells-molecule-amount-input-icon_-_color:var(--bbva-500, #666);};--cells-glomo-offer-edit-hidden-amount:{position:absolute;display:flex;top:5.1rem;};--cells-glomo-offer-edit-content-input:{padding:30px;padding-top:50px;color:var(--bbva-600, #121212);};--cells-glomo-offer-edit-input-hint:{color:var(--bbva-600, #121212);};--cells-glomo-offer-edit-minimum-hint-icon:{color:var(--bbva-light-red, #E77D8E);};--cells-glomo-offer-edit-maximum-hint-icon:{color:var(--bbva-light-red, #E77D8E);};--cells-glomo-offer-edit-minimum-hint-text:{color:var(--bbva-dark-red, #B92A45);};--cells-glomo-offer-edit-maximum-hint-text:{color:var(--bbva-dark-red, #B92A45);};--cells-glomo-offer-edit-cells-atom-icon:{opacity:0.7;color:var(--bbva-light-blue, #5BBEFF);};--cells-glomo-offer-edit-content-input-padding-bottom:0px;@apply --credit-card-holder-offer-edit;}cells-glomo-offer-edit .content-header-text{padding-top:8px;background:var(--bbva-dark-medium-blue, #1973B8);@apply --credit-card-holder-offer-edit-content-text;}cells-glomo-offer-edit .content-header-text .offer-card{height:52px;display:block;margin:0 auto 30px;@apply --credit-card-holder-offer-edit-content-card;}cells-glomo-offer-edit .content-header-text .offer-desc{font-size:18px;line-height:1.33;margin:0 auto 10px;font-weight:100;@apply --credit-card-holder-offer-edit-content-desc;}cells-glomo-offer-edit .payment-method-label{font-size:1rem;text-align:left;font-weight:bolder;text-transform:uppercase;margin-top:1.25rem;margin-bottom:0;@apply --credit-card-holder-offer-edit-payment-label;}cells-glomo-offer-edit .benefit-coupon-title{letter-spacing:0.3px;line-height:13px;@apply --benefit-coupon-title-info;}cells-glomo-offer-edit .btn-coupon-info{margin-left:5px;vertical-align:text-top;width:16px;height:16px;color:var(--bbva-medium-blue, #1973B8);@apply --benefit-coupont-btn-info;}cells-glomo-offer-edit .benefit-coupon-description{margin-top:0px;text-align:left;@apply --credit-card-holder-offer-benefit-coupont-description;}cells-glomo-offer-edit .payment-method-option{font-size:14px;text-align:left;font-weight:500;margin-top:25px;margin-bottom:4px;line-height:20px;@apply --credit-card-holder-offer-payment-method-option;}cells-glomo-offer-edit .payment-method-desc{text-align:left;margin-top:25px;margin-bottom:0;@apply --credit-card-holder-offer-edit-payment-desc;}cells-glomo-offer-edit .btn-coupon{display:flex;color:var(--bbva-medium-blue, #1973B8);padding:0;text-align:left;line-height:14px;@apply --credit-card-holder-offer-btn-coupon;}cells-glomo-offer-edit .modal{display:flex;@apply --credit-card-holder-offer-modal;}cells-glomo-offer-edit .radio-button-content{display:flex;flex-direction:row;justify-content:flex-start;@apply --credit-card-holder-offer-edit-radio-content;}cells-glomo-offer-edit .radio-button-label{display:flex;align-items:center;@apply --credit-card-holder-offer-edit-radio-label;}cells-glomo-offer-edit .button-content{width:41px;margin-right:4px;@apply --credit-card-holder-offer-edit-button-content;}cells-glomo-offer-edit .help-button{color:var(--bbva-white, #FFFFFF);@apply --credit-card-holder-offer-edit-help-button;}cells-glomo-offer-edit #paymentMethodRadioGroup{padding:10px 0 20px;}cells-glomo-offer-edit #paymentMethodRadioGroup cells-radio-button-description{padding:0px 5px;}cells-glomo-offer-edit cells-atom-date{display:inline;color:var(--bbva-600, #121212);@apply --credit-card-holder-offer-edit-atom-date;}cells-glomo-offer-edit cells-st-button{margin:1rem 0 0 0;@apply --credit-card-holder-offer-edit-st-button;}cells-glomo-offer-summary{@apply --credit-card-holder-offer-summary;}cells-glomo-offer-summary .header-content{display:flex;align-items:center;@apply --credit-card-holder-offer-summary-header-content;}cells-glomo-offer-summary .header-content .offer-card-img{height:26px;width:40px;margin-right:20px;vertical-align:middle;@apply --credit-card-holder-offer-summary-header-img;}cells-glomo-offer-summary .header-content .offer-card-desc{font-size:18px;vertical-align:middle;font-weight:500;@apply --credit-card-holder-offer-summary-header-desc;}cells-glomo-offer-summary cells-key-values{--cells-key-values-key-color:var(--bbva-white, #FFFFFF);--cells-key-values-color:var(--bbva-white, #FFFFFF);--cells-key-values-value-font-size:14px;@apply --credit-card-holder-offer-summary-cells-key-values;}cells-glomo-offer-summary .not-aproved{padding-top:10px;font-size:18px;display:inline-flex;display:flex;justify-content:space-between;@apply --credit-card-holder-offer-summary-cells-key-values-not-approved;}cells-glomo-offer-summary .payment-method-label{font-weight:bold;text-transform:uppercase;margin-top:30px;@apply --credit-card-holder-offer-summary-payment-label;}.center{display:flex;justify-content:center;}.offer-desc-p{margin:0;font-weight:100;}.spinner{background-color:var(--bbva-glomo-dark-medium-blue);width:100vw;opacity:0.9;top:0px;bottom:0px;margin:auto 0px;left:0px;pointer-events:auto;@apply --cells-glomo-offer-footer-spinner;}.icon-help{--cells-atom-icon-size:16.6px;margin-left:8px;@apply --credit-card-holder-offer-icon-help;}.line{margin:0 1rem;opacity:0.2;@apply --credit-card-holder-offer-line;}.line-content{background-color:var(--bbva-core-blue);@apply --credit-card-holder-offer-line-content;}.card-user-message{padding-top:0.625rem;padding-bottom:1.875rem;color:var(--bbva-white, #FFFFFF);@apply --credit-card-holder-offer-card-message;}.label-strong{font-weight:500;}.full{padding-bottom:0px;}.content-notes{padding:0 30px;color:var(--bbva-600, #121212);@apply --credit-card-holder-offer-content;}.domiciliation-radio-group{@apply --credit-card-holder-offer-domiciliation-group;}.domiciliation-radio-group cells-radio-button-description{padding:0px 5px;}.domiciliation-radio-group cells-radio-group{padding-top:30px;display:inline-block;}.domiciliation-choice{vertical-align:middle;text-align:left;margin-top:30px;overflow:hidden;@apply --credit-card-holder-offer-domiciliation-choice;}.offer-note-div{vertical-align:middle;text-align:left;padding-bottom:30px;overflow:hidden;@apply --credit-card-holder-offer-note;}.offer-note-div p{margin:0px;}.npa-card{background-color:var(--bbva-navy, #072146);padding:30px;@apply --credit-card-holder-offer-npa-card;}.domiciliation-label,
+.offer-note-p{vertical-align:middle;align-content:left;width:70%;float:left;@apply --credit-card-holder-offer-domiciliation-note;}.domiciliation-switch,
+.offer-note-amount-p{vertical-align:middle;align-content:right;text-align:right;width:29%;float:right;}.radio-group-content{padding-top:30px;}.npa-align{display:flex;justify-content:start;flex-direction:row;align-items:center;}.btn-npa{display:flex;justify-content:space-around;padding-bottom:20px;@apply --credit-card-holder-offer-btn-npa;}.offer-desc-div{display:flex;justify-content:left;line-height:20px;text-align:left;@apply --credit-card-holder-offer-desc;}.icon-message-domiciliation{--cells-icon-message-background-color-info:var(--bbva-white-light-blue, #D4EDFC);padding:1.875rem;@apply --credit-card-holder-offer-domiciliation-message;}.line-div{padding:30px;}hr.line-message{width:40px;opacity:0.2;height:1px;margin-bottom:0px;@apply --credit-card-holder-offer-line-message;}.card-interest-info{margin:0px;@apply --credit-card-holder-offer-interest-info;}.payment-method-label{font-size:16px;font-weight:var(--cells-fontDefaultMedium_-_font-weight);@apply --credit-card-holder-offer-payment-label;}.account-statements-header{background-color:var(--cells-molecule-header-dark_-_background);padding:2rem 1rem 2rem 1rem;@apply --credit-card-holder-offer-account-header;}.account-statements-message{display:flex;padding-top:0.625rem;color:var(--bbva-white, #FFFFFF);@apply --cells-fontDefaultNormalItalic;@apply --credit-card-holder-offer-account-message;}.account-statements-message cells-atom-icon{margin-right:0.5rem;}.account-statements-message .account-statements-message-text{margin:0rem;flex:1;}.account-statements-title{color:var(--bbva-white, #FFFFFF);font-size:var(--cells-text-size-16);font-weight:bold;text-transform:uppercase;font-size:16px;@apply --credit-card-holder-offer-account-title;}.account-statements-description{color:var(--bbva-white, #FFFFFF);font-weight:var(--cells-text-weight-medium, 500);font-size:18px;font-style:medium;@apply --credit-card-holder-offer-account-description;}.btn-call-me-back{color:var(--bbva-medium-blue, #1973B8);margin:0 0 1rem 0;@apply --credit-card-holder-offer-btn-call-me-back;}cells-product-item{padding:0px;padding-top:22px;background:var(--bbva-navy);--cells-icon-message-color:var(--bbva-white, #FFFFFF);--cells-icon-message-message_-_font-size:14px;--cells-icon-message-message_-_font-style:italic;--cells-product-item-amount-label-color:var(--bbva-white, #FFFFFF);--cells-product-item-amount-amount:{color:var(--bbva-white, #FFFFFF);};--cells-product-item-description-value:{color:var(--bbva-white, #FFFFFF);padding-top:10px;};@apply --credit-card-holder-offer-product-item;}cells-icon-message{--cells-icon-message-icon-color:var(--cells-icon-message-icon-color-info, #5BBEFF);@apply --credit-card-holder-offer-icon-message;}.npa-no-padding{padding-bottom:0px;@apply --credit-card-holder-offer-npa-no-padding;}.normal-text{font-size:var(--cells-text-size-14, 0.875rem);color:var(--bbva-black, #000000);font-stretch:normal;line-height:1.43;--cells-key-values-value:{@apply --cells-fontDefaultBold;};@apply --cells-fontDefaultNormal;}.triple-play-offer-costs{width:100%;height:2rem;display:flex;display:-ms-flexbox;padding-top:0.625rem;justify-content:space-between;--cells-key-values-key-color:var(--bbva-black, #000000);--cells-key-values-color:var(--bbva-black, #000000);--cells-key-values-key:{width:75%;text-align:left;display:flex;align-items:flex-start;};}.triple-play-offer-costs cells-molecule-link-icon{width:15%;margin-left:5%;}.costs-text{margin-top:0;margin-bottom:0;text-align:justify;}.triple-play-offer-benefits{display:-webkit-inline-box;padding-bottom:0.625rem;}.triple-play-offer-benefits cells-key-values{display:flex;width:100%;margin:0rem;--cells-key-values-key-color:var(--bbva-black, #000000);--cells-key-values-color:var(--bbva-black, #000000);--cells-key-values-key:{width:85%;text-align:left;display:flex;align-items:flex-start;};}.triple-play-offer-benefits cells-atom-icon{display:flex;margin-right:0.5rem;font-size:var(--cells-text-size-20, 1.25rem);color:var(--bbva-medium-blue, #1973B8);}.after-costs{display:-webkit-inline-box;margin-bottom:0.625rem;--cells-key-values-color:white;--cells-key-values-key:{width:84%;text-align:left;display:flex;align-items:flex-start;};}.inline-offer{display:flex;justify-content:space-between;}.spacing{margin-top:1rem;margin-bottom:1rem;}.content-header-text-tripe-play{--credit-card-holder-offer-edit-content-text:{background:rgb(244, 244, 244);};@apply --credit-card-holder-offer-edit-content-text;}.spacing-content-slot{padding-bottom:1.875rem;}.button-primary{--cells-st-button-bg-color:var(--bbva-medium-blue, #1973B8);}.note{display:flex;@apply --cells-fontDefaultNormalItalic;margin:0px;@apply --credit-card-holder-offer-note;}.note cells-atom-icon{margin-right:0.5rem;}.note .note-info-text{margin:0rem;flex:1;@apply --credit-card-holder-offer-note-info-text;}.payment-method-label-benefits{font-size:var(--cells-text-size-16, 1rem);text-align:left;text-transform:uppercase;@apply --cells-fontDefaultBold;margin:0;}.card-user-message-black{padding-bottom:1.875rem;padding-top:0.625rem;color:var(--bbva-black, #000000);}</style></template></dom-module><dom-module id="credit-card-holder-offer" assetpath="credit-card-holder-offer/"><template><style include="credit-card-holder-offer-styles"></style><template is="dom-if" if="{{isNpa}}"><div class="npa-card"><h1>[[t('credit-card-holder-offer-npa-title')]]</h1><cells-glomo-offer-summary amount-label="[[t('credit-card-holder-offer-amount-label-npa')]]" amount="[[offerData.details.suggestedAmount]]"><div slot="header-content" class="header-content"><img class="offer-card-img" src="[[offerData.image.url]]" alt="[[offerData.image.name]]"> <span class="offer-card-desc">[[offerData.details.title.name]]</span></div><div slot="content-slot"><cells-key-values class="inline not-aproved" key="[[t('credit-card-holder-offer-small-print-8')]]" value="$[[annualFee.itemizeFeeUnit.import.amount]]"></cells-key-values><cells-key-values class="inline not-aproved" key="[[t('credit-card-holder-offer-note-info')]]" value="[[annualRate.unit.percentage]] %"></cells-key-values><cells-key-values class="inline not-aproved" key="[[t('credit-card-holder-offer-small-print-7')]]" value="[[catRate.unit.percentage]] %"></cells-key-values></div></cells-glomo-offer-summary></div><cells-step id="stepContainer" active="[[active]]" step-title="[[stepTitle]]" max-steps="[[maxSteps]]" change-label="[[changeLabel]]" disable-change="{{_changeHidden}}" collapsed="{{collapsed}}" class-to-toggle="step-active" decorated="[[decorated]]" hide-header="[[hideStepHeader]]"><div slot="full" class="full"><template is="dom-if" if="{{_validateOfferTypeAlt(offerData.origin.id)}}"><div class="npa-payment-method"><div slot="offerNotes" class="content-notes"><div><p class="payment-method-label">[[t('credit-card-holder-offer-automatic-payment-title-1')]]</p></div><div><p class="payment-method-desc">[[t('credit-card-holder-offer-automatic-payment-desc-1')]]</p></div><div class="domiciliation-choice"><div class="domiciliation-label"><strong>[[t('credit-card-holder-offer-domiciliation-title')]]</strong></div><div class="domiciliation-switch"><cells-switch checked$="{{domiciliationCheck}}"></cells-switch></div><template is="dom-if" if="{{domiciliationCheck}}"><div class="domiciliation-radio-group"><cells-radio-group radio-accepted-button-type="cells-radio-button-description" id="paymentMethodRadioGroup" selected="{{paymentRadioMethodSelected}}"><cells-radio-button-description config="[[_configRadioMinimum]]"></cells-radio-button-description><cells-radio-button-description config="[[_configRadioStatement]]"></cells-radio-button-description></cells-radio-group></div></template></div><div class="icon-message-div"><cells-icon-message class="icon-message-domiciliation" type="[[domiciliationAlertType]]" icon="[[domiciliationAlertIcon]]" message="[[domiciliationAlertMessage]]"></cells-icon-message></div><div class="line-div"><hr class="line-message"></div><div class="btn-npa"><cells-st-button class="btn size-m" on-tap="_firstStep"><button class="primary" disabled$="[[submitButtonDisabled]]">[[t('credit-card-holder-offer-footer-button-text')]]</button></cells-st-button></div></div></div></template></div><div slot="filled" class="filled npa-no-padding"><cells-glomo-offer-summary hide-currency=""><div slot="content-slot"><p>[[t(paymentMethod)]]</p></div></cells-glomo-offer-summary><hr class="line"></div></cells-step></template><template is="dom-if" if="{{!isNpa}}"><cells-step id="stepContainer" active="[[active]]" step-title="[[stepTitle]]" max-steps="[[maxSteps]]" change-label="[[changeLabel]]" disable-change="{{_changeHidden}}" collapsed="{{collapsed}}" class-to-toggle="step-active" decorated="[[decorated]]" hide-header="[[hideStepHeader]]"><div slot="full" class="full"><template is="dom-if" if="{{!_validateOfferTypeAlt(offerData.origin.id)}}"><cells-glomo-offer-edit id="creditCardHolderOfferEdit" class="content-wrapper" local-currency="[[localCurrency]]" offer-icon-hidden="" input-amount="{{offerData.details.suggestedAmount}}" input-min-amount="[[offerData.details.minimumAmount]]" input-max-amount="[[offerData.details.maximumAmount]]" input-label="[[t('credit-card-holder-offer-amount-label')]]" numeral-positive-only="[[numeralPositiveOnly]]" disable-decimal=""><div slot="offerDescription" class$="[[classOffer]]"><div class$="[[cardUserClass]]"><img class="offer-card" src="[[offerData.image.url]]" alt="[[offerData.image.name]]"><p class="offer-desc">[[t('credit-card-holder-offer-desc')]]<br><strong class="label-strong">[[offerData.details.title.name]]</strong></p></div></div><div slot="offerNotes" class="content-notes"><template is="dom-if" if="[[isTriplePlayOffer]]"><div><p class="payment-method-label-benefit">[[t('credit-card-holder-offer-benefist-title')]]</p><br></div><template is="dom-repeat" items="[[containBenefitsList]]"><div class="triple-play-offer-benefits"><cells-atom-icon slot="before-key" icon="coronita:bullet1"></cells-atom-icon><cells-key-values key="[[item]]"></cells-key-values></div></template></template><template is="dom-if" if="[[!isTriplePlayOffer]]"><div class="offer-desc-div"><p class="offer-desc-p">[[t('credit-card-holder-offer-note-1')]]<strong class="label-strong"> [[rewardsRate.unit.percentage]]% </strong>[[t('credit-card-holder-offer-note-2')]]</p></div></template><template is="dom-if" if="[[showPromotionCode]]"><template is="dom-if" if="[[!benefitCoupon]]"><div><p class="payment-method-label benefit-coupon-title">[[t('credit-card-holder-offer-coupon-title')]]<cells-atom-icon icon="[[iconCouponInformation]]" class="btn-coupon-info" on-tap="_iconClicked"></cells-atom-icon></p></div><div><p class="payment-method-desc">[[t('credit-card-holder-offer-coupon-description')]] [[cardName]]</p></div><div class="modal"><cells-st-button class="link size-xs" on-click="_openModalInfo"><button class="btn-coupon">[[t('credit-card-holder-offer-coupon-modal-title')]]</button></cells-st-button></div></template><template is="dom-if" if="[[benefitCoupon]]"><div><p class="payment-method-label">[[t('credit-card-holder-offer-coupon-title')]]<cells-atom-icon icon="[[iconCouponInformation]]" class="btn-coupon-info" on-tap="_iconClicked"></cells-atom-icon></p></div><div><p class="payment-method-option">[[t('credit-card-holder-offer-coupon-modal-input-label')]] [[codeTitle]]</p></div><div><p class="benefit-coupon-description">[[codeDescription]]</p></div></template></template><div><p class="payment-method-label">[[t('credit-card-holder-offer-automatic-payment-title-1')]]</p></div><div><p class="payment-method-desc">[[t('credit-card-holder-offer-automatic-payment-desc-1')]]</p></div><div class="domiciliation-choice"><div class="domiciliation-label"><strong>[[t('credit-card-holder-offer-domiciliation-title')]]</strong></div><div class="domiciliation-switch"><cells-switch checked$="{{domiciliationCheck}}"></cells-switch></div><template is="dom-if" if="{{domiciliationCheck}}"><div class="domiciliation-radio-group"><cells-radio-group radio-accepted-button-type="cells-radio-button-description" id="paymentMethodRadioGroup" selected="{{paymentRadioMethodSelected}}"><cells-radio-button-description config="[[_configRadioMinimum]]"></cells-radio-button-description><cells-radio-button-description config="[[_configRadioStatement]]"></cells-radio-button-description></cells-radio-group></div></template></div><div class="icon-message-div"><cells-icon-message class="icon-message-domiciliation" type="[[domiciliationAlertType]]" icon="[[domiciliationAlertIcon]]" message="[[domiciliationAlertMessage]]"></cells-icon-message></div><template is="dom-if" if="[[isTriplePlayOffer]]"><div><p class="payment-method-label">[[t('credit-card-holder-offer-costs-title')]]</p></div><div><cells-key-values class="triple-play-offer-costs" key="credit-card-holder-offer-small-print-8"><cells-molecule-link-icon slot="after-key" icon="coronita:help" class="icon-size-18" is="cells-molecule-link-icon"></cells-molecule-link-icon><cells-atom-amount amount="[[annualFee.itemizeFeeUnit.import.amount]]" currency-code="[[annualFee.itemizeFeeUnit.import.currency]]" local-currency="[[annualFee.itemizeFeeUnit.import.currency]]" language="[[lang]]"></cells-atom-amount><br></cells-key-values></div><div><p class="costs-text"><i>[[t('credit-card-holder-offer-costs-info')]]</i></p></div></template><div class="line-div"><hr class="line-message"></div><template is="dom-if" if="[[isInfinite]]"><cells-icon-message type="info" icon="coronita:info" message="[[t('credit-card-holder-offer-infinite-alert')]]"></cells-icon-message></template><p class="card-interest-info"><strong>[[t('credit-card-holder-offer-small-print-1')]] [[catRate.unit.percentage]]% </strong>[[t('credit-card-holder-offer-small-print-2-1')]] <strong>[[annualRate.unit.percentage]]% </strong>[[t('credit-card-holder-offer-small-print-4')]]<cells-atom-amount amount="[[annualFee.itemizeFeeUnit.import.amount]]" currency-code="[[annualFee.itemizeFeeUnit.import.currency]]" local-currency="[[annualFee.itemizeFeeUnit.import.currency]]" language="[[lang]]"></cells-atom-amount>[[t('credit-card-holder-offer-small-print-3')]]<cells-atom-date class="calculation-wrapper" date="[[catRate.calculationDate]]" format="LL" locale="[[lang]]"></cells-atom-date>.<template is="dom-if" if="[[!offerData.isEditable]]">[[t('credit-card-holder-offer-small-print-6')]]<cells-atom-date class="calculation-wrapper" date="[[periodOfferEndDate]]" format="LL" locale="[[lang]]"></cells-atom-date>.</template></p><p class="card-interest-conditions">[[t('credit-card-holder-offer-small-print-5')]]</p><div class="button-primary"><cells-st-button class="btn size-m" on-tap="_firstStep"><button class="primary" disabled$="[[submitButtonDisabled]]">[[t('credit-card-holder-offer-footer-button-text')]]</button></cells-st-button></div><template is="dom-if" if="[[isTriplePlayOffer]]"><br></template><template is="dom-if" if="[[!isTriplePlayOffer]]"><div><cells-st-button class="link size-xs" on-tap="getCallMeBack"><button class="btn-call-me-back" disabled$="[[submitButtonDisabled]]">[[t('credit-card-holder-offer-footer-button-call-me-back')]]</button></cells-st-button></div></template></div></cells-glomo-offer-edit></template><template is="dom-if" if="{{_validateOfferTypeAlt(offerData.origin.id)}}"><cells-glomo-offer-edit id="creditCardHolderOfferEdit" class="content-wrapper" local-currency="[[localCurrency]]" offer-icon-hidden="" input-amount="{{offerData.details.suggestedAmount}}" input-hint-postfix="[[t('credit-card-holder-offer-input-hint2')]]" input-hint-text="[[t('credit-card-holder-offer-input-hint1')]]" input-max-amount-error-message="[[t('cells-glomo-offer-input-max-error')]]" input-max-amount="[[offerData.details.maximumAmount]]" input-min-amount-error-message="[[t('cells-glomo-offer-input-min-error')]]" input-min-amount="[[offerData.details.minimumAmount]]" input-label="[[t('credit-card-holder-offer-amount-label')]]" numeral-positive-only="[[numeralPositiveOnly]]" show-input="" show-input-hint="" disable-decimal=""><div slot="offerDescription" class$="[[classOffer]]"><div class$="[[cardUserClass]]"><img class="offer-card" src="[[offerData.image.url]]" alt="[[offerData.image.name]]"><p class="offer-desc">[[t('credit-card-holder-offer-desc')]]<br><strong class="label-strong">[[offerData.details.title.name]]</strong></p></div></div><div slot="offerNotes" class="content-notes"><template is="dom-if" if="[[isTriplePlayOffer]]"><div><p class="payment-method-label-benefits">[[t('credit-card-holder-offer-benefist-title')]]</p><br></div><template is="dom-repeat" items="[[containBenefitsList]]"><div class="triple-play-offer-benefits"><cells-atom-icon slot="before-key" icon="coronita:bullet1"></cells-atom-icon><cells-key-values key="[[item]]"></cells-key-values></div></template></template><template is="dom-if" if="[[!isTriplePlayOffer]]"><div class="offer-note-div"><div class="offer-note-p"><p>[[t('credit-card-holder-offer-note-info')]]</p></div><div class="offer-note-amount-p">[[annualRate.unit.percentage]] %</div></div><div class="offer-desc-div"><p class="offer-desc-p">[[t('credit-card-holder-offer-note-1')]]<strong class="label-strong"> [[rewardsRate.unit.percentage]]% </strong>[[t('credit-card-holder-offer-note-2')]]</p></div></template><template is="dom-if" if="[[showPromotionCode]]"><template is="dom-if" if="[[!benefitCoupon]]"><div><p class="payment-method-label benefit-coupon-title">[[t('credit-card-holder-offer-coupon-title')]]<cells-atom-icon icon="[[iconCouponInformation]]" class="btn-coupon-info" on-tap="_iconClicked"></cells-atom-icon></p></div><div><p class="payment-method-desc">[[t('credit-card-holder-offer-coupon-description')]] [[cardName]]</p></div><div class="modal"><cells-st-button class="link size-xs" on-click="_openModalInfo"><button class="btn-coupon">[[t('credit-card-holder-offer-coupon-modal-title')]]</button></cells-st-button></div></template><template is="dom-if" if="[[benefitCoupon]]"><div><p class="payment-method-label">[[t('credit-card-holder-offer-coupon-title')]]<cells-atom-icon icon="[[iconCouponInformation]]" class="btn-coupon-info" on-tap="_iconClicked"></cells-atom-icon></p></div><div><p class="payment-method-option">[[t('credit-card-holder-offer-coupon-modal-input-label')]] [[codeTitle]]</p></div><div><p class="benefit-coupon-description">[[codeDescription]]</p></div></template></template><div><p class="payment-method-label">[[t('credit-card-holder-offer-automatic-payment-title-1')]]</p></div><div><p class="payment-method-desc">[[t('credit-card-holder-offer-automatic-payment-desc-1')]]</p></div><div class="domiciliation-choice"><div class="domiciliation-label"><strong>[[t('credit-card-holder-offer-domiciliation-title')]]</strong></div><div class="domiciliation-switch"><cells-switch checked$="{{domiciliationCheck}}"></cells-switch></div><template is="dom-if" if="{{domiciliationCheck}}"><div class="domiciliation-radio-group"><cells-radio-group radio-accepted-button-type="cells-radio-button-description" id="paymentMethodRadioGroup" selected="{{paymentRadioMethodSelected}}"><cells-radio-button-description config="[[_configRadioMinimum]]"></cells-radio-button-description><cells-radio-button-description config="[[_configRadioStatement]]"></cells-radio-button-description></cells-radio-group></div></template></div><div class="icon-message-div"><cells-icon-message class="icon-message-domiciliation" type="[[domiciliationAlertType]]" icon="[[domiciliationAlertIcon]]" message="[[domiciliationAlertMessage]]"></cells-icon-message></div><template is="dom-if" if="[[isTriplePlayOffer]]"><div><p class="payment-method-label">[[t('credit-card-holder-offer-costs-title')]]</p></div><div><cells-key-values class="triple-play-offer-costs" key="credit-card-holder-offer-small-print-8"><cells-molecule-link-icon slot="after-key" icon="coronita:help" class="icon-size-18" is="cells-molecule-link-icon"></cells-molecule-link-icon><cells-atom-amount amount="[[annualFee.itemizeFeeUnit.import.amount]]" currency-code="[[annualFee.itemizeFeeUnit.import.currency]]" local-currency="[[annualFee.itemizeFeeUnit.import.currency]]" language="[[lang]]"></cells-atom-amount><br></cells-key-values></div><div><p class="costs-text"><i>[[t('credit-card-holder-offer-costs-info')]]</i></p></div></template><div class="line-div"><hr class="line-message"></div><template is="dom-if" if="[[isInfinite]]"><cells-icon-message type="info" icon="coronita:info" message="[[t('credit-card-holder-offer-infinite-alert')]]"></cells-icon-message></template><p class="card-interest-info"><strong>[[t(interestTypeText)]] [[catRate.unit.percentage]]% </strong>[[t('credit-card-holder-offer-small-print-2-1')]] <strong>[[annualRate.unit.percentage]]% </strong>[[t('credit-card-holder-offer-small-print-4')]]<cells-atom-amount amount="[[annualFee.itemizeFeeUnit.import.amount]]" currency-code="[[annualFee.itemizeFeeUnit.import.currency]]" local-currency="[[annualFee.itemizeFeeUnit.import.currency]]" language="[[lang]]"></cells-atom-amount>[[t('credit-card-holder-offer-small-print-3')]]<cells-atom-date class="calculation-wrapper" date="[[catRate.calculationDate]]" format="LL" locale="[[lang]]"></cells-atom-date>.<template is="dom-if" if="[[!offerData.isEditable]]">[[t('credit-card-holder-offer-small-print-6')]]<cells-atom-date class="calculation-wrapper" date="[[periodOfferEndDate]]" format="LL" locale="[[lang]]"></cells-atom-date>.</template></p><p class="card-interest-conditions">[[t('credit-card-holder-offer-small-print-5')]]</p><div class="button-primary"><cells-st-button class="btn size-m" on-tap="_firstStep"><button class="primary" disabled$="[[submitButtonDisabled]]">[[t('credit-card-holder-offer-footer-button-text')]]</button></cells-st-button></div><template is="dom-if" if="[[isTriplePlayOffer]]"><br></template><template is="dom-if" if="[[!isTriplePlayOffer]]"><div><cells-st-button class="link size-xs" on-tap="getCallMeBack"><button class="btn-call-me-back" disabled$="[[submitButtonDisabled]]">[[t('credit-card-holder-offer-footer-button-call-me-back')]]</button></cells-st-button></div></template></div></cells-glomo-offer-edit></template></div><div slot="filled" class="filled"><cells-glomo-offer-summary amount-label="[[t('credit-card-holder-offer-amount-label')]]" amount="[[offerData.details.suggestedAmount]]"><div slot="header-content" class="header-content"><img class="offer-card-img" src="[[offerData.image.url]]" alt="[[offerData.image.name]]"> <span class="offer-card-desc">[[offerData.details.title.name]]</span></div><div slot="content-slot" class="spacing-content-slot"><template is="dom-if" if="[[isTriplePlayOffer]]"><cells-key-values class="inline-offer" key="credit-card-holder-offer-small-print-8"><cells-atom-amount amount="[[annualFee.itemizeFeeUnit.import.amount]]" currency-code="[[annualFee.itemizeFeeUnit.import.currency]]" local-currency="[[annualFee.itemizeFeeUnit.import.currency]]" language="[[lang]]"></cells-atom-amount></cells-key-values><br><div class="note"><cells-atom-icon icon="coronita:info" class="icon-size-16"></cells-atom-icon><p class="note-info-text">[[t('credit-card-holder-offer-sumary-costs-print')]]</p></div><br></template><cells-key-values class="inline" key="[[t('credit-card-holder-offer-rewards-label')]]" value="[[rewardsRate.unit.percentage]]%"></cells-key-values><p class="payment-method-label">[[t('credit-card-holder-offer-automatic-payment-title')]]</p><p>[[t(paymentMethod)]]</p><p class="note"><cells-atom-icon icon="coronita:info" class="icon-size-16"></cells-atom-icon>[[t('credit-card-holder-offer-sumary-small-print')]]</p></div></cells-glomo-offer-summary></div></cells-step><template is="dom-if" if="{{_showAccountStatements(offerData.origin.id, domiciliationCheck, termsCollapsed, collapsed)}}"><div class="account-statements-header"><span class="account-statements-title">[[t('credit-card-holder-account-step-title')]]</span><cells-product-item visible-chars="5" primary-amount="[[localAmount]]" description="[[localDescription]]" local-currency="[[localCurrency]]"><span class="account-statements-description" slot="description">[[nameAccount]]</span><div class="account-statements-message"><cells-atom-icon icon="coronita:info" class="icon-size-16"></cells-atom-icon><p class="account-statements-message-text">[[stepAdditionalMessage]]</p></div></cells-product-item></div><div class="line-content"><hr class="line"></div></template></template></template><script>var CreditCardHolderOffer=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(CreditCardHolderOffer,_Polymer$mixinBehavio);function CreditCardHolderOffer(){babelHelpers.classCallCheck(this,CreditCardHolderOffer);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(CreditCardHolderOffer).apply(this,arguments))}babelHelpers.createClass(CreditCardHolderOffer,[{key:"ready",value:function ready(){babelHelpers.get(babelHelpers.getPrototypeOf(CreditCardHolderOffer.prototype),"ready",this).call(this);this.addEventListener("amount-input-changed",this._validateAmount.bind(this));this.addEventListener("cells-radio-group-selected-changed",this._updateSelectedPaymentMethod.bind(this));this.addEventListener("valid-amount-input-focus-out",this._onUpdateAmount.bind(this));this.addEventListener("change-pressed",this.changePressedFirstStep.bind(this));this.addEventListener("cells-switch-changed",this._domiciliationChoice.bind(this));this.addEventListener("cells-step-radio-button-icon-help-clicked",this._openHelpModalPaymentMethod.bind(this))}/**
+   * Method that executes modal to provide information
+   */},{key:"_iconClicked",value:function _iconClicked(){this.dispatchEvent(new CustomEvent("alert-modal-coupon-info",{detail:{opened:!0,title:"credit-card-holder-offer-coupon-info-subtitle",fullHeight:!0,iconPositionConfig:{type:"info",icon:this.iconCouponInformation},subtitle:[[this.t("credit-card-holder-offer-coupon-info-subtitle")]],message:[[this.t("credit-card-holder-offer-coupon-info-description")]],acceptButton:[[this.t("credit-card-holder-payments-help-button-text")]],closeOnPrimaryButton:!0},bubbles:!0,composed:!0}));this.dispatchEvent(new CustomEvent("action-advanced-footprint-info-promotion-code"))}/**
+   * Method to enter promotion code
+   */},{key:"_openModalInfo",value:function _openModalInfo(){this.dispatchEvent(new CustomEvent("modal-event",{detail:{opened:!0,title:this.t("credit-card-holder-offer-coupon-modal-title"),subtitle:this.t("credit-card-holder-offer-coupon-modal-subtitle"),labelInput:this.t("credit-card-holder-offer-coupon-modal-input-label"),fullHeight:!0,inputLength:8,inputType:"text",allowedChars:"[0-9a-zA-Z]",allowedValue:"[0-9a-zA-Z]",inputMessage:this.t("credit-card-holder-offer-coupon-modal-input-message"),cancelButton:!0,cancelButtonLabel:this.t(this.CREDIT_CARD_HOLDER_ERROR_GENERIC_CONSTANT),enableInput:!0,buttonDisableLabel:this.t("credit-card-holder-offer-coupon-modal-button")},bubbles:!0,composed:!0}));this.dispatchEvent(new CustomEvent("action-advanced-footprint-add-promotion-code",{bubbles:!0,composed:!0}))}/**
+   * Method that resets property values
+   */},{key:"_reset",value:function _reset(){this.benefitCoupon=!1;this.codeTitle="titulo";this.codeDescription=""}/**
+   * This computed function gets text for match with local for minimum radio button
+   * @param {String}
+   * @returns {Object}
+   */},{key:"_updateLocalMinimum",value:function _updateLocalMinimum(item){return{radio:this.t(item),icon:this.iconCouponInformation,id:"minimumPayment"}}/**
+   * This computed function gets text for match with local for statement radio button
+   * @param {String}
+   * @returns {Object}
+   */},{key:"_updateLocalStatement",value:function _updateLocalStatement(item){return{radio:this.t(item),icon:this.iconCouponInformation,id:"withoutInterest"}}/**
+   * @desc setting up the properties on pageActive, else reset them all
+   * @param {Object} pageActive
+   */},{key:"_boot",value:function _boot(pageActive){this.dispatchEvent(new CustomEvent("page-loaded"));this.set("initialized",!0);this.set("paymentMethod",this.MINIMUM_PAYMENT_CONSTANT);this.set("paymentMethodSelected",this.MINIMUM_AMOUNT_PAYMENT_CONSTANT);this.set("domiciliationAlertMessage",this.t("credit-card-holder-alert-message-selelected"));this.set("domiciliationChoiceText",this.MINIMUM_AMOUNT_CONSTANT);this.set("stepAdditionalMessage","".concat(this.t("cells-step-product-selector-additional-message")," ").concat(this.t(this.domiciliationChoiceText),"."));if(pageActive.value){this.set("headerTitleText",this.t("credit-card-holder-title"));this.set("footerButtonText",this.t("credit-card-holder-footer-button-text"));this.set("showButtonRequest",!0);this.set("creditBureauText",this.t("credit-card-holder-credit-bureau-modal-text"))}else{this.set("headerTitleText","");this.set("footerButtonText","");this.set("initialized",!1);this.set("prevAmount","")}}/**
+   * This computed function gets user origin id
+   * @param {Object} origin
+   * @returns String
+   */},{key:"_userOriginComputed",value:function _userOriginComputed(origin){return origin?origin.id:this.CUSTOMER_TYPE_CONSTANT}/**
+   * This function by cells-st-button event
+   * to request to callMeBack
+   */},{key:"getCallMeBack",value:function getCallMeBack(){this.dispatchEvent(new CustomEvent("call-me-back-start",{detail:{offerId:this.offerId,customerType:this.userOrigin,number:this.cardId}}))}/**
+   * @desc Address radio button selected value changed
+   * @param {Number}
+   */},{key:"_radioAddressChanged",value:function _radioAddressChanged(value){this.set("typology",0===value?this.OFFICE_CONSTANT:this.HOME_CONSTANT)}/**
+   * @desc setting up the properties on pageActive, else reset them all
+   * @param {Object}
+   */},{key:"listenAppContextChannel",value:function listenAppContextChannel(data){var currentPage=data.value.currentPage,fromPage=data.value.fromPage;if("creditCardHolderPage"===currentPage&&"helpInfoPage"!==fromPage&&"termsAndConditionsPage"!==fromPage){if((this.offerDataInfo||{}).isTriplePlayCreditCard&&""!==this.offerDataInfo.isTriplePlayCreditCard){this.isTriplePlayOffer=!0;this.triplePlayOfferType=this.offerDataInfo.isTriplePlayCreditCard;this.cardUserClass="card-user-message-black";this.classOffer="content-header-text-tripe-play"}this.changeHeaderColor(this.CREDIT_CARD_HOLDER_CONSTANT);this.initialize();this.set("shippingAddress",{detail:{value:0}});this.set("paymentRadioMethodSelected",0);this.dispatchEvent(new CustomEvent("activate-steps",{detail:{value:!0}}))}}/**
+   * @override
+   * @desc validates the step component
+   * @return {Boolean} The validity of the step component
+   */},{key:"isValid",value:function isValid(){return!this.submitButtonDisabled}/**
+   * @desc relaunch request to offer data when page is initialized
+   * @param {Object} offer
+   * @param {Boolean} init
+   */},{key:"relaunchRequestOfferData",value:function relaunchRequestOfferData(offer,init){if(offer&&init){this.requestOfferData(offer)}}/**
+   * @desc fires 'request-offer-data' event to get the offer data from DM
+   * @param {Object} offer
+   */},{key:"requestOfferData",value:function requestOfferData(offer){this.dispatchEvent(new CustomEvent(this.SHOW_SPINNER_CONSTANT));var showPromotion=(offer||{}).isTriplePlayCreditCard&&""!==offer.isTriplePlayCreditCard;if(offer&&offer.offerId){this.set("loading",!0);this.set("offerId",offer.offerId);this.set("cardId",offer.cardId);this.set("showPromotionCode",showPromotion?!1:this.get("isCpAvailable",offer));if(offer.period){this.set("periodOfferEndDate",offer.period.endDate)}this.dispatchEvent(new CustomEvent("request-offer-data",{detail:offer.offerId}))}}/**
+   * @desc getting offer data from dm
+   * @param {Object} data
+   */},{key:"offerDataLoad",value:function offerDataLoad(data){this.set("offerData",data);this.set("offerData.isTriplePlayOffer",this.isTriplePlayOffer);this._validateNpa(data);if(data&&data.details){this.set("prevAmount",data.details.suggestedAmount&&data.details.suggestedAmount.amount);if(data.details.product&&data.details.product.subproduct){this.set("offerData.cardId",data.details.product.subproduct.id)}else{this.set("offerData.cardId",data.details.title&&data.details.title.id)}}this.set("loading",!1);this._termAndConditionList();this.requestDataAccount();if(this.isInfinite){this.dispatchEvent(new CustomEvent("hide-address",{detail:!0}))}this.dispatchEvent(new CustomEvent(this.HIDE_SPINNER_CONSTANT))}/**
+   * @desc fires 'request-account-info' or 'request-account-info-to-offer' event to get account info from DM
+   */},{key:"requestDataAccount",value:function requestDataAccount(){var originID=this.offerData&&this.offerData.origin&&this.offerData.origin.id;if(originID===this.DATA_ORIGIN_CRM_CONSTANT&&!this.isTriplePlayOffer){var number=this.offerData.details&&this.offerData.details.relatedContracts&&this.offerData.details.relatedContracts.length&&this.offerData.details.relatedContracts[0].number;this.dispatchEvent(new CustomEvent("request-account-info",{detail:{number:number}}))}else if(this.offerDataInfo&&this.offerDataInfo.accountNumber&&this.isTriplePlayOffer){if(originID===this.DATA_ORIGIN_ALT_CONSTANT){this.interestTypeText="credit-card-holder-offer-small-print-interest"}this.dispatchEvent(new CustomEvent("request-account-info-to-offer",{detail:{number:this.offerDataInfo.accountNumber}}))}}/**
+  * @desc isNPA method for validation on workflow steps
+  * @param {String} data
+  */},{key:"_validateNpa",value:function _validateNpa(data){if((((data||{}).details||{}).product||{}).id&&data.details.product.id===this.PRODUCT_ID_NPA){this.isNpa=!0;this.set("stepTitle","credit-card-holder-offer-npa-title-step");this.dispatchEvent(new CustomEvent("header-title-text-changed",{detail:this.offerData.details.title.name}))}else{this.isNpa=!1;this.set("stepTitle","credit-card-holder-offer-title")}}/**
+   * @desc Fire analytics for all steps
+   * @param {String} data
+   */},{key:"_fireAnlaytics",value:function _fireAnlaytics(stepNumber){var payload={amount:this.offerData&&this.offerData.details&&this.offerData.details.suggestedAmount&&this.offerData.details.suggestedAmount.amount,typology:this.typology};this.dispatchEvent(new CustomEvent("app-step-".concat(stepNumber),{detail:payload}))}/**
+   * @desc getting offer data from dm in error case
+   * @param {Object} data
+   */},{key:"offerDataLoadError",value:function offerDataLoadError(data){this._showGenericError("show-generic-error-request-offer-detail")}/**
+   * @desc fires 'simulate-request' event to get the offer data from DM
+   * @param {Object} offer
+   */},{key:"requestSimulation",value:function requestSimulation(){var amount=this.get("offerData.details.suggestedAmount");this.dispatchEvent(new CustomEvent(this.SHOW_SPINNER_CONSTANT));var requestData={offerId:this.get("offerId"),requestPayload:{type:{id:this.get("OFFER_TYPE_CCH")},details:{limitAmount:amount}}};this.dispatchEvent(new CustomEvent("request-simulation",{detail:requestData}))}/**
+   * @desc getting offer data simulated from dm
+   * @param {Object} data
+   */},{key:"offerSimulated",value:function offerSimulated(data){this.dispatchEvent(new CustomEvent(this.HIDE_SPINNER_CONSTANT));this.set("offerData.offerType",data.offerType);this.set("offerData.details.title",this.offerData.details.title);this.set("offerData.details.image",this.offerData.image);this.set("offerData.details.product",data.details.product)}/**
+   * @desc watch for the amount changes
+   */},{key:"_onUpdateAmount",value:function _onUpdateAmount(_ref){var _ref$detail=_ref.detail,detail=void 0===_ref$detail?"":_ref$detail;this.set("userModifications",!0);if(detail!==this.prevAmount&&""!==detail){this.requestSimulation();this.set("prevAmount",detail)}}/**
+   * @desc update selected payment method when 'cells-radio-group-selected-changed' event is fired
+   * @param {Object} event
+   * @param {Object} payload
+   */},{key:"_updateSelectedPaymentMethod",value:function _updateSelectedPaymentMethod(event){var payload=event.detail,paymentMethods=this.get("paymentMethods"),noInterestLabel="credit-card-holder-no-interest",stepMessage="cells-step-product-selector-additional-message";if(payload.oldValue!==void 0){this.set("userModifications",!0)}if(0<paymentMethods.length){var valueDomiciliationChoice="";if(payload&&0===payload.value){valueDomiciliationChoice=this.MINIMUM_AMOUNT_CONSTANT}else{valueDomiciliationChoice=1===payload.value?noInterestLabel:this.MANUAL_PAYMENT_CONSTANT}this.set("paymentMethodSelected",0===payload.value?this.MINIMUM_AMOUNT_PAYMENT_CONSTANT:this.MINIMUM_AMOUNT_TO_AVOID_INTEREST_PAYMENT_CONSTANT);this.set("paymentMethod",paymentMethods[payload.value].label);this.set("domiciliationChoiceText",valueDomiciliationChoice);this.set("stepAdditionalMessage","".concat(this.t(stepMessage)," ").concat(this.t(this.domiciliationChoiceText)))}this._termAndConditionList()}/**
+   * @desc selected open modal info open when 'cells-step-radio-button-icon-help-clicked' event is fired
+   * @param {Object} event
+   */},{key:"_openHelpModalPaymentMethod",value:function _openHelpModalPaymentMethod(event){var idRadioButton=event&&event.detail&&event.detail.id;if("minimumPayment"===idRadioButton){this._openMinimumPaymentHelpPage(event)}if("withoutInterest"===idRadioButton){this._openStatementPaymentHelpPage(event)}}/**
+   * @desc open a help page based on 'eventDetail' param
+   * @param {Object} event
+   * @param {Object} eventDetail
+   */},{key:"_openHelpPage",value:function _openHelpPage(event,eventDetail){event.preventDefault();event.stopPropagation();var defaultEventDetail={icon:this.iconCouponInformation,type:"info",primaryModalButtonText:this.t("payroll-advance-offer-alert-button-text")};this.dispatchEvent(new CustomEvent("show-help-modal",{detail:Object.assign(defaultEventDetail,eventDetail)}))}/**
+   * @desc open the minimun payment help page
+   * @param {Object} event
+   */},{key:"_openMinimumPaymentHelpPage",value:function _openMinimumPaymentHelpPage(event){this._openHelpPage(event,{heading:this.t("credit-card-holder-offer-minimum-payment-label"),alert:this.t("credit-card-holder-payments-help-minimum-payment-content")})}/**
+   * @desc open the statement balance payment help page
+   * @param {Object} event
+   */},{key:"_openStatementPaymentHelpPage",value:function _openStatementPaymentHelpPage(event){this._openHelpPage(event,{heading:this.t("credit-card-holder-offer-statement-payment-label"),alert:this.t("credit-card-holder-payments-help-statement-payment-content")})}/**
+   * @desc fires 'go-next-step' event when the primary button is clicked or tapped
+   */},{key:"_firstStep",value:function _firstStep(){this.dispatchEvent(new CustomEvent("app-started"));this._nextStep();this.set("userModifications",!0);this.dispatchEvent(new CustomEvent("toggle-step",{detail:!0}));this.changeHeaderColor("oc-offer-step");if(this.isInfinite){this.dispatchEvent(new CustomEvent("skip-step"))}this.dispatchEvent(new CustomEvent("toggle-address-step",{detail:!0}));if(this.termsActive&&this.termsCollapsed&&this.addressCollapsed){this.dispatchEvent(new CustomEvent("show-terms-and-conditions-step",{detail:!1}))}}/**
+   * @desc verify if the user do whatever change and in this case launch confirmation exit modal
+   */},{key:"confirmDeparture",value:function confirmDeparture(){if(this.userModifications){this.dispatchEvent(new CustomEvent("show-confirm-exit-modal"))}else if(this.isTriplePlayOffer){var infoModal={code:"triple-play-offer",selectedConfig:{acceptBtLabel:"credit-card-holder-offer-offer-modal-button-text-one",cancelBtLabel:"credit-card-holder-offer-offer-modal-button-text-two",className:"full-height-error credit-card-holder",openMaximized:!0,title:"credit-card-holder-offer-offer-modal-header-title",heroImage:"./images/triplePlay/starYellow.png",template:{type:"paragraphs",values:[{title:"credit-card-holder-offer-offer-modal-title",class:"title-center spacing"},{text:"<strong>".concat(this.t("credit-card-holder-offer-offer-modal-text-one"),"</strong>"),class:"spacing "},{text:"credit-card-holder-offer-offer-modal-text-two"}]}}};this.dispatchEvent(new CustomEvent("show-confirm-exit-offer",{detail:infoModal,bubbles:!0,composed:!0}))}else{this.dispatchEvent(new CustomEvent("exit-page"))}}/**
+   * @desc update 'submitButtonDisabled' when 'amount-input-changed' event is fired
+   * @param {Object} event
+   * @param {Object} payload
+   */},{key:"_validateAmount",value:function _validateAmount(event){var amount=event.detail,isValid=!1;if(amount&&amount>=this.get("offerData.details.minimumAmount.amount")&&amount<=this.get("offerData.details.maximumAmount.amount")){isValid=!0}this.set("submitButtonDisabled",!isValid)}/**
+   * @desc is the card offer an INFINITE card
+   * @return {Boolean}
+   */},{key:"_isInfinite",value:function _isInfinite(cardTitle){return cardTitle?cardTitle.id===this.INFINITE_CARD_ID:!1}/**
+   * @desc find specific rate in array based on an ID
+   * @param 'items' rates array
+   * @param 'itemId' rate id
+   * @return {Object}
+   */},{key:"_findRate",value:function _findRate(items,itemId){var item=null;if(items&&items.length){item=items.find(function(currentItem){return currentItem.rateType.id===itemId})}return item}/**
+   * @desc find specific fee in array based on an ID
+   * @param 'items' fees array
+   * @param 'itemId' fee id
+   * @return {Object}
+   */},{key:"_findFee",value:function _findFee(items,itemId){var item=null;if(items&&items.length){item=items.find(function(currentItem){return currentItem.feeType===itemId})}return item}/**
+   * @desc get card offer's rewards rate
+   * @param 'rates' rates array
+   * @type {Object}
+   */},{key:"_getRewardsRate",value:function _getRewardsRate(rates){return this._findRate(rates,this.REWARDS_RATE_ID)}/**
+   * @desc get card offer's CAT rate
+   * @param 'rates' rates array
+   * @type {Object}
+   */},{key:"_getCATRate",value:function _getCATRate(rates){return this._findRate(rates,this.CAT_RATE_ID)}/**
+   * @desc get card offer's anual rate
+   * @param 'rates' rates array
+   * @type {Object}
+   */},{key:"_getAnnualRate",value:function _getAnnualRate(rates){return this._findRate(rates,this.ANNUAL_RATE_ID)}/**
+   * @desc get card offer's anual fee
+   * @param 'fees' fees array
+   * @return {Object}
+   */},{key:"_getAnnualFee",value:function _getAnnualFee(fees){return this._findFee(fees,this.ANNUAL_FEE_ID)}/**
+   * @desc get card name
+   * @param {object} details of the offer
+   * @return {String} card name
+   */},{key:"_getCardName",value:function _getCardName(details){return details?details.title.name:""}/**
+   * @desc set the shipping address in terms and conditions list
+   * @param {object} shipping addres selected in the radio button
+   */},{key:"_shippingAddressChanged",value:function _shippingAddressChanged(shippingAddress){if(this.isTriplePlayOffer){this.set("sendTargetUserText",this.ADDRES_TEXT_CONSTANT)}else{this.set("sendTargetUserText",0===shippingAddress.value?"credit-card-holder-sucursal-text":this.ADDRES_TEXT_CONSTANT)}this._termAndConditionList()}/**
+   * @desc term and condition list
+   */},{key:"_termAndConditionList",value:function _termAndConditionList(){var termsAndConditionsList=[],positionList1=0,positionList2=0,positionList3=0;if(this.isNpa){termsAndConditionsList=[{checked:!0,label:"".concat(this.t("credit-card-holder-terms-and-conditions-terms-accept-cch")," <strong>").concat(this.cardName,".</strong>"),labelClickEventName:"terms-clicked"}];positionList1=1;positionList2=2;positionList3=3}else{termsAndConditionsList=[{checked:!0,label:this.t("credit-card-holder-terms-and-conditions-bureau-consent"),labelClickEventName:"bureau-clicked"},{checked:!0,label:"".concat(this.t("credit-card-holder-terms-and-conditions-terms-accept-cch")," <strong>").concat(this.cardName,".</strong>"),labelClickEventName:"terms-clicked"}];positionList1=2;positionList2=3;positionList3=4}if(this.domiciliationCheck){termsAndConditionsList=this.listWithDomiciliation(termsAndConditionsList,positionList1,positionList2,positionList3)}else{termsAndConditionsList=this.listWithoutDomiciliation(termsAndConditionsList,positionList1,positionList2)}this.dispatchEvent(new CustomEvent("credit-card-holder-termcondition",{detail:termsAndConditionsList}))}/**
+   * @desc return terms and conditions list whit domiciliation
+   */},{key:"listWithDomiciliation",value:function listWithDomiciliation(list,positionList1,positionList2,positionList3){var termsAndConditionsList=list,labelClickEventActivation="activation-clicked",paymentActivationText="credit-card-holder-terms-and-conditions-payment-activation",digitalCardText="credit-card-holder-digital-card",activationDetailText="credit-card-holder-terms-and-conditions-payment-activation-detail";termsAndConditionsList[positionList1]={checked:!0,label:"".concat(this.t("credit-card-holder-terms-and-conditions-payment-accept")," <strong>").concat(this.t(this.domiciliationChoiceText),"</strong>."),labelClickEventName:"payment-clicked",note:"credit-card-holder-terms-and-conditions-payment-note"};if(!this.isInfinite){termsAndConditionsList[positionList2]={checked:!0,label:"".concat(this.t("credit-card-holder-terms-and-conditions-shipping-concent")," ").concat(this.t(this.sendTargetUserText)),labelClickEventName:"shipping-clicked"};if(this.sendTargetUserText===this.ADDRES_TEXT_CONSTANT){termsAndConditionsList[positionList3]={checked:!0,label:"".concat(this.t(paymentActivationText)," ").concat(this.t(digitalCardText)," ").concat(this.t(activationDetailText)),labelClickEventName:labelClickEventActivation}}}else{termsAndConditionsList[positionList2]={checked:!0,label:"".concat(this.t(paymentActivationText)," ").concat(this.t(digitalCardText)," ").concat(this.t(activationDetailText)),labelClickEventName:labelClickEventActivation}}return termsAndConditionsList}/**
+   * @desc return terms and conditions list without domiciliation
+   */},{key:"listWithoutDomiciliation",value:function listWithoutDomiciliation(list,positionList1,positionList2){var termsAndConditionsList=list,labelClickEventActivation="activation-clicked",paymentActivationText="credit-card-holder-terms-and-conditions-payment-activation",digitalCardText="credit-card-holder-digital-card",activationDetailText="credit-card-holder-terms-and-conditions-payment-activation-detail";if(!this.isInfinite){termsAndConditionsList[positionList1]={checked:!0,label:"".concat(this.t("credit-card-holder-terms-and-conditions-shipping-concent")," ").concat(this.t(this.sendTargetUserText)),labelClickEventName:"shipping-clicked"};if(this.sendTargetUserText===this.ADDRES_TEXT_CONSTANT){termsAndConditionsList[positionList2]={checked:!0,label:"".concat(this.t(paymentActivationText)," ").concat(this.t(digitalCardText)," ").concat(this.t(activationDetailText)),labelClickEventName:labelClickEventActivation}}}else{if(this.sendTargetUserText===this.ADDRES_TEXT_CONSTANT){termsAndConditionsList[positionList1]={checked:!0,label:"".concat(this.t(paymentActivationText)," ").concat(this.t(digitalCardText)," ").concat(this.t(activationDetailText)),labelClickEventName:labelClickEventActivation}}}return termsAndConditionsList}/**
+   * @desc launch the event
+   * @param {event} custom event credit-card-holder-send-request for make the credit request
+   */},{key:"_requestCreditCard",value:function _requestCreditCard(e){var destinationID="",product=this.offerData&&this.offerData.details&&this.offerData.details.product,originID=this.offerData&&this.offerData.origin&&this.offerData.origin.id;if(this.isTriplePlayOffer){destinationID=this.ADDRESS_HOME_CONSTANT}else{destinationID=0===this.shippingAddress.value?this.BRANCH_OFFICE_CONSTANT:this.ADDRESS_HOME_CONSTANT}var payload=this.loadInfoRequestCreditCard(destinationID);if(payload&&product&&originID===this.DATA_ORIGIN_ALT_CONSTANT){delete payload.hiringOrigin;payload.product={id:product.subproduct&&product.subproduct.id,subproduct:{id:product.id}}}this.dispatchEvent(new CustomEvent("credit-card-holder-send-request-cards",{detail:payload}));this.set("showButtonRequest",!1);this.dispatchEvent(new CustomEvent(this.SHOW_SPINNER_CONSTANT))}/**
+   * @desc return the information to send it to an event _requestCreditCard
+   */},{key:"loadInfoRequestCreditCard",value:function loadInfoRequestCreditCard(data){var payload="",destinationID=data,cardTypeID=this.offerData&&this.offerData.cardType&&this.offerData.cardType.id,titleID=this.offerData&&this.offerData.details&&this.offerData.details.title&&this.offerData.details.title.id,suggestedAmount=this.offerData&&this.offerData.details&&this.offerData.details.suggestedAmount;payload={offerId:this.offerId,cardAgreement:"",cardType:{id:cardTypeID},product:{id:titleID},physicalSupport:{id:this.PHYSICAL_SUPPORT_CONSTANT},currencies:[{currency:this.localCurrency,isMajor:!0}],grantedCredits:[{amount:suggestedAmount&&suggestedAmount.amount,currency:this.localCurrency}],status:{id:this.STATUS_ID_CONSTANT},deliveries:[{serviceType:{id:this.SERVICE_TYPE_CONSTANT},destination:{id:destinationID}}],paymentMethod:{id:this.paymentMethodSelected===this.NO_DOMICILIATION_PAYMENT_CONSTANT?this.NO_DOMICILIATION_PAYMENT_CONSTANT_PAYLOAD:this.paymentMethodSelected,frecuency:{id:this.MONTHLY_PERIOD_CONSTANT}},relatedContracts:[{contractId:null,numberType:{id:this.NUMBER_TYPE_CONSTANT},product:{id:this.PRODUCT_CONTRACT_CONSTANT},relationType:{id:this.RELATION_TYPE_CONSTANT}}],offerRecalculationType:{id:this.RECALCULATION_TYPE_CONSTANT},participants:[{legalPersonType:{id:this.LEGAL_PERSON_TYPE_CONSTANT}}],activations:[{id:this.ACTIVATIONS_CONSTANT,isActive:!0}],staticFeatures:[{id:this.SFEATURES_CONSTANT},{id:this.STATIC_FEATURES_CONSTANT}],hiringOrigin:{id:this.ORIGIN_CONSTANT}};return payload}/**
+   * @desc get the user address from api
+   * @param {Object} address
+   */},{key:"_responseUserAddress",value:function _responseUserAddress(response){response.forEach(function(addressObj){if(addressObj.addressType.id===this.ADDRESS_HOME_CONSTANT){this.set("userAddress",addressObj)}},this)}/**
+   * @desc get data and launch event to show success screen
+   * @param {Object} response
+   */},{key:"_creditCardHolderResponseSuccess",value:function _creditCardHolderResponseSuccess(response){var suggestedAmount=this.offerData&&this.offerData.details&&this.offerData.details.suggestedAmount,objResponse={amount:{amount:suggestedAmount.amount,currency:suggestedAmount.currency},cardId:response.cardId||response.id,openingDate:response.openingDate,number:response.number||null,operationDate:response.operationDate,operationNumber:response.operationNumber,maskAddres:this.showHideUserAddress,title:this.offerData.details&&this.offerData.details.title,image:this.offerData.image,paymentMethod:this.paymentMethodSelected,typology:this.typology,userAddress:this.userAddress,subproductId:this.offerData.cardId};if(this.paymentMethodSelected!==this.NO_DOMICILIATION_PAYMENT_CONSTANT){var offer=this.offerData.details;objResponse.accountNumber=((offer.relatedContracts||[])[0]||{}).number||response.relatedContracts[0].number}if(this.isTriplePlayOffer){objResponse.triplePlayOfferType=this.triplePlayOfferType;objResponse.accountAlias=this.nameAccount;objResponse.accountId=this.account.accountId;objResponse.accountNumber=this.account.number}this._handleEventError("show-successful-contracting",objResponse);this.dispatchEvent(new CustomEvent(this.HIDE_SPINNER_CONSTANT))}/**
+   * @desc map to errors response and launch the event in the different cases
+   * @param {Object} response
+   */},{key:"_creditCardHolderResponseError",value:function _creditCardHolderResponseError(response){if(response&&response.errorCode){var payload={amount:{amount:this.offerData.details.suggestedAmount.amount,currency:this.offerData.details.suggestedAmount.currency},title:this.offerData.details.title,image:this.offerData.image,operationNumber:response.operationNumber,typology:this.typology};switch(response.errorCode){case this.BURO_ERROR_CODE:this._handleEventError("show-error-rejection-buro",payload);break;case this.BURO_WAIT_ERROR_CODE:this._handleEventError("show-error-wait-buro",payload);break;case this.INFORMATION_CLIENT_ERROR_CODE:this._handleEventError("show-error-user-information",payload);break;default:this._showGenericError("show-generic-error",!0,response);break;}}else{this._showDinamicModalError("show-generic-error",!0,response)}this.dispatchEvent(new CustomEvent(this.HIDE_SPINNER_CONSTANT))}/**
+   * @desc launch the event for show a 400 error
+   * @param {String} eventName
+   * @param {Boolean} it is a blocking error
+   */},{key:"_showDinamicModalError",value:function _showDinamicModalError(eventName){var isBlocking=1<arguments.length&&arguments[1]!==void 0?arguments[1]:!1,errorResponse=2<arguments.length&&arguments[2]!==void 0?arguments[2]:{},txtPrimary="name"in((errorResponse.response_body.messages[0].parameters||[])[0]||{})?errorResponse.response_body.messages[0].parameters[0].name:errorResponse.response_body.messages[0].code,txtSecondary="name"in((errorResponse.response_body.messages[0].parameters||[])[1]||{})?errorResponse.response_body.messages[0].parameters[1].name:errorResponse.response_body.messages[0].message;this._handleEventError(eventName,{icon:"glomo:general-error",title:this.t("credit-card-holder-error-generic-title-text"),failureText:"".concat(txtPrimary," ").concat(txtSecondary),isBlockingError:isBlocking,primaryButtonText:this.t("credit-card-holder-error-generic-primary-button"),secondaryButtonText:this.t(this.CREDIT_CARD_HOLDER_ERROR_GENERIC_CONSTANT),headerTitleText:this.t("credit-card-holder-error-generic-title-header")})}/**
+   * @desc launch the event for show the generic error
+   * @param {String} eventName
+   * @param {Boolean} it is blocking error
+   */},{key:"_showGenericError",value:function _showGenericError(eventName){var isBlocking=1<arguments.length&&arguments[1]!==void 0?arguments[1]:!1,errorResponse=2<arguments.length&&arguments[2]!==void 0?arguments[2]:{};this._handleEventError(eventName,{icon:"glomo:general-error",title:this.t("credit-card-holder-error-generic-title-text"),failureText:errorResponse&&errorResponse.errorCode&&errorResponse.errorMessage?"".concat(errorResponse.errorCode,"\n      ").concat(errorResponse.errorMessage):this.t("credit-card-holder-error-generic-body-text"),isBlockingError:isBlocking,primaryButtonText:this.t("credit-card-holder-error-generic-primary-button"),secondaryButtonText:this.t(this.CREDIT_CARD_HOLDER_ERROR_GENERIC_CONSTANT),headerTitleText:this.t("credit-card-holder-error-generic-title-header")})}/**
+   * @desc launch the event
+   * @param {String} eventName
+   * @param {Object} errorPayload
+   */},{key:"_handleEventError",value:function _handleEventError(eventName){var errorPayload=1<arguments.length&&arguments[1]!==void 0?arguments[1]:{};this.dispatchEvent(new CustomEvent(eventName,{detail:errorPayload}))}/**
+   * @desc launch the event for change header color
+   * @param {Object} event
+   */},{key:"changePressedFirstStep",value:function changePressedFirstStep(e){this._reset();this.changeHeaderColor(this.CREDIT_CARD_HOLDER_CONSTANT);if(!this.addressCollapsed){this.dispatchEvent(new CustomEvent("toggle-address-step",{bubbles:!0,composed:!0,detail:!1}))}if(!this.termsCollapsed){this.dispatchEvent(new CustomEvent("toggle-terms-step",{bubbles:!0,composed:!0,detail:!1}))}}/**
+   * @desc deactivates terms and conditions if the second or first step is full
+   */},{key:"changeTermsAndConditions",value:function changeTermsAndConditions(){this._fireAnlaytics(3);if(!this.addressCollapsed||!this.collapsed){this.dispatchEvent(new CustomEvent("toggle-terms-step",{detail:!1}))}}/**
+   * @desc dispatch an event for change header color throw a class name of cells-component-app-header-shared-styles
+   */},{key:"changeHeaderColor",value:function changeHeaderColor(className){if(this.isTriplePlayOffer&&className===this.CREDIT_CARD_HOLDER_CONSTANT){className="credit-card-holder-white"}this.dispatchEvent(new CustomEvent("change-header-color",{detail:className}))}/**
+   * @desc launches the event to link termsAndConditions Page
+   */},{key:"pdfOpenTerms",value:function pdfOpenTerms(e){this.dispatchEvent(new CustomEvent("send-pdf-terms-and-conditions-data",{detail:{title:this.t("credit-card-holder-terms-and-conditions-title"),productId:"TDC",subProductId:this.offerData.cardId,documentName:this.pdfTermsConditionsdName}}))}/**
+  * @desc Show/ Hide accountStatement template
+  */},{key:"_showAccountStatements",value:function _showAccountStatements(offer,domiciliationCheck,termsCollapsed,collapsed){if(this.isTriplePlayOffer&&this.offerDataInfo&&this.offerDataInfo.accountNumber){return domiciliationCheck&&termsCollapsed&&collapsed}else{return offer===this.DATA_ORIGIN_CRM_CONSTANT&&domiciliationCheck&&termsCollapsed&&collapsed}}/**
+  * @desc Validate if offer is ALT/ CRM
+  */},{key:"_validateOfferTypeAlt",value:function _validateOfferTypeAlt(offer){return offer===this.DATA_ORIGIN_ALT_CONSTANT}/**
+   * @desc set data account from dm account
+   * @param {Object} account
+   */},{key:"setDataAccount",value:function setDataAccount(account){if(account&&account.accountDetails&&account.accountDetails.availableBalance&&account.accountDetails.availableBalance.currentBalances[0]){this.account=account;this.set("nameAccount",account.accountDetails.alias);this.set("localAmount.amount",account.accountDetails.availableBalance.currentBalances[0].amount);this.set("localAmount.currency",account.accountDetails.availableBalance.currentBalances[0].currency);this.set("localDescription.value",account.accountDetails.number);this.set("localCurrency",account.accountDetails.availableBalance.currentBalances[0].currency)}else if(this.isTriplePlayOffer&&account&&account.availableBalance&&account.availableBalance.currentBalances[0]){this.account=account;this.set("nameAccount",account.alias);this.set("localAmount.amount",account.availableBalance.currentBalances[0].amount);this.set("localAmount.currency",account.availableBalance.currentBalances[0].currency);this.set("localDescription.value",account.number);this.set("localCurrency",account.availableBalance.currentBalances[0].currency)}}/**
+   * @desc watch for domiciliation choice
+   * @param e cells-switch-changed
+   */},{key:"_domiciliationChoice",value:function _domiciliationChoice(e){this.set("domiciliationCheck",e.detail);if(e.detail){this.set("domiciliationAlertMessage",this.t("credit-card-holder-alert-message-selelected"));this.set("paymentMethod",this.MINIMUM_PAYMENT_CONSTANT);this.set("paymentMethodSelected",this.MINIMUM_AMOUNT_PAYMENT_CONSTANT)}else{this.set("domiciliationAlertMessage",this.t("credit-card-holder-alert-message-unselelected"));this.set("paymentMethod",this.MANUAL_PAYMENT_CONSTANT);this.set("paymentMethodSelected",this.NO_DOMICILIATION_PAYMENT_CONSTANT)}this._termAndConditionList()}}],[{key:"is",get:function get(){return"credit-card-holder-offer"}},{key:"properties",get:function get(){return{/**
+       * @desc show promotion code
+       * @type {Boolean}
+       */benefitCoupon:{type:Boolean,value:!1},/**
+       * @desc show coupon title
+       * @type {String}
+       */codeTitle:{type:String,value:"titulo"},/**
+       * @desc show coupon description
+       * @type {String}
+       */codeDescription:String,/**
+       * @desc Value set to incorporate flag
+       * @type {Boolean}
+       */showPromotionCode:{type:Boolean,value:!1},/**
+       * @desc offer id
+       * @type {string}
+       */offerId:{type:String,value:""},/**
+       * @desc offer data fetched from DM
+       * @type {Object}
+       */offerData:{type:Object,notify:!0,value:{}},/**
+       * @desc list of available payment methods
+       * @type {Array}
+       */paymentMethods:{type:Array,value:[]},/**
+       * @desc end date of the offer
+       * @type {String}
+       */periodOfferEndDate:String,/**
+       * @desc selected payment method
+       * @type {String}
+       */paymentMethod:{type:String,value:""},/**
+       * @desc is the card offer an INFINITE card
+       * @type {Boolean}
+       */isInfinite:{type:Boolean,value:!1,computed:"_isInfinite(offerData.details.title)",readOnly:!0},/**
+       * @desc card offer's rewards rate
+       * @type {Object}
+       */rewardsRate:{type:Object,value:{},computed:"_getRewardsRate(offerData.rates)",readOnly:!0},/**
+       * @desc card offer's CAT rate
+       * @type {Object}
+       */catRate:{type:Object,value:{},computed:"_getCATRate(offerData.rates)",readOnly:!0},/**
+       * @desc card offer's anual rate
+       * @type {Object}
+       */annualRate:{type:Object,value:{},computed:"_getAnnualRate(offerData.rates)",readOnly:!0},/**
+       * @desc card offer's anual fee
+       * @type {Object}
+       */annualFee:{type:Object,value:{},computed:"_getAnnualFee(offerData.fees.itemizeFees)",readOnly:!0},/**
+       * @desc name of the card
+       * @type {String}
+       */cardName:{type:String,value:"",computed:"_getCardName(offerData.details)",readOnly:!0},/**
+       * @desc payment method selected in the radio button
+       * @type {Number}
+       */paymentRadioMethodSelected:{type:Number,value:0},/**
+       * @desc Address type selected
+       * @type {String}
+       */typology:{type:String},/**
+       * @desc constant for branch office address
+       * @type {String}
+       */OFFICE_CONSTANT:{type:String,value:"sucursal"},/**
+       * @desc constant for home address
+       * @type {String}
+       */HOME_CONSTANT:{type:String,value:"domicilio"},/**
+       * @desc is submit button disable
+       * @type {Boolean}
+       */submitButtonDisabled:{type:Boolean,value:!1},/**
+       * @desc language
+       * @type {String}
+       */lang:{type:String,value:document.documentElement.lang||"en",readOnly:!0},/**
+       * @desc variable that determines if show or hide user address
+       * @type {Boolean}
+       */showHideUserAddress:Boolean,/**
+       * @desc variable that determines if show or hide button 'Solicitar'
+       * @type {Boolean}
+       */showButtonRequest:{type:Boolean,notify:!0},/**
+       * @desc shipping address selected for the user
+       * @type {Object}
+       */shippingAddress:{type:Object,value:{},observer:"_shippingAddressChanged"},/**
+       * @desc validate if the user do whatever modification
+       * @type {Boolean}
+       */userModifications:{type:Boolean,value:!1},/**
+       * @desc validate credit bureau text
+       * @type {Boolean}
+       */creditBureauText:{type:Boolean,notify:!0},/**
+       * @desc address collapsed status
+       * @type {Object}
+       */addressCollapsed:Boolean,/**
+       * @desc terms and conditions collapsed status
+       * @type {Object}
+       */termsCollapsed:Boolean,/**
+       * @desc terms and conditions active status
+       * @type {Object}
+       */termsActive:Boolean,/**
+       *
+       * @desc local currency, value declared from composerMock
+       */localCurrency:String,/**
+       * @desc noma of document for terms and conditions
+       * @type {String}
+       */pdfTermsConditionsdName:String,/**
+       * @desc offerDataInfo property,
+       * set offer data from channel
+       * @type {Object}
+       */offerDataInfo:{type:Object},/**
+       * @desc constant for credit card holder offer type
+       * @type {String}
+       */OFFER_TYPE_CCH:String,/**
+       * @desc constant for infinite card id
+       * @type {String}
+       */INFINITE_CARD_ID:String,/**
+       * @desc constant for rewards rate id
+       * @type {String}
+       */REWARDS_RATE_ID:String,/**
+       * @desc constant for cat rate id
+       * @type {String}
+       */CAT_RATE_ID:String,/**
+       * @desc constant for annual rate id
+       * @type {String}
+       */ANNUAL_RATE_ID:String,/**
+       * @desc constant for annua _fee id
+       * @type {String}
+       */ANNUAL_FEE_ID:String,/**
+       * @desc constant for error 'rechazo por buro'
+       * @type {String}
+       */BURO_ERROR_CODE:String,/**
+       * @desc constant for error 'en espera de buro'
+       * @type {String}
+       */BURO_WAIT_ERROR_CODE:String,/**
+       * @desc constant for error 'solicitud con datos faltantes'
+       * @type {String}
+       */INFORMATION_CLIENT_ERROR_CODE:String,/**
+       * @desc constant for branch officce
+       * @type {String}
+       */BRANCH_OFFICE_CONSTANT:String,/**
+       * @desc constant for monthly period
+       * @type {String}
+       */MONTHLY_PERIOD_CONSTANT:String,/**
+       * @desc constant for home
+       * @type {String}
+       */ADDRESS_HOME_CONSTANT:String,/**
+       * @desc constant for physical support
+       * @type {String}
+       */PHYSICAL_SUPPORT_CONSTANT:{type:String,value:"NORMAL_PLASTIC"},/**
+       * @desc constant CRM offer
+       * @type {String}
+       */DATA_ORIGIN_CRM_CONSTANT:{type:String,value:"CRM"},/**
+      * @desc constant ALT offer
+      * @type {String}
+      */DATA_ORIGIN_ALT_CONSTANT:{type:String,value:"ALT"},/**
+      * @desc constant for Crea card
+      * @type {String}
+      */CREA_CARD_CONSTANT:{type:String,value:"AG"},/**
+      * @desc constant for minimum amount payment
+      * @type {String}
+      */MINIMUM_AMOUNT_PAYMENT_CONSTANT:{type:String,value:"MINIMUM_AMOUNT_PAYMENT"},/**
+      * @desc constant for minimum amount
+      * @type {String}
+      */MINIMUM_AMOUNT_CONSTANT:{type:String,value:"credit-card-holder-minimum-amount"},/**
+      * @desc constant for minimum amount
+      * @type {String}
+      */MANUAL_PAYMENT_CONSTANT:{type:String,value:"credit-card-holder-offer-manual-payment-leyend"},/**
+      * @desc constant for minimum payment leyend
+      * @type {String}
+      */MINIMUM_PAYMENT_CONSTANT:{type:String,value:"credit-card-holder-offer-minimum-payment-leyend"},/**
+      * @desc constant for no domiciliation constant
+      * @type {String}
+      */NO_DOMICILIATION_PAYMENT_CONSTANT:{type:String,value:"NO_DOMICILIATION_PAYMENT"},/**
+      * @desc constant for no domiciliation constant payload
+      * @type {String}
+      */NO_DOMICILIATION_PAYMENT_CONSTANT_PAYLOAD:{type:String,value:"N"},/**
+      * @desc constant for minimum amount payment to avoid interest
+      * @type {String}
+      */MINIMUM_AMOUNT_TO_AVOID_INTEREST_PAYMENT_CONSTANT:{type:String,value:"MINIMUM_AMOUNT_TO_AVOID_INTEREST_PAYMENT"},/**
+      * @desc constant for status.id payload
+      * @type {String}
+      */STATUS_ID_CONSTANT:{type:String,value:"INOPERATIVE"},/**
+      * @desc constant for relatedContracts.numberType.id
+      * @type {String}
+      */NUMBER_TYPE_CONSTANT:{type:String,value:"CCC"},/**
+      * @desc constant for relatedContracts.product.id
+      * @type {String}
+      */PRODUCT_CONTRACT_CONSTANT:{type:String,value:"ACCOUNTS"},/**
+      * @desc constant for deliveries.serviceType.id
+      * @type {String}
+      */SERVICE_TYPE_CONSTANT:{type:String,value:"BOTH_OPTIONS"},/**
+      * @desc constant for relatedContracts.relationType.id
+      * @type {String}
+      */RELATION_TYPE_CONSTANT:{type:String,value:"LINKED_WITH"},/**
+      * @desc constant for offerRecalculationType.id
+      * @type {String}
+      */RECALCULATION_TYPE_CONSTANT:{type:String,value:"ROF"},/**
+      * @desc constant for participants.legalPersonType.id
+      * @type {String}
+      */LEGAL_PERSON_TYPE_CONSTANT:{type:String,value:"SRI"},/**
+      * @desc constant for activations.id
+      * @type {String}
+      */ACTIVATIONS_CONSTANT:{type:String,value:"ON_OFF"},/**
+      * @desc constant for staticFeatures[0].id
+      * @type {String}
+      */SFEATURES_CONSTANT:{type:String,value:"EXTERNAL_SCORES"},/**
+      * @desc constant for staticFeatures[1].id
+      * @type {String}
+      */STATIC_FEATURES_CONSTANT:{type:String,value:"PRE_AUTHORIZED"},/**
+      * @desc constant for hiringOrigin.id
+      * @type {String}
+      */ORIGIN_CONSTANT:{type:String,value:"N"},/**
+      * @desc constant for deliveries.contact.contactType
+      * @type {String}
+      */CONTACT_TYPE_CONSTANT:{type:String,value:"SPECIFIC"},/**
+      * @desc enable button to next step
+      * @type {Boolean}
+      */domiciliationCheck:{type:Boolean,notify:!0,value:!1},/**
+      * @desc object for send to cells-product-item
+      * @type {String}
+      */nameAccount:{type:String,value:""},/**
+      * @desc object for send to cells-product-item
+      * @type {Object}
+      */localAmount:{type:Object,value:{label:"Saldo disponible",amount:0,currency:""},notify:!0},/**
+      * @desc object for send to cells-product-item
+      * @type {Object}
+      */localDescription:{type:Object,value:{value:"",masked:!0},notify:!0},/**
+      * @desc cells-step additional message
+      * @type String
+      */stepAdditionalMessage:{type:String,value:""},/**
+       * @desc domiciliation alert type
+       * @type String
+       */domiciliationAlertType:{type:String,value:"info"},/**
+       * @desc domiciliation alert icon
+       * @type String
+       */domiciliationAlertIcon:{type:String,value:"coronita:info"},/**
+       * @desc domiciliation alert message
+       * @type String
+       */domiciliationAlertMessage:{type:String,value:"credit-card-holder-alert-message-unselelected"},/**
+       * @desc cardId property, required to call-me-back request
+       * @type {String}
+       */cardId:{type:String,value:""},/**
+       * @desc save the user origin id to
+       * callMeBack gets by offerData.origin
+       * @type {String}
+       */userOrigin:{type:String,value:"",computed:"_userOriginComputed(offerData.origin)",readOnly:!0},/**
+       * @desc CUSTOMER_TYPE_CONTANT property,
+       * required to call-me-back request
+       */CUSTOMER_TYPE_CONSTANT:{type:String,value:"CSP",readOnly:!0},/**
+       * @desc Flag to know if the product
+       * corresponds to not pre-approved
+       * @type {Boolean}
+       */isNpa:{type:Boolean,value:!1},/**
+       * @desc Title of step
+       * @type {String}
+       */stepTitle:{type:String},/**
+      * @desc constant for product id of not pre-approved
+      * @type {String}
+      */PRODUCT_ID_NPA:{type:String,value:"0SKY"},/**
+      * @desc flag to relaunch request
+      * @type {Boolean}
+      */initialized:{type:Boolean,value:!1},/**
+      * @desc icon show coupon information
+      * @type {String}
+      */iconCouponInformation:{type:String,value:"coronita:help"},/**
+      * @desc previously entered value in the amount input
+      * @type {String}
+      */prevAmount:String,/**
+      * @desc text for minimum radio button description
+      * @type {String}
+      */configRadioMinimum:{type:String,value:"credit-card-holder-offer-minimum-payment-label"},/**
+      * @desc object config for minimum radio button
+      * @type {Object}
+      */_configRadioMinimum:{type:Object,computed:"_updateLocalMinimum(configRadioMinimum)"},/**
+      * @desc text for statement radio button description
+      * @type {String}
+      */configRadioStatement:{type:String,value:"credit-card-holder-offer-statement-payment-label"},/**
+      * @desc object config for statement radio button
+      * @type {String}
+      */_configRadioStatement:{type:Object,computed:"_updateLocalStatement(configRadioStatement)"},classOffer:{type:String,value:"content-header-text"},/**
+       * @desc Return boolean condition if is offer card to triple play
+       * @type {Boolean}
+       */isTriplePlayOffer:{type:Boolean,value:!1},/**
+       * @desc Contains type of triple play offer
+       * @type {String}
+       */triplePlayOfferType:{type:String,value:""},/**
+       * @desc Contains text info to triple play offer
+       * @type {Array}
+       */containBenefitsList:{type:Array,value:["credit-card-holder-offer-benefist-text1","credit-card-holder-offer-benefist-text2","credit-card-holder-offer-benefist-text3"]},/**
+       * @desc constant for dispatchEvent 'hide-spinner'
+       * @type {String}
+       */HIDE_SPINNER_CONSTANT:{type:String,value:"hide-spinner"},/**
+       * @desc constant for dispatchEvent 'show-spinner'
+       * @type {String}
+       */SHOW_SPINNER_CONSTANT:{type:String,value:"show-spinner"},/**
+       * @desc constant for changue color of header
+       * @type {String}
+       */CREDIT_CARD_HOLDER_CONSTANT:{type:String,value:"credit-card-holder"},/**
+       * @desc constant to assign text to the secondary button of the modal
+       * @type {String}
+       */CREDIT_CARD_HOLDER_ERROR_GENERIC_CONSTANT:{type:String,value:"credit-card-holder-error-generic-secondary-button"},/**
+       * @desc constant to assign text to address
+       * @type {String}
+       */ADDRES_TEXT_CONSTANT:{type:String,value:"credit-card-holder-address-text"},/**
+       * @desc interest type text
+       * @type {String}
+       */interestTypeText:{type:String,value:"credit-card-holder-offer-small-print-1"},/**
+       * @desc class to card usser box
+       * @type {String}
+       */cardUserClass:{type:String,value:"card-user-message"}}}},{key:"observers",get:function get(){return["relaunchRequestOfferData(offerDataInfo, initialized)"]}}]);return CreditCardHolderOffer}(Polymer.mixinBehaviors([CellsBehaviors.i18nBehavior,CellsBehaviors.CellsGlomoStepBehavior,CellsBehaviors.CellsGlomoMainStepBehavior],Polymer.Element));window.customElements.define(CreditCardHolderOffer.is,CreditCardHolderOffer);</script></dom-module><dom-module id="glomo-benefit-code-styles" assetpath="glomo-benefit-code/"><template><style>:host{display:block;box-sizing:border-box;font-family:var(--cells-fontDefault, sans-serif);@apply --glomo-benefit-code;}:host([hidden]), [hidden]{display:none !important;}:host(.gray-header){@apply --cells-alert-box-gray-header;}:host(.gray-header) cells-bottom-modal{--cells-bottom-modal-heading-slotted:{height:21px;};--cells-bottom-modal-heading:{font-size:18px;};--cells-bottom-modal-btn-close-color:var(--bbva-navy, #072146);--cells-bottom-modal-full-height-header-wrapper:{background-color:var(--bbva-100, #F4F4F4);color:var(--bbva-navy, #072146);margin-bottom:30px;};@apply --cells-alert-box-gray-header-bottom-modal;}*, *:before, *:after{font:inherit;box-sizing:inherit;}h1{font-size:18px;}.normal{--cells-molecule-input-wrapper:{border-bottom:1px solid var(--bbva-600, #666);};}.subtitle{font-size:14px;padding:1ch;margin-bottom:20px;}.info{color:var(--bbva-light-blue, #5BBEFF);margin-right:10px;font-size:large;opacity:0.7;}.alert{color:var(--bbva-light-red, #E77D8E);margin-right:10px;font-size:x-large;}.warning{--cells-molecule-input-border-bottom:var(--bbva-dark-red, #B92A45);--cells-molecule-amount-input-focused:{border-bottom:1px solid var(--bbva-dark-red, #B92A45);};--cells-molecule-input-has-content-wrapper:{border-bottom:1px solid var(--bbva-dark-red, #B92A45);};--cells-molecule-input-background-color:var(--bbva-white-coral, #FCDFDF);--cells-molecule-input-icon-button:{color:var(--bbva-dark-red, #B92A45);};@apply --cells-molecule-input-error;}.transparent{margin-top:10px;display:-webkit-box;display:flex;font-size:14px;color:var(--bbva-500, #666);letter-spacing:0;line-height:20px;}.container-error{display:-webkit-box;display:flex;margin-top:10px;}.error{display:contents;font-size:14px;color:var(--bbva-dark-red, #B92A45);letter-spacing:0;line-height:20px;}cells-bottom-modal .buttons{display:-webkit-box;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;flex-direction:column;-webkit-box-flex:1;flex:auto;}cells-bottom-modal .buttons button{height:50px;font-weight:500;width:144px;padding:0 20px;}</style></template></dom-module><dom-module id="glomo-benefit-code" assetpath="glomo-benefit-code/"><template><style include="glomo-benefit-code-styles glomo-benefit-code-shared-styles"></style><slot></slot><cells-bottom-modal full-height="[[fullHeight]]" close-icon-id="[[iconInput]]" on-close="close" opened="[[opened]]"><h1 heading="" slot="heading">[[title]]</h1><div class="subtitle">[[subtitle]]</div><dom-if if="[[enableInput]]"><template><cells-molecule-input label="[[labelInput]]" icon="coronita:close" max-length="[[inputLength]]" type="[[inputType]]" value="{{inputValue}}" allowed-chars="[[allowedChars]]" allowed-value="[[allowedValue]]" class$="[[classError]] normal"></cells-molecule-input><template is="dom-if" if="[[inputMessage]]"><div class="transparent"><cells-atom-icon icon="coronita:info" class="info"></cells-atom-icon>[[inputMessage]]</div></template><template is="dom-if" if="[[inputErrorMessage]]"><div class="container-error"><cells-atom-icon icon="coronita:alert" class="alert"></cells-atom-icon><p class="error">[[inputErrorMessage]]</p></div></template><slot name="description"></slot></template></dom-if><dom-if if="[[message]]"><template>[[message]]</template></dom-if><div class="buttons" slot="buttons"><dom-if if="[[inputLength]]"><template><cells-st-button class="secundary"><button disabled="[[!buttonDisable]]" on-tap="_setValue">[[buttonDisableLabel]]</button></cells-st-button></template></dom-if><dom-if if="[[primaryButton]]"><template><cells-st-button class="primary"><button on-tap="send">[[t(primaryButtonLabel)]]</button></cells-st-button></template></dom-if><dom-if if="[[cancelButton]]"><template><cells-st-button class$="[[classCancelButton]] link"><button data-action="close">[[cancelButtonLabel]]</button></cells-st-button></template></dom-if></div></cells-bottom-modal></template><script>var GlomoBenefitCode=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(GlomoBenefitCode,_Polymer$mixinBehavio);function GlomoBenefitCode(){babelHelpers.classCallCheck(this,GlomoBenefitCode);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(GlomoBenefitCode).apply(this,arguments))}babelHelpers.createClass(GlomoBenefitCode,[{key:"open",/**
+   * Open the modal when the property is in true
+   */value:function open(){this.opened=!0}/**
+   * Close the modal when the property is in false and call the method _reset()
+   */},{key:"close",value:function close(){this.opened=!1;this._reset()}/**
+   * Reset the value of the properties
+   */},{key:"_reset",value:function _reset(){this.set("inputValue","");this.set("infoMessage","");this.set("inputMessage","")}/**
+   * Assign value to properties and buttons
+   * @param {*} value
+   */},{key:"_getInputValue",value:function _getInputValue(value){if(value.length<this.inputLength&&this.classError){this.classError="";this.inputErrorMessage="";this.inputMessage=this.infoMessage}else if(value.length===this.inputLength){this.set("buttonDisable",!0)}else{this.set("buttonDisable",!1)}var acceptedValuesInput=/[a-zA-Z0-9]/g,validExpression=acceptedValuesInput.test(value);if(!validExpression){this.set("inputValue","");value=""}this.inputValue=value.substring(0,8)}/**
+   * Dispatches an event with the property value
+   */},{key:"_setValue",value:function _setValue(){this.dispatchEvent(new CustomEvent("code-validate",{detail:this.inputValue}));this.dispatchEvent(new CustomEvent("action-inter-add-promotion-code"))}/**
+   * Dispatches an event with the detail of the properties when is a value succes
+   * @param {*} description
+   */},{key:"getDescriptionSuccess",value:function getDescriptionSuccess(description){this.dispatchEvent(new CustomEvent("benefit-success",{detail:{benefitCoupon:!0,codeTitle:this.inputValue,codeDescription:description}}));this.close()}/**
+   * Assigns value to properties when it is an error value
+   * @param {*} error
+   */},{key:"getDescriptionWarning",value:function getDescriptionWarning(error){this.set("infoMessage",this.inputMessage);this.set("inputMessage","");this.set("inputErrorMessage",error);this.set("classError","warning");this.set("buttonDisable",!1)}}],[{key:"is",get:function get(){return"glomo-benefit-code"}},{key:"properties",get:function get(){return{/**
+      * @desc modal full screen
+      * @type {Boolean}
+      */fullHeight:Boolean,/**
+      * @desc title modal
+      * @type {String}
+      */title:String,/**
+      * @desc subtitle modal
+      * @type {String}
+      */subtitle:String,/**
+      * @desc show input
+      * @type {Boolean}
+      */enableInput:Boolean,/**
+      * @desc show text inside the input
+      * @type {String}
+      */labelInput:String,/**
+      * @desc icon inside input
+      * @type {String}
+      */iconInput:{type:String,value:"coronita:close"},/**
+      * @desc length the inpunt
+      * @type {Number}
+      */inputLength:Number,/**
+       * @desc type the input
+       * @type {String}
+       */inputType:String,/**
+      * @desc get value inside inpunt
+      * @type {String}
+      */inputValue:{type:String,observer:"_getInputValue"},/**
+      * @desc characters to alowed inside inpunt
+      * @type {String}
+      */allowedChars:String,/**
+      * @desc regular expression used to validate the input value.
+      * @type {String}
+      */allowedValue:String,/**
+      * @desc message inside the input
+      * @type {String}
+      */message:String,/**
+      * @desc active primary button
+      * @type {Boolean}
+      */primaryButton:{type:Boolean,value:!1},/**
+      * @desc text in the first button
+      * @type {String}
+      */primaryButtonLabel:{type:String,value:"glomo-benefit-code-accept-button"},/**
+      * @desc visible primary button
+      * @type {Boolean}
+      */buttonDisable:{type:Boolean,value:!1},/**
+      * @desc text in the button active
+      * @type {String}
+      */buttonDisableLabel:String,/**
+      * @desc active button cancel
+      * @type {Boolean}
+      */cancelButton:Boolean,/**
+      * @desc text in the cancel button
+      * @type {String}
+      */cancelButtonLabel:String,/**
+      * @desc class in the cancel button
+      * @type {String}
+      */classCancelButton:String,/**
+       * @desc property for modal value
+       * @type {Boolean}
+       */opened:{type:Boolean,value:!1},/**
+      * @desc message below the input
+      * @type {String}
+      */inputMessage:String,/**
+      * @desc message below the input alternative
+      * @type {String}
+      */infoMessage:String,/**
+      * @desc message below the input warning
+      * @type {String}
+      */inputErrorMessage:String,/**
+      * @desc class error below the input
+      * @type {String}
+      */classError:String}}}]);return GlomoBenefitCode}(Polymer.mixinBehaviors([CellsBehaviors.i18nBehavior],Polymer.Element));customElements.define(GlomoBenefitCode.is,GlomoBenefitCode);</script></dom-module><dom-module id="glomo-address-selector-styles" assetpath="glomo-address-selector/"><template><style>:host{display:block;box-sizing:border-box;font-family:var(--cells-fontDefault, sans-serif);@apply --glomo-address-selector;}:host([hidden]), [hidden]{display:none !important;}*, *:before, *:after{font:inherit;box-sizing:inherit;}:host(:not([collapsed])){--cells-step-header-button:{display:none;};@apply --glomo-address-selector-not-collapsed;}:host([collapsed]){background:var(--bbva-core-blue);color:white;--cells-step-header-button:{display:block;};@apply --glomo-address-selector-collapsed;}:host(:not([active])){pointer-events:none;background:var(--bbva-100);--cells-molecule-link-icon-icon-color:var(--bbva-500);@apply --glomo-address-selector-not-active;}:host(:not([active])) .addres-selector-content{opacity:0.3;}:host(:not([active])) .btn-continue{--cells-st-button-bg-color:var(--bbva-300);}:host(:not([active])) .display-address{color:var(--bbva-500);}:host(:not([active])) .address-message{--cells-icon-message-background-color-info:var(--bbva-100);}*, *:before, *:after{box-sizing:inherit;}.key-values-office{--cells-key-values-key:{width:100%;};@apply --glomo-address-selector-key-values-office;}.key-values-home{--cells-key-values-key:{width:60%;};@apply --glomo-address-selector-key-values-home;}.address-content{@apply --cells-fontDefaultMedium;display:flex;justify-content:space-between;--cells-key-values-key-span:{font-size:var(--cells-text-size-16, 1rem);color:var(--bbva-600);};@apply --glomo-address-selector-address-content;}.address-content-filled{@apply --cells-fontDefaultMedium;margin-bottom:0.3125rem;--cells-key-values-key:{width:50%;};--cells-key-values-key-span:{font-size:var(--cells-text-size-18, 1.125rem);color:var(--bbva-white);};@apply --glomo-address-selector-address-content-filled;}.show-address{width:100%;margin-top:0.625rem;@apply --cells-fontDefaultNormalItalic;@apply --glomo-address-selector-show-address;}.display-address{margin-bottom:0rem;margin-top:0.25rem;font-size:var(--cells-text-size-14, 0.875rem);@apply --cells-fontDefaultMedium;font-style:normal;font-stretch:normal;line-height:1;letter-spacing:normal;text-align:right;color:#1973b8;@apply --glomo-address-selector-display-address;}.terms-and-conditions-note{display:flex;color:var(--bbva-500);font-style:italic;font-size:var(--cells-text-size-14, 0.875rem);line-height:1.25rem;@apply --glomo-address-selector-terms-and-conditions-note;}.terms-and-conditions-note cells-atom-icon{color:var(--bbva-light-blue);margin-right:0.625rem;}#paymentMethodRadioGroup{display:flex;}.full{padding:0rem 1.25rem;@apply --glomo-address-selector-full;}cells-st-button{display:flex;justify-content:center;@apply --cells-fontDefaultMedium;}.icon-help-div{margin-left:5%;display:inline;@apply --glomo-address-selector-icon-help-div;}cells-molecule-link-icon{position:relative;bottom:0.125rem;display:inline;}.step-address-selector{--cells-step-header-title:{color:var(--bbva-600);};--cells-step-filled:{min-height:inherit;padding-bottom:30px;};@apply --glomo-address-selector-step-address-selector;}.address-info{font-size:var(--cells-text-size-14, 0.875rem);@apply --cells-fontDefaultNormalItalic;@apply --glomo-address-selector-address-info;}.address-message{margin-top:0.625rem;--cells-icon-message-background-color-info:var(--bbva-white);--cells-icon-message-message:{font-size:var(--cells-text-size-14, .875rem);color:var(--bbva-500);font-style:italic;};@apply --glomo-address-selector-address-message;}.radio-button-content{width:100%;display:flex;flex-direction:row;justify-content:flex-start;@apply --glomo-address-selector-content;}.radio-button-label{display:flex;flex-direction:column;@apply --glomo-address-selector-label;}.radio-button-label, .radio-button-label-home{width:100%;padding-top:1.1875rem;@apply --glomo-address-selector-label-and-home;}.content-container{width:2.5625rem;margin-right:0.25rem;@apply --glomo-address-selector-content-container;}cells-radio-button-description{width:100%;padding:0rem;}.line-divisor{width:100%;@apply --glomo-address-selector-line-divisor;}.line-divisor .line-radio{border:0;border-top:0.0625rem solid #E9E9E9;margin:1.25rem 0.3125rem;padding:0;opacity:1;@apply --glomo-address-selector-lines;}.btn-continue-content{display:flex;justify-content:center;@apply --glomo-address-selector-continue-content;}.btn-continue{margin:3.125rem 0rem;--cells-st-button-bg-color:var(--bbva-medium-blue);@apply --glomo-address-selector-continue;}.address-user{margin:0rem 0rem 0.375rem;@apply --glomo-address-selector-address-user;}.margin-user{margin-bottom:0.3125rem;@apply --glomo-address-selector-margin-user;}.line{margin:0rem 1.875rem;opacity:0.2;@apply --glomo-address-selector-line;}.line-content{background-color:var(--bbva-core-blue);@apply --glomo-address-selector-line-content;}.branch-text{font-size:var(--cells-text-size-18, 1.125rem);@apply --cells-fontDefaultMedium;@apply --glomo-address-selector-branch-text;}.address-home-content{float:left;--cells-checkbox-button-body-label:{margin-top:auto;};@apply --glomo-address-selector-address-home;}.check-content{text-align:left;overflow:hidden;padding-top:1.875rem;@apply --glomo-address-selector-check-content;}.help-content{float:left;padding-top:0.8125rem;padding-left:0.3125rem;@apply --glomo-address-selector-help-content;}.show-address-div{float:right;padding-top:0.5rem;@apply --glomo-address-selector-show-address-div;}.address-info-content{padding-left:2.125rem;@apply --glomo-address-selector-address-info-content;}.address-label{margin:0rem;font-size:var(--cells-text-size-14, 0.875rem);color:#131313;@apply --cells-fontDefaultMedium;@apply --glomo-address-selector-address-label;}.message-div{padding-top:1.875rem;--cells-icon-message-message:{color:#121212;font-size:var(--cells-text-size-14, .875rem);line-height:rem(20px);text-align:center;padding:0px;};@apply --glomo-address-selector-message;}.message-div cells-icon-message{padding:1.875rem;}.values-content{@apply --glomo-address-selector-values-content;}.radio-button-label-home{padding-top:0rem;padding-left:2.8125rem;@apply --glomo-address-selector-label-home;}.address-home-without-content{float:left;padding-top:0.8125rem;@apply --glomo-address-selector-address-home-whitout-content;}.check-without-content{text-align:left;overflow:hidden;padding-bottom:0.3125rem;@apply --glomo-address-selector-check-without-content;}</style></template></dom-module><dom-module id="glomo-address-selector" assetpath="glomo-address-selector/"><template><style include="glomo-address-selector-styles glomo-address-selector-shared-styles"></style><div class="addres-selector-content"><template is="dom-if" if="[[!showHideTemplate]]"><cells-step id="stepAddressContainer" active="[[active]]" step-title="[[stepTitle]]" max-steps="[[maxSteps]]" hide-current-step-label="[[hideCurrentStepLabel]]" change-label="[[changeLabel]]" disable-change="{{_changeHidden}}" collapsed="{{collapsed}}" class-to-toggle="step-active" previous="[[previous]]" next="[[next]]" decorated="[[decorated]]" scrolled="[[scrolled]]" hide-header="[[hideStepHeader]]" class="step-address-selector"><div slot="full" class="full"><template is="dom-if" if="{{_validateTriplePlayOffer(offerData)}}"><div class="check-without-content"><div class="address-home-without-content"><p class="address-label">[[t('address-title-home-text')]]</p></div><div class="help-content"><cells-molecule-link-icon icon="coronita:help" class="icon-size-18 icon-help" is="cells-molecule-link-icon" on-tap="_showAddressModal"></cells-molecule-link-icon></div><div class="show-address-div"><p class="display-address" on-tap="requestAddressUnmask" slot="before-value">[[showHideAddressLabel]]</p></div></div><div><template is="dom-if" if="[[!showHideAddress]]"><div class="address-info"><label>• [[address.location.state.id]], [[address.location.country.name]]</label></div></template><template is="dom-if" if="[[showHideAddress]]"><div class="address-info"><p class="address-user">[[address.location.addressName]],</p><p class="address-user">[[address.location.state.name]].</p><p class="address-user">[[t('address-zip-code')]] [[address.location.zipCode]]</p></div></template><div class="address-message"><cells-icon-message class="inline" type="info" icon="coronita:info" icon-size="16" message="[[t('address-home-note-text-cch')]]"></cells-icon-message></div></div><div class="message-div"><cells-icon-message type="info" icon="coronita:info" message="[[t('address-message-digital-card')]]"></cells-icon-message></div></template><template is="dom-if" if="{{!_validateTriplePlayOffer(offerData)}}"><template is="dom-if" if="{{_validateCardType(offerData.cardId)}}"><div><div class="check-content"><div class="address-home-content"><cells-checkbox-button icon-check="coronita:checkmark" disabled="[[!active]]"><p class="address-label">[[t('address-title-home-text')]]</p></cells-checkbox-button></div><div class="help-content"><cells-molecule-link-icon icon="coronita:help" class="icon-size-18 icon-help" is="cells-molecule-link-icon" on-tap="_showAddressModal"></cells-molecule-link-icon></div><div class="show-address-div"><p class="display-address" on-tap="requestAddressUnmask" slot="before-value">[[showHideAddressLabel]]</p></div></div><div class="address-info-content"><template is="dom-if" if="[[!showHideAddress]]"><div class="address-info"><label>• [[address.location.state.id]], [[address.location.country.name]]</label></div></template><template is="dom-if" if="[[showHideAddress]]"><div class="address-info"><p class="address-user">[[address.location.addressName]],</p><p class="address-user">[[address.location.state.name]].</p><p class="address-user">[[t('address-zip-code')]] [[address.location.zipCode]]</p></div></template><div class="address-message"><cells-icon-message class="inline" type="info" icon="coronita:info" icon-size="16" message="[[t('address-home-note-text-cch')]]"></cells-icon-message></div></div><div class="message-div"><cells-icon-message type="info" icon="coronita:info" message="[[t('address-message-digital-card')]]"></cells-icon-message></div></div></template><template is="dom-if" if="{{!_validateCardType(offerData.cardId)}}"><cells-radio-group id="paymentMethodRadioGroup" radio-accepted-button-type="cells-radio-button-description" selected="{{selected}}"><cells-radio-button-description config="[[_configRadioOffice]]"></cells-radio-button-description><div class="line-divisor"><hr class="line-radio"></div><cells-radio-button-description config="[[_configRadioAddress]]"></cells-radio-button-description><div class="radio-button-label-home"><template is="dom-if" if="[[!showHideAddress]]"><div class="address-info"><label>• [[address.location.state.id]], [[address.location.country.name]]</label></div></template><template is="dom-if" if="[[showHideAddress]]"><div class="address-info"><p class="address-user">[[address.location.addressName]],</p><p class="address-user">[[address.location.state.name]].</p><p class="address-user">[[t('address-zip-code')]] [[address.location.zipCode]]</p></div></template><div class="address-message"><cells-icon-message class="inline" type="info" icon="coronita:info" icon-size="16" message="[[t('address-home-note-text-cch')]]"></cells-icon-message></div><template id="avatar" is="dom-if" if="[[item.note]]"><div class="terms-and-conditions-note"><div><cells-atom-icon icon="coronita:info" class="icon-size-16"></cells-atom-icon></div><div>[[t(item.note)]]</div></div></template></div></cells-radio-group></template></template><div class="btn-continue-content"><cells-st-button class="btn-continue size-m" on-tap="btnContinue"><button class="primary" disabled$="[[submitButtonDisabled]]">[[t('address-button-text')]]</button></cells-st-button></div></div><div slot="filled" class="filled"><template is="dom-if" if="[[!shippingSucursalSelected]]"><cells-key-values class="address-content-filled" key="{{shippingAddressText}}"></cells-key-values><template is="dom-if" if="[[showAddresFilled(showHideAddress, shippingSucursalSelected)]]"><div class="show-address"><label class="address-info">• [[address.location.state.id]], [[address.location.country.name]]</label></div></template><template is="dom-if" if="[[showAddresHomeFilled(showHideAddress, shippingSucursalSelected)]]"><div class="show-address"><p class="address-user margin-user">[[address.location.addressName]],</p><p class="address-user margin-user">[[address.location.state.name]].</p><p class="address-user">[[t('address-zip-code')]] [[address.location.zipCode]]</p></div></template></template><template is="dom-if" if="[[shippingSucursalSelected]]"><label class="branch-text">[[t('address-title-office-text')]]</label></template></div></cells-step></template></div></template><script>{/**
+    `<glomo-address-selector>` Description.
+
+    Example:
+
+    ```html
+    <glomo-address-selector></glomo-address-selector>
+    ```
+
+    ## Styling
+    The following custom properties and mixins are available for styling:
+
+    ### Custom Properties
+    | Custom Property     | Selector | CSS Property | Value       |
+    | ------------------- | -------- | ------------ | ----------- |
+    | --cells-fontDefault | :host    | font-family  |  sans-serif |
+    ### @apply
+    | Mixins    | Selector | Value |
+    | --------- | -------- | ----- |
+    | --glomo-address-selector | :host    | {} |
+
+    * @customElement
+    * @polymer
+    * @extends {Polymer.Element}
+    * @demo demo/index.html
+  */var GlomoAddressSelector=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(GlomoAddressSelector,_Polymer$mixinBehavio);function GlomoAddressSelector(){babelHelpers.classCallCheck(this,GlomoAddressSelector);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(GlomoAddressSelector).apply(this,arguments))}babelHelpers.createClass(GlomoAddressSelector,[{key:"ready",/**
+     * Sets showTooltip flag when user logs in for the first time
+     */value:function ready(){babelHelpers.get(babelHelpers.getPrototypeOf(GlomoAddressSelector.prototype),"ready",this).call(this);this.addEventListener("cells-radio-group-selected-changed",this._shippingAddressSelected.bind(this));this.addEventListener("cells-checkbox-button-toggled",this._addressSelected.bind(this));this.addEventListener("change-pressed",this.changePressed.bind(this));this.addEventListener("cells-step-radio-button-icon-help-clicked",this._openModalHelpInfo.bind(this));this.addEventListener("click-button",this._showAddressInfo.bind(this))}/**
+     * This computed function gets text for match with local for office radio button
+     * @param {String}
+     * @returns {Object}
+     */},{key:"_updateLocalOffice",value:function _updateLocalOffice(text,description){return{id:"office",radio:this.t(text),icon:"coronita:help",description:this.t(description)}}/**
+     * This computed function gets text for match with local for office radio button
+     * @param {String}
+     * @returns {Object}
+     */},{key:"_updateLocalAddress",value:function _updateLocalAddress(text,showHideAddressLabel){return{id:"address",radio:this.t(text),icon:"coronita:help",button:!0,buttonName:showHideAddressLabel}}/**
+     * @desc function to clean properites
+     * @param {Object}
+     */},{key:"_boot",value:function _boot(data){var currentPage=data.value.currentPage,fromPage=data.value.fromPage;if("creditCardHolderPage"===currentPage&&"helpInfoPage"!==fromPage&&"termsAndConditionsPage"!==fromPage){this.set("showHideAddress",!1);this.setUserAddressUnmasked(!1);this.selected=null}}/**
+     * @desc function for get usser addres an initialize the step
+     * @param {Object}
+     */},{key:"_initialComponent",value:function _initialComponent(pageActive){if(pageActive.value){this.initialize();this.userAddressInitial()}}/**
+     * @desc open a help page based on 'eventDetail' param
+     * @param {Object} event
+     * @param {Object} eventDetail
+     */},{key:"_openHelpPage",value:function _openHelpPage(event,eventDetail){event.preventDefault();event.stopPropagation();var defaultEventDetail={icon:"coronita:help",type:"info",primaryModalButtonText:this.t("address-messagge-modal-sucursal-btn")};this.dispatchEvent(new CustomEvent("show-help-modal-address",{detail:Object.assign(defaultEventDetail,eventDetail)}))}/**
+     * @desc show modal sucursal to icon button
+     */},{key:"_showSucursalModal",value:function _showSucursalModal(event){this._openHelpPage(event,{heading:this.t("address-title-office-text"),alert:this.t("address-messagge-modal-sucursal")})}/**
+     * @desc help button click
+     */},{key:"_showAddressModal",value:function _showAddressModal(){var alertMessageStore={code:this.HELP_INFO_CONSTANT,selectedConfig:{className:"header--white-light-grey info",openMaximized:!0,title:this.t(this.ADDRESS_HOME_CONSTANT),acceptBtLabel:this.t("credit-card-upgrade-model-button-text"),template:{type:"paragraphs",values:[{icon:"coronita:help"},{text:this.t("address-modal-help-address-text-1"),class:"spacing"},{text:this.t("address-modal-help-address-text-2"),class:"spacing"},{text:this.t("address-modal-help-address-text-3"),class:"spacing"}]}}};this.dispatchEvent(new CustomEvent("address-alert-modal",{detail:alertMessageStore,bubbles:!0,composed:!0}))}/**
+     * @desc request to get user addres initial
+     */},{key:"userAddressInitial",value:function userAddressInitial(){this.setUserAddressUnmasked(!1);this.requestAddressDataEvent()}/**
+     * @desc request to get user address
+     */},{key:"requestAddressUnmask",value:function requestAddressUnmask(){if(this.showHideAddress){this.hideAddressUser()}else{this.dispatchEvent(new CustomEvent("show-spinner"));this.setUserAddressUnmasked(!0);this.dispatchEvent(new CustomEvent("request-address-data",{detail:{urlParams:{unmasked:!0}}}))}}/**
+     * @desc hide user address
+     */},{key:"hideAddressUser",value:function hideAddressUser(){this.dispatchEvent(new CustomEvent("show-spinner"));this.setUserAddressUnmasked(!1);this.requestAddressDataEvent()}/**
+     * @desc get the user address from api
+     * @param {Object} address
+     */},{key:"responseUserAddress",value:function responseUserAddress(response){if(this.userAdressUnmasked){this.set("showHideAddress",!0);this.set("showHideAddressLabel",this.t("address-hide-text"))}else{this.set("showHideAddress",!1);var textAddressLabel=this.offerData.isTriplePlayOffer?"address-show-text-from-triple-play":"address-show-text";this.set("showHideAddressLabel",this.t(textAddressLabel))}response.forEach(function(addressObj){if(addressObj.addressType.id===this.HOME){this.set("address",addressObj)}},this);this.dispatchEvent(new CustomEvent("hide-spinner"))}/**
+     * @desc update selected shipping address method when 'cells-radio-group-selected-changed' event is fired
+     * @param {Object} event
+     * @param {Object} payload
+     */},{key:"_shippingAddressSelected",value:function _shippingAddressSelected(e,payload){if(0===e.detail.value){this.set("shippingSucursalSelected",!0);this.set("shippingAddressText",this.t("address-title-office-text"));if(this.showHideAddress){this.hideAddressUser()}}else{this.set("shippingSucursalSelected",!1);this.set("shippingAddressText",this.t(this.ADDRESS_HOME_CONSTANT))}this.set("selected",e.detail.value);this.set("submitButtonDisabled","number"!==typeof this.selected);this.shippingAddressUpdatedEvent(e)}/**
+     * @desc update shipping address method when 'cells-checkbox-button-toggled' event is fired
+     * @param {Object} event
+     * @param {Object} payload
+     */},{key:"_addressSelected",value:function _addressSelected(e,payload){if(e.detail.checked){this.set("shippingSucursalSelected",!1);this.set("shippingAddressText",this.t(this.ADDRESS_HOME_CONSTANT));if(this.showHideAddress){this.hideAddressUser()}this.set("submitButtonDisabled",!1)}else{this.set("submitButtonDisabled",!0)}this.shippingAddressUpdatedEvent(e)}/**
+     * @desc got to next step
+     * @param {}
+     */},{key:"btnContinue",value:function btnContinue(e){this._nextStep()}/**
+     * @desc show and hide whole address
+     * @param {}
+     */},{key:"_hideAddressChanged",value:function _hideAddressChanged(newValue,oldValue){if(newValue){this.set("showHideTemaplate",!0)}}/**
+     * @desc deactivate terms and conditions and it is deactivated if the first step is full
+     */},{key:"changePressed",value:function changePressed(e){if(!this.termsCollapsed){this.dispatchEvent(new CustomEvent("toggle-terms-conditions-step",{detail:!1}))}if(!this.creditCardCollapsed){this.set("active",!1)}this.dispatchEvent(new CustomEvent("address-selector-change-pressed",{detail:"address-selector",bubbles:!0,composed:!0}))}/**
+     * @desc choose open modal info
+     * @param {Object} event
+     */},{key:"_openModalHelpInfo",value:function _openModalHelpInfo(event){var idRadioButton=event.detail.id;if("office"===idRadioButton){this._showSucursalModal(event)}if("address"===idRadioButton){this._showAddressModal(event)}}/**
+     * @desc launch request Address Info
+     */},{key:"_showAddressInfo",value:function _showAddressInfo(){this.requestAddressUnmask()}/**
+     * @desc show and hide user selected an address or branch
+     * @param {Boolean} showHideAddress
+     * @param {Boolean} shippingSucursalSelected
+     */},{key:"showAddresFilled",value:function showAddresFilled(showHideAddress,shippingSucursalSelected){return!showHideAddress&&!shippingSucursalSelected}/**
+     * @desc show and hide user selected an address or branch
+     * @param {Boolean} showHideAddress
+     * @param {Boolean} shippingSucursalSelected
+     */},{key:"showAddresHomeFilled",value:function showAddresHomeFilled(showHideAddress,shippingSucursalSelected){return showHideAddress&&!shippingSucursalSelected}/**
+     * @desc get the offerData from DM
+     * @param {Object} data
+     */},{key:"loadOfferData",value:function loadOfferData(data){this.set("offerData",data);if(data&&data.details){if(data.details.product&&data.details.product.subproduct){this.set("offerData.cardId",data.details.product.subproduct.id)}else if(data.details.title){this.set("offerData.cardId",data.details.title.id)}}}/**
+    * @desc Validate if offer is Crea Card
+    */},{key:"_validateCardType",value:function _validateCardType(offer){return offer===this.CREA_CARD_CONSTANT}/**
+    * @desc dispatch request-address-data-event
+    */},{key:"requestAddressDataEvent",value:function requestAddressDataEvent(){this.dispatchEvent(new CustomEvent("request-address-data"))}/**
+    * @desc dispatch shipping-address-updated
+    */},{key:"shippingAddressUpdatedEvent",value:function shippingAddressUpdatedEvent(payload){this.dispatchEvent(new CustomEvent("shipping-address-updated",{detail:payload.detail}))}/**
+    * @desc set userAdressUnmasked
+    * @param {Boolean} value
+    */},{key:"setUserAddressUnmasked",value:function setUserAddressUnmasked(value){this.set("userAdressUnmasked",value)}/**
+     * @desc validate if offer is from triple play
+     * @param {Object} offer
+     */},{key:"_validateTriplePlayOffer",value:function _validateTriplePlayOffer(offer){if(offer.isTriplePlayOffer){this.set("shippingSucursalSelected",!1);this.set("shippingAddressText",this.t(this.ADDRESS_HOME_CONSTANT));this.set("showHideAddressLabel",this.t("address-show-text-from-triple-play"));this.set("submitButtonDisabled",!1);this.changeLabel="address-show-text-from-triple-play";this.dispatchEvent(new CustomEvent("shipping-address-updated"))}return offer.isTriplePlayOffer}}],[{key:"is",get:function get(){return"glomo-address-selector"}},{key:"properties",get:function get(){return{/**
+         * @desc contain address data
+         * @type {Object}
+         */address:{type:Object,value:function value(){return{}}},/**
+         * @desc masked/unmasked address
+         * @type {Boolean}
+         */showHideAddress:{type:Boolean,value:!1,notify:!0},/**
+         * @desc label
+         * @type {String}
+         */showHideAddressLabel:String,/**
+         * @desc constant for home address
+         * @type {String}
+         */HOME:String,/**
+         * @desc show and hide template
+         * @type {Boolean}
+         */hideAddress:{type:Boolean,value:!1,observer:"_hideAddressChanged"},/**
+         * @desc show and hide address
+         * @type {Boolean}
+         */showHideTemplate:{type:Boolean,value:!1},/**
+         * @desc shows the component step active or inactive
+         * @type {Boolean}
+         */active:{type:Boolean,reflectToAttribute:!0,value:!1},/**
+         * @desc shipping sucursal is selected
+         * @type {Boolean}
+         */shippingSucursalSelected:{type:Boolean,value:!1},/**
+         * @desc collapsed step status
+         * @type {Boolean}
+         */collapsed:{type:Boolean,reflectToAttribute:!0,notify:!0},/**
+         * @desc collapsed terms an conditions step status
+         * @type {Boolean}
+         */termsCollapsed:Boolean,/**
+         * @desc collapsed credit card holer step status
+         * @type {Boolean}
+         */creditCardCollapsed:Boolean,/**
+         * hides the current step label
+         * @type {Boolean}
+         */hideCurrentStepLabel:{type:Boolean},/**
+         * show or hide user address
+         * @type {Boolean}
+         */userAdressUnmasked:{type:Boolean,value:!1},/**
+         * Radio button selected value
+         * @type {Number}
+         */selected:{type:Number,value:0,notify:!0},/**
+        * @desc offer data fetched from DM
+        * @type {Object}
+        */offerData:{type:Object,notify:!0,value:function value(){return{}}},/**
+         * enable button to next step
+         * @type {Boolean}
+         */submitButtonDisabled:{type:Boolean,vale:!1},/**
+         * Crea Card Constant
+         * @type {String}
+         */CREA_CARD_CONSTANT:{type:String,value:"AG"},/**
+        * HELP_INFO Constant
+        * @type {String}
+        */HELP_INFO_CONSTANT:{type:String,value:"HELP_INFO"},/**
+         * address-title-home-text constant
+         * @type {String}
+         */ADDRESS_HOME_CONSTANT:{type:String,value:"address-title-home-text"},/**
+        * @desc text for office radio button description
+        * @type {String}
+        */textRadioOffice:{type:String,value:"address-title-office-text"},/**
+        * @desc text for office radio button description
+        * @type {String}
+        */descriptionRadioOffice:{type:String,value:"address-office-note-text-cch"},/**
+        * @desc object config for office radio button
+        * @type {String}
+        */_configRadioOffice:{type:Object,computed:"_updateLocalOffice(textRadioOffice,descriptionRadioOffice)"},/**
+        * @desc text for address radio button description
+        * @type {String}
+        */textRadioAddress:{type:String,value:"address-title-home-text"},/**
+        * @desc object config for address radio button
+        * @type {String}
+        */_configRadioAddress:{type:Object,computed:"_updateLocalAddress(textRadioAddress, showHideAddressLabel)"},/**
+         * @desc text for change the text to triple play offer
+         * @type {String}
+         */changeLabel:{type:String}}}}]);return GlomoAddressSelector}(Polymer.mixinBehaviors([CellsBehaviors.i18nBehavior,CellsBehaviors.CellsGlomoStepBehavior],Polymer.Element));customElements.define(GlomoAddressSelector.is,GlomoAddressSelector)}</script></dom-module></div></body></html>

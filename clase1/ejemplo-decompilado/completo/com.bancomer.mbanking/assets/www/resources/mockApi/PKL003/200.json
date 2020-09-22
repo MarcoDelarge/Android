@@ -1,0 +1,33 @@
+{
+  "data": [
+    {
+      "id": "YPH6N8KR2ATSR4595XD23FHG191BS3G9PT0NS7XD70PKT0CMESDG",
+      "alias": "CAMBIO",
+      "category": {
+        "id": "C4"
+      },
+      "isScheduled": false,
+      "scheduledDeposit": {
+        "depositAmount": {
+          "amount": 5000,
+          "currency": "MXN"
+        }
+      },
+      "status": "ACTIVE",
+      "relatedContract": {
+        "id": "YPH6N8KR2ATSR4595XD23FHG19TBAPB9C0H7QPX35G58BKSBZ6YG",
+        "number": "00740010001500002670",
+        "product": {
+          "productType": {
+            "id": "ACCOUNTS"
+          },
+          "numberType": {
+            "id": "SIMPLE_ACCOUNT"
+          }
+        }
+      },
+      "priority": "4",
+      "operationDate": "2019-01-11T00:00:00.0-0600"
+    }
+  ]
+}

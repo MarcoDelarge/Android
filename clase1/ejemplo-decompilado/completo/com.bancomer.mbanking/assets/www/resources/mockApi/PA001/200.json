@@ -1,0 +1,181 @@
+{
+  "data": {
+    "id": "G183C6JEN9SW1NSGZBZX203TKR2EJV8MKAX9T0GTH2JQAKWKMM90",
+    "contractingType": {
+      "id": "Self-management",
+      "description": "Self-management"
+    },
+    "isEditable": "true",
+    "details": {
+      "paymentMethod": {
+        "id": "PAC",
+        "name": "Automatic Payment"
+      },
+      "minimumAmount": {
+        "amount": 200,
+        "currency": "MXN"
+      },
+      "maximumAmount": {
+        "amount": 800,
+        "currency": "MXN"
+      },
+      "suggestedAmount": {
+        "amount": 800,
+        "currency": "MXN"
+      },
+      "minimumTerms": {
+        "number": 2,
+        "frequency": "MONTHLY"
+      },
+      "maximumTerms": {
+        "number": 2,
+        "frequency": "MONTHLY"
+      },
+      "suggestedTerm": {
+        "number": 2,
+        "frequency": "MONTHLY"
+      },
+      "allowedTerms": [{
+          "number": 2,
+          "frequency": "MONTHLY"
+        },
+        {
+          "number": 12,
+          "frequency": "MONTHLY"
+        },
+        {
+          "number": 24,
+          "frequency": "MONTHLY"
+        }
+      ],
+      "additionalProducts": [{
+        "isDefaultSelected": true,
+        "amount": {
+          "amount": 0,
+          "currency": "MXN"
+        }
+      }],
+      "loanBreakDown": [{
+          "id": "INSTALLMENT",
+          "name": "installment",
+          "amount": 20000,
+          "currency": "MXN"
+        },
+        {
+          "id": "GROSS_AMOUNT",
+          "name": "Gross Amount",
+          "amount": 800,
+          "currency": "MXN"
+        },
+        {
+          "id": "TOTAL_COST",
+          "name": "Total Cost",
+          "amount": 800,
+          "currency": "MXN"
+        }
+      ],
+      "subproduct": {
+        "id": "CD01"
+      },
+      "allowedSubproducts": [{
+          "id": "AUTO",
+          "subproductType": {
+            "id": "59521",
+            "name": "NUEVO"
+          }
+        },
+        {
+          "id": "NEMO",
+          "subproductType": {
+            "id": "59537",
+            "name": "SEMINUEVO"
+          }
+        }
+      ]
+    },
+    "rates": [{
+        "rateType": {
+          "id": "CAT",
+          "name": "Costo Anual Total"
+        },
+        "calculationDate": "2018-10-29",
+        "mode": {
+          "id": "PERCENTAGE",
+          "name": "Percentage"
+        },
+        "unit": {
+          "percentage": 51.3
+        }
+      },
+      {
+        "rateType": {
+          "id": "TASA_ANUAL",
+          "name": "Tasa Anual"
+        },
+        "mode": {
+          "id": "PERCENTAGE",
+          "name": "Percentage"
+        },
+        "unit": {
+          "percentage": 0
+        }
+      },
+      {
+        "rateType": {
+          "id": "TASA_MENSUAL",
+          "name": "Tasa Mensual"
+        },
+        "mode": {
+          "id": "PERCENTAGE",
+          "name": "Percentage"
+        },
+        "unit": {
+          "percentage": 0
+        }
+      },
+      {
+        "rateType": {
+          "id": "TASA_ORDINARIA",
+          "name": "Tasa Ordinaria"
+        },
+        "mode": {
+          "id": "PERCENTAGE",
+          "name": "Percentage"
+        },
+        "unit": {
+          "percentage": 0
+        }
+      },
+      {
+        "rateType": {
+          "id": "TASA_MORATORIA",
+          "name": "Tasa Moratoria"
+        },
+        "mode": {
+          "id": "PERCENTAGE",
+          "name": "Percentage"
+        },
+        "unit": {
+          "percentage": 0
+        }
+      }
+    ],
+    "purposeGroup": {
+      "id": "00156",
+      "name": "destino"
+    },
+    "origin": {
+      "id": "ALT",
+      "description": "ALT"
+    },
+    "fees": {
+      "itemizeFees": [{
+        "feeType": {
+          "id": "COMISION",
+          "name": "COMISION"
+        },
+        "percentage": 6
+      }]
+    }
+  }
+}

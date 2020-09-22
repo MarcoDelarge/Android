@@ -1,0 +1,127 @@
+<html><head></head><body><div hidden="" by-polymer-bundler=""><dom-module id="glomo-transactions-styles" assetpath="glomo-transactions/"><template><style>:host{display:block;box-sizing:border-box;height:100%;font-family:var(--cells-fontDefault, sans-serif);@apply --glomo-transactions;}.filterButton{position:fixed;z-index:2;align-items:center;display:flex;right:0;bottom:5%;padding:0.9375rem 1.875rem 0.9375rem 1.875rem;@apply --glomo-transactions-filter-button-access;}.filterButton.opacityMedium{opacity:0.5;@apply --glomo-transactions-filter-button-opacity;}.filterButton .right{align-items:center;background:linear-gradient(110deg, var(--bbva-medium-blue, #2A86CA) 50%, var(--bbva-core-blue, #004481) 51%);border-radius:50%;display:flex;height:4.125rem;justify-content:center;min-width:2.75rem;width:4.125rem;@apply --glomo-transactions-filter-button-right;}.filterButton .right cells-atom-icon{color:var(--glomo-transactions-filter-icon-color, var(--bbva-white, #fff));}.filterButton.small{padding:1.125rem 1.125rem 4.5rem 1.125rem;bottom:0;@apply --glomo-transactions-filter-button-small;}.filterButton.small .right{background:linear-gradient(110deg, var(--bbva-medium-blue, #237ABA) 50%, var(--bbva-dark-medium-blue, #1973b8) 51%);width:3rem;height:3rem;@apply --glomo-transactions-filter-button-small-right;}:host([hidden]), [hidden]{display:none !important;}*, *:before, *:after{box-sizing:inherit;}*:focus{@apply --cells-global-focus;}*:active{@apply --cells-global-active;}button:active{@apply --cells-global-active;}cells-transactions-list{--cells-transactions-list-empty-list-img:{margin-top:2rem;};--cells-molecule-transaction-list-item-updated-balance-amount:{font-size:var(--cells-text-size-xs, .75rem);color:var(--bbva-500, #666);};--cells-molecule-transaction-list-item-updated-balance-amount-negative:{color:var(--bbva-dark-red, #b92a45);};--cells-transactions-list-list:{padding-top:1rem;};--cells-molecule-group-transactions-list-group-date:{font-size:var(--cells-text-size-ml, .9375rem);};--cells-molecule-group-transactions-list-group-not-first-of-type:{padding-top:1.5rem;};--cells-molecule-transaction-list-item-info-divided:{padding-right:0;};--cells-molecule-transaction-list-item-info-divided-item:{justify-content:space-between;color:var(--cells-molecule-transaction-list-item-additional-info-color, var(--bbva-500, #666));font-size:var(--cells-text-size-ml, .9375rem);@apply --cells-fontDefaultLight;};--cells-molecule-transaction-list-item-info-divided-balance:{display:none;};@apply --cells-glomo-transactions;}cells-transactions-list:not[hidden] + cells-transactions-list{padding:0 0 2rem 0;@apply --cells-glomo-transactions-transactions;}cells-transactions-list.empty{--cells-transactions-list:{height:100%;display:flex;flex-direction:column;justify-content:center;};@apply --glomo-transactions-list-empty;}</style></template></dom-module><dom-module id="glomo-transactions" assetpath="glomo-transactions/"><template><style include="glomo-transactions-styles glomo-transactions-shared-styles"></style><template is="dom-if" if="[[_showButtonSearcher(showButtonSearcher, _showLoadError, searching)]]"><section class$="[[_filterButtonClass]]" id="filterButton"><div class="right" on-click="_goTransationsSearcher"><cells-atom-icon icon="[[filterButtonIcon]]" class$="icon-size-[[filterButtonIconSize]]"></cells-atom-icon></div></section></template><cells-transactions-list id="pending" disable-tap-action-item="[[disableTapActionItem]]" title="cells-transactions-list-pending-transactions" transactions="[[pendings]]" product-id="[[productId]]" continue="[[continue]]" disable-view-all="" transaction-group-date-format="[[transactionGroupDateFormat]]" transaction-current-year-date-format="[[transactionCurrentYearDateFormat]]" local-currency="[[localCurrency]]" hidden$="[[_hiddenPendingSection]]" hide-financing-status="[[hideFinancingStatus]]" show-fulfillment-status="[[showFulfillmentStatus]]" primary-amount-class="amount-large" secondary-amount-class="amount-small" description-max-lines="[[descriptionMaxLines]]" use-client-local-time="[[useClientLocalTime]]"></cells-transactions-list><cells-transactions-list id="settled" disable-tap-action-item="[[disableTapActionItem]]" class$="[[emptyList]]" icon-message-empty-list="[[showIconMessageEmptyList]]" title="[[_getTitleSettled(hideTitleSettled)]]" transactions="[[settleds]]" product-id="[[productId]]" product-type="[[productType]]" continue="[[continue]]" skeleton-items="[[skeletonItems]]" image-empty-list="[[imageEmptyList]]" spinner="{{spinner}}" disable-view-all="" message-empty-list="[[messageEmptyList]]" transaction-group-date-format="[[transactionGroupDateFormat]]" transaction-current-year-date-format="[[transactionCurrentYearDateFormat]]" local-currency="[[localCurrency]]" disable-message-empty="[[_onlyPendings(pendings, settleds, hidePendings)]]" loaded="[[_checkedTransactions(pendings, settleds)]]" no-more-transactions="[[_showNoMoreTransactions(showNoMoreTransactions, settleds, pagination)]]" hide-financing-status="[[hideFinancingStatus]]" show-fulfillment-status="[[showFulfillmentStatus]]" primary-amount-class="[[primaryAmountClass]]" secondary-amount-class="[[secondaryAmountClass]]" description-max-lines="[[descriptionMaxLines]]" currency="[[productCurrency]]" use-client-local-time="[[useClientLocalTime]]"></cells-transactions-list></template><script>/**
+* @summary Transaction list with peding and settled transactions.
+* @customElement
+* @polymer
+* @extends {Polymer.Element}
+*/var GlomoTransactions=/*#__PURE__*/function(_Polymer$Element){babelHelpers.inherits(GlomoTransactions,_Polymer$Element);function GlomoTransactions(){babelHelpers.classCallCheck(this,GlomoTransactions);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(GlomoTransactions).apply(this,arguments))}babelHelpers.createClass(GlomoTransactions,[{key:"connectedCallback",value:function connectedCallback(){babelHelpers.get(babelHelpers.getPrototypeOf(GlomoTransactions.prototype),"connectedCallback",this).call(this);this.addEventListener("retry-load-transactions",this._retryLoadTransactions.bind(this))}},{key:"disconnectedCallback",value:function disconnectedCallback(){babelHelpers.get(babelHelpers.getPrototypeOf(GlomoTransactions.prototype),"disconnectedCallback",this).call(this);this.removeEventListener("retry-load-transactions",this._retryLoadTransactions.bind(this))}/**
+   * Reset
+   */},{key:"reset",value:function reset(){var pendingList=this.shadowRoot?this.shadowRoot.querySelector("#pending"):void 0,settledList=this.shadowRoot?this.shadowRoot.querySelector("#settled"):void 0;this.spinner=!1;this.set("pendings",void 0);this.set("settleds",void 0);if(!this.cancelPaginationReset){this.set("pagination",void 0)}this.searching=!1;this._showLoadError=!1;if(pendingList){pendingList.reset()}if(settledList){settledList.reset()}}/**
+   * Manage bottom spinner
+   */},{key:"manageSpinner",value:function manageSpinner(status){this.spinner=status}/**
+   * Hide spinner
+   */},{key:"hideSpinner",value:function hideSpinner(){this.manageSpinner(!1)}/**
+  * Added more setteled transaction in list
+  */},{key:"addTransactions",value:function addTransactions(){var _this=this,transactions=0<arguments.length&&arguments[0]!==void 0?arguments[0]:[];if(!this.settleds){this.set("settleds",[])}if(transactions.length){if(this.searching&&this.hideAmountIfZero){transactions=transactions.map(function(transaction){if(0===_this.get("additionalInformation.0.value.amount",transaction)){transaction.additionalInformation=null}return transaction})}this.set("settleds",this.settleds.concat(transactions))}this._showLoadError=!1}/**
+   * Add opacity searcher button
+   */},{key:"addOpacitySearcherButton",value:function addOpacitySearcherButton(){this.searcherButton=this.searcherButton||this._hasTransactions&&this.showButtonSearcher?this.shadowRoot.querySelector("#filterButton"):null;if(this.searcherButton&&!this.searcherButton.classList.contains("opacityMedium")){this.searcherButton.classList.add("opacityMedium")}}/**
+   * Remove opacity searcher button
+   */},{key:"removeOpacitySearcherButton",value:function removeOpacitySearcherButton(){if(this.searcherButton){this.searcherButton.classList.remove("opacityMedium")}}/**
+   * Show the load error message
+   */},{key:"showMessageLoadError",value:function showMessageLoadError(){this._showLoadError=!0;this.shadowRoot.querySelector("#settled").reset();this.shadowRoot.querySelector("#settled").showMessageLoadError()}},{key:"_checkedPendings",value:function _checkedPendings(pendings,hidePendings){return!hidePendings&&pendings&&pendings.length}},{key:"_checkedTransactions",value:function _checkedTransactions(pendings,settleds){return pendings&&settleds}},{key:"_onlyPendings",value:function _onlyPendings(pendings,settleds,hidePendings){return this._checkedPendings(pendings,hidePendings)&&settleds&&!settleds.length}},{key:"_checkedEmptyTransactions",value:function _checkedEmptyTransactions(pendings,settleds){return pendings&&pendings.length||settleds&&settleds.length?!0:!1}},{key:"_checkedSettleds",value:function _checkedSettleds(){if(this.pendings&&!this.pendings.length&&this.settleds&&!this.settleds.length&&this.addClassEmptyList){this.emptyList="empty"}else{this.emptyList=""}}/**
+   * Dispatch event transaction Searcher
+   */},{key:"_goTransationsSearcher",value:function _goTransationsSearcher(){this.dispatchEvent(new CustomEvent("navigation-to-transactions-searcher",{bubbles:!0,composed:!0,detail:{productId:this.productId,continue:this.continue}}))}},{key:"_computeMessageEmptyList",value:function _computeMessageEmptyList(value){return value?"cells-transactions-list-no-transactions-searching":this.textTransacyionsListsEmpty}},{key:"_getTitleSettled",value:function _getTitleSettled(hideTitleSettled){return hideTitleSettled?null:"cells-transactions-list-settled-transactions"}},{key:"_showNoMoreTransactions",value:function _showNoMoreTransactions(showNoMoreTransactions,transactions,pagination){return showNoMoreTransactions&&transactions&&transactions.length&&pagination&&pagination.page===pagination.totalPages}},{key:"_showButtonSearcher",value:function _showButtonSearcher(showButtonSearcher,_showLoadError,searching){return showButtonSearcher&&(searching||!searching&&!_showLoadError)}},{key:"_retryLoadTransactions",value:function _retryLoadTransactions(event){event.stopPropagation();if(this.searching){this.dispatchEvent(new CustomEvent("retry-search-transactions",{bubbles:!0,composed:!0}))}else{this.dispatchEvent(new CustomEvent("retry-get-transactions",{bubbles:!0,composed:!0}))}}/**
+   * Get product info by product type
+   */},{key:"_getProductInfoByProductType",value:function _getProductInfoByProductType(){return{account:{code:"armadillo-error-invalidCredentials",selectedConfig:{className:"info",openMaximized:!1,iconOnlyFullHeight:!0,acceptBtLabel:"alert-ACCOUNT-TRANSACTIONS-INFO-accept",template:{type:"paragraphs",values:[{icon:"coronita:help"},{text:"alert-ACCOUNT-TRANSACTIONS-"+(((this.currentProduct||{}).accountFamily||{}).id||"")+"-INFO-message"}]}}},card:{code:"CARD-INFO",selectedConfig:{className:"info",openMaximized:!1,iconOnlyFullHeight:!0,acceptBtLabel:"cells-alert-box-accept",template:{type:"paragraphs",values:[{icon:"coronita:help"},{text:"DEBIT_CARD"===((this.currentProduct||{}).cardType||{}).id?"alert-TRANSACTIONS-LIST-CARD-message-debit-card":"alert-TRANSACTIONS-LIST-CARD-message"}]}}},fund:{code:"FUND-INFO",selectedConfig:{className:"info",openMaximized:!1,iconOnlyFullHeight:!0,acceptBtLabel:"cells-alert-box-accept",template:{type:"paragraphs",values:[{icon:"coronita:help"},{text:"alert-FUND-TRANSACTIONS-INFO-message"}]}}}}}/**
+   * Emit the info dialog event
+   */},{key:"openProductInfo",value:function openProductInfo(){if(this.productType&&("account"!==this.productType||this.currentProduct&&this.currentProduct.accountFamily)){/**
+       * Event to request the info dialog to be opened
+       * @event product-transactions-info
+       */this.dispatchEvent(new CustomEvent("product-transactions-info",{bubbles:!0,composed:!0,detail:this._getProductInfoByProductType()[this.productType]}))}}/**
+   * Compute hiddenPendingSection
+   */},{key:"_computeHiddenPendingSection",value:function _computeHiddenPendingSection(hidePendingSection,_hasPendings){return hidePendingSection||!_hasPendings}/**
+   * Compute filterButtonClass
+   */},{key:"_computeFilterButtonClass",value:function _computeFilterButtonClass(filterButtonClass){return["filterButton",filterButtonClass].join(" ")}}],[{key:"is",get:function get(){return"glomo-transactions"}},{key:"properties",get:function get(){return{/**
+       * List pending transaction
+       * @type {Array}
+       */pendings:Array,/**
+       * List setteled transaction
+       * @type {Array}
+       */settleds:{type:Array,observer:"_checkedSettleds"},/**
+       * Product Type
+       * @type {String}
+       */productType:String,/**
+       * Product Id
+       * @type {String}
+       */productId:String,/**
+       * Image url
+       * @type {String}
+       */imageEmptyList:String,/**
+       * Show spinner
+       * @type  {Boolean}
+       */spinner:{type:Boolean,value:!1},/**
+       * Skeleton items
+       * @type {Number|String}
+       */skeletonItems:{type:Number,value:8},/**
+       * Has pendings transactions
+       * @type {Number|String}
+       */_hasPendings:{type:Boolean,value:!1,computed:"_checkedPendings(pendings, hidePendings)"},/**
+       * Has transactions
+       * @type {Number|String}
+       */_hasTransactions:{type:Boolean,value:!1,computed:"_checkedEmptyTransactions(pendings, settleds)"},/**
+       * Show the search button
+       * @type {Boolean}
+       */showButtonSearcher:{type:Boolean,value:!1},/**
+       * Navigation to continued page
+       * @type {String}
+       */continue:String,/**
+       * Local currency
+       * @type {String}
+       */localCurrency:String,/**
+       * Format group date
+       * @type {String}
+       */transactionGroupDateFormat:{type:String,value:"DD MMMM"},/**
+       * Date format to show transaction date when the year is the current year.
+       * @type {String}
+       */transactionCurrentYearDateFormat:{type:String},/**
+       * Hide title for settled transactions
+       * @type {Boolean}
+       */hideTitleSettled:{type:Boolean,value:!1},/**
+       * Hide pendings transactions
+       * @type {Boolean}
+       */hidePendings:{type:Boolean,value:!1},/**
+       * Pagination
+       * @type {Object}
+       */pagination:Object,/**
+       * Show message no more transactions
+       * @type {Boolean}
+       */showNoMoreTransactions:{type:Boolean,value:!1},messageEmptyList:{type:String,computed:"_computeMessageEmptyList(searching)"},searching:{type:Boolean,value:!1},/**
+      * Show load error message
+      */_showLoadError:{type:Boolean,value:!1},/**
+       * Hide transaction financing status
+       */hideFinancingStatus:Boolean,/**
+       * Show transaction fulfillment status
+       */showFulfillmentStatus:Boolean,/**
+       * Show cells-icon-message when list is empty
+       */showIconMessageEmptyList:{type:Boolean,value:!1},/**
+       * Class to show the message in the middle of the page when the list is empty
+       */emptyList:{type:String,value:""},/**
+       * TRUE when you want to activate the class "emptyList"
+       */addClassEmptyList:{type:Boolean,value:!1},/** TRUE when you want to keep the pagination value when performing reset. */cancelPaginationReset:{type:Boolean,value:!1},/** It will hide amount 0 if TRUE. */hideAmountIfZero:{type:Boolean,value:!1},/**
+       * Currently selected product
+       */currentProduct:{type:Object,value:function value(){}},/**
+       * Hide pending transactinos section option
+       */hidePendingSection:{type:Boolean,value:!1},/**
+       * Is the pending transactions section hidden?
+       */_hiddenPendingSection:{type:Boolean,value:!1,computed:"_computeHiddenPendingSection(hidePendingSection, _hasPendings)"},/**
+       * Filter button class
+       */filterButtonClass:{type:String,value:""},/**
+       * Computed filter button class
+       */_filterButtonClass:{type:String,computed:"_computeFilterButtonClass(filterButtonClass)"},/**
+       * Filter button icon
+       */filterButtonIcon:{type:String,value:"coronita:simulator"},/**
+       * Filter button icon size
+       */filterButtonIconSize:{type:Number,value:18},/**
+       * Maximum number transactions description shown lines
+       */descriptionMaxLines:{type:Number,value:1},/**
+       * Product currency
+       */productCurrency:{type:String},/**
+       * Primary amount class
+       */primaryAmountClass:{type:String,value:"amount-large"},/**
+       * Secondary amount class
+       */secondaryAmountClass:{type:String,value:"amount-small"},/**
+       * Disable tap action on item
+       */disableTapActionItem:{type:Boolean,value:!1},/*
+       * Text transaction list is empty
+       */textTransacyionsListsEmpty:{type:String,value:"cells-transactions-list-empty"},/**
+       * Implements custom timezone on cells-transactions-list component
+       */useClientLocalTime:{type:Boolean,value:!1}}}}]);return GlomoTransactions}(Polymer.Element);window.customElements.define(GlomoTransactions.is,GlomoTransactions);</script></dom-module></div></body></html>

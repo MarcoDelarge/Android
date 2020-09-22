@@ -1,0 +1,274 @@
+<html><head></head><body><div hidden="" by-polymer-bundler=""><dom-module id="glomo-clarifications-management-styles" assetpath="glomo-clarifications-management/"><template><style>:host{display:block;box-sizing:border-box;font-family:var(--cells-fontDefault, sans-serif);@apply --glomo-clarifications-management;--cells-radio-button-radio-check-size:0.5rem;--cells-radio-button-radio-check-background-color:var(--bbva-medium-blue);--cells-radio-button-label:{font-weight:bold;font-size:14px;};}:host([hidden]), [hidden]{display:none !important;}*, *:before, *:after{box-sizing:inherit;}.content-elements-center{text-align:center;}.content-first-text-margin{max-width:300px;margin:30px auto 0 auto;}.content-second-text-margin{max-width:300px;margin:30px auto 0 auto;}.content-amount-margin{max-width:300px;margin:20px auto 10px auto;height:14px;}.content-main-operations-div{margin-top:50px;}.radio-button-statements-select{margin-left:1rem;margin-right:1rem;margin-bottom:30px;}.text-detail-option{margin-left:2rem;margin-right:1.875rem;font-size:14px;margin-top:-10px;font-style:italic;text-align:justify;}cells-glomo-page-content{height:75vh;}cells-operations-list{--cells-operations-list-list:{background-color:var(--cells-transparent_colour);};--cells-operations-list-list__link:{color:var(--bbva-glomo-dark-medium-blue);background-color:var(--cells-transparent_colour);text-align:-webkit-center;border:none;outline:none;};--cells-operations-list-list__link-active:{background:var(--bbva-white);};}cells-icon-message{margin-top:20px;}</style></template></dom-module><dom-module id="glomo-clarifications-management" assetpath="glomo-clarifications-management/"><template><style include="glomo-clarifications-management-styles glomo-clarifications-management-shared-styles"></style><cells-glomo-page-content icon="glomo:magnifyingglass" header="[[t('glomo-clarifications-management-header-text', 'Header')]]" content="[[content]]" content-icon-width="255" content-icon-height="142" show-icon=""><div class="content" slot="after_content"><template is="dom-if" if="[[activeLayout]]"><template is="dom-if" if="[[isAutomaticClientType]]"><template is="dom-if" if="[[showRadioButtons]]"><p class="content-first-text-margin content-elements-center">[[t('glomo-clarifications-management-first-text-under-amount')]]</p><div class="radio-button-statements-select"><cells-radio-group selected="{{selected}}"><cells-radio-button>[[t('glomo-clarifications-management-first-title-option')]]</cells-radio-button><span class="text-detail-option">[[messageFirstOptionText]]</span><cells-radio-button>[[t('glomo-clarifications-management-second-title-option')]]</cells-radio-button><span class="text-detail-option">[[t('glomo-clarifications-management-second-message-option')]]</span></cells-radio-group></div></template><template is="dom-if" if="[[!showRadioButtons]]"><p class="content-first-text-margin content-elements-center">[[t('glomo-clarifications-management-first-text-up-amount')]]</p><p class="content-amount-margin content-elements-center">[[receivedData.establishmentName]]</p><div class="content-elements-center"><cells-atom-amount id="restAmountValue" class="amount-large" amount="[[receivedData.returnAmount]]" currency-code="[[receivedData.currency]]" local-currency="[[receivedData.localCurrency]]"></cells-atom-amount></div><cells-icon-message icon="coronita:info" type="info" message="[[t('glomo-clarifications-management-callcenter-disabled')]]"></cells-icon-message></template></template><template is="dom-if" if="[[!isAutomaticClientType]]"><div class="content-first-text-margin content-elements-center" inner-h-t-m-l="[[notRefundMessage]]"></div><p class="content-amount-margin content-elements-center">[[receivedData.establishmentName]]</p><div class="content-elements-center"><cells-atom-amount id="restAmountValue" class="amount-large" amount="[[receivedData.returnAmount]]" currency-code="[[receivedData.currency]]" local-currency="[[receivedData.localCurrency]]"></cells-atom-amount></div><template is="dom-if" if="[[callCenterEnabled]]"><p class="content-second-text-margin content-elements-center">[[t(messageWarningCode)]]</p><div class="content-main-operations-div"><cells-operations-list layout="review" operations="[[operations]]" class="link__margin" on-operation-click="_manageOperation"></cells-operations-list></div></template><template is="dom-if" if="[[!callCenterEnabled]]"><cells-icon-message icon="coronita:info" type="info" message="[[t(messageWarningCode)]]"></cells-icon-message></template></template></template></div></cells-glomo-page-content></template><script>/*global moment*/var GlomoClarificationsManagement=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(GlomoClarificationsManagement,_Polymer$mixinBehavio);function GlomoClarificationsManagement(){babelHelpers.classCallCheck(this,GlomoClarificationsManagement);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(GlomoClarificationsManagement).apply(this,arguments))}babelHelpers.createClass(GlomoClarificationsManagement,[{key:"_getSelectedStatus",/**
+   * @description Method that observes when property of the selected changes.
+   */value:function _getSelectedStatus(){if(this.selected!==void 0){this.checkButton(!0)}}/**
+   * @description Triggers change of button trigger value.
+   */},{key:"checkButton",value:function checkButton(val){this.dispatchEvent(new CustomEvent("change-button-value-confirm",{detail:val}))}/**
+   * @description This method is responsible for starting the property so that a RadioButton is not selected.
+   */},{key:"_initPage",value:function _initPage(){this.set("selected",void 0)}/**
+   * @description This method is responsible for resetting the values so that the previous data is not displayed.
+   */},{key:"resetDataScreen",value:function resetDataScreen(){this.set("activeLayout",!1);this.set("showButtons",!1)}/**
+   * @description Set specific data for automatic or manual clarification type.
+   * @param {Object} typeClaim It contains the necessary data - Mandatory - from the DM about the type of claim
+   */},{key:"reset",value:function reset(){this.set("receivedData",{});this.set("showRadioButtons",!1);this.set("activeLayout",!1);this.set("isTdcCardType",!1);this.set("isAutomaticClientType",!1);this.set("showSecondaryButton",!1)}},{key:"setClaimTypeLayout",value:function setClaimTypeLayout(typeClaim){this.reset();this.set("isAutomaticClientType",typeClaim.isAutomaticClientType);this.set("isTdcCardType",typeClaim.isTdcCardType);this.set("activeLayout",typeClaim.activeLayout);this.set("receivedData",typeClaim.receivedData);this.set("callCenterEnabled",typeClaim.callCenterEnabled);this.set("responseWarningCode",typeClaim.responseWarningCode);this.set("responseWarningDescription",typeClaim.responseWarningDescription);this.set("messageWarningCode",typeClaim.messageWarningCode);this.set("showButtons",!0);if(this.isAutomaticClientType){this.checkButton(!1);this.set("showRadioButtons",!0);this.set("showSecondaryButton",!0);this.set("primaryButtonText","glomo-clarifications-management-confirm-text-under-amount");if(this.isTdcCardType){this.set("messageFirstOptionText",this.t("glomo-clarifications-management-first-message-option-tdc"))}else{this.set("messageFirstOptionText",this.t("glomo-clarifications-management-first-message-option-tdd"))}}else{this.set("showSecondaryButton",!1);this.set("showRadioButtons",!1);this.showMessageClaim();this.set("selected",2);if(this.callCenterEnabled){this.set("operations",[{label:this.t("glomo-clarifications-management-phone-call"),id:"share",icon:"coronita:telephone"}]);this.checkButton(!0);this.set("primaryButtonText","glomo-clarifications-management-confirm-text-return-button")}else{this.set("primaryButtonText","glomo-clarifications-management-confirm-text-up-amount")}}}/**
+   * @description This method is responsible for displaying the message of why the subscription was not made depending on the response code.
+   */},{key:"showMessageClaim",value:function showMessageClaim(){var _this=this,warningCodeMap=[{code:"MPA0340",messages:this.t("glomo-clarifications-management-message-not-refund-001").replace("#####",this.responseWarningDescription).replace("Aclaraciones","<strong>Aclaraciones</strong>")},{code:"MPA0348",messages:this.t("glomo-clarifications-management-message-not-refund-002").replace("##########",this.responseWarningDescription)},{code:"MPA0346",messages:this.t("glomo-clarifications-management-message-not-refund-003")},{code:"MPA0343",messages:this.t("glomo-clarifications-management-message-not-refund-004")},{code:"MPA0349",messages:this.t("glomo-clarifications-management-message-not-refund-005")}];if(0===warningCodeMap.filter(function(item){return item.code===_this.responseWarningCode}).length){this.set("notRefundMessage",this.t("glomo-clarifications-management-call-line"))}else{this.set("notRefundMessage",this.t(warningCodeMap.filter(function(item){return item.code===_this.responseWarningCode})[0].messages))}}/**
+   * @description Runs when cta-container-primary-btn-tapped do respective actions: Request Clarification or Call.
+   */},{key:"requestClarificationButtonTapped",value:function requestClarificationButtonTapped(){if(this.isAutomaticClientType){if(1===this.selected&&this.callCenterEnabled){this._manageOperation()}else if(1===this.selected&&!this.callCenterEnabled){this.hideShowRadioButtons()}else if(0===this.selected){this.set("showButtons",!1);this.dispatchEvent(new CustomEvent("dispatch-clarification-request"))}}else{this.dispatchEvent(new CustomEvent("manage-close-btn"))}}/**
+   * @description This method helps to show or hide the RadioButtons
+   */},{key:"hideShowRadioButtons",value:function hideShowRadioButtons(){if(this.showRadioButtons){this.set("showRadioButtons",!1);this.set("primaryButtonText","glomo-clarifications-management-confirm-text-up-amount");this.set("showSecondaryButton",!1)}else{this.set("showRadioButtons",!0);this.dispatchEvent(new CustomEvent("manage-close-btn"))}}/**
+   * @description Trigger an event for native phone call.
+   */},{key:"_manageOperation",value:function _manageOperation(){this.dispatchEvent(new CustomEvent("phone-call-triggered",{detail:{phoneNumber:this.bbvaPhoneNumber.phoneNumber,extension:this.bbvaPhoneNumber.extension,showConfirmation:!0}}))}}],[{key:"is",get:function get(){return"glomo-clarifications-management"}},{key:"properties",get:function get(){return{/**
+       * @description Text for the primary button
+       * @type {String}
+       * @value It comes from mocktlp
+       */primaryButtonText:{type:String,notify:!0},/**
+       * @description Text for the primary button
+       * @type {String}
+       * @value It comes from mocktlp
+       */showSecondaryButton:{type:Boolean,notify:!0},/**
+       * @description Show or hide the view buttons
+       * @type {Boolean}
+       * @value It is taken depending on the type of event being carried out
+       */showButtons:{type:Boolean,notify:!0},/**
+       * @description Detects the radioButtons that is selected
+       * @type {Number}
+       * @value It is taken when choosing the radioButton
+       */selected:{type:Number,observer:"_getSelectedStatus"},/**
+       * @description The operation that will be performed depending on the screen that will be displayed
+       * @type {Array}
+       * @value []
+       */operations:{type:Array,value:[]},/**
+       * @description It is to know if the claim is of automatic or manual type
+       * @type {Boolean}
+       * @value false
+       */isTdcCardType:{type:Boolean,value:!1},/**
+       * @description It is to show or hide the view of the radioButtons
+       * @type {Boolean}
+       * @value false
+       */bbvaPhoneNumber:{type:Object,value:{}},/**
+       * @description Contains the line number of Bancomer Linea
+       * @type {Object}
+       * @value {}
+       */messageFirstOptionText:{type:String,value:""},/**
+       * @description Message corresponding to the reason why the payment was not made
+       * @type {String}
+       * @value ''
+       */notRefundMessage:{type:String,value:""},/**
+       * @description Message to be displayed corresponding to warningCode
+       * @type {String}
+       * @value ''
+       */messageWarningCode:{type:String,value:""},/**
+       * @description Detect if you are inside or outside of the service hours
+       * @type {Boolean}
+       * @value false
+       */callCenterEnabled:{type:Boolean,value:!1},/**
+       * @description This flag helps to activate or deactivate the general view
+       * @type {Boolean}
+       * @value false
+       */activeLayout:{type:Boolean,value:!1},/**
+       * @desc Receive the data from native
+       * @type {Object}
+       * @value {}
+       */receivedData:{type:Object,value:{}}}}}]);return GlomoClarificationsManagement}(Polymer.mixinBehaviors([CellsBehaviors.i18nBehavior,CellsBehaviors.CellsGlomoUtilsBehavior],Polymer.Element));customElements.define(GlomoClarificationsManagement.is,GlomoClarificationsManagement);</script></dom-module><dom-module id="glomo-clarifications-dm" assetpath="glomo-clarifications-dm/"><template><cells-dm-global-apis-claims id="claimDm" host="[[host]]" native="[[native]]" claim-type-header="{{headersCode}}" claim-type-header-description="{{headersDescription}}" required-token="[[requiredToken]]" claims-api-version="[[claimsApiVersion]]"></cells-dm-global-apis-claims></template><script>/*eslint new-cap: 0*/ /*global BGADPClaimsV0*/ /*global moment*/var GlomoClarificationsDm=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(GlomoClarificationsDm,_Polymer$mixinBehavio);function GlomoClarificationsDm(){babelHelpers.classCallCheck(this,GlomoClarificationsDm);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(GlomoClarificationsDm).apply(this,arguments))}babelHelpers.createClass(GlomoClarificationsDm,[{key:"receivesDataNative",/**
+   * @description This method handles received native data.
+   * @param {Object} params Contain detail with necessary data for component - mandatory.
+   */value:function receivesDataNative(params){this.reset();this.dispatchEvent(new CustomEvent("request-user-classifications",{detail:{urlParams:{expand:"avatars,indicators,classifications"}}}));this.dispatchEvent(new CustomEvent("show-spinner"));this.dispatchEvent(new CustomEvent("reset-values"));if(!this.isCleanVariables){if(params){if(params!==void 0&&(null!==params.productType||""!==params.productType)&&params.productType===this.typeCardCreditConstant){this.initFlowTDC(params)}else if(params.dataPass&&params.dataPass.productType&&params.dataPass.productType===this.typeCardDebitConstant){this.initFlowTDD(params)}else{this.initFlowTDC(params)}}else{this.dispatchEvent(new CustomEvent("hide-spinner"));this.onErrorRequest()}}else{this.set("isCleanVariables",!1);this.dispatchEvent(new CustomEvent("reset-screen"))}}/**
+   * @description This method starts the flow of TDC.
+   * @param {Object} params
+   */},{key:"initFlowTDC",value:function initFlowTDC(params){this.set("receivedDataPass",params);this.set("isTdcCardType",!0);if(params.transactionId&&params.cardId&&params.cardNumber){this.requestObtainTypeClaim(params)}else{this.onErrorRequestSendLineBancomer()}}/**
+   * @description This method starts the flow of TDD.
+   * @param {Object} params
+   */},{key:"initFlowTDD",value:function initFlowTDD(params){this.set("receivedDataPass",params.dataPass);this.set("receivedDataPass.productName",this.productNameTDD);this.set("receivedDataValidate",params.dataValidate);this.set("isTddCardType",!0);if(params.dataValidate.transaction.id&&params.dataValidate.contract.id&&params.dataPass.cardNumber){this.bifurcationCardType(params)}else{this.onErrorRequestSendLineBancomer()}}/**
+   * @description Send the request to know what type of claim is (This method will only be executed when the card type is CARDS).
+   * @param {Object} params
+   */},{key:"requestObtainTypeClaim",value:function requestObtainTypeClaim(params){var _this=this,claimRequestBody={};claimRequestBody={transaction:{id:params.transactionId},contract:{id:params.cardId,number:params.cardNumber,product:{numberType:{id:this.transactionClaimTypeConstants.numberTypeId,name:this.transactionClaimTypeConstants.numberTypeName},subProductType:{id:this.transactionClaimTypeConstants.subProductTypeId,name:this.transactionClaimTypeConstants.subProductTypeName},productType:{id:this.transactionClaimTypeConstants.productTypeId,name:this.transactionClaimTypeConstants.productTypeName}}}};this.$.claimDm.validateTransactionClaimType(claimRequestBody);Polymer.Async.timeOut.run(function(){_this.dispatchEvent(new CustomEvent("request-claim-type",{bubbles:!0,detail:claimRequestBody}))})}/**
+   * @description This method receives the claim type and redirects to the flow depending on the type of card.
+   * @param {Object} response
+   */},{key:"bifurcationCardType",value:function bifurcationCardType(response){if(response){if(this.isTdcCardType){this.set("isAutomaticClientType",response.claimType===this.claimAutomaticConstant);this.receivedData=this.receivedDataPass;this.set("responseWarningCode",this.headersCode);this.getResponseWarningCode(this.responseWarningCode);this.set("responseWarningDescription",this.getClaim(this.headersDescription))}else{this.set("isAutomaticClientType",response.dataValidate.claimType===this.claimAutomaticConstant);this.getResponseWarningCode(response.dataHeaders.responseWarningCode);this.set("responseWarningDescription",this.getClaim(response.dataHeaders.responseWarningDescription));var amount=((this.tddAmount||{}).amount||{}).amount||((this.receivedDataValidate||{}).claimAmount||{}).amount;this.receivedData={establishmentName:this.receivedDataPass.establishmentName,currency:this.receivedDataPass.currency,localCurrency:this.receivedDataPass.localCurrency,returnAmount:amount}}this.dispatchEvent(new CustomEvent("reset-radiobuttons",{detail:{showRadioButtons:this.isAutomaticClientType}}));this.dispatchEventSendDataUI()}else{this.onErrorRequestSendLineBancomer()}}/**
+   * @description This method makes the logic to know if you have to call the bbva insurance line
+   * @param {String} warningCode
+   */},{key:"getResponseWarningCode",value:function getResponseWarningCode(warningCode){this.set("responseWarningCode",warningCode);switch(warningCode){case this.secureCodeMessage:this.set("isInsuranceLine",!0);break;case this.clarificationMessageProcess:this.set("comparateFolioFecha",this.FOLIO);break;case this.amountPaidMessage:this.set("comparateFolioFecha",this.FECHA);break;default:this.set("comparateFolioFecha","");break;}}/**
+   * @description This method takes the folio that comes in the header of responsewarningdescription
+   * @param {String} warningDescription
+   */},{key:"getClaim",value:function getClaim(warningDescription){if(!this.isAutomaticClientType){if(warningDescription.includes(this.comparateFolioFecha)){var getFechaFolio=warningDescription.substring(warningDescription.search(this.comparateFolioFecha)).replace(/^\D+/g,"");return getFechaFolio.substring(0,10)}}}/**
+   * @description user classifications response.
+   * @param {Object} response
+   */},{key:"userClassificationsResponse",value:function userClassificationsResponse(response){var userSegmentId=response[0].classifications[0].segments[0].id;if(this.isInsuranceLine){this.set("bbvaPhoneNumber",this._getPhoneNumerToInsurance(userSegmentId,this.bbvaInsurancePhonesClaimsNumbers,this.segmentsByUser))}else{this.set("bbvaPhoneNumber",this._getPhoneNumerToClarification(userSegmentId,this.bbvaPhonesClaimsNumbers,this.segmentsByUser))}this.dispatchEvent(new CustomEvent("hide-spinner"))}/**
+   * @description return the telephone number based on the customer segment.
+   * @param {String}
+   * @param {Object}
+   * @param {Array}
+   */},{key:"_getPhoneNumerToInsurance",value:function _getPhoneNumerToInsurance(userSegmentId,bbvaPhonesClaimsNumbers,segmentsByUser){var userSegmentName;segmentsByUser.forEach(function(segment){if(segment.keys.includes(userSegmentId)){userSegmentName=segment.name;return}});return userSegmentName===this.SEGMENTO?bbvaPhonesClaimsNumbers[userSegmentName]:bbvaPhonesClaimsNumbers.default}/**
+   * @description return the telephone number based on the customer segment.
+   * @param {String}
+   * @param {Object}
+   * @param {Array}
+   */},{key:"_getPhoneNumerToClarification",value:function _getPhoneNumerToClarification(userSegmentId,bbvaPhonesClaimsNumbers,segmentsByUser){var userSegmentName;segmentsByUser.forEach(function(segment){if(segment.keys.includes(userSegmentId)){userSegmentName=segment.name;return}});return userSegmentName?bbvaPhonesClaimsNumbers[userSegmentName]:bbvaPhonesClaimsNumbers.default}/**
+   * @description Dispatch request clarification once request body when is created.
+   */},{key:"_dispatchClarificationRequest",value:function _dispatchClarificationRequest(){this.dispatchEvent(new CustomEvent("show-spinner"));if(this.isTdcCardType){this.clarificationRequestTDC()}else{this.clarificationRequestTDD()}}/**
+   * @description Creation of request body for TDC.
+   */},{key:"clarificationRequestTDC",value:function clarificationRequestTDC(){var _this2=this,clarificationRequestBody={};clarificationRequestBody={transaction:{id:this.receivedDataPass.transactionId},contract:{id:this.receivedDataPass.cardId,product:{numberType:{id:this.numberTypeIdText,name:this.numberTypeNameText},productType:{id:this.productTypeIdText,name:this.productTypeNameText},subProductType:{id:this.idCardTDC,name:this.nameCardTDC}}}};Polymer.Async.timeOut.run(function(){_this2.dispatchEvent(new CustomEvent("request-clarification-object-data",{bubbles:!0,detail:clarificationRequestBody}))})}/**
+   * @description Creation of request body for TDD.
+   */},{key:"clarificationRequestTDD",value:function clarificationRequestTDD(){var _this3=this;if(this.receivedDataValidate&&this.receivedDataValidate.contract){var clarificationRequestBody={};clarificationRequestBody={transaction:{id:this.receivedDataValidate.id+this.receivedDataValidate.openingDate},contract:{id:this.receivedDataValidate.contract.id,product:{numberType:{id:this.numberTypeIdText,name:this.numberTypeNameText},productType:{id:this.productTypeIdText,name:this.productTypeNameText},subProductType:{id:this.idCardTDD,name:this.nameCardTDD}}}};Polymer.Async.timeOut.run(function(){_this3.dispatchEvent(new CustomEvent("request-clarification-object-data",{detail:clarificationRequestBody}))})}else{this.onErrorRequestSendLineBancomer()}}/**
+   * @description This method receives the response of request and then, must redirect to success screen.
+   * @param {Object} payload contain response - optional.
+   */},{key:"getClarificationRequestBody",value:function getClarificationRequestBody(payload){var resultObject={date:this.getDateAndTime(payload.openingDate),title:this.titlePage,origin:{avatar:{src:this.cardAvatar,type:"card"},product:{name:" "}},amountDescription:this.amountDescription,fees:[{text:this.receivedDataPass.establishmentName?"".concat(this.receivedDataPass.establishmentName.slice(0,27),"..."):"",class:"bold"}],chargeAmount:{amount:payload.claimedAmount.amount,currency:payload.claimedAmount.currency},topInfo:[{key:this.topInfoKey01,class:"inline secondary"},{value:this.receivedDataPass.productName,class:"bold lg"},{musk:{value:this.fiveDigitsFormat(this.receivedDataPass.cardNumber),chars:6,simbol:"\u2022"},class:"bold spacing"},{key:this.isTdcCardType?"":this.topInfoKey02,value:this.isTdcCardType?"":payload.operationNumber,class:this.isTdcCardType?"":"inline secondary"},{key:this.topInfoKey03,class:"inline secondary"}],operations:[{label:this.operationsLabel,id:"share",icon:"coronita:share"}],buttons:{primary:{text:this.buttonsPrimaryText,action:"go-to-next"},secondary:{text:this.buttonsSecondaryText,action:"new-operation",class:"link"}}};this._sendDataToSuccesScreen(resultObject,payload.status.id,payload.status.date)}/**
+   * @description Send data to clarifications management success screen -no link-.
+   * @param {Object} resultObject body of result success screen property.
+   * @param {String} statusInfo clarification status.
+   * @param {String} dateInfo clarification date.
+   */},{key:"_sendDataToSuccesScreen",value:function _sendDataToSuccesScreen(resultObject,statusInfo,dateInfo){var isDebitType=this.isTddCardType&&!this.isTdcCardType;this.dispatchEvent(new CustomEvent("send-data-to-success-screen",{detail:{result:resultObject,status:statusInfo,date:dateInfo,isDebitType:isDebitType}}));this._cleanSettledVariables("success")}/**
+   * @description Reset values of module.
+   * @param {String} linkType string for complete event name to link.
+   */},{key:"_cleanSettledVariables",value:function _cleanSettledVariables(linkType){this.set("isCleanVariables",!0);this.dispatchEvent(new CustomEvent("clean-native-channel",{detail:{}}));var eventForDispatch="link-to-clarifications-management-".concat(linkType,"-screen");this.dispatchEvent(new CustomEvent(eventForDispatch))}/**
+   * @description Concatenates data with curren hour.
+   * @param {String} receivedDate data obtained from service.
+   */},{key:"getDateAndTime",value:function getDateAndTime(receivedDate){var time=moment().format("HH:mm");return"".concat(receivedDate,"T").concat(time)}/**
+  * @description Method to reset variables to their starting value
+  */},{key:"reset",value:function reset(){this.isAutomaticClientType=!1;this.isTdcCardType=!1;this.receivedData={};this.receivedDataPass={};this.receivedDataValidate={};this.responseWarningCode="";this.warningCodeMessage=""}/**
+   * @description Method that resets variables and renews the list of movements
+   */},{key:"returnPreviousPage",value:function returnPreviousPage(){this.reset();this.dispatchEvent(new CustomEvent("link-to-clarifications-management-previous-screen"))}/**
+   * @description Manage close buttons.
+   */},{key:"manageCloseBtn",value:function manageCloseBtn(){this.dispatchEvent(new CustomEvent("reset-values"));this.reset();this.dispatchEvent(new CustomEvent("change-value-close-button",{detail:!1}));this.set("showButtons",!1);this._cleanSettledVariables("previous")}/**
+   * @description Send all the data you need to the UI.
+   */},{key:"dispatchEventSendDataUI",value:function dispatchEventSendDataUI(){var openTimeConstant,closeTimeConstant;if(this.responseWarningCode===this.secureCodeMessage){openTimeConstant=this.openTimeConstant[1];closeTimeConstant=this.closeTimeConstant[1];this.callCenterEnabled=moment().isBetween(moment(openTimeConstant,this.formatTimeConstant),moment(closeTimeConstant,this.formatTimeConstant));if(this.callCenterEnabled){this.set("warningCodeMessage","glomo-clarifications-management-second-text-up-amount-sure")}else{this.set("warningCodeMessage","glomo-clarifications-management-callcenter-disabled-sure")}}else{openTimeConstant=this.openTimeConstant[0];closeTimeConstant=this.closeTimeConstant[0];this.callCenterEnabled=moment().isBetween(moment(openTimeConstant,this.formatTimeConstant),moment(closeTimeConstant,this.formatTimeConstant));if(this.callCenterEnabled){this.set("warningCodeMessage","glomo-clarifications-management-second-text-up-amount")}else{this.set("warningCodeMessage","glomo-clarifications-management-callcenter-disabled-off")}}this.dispatchEvent(new CustomEvent("hide-spinner"));this.dispatchEvent(new CustomEvent("set-claim-type-layout",{detail:{isAutomaticClientType:this.isAutomaticClientType,responseWarningDescription:this.responseWarningDescription,responseWarningCode:this.responseWarningCode,callCenterEnabled:this.callCenterEnabled,isTdcCardType:this.isTdcCardType,receivedData:this.receivedData,activeLayout:!0,messageWarningCode:this.warningCodeMessage}}))}/**
+   * @description Manage error callbacks line Bancomer.
+   */},{key:"onErrorRequestSendLineBancomer",value:function onErrorRequestSendLineBancomer(){var amount=((this.tddAmount||{}).amount||{}).amount||((this.receivedDataValidate||{}).claimAmount||{}).amount;this.set("isAutomaticClientType",!1);if(this.isTdcCardType){this.receivedData=this.receivedDataPass}else{this.receivedData={establishmentName:this.receivedDataPass.establishmentName,currency:this.receivedDataPass.currency,localCurrency:this.receivedDataPass.localCurrency,returnAmount:amount}}this.dispatchEventSendDataUI()}/**
+   * @description Manage error callbacks.
+   */},{key:"onErrorRequest",value:function onErrorRequest(){this.dispatchEvent(new CustomEvent("link-to-clarifications-management-error-screen",{detail:{headerTitleText:this.headerTitleText,primaryButtonText:this.primaryButtonText}}))}}],[{key:"is",get:function get(){return"glomo-clarifications-dm"}},{key:"properties",get:function get(){return{/**
+       * @description Host
+       * @type {String}
+       * @value https://t-glomo-mx.prev.grupobbva.com:443/SRVS_A02
+       */host:String,/**
+       * @description Native Request
+       * @type {Boolean}
+       * @value false
+       */native:{type:Boolean,value:!1},/**
+       * @description Headers responseWarningCode Request
+       * @type {String}
+       * @value 'MPA0344'
+       */headersCode:String,/**
+       * @description Headers responseWarningDescription Request
+       * @type {String}
+       * @value ''
+       */headersDescription:String,/**
+       * @description Receive the data from native
+       * @type {Object}
+       * @value {}
+       */receivedData:{type:Object,value:{}},/**
+       * @description Validate data
+       * @type {Object}
+       * @value {}
+       */receivedDataValidate:{type:Object,value:{}},/**
+       * @description This data is from native
+       * @type {Object}
+       * @value {}
+       */receivedDataPass:{type:Object,value:{}},/**
+       * @description It is to know if the claim is of automatic or manual type
+       * @type {Boolean}
+       * @value false
+       */isAutomaticClientType:{type:Boolean,value:!1},/**
+       * @description This flag is to activate the view or hide it
+       * @type {Boolean}
+       * @value false
+       */isTdcCardType:{type:Boolean,value:!1},/**
+       * @description This flag is when the product is debit cards
+       * @type {Boolean}
+       * @value false
+       */isTddCardType:{type:Boolean,value:!1},/**
+       * @description Contains the line number of Bancomer Linea
+       * @type {Object}
+       * @value {}
+       */bbvaPhoneNumber:{type:Object,value:{},notify:!0},/**
+       * @description Constant for clean variables
+       * @type {Boolean}
+       * @value false
+       */isCleanVariables:{type:Boolean,value:!1},/**
+       * @description Constant number type id
+       * @type {String}
+       * @value PAN
+       */numberTypeIdText:{type:String,value:"PAN"},/**
+       * @description Constant number type name
+       * @type {String}
+       * @value Numero de cuenta principal. Consiste en n·meros de 14, 15 o 16 digitos que estan grabados y / o codificados en una tarjeta de plastico que identifica al emisor y la cuenta particular del titular de la tarjeta.
+       */numberTypeNameText:{type:String,value:"Numero de cuenta principal. Consiste en n\xB7meros de 14, 15 o 16 digitos que estan grabados y / o codificados en una tarjeta de plastico que identifica al emisor y la cuenta particular del titular de la tarjeta."},/**
+       * @description Constant product type id
+       * @type {String}
+       * @value CARDS
+       */productTypeIdText:{type:String,value:"CARDS"},/**
+       * @description Constant product type name
+       * @type {String}
+       * @value Una tarjeta como el producto financiero asociado al contrato.
+       */productTypeNameText:{type:String,value:"Una tarjeta como el producto financiero asociado al contrato."},/**
+       * @description Constant type claim
+       * @type {String}
+       * @value MANUAL
+       */claimTypeIdText:{type:String,value:"MANUAL"},/**
+       * @description Constant reason claim
+       * @type {String}
+       * @value AUTOMATIC_REFUND
+       */claimTypeReasonIdText:{type:String,value:"AUTOMATIC_REFUND"},/**
+       * @description Constant subproduct type id - TDD
+       * @type {String}
+       * @value DEBIT_CARD
+       */idCardTDD:{type:String,value:"DEBIT_CARD"},/**
+       * @description Constant subproduct type name - TDD
+       * @type {String}
+       * @value Tarjeta de debito.
+       */nameCardTDD:{type:String,value:"Tarjeta de debito."},/**
+       * @description Constant subproduct type id - TDC
+       * @type {String}
+       * @value CREDIT_CARD
+       */idCardTDC:{type:String,value:"CREDIT_CARD"},/**
+       * @description Constant subproduct type name - TDC
+       * @type {String}
+       * @value Tarjeta de Credito.
+       */nameCardTDC:{type:String,value:"Tarjeta de Credito"},/**
+       * @description Constant provisional for ProductName for method initFlowTDD
+       * @type {String}
+       * @value Cuenta.
+       */productNameTDD:{type:String,value:"Cuenta"},/**
+       * @description Property to validate with warningCode if it is an insurance code in the getResponseWarningCode method
+       * @type {String}
+       * @value MPA0346
+       */secureCodeMessage:{type:String,value:"MPA0346"},/**
+       * @description Property to validate if you already have a clarification in the getResponseWarningCode method
+       * @type {String}
+       * @value MPA0340
+       */clarificationMessageProcess:{type:String,value:"MPA0340"},/**
+       * @description Property to validate that the amount was paid
+       * @type {String}
+       * @value MPA0348
+       */amountPaidMessage:{type:String,value:"MPA0348"},/**
+       * @description Property to validate with FOLIO in the getResponseWarningCode method
+       * @type {String}
+       * @value FOLIO
+       */FOLIO:{type:String,value:"FOLIO"},/**
+       * @description Property to validate with FECHA-HORA in the getResponseWarningCode method
+       * @type {String}
+       * @value FECHA-HORA
+       */FECHA:{type:String,value:"FECHA-HORA"},/**
+       * @description Property to compare between folio and date
+       * @type {String}
+       * @value comparateFolioFecha
+       */comparateFolioFecha:{type:String,value:""},/**
+       * @description Property used in the _getPhoneNumerToInsurance method
+       * @type {String}
+       * @value
+       */SEGMENTO:{type:String,value:"segmentA"},/**
+       * @description Amount recived to detail
+       * @type {String}
+       * @value
+       */warningCodeMessage:String,/**
+       * @description object to assign start time
+       * @type {Object}
+       * @value
+       */openTimeConstant:{type:Object,value:["08:00:00","08:30:00"]},/**
+       * @description object to assign the closing time
+       * @type {Object}
+       * @value
+       */closeTimeConstant:{type:Object,value:["23:00:00","19:00:00"]},/**
+       * @description amount recived to detail for the channel
+       * @type {Object}
+       * @value
+       */tddAmount:Object}}}]);return GlomoClarificationsDm}(Polymer.mixinBehaviors([CellsBehaviors.CellsGlomoUtilsBehavior],Polymer.Element));customElements.define(GlomoClarificationsDm.is,GlomoClarificationsDm);</script></dom-module></div></body></html>

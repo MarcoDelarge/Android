@@ -1,0 +1,14 @@
+{
+    "data": {
+        "id": "9C287763GC22",
+        "operationDate": "2019-01-01T14:43:00Z",
+        "paymentAmount": {
+            "amount": 4463.59,
+            "currency": "MXN"
+        },
+        "pendingAmount": {
+            "amount": 0,
+            "currency": "MXN"
+        }
+    }
+}

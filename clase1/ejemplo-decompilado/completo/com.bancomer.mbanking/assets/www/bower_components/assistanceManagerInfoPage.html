@@ -1,0 +1,68 @@
+<html><head></head><body><div hidden="" by-polymer-bundler=""><dom-module id="glomo-assistance-manager-styles" assetpath="glomo-assistance-manager/"><template><style>:host{display:block;box-sizing:border-box;font-family:var(--cells-fontDefault, sans-serif);background-color:var(--bbva-navy, #072146);padding:30px;@apply --glomo-assistance-manager;}:host([hidden]), [hidden]{display:none !important;}*, *:before, *:after{font:inherit;box-sizing:inherit;}div{margin:auto;text-align:center;color:var(--bbva-white, #FFFF);}.content-name{margin-top:20px;font-size:18px;padding:10px;}.content-officeInfo{padding-bottom:20px;}.content-customerInfo{padding-bottom:30px;}.content-title{font-weight:bold;}.content-blodMessage{font-weight:bold;}.content-helpInfo{width:75%;}cells-molecule-link-icon{--cells-molecule-link-icon-color:var(--bbva-light-blue, #5bbeff);--cells-molecule-link-icon:{display:content;};}cells-operations-list{--cells-operations-list-list__link-color:var(--bbva-light-blue, #5bbeff);--cells-operations-list__link-icon-atom-icon:{background-color:var(--bbva-navy, #072146);};--cells-operations-list-list:{justify-content:center;padding-bottom:30px;background-color:var(--bbva-navy, #072146) !important;};--cells-operations-list-list__link:{background-color:var(--bbva-navy, #072146) !important;outline:none;};--cells-operations-list-item-label--grid:{font-size:12px;max-width:none;};}</style></template></dom-module><dom-module id="glomo-assistance-manager" assetpath="glomo-assistance-manager/"><template><style include="glomo-assistance-manager-styles"></style><template is="dom-if" if="_showIcon(icon, src)"><div class="content-icon"><iron-icon icon="[[icon]]" src="[[src]]" style$="width: [[contentIconWidth]]px; height: [[contentIconHeight]]px;"></iron-icon></div></template><template is="dom-if" if="[[fullName]]"><div class="content-name">[[fullName]]</div></template><div class="content-officeInfo"><template is="dom-if" if="[[!isOfficeOpen]]"><span class="content-title">[[t('glomo-assistance-manager-office-text')]]</span><br></template><span class="content-subTitle">[[officeText]] [[openTime]] [[t('glomo-assistance-manager-am-text')]] [[closeTime]] [[t('glomo-assistance-manager-pm-text')]]</span></div><template is="dom-if" if="[[!isOfficeOpen]]"><div class="content-customerInfo"><span class="content-message">[[t('glomo-assistance-manager-customer-text')]]</span><br><span class="content-blodMessage">[[t('glomo-assistance-manager-customer-title-text')]]</span></div></template><div class="content-helpInfo"><span class="content-help">[[t('glomo-assistance-manager-help-text')]]</span><br><span class="content-help">[[t('glomo-assistance-manager-help2-text')]]</span><cells-molecule-link-icon slot="after-key" icon="coronita:help" class="icon-size-18" is="cells-molecule-link-icon" on-tap="iconClicked"></cells-molecule-link-icon></div><template is="dom-if" if="[[operations]]"><cells-operations-list on-operation-click="_operationClick" operations="[[operations]]" grid-columns="3"></cells-operations-list></template></template><script>/**
+  `<glomo-assistance-manager>` Description.
+
+  Example:
+
+  ```html
+  <glomo-assistance-manager></glomo-assistance-manager>
+  ```
+
+  ## Styling
+  The following custom properties and mixins are available for styling:
+
+  ### Custom Properties
+  | Custom Property     | Selector | CSS Property | Value       |
+  | ------------------- | -------- | ------------ | ----------- |
+  | --cells-fontDefault | :host    | font-family  |  sans-serif |
+  ### @apply
+  | Mixins    | Selector | Value |
+  | --------- | -------- | ----- |
+  | --glomo-assistance-manager | :host    | {} |
+
+  * @customElement
+  * @polymer
+  * @extends {Polymer.Element}
+  * @demo demo/index.html
+*/var GlomoAssistanceManager=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(GlomoAssistanceManager,_Polymer$mixinBehavio);function GlomoAssistanceManager(){babelHelpers.classCallCheck(this,GlomoAssistanceManager);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(GlomoAssistanceManager).apply(this,arguments))}babelHelpers.createClass(GlomoAssistanceManager,[{key:"_isofficeOpenChanged",/**
+   * trigger when isOffice value get changed
+   * @param {Boolean} newValue
+   */value:function _isofficeOpenChanged(newValue){this.officeText=newValue?this.t("glomo-assistance-manager-office-open-text"):this.t("glomo-assistance-manager-office-sub-text")}/**
+   * check for icon or src
+   * @param {String} icon
+   * @param {String} src
+   */},{key:"_showIcon",value:function _showIcon(icon,src){if(icon||src){return!0}return!1}/**
+   * help icon clicked
+   */},{key:"iconClicked",value:function iconClicked(){this.dispatchEvent(new CustomEvent("help-button-clicked",{detail:!0}))}/**
+   * Whenever Telephone icon or Phone icon is clicked event is fired
+   * @param {Object} item
+   */},{key:"_operationClick",value:function _operationClick(item){if(item){this.dispatchEvent(new CustomEvent("operation-button-pressed",{detail:item}))}}}],[{key:"is",get:function get(){return"glomo-assistance-manager"}},{key:"properties",get:function get(){return{/**
+       * @desc source for the image
+       * @type {String}
+       */src:String,/**
+       * @desc icon type
+       * @type {String}
+       */icon:String,/**
+       * @desc Number to control the icon width
+       * @type {Number}
+       */contentIconWidth:{type:Number,value:24},/**
+       * @desc number to control the icon height
+       * @type {Number}
+       */contentIconHeight:{type:Number,value:24},/**
+       * @desc number to control the icon height
+       * @type {String}
+       */fullName:{type:String},/**
+       * @desc office open time
+       * @type {String}
+       */openTime:{type:String},/**
+       * @desc office close time
+       * @type {String}
+       */closeTime:{type:String},/**
+       * @desc list of oprations icons
+       * @type {Array}
+       */operations:{type:Array,value:[]},/**
+       * @desc check if notification is for first time
+       * @type {Boolean}
+       */isOfficeOpen:{type:Boolean,value:!1,observer:"_isofficeOpenChanged"},/**
+       * @desc office hour text
+       * @type {String}
+       */officeText:{type:String}}}}]);return GlomoAssistanceManager}(Polymer.mixinBehaviors([CellsBehaviors.i18nBehavior],Polymer.Element));window.customElements.define(GlomoAssistanceManager.is,GlomoAssistanceManager);</script></dom-module></div></body></html>

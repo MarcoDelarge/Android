@@ -1,0 +1,142 @@
+<html><head></head><body><div hidden="" by-polymer-bundler=""><dom-module id="cells-product-summary-fund-styles" assetpath="cells-product-summary-fund/"><template><style>:host{font-family:var(--cells-fontDefault, sans-serif);background-color:var(--cells-product-summary-card-background, rgba(238, 238, 238, 0.73));display:flex;flex-direction:column;-webkit-transform:translateZ(0);transform:translateZ(0);--cells-product-summary-header-span:{font-size:var(--cells-text-size-xl, 1.125rem);line-height:1.33;};--cells-product-summary-header-icon:{padding-bottom:0;};--cells-product-summary-bottom-summary:{flex-direction:column;margin:0;};--cells-product-summary-more-info:{margin:1.5rem 0 0 0;};--cells-product-summary-more-info-btn:{padding:0;};--cells-product-summary-after:{height:100%;};--cells-product-summary:{min-height:230px;};--cells-product-summary-content-main-items:{margin-bottom:24px;};--cells-product-summary-content-main-items-key-values-value:{line-height:1.2;};--cells-product-summary-content-main-items-not-first-child:{margin-top:1rem;};--cells-product-summary-additional-items-key-values-key-span:{line-height:2;color:var(--bbva-500, #666);};--cells-product-summary-additional-items-key-values-inline-value:{line-height:2;};--cells-product-summary-additional-items:{margin:0;};--cells-product-summary-additional-items-list-item:{padding-bottom:.625rem;};--cells-product-summary-content-progress-bar:{display:none;@apply --cells-product-summary-fund-progress-bar;};@apply --cells-product-summary-fund;}:host .net-assets{background:transparent;@apply --cells-product-summary-fund-net-assets;}:host .net-assets__container{background:var(--bbva-white, #fff);@apply --cells-product-summary-fund-net-assets-container;}:host .net-assets__title{padding:1.5rem 1rem 0;@apply --cells-fontDefault-ml;@apply --cells-fontDefaultMedium;@apply --cells-product-summary-fund-net-assets-title;}:host .net-assets__list{padding:1rem 1rem 1.5rem;@apply --cells-product-summary-fund-net-assets-list;}:host .net-assets__item{line-height:1.6;@apply --cells-product-summary-fund-net-assets-item;}:host .net-assets__item:last-of-type{padding-bottom:0;@apply --cells-product-summary-fund-net-assets-item-last;}:host .net-assets-error{padding:1.5rem 1rem;background:var(--bbva-100, #F4F4F4);@apply --cells-product-summary-fund-net-assets-error;}:host .additional-item-class{--cells-key-values-value-simple:{@apply --cells-fontDefaultMediumItalic;@apply --cells-product-summary-fund-key-values-value-simple-date;};@apply --cells-product-summary-fund-item;}</style></template></dom-module><dom-module id="cells-product-summary-fund" assetpath="cells-product-summary-fund/"><template><style include="cells-product-summary-fund-styles cells-product-summary-fund-shared-styles"></style><cells-product-summary id="summary" loading="[[loading]]" heading="[[_heading]]" main-items="[[_mainItems]]" additional-items="[[_additionalItems]]" hide-more-info-button="[[hideMoreInfoButton]]" icon-error="[[iconError]]"></cells-product-summary><template is="dom-if" if="[[_netAssetItems]]"><div class="net-assets"><div class="net-assets__container"><div class="net-assets__title"><span>[[t('cells-product-summary-fund-net-assets-title')]]</span></div><div class="net-assets__list"><template is="dom-repeat" items="[[_netAssetItems]]" id="netAssetList"><div class="net-assets__item"><cells-key-values class$="inline [[item.class]]" language="[[item.language]]" local-currency="[[localCurrency]]" key="[[item.key]]" value="[[item.value]]"></cells-key-values></div></template></div></div></div></template><template is="dom-if" if="[[_netAssetItemsError]]"><div id="netAssetItemsError" class="net-assets-error"><cells-icon-message type="error" icon="[[iconError]]" icon-size="[[iconSize]]" message="[[t(netAssetItemsErrorText)]]"><template is="dom-if" if="[[_netAssetItemsErrorAction]]" slot="actions"><cells-st-button id="netAssetItemsErrorAction" class="btn link size-m full" on-click="_onClickNetAssetItemsErrorAction"><button>[[t(netAssetItemsErrorActionText)]]</button></cells-st-button></template></cells-icon-message></div></template></template><script>var CellsProductSummaryFund=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(CellsProductSummaryFund,_Polymer$mixinBehavio);function CellsProductSummaryFund(){babelHelpers.classCallCheck(this,CellsProductSummaryFund);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(CellsProductSummaryFund).apply(this,arguments))}babelHelpers.createClass(CellsProductSummaryFund,[{key:"ready",value:function ready(){babelHelpers.get(babelHelpers.getPrototypeOf(CellsProductSummaryFund.prototype),"ready",this).call(this);this.addEventListener("cells-product-summary-more-info",this._notifyFund.bind(this))}/**
+   * Reset
+   */},{key:"reset",value:function reset(){this.fund=null;this.loading=!0}/**
+   * Sets error message in the summary
+   */},{key:"onFundError",value:function onFundError(error){var _error=(error||{}).detail,errorMessage=this._errorMessageDependingOnError(_error),errorAction=this._errorActionDependingOnError(_error),errorLink=this._errorLinkDependingOnError(_error);this.$.summary.errorMessage=errorMessage;this.$.summary.actionErrorLabel=errorAction;this.$.summary.actionErrorLink=errorLink;this.$.summary.onError()}/**
+   * Navigate to more info page
+   */},{key:"_notifyFund",value:function _notifyFund(){this.dispatchEvent(new CustomEvent("cells-product-summary-more-info-navigation",{bubbles:!0,composed:!0,detail:{productId:this.productId}}))}/**
+   * Compute main items
+   * @param {Object} fund - fund to display.
+   */},{key:"_computeMainItems",value:function _computeMainItems(fund){return((fund||{}).summary||{}).mainItems}/**
+   * Compute additional items
+   * @param {Object} fund - fund to display.
+   */},{key:"_computeAdditionalItems",value:function _computeAdditionalItems(fund){return((fund||{}).summary||{}).additionalItems}/**
+   * Compute net assest items
+   * @param {Object} fund - fund to display.
+   */},{key:"_computeNetAssetItems",value:function _computeNetAssetItems(fund){return(fund||{}).netAssetItems}/**
+   * Compute heading
+   * @param {Object} fund - fund to display.
+   */},{key:"_computeHeading",value:function _computeHeading(fund){return((fund||{}).summary||{}).heading}/**
+   * Start the building of the different fund items to display
+   */},{key:"_fundObserver",value:function _fundObserver(){this.loading=!1}},{key:"_computeNetAssetItemsError",value:function _computeNetAssetItemsError(fund,netAssetItemsErrorText,netAssetItemsErrorActionText){var netAssetItems=(fund||{}).netAssetItems||[];return fund&&0===netAssetItems.length&&(!!netAssetItemsErrorText||!!netAssetItemsErrorActionText)}},{key:"_computeNetAssetItemsErrorAction",value:function _computeNetAssetItemsErrorAction(netAssetItemsErrorActionText){return!!netAssetItemsErrorActionText}},{key:"_onClickNetAssetItemsErrorAction",value:function _onClickNetAssetItemsErrorAction(){if(this.netAssetItemsErrorLink){window.open(this.netAssetItemsErrorLink,"_system")}else{this.dispatchEvent(new CustomEvent("cells-product-summary-fund-net-asset-items-error-action",{bubbles:!0,composed:!0,detail:this.fund}))}}},{key:"_errorMessageDependingOnError",value:function _errorMessageDependingOnError(error){var errorMessage="cells-product-summary-fund-error",errorCode=(error||{})["error-code"];if("fundInformationNotAvailableContactUs"===errorCode){errorMessage="cells-product-summary-fund-error-contact-us"}return errorMessage}},{key:"_errorActionDependingOnError",value:function _errorActionDependingOnError(error){var errorAction="",errorCode=(error||{})["error-code"];if("fundInformationNotAvailableContactUs"===errorCode){errorAction="cells-product-summary-fund-error-contact-us-action"}else{errorAction="cells-product-summary-error-retry"}return errorAction}},{key:"_errorLinkDependingOnError",value:function _errorLinkDependingOnError(error){var errorLink="",errorCode=(error||{})["error-code"];if("fundInformationNotAvailableContactUs"===errorCode){errorLink=this.netAssetItemsErrorLink}return errorLink}}],[{key:"is",get:function get(){return"cells-product-summary-fund"}},{key:"properties",get:function get(){return{/**
+       * Fund whose information will be displayed
+       * @type {Object}
+       */fund:{type:Object,observer:"_fundObserver"},/**
+       * Heading of the fund summary (alias, title...)
+       * @type {String}
+       */_heading:{type:String,computed:"_computeHeading(fund)"},/**
+       * Main key - values to display
+       * @type {Array}
+       */_mainItems:{type:Array,computed:"_computeMainItems(fund)"},/**
+       * Additional key - values to display
+       * @type {Array}
+       */_additionalItems:{type:Array,computed:"_computeAdditionalItems(fund)"},/**
+       * Net asset items
+       * @type {Array}
+       */_netAssetItems:{type:Array,computed:"_computeNetAssetItems(fund)"},/**
+       * Product id
+       * @type {String}
+       */productId:String,/**
+       * Loaded data
+       * @type {Boolean}
+       */loading:{type:Boolean,value:!0},/**
+       * Set to true to hide the "More info" button
+       * @type {Boolean}
+       */hideMoreInfoButton:{type:Boolean,value:!1},/**
+       * Icon error name
+       * @type {String}
+       */iconError:{type:String,value:"coronita:alert"},/**
+       * Url or tel link
+       * @type {String}
+       **/netAssetItemsErrorLink:{type:String,value:""},/**
+       * Text to display in #netAssetItemsError
+       * @type {String}
+       */netAssetItemsErrorText:{type:String,value:"cells-product-summary-fund-net-asset-error"},/**
+       * Text to display in #netAssetItemsErrorAction
+       * @type {String}
+       */netAssetItemsErrorActionText:{type:String,value:"cells-product-summary-fund-net-asset-error-action"},/**
+       * Compute property to show or hide #netAssetItemsError
+       * type {Boolean}
+       */_netAssetItemsError:{type:Boolean,computed:"_computeNetAssetItemsError(fund, netAssetItemsErrorText, netAssetItemsErrorActionText)"},/**
+       * Compute property to show or hide #netAssetItemsErrorAction
+       * type {Boolean}
+       */_netAssetItemsErrorAction:{type:Boolean,computed:"_computeNetAssetItemsErrorAction(netAssetItemsErrorActionText)"}}}}]);return CellsProductSummaryFund}(Polymer.mixinBehaviors([CellsBehaviors.i18nBehavior],Polymer.Element));window.customElements.define(CellsProductSummaryFund.is,CellsProductSummaryFund);</script></dom-module><dom-module id="cells-funds-contracted-list-styles" assetpath="cells-funds-contracted-list/"><template><style>:host{display:block;box-sizing:border-box;font-family:var(--cells-fontDefault, sans-serif);padding:0 0 0.625rem 0;background:rgba(238, 238, 238, 0.73);@apply --cells-funds-contracted-list;}:host .product-list{margin:0 0.625rem;background:var(--bbva-white, #ffffff);--cells-product-selector-item:{margin:0;padding:16px;};--cells-product-item-item:{height:1.625rem;};--cells-product-selector-subheader:{font-size:var(--cells-text-size-ml, 0.9375rem);letter-spacing:0;line-height:1.4375rem;padding-top:1.25rem;};--cells-product-item-item-additional-information:{margin:0;};--cells-atom-subheader-content-heading-color:var(--bbva-600, #121212);--cells-product-item-text-right-span:{color:var(--bbva-600, #121212);};--cells-product-item-title-color:var(--bbva-dark-medium-blue, #1973b8);@apply --cells-funds-contracted-list-product-list;}:host .contracted-image-content{background:var(--bbva-white, #ffffff);--cells-image-content-text:{font-size:var(--cells-text-size-m, 0.9375rem);color:var(--bbva-600, #121212);line-height:1.25rem;padding-top:0.9375rem;};@apply --cells-funds-contracted-list-contracted-image-content;}:host .error-contract-list{--cells-icon-message-background-color-error:rgba(252, 223, 223, 0.4);--cells-icon-message-icon-color-error:var(--bbva-light-red, #e77d8e);--cells-icon-message-error:{padding:1.9375rem 1.875rem 1.875rem;};--cells-icon-message-icon:{margin-bottom:1.25rem;};--cells-st-button-m-min-height:0;--cells-st-button-link:{padding-top:1.25rem;};--cells-product-summary-full-width:{margin:0;padding:1.875rem;};--cells-product-summary-after:{height:100%;};@apply --cells-funds-contracted-list-error-contract-list;}:host([hidden]), [hidden]{display:none !important;}*, *:before, *:after{font:inherit;box-sizing:inherit;}</style></template></dom-module><dom-module id="cells-funds-contracted-list" assetpath="cells-funds-contracted-list/"><script>function _templateObject_7b4c4790ef2011eaab893dabf4ddef4d(){var data=babelHelpers.taggedTemplateLiteral(["\n      <style include=\"cells-funds-contracted-list-styles cells-funds-contracted-list-shared-styles\"></style>\n\n      <template is=\"dom-if\" if=\"[[showFundsContracted]]\">\n        <cells-product-selector\n          class=\"product-list\"\n          products-list-title=\"[[t(productsListTitle)]]\"\n          local-currency=\"[[localCurrency]]\"\n          max-products=\"[[maxProducts]]\"\n          products=\"[[products]]\"\n          additional-information-separator=\"[[additionalInformationSeparator]]\">\n        </cells-product-selector>\n      </template>\n\n      <template is=\"dom-if\" if=\"[[showAnyFundsContractedImage]]\">\n        <cells-image-content\n          class=\"contracted-image-content\"\n          show-icon\n          show-text\n          show-image-content\n          icon=\"[[imageContentIcon]]\"\n          src=\"[[imageContentSrc]]\"\n          content-icon-width=\"[[imageContentIconWidth]]\"\n          content-icon-height=\"[[imageContentIconHeight]]\"\n          title=\"[[imageContentTitle]]\"\n          text=\"[[imageContentText]]\">\n        </cells-image-content>\n      </template>\n\n      <template is=\"dom-if\" if=\"[[showFundsContractedError]]\">\n        <cells-product-summary\n          class=\"error-contract-list full-width card-product\"\n          error=\"{{loadingContractsError}}\"\n          loading=\"{{loadingContracts}}\"\n          error-message=\"[[loadingContractsErrorMessage]]\"\n          action-error-label=\"[[loadingContractsErrorLabel]]\">\n        </cells-product-summary>\n      </template>\n      "]);_templateObject_7b4c4790ef2011eaab893dabf4ddef4d=function _templateObject_7b4c4790ef2011eaab893dabf4ddef4d(){return data};return data}{var _Polymer=Polymer,html=_Polymer.html,CellsFundsContractedList=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(CellsFundsContractedList,_Polymer$mixinBehavio);function CellsFundsContractedList(){babelHelpers.classCallCheck(this,CellsFundsContractedList);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(CellsFundsContractedList).apply(this,arguments))}babelHelpers.createClass(CellsFundsContractedList,null,[{key:"is",get:function get(){return"cells-funds-contracted-list"}},{key:"properties",get:function get(){return{/**
+         * @desc Title for product list
+         * @type {String}
+         */productsListTitle:{type:String,value:"cells-funds-contracted-list-product-title"},/**
+         * @dec List of funds contracted
+         * @type {Array}
+         */products:{type:Array,value:function value(){return[]}},/**
+         * @desc Local currency
+         * @type {String}
+         */localCurrency:String,/**
+         * @desc Separator between key - valu in the additional information
+         * @type {String}
+         */additionalInformationSeparator:{type:String,value:""},/**
+         * @desc Icont to show in the image content
+         * @type {String}
+         */imageContentIcon:String,/**
+         * @desc Image path to show in the image content
+         * @type {String}
+         */imageContentSrc:String,/**
+         * @desc Width size for the image content
+         * @type {Number}
+         */imageContentIconWidth:{type:Number,value:140},/**
+         * @desc Height size for the image content
+         * @type {Number}
+         */imageContentIconHeight:{type:Number,value:140},/**
+         * @desc Title for the image content
+         * @type {String}
+         */imageContentTitle:String,/**
+         * @desc Text for the image content
+         * @type {String}
+         */imageContentText:{type:String,value:"cells-funds-contracted-list-image-content-text"},/**
+         * @desc Indicate if the funds list are loading to show the spinner
+         * @type {Boolean}
+         */loadingContracts:{type:Boolean,value:!1},/**
+         * @desc Show cells-icon-message
+         * @type {Boolean}
+         */loadingContractsError:{type:Boolean,value:!1},/**
+         * @desc Message for error in the cells-icon-message
+         * @type {String}
+         */loadingContractsErrorMessage:{type:String,value:"cells-funds-contracted-list-error-message"},/**
+         * @desc Text button for error in the cells-icon-message
+         * @type {String}
+         */loadingContractsErrorLabel:{type:String,value:"cells-funds-contracted-list-error-message-button"},/**
+         * @desc Flag for show or hide funds contracted list
+         * @type {Boolean}
+         */showFundsContracted:{type:Boolean,value:!1},/**
+         * @desc Flag for show or hide image when not have funds contracted
+         * @type {Boolean}
+         */showAnyFundsContractedImage:{type:Boolean,value:!1},/**
+         * @desc Flag for show or hide error when the service cannot return request
+         * @type {Boolean}
+         */showFundsContractedError:{type:Boolean,value:!1},/**
+         * @desc Max products to show
+         * @type {Number}
+         */maxProducts:{type:Number,value:3}}}},{key:"template",get:function get(){return html(_templateObject_7b4c4790ef2011eaab893dabf4ddef4d())}}]);return CellsFundsContractedList}(Polymer.mixinBehaviors([CellsBehaviors.i18nBehavior],Polymer.Element));/**
+    `<cells-funds-contracted-list>` Description.
+
+    Example:
+
+    ```html
+    <cells-funds-contracted-list></cells-funds-contracted-list>
+    ```
+
+    ## Styling
+    The following custom properties and mixins are available for styling:
+
+    ### Custom Properties
+    | Custom Property     | Selector | CSS Property | Value       |
+    | ------------------- | -------- | ------------ | ----------- |
+    | --cells-fontDefault | :host    | font-family  |  sans-serif |
+    ### @apply
+    | Mixins    | Selector | Value |
+    | --------- | -------- | ----- |
+    | --cells-funds-contracted-list | :host    | {} |
+
+    * @customElement cells-funds-contracted-list
+    * @polymer
+    * @extends {Polymer.Element}
+    * @demo demo/index.html
+  */customElements.define(CellsFundsContractedList.is,CellsFundsContractedList)}</script></dom-module></div></body></html>

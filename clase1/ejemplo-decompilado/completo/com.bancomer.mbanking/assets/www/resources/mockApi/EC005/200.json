@@ -1,0 +1,337 @@
+{
+    "data": [
+        {
+            "id": "Td-tykaA8ApjoOOlyGqzVzqfJj91-Jxa",
+            "number": "2134743210",
+            "numberType": {
+                "id": "CCC",
+                "name": "Customer Account Code"
+            },
+            "portfolioValue": {
+                "amount": 41018.11,
+                "currency": "MXN"
+            },
+            "riskProfile": {
+                "id": "TRADITIONAL",
+                "description": "TRADICIONAL"
+            },
+            "businessAgents": [
+                {
+                    "id": "0000",
+                    "fullName": "Daniel González Ramírez",
+                    "profile": {
+                        "id": "PATRIMONIAL",
+                        "name": "Director de oficina"
+                    },
+                    "contactDetails": [
+                        {
+                            "contact": "56886756",
+                            "contactType": {
+                                "id": "OFFICE_NUMBER"
+                            }
+                        },
+                        {
+                            "contact": "60",
+                            "contactType": {
+                                "id": "PHONE_EXTENSION"
+                            }
+                        },
+                        {
+                            "contact": "5591565000",
+                            "contactType": {
+                                "id": "MOBILE_NUMBER"
+                            }
+                        },
+                        {
+                            "contact": "daniel.gonzalez@bbva.com",
+                            "contactType": {
+                                "id": "WORK_EMAIL"
+                            }
+                        }
+                    ],
+                    "branch": {
+                        "id": "005",
+                        "name": "Torre Reforma BBVA"
+                    },
+                    "address": {
+                        "addressName": "Av. Paseo de la Reforma #510",
+                        "city": "Col. Cuahutémoc",
+                        "state": "Ciudad de México",
+                        "zipCode": "09999"
+                    },
+                    "isPreferential": true
+                },
+                {
+                    "id": "0000",
+                    "fullName": "Carlos Martínez Fernández",
+                    "profile": {
+                        "id": "PRIVATE",
+                        "name": "Banquero patrimonial"
+                    },
+                    "contactDetails": [
+                        {
+                            "contact": "56886756",
+                            "contactType": {
+                                "id": "OFFICE_NUMBER"
+                            }
+                        },
+                        {
+                            "contact": "60",
+                            "contactType": {
+                                "id": "PHONE_EXTENSION"
+                            }
+                        },
+                        {
+                            "contact": "carlos.martinez@bbva.com",
+                            "contactType": {
+                                "id": "WORK_EMAIL"
+                            }
+                        }
+                    ],
+                    "branch": {
+                        "id": "005",
+                        "name": "Torre Reforma BBVA"
+                    },
+                    "address": {
+                        "addressName": "Av. Paseo de la Reforma #510",
+                        "city": "Col. Cuahutémoc",
+                        "state": "Ciudad de México",
+                        "zipCode": "09999"
+                    },
+                    "isPreferential": true
+                }
+            ],
+            "relatedContracts": [
+                {
+                    "id": "1521063820",
+                    "number": "1521063820",
+                    "productType": {
+                        "id": "ACCOUNTS",
+                        "name": "Cuenta eje"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "Td-tykaA8ApjoOOlyGqzV7QoUD9f4lun",
+            "number": "2134743211",
+            "numberType": {
+                "id": "CCC",
+                "name": "Customer Account Code"
+            },
+            "portfolioValue": {
+                "amount": 21509.99,
+                "currency": "MXN"
+            },
+            "riskProfile": {
+                "id": "MODERATE",
+                "description": "MODERADO"
+            },
+            "businessAgents": [
+                {
+                    "id": "0000",
+                    "fullName": "Ricardo López Samora",
+                    "profile": {
+                        "name": "d"
+                    },
+                    "contactDetails": [
+                        {
+                            "contact": "56886756",
+                            "contactType": {
+                                "id": "OFFICE_NUMBER"
+                            }
+                        },
+                        {
+                            "contact": "60",
+                            "contactType": {
+                                "id": "PHONE_EXTENSION"
+                            }
+                        },
+                        {
+                            "contact": "5591565000",
+                            "contactType": {
+                                "id": "MOBILE_NUMBER"
+                            }
+                        },
+                        {
+                            "contact": "ricardo.lopez@bbva.com",
+                            "contactType": {
+                                "id": "WORK_EMAIL"
+                            }
+                        }
+                    ],
+                    "branch": {
+                        "id": "005",
+                        "name": "Torre Reforma BBVA"
+                    },
+                    "address": {
+                        "addressName": "Av. Paseo de la Reforma #510",
+                        "city": "Col. Cuahutémoc",
+                        "state": "Ciudad de México",
+                        "zipCode": "09999"
+                    },
+                    "isPreferential": true
+                },
+                {
+                    "id": "0000",
+                    "fullName": "Omar Sánchez Lozada",
+                    "profile": {
+                        "id": "u"
+                    },
+                    "contactDetails": [
+                        {
+                            "contact": "56886756",
+                            "contactType": {
+                                "id": "OFFICE_NUMBER"
+                            }
+                        },
+                        {
+                            "contact": "60",
+                            "contactType": {
+                                "id": "PHONE_EXTENSION"
+                            }
+                        },
+                        {
+                            "contact": "omar.sanchez@bbva.com",
+                            "contactType": {
+                                "id": "WORK_EMAIL"
+                            }
+                        }
+                    ],
+                    "branch": {
+                        "id": "005",
+                        "name": "Torre Reforma BBVA"
+                    },
+                    "address": {
+                        "addressName": "Av. Paseo de la Reforma #510",
+                        "city": "Col. Cuahutémoc",
+                        "state": "Ciudad de México",
+                        "zipCode": "09999"
+                    },
+                    "isPreferential": true
+                }
+            ],
+            "relatedContracts": [
+                {
+                    "id": "1500001510",
+                    "number": "1500001510",
+                    "productType": {
+                        "id": "ACCOUNTS",
+                        "name": "Cuenta eje"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "Td-tykaA8ApjoOOlyGqzV4moiyIGRxbp",
+            "number": "2134743212",
+            "numberType": {
+                "id": "CCC",
+                "name": "Customer Account Code"
+            },
+            "portfolioValue": {
+                "amount": 700,
+                "currency": "MXN"
+            },
+            "riskProfile": {
+                "id": "CONSERVATIVE",
+                "description": "CONSERVADOR"
+            },
+            "businessAgents": [
+                {
+                    "id": "0000",
+                    "fullName": "Samuel Pérez Rojas",
+                    "profile": {
+                        "id": "ASSOCIATE",
+                        "name": "Director de oficina"
+                    },
+                    "contactDetails": [
+                        {
+                            "contact": "56886756",
+                            "contactType": {
+                                "id": "OFFICE_NUMBER"
+                            }
+                        },
+                        {
+                            "contact": "60",
+                            "contactType": {
+                                "id": "PHONE_EXTENSION"
+                            }
+                        },
+                        {
+                            "contact": "5591565000",
+                            "contactType": {
+                                "id": "MOBILE_NUMBER"
+                            }
+                        },
+                        {
+                            "contact": "daniel.gonzalez@bbva.com",
+                            "contactType": {
+                                "id": "WORK_EMAIL"
+                            }
+                        }
+                    ],
+                    "branch": {
+                        "id": "005",
+                        "name": "Torre Reforma BBVA"
+                    },
+                    "address": {
+                        "addressName": "Av. Paseo de la Reforma #510",
+                        "city": "Col. Cuahutémoc",
+                        "state": "Ciudad de México",
+                        "zipCode": "09999"
+                    },
+                    "isPreferential": true
+                },
+                {
+                    "id": "0000",
+                    "fullName": "Raúl Quesada Yakitori",
+                    "profile": {
+                        "name": "E"
+                    },
+                    "contactDetails": [
+                        {
+                            "contact": "56886756",
+                            "contactType": {
+                                "id": "OFFICE_NUMBER"
+                            }
+                        },
+                        {
+                            "contact": "60",
+                            "contactType": {
+                                "id": "PHONE_EXTENSION"
+                            }
+                        },
+                        {
+                            "contact": "carlos.martinez@bbva.com",
+                            "contactType": {
+                                "id": "WORK_EMAIL"
+                            }
+                        }
+                    ],
+                    "branch": {
+                        "id": "005",
+                        "name": "Torre Reforma BBVA"
+                    },
+                    "address": {
+                        "addressName": "Av. Paseo de la Reforma #510",
+                        "city": "Col. Cuahutémoc",
+                        "state": "Ciudad de México",
+                        "zipCode": "09999"
+                    },
+                    "isPreferential": true
+                }
+            ],
+            "relatedContracts": [
+                {
+                    "id": "1521063820",
+                    "number": "1521063820",
+                    "productType": {
+                        "id": "ACCOUNTS",
+                        "name": "Cuenta eje"
+                    }
+                }
+            ]
+        }
+    ]
+}

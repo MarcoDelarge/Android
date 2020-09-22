@@ -1,0 +1,115 @@
+<html><head></head><body><div hidden="" by-polymer-bundler=""><dom-module id="glomo-opx-car-loan-payment-dm" assetpath="glomo-opx-car-loan-payment-dm/"><template><cells-glomo-dm-customers id="dmCustomers" global-server-config="[[globalServerConfig]]" global-cache-storage="[[globalCacheStorage]]" on-return-user-email="_handleUserEmail"></cells-glomo-dm-customers><cells-glomo-dm-loans id="dmLoan" global-server-config="[[globalServerConfig]]" on-loan-payments-errors="_errorFromDM" on-response-payments-installments="_responsePaymentsInstallments" on-response-payment-amortizations="_responsePaymentsInstallments" on-installments-error-from-dm="_errorFromDM" on-amortizations-error-from-dm="_errorFromDM"></cells-glomo-dm-loans><cells-glomo-dm-accounts id="dmAccounts" global-server-config="[[globalServerConfig]]" global-cache-storage="[[globalCacheStorage]]" on-accounts-from-dm="_responseAccountsFromDm"></cells-glomo-dm-accounts></template><script>var GlomoOpxCarLoanPaymentDm=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(GlomoOpxCarLoanPaymentDm,_Polymer$mixinBehavio);function GlomoOpxCarLoanPaymentDm(){babelHelpers.classCallCheck(this,GlomoOpxCarLoanPaymentDm);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(GlomoOpxCarLoanPaymentDm).apply(this,arguments))}babelHelpers.createClass(GlomoOpxCarLoanPaymentDm,[{key:"reset",value:function reset(pageActive){if(pageActive&&!pageActive.value){this.set("totalPay",null);this.set("totalImport",null);this.set("amountLiquidate",null);this.set("totalAmount",null);this.set("biggestAmount",null);this.set("labelReceipt",null);this.set("messageSuccess",null);this.set("lastActiveStep",null);this.set("canExecute",!1);this.set("hasFinished",!1);this.set("_lastResponse",null);this.currentStep=1;this.resetWithDefaultSettings()}else{this.onAnyStepCollapsedChanged()}}/**
+   * @desc Initialize the steps manager when the page becomes active
+   */},{key:"init",value:function init(){this.$.dmCustomers.getUserEmail()}},{key:"_handleUserEmail",value:function _handleUserEmail(payload){this.set("userEmail",payload&&payload.detail?payload.detail:"")}/**
+   * @desc Collapses the current step, opens the next step and scrolls the page to it.
+   */},{key:"goNextStep",value:function goNextStep(currentStepKey){this.currentStep=currentStepKey;this.setSteps();this.onAnyStepCollapsedChanged()}/**
+   * @desc Obtain initial Data from the previous page
+   */},{key:"setDetailInitialData",value:function setDetailInitialData(payload){this.initSteps();if(payload&&payload.response&&payload.response.totalInstallmentsNumber&&payload.response.pendingAmount&&payload.response.pendingAmount.interests&&payload.response.currentInstallment&&payload.response.currentInstallment.totals&&payload.response.pendingAmount.totals){this.set("initialData",payload);this._buildPaymentType()}else{this._errorFromDM()}}/**
+  * @desc Build payment type
+  */},{key:"_buildPaymentType",value:function _buildPaymentType(){if(0!==this.initialData.response.totalOverdueInstallmentsAmounts[0].amount){this.customerType=this.listCustomerTypes.customer_normal;this._delinquentPayment()}else if(0===this.initialData.response.currentInstallment.totals[0].amount){this.customerType=this.listCustomerTypes.customer_amortization;this._amortizationPayment()}else{this.customerType=this.listCustomerTypes.customer_delinquet;this._normalPayment()}}/**
+  * @desc Build normal Payments data
+  */},{key:"_normalPayment",value:function _normalPayment(){this.setPropertiesAmountStep({showLabelLiquidationCar:!1,messageLiquidationCar:null,labelBtn:"glomo-loan-payments-step-radio-button-label-import",statusbtns:[this.optionButton.button_visible,this.optionButton.button_visible],optionSelected:0,numberReceipt:this.initialData.response.currentInstallment.number,totalReceipt:this.initialData.response.totalInstallmentsNumber.total,pendingAmount:null,totalImport:[this._buildKeyValue(this.t("glomo-loanpayments-amount-current-receipt-mortgage"),this.initialData.response.currentInstallment.totals[0].amount)],labelReceipt:null})}/**
+  * @desc Build amortization Payments data
+  */},{key:"_amortizationPayment",value:function _amortizationPayment(){this.setPropertiesAmountStep({showLabelLiquidationCar:!0,messageLiquidationCar:"glomo-loanpayments-text-message-liquidation-car",labelBtn:"glomo-loan-payments-step-radio-button-label-import",statusbtns:[this.optionButton.button_hidden,this.optionButton.button_hidden],optionSelected:2,numberReceipt:null,totalReceipt:null,pendingAmount:null,totalImport:null,labelReceipt:null})}/**
+  * @desc Build delinquentPayments data
+  */},{key:"_delinquentPayment",value:function _delinquentPayment(){this.setPropertiesAmountStep({showLabelLiquidationCar:!1,messageLiquidationCar:null,labelBtn:"glomo-loan-payments-step-radio-button-label-import-total",statusbtns:[this.optionButton.button_visible,this.optionButton.button_visible],optionSelected:0,pendingAmount:[this._buildKeyValue(this.t("glomo-loanpayments-amount-current-receipt-mortgage"),this.initialData.response.currentInstallment.principals[0].amount),this._buildKeyValue(this.t("glomo-loanpayments-amount-pending-receipts"),this.initialData.response.totalOverdueInstallmentsAmounts[0].amount)],totalImport:[this._buildKeyValue(this.t("glomo-loan-payments-step-radio-button-label-import-total"),this.initialData.response.currentInstallment.totals[0].amount)],labelReceipt:this.t("glomo-loanpayments-total-receipt-label")})}/**
+   * @desc Properties for glomo-loan-payments-step
+   */},{key:"setPropertiesAmountStep",value:function setPropertiesAmountStep(detailProperties){this.dispatchEvent(new CustomEvent("assign-initial-properties",{detail:{showLabelLiquidationCar:detailProperties.showLabelLiquidationCar,messageLiquidationCar:detailProperties.messageLiquidationCar,options:[{label:this.t(detailProperties.labelBtn),status:detailProperties.statusbtns[0],numberReceipt:detailProperties.numberReceipt,totalReceipt:detailProperties.totalReceipt,pendingAmount:detailProperties.pendingAmount,totalImport:detailProperties.totalImport,labelReceipt:detailProperties.labelReceipt},{status:this.optionButton.button_hidden},{label:this.t("glomo-loan-payments-step-radio-button-liquidation"),status:detailProperties.statusbtns[0],amountLiquidate:[this._buildKeyValue(this.t("glomo-loanpayments-balance-settled-mortgage-text"),this.initialData.response.pendingAmount.totals[0].amount)]}],optionSelected:detailProperties.optionSelected},bubbles:!0,composed:!0}));this.optionSelectedRefreshAccount(detailProperties.optionSelected);this.dispatchEvent(new CustomEvent("hide-spinner-response-amount",{bubbles:!0,composed:!0}))}/**
+   * @desc Refresh accounts to see if you have the balance to pay
+   * Selected radio option Selected 0. Importe del recibo 2. Liquidación
+   */},{key:"optionSelectedRefreshAccount",value:function optionSelectedRefreshAccount(radioOptionSelected){if(radioOptionSelected===this.indexPayment.payment_receipt){this.amountValidateAccounts=this.initialData.response.currentInstallment.totals[0].amount}else{this.amountValidateAccounts=this.initialData.response.pendingAmount.totals[0].amount}this.radioOptionSelected=radioOptionSelected;this.collpasedProduct=!1;this.$.dmAccounts.requestAccounts()}/**
+  * @desc Based on what was sent, decide what data to display
+  */},{key:"_validationInfo",value:function _validationInfo(info){var summaryDetail;if(info.optionSelected===this.indexPayment.payment_receipt&&this.customerType!==this.listCustomerTypes.customer_normal){summaryDetail=[this._setInfoEmailKey(this.t("glomo-loan-payments-step-receipt-number-label"),this.initialData.response.currentInstallment.number,this.typeClass.class_key_value)]}this.set("monthlyPayment",{amount:info.totalPay,currency:this.localCurrency});this.paymentType=info.paymentType;this.typePaymentSelected=info.optionSelected;if(1===this.customerAccounts.length){if(this.amountValidateAccounts<this.customerAccounts[0].primaryAmount.amount){this.dispatchEvent(new CustomEvent("send-account-default-id",{detail:this.customerAccounts[0].id,bubbles:!0,composed:!0}));this.infoAccount=this.customerAccounts[0]}else{this.dispatchEvent(new CustomEvent("car-loan-payments-show-unique-product-error",{detail:!0,bubbles:!0,composed:!0}));this.dispatchEvent(new CustomEvent("car-loan-payments-disable-selector-continue-button",{detail:!0,bubbles:!0,composed:!0}))}}this.dispatchEvent(new CustomEvent("next-step-active",{detail:{totalPay:info.totalPay,paymentType:info.paymentType,summary:summaryDetail},bubbles:!0,composed:!0}))}/**
+  * @desc Get the selected product
+  */},{key:"_selectedProduct",value:function _selectedProduct(data){this.infoAccount=data;this.goNextStep(1)}},{key:"_setInfoEmailKey",value:function _setInfoEmailKey(keyText,value,typeClass){return{key:keyText,class:typeClass,value:value}}/**
+   * @desc Response Accounts From DM.
+   */},{key:"_responseAccountsFromDm",value:function _responseAccountsFromDm(e){var _this=this,payload=e.detail,textMessage=!1,disabledAccount=!1,mappedAccounts=payload.filter(function(complete){return(complete.alias||complete.title)&&complete.accountId&&complete.number&&complete.availableBalance}).map(function(item){if(_this.amountValidateAccounts>item.availableBalance.currentBalances[0].amount){textMessage=!0;disabledAccount=!0}else{textMessage=!1;disabledAccount=!1}return{id:item.number,name:item.alias?item.alias:item.title.name,description:{value:item.number,masked:!0},primaryAmount:{amount:item.availableBalance.currentBalances[0].amount,currency:item.availableBalance.currentBalances[0].currency},hasTextMessage:textMessage,disabled:disabledAccount,image:item.image}});this.set("customerAccounts",mappedAccounts);this._getBiggestAmount(mappedAccounts)}/**
+    * @desc Get biggest amount
+    */},{key:"_getBiggestAmount",value:function _getBiggestAmount(customerAccounts){var amounts=customerAccounts.map(function(item){var listAmount={};listAmount=item.primaryAmount.amount;return listAmount});this.set("biggestAmount",amounts.reduce(function(previousAmount,currentAmount){return previousAmount>currentAmount?previousAmount:currentAmount}))}/**
+   * @desc Build key value
+   */},{key:"_buildKeyValue",value:function _buildKeyValue(keyText,amount){return{key:keyText,class:this.typeClass.class_key_value,language:this.language,localCurrency:this.localCurrency,value:{currencyCode:this.localCurrency,amount:amount}}}/**
+  * @desc Confirmation button for the entire process
+  */},{key:"_buttonClickedFooter",value:function _buttonClickedFooter(){this.dispatchEvent(new CustomEvent("show-spinner-clicked-footer",{bubbles:!0,composed:!0}));if(this.typePaymentSelected===this.indexPayment.payment_receipt){this.$.dmLoan.requestPaymentInstallments(this._setRequestBody(this._validationDecimal(this.monthlyPayment.amount),null,this.infoAccount.id,this.typeId.receipt_payment))}else{this.$.dmLoan.requestPaymentAmortizations(this._setRequestBody(this._validationDecimal(this.monthlyPayment.amount),this.typeId.payment_settlement,this.infoAccount.id,null))}}/**
+   * @desc Set Request Body
+   */},{key:"_setRequestBody",value:function _setRequestBody(amount,typeId,idAccount,modeId){return{data:{paymentAmount:{mode:{id:modeId},amount:amount,currency:this.localCurrency},amortizationType:{id:typeId},origin:{number:idAccount}},loanId:this.initialData.loanId}}/**
+  * @desc Validation decimal amount
+  */},{key:"_validationDecimal",value:function _validationDecimal(amount){var foundDecimal=amount.toString().indexOf(".");if(0>foundDecimal){amount=amount+"00"}else{var splitAmount=amount.toString().split(".");if(1===splitAmount[1].length){amount=amount+"0"}amount=amount.toString().replace(".","")}return amount}/**
+  * @desc Response Payments Installments from Dm Loan
+  */},{key:"_responsePaymentsInstallments",value:function _responsePaymentsInstallments(e){var data=e.detail;if(data){this.dataSuccess={id:data.id,date:data.operationDate,title:this.titleSuccess,amountLabel:this.t("glomo-loanpayments-label-amount-paid"),origin:{product:{id:this.infoAccount.id,name:this.infoAccount.name},number:this.infoAccount.id,avatar:{src:this.imageCard,type:"card"}},fees:[{text:this.t("glomo-loan-payments-step-second-payment-text"),amount:"",currency:""}],chargeAmount:{amount:this._setPaymentAmount(data),currency:this.localCurrency,currencyCode:this.localCurrency},headerAdditionalListInfo:this.headerAdditionalListInfo,topInfo:[{value:this.t("glomo-loanpayments-text-personal-loan-car"),musk:{value:this.initialData.response.number,chars:5,simbol:"\u2022"},class:this.typeClass.class_top_info},{key:this.t("glomo-loanpayments-text-retirement-account"),value:this.infoAccount.name,musk:{value:this.infoAccount.id,chars:4,simbol:"\u2022"},class:this.typeClass.class_top_info},{key:this.t("glomo-loanpayments-text-type-payment-selected"),value:this.paymentType,class:this.typeClass.class_top_info_payment},this.labelReceipt],bottomInfo:this._setEmail(data),message:this.messageSuccess,buttons:{primary:{text:this.t("glomo-loanpayments-text-button-exit"),action:"go-to-next"},secondary:{hidden:!0}}};var payload={totalImport:this.initialData.response.currentInstallment.totals[0].amount,nameOption:this.nameOption,receipt:"".concat(this.t(this.RECEIPT_LABEL),"  ").concat(this.initialData.response.currentInstallment.number)};this.dispatchEvent(new CustomEvent("app-completed",{detail:payload,bubbles:!0,composed:!0}));this.dispatchEvent(new CustomEvent("active-success",{bubbles:!0,composed:!0}));this.dispatchEvent(new CustomEvent("mortgage-loan-payments-close-confirm-zone",{bubbles:!0,composed:!0}));this.dispatchEvent(new CustomEvent("hide-spinner-response-installments",{bubbles:!0,composed:!0}))}else{this._errorFromDM()}}/**
+   * @desc Set title success
+   */},{key:"_setTitleSuccess",value:function _setTitleSuccess(optionSelected){var keyText;if(optionSelected===this.indexPayment.payment_receipt){this.titleSuccess=this.t("glomo-loanpayments-title-successful-payment");if(this.customerType===this.listCustomerTypes.customer_normal){keyText="".concat(this.t("glomo-loanpayments-text-paid-until-receipt"),"  ").concat(this.initialData.response.currentInstallment.number,"\n                   ").concat(this.t("glomo-loan-payments-step-receipt-of")," ").concat(this.initialData.response.totalInstallmentsNumber.total)}else{keyText="".concat(this.t(this.RECEIPT_LABEL),"  ").concat(this.initialData.response.currentInstallment.number,"\n                   ").concat(this.t("glomo-loan-payments-step-receipt-of")," ").concat(this.initialData.response.totalInstallmentsNumber.total)}this.messageSuccess=null}else{this.titleSuccess=this.t("glomo-loanpayments-title-successful-settlement");this.messageSuccess={type:this.TYPE_MESSAGE_TEXT[1],text:this.t("glomo-loanpayments-liquidatet-car-loan"),icon:this.CORONITA_ICON_TYPE.set_icon_info}}this.nameOption=this.optionList[optionSelected];this.labelReceipt={key:keyText,class:this.typeClass.class_top_info_payment}}/**
+   * @desc Set payment Amount
+   */},{key:"_setPaymentAmount",value:function _setPaymentAmount(data){if(this.typePaymentSelected===this.indexPayment.payment_receipt){return data.breakDown.total.amount}else{return data.paymentAmount.amount}}/**
+   * @desc Set email data
+   */},{key:"_setEmail",value:function _setEmail(data){var infoEmail;if(this.userEmail){infoEmail=this.t("glomo-loanpayments-notification-message-mortgage")}else{infoEmail=this.t("glomo-loanpayments-no-mail-label-car")}return[{key:this.t("glomo-loanpayments-text-folio")+data.id,class:this.typeClass.class_bottom_info,value:this.typeClass.text_bottom_info},{key:infoEmail,class:this.typeClass.class_top_info_payment,value:this.userEmail}]}/**
+  * @desc Exit the modal
+  */},{key:"openModalExit",value:function openModalExit(){this.dispatchEvent(new CustomEvent("open-modal-info",{bubbles:!0,composed:!0}))}/**
+   * @desc Exit the Loan Payments
+   */},{key:"exitCarLoanPayment",value:function exitCarLoanPayment(){this.dispatchEvent(new CustomEvent("return-to-dashboard",{bubbles:!0,composed:!0}))}/**
+   * @desc Error from DM
+   */},{key:"_errorFromDM",value:function _errorFromDM(){this.dispatchEvent(new CustomEvent("error-close-offer",{detail:{headerTitleText:this.t(this.headerTitle),isBlockingError:!0,primaryButtonText:this.t(this.errorPrimaryBtn)},bubbles:!0,composed:!0}));this.dispatchEvent(new CustomEvent("hide-spinner-response-amount",{bubbles:!0,composed:!0}))}/**
+   * @desc fire Step Analytics
+   */},{key:"fireStepAnalytics",value:function fireStepAnalytics(allStepsCollapsed){var _this2=this,eventName="";if(allStepsCollapsed){eventName="app-step-3"}else{var unCollapsedSteps=Object.keys(this._steps).filter(function(stepNumber){return!_this2._steps[stepNumber].collapsed});if(unCollapsedSteps.length&&1<unCollapsedSteps[0]){eventName="app-step-"+unCollapsedSteps[0]}}this._fireAppStepEvent(eventName)}/**
+   * @desc method dispatches step events with updated suggested and payment amount
+   */},{key:"_fireAppStepEvent",value:function _fireAppStepEvent(eventName){var payload={totalImport:this.initialData.response.currentInstallment.totals[0].amount,nameOption:this.nameOption,receipt:"".concat(this.t(this.RECEIPT_LABEL),"  ").concat(this.initialData.response.totalInstallmentsNumber.overdue)};this.dispatchEvent(new CustomEvent(eventName,{detail:payload,bubbles:!0,composed:!0}))}/**
+   * @desc success and error response handler
+   */},{key:"_successResponseHandler",value:function _successResponseHandler(response){this.$.dmLoan.successResponseHandler(response);this.$.dmCustomers.successResponseHandler(response)}},{key:"_errorResponseHandler",value:function _errorResponseHandler(errorResponse){this.$.dmLoan.errorResponseHandler(errorResponse);this.$.dmCustomers.errorResponseHandler(errorResponse)}}],[{key:"is",get:function get(){return"glomo-opx-car-loan-payment-dm"}},{key:"properties",get:function get(){return{/**
+       * global server config retrieved from native
+       * @type {Object}
+       */globalServerConfig:{type:Object,value:function value(){return{}}},/**
+       * cache storage to reduce network calls
+       * @type {Object}
+       */globalCacheStorage:{type:Object,value:function value(){return{}}},/**
+       * @desc Text for app header and Class for app header
+       * @type {String}
+       */headerTitle:{type:String,value:"glomo-loan-payments-step-payment-header-title-mortgage",notify:!0},headerClass:{type:String,value:"header--dark",notify:!0},/**
+        * @desc hidden or visible status button
+        * @type {Object}
+        */optionButton:{type:Object,value:{button_visible:"option-line",button_hidden:"option-out"}},/**
+        * @desc Class variables to give success page styles and key values
+        * @type {Object}
+        */typeClass:{type:Object,value:{text_bottom_info:"BBVA",class_bottom_info:"spacing",class_top_info:"bold lg spacing",class_top_info_payment:"bold spacing",class_key_value:"inline"}},/**
+       * @desc Customer accounts
+       * @type {Array}
+       */customerAccounts:{type:Array,notify:!0,value:[]},/**
+      * @desc Biggest amount of money in your accounts
+      * @type {Number}
+      */biggestAmount:{type:Number,notify:!0},/**
+       * @desc Monthly Payment
+       * @type {Array}
+       */monthlyPayment:{type:Array,notify:!0,value:[]},/**
+       * @desc Customer type
+       * @type {Number}
+       */customerType:Number,/**
+       * @desc List customer types
+       * @type {Object}
+       */listCustomerTypes:{type:Object,value:{customer_delinquet:1,customer_amortization:2,customer_normal:3}},/**
+       * @desc Type Id body
+       * @type {Object}
+       */typeId:{type:Object,value:{payment_settlement:"PAY_OFF",receipt_payment:"1"}},/**
+      * @desc Data Success
+      * @type {Object}
+      */dataSuccess:{type:Object,notify:!0,value:function value(){return{}}},/**
+      * @desc Data Success
+      * @type {String}
+      */titleSuccess:{type:String,value:""},/**
+       * Coronita type message
+       * @type {Array}
+       */TYPE_MESSAGE_TEXT:{type:Array,value:["error","info"]},/**
+       * Coronita icon type
+       * @type {Object}
+       */CORONITA_ICON_TYPE:{type:Object,value:{set_icon_info:"coronita:info",set_icon_alert:"coronita:alert"}},/**
+       * @desc Radio button options list
+       * @type {Array}
+       */optionList:{type:Array,value:["importe del recibo","otra cantidad","liquidaci\xF3n"]},/**
+       * Receipt Label
+       * @type {String}
+       */RECEIPT_LABEL:{type:String,value:"glomo-loan-payments-step-receipt-label"},/**
+       * @desc Type of payment Selected of users
+       * 1. Importe del recibo 2. Otra cantidad 3. Liquidación
+       * @type {Number}
+       */typePaymentSelected:{type:Number,observer:"_setTitleSuccess"},/**
+       * @desc set Payment
+       * Selected 0. Importe del recibo  2. Liquidación
+       * @type {Object}
+       */indexPayment:{type:Object,value:{payment_receipt:0,payment_settlement:2}}}}}]);return GlomoOpxCarLoanPaymentDm}(Polymer.mixinBehaviors([CellsBehaviors.StepManagerBehavior,CellsBehaviors.i18nBehavior],Polymer.Element));customElements.define(GlomoOpxCarLoanPaymentDm.is,GlomoOpxCarLoanPaymentDm);</script></dom-module></div></body></html>

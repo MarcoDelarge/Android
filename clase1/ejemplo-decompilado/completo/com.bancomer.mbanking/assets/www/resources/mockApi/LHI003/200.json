@@ -1,0 +1,86 @@
+{
+    "data": {
+      "mocks": true,
+      "id": "12343",
+      "product": {
+        "plan": {
+          "coverages": [
+            {
+              "id": "001",
+              "name": "Muerte accidental",
+              "description": "En caso de  muerte accidental",
+              "unit": {
+                "unitType": "AMOUNT",
+                "amount": 1000,
+                "currency": "MXN"
+              }
+            }
+          ]
+        }
+      },
+      "insuredAmount": {
+        "amount": 800000,
+        "currency": "MXN"
+      },
+      "policyDuration": {
+        "id": "YEARS",
+        "name": "Año",
+        "number": 1
+      },
+      "selectedPaymentOption": {
+        "id": "MONTHLY",
+        "name": "Mensual",
+        "paymentAmount": {
+          "amount": 2000,
+          "currency": "MXN"
+        }
+      },
+      "paymentOptions": [
+        {
+          "id": "MONTHLY",
+          "name": "Mensual",
+          "paymentAmount": {
+            "amount": 2000,
+            "currency": "MXN"
+          }
+        }
+      ],
+      "additionalBenefits": [
+        {
+          "id": "001",
+          "name": "Checkout Medico",
+          "description": "Examen medico incluido",
+          "unit": {
+            "unitType": "PERCENTAGE",
+            "percentage": 5
+          }
+        }
+      ],
+      "deliveryMethod": [
+        {
+          "id": "001",
+          "name": "Correo electronico",
+          "deliveryType": "VIRTUAL",
+          "documentType": "CONTRACT",
+          "contactDetails": [
+            {
+              "id": "534534534"
+            }
+          ]
+        }
+      ],
+      "beneficiaries": [
+        {
+          "firstName": "Juan",
+          "middleName": "Carlos",
+          "lastName": "Diaz",
+          "secondLastName": "Guzman",
+          "relationType": {
+            "id": "001",
+            "name": "primo"
+          },
+          "benefitPercentage": 100
+        }
+      ]
+    }
+  }

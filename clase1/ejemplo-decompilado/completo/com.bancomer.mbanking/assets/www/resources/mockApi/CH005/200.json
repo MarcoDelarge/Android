@@ -1,0 +1,74 @@
+{
+    "data": {
+        "id": "26H61TY76D9CHGEQP3PDM2XN6SBHFNZ2QFC3WJYSMFTR783KJM4DBV2GVNG1XQ6MW1F5EESQ24QKCZT0DZXC34CCBJ6SSQR83EFG8RE7MVATH9RFG80S1K5F2453XVWJYX0GFY9TQN7AAH3WAVT6RNTBPW",
+        "localAmount": {
+            "amount": 55.55,
+            "currency": "MXN"
+        },
+        "moneyFlow": {
+            "id": "EXPENSE",
+            "name": "EXPENSE"
+        },
+        "concept": "0060139011DISPOS.EFECTIVO",
+        "transactionType": {
+            "id": "CASH_WITHDRAWAL",
+            "name": "CASH_WITHDRAWAL",
+            "internalCode": {
+                "id": "02",
+                "name": "DISPOSICIONES EN OFICINAS"
+            }
+        },
+        "operationDate": "2017-11-03T11:59:19.000-06:00",
+        "accountedDate": "2017-11-03T00:00:00.000-06:00",
+        "valuationDate": "2017-11-03T11:59:19.000-06:00",
+        "financingType": {
+            "id": "NON_FINANCING",
+            "name": "No Financing"
+        },
+        "status": {
+            "id": "SETTLED",
+            "name": "Settled"
+        },
+        "contract": {
+            "id": "Q6X42BYYN8A21XW4DBW8A6DHN1T3P59R8HEXAFADX50PHX2VH9Z0",
+            "number": "4772133001163234",
+            "numberType": {
+                "id": "PAN",
+                "name": "PAN"
+            },
+            "product": {
+                "id": "CARDS",
+                "name": "Cards"
+            },
+            "bank": {
+                "id": "40012",
+                "name": "BBVA BANCOMER"
+            }
+        },
+        "category": {
+            "id": "UNCAT",
+            "name": "N/A"
+        },
+        "additionalInformation": {
+            "additionalData": "TITULAR"
+        },
+        "detail": {
+            "bank": {
+                "id": "40012",
+                "name": "BBVA BANCOMER"
+            },
+            "linkedContract": {
+                "id": "007400127300711899",
+                "number": "007400127300711899",
+                "numberType": {
+                    "id": "PAN",
+                    "name": "PAN"
+                },
+                "product": {
+                    "id": "CARDS",
+                    "name": "Cards"
+                }
+            }
+        }
+    }
+}

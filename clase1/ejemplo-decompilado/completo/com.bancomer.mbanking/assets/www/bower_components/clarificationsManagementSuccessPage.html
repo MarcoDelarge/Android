@@ -1,0 +1,38 @@
+<html><head></head><body><div hidden="" by-polymer-bundler=""><dom-module id="cells-glomo-clarifications-management-success-styles" assetpath="cells-glomo-clarifications-management-success/"><template><style>:host{display:block;box-sizing:border-box;font-family:var(--cells-fontDefault, sans-serif);@apply --cells-glomo-clarifications-management-success;}:host([hidden]), [hidden]{display:none !important;}*, *:before, *:after{box-sizing:inherit;}cells-successful-response{--cells-atom-date-color:#fff;--cells-fontDefaultNormalItalic_-_font-style:normal;--cells-operations-list-icon-label-color:var(--bbva-glomo-medium-blue);--cells-st-button-bg-color:var(--bbva-glomo-dark-medium-blue);--cells-st-button-text-color-link:var(--bbva-glomo-dark-medium-blue);--cells-operations-list-list__link-active_-_background:transparent;--cells-operations-list-list__link-active_-_color:var(--bbva-glomo-dark-medium-blue);--cells-successful-response-info:{padding:30px 0 0;display:flex;flex-direction:column;};--cells-successful-response-title:{margin-top:0;order:0;};--cells-successful-response-subtitle:{margin:0;order:1;};--cells-successful-response-amount-description:{margin-top:40px;order:2;font-weight:var(--cells-text-weight-normal);font-style:normal;};--cells-successful-response-info-fees-container:{margin-top:0;order:3;};--cells-successful-response-cells-atom-amount-huge:{padding:10px 0 50px;order:4;justify-content:center;};--cells-successful-response-info-fees:{margin-top:10px;font-weight:bold;};--cells-successful-response-otherInfo:{padding:40px 0 30px;};--cells-successful-response-contact-avatar-other-info:{padding-top:40px;};--cells-successful-response-otherInfo-item:{line-height:initial;margin-bottom:10px;};--cells-successful-response-actions:{padding:30px 0 14px;};--cells-successful-response-otherInfo-spacing:{margin-bottom:30px;};--cells-operations-list-list:{background-color:var(--cells-transparent_colour);};--cells-operations-list-list__link:{color:var(--bbva-glomo-dark-medium-blue);background-color:var(--cells-transparent_colour);text-align:-webkit-center;border:none;outline:none;};--cells-operations-list-list__link-active:{background:var(--bbva-white);};--cells-operations-list-list__link-grid:{padding:0;};--cells-operations-list__link-icon-atom-icon:{padding:0 0 10px 0;height:auto;width:auto;};--cells-operations-list-item-label--grid:{margin:0;font-size:12px;font-weight:500;};--cells-header-additional-info:{display:none;};}</style></template></dom-module><dom-module id="cells-glomo-clarifications-management-success" assetpath="cells-glomo-clarifications-management-success/"><template><style include="cells-glomo-clarifications-management-success-styles cells-glomo-clarifications-management-success-shared-styles"></style><slot></slot><cells-successful-response class="clarifications-management-success" format-date="[[formatDate]]" local-currency="[[localCurrency]]" result="[[result]]" screen-shot-enabled="" on-share-receipt-capture="receiptCapture"></cells-successful-response></template><script>Polymer({is:"cells-glomo-clarifications-management-success",behaviors:[CellsBehaviors.i18nBehavior],properties:{/**
+     * title of the page header
+     * @type {String}
+    */headerTitleText:{type:String,notify:!0},/**
+     * format date of top section
+     * @type {String}
+    */formatDate:String,/**
+     * result, should be a specific formatted object
+     * that is required by cells-successful-response component
+     * more info: https://bbva-ether-cellscatalogs.appspot.com/?version=v200#/component/cells-successful-response/docs
+     *  @type {Object}
+    */result:Object,/**
+     * Specifies local currency to use
+     * @type {String}
+    */localCurrency:String,/**
+     * Result status for return to native
+     * @type {String}
+    */resultStatus:String,/**
+     * Result date for return to native
+     * @type {String}
+    */resultDate:String,/**
+     * Flag for debit type
+     * @type {Boolean}
+     */isDebitType:Boolean},/**
+   * Sets header title text
+   * @param {Object} pageActive current page active name
+  */_boot:function _boot(pageActive){if(pageActive.value){this.set("headerTitleText",this.t("clarifications-success-page-header"))}},/**
+   * Sets result objet for cells-succesful-response
+   * @param {Object} responsePayload
+  */setDataFromClarificationsManagement:function setDataFromClarificationsManagement(data){this.set("result",data.result);this.set("resultStatus",data.status);this.set("resultDate",data.date);this.set("isDebitType",data.isDebitType)},/**
+   * this method, trig an event for send data to native
+  */exitFromSuccesPage:function exitFromSuccesPage(){this.dispatchEvent(new CustomEvent("on-claim-created",{detail:{status:this.resultStatus,openingDate:this.resultDate}}))},/**
+   * this method, trig an event for send data to native
+  */exitFromSuccesPageToTransactions:function exitFromSuccesPageToTransactions(){var transListChannelName=this.isDebitType?"on-account-claim-created-to-transactions":"on-card-claim-created-to-transactions";this.dispatchEvent(new CustomEvent(transListChannelName,{detail:{status:this.resultStatus,openingDate:this.resultDate}}))},/**
+   * this method, receipt detail of share button and trig
+   * an event to global_download_channel with size of screen
+   * @param {Object} event detail of share button, constains screen size
+  */receiptCapture:function receiptCapture(){var body=this.$$("cells-successful-response"),headerSection=body.$$("#header-section").offsetHeight,otherInfo=body.$$(".otherInfo").offsetHeight,totalPageHeight=headerSection+otherInfo;body.$$("cells-operations-list").style.display="none";body.$$(".actions").style.display="none";this.dispatchEvent(new CustomEvent("share-btn-tapped",{detail:{height:totalPageHeight,share:!0,download:!1}}));this.async(function(){body.$$("cells-operations-list").style.display="inline";body.$$(".actions").style.display="inline"},1500)}});</script></dom-module></div></body></html>

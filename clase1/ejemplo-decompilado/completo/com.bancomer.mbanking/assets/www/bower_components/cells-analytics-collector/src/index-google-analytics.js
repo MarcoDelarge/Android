@@ -1,0 +1,2 @@
+import GoogleAnalyticsCollector from"./collectors/google-analytics.js";// @TODO: Revisar esta exportación ya que webpack la puede hacer.
+window.GoogleAnalyticsCollector=GoogleAnalyticsCollector;module.exports=GoogleAnalyticsCollector;

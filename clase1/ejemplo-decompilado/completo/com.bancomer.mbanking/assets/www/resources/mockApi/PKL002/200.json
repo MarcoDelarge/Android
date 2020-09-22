@@ -1,0 +1,24 @@
+{
+  "data": [
+    {
+      "relatedContract": {
+        "id": "U7LCOcDlBG_bLD0UuLU1PDv2de3QhNh8y5-fHpPV17hz_8xmj8RjwA",
+        "number": "00740730002975527295",
+        "product": {
+          "id": "29",
+          "name": "SIN CHEQ",
+          "productType": {
+            "id": "ACCOUNTS"
+          },
+          "numberType": {
+            "id": "CCC"
+          }
+        }
+      },
+      "totalAmount": {
+        "amount": 394,
+        "currency": "MXN"
+      }
+    }
+  ]
+}

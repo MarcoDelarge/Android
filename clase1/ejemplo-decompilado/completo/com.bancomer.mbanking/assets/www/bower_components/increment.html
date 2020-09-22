@@ -1,0 +1,324 @@
+<html><head></head><body><div hidden="" by-polymer-bundler=""><dom-module id="glomo-credit-card-limit-increase-styles" assetpath="glomo-credit-card-limit-increase/"><template><style>:host{background-color:var(--bbva-white, #FFFFFF);display:initial;box-sizing:border-box;font-family:var(--cells-fontDefault, sans-serif);@apply --glomo-credit-card-limit-increase;}:host([hidden]), [hidden]{display:none !important;}*, *:before, *:after{font:inherit;box-sizing:inherit;}.content-wrapper{height:100%;padding:16px;background:#fff;@apply --glomo-credit-card-limit-increase-content-wrapper;}.content-wrapper cells-icon-message{margin:16px 0;--cells-icon-message-message-strong:{color:#121212;font-weight:500;};--cells-icon-message-icon:{margin-bottom:14px;};}.content-wrapper__hidden{height:calc(100vh - 248px);padding:16px;background:#fff;}cells-heading{margin:20px 0 16px;}.title-text{font-weight:500;text-transform:uppercase;@apply --glomo-credit-card-limit-increase-title;}ul{list-style:none;margin:0;padding:0;@apply --glomo-credit-card-limit-increase-hint-list;}cells-icon-message{--cells-icon-message-message:{width:-webkit-fill-available;line-height:1.6;};--cells-icon-message-message-strong:{overflow-wrap:break-word;};--cells-icon-message:{background-color:var(--bbva-100, #f4f4f4);};@apply --glomo-credit-card-limit-increase-icon-message;}cells-icon-message p{line-height:1.6;}cells-icon-message cells-molecule-mask{margin-top:8px;font-style:italic;}cells-confirm-buttons{--cells-st-button-disabled_-_color:var(--bbva-400, #bdbdbd);@apply --glomo-credit-card-limit-increase-confirm-buttons;}.skeleton-wrapper{height:100%;position:relative;}cells-st-link{font-weight:bold;}.amountSize{font-size:2em;}.icon-size-edit{font-size:12px;}.bold{font-weight:bold;}.increment-terms-link{margin:1rem;}</style></template></dom-module><dom-module id="bbva-list-bullet-styles" assetpath="bbva-list-bullet/"><template><style>:host{display:block;box-sizing:border-box;position:relative;padding:0 0 calc(var(--bbva-global-spacer, 0.5rem) * 1) calc(var(--bbva-global-spacer, 0.5rem) * 3);color:var(--bbva-list-bullet-color, var(--bbva-600, #121212));@apply --bbva-text-s;@apply --bbva-list-bullet;}.icon{position:absolute;top:0;left:0;color:var(--bbva-list-bullet-icon-color, var(--bbva-medium-blue, #1973B8));@apply --bbva-list-bullet-icon;}:host([hidden]), [hidden]{display:none !important;}*, *:before, *:after{box-sizing:inherit;}:host(.transparent){background:none;--bbva-list-bullet-icon-color:var(--bbva-aqua, #2dcccd);--bbva-list-bullet-color:var(--bbva-white, #ffffff);@apply --bbva-list-bullet-transparent;}</style></template></dom-module><dom-module id="bbva-list-bullet" assetpath="bbva-list-bullet/"><script>function _templateObject_7b4f54d0ef2011eaab893dabf4ddef4d(){var data=babelHelpers.taggedTemplateLiteral(["\n        <style include=\"bbva-list-bullet-styles bbva-list-bullet-shared-styles\"></style>\n        <cells-atom-icon id=\"icon\" icon=\"[[icon]]\" class$=\"icon icon-size-[[iconSize]]\"></cells-atom-icon>\n        <slot></slot>\n      "]);_templateObject_7b4f54d0ef2011eaab893dabf4ddef4d=function _templateObject_7b4f54d0ef2011eaab893dabf4ddef4d(){return data};return data}{var _Polymer=Polymer,html=_Polymer.html,Element=_Polymer.Element,BbvaListBullet=/*#__PURE__*/function(_Element){babelHelpers.inherits(BbvaListBullet,_Element);function BbvaListBullet(){babelHelpers.classCallCheck(this,BbvaListBullet);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(BbvaListBullet).apply(this,arguments))}babelHelpers.createClass(BbvaListBullet,null,[{key:"is",get:function get(){return"bbva-list-bullet"}},{key:"properties",get:function get(){return{/**
+         * Icon to display in each item of the list
+         */icon:{type:String,value:"coronita:bullet1"},/**
+         * Size of thge icon
+         */iconSize:{type:Number,value:24}}}},{key:"template",get:function get(){return html(_templateObject_7b4f54d0ef2011eaab893dabf4ddef4d())}}]);return BbvaListBullet}(Element);/**
+   * @customElement
+   * @polymer
+   */customElements.define(BbvaListBullet.is,BbvaListBullet)}</script></dom-module><dom-module id="glomo-credit-card-limit-increase" assetpath="glomo-credit-card-limit-increase/"><template><style include="glomo-credit-card-limit-increase-styles cells-heading-shared-styles cells-molecule-skeleton-shared-styles"></style><div><template is="dom-if" if="[[!showCardCover]]"><cells-icon-message src="[[product.imgSrc]]" id="cellsIconMessage" sizes="[[_cardImageSizes]]" hidden$="[[!product.name]]"><p inner-h-t-m-l="[[cardIconMessage]]"></p><cells-molecule-mask value="[[product.number]]" visible-chars="4" masked=""></cells-molecule-mask></cells-icon-message></template><template is="dom-if" if="[[showCardCover]]"><cells-icon-message id="cellsIconMessage" sizes="[[_cardImageSizes]]"><cells-molecule-card-cover width="[[_cardImageSizes.width]]" height="[[_cardImageSizes.height]]" image-src="[[product.image]]" default-image="[[imgSrc]]"></cells-molecule-card-cover><p>[[legendTextCard]] <span class="bold">[[legendTextCardBoldText]]</span> <span class="bold">[[product.name]]</span></p><cells-molecule-mask value="[[product.number]]" visible-chars="4" masked=""></cells-molecule-mask></cells-icon-message></template><div class$="[[_contentWrapperClass]]" id="contentNode"><cells-heading level="2" class="title-text">[[t(headingTitle)]]</cells-heading><div class$="{{skeletonClass}}"><cells-molecule-skeleton skeleton-type="account-list" skeleton-items="1" id="skeletonMolecule" hidden$="[[!_isLoading]]"></cells-molecule-skeleton></div><template is="dom-if" if="{{product.skeleton}}"><cells-heading level="2" class="title-text">[[t(headingTerms)]]</cells-heading><div class$="{{skeletonClass}}"><cells-molecule-skeleton skeleton-type="account-list" skeleton-items="1" id="skeletonMolecule" hidden$="[[!_isLoading]]"></cells-molecule-skeleton></div></template><div hidden$="[[_isLoading]]"><cells-heading level="0" class="subtitle-text" inner-h-t-m-l="[[headingSubtitle]]"></cells-heading><template is="dom-if" if="{{!showLabelAmounts}}"><cells-molecule-amount-input id="amountInput" class="amount-input" currency-code="[[currencyCode]]" disabled="[[!contact.isChecked]]" error-message-icon="coronita:alert" error-message="[[amountErrorMessage]]" icon-code="coronita:close" icon-size="icon-size-16" info-message-icon="coronita:info" info-message="[[amountInfoMessage]]" invalid="[[!_isAmountValid]]" label="[[t(amountInputLabel)]]" language="[[localCurrency]]" local-currency="[[localCurrency]]" max-limit="[[amounts.maxAmount]]" min-limit="[[amounts.minAmount]]" on-amount-input-changed="_handleIpuntChange" set-amount="[[_amount]]">range required</cells-molecule-amount-input></template><template is="dom-if" if="[[showLabelAmounts]]"><cells-heading level="0" class="subtitle-text" inner-h-t-m-l="[[t(subtitleAmountDescription)]]"></cells-heading><p><cells-atom-amount class="amountSize" amount="[[amounts.maxAmount]]" currency-code="USD" local-currency="USD" language="en"></cells-atom-amount></p><cells-icon-message class="inline icon-size-edit" icon-size="icon-size-10" type="info" icon="coronita:info"><span>[[t(optionalHeadingSubtitle)]]</span><cells-atom-amount class="" amount="[[amounts.suggestedAmount]]" currency-code="USD" local-currency="USD" language="en"></cells-atom-amount></cells-icon-message></template><cells-heading level="2" class="title-text">[[t(headingTextKeepInMind)]]</cells-heading><ul><template is="dom-repeat" items="[[hintList]]"><li><bbva-list-bullet>[[t(item)]]</bbva-list-bullet></li></template></ul><cells-icon-message type="[[_cellsIconMessageType]]" icon="[[_cellsIcon]]" message="[[cellsIconMessageText]]" id="cellsIconMessage"><cells-st-button class="increment-terms-link transparent" hidden$="[[!showStLink]]"><button on-click="_callLinkPressed">[[t(linkText, 'message error')]]</button></cells-st-button></cells-icon-message><cells-confirm-buttons id="confirmButton" config$="[[_confirmButton]]" unfixed=""></cells-confirm-buttons></div></div></div></template><script>{var _Polymer=Polymer,mixinBehaviors=_Polymer.mixinBehaviors,Element=_Polymer.Element,_CellsBehaviors=CellsBehaviors,i18nBehavior=_CellsBehaviors.i18nBehavior,AmountBehavior=_CellsBehaviors.AmountBehavior,GlomoCreditCardLimitIncrease=/*#__PURE__*/function(_mixinBehaviors){babelHelpers.inherits(GlomoCreditCardLimitIncrease,_mixinBehaviors);function GlomoCreditCardLimitIncrease(){babelHelpers.classCallCheck(this,GlomoCreditCardLimitIncrease);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(GlomoCreditCardLimitIncrease).apply(this,arguments))}babelHelpers.createClass(GlomoCreditCardLimitIncrease,[{key:"reset",/**
+     * Use for one-time configuration of your component after local DOM is
+     * initialized.
+     */value:function reset(){this._isLoading=!0;this.product=void 0;this.amounts=void 0;this.contact=void 0;this.skeletonClass="skeleton-wrapper"}/**
+    * Set otpClosed to set config button
+    * @param {Boolean} _isLoading is the page loading
+    * @return {String} class value
+    */},{key:"_getContentWrapperClass",value:function _getContentWrapperClass(_isLoading){return _isLoading?"content-wrapper__hidden":"content-wrapper"}/**
+    * Check required properties to disable skeleton
+    */},{key:"_getComputedIsLoading",value:function _getComputedIsLoading(maximumAmount,minimumAmount,suggestedAmount){return!(maximumAmount&&minimumAmount&&suggestedAmount)}/**
+    * Set amount in order of suggested amouhnt coming or minimun amount of the range
+    * @param {Number} suggestedAmount recommended amount from service
+    * @param {Number} minAmount minimun range amount from service
+    * @return {Number} return amount property value
+    */},{key:"_getComputedAmount",value:function _getComputedAmount(suggestedAmount,minAmount){this._amount=suggestedAmount||minAmount;return this._amount}/**
+    * Get text for cells-icon-message
+    * @param {Boolean} _isEmailValid mail has been checked and is preferential
+    * @param {String} email user email
+    * @return {String} key for locals traduction
+    */},{key:"_getCellsIconMessage",value:function _getCellsIconMessage(_isEmailValid,email){if(this.showLabelAmounts){return this.t("cells-icon-message-info-mx")}else{return _isEmailValid?this.t("cells-icon-message-info","",{email:email}):this.t("cells-icon-message-error-increment")}}/**
+    * Get type for cells-icon-message
+    * @param {Boolean} _isEmailValid mail has been checked and is preferential
+    * @return {String} cells-icon-message type: info or error
+    */},{key:"_getCellsIconMessageType",value:function _getCellsIconMessageType(_isEmailValid){return _isEmailValid?"info":"error"}/**
+    * Get icon for cells-icon-message
+    * @param {Boolean} _cellsIconMessageType ells-icon-message type
+    * @return {String} cells-icon-message icon: info or alert
+    */},{key:"_getCellsIcon",value:function _getCellsIcon(_cellsIconMessageType){return"info"===_cellsIconMessageType?"coronita:info":"coronita:alert"}/**
+    * Action button configuration
+    * @param {String} action Button click event
+    * @param {String} _isConfirmButtonDisabled button disabled state
+    * @param {String} detail data to send in put request
+    * @return {Object} button configuration object
+    */},{key:"_getButtonConfig",value:function _getButtonConfig(_isConfirmButtonDisabled){this.buttonDisable=this.showLabelAmounts?!1:_isConfirmButtonDisabled;return{buttons:{primary:{text:this.textButton,action:this.confirmAction,disabled:this.buttonDisable,detail:this.sendAllAmountsArray?{amounts:this._getAmountsArray(),limitId:this.get("product.limitId")}:{amount:this._amount,currency:this.localCurrency,limitId:this.get("product.limitId")}}}}}/**
+     * Create an array of amounts (minAmount, suggestedAmount and maxAmount in that order)
+     */},{key:"_getAmountsArray",value:function _getAmountsArray(){return[{amount:(this.amounts||{}).minAmount,currency:this.localCurrency},{amount:(this.amounts||{}).suggestedAmount,currency:this.localCurrency},{amount:(this.amounts||{}).maxAmount,currency:this.localCurrency}]}/**
+    * Confirm button state according to entered amount and contact is preferential
+    * @param {Boolean} _isEmailValid mail has been checked and is preferential
+    * @param {Boolean} _isAmountValid amount is in range
+    * @return {Boolean} Button disabled status
+    */},{key:"_getConfirmButtonState",value:function _getConfirmButtonState(_isAmountValid,_isEmailValid){if(this.showLabelAmounts){return _isAmountValid&&_isEmailValid}else{return!(_isAmountValid&&_isEmailValid)}}/**
+    * Checks if entered amount is in range
+    * @param {Boolean} _amount entered quantity
+    * @param {Boolean} minAmount miniumumn value of the range
+    * @param {Boolean} maxAmount maximun value of the range
+    * @return {Boolean} true if entered amount is in range
+    */},{key:"_validateAmount",value:function _validateAmount(_amount,minAmount,maxAmount){return _amount>=minAmount&&_amount<=maxAmount}/**
+    * Get card icon message text from locals
+    * @param {String} cardName card name value
+    * @return {String} transalated and interpolated increase message
+    **/},{key:"_getCardIconMessage",value:function _getCardIconMessage(cardName){return this.t("cells-icon-message-increase","",{cardName:cardName})}/**
+    * Get card icon message text from locals
+    * @param {Number} minAmount min amount available
+    * @param {Number} maxAmount max amount available
+    * @param {String} currencyCode currency code
+    * @return {String} amount info transalation
+    **/},{key:"_getAmountInfoMessage",value:function _getAmountInfoMessage(minAmount,maxAmount,currencyCode){return this.t("cells-amount-input-info","",{currencyCode:currencyCode,minAmount:this._getFormattedExec(minAmount,currencyCode),maxAmount:this._getFormattedExec(maxAmount,currencyCode)})}/**
+    * Get amount error message based on min and max available amounts
+    * @param {Number} minAmount min amount available
+    * @param {Number} maxAmount max amount available
+    * @param {String} currencyCode currency code
+    * @return {String} amount error transalation
+    **/},{key:"_getAmountErrorMessage",value:function _getAmountErrorMessage(minAmount,maxAmount,currencyCode){return this.t("cells-amount-input-error","",{currencyCode:currencyCode,minAmount:this._getFormattedExec(minAmount,currencyCode),maxAmount:this._getFormattedExec(maxAmount,currencyCode)})}},{key:"_computedHeadingSubtitle",value:function _computedHeadingSubtitle(currentAmount,currencyCode){var currentValue=this.alternativeCurrentAmount&&this.amounts&&this.amounts.minAmount?this.amounts.minAmount:currentAmount;return this.t("cells-heading-subtitle","",{currentAmount:this._getFormattedExec(currentValue,currencyCode)})}},{key:"_getFormattedExec",value:function _getFormattedExec(amount,currency){return this.getFormattedAmount(amount,currency,this.localCurrency,"es-PE",".",",","S/","")}},{key:"_callLinkPressed",value:function _callLinkPressed(){this.dispatchEvent(new CustomEvent("increment-view-terms-conditions",{bubbles:!0,composed:!0,detail:{titleId:this.product.titleId}}))}/**
+    * handle input change event and set _amount with etered value
+    **/},{key:"_handleIpuntChange",value:function _handleIpuntChange(e){this._amount=e.detail}},{key:"setContentHintList",value:function setContentHintList(hintList){this.hintList=[hintList,this.textList]}}],[{key:"is",get:function get(){return"glomo-credit-card-limit-increase"}},{key:"properties",get:function get(){return{/**
+          * contain financial data for header section
+        */product:{type:Object,value:function value(){return{}}},amounts:{type:Object,value:function value(){return{}},notify:!0},contact:{type:Boolean,value:function value(){return{}}},/**
+          * Heading title "Characteristics" section
+        */headingTitle:{type:String,value:"cells-heading-title"},/**
+          * Heading subtitle "Characteristics" section
+        */headingSubtitle:{type:String,computed:"_computedHeadingSubtitle(product.secondaryAmount, currencyCode)"},/**
+          * Heading "Keep in mind" section
+        */headingTextKeepInMind:{type:String,value:"cells-heading-keep-in-mind"},/**
+          * Cells amount input label
+        */amountInputLabel:{type:String,value:"cells-amount-input-label"},/**
+          * Info message for amount range
+        */amountInfoMessage:{type:String,computed:"_getAmountInfoMessage(amounts.minAmount, amounts.maxAmount, currencyCode)"},/**
+          * Error message when the amount is out of range
+        */amountErrorMessage:{type:String,computed:"_getAmountErrorMessage(amounts.minAmount, amounts.maxAmount, currencyCode)"},/**
+          * Text for hint list
+        */hintList:{type:Array,value:["hint-list-text-1","hint-list-text-2","hint-list-text-3"]},/**
+          * Cells icon message text
+        */cellsIconMessageText:{type:String,computed:"_getCellsIconMessage(contact.isChecked, contact.value)"},_cellsIconMessageType:{type:String,computed:"_getCellsIconMessageType(contact.isChecked)"},_cellsIcon:{type:String,computed:"_getCellsIcon(_cellsIconMessageType)"},/**
+          * Local currency get from CONFIG.LOCAL_CURRENCY
+        */localCurrency:{type:String},/**
+          * Code of currency
+        */currencyCode:{type:String,value:"S/"},_amount:{type:Number,notify:!0},_initialAmount:{type:Number,computed:"_getComputedAmount(amounts.suggestedAmount, amounts.minAmount)",notify:!0},_isAmountValid:{type:Boolean,computed:"_validateAmount(_amount, amounts.minAmount, amounts.maxAmount)",notify:!0},/**
+        * Button click event
+        */confirmAction:{type:String,value:""},_confirmButton:{type:Object,computed:"_getButtonConfig(_isConfirmButtonDisabled)",notify:!0},_isConfirmButtonDisabled:{type:Object,computed:"_getConfirmButtonState(_isAmountValid, contact.isChecked)",notify:!0},/**
+        * Card limit increase message
+        */cardIconMessage:{type:String,computed:"_getCardIconMessage(product.name)"},_cardImageSizes:{type:Object,value:function value(){return{width:72,height:48}}},_contentWrapperClass:{type:String,computed:"_getContentWrapperClass(_isLoading)"},_isLoading:{type:Boolean,value:!0,computed:"_getComputedIsLoading(amounts.maxAmount, amounts.minAmount, amounts.suggestedAmount)"},skeletonClass:{type:String,value:"skeleton-wrapper"},textButton:{type:String,value:"cells-confirm-button"},headingTerms:{type:String,value:"cells-credit-line-increase-title-list"},imgSrc:{type:String,value:"./images/cards/cardFrontDefault.png"},buttonDisable:{type:String},showCardCover:{type:Boolean,value:!1},textList:{type:String},showStLink:{type:Boolean,value:!1},showLabelAmounts:{type:Boolean,value:!1},legendTextCard:{type:String},legendTextCardBoldText:{type:String},subtitleAmountDescription:{type:String},linkText:{type:String},optionalHeadingSubtitle:{type:String},textValidity:{type:String},/*
+        * set true to select min amount value for current amount instead card secondary amount value
+        */alternativeCurrentAmount:{type:Boolean,value:!1},/**
+         * Flag to control if all amounts have to be sent in button event
+         */sendAllAmountsArray:{type:Boolean,value:!1}}}}]);return GlomoCreditCardLimitIncrease}(mixinBehaviors([i18nBehavior],AmountBehavior(Element)));customElements.define(GlomoCreditCardLimitIncrease.is,GlomoCreditCardLimitIncrease)}</script></dom-module><dom-module id="glomo-credit-card-limit-increase-dm" assetpath="glomo-credit-card-limit-increase-dm/"><script>var _Polymer=Polymer,mixinBehaviors=_Polymer.mixinBehaviors,Element=_Polymer.Element,_CellsBehaviors=CellsBehaviors,i18nBehavior=_CellsBehaviors.i18nBehavior,AmountBehavior=_CellsBehaviors.AmountBehavior,GlomoCreditCardLimitIncreaseDm=/*#__PURE__*/function(_mixinBehaviors){babelHelpers.inherits(GlomoCreditCardLimitIncreaseDm,_mixinBehaviors);function GlomoCreditCardLimitIncreaseDm(){babelHelpers.classCallCheck(this,GlomoCreditCardLimitIncreaseDm);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(GlomoCreditCardLimitIncreaseDm).apply(this,arguments))}babelHelpers.createClass(GlomoCreditCardLimitIncreaseDm,[{key:"reset",value:function reset(){this.productId=null}/**
+  * Method to compute customer email
+  * @param {Array} customerContactsData Contact data received from request response
+  */},{key:"_getEmail",value:function _getEmail(){var customerContactsData=0<arguments.length&&arguments[0]!==void 0?arguments[0]:[];return customerContactsData.find(function(contact){return contact.contactType&&contact.isChecked&&"EMAIL"===contact.contactType.id})}/**
+  * Reset lastAction propertie and close control veil
+  */},{key:"clearLastCall",value:function clearLastCall(){this.closeControlVeil();this.lastAction=null}/**
+  * Checks if put card limit request has been saved in this.lastAction to retry
+  */},{key:"retryPutCardLimit",value:function retryPutCardLimit(){if(this.lastAction){this.lastAction.fn(this.lastAction.data)}else{this.closeControlVeil()}}/**
+  * Retry put card limit request using reference saved in this.lastAction
+  * @param {Object} required request data
+  */},{key:"incrementPutClickedRecall",value:function incrementPutClickedRecall(_dataForm){if(_dataForm&&this.amountsArrayValid&&_dataForm.amounts){var currency=_dataForm.amounts[0].currency;_dataForm.amounts=this._getAmountsArray(this._financialData.amounts,currency)}else if(_dataForm&&_dataForm.amount){_dataForm.amount=this._financialData.amounts.suggestedAmount||this._financialData.amounts.minAmount}this.incrementPutClicked(_dataForm);this.lastAction={fn:this.incrementPutClicked.bind(this),data:_dataForm}}/**
+   * Create an array of amounts (minAmount, suggestedAmount and maxAmount in that order)
+   */},{key:"_getAmountsArray",value:function _getAmountsArray(amounts,localCurrency){return[{amount:(amounts||{}).minAmount,currency:localCurrency},{amount:(amounts||{}).suggestedAmount,currency:localCurrency},{amount:(amounts||{}).maxAmount,currency:localCurrency}]}/**
+  * Checks if all resquest data are valid and dispatch event to make the request
+  * @param {Object} required request data
+  */},{key:"incrementPutClicked",value:function incrementPutClicked(_dataForm){if(_dataForm&&(this.amountsArrayValid&&_dataForm.amounts||_dataForm.amount&&_dataForm.currency)&&_dataForm.limitId){if(!this.amountsArrayValid){Object.assign(this._financialData,_dataForm)}this.openControlVeil();this._dispatchCustomEvent("increment-put-limit-validated",_dataForm);this._dispatchCustomEvent("hide-oc-banner",!0)}else{this.closeControlVeil();this.modalPutLimitsCardError()}}/**
+  * Get parsed response data to use in success review screen
+  * @return {Object} parsed response data
+  */},{key:"_getParseReponse",value:function _getParseReponse(){var currency=this.get("_financialData.product.currency"),language=this.get("language");return{id:"123",date:this._financialData.operationDate,title:"glomo-increment-success-header-title",origin:{avatar:{src:this._financialData.product.imgSrc,type:"card"}},amountLabel:"cells-successful-response-credit-card-limit-increment-amount-label",chargeAmount:{amount:this.amountsArrayValid?this._financialData.amounts.maxAmount:this._financialData.amount,currency:currency,class:"amount-huge-decimals"},topInfo:[{value:this._financialData.product.name,class:"bold"},{musk:{value:this._financialData.product.number,chars:this.amountsArrayValid?5:4,simbol:"\u2022"},class:"spacing"},this._financialData.operationNumber?{key:"cells-successful-response-increment-folio",value:this._financialData.operationNumber,class:"bold spacing"}:void 0,{key:"cells-successful-response-increment-email",value:this._financialData.contact.value,class:"bold secondary spacing"}],buttons:{primary:{text:"cells-successful-response-next",action:"go-to-next"},secondary:{text:"cells-successful-response-new-operation",action:"new-operation",class:"link"}}}}/**
+  * Close loading spinner
+  */},{key:"closeControlVeil",value:function closeControlVeil(){this._dispatchCustomEvent("close-control-veil")}/**
+  * Open loading spinner
+  */},{key:"openControlVeil",value:function openControlVeil(){this._dispatchCustomEvent("open-control-veil")}/**
+  * Success review navigation
+  * @param {Object} data response from put-card-limits-response event
+  */},{key:"navigateToReviewPage",value:function navigateToReviewPage(data){if(data&&data.operationDate){this.lastAction=null;Object.assign(this._financialData,data);this.set("parseResponse",this._getParseReponse());this.closeControlVeil();this._dispatchCustomEvent("dashboard-data-refresh");this._dispatchCustomEvent("card-detail-data-refresh");this._dispatchCustomEvent("navigate-to-review",{productId:this.productId},!0,!0)}else{this.modalPutLimitsCardError()}}/**
+  * Dispatch to go to profile
+  */},{key:"_goToProfile",value:function _goToProfile(){this._dispatchCustomEvent("go-to-profile")}/**
+  * @desc handle backbutton confirmation. Used in glomo-alert-manager.
+  * @return {undefined}
+  */},{key:"modalCloseOperativeConfirm",value:function modalCloseOperativeConfirm(){this._openModal({type:"EXIT",onAcceptDetail:{},onCancelDetail:{}})}/**
+  * @desc handle card offer and card detail request error response.
+  * @return {undefined}
+  */},{key:"modalInitDataError",value:function modalInitDataError(value){this._openModal({type:"INIT-DATA-ERROR",onAcceptDetail:value,onCancelDetail:value})}/**
+  * @desc handle operation put request error response.
+  * @return {undefined}
+  */},{key:"modalPutLimitsCardError",value:function modalPutLimitsCardError(){this._openModal({type:"PUT-CARD-LIMIT-ERROR",onAcceptDetail:this._financialData,onCancelDetail:{}})}/**
+  * @desc handle customer contact data error
+  * @return {undefined}
+  */},{key:"modalCustomerContactsError",value:function modalCustomerContactsError(data){this._openModal({type:"CUSTOMER-CONTACT-ERROR",onAcceptDetail:{page:"profile"},onCancelDetail:{errorType:data}})}/**
+   * Create event for glomo-alert-manager
+   * @param {Object}
+   *  className = 'error',
+   *  closeOnPrimaryButton = true,
+   *  icon = 'coronita:alert',
+   *  iconOnlyFullHeight = true,
+   *  message,
+   *  onCancelDetail,
+   *  openMaximized = false,
+   *  type,
+   */},{key:"_openModal",value:function _openModal(){var _ref=0<arguments.length&&arguments[0]!==void 0?arguments[0]:{},_ref$className=_ref.className,className=void 0===_ref$className?"error":_ref$className,_ref$closeOnPrimaryBu=_ref.closeOnPrimaryButton,closeOnPrimaryButton=void 0===_ref$closeOnPrimaryBu?!0:_ref$closeOnPrimaryBu,_ref$icon=_ref.icon,icon=void 0===_ref$icon?"coronita:alert":_ref$icon,_ref$iconOnlyFullHeig=_ref.iconOnlyFullHeight,iconOnlyFullHeight=void 0===_ref$iconOnlyFullHeig?!0:_ref$iconOnlyFullHeig,message=_ref.message,onAcceptDetail=_ref.onAcceptDetail,onCancelDetail=_ref.onCancelDetail,_ref$openMaximized=_ref.openMaximized,openMaximized=void 0===_ref$openMaximized?!1:_ref$openMaximized,type=_ref.type,_ref$time=_ref.time,time=void 0===_ref$time?0:_ref$time,CODE=type+"-"+"INCREMENT-CARD-LIMIT",detail={code:CODE,time:time,selectedConfig:{className:className,closeOnPrimaryButton:closeOnPrimaryButton,iconOnlyFullHeight:iconOnlyFullHeight,openMaximized:openMaximized,template:{type:"paragraphs",values:[{icon:icon,class:"spacing"},{text:message||"alert-".concat(CODE,"-title"),class:"strong"},{text:message||"alert-".concat(CODE,"-message"),class:this.isIosNative?"spacing":""}]}}};if(this.showExitTitle){detail.selectedConfig.template.values[1].text=""}if(onAcceptDetail){detail.selectedConfig.acceptBtLabel="alert-".concat(CODE,"-accept");detail.selectedConfig.onAcceptDetail=onAcceptDetail}if(onCancelDetail){detail.selectedConfig.cancelBtLabel="alert-".concat(CODE,"-cancel");detail.selectedConfig.onCancelDetail=onCancelDetail}this._dispatchCustomEvent("increment-confirm-modal",detail)}/**
+  * Dispatch custom event
+  * @param {String} eventName custom event name
+  * @param {Object} detail payload
+  * @param {Boolean} bubbles event bubbles up through the DOM
+  * @param {object} composed event can pass through the shadow boundary
+  */},{key:"_dispatchCustomEvent",value:function _dispatchCustomEvent(eventName,detail){var bubbles=2<arguments.length&&arguments[2]!==void 0?arguments[2]:!0,composed=3<arguments.length&&arguments[3]!==void 0?arguments[3]:!0;this.dispatchEvent(new CustomEvent(eventName,{detail:detail,bubbles:bubbles,composed:composed}))}},{key:"retryOperationrequest",value:function retryOperationrequest(data){if("error-on-get-card-offer-detail"===data.errorType||"customer-email-data-error"===data.errorType){this._dispatchCustomEvent("get-offer-detail",this._setRequestAlternativeDetail(this.setAdditionalData))}else if("error-on-get-customer-contacts"===data.errorType){this._dispatchCustomEvent("get-customer-contact",{"customer-id":this.customerId})}}},{key:"setOfferDetailData",value:function setOfferDetailData(data){if(data&&data.details){this._financialData.amounts={maxAmount:data.details.maximumAmount[0].amount,minAmount:data.details.minimumAmount[0].amount,suggestedAmount:data.details.suggestedAmount[0].amount};this.camelizeObjectValuesByPaths(this._financialData,["product.name"]);this._dispatchCustomEvent("set-increment-offer-operation-data",this._financialData);if(this.setAdditionalData){this._setAdditionalConfig(data)}}else{this.modalInitDataError()}}},{key:"setCustomerContact",value:function setCustomerContact(data){var contactData=this._getEmail(data);if(contactData){this._financialData.contact={isChecked:contactData.isChecked,value:contactData.contact};this._dispatchCustomEvent("get-offer-detail",this._setRequestAlternativeDetail(this.setAdditionalData))}else{this.modalCustomerContactsError("customer-email-data-error")}}/**
+  * Receive customer id, product selected id & user product list from dashboard & get customer detail data
+  */},{key:"_getProductData",value:function _getProductData(){var _this=this;if(this.productId&&"undefined"!==this.productId&&this.productsList&&this.customerId){if(this.c(this.productsList[0],"products",{})){var productSelected=this.productsList[0].products.find(function(product){return product.id==="".concat(_this.productId)});if(!productSelected){this.modalInitDataError();return}this._financialData.product={imgSrc:this.c(productSelected,"imgSrc",this.setAdditionalData?"./images/cards/cardFrontDefault.png":""),number:this.c(productSelected,"description",{}).value,name:this.c(productSelected,"name",""),primaryAmount:this.c(productSelected,"primaryAmount",{}).amount,secondaryAmount:this.c(productSelected,"secondaryAmount",{}).amount,currency:this.c(productSelected,"primaryAmount",{}).currency,limitId:this.amountsArrayValid?"MAXIMUM_LIMIT":"GRANTED_CREDITS",id:this.c(productSelected,"id"),titleId:this.c(this.product,"title.id")};this.camelizeObjectValuesByPaths(this._financialData,["product.name"]);this._dispatchCustomEvent("set-financial-data",this._financialData.product);this._dispatchCustomEvent("get-customer-contact",{"customer-id":this.customerId})}else{this.modalInitDataError()}}}/**
+   * Set alternative request detail params
+   * @param {*} setAdditionalData
+   */},{key:"_setRequestAlternativeDetail",value:function _setRequestAlternativeDetail(setAdditionalData){return setAdditionalData?{offerId:this.offerId,cardId:this.productId}:{}}/**
+   * set additional configuration
+   */},{key:"_setAdditionalConfig",value:function _setAdditionalConfig(data){/* global moment */var cat=this.c(data,"rates.0.unit.percentage"),startDate=this.c(data,"rates.0.calculationDate"),endDate=this.c(data,"rates.0.endDate"),textValidity=endDate?"this.t(cells-credit-line-increase-end-date-description) ".concat(moment(endDate).format("LL")):"",textList="".concat(this.t("cells-credit-line-increase-cat-info")," ").concat(cat,"% ").concat(this.t("cells-credit-line-increase-start-date-description")," ").concat(moment(startDate).format("LL"),". ").concat(textValidity),hintList="hind-list-text-mx-1";this._dispatchCustomEvent("set-additional-config",{textList:textList,stLink:!1,showLabelAmounts:!0,legendTextCard:"cells-credit-line-increase-text-legend-card-1",legendTextCardBoldText:"cells-credit-line-increase-text-legend-card-2",_contentWrapperClass:"content-wrapper",subtitleAmountDescription:"cells-amount-input-label",optionalHeadingSubtitle:"cells-credit-line-increase-subtitle-amount",textButton:"cells-credit-line-increase-button-text",headingTextKeepInMind:"cells-credit-line-increase-title-list",contact:{isChecked:!0,value:""},skeletonClass:"",currencyCode:"$",listItemEdit:!0,skeleton:!1});this._dispatchCustomEvent("set-additional-configuration",hintList)}/**
+   * Get a PDF in base64 and send it to pdf viewer
+   * @param {Object} data
+   */},{key:"receiveAndOpenPDF",value:function receiveAndOpenPDF(data){if(data&&data.multipart){this._dispatchCustomEvent("increment-open-terms-conditions-pdf",data)}}/*
+  *get reset and exit on native device back button preset
+  */},{key:"manageBackButton",value:function manageBackButton(){this.reset();this._dispatchCustomEvent("increment-back-to-detail")}}],[{key:"is",get:function get(){return"glomo-credit-card-limit-increase-dm"}},{key:"properties",get:function get(){return{/**
+      * Customer id
+      */customerId:{type:String,notify:!0},/**
+      * Card product id
+      */productId:{type:String,notify:!0},/**
+      * products list from /cards/v0/cards/ service sending from dashboard page
+      */productsList:{type:Array,notify:!0},/**
+      * object to keep all necesary operation display data
+      */_financialData:{type:Object,value:function value(){return{}},notify:!0},/**
+      * Card product data detail (from card detail)
+      */product:{type:Object,value:function value(){return{}}},/**
+      * Available offers
+      */offers:{type:Array,value:function value(){return[]}},/**
+      * Specific product offer
+      */offer:{type:Object},/**
+      * Card product offers id
+      */offerId:{type:String},/**
+      * Credit offer data ( requested_card_offer -> set-card-offer-detail )
+      */offerDetailData:{type:Object},/**
+      * Language
+      */language:{type:String},/**
+      * Parsed response data to success review detail
+      */parseResponse:{type:Object,notify:!0},/**
+      * Add additional logic or Class on Ios native compilation
+      */isIosNative:{type:Boolean,value:!1},lastAction:{type:Object,value:null},/**
+       * @description set complemetary data
+       * @type {Boolean}
+       */setAdditionalData:{type:Boolean,value:!1},/**
+       * @description set title visibility
+       * @type {Boolean}
+       */showExitTitle:{type:Boolean,value:!1},/**
+       * Flag to control if the object sent to 'increment-put-limit-validated' event has an array of amounts
+       */amountsArrayValid:{type:Boolean,value:!1}}}},{key:"observers",get:function get(){return["_getProductData(productId, productsList, customerId)"]}}]);return GlomoCreditCardLimitIncreaseDm}(mixinBehaviors([i18nBehavior,CellsBehaviors.CellsCheckNestedKeysBehavior,CellsBehaviors.CellsTextFormatterBehavior// eslint-disable-next-line new-cap
+],AmountBehavior(Element)));customElements.define(GlomoCreditCardLimitIncreaseDm.is,GlomoCreditCardLimitIncreaseDm);</script></dom-module><dom-module id="glomo-cards-dm-mx" assetpath="glomo-cards-dm/"><template><cells-dm-global-apis-cards id="dm" host="[[host]]" card-id="[[cardId]]" offer-id="[[offerId]]" otp-id="[[otpId]]" limit-id="[[limitId]]" native="[[native]]" cards-api-version="[[cardsApiVersion]]" required-token="[[requiredToken]]" on-set-card-offer-detail="_setOfferSuccess" on-error-on-get-card-offer-detail="_setOfferError" on-set-card="_setCardSuccess" on-error-on-get-card="_setCardError" on-put-card-limits-response="responsePutCardLimitSuccess" on-error-on-put-card-limits="responsePutCardLimitError"></cells-dm-global-apis-cards></template><script>/**
+* @summary property manager element for Glomo Cards.
+* @customElement
+* @polymer
+* @extends {Polymer.Element}
+*/var GlomoCardsDmMx=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(GlomoCardsDmMx,_Polymer$mixinBehavio);function GlomoCardsDmMx(){babelHelpers.classCallCheck(this,GlomoCardsDmMx);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(GlomoCardsDmMx).apply(this,arguments))}babelHelpers.createClass(GlomoCardsDmMx,[{key:"getCard",/**
+   * Get card by id
+   */value:function getCard(payload){this.cardId=payload;this.$.dm.getCard({"card-id":this.cardId})}/**
+   * Get offer detail
+   */},{key:"getOfferDetail",value:function getOfferDetail(payload){this.offerId=payload.offerId;this.$.dm.getOfferDetail()}/**
+   * Put card limit
+   * @param {Object} property
+   */},{key:"putCardLimit",value:function putCardLimit(property){this.limitId=property.limitId;this.$.dm.putCardLimit({amountLimits:property.amounts?property.amounts:[{amount:property.amount,currency:property.currency}],offerId:this.offerId})}/**
+   * Set Card Success
+   * @param {*} payload
+   */},{key:"_setCardSuccess",value:function _setCardSuccess(payload){this._fire("set-card-success",payload.detail)}/**
+   * Set Card Error
+   * @param {*} payload
+   */},{key:"_setCardError",value:function _setCardError(payload){this._fire("set-card-error",payload)}/**
+   * Set Card Offer Success
+   * @param {*} payload
+   */},{key:"_setOfferSuccess",value:function _setOfferSuccess(payload){this._fire("set-card-offer-success",payload.detail)}/**
+   * Set Card Offer Error
+   * @param {*} payload
+   */},{key:"_setOfferError",value:function _setOfferError(payload){this._fire("set-card-offer-error",payload)}/**
+   * Put Success
+   * @param {*} payload
+   */},{key:"responsePutCardLimitSuccess",value:function responsePutCardLimitSuccess(payload){this._fire("response-put-card-limit-success",payload.detail)}/**
+   * Put Error
+   * @param {*} payload
+   */},{key:"responsePutCardLimitError",value:function responsePutCardLimitError(payload){this._fire("response-put-card-limit-error",payload)}/**
+   * Fire Custom Event
+   * @param {String} eventName
+   * @param {Object} detail
+   * @param {Boolean} bubbles
+   * @param {Boolean} compossed
+   */},{key:"_fire",value:function _fire(eventName,detail){var bubbles=2<arguments.length&&arguments[2]!==void 0?arguments[2]:!0,composed=3<arguments.length&&arguments[3]!==void 0?arguments[3]:!0;this.dispatchEvent(new CustomEvent(eventName,{detail:detail,composed:composed,bubbles:bubbles}))}}],[{key:"is",get:function get(){return"glomo-cards-dm-mx"}},{key:"properties",get:function get(){return{/**
+       * Chosen host to make requests to. Check providers.
+       */host:{type:String},/**
+       * Cards API version
+       */cardsApiVersion:{type:String,value:"0"},/**
+       * requiredToken, 'jwt' or 'tsec' or empty
+       */requiredToken:{type:String,value:"tsec"},/**
+       * Native request config
+       */native:{type:Boolean,value:!1},/**
+       * card id
+       */cardId:{type:String},/**
+       * offer id
+       */offerId:{type:String},/**
+       * limit id
+       */limitId:{type:String,value:"GRANTED_CREDITS"},/**
+       * ID to identify dm during otp process.
+       */otpId:{type:String,value:"increment"}}}}]);return GlomoCardsDmMx}(Polymer.mixinBehaviors([CellsBehaviors.i18nBehavior,CellsBehaviors.CellsTextFormatterBehavior],Polymer.Element));window.customElements.define(GlomoCardsDmMx.is,GlomoCardsDmMx);</script></dom-module><dom-module id="glomo-customers-mx-dm" assetpath="glomo-customers-dm/"><template><cells-dm-global-apis-customers id="dm" customer-id="[[customerId]]" avatar-id="[[avatarId]]" contact-detail-id="[[contactDetailId]]" host="[[host]]" customers="{{_customers}}" customer-detail="{{_customer}}" customer-contacts="{{_customerContactsDetails}}" customer-addresses="{{_customerAddressesInfo}}" api-aggregator-api-version="[[apiAggregatorApiVersion]]" api-aggregator-requests="[[apiAggregatorRequests]]" required-token="[[requiredToken]]" native="[[native]]"></cells-dm-global-apis-customers></template><script>/**
+ * @summary Data Manager for Glomo Customers Mexico.
+ * @customElement
+ * @polymer
+ * @extends {Polymer.Element}
+ */ /*eslint new-cap: [2, {"capIsNewExceptions": ["CellsProductFormatBehavior"]}]*/var GlomoCustomersMxDm=/*#__PURE__*/function(_CellsBehaviors$Cells){babelHelpers.inherits(GlomoCustomersMxDm,_CellsBehaviors$Cells);function GlomoCustomersMxDm(){babelHelpers.classCallCheck(this,GlomoCustomersMxDm);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(GlomoCustomersMxDm).apply(this,arguments))}babelHelpers.createClass(GlomoCustomersMxDm,[{key:"ready",value:function ready(){babelHelpers.get(babelHelpers.getPrototypeOf(GlomoCustomersMxDm.prototype),"ready",this).call(this);this.addEventListener("patch-contact-detail",this._onFetchContact.bind(this));this.addEventListener("put-avatar",this._onFetchAvatar.bind(this))}/**
+   * Get customers
+   */},{key:"getCustomers",value:function getCustomers(){this.$.dm.getCustomers()}/**
+   * Get customer detail
+   * @param {Object} params
+   */},{key:"getCustomerDetail",value:function getCustomerDetail(params){this.unmasked=!1;this.dispatchEvent(new CustomEvent("open-control-veil",{bubbles:!0,composed:!0}));this.$.dm.getCustomerDetail(params)}/**
+   * Get customer addresses unmasked
+   * @param {Object} params
+   */},{key:"getCustomerAddressesUnmasked",value:function getCustomerAddressesUnmasked(params){this.unmasked=!0;params=Object.assign({unmasked:this.unmasked},params);this.$.dm.getCustomerAddresses(params)}/**
+   * Get customer contacts unmasked
+   * @param {Object} params
+   */},{key:"getCustomerContactsUnmasked",value:function getCustomerContactsUnmasked(params){this.unmasked=!0;params=Object.assign({unmasked:this.unmasked},params);this.$.dm.getCustomerContacts(params)}/**
+   * Get customer contacts
+   * @param {Object} params
+   */},{key:"getCustomerContacts",value:function getCustomerContacts(params){this.$.dm.getCustomerContacts(params)}/**
+   * Fetch user
+   * @param {String} id
+   */},{key:"fetchUser",value:function fetchUser(id){this.set("customerId",id);if(!this.currentInfoEnabled){this.getCustomerDetail()}}/**
+   * Fetch email of user
+   * @param {String} email
+   */},{key:"fetchEmail",value:function fetchEmail(email){if(email&&this.user&&this.user.contactDetails){this.customerId=this.user.customerId;var contactDetailEmail=this._getEmail(this.user);if(contactDetailEmail){this.contactDetailId=contactDetailEmail.contactDetailId;this.dispatchEvent(new CustomEvent("open-control-veil",{bubbles:!0,composed:!0}));this.$.dm.patchContactDetail({contact:email,contactType:{id:"EMAIL"}})}}}/**
+   * Fetch avatar of user
+   * @param {Object} image
+   */},{key:"fetchAvatar",value:function fetchAvatar(image){if(image&&this.user&&this.user.avatars){this.customerId=this.user.customerId;this.avatarId=this.user.avatars.id;this.dispatchEvent(new CustomEvent("open-control-veil",{bubbles:!0,composed:!0}));this.$.dm.putAvatar(image)}}/**
+   * Sign Request
+   * @param {*} otp
+   */},{key:"signRequest",value:function signRequest(otp){this.$.dm.signRequest(otp)}},{key:"_getCurrentInfo",value:function _getCurrentInfo(){if(this.currentInfoEnabled&&this.user&&this.user.contactDetails){var email=this._getEmail(this.user);this.dispatchEvent(new CustomEvent("set-current-email",{bubbles:!0,composed:!0,detail:email&&email.contact||""}))}}},{key:"_getEmail",value:function _getEmail(user){return user.contactDetails.find(function(contact){return"EMAIL"===contact.contactType.id})}},{key:"_onFetchAvatar",value:function _onFetchAvatar(ev){this._onFetchData();this.dispatchEvent(new CustomEvent("on-fetch-avatar-successful",{bubbles:!0,composed:!0,detail:ev&&ev.detail&&ev.detail.url}))}},{key:"_onFetchContact",value:function _onFetchContact(ev){this._onFetchData();this.dispatchEvent(new CustomEvent("on-fetch-contact-successful",{bubbles:!0,composed:!0,detail:!0}))}},{key:"_onFetchData",value:function _onFetchData(){this.dispatchEvent(new CustomEvent("close-control-veil",{bubbles:!0,composed:!0}))}},{key:"_parseCustomers",value:function _parseCustomers(customers){return customers}},{key:"_parseCustomerDetail",value:function _parseCustomerDetail(customer){if(customer&&customer.info){if(!this.disabledUpdatedUser){this.user=customer.info;this.user.contactDetails=customer.contactDetails;this.user.addresses=customer.addresses;this.dispatchEvent(new CustomEvent("close-control-veil",{bubbles:!0,composed:!0}));return{firstName:customer.info.firstName,lastName:customer.info.lastName,completeName:customer.info.firstName+" "+customer.info.lastName,avatar:customer.info.avatars?customer.info.avatars:"",info:customer.contactDetails?this._getContactDetailsCustomer(customer.contactDetails):"",birthData:{birthDate:customer.info.birthData&&customer.info.birthData.birthDate},address:customer.addresses&&customer.addresses.length?this._getCustomerAddress(customer.addresses):{}}}}}},{key:"_getContactDetailsCustomer",value:function _getContactDetailsCustomer(contacts){var _this=this,contactDetails=contacts.reduce(function(acc,contact){var unmasked=!contact.contact.includes("*");if("MOBILE_NUMBER"===contact.contactType.id&&contact.isPreferential){acc.unshift({key:"cells-customer-profile-mobile",value:unmasked?_this._formatProduct(contact.contact,"phone"):contact.contact,visibleChars:5,isMobile:!0,unmasked:unmasked})}else if("EMAIL"===contact.contactType.id&&contact.isPreferential){acc.push({key:"cells-customer-profile-email",value:contact.contact,visibleChars:9,isChangeable:!0,unmasked:unmasked})}return acc},[]);return contactDetails}},{key:"_getCustomerAddress",value:function _getCustomerAddress(addresses){return addresses.reduce(function(acc,address){if("HOME"===address.addressType.id){acc={addressName:address.location.addressName,unmasked:!address.location.addressName.includes("*")};return acc}},{})}},{key:"_parseCustomerContactDetail",value:function _parseCustomerContactDetail(contacts){if(this.user){this.user.contactDetails=contacts;return this._getContactDetailsCustomer(contacts)}}},{key:"_parseCustomerAddresses",value:function _parseCustomerAddresses(addresses){if(this.user){this.user.addresses=addresses;return this._getCustomerAddress(addresses)}}}],[{key:"is",get:function get(){return"glomo-customers-mx-dm"}},{key:"properties",get:function get(){return{/**
+       * Chosen host to make requests to. Check providers.
+       */host:String,/**
+       * User info
+       */user:{type:Object,observer:"_getCurrentInfo",notify:!0},/**
+       * Customer Id
+       */customerId:{type:String,observer:"fetchUser"},/**
+       * Avatar Id
+       */avatarId:String,/**
+       * Contact detail Id
+       */contactDetailId:String,/**
+       * Customers array
+       */_customers:Array,/**
+       * Parsed customers array
+       */customers:{type:Array,computed:"_parseCustomers(_customers)",notify:!0},/**
+       * Customer object
+       */_customer:Object,/**
+       * Parsed customer object
+       */customer:{type:Object,computed:"_parseCustomerDetail(_customer)",notify:!0},/**
+       * Customer contacts array
+       */_customerContactsDetails:Array,/**
+       * Parsed customer contacts array
+       */customerContactsDetails:{type:Array,computed:"_parseCustomerContactDetail(_customerContactsDetails)",notify:!0},/**
+       * Customer addresses array
+       */_customerAddressesInfo:Array,/**
+       * Parsed customer addresses array
+       */customerAddressesInfo:{type:Array,computed:"_parseCustomerAddresses(_customerAddressesInfo)",notify:!0},/**
+       * Unmask data
+       */unmasked:{type:Boolean,value:!1},/**
+       * Get current info
+       */currentInfoEnabled:Boolean,/**
+       * Disabled updated user on get customer
+       */disabledUpdatedUser:Boolean,/**
+       * RequiredToken, 'jwt' or 'tsec' or empty
+       */requiredToken:{type:String,value:"tsec"},/**
+       * Requests for api aggregator
+       */apiAggregatorRequests:Array,/**
+       * Native request
+       */native:{type:Boolean,value:!1}}}}]);return GlomoCustomersMxDm}(CellsBehaviors.CellsProductFormatBehavior(Polymer.Element));window.customElements.define(GlomoCustomersMxDm.is,GlomoCustomersMxDm);</script></dom-module></div></body></html>

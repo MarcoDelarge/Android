@@ -1,0 +1,94 @@
+{
+    "data": [
+        {
+            "id": "0000",
+            "fullName": "Daniel González Ramírez",
+            "profile": {
+                "id": "PATRIMONIAL",
+                "name": "Director de oficina"
+            },
+            "contactDetails": [
+                {
+                    "contact": "56886756",
+                    "contactType": {
+                        "id": "OFFICE_NUMBER"
+                    }
+                },
+                {
+                    "contact": "60",
+                    "contactType": {
+                        "id": "PHONE_EXTENSION"
+                    }
+                },
+                {
+                    "contact": "5591565000",
+                    "contactType": {
+                        "id": "MOBILE_NUMBER"
+                    }
+                },
+                {
+                    "contact": "daniel.gonzalez@bbva.com",
+                    "contactType": {
+                        "id": "WORK_EMAIL"
+                    }
+                }
+            ],
+            "branch": {
+                "id": "005",
+                "name": "Torre Reforma BBVA"
+            },
+            "address": {
+                "addressName": "Av. Paseo de la Reforma #510",
+                "city": "Col. Cuahutémoc",
+                "state": "Ciudad de México",
+                "zipCode": 999
+            },
+            "isPreferential": true
+        },
+        {
+            "id": "0000",
+            "fullName": "Carlos Martínez Fernández",
+            "profile": {
+                "id": "PATRIMONIAL",
+                "name": "Banquero patrimonial"
+            },
+            "contactDetails": [
+                {
+                    "contact": "56886756",
+                    "contactType": {
+                        "id": "OFFICE_NUMBER"
+                    }
+                },
+                {
+                    "contact": "60",
+                    "contactType": {
+                        "id": "PHONE_EXTENSION"
+                    }
+                },
+                {
+                    "contact": "5591565000",
+                    "contactType": {
+                        "id": "MOBILE_NUMBER"
+                    }
+                },
+                {
+                    "contact": "carlos.martinez@bbva.com",
+                    "contactType": {
+                        "id": "WORK_EMAIL"
+                    }
+                }
+            ],
+            "branch": {
+                "id": "005",
+                "name": "Torre Reforma BBVA"
+            },
+            "address": {
+                "addressName": "Av. Paseo de la Reforma #510",
+                "city": "Col. Cuahutémoc",
+                "state": "Ciudad de México",
+                "zipCode": 19999
+            },
+            "isPreferential": true
+        }
+    ]
+}

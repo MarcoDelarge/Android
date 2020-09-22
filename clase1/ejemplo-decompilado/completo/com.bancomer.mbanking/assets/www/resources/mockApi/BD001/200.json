@@ -1,0 +1,42 @@
+{
+  "data": [{
+      "customerDocument": {
+        "documentInfo": {
+          "creationDate": "2018-09-08",
+          "description": "Contratacion Prestamos al Consumo"
+        },
+        "templateType": {
+          "id": "PDF",
+          "description": "PDF fle."
+        }
+      },
+      "id": "DMJNY3SEJR8T8ZN1YE36GZN75SEJV31823CXBZRJA7SKR7FBQXEFSX9XE0BGPKDDYSKFHEG55DH38R2E6RB600CN6JTRAD31PCE6G2G"
+    },
+    {
+      "customerDocument": {
+        "documentInfo": {
+          "creationDate": "2018-09-08",
+          "description": "Alta Domiciliacion"
+        },
+        "templateType": {
+          "id": "PDF",
+          "description": "PDF fle."
+        }
+      },
+      "id": "W8KF8V797BPGZ03HDNJ3F8MAVDEJV31823CXBZRJA7SKR7FBQXEFSX9XE0BGPKDDYSKFHEG55DH38R2E6RB600CN6JTRAD31PCE6G2G"
+    },
+    {
+      "customerDocument": {
+        "documentInfo": {
+          "creationDate": "2018-08-21",
+          "description": "Contratacion enrolamiento glomo/bmovil"
+        },
+        "templateType": {
+          "id": "PDF",
+          "description": "PDF fle."
+        }
+      },
+      "id": "C8FK4YJHKBHWP6T9CCWEX5K96JTTVQN2A34NQMQEEDCP3TKJ0WB3WFJH9MND53CEJCG5Q1WW8QY4D4FTTRMDVJHHHKVPFWCARYD8GQYJJSHHJBV6GQDWQWKRQC4PQ18KZQN4ETDMGTB1YM4A7XAJ0GGFEW"
+    }
+  ]
+}

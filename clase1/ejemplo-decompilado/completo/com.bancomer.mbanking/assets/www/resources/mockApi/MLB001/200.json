@@ -1,0 +1,112 @@
+{
+	"data": {
+		"balances" : {
+			"portfolioValue": {
+				"amount": 700.00,
+				"currency": "MXN"
+			},
+			"increases": [
+				{
+					"increaseType": {
+						"id": "CONSERVATIVE_PLUS",
+						"name": "Mercado de dinero"
+					},
+					"currentBalance": {
+						"amount": -28340.00,
+						"currency": "MXN"
+					}
+				},
+				{
+					"increaseType": {
+						"id": "CONSERVATIVE",
+						"name": "Fondos de inversión renta variable"
+					},
+					"currentBalance": {
+						"amount": 0.00,
+						"currency": "MXN"
+					}
+				},
+				{
+					"increaseType": {
+						"id": "MODERATE",
+						"name": "Fondos de inversión deuda"
+					},
+					"currentBalance": {
+						"amount": 46746520.00,
+						"currency": "MXN"
+					}
+				},
+				{
+					"increaseType": {
+						"id": "AGRESIVE_MX",
+						"name": "Mercado de capitales"
+					},
+					"currentBalance": {
+						"amount": 78250.00,
+						"currency": "MXN"
+					}
+				},
+				{
+					"increaseType": {
+						"id": "LONG_TERM",
+						"name": "Inversiones Multi-Estrategia"
+					},
+					"currentBalance": {
+						"amount": 981241230.00,
+						"currency": "MXN"
+					}
+				},
+				{
+					"increaseType": {
+						"id": "REALa",
+						"name": "Inversiones Bancarias"
+					},
+					"currentBalance": {
+						"amount": -10.00,
+						"currency": "MXN"
+					}
+				},
+				{
+					"increaseType": {
+						"id": "MIXED",
+						"name": "Otros"
+					},
+					"currentBalance": {
+						"amount": 11280.00,
+						"currency": "MXN"
+					}
+				},
+				{
+					"increaseType": {
+						"id": "BAG_RV",
+						"name": "Efectivo"
+					},
+					"currentBalance": {
+						"amount": 700.00,
+						"currency": "MXN"
+					}
+				},
+				{
+					"increaseType": {
+						"id": "DOLLAR_CONSERVATIVE_PLUS",
+						"name": "Obligaciones"
+					},
+					"currentBalance": {
+						"amount": 660.00,
+						"currency": "MXN"
+					}
+				},
+				{
+					"increaseType": {
+						"id": "DOLLAR_CONSERVATIVE",
+						"name": "Estructurados"
+					},
+					"currentBalance": {
+						"amount": 170.00,
+						"currency": "MXN"
+					}
+				}
+			]
+		}
+	}
+}

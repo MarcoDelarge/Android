@@ -1,0 +1,95 @@
+{
+    "data": [{
+      "period": {
+        "periodType": "MONTHLY",
+        "startDate": "2017-12-01",
+        "endDate": "2017-12-31"
+      },
+      "balanceTypes": [
+        {
+          "id": "INITIAL_BALANCE",
+          "icon": "glomo:checkup_mustard_coin",
+          "type": "Saldo inicial",
+          "description": "Balance at first day of period.",
+          "amount": {
+            "amount": 7000,
+            "currencyCode": "MXN",
+            "class": "amount-medium"
+          },
+          "currency": "MXN"
+        },
+        {
+          "id": "TOTAL_DEPOSITS",
+          "icon": "glomo:checkup_aqua_coin",
+          "type": "Depósitos",
+          "description": "Total of deposits or incomes in the period without include transfer between own sight accounts.",
+          "amount": {
+            "amount": 2000,
+            "currencyCode": "MXN",
+            "class": "amount-medium"
+          },
+          "currency": "MXN"
+        },
+        {
+          "id": "PARTIAL_EXPENSE_BALANCE",
+          "icon": "glomo:checkup_red_bag",
+          "type": "Gastos",
+          "description": "Payment total of expenses without payment loans, insurance payment and movements of investment.",
+          "amount": {
+            "amount": 5000,
+            "currencyCode": "MXN",
+            "class": "amount-medium"
+          },
+          "currency": "MXN"
+        },
+        {
+          "id": "CREDIT_LOANS_PAYMENT_BALANCE",
+          "icon": "glomo:checkup_transfer_card",
+          "type": "Pago de créditos",
+          "description": "Payment total of loans in period.",
+          "amount": {
+            "amount": 10000,
+            "currencyCode": "MXN",
+            "class": "amount-medium"
+          },
+          "currency": "MXN"
+        },
+        {
+          "id": "SAVING_BALANCE",
+          "icon": "glomo:checkup_line_arrow",
+          "type": "Ahorro e inversiones",
+          "description": "Payment total in BBVA or products of saving without sight accounts.",
+          "amount": {
+            "amount": 4000,
+            "currencyCode": "MXN",
+            "class": "amount-medium"
+          },
+          "currency": "MXN"
+        },
+        {
+          "id": "EXPENSE_INSURANCE_BALANCE",
+          "icon": "glomo:checkup_insurance",
+          "type": "Seguros",
+          "description": "Amount assignee to expenses by payment concept of insurance.",
+          "amount": {
+            "amount": 1000,
+            "currencyCode": "MXN",
+            "class": "amount-medium"
+          },
+          "currency": "MXN"
+        },
+        {
+          "id": "AVAILABLE_BALANCE",
+          "icon": "glomo:checkup_mustard_coin",
+          "type": "Saldo disponible",
+          "description": "Available balance in all sight accounts.",
+          "amount": {
+            "amount": 7000,
+            "currencyCode": "MXN",
+            "class": "amount-medium"
+          },
+          "currency": "MXN"
+        }
+      ]
+    }]
+  }

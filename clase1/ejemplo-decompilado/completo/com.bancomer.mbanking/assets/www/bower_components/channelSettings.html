@@ -1,0 +1,50 @@
+<html><head></head><body><div hidden="" by-polymer-bundler=""><dom-module id="glomo-channel-settings-dm" assetpath="glomo-channel-settings-dm/"><template><cells-generic-dp></cells-generic-dp></template><script>var GlomoChannelSettingsDm=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(GlomoChannelSettingsDm,_Polymer$mixinBehavio);function GlomoChannelSettingsDm(){babelHelpers.classCallCheck(this,GlomoChannelSettingsDm);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(GlomoChannelSettingsDm).apply(this,arguments))}babelHelpers.createClass(GlomoChannelSettingsDm,[{key:"initPageSettings",/**
+  * Init properties
+  */value:function initPageSettings(){this.set("failedDisable",0);this.set("failedCancel",0);this.set("resetFlag",!0);this.set("productSelectorFlag",!0);this.set("phoneNumber","(01)-8002262663")}/**
+  * Navigation to other page
+  * @param {Object} destinationPage
+  */},{key:"_generateNavigationTo",value:function _generateNavigationTo(destinationPage){this.dispatchEvent(new CustomEvent("channel-settings-navigate-to-page-event",{detail:{page:destinationPage,skipHistory:!0},bubbles:!0,composed:!0}))}/**
+  * Back button navigation depending on the current modal
+  */},{key:"channelSettingsBackButtonTaped",value:function channelSettingsBackButtonTaped(){this.reset();if(this.productSelectorFlag){this._generateNavigationTo("settings")}else{this.dispatchEvent(new CustomEvent("return-to-dashboard-event"),{bubbles:!0,composed:!0});this._generateNavigationTo("menu")}this.set("productSelectorFlag",!1)}/**
+  * Cancel tapped
+  */},{key:"channelSettingsCancelTapped",value:function channelSettingsCancelTapped(){this.reset();this._generateNavigationTo("settings")}/**
+  * Request disable action
+  */},{key:"requestDisableMovil",value:function requestDisableMovil(){this.resetFlag=!1;var sendBodyMV={status:{id:"SUSPENDED"}};this.dispatchEvent(new CustomEvent("request-payload-to-native-disable-event",{detail:sendBodyMV,bubbles:!0,composed:!0}))}/**
+  * Reset flag on accept in cancel modal
+  */},{key:"cancelAccept",value:function cancelAccept(){this.resetFlag=!1}/**
+  * Dispatch the disable error modal, and 3rd error modal when operation failed more than 3 times
+  */},{key:"requestErrorDisable",value:function requestErrorDisable(){if(!this.resetFlag){this.failedDisable++;if(3<=this.failedDisable){this._dispatchEventModal("unresolved-disable-modal-event","unresolvedDisable");this.reset()}else{this._dispatchEventModal("open-modal-error-disable-event","errorDisabled")}}}/**
+  * Dispatch the cancel error modal, and 3rd error modal when operation failed more than 3 times
+  */},{key:"requestErrorCancel",value:function requestErrorCancel(){if(!this.resetFlag){this.failedCancel++;if(3<=this.failedCancel){this._dispatchEventModal("unresolved-cancel-modal-event","unresolvedCancel");this.reset()}else{this._dispatchEventModal("open-modal-error-cancel-event","errorCancel")}}}/**
+  * Request for the call
+  */},{key:"requestCall",value:function requestCall(payload){if(payload&&!payload.cancelFromHeader){this.dispatchEvent(new CustomEvent("request-call-event",{detail:{phoneNumber:this.phoneNumber},bubbles:!0,composed:!0}))}}/**
+  * Reset variables
+  */},{key:"reset",value:function reset(){this.failedDisable=0;this.failedCancel=0;this.set("resetFlag",!0)}/**
+  * Set product selector (disable and cancel) flag
+  */},{key:"_validateOpenModal",value:function _validateOpenModal(){this.set("productSelectorFlag",!0)}/***
+   * Open modal with option disabled
+   */},{key:"openModalDisable",value:function openModalDisable(){this._validateOpenModal();this._dispatchEventModal("open-modal-disabled","toDisabled")}/***
+   * Open modal with option cancel
+   */},{key:"openModalCancel",value:function openModalCancel(){this._validateOpenModal();this._dispatchEventModal("open-modal-cancel","toCancel")}/**
+   * Method dispatch Custom event to open diferent modals
+   * @param {String} nameEvent
+   * @param {String} typeEvent
+   */},{key:"_dispatchEventModal",value:function _dispatchEventModal(nameEvent,typeEvent){var configModal=this._setConfigModal(typeEvent);this.dispatchEvent(new CustomEvent(nameEvent,{detail:configModal,bubbles:!0,composed:!0}))}/**
+   * Set configuration to open modal
+   * @param {String} typeEvent
+   */},{key:"_setConfigModal",value:function _setConfigModal(typeEvent){var newconfig={},imgError="./images/Illustration_error.svg",titleError="glomo-channel-settings-error-operation-title";switch(typeEvent){case"toDisabled":newconfig={heroImage:"./images/Illustration_mobile.svg",title:"glomo-channel-settings-disable-title",acceptBtLabel:"glomo-channel-settings-disable-acceptbtn",cancelBtLabel:"glomo-channel-settings-disable-cancelbtn",messageTitle:"glomo-channel-settings-disable-message-title",messageTextOne:"glomo-channel-settings-disable-message-p-one",messageTextTwo:"glomo-channel-settings-disable-message-p-two",closeOneButton:!1,closeSecondButton:!0};break;case"toCancel":newconfig={heroImage:"./images/Illustration_deskmob.svg",title:"glomo-channel-settings-cancel-title",acceptBtLabel:"glomo-channel-settings-cancel-acceptbtn",cancelBtLabel:"glomo-channel-settings-cancel-cancelbtn",messageTitle:"glomo-channel-settings-cancel-message-title",messageTextOne:"glomo-channel-settings-cancel-message-p-one",messageTextTwo:"glomo-channel-settings-cancel-message-p-two",closeOneButton:!1,closeSecondButton:!0};break;case"errorDisabled":newconfig={heroImage:imgError,title:titleError,acceptBtLabel:"glomo-channel-settings-error-operation-acceptbtn",cancelBtLabel:"glomo-channel-settings-error-operation-cancelbtn",messageTitle:"glomo-channel-settings-error-disable-message-title",messageTextOne:"glomo-channel-settings-error-disable-message",messageTextTwo:"",closeOneButton:!0,closeSecondButton:!0};break;case"errorCancel":newconfig={heroImage:imgError,title:titleError,acceptBtLabel:"glomo-channel-settings-error-operation-acceptbtn",cancelBtLabel:"glomo-channel-settings-error-operation-cancelbtn",messageTitle:"glomo-channel-settings-error-cancel-message-title",messageTextOne:"glomo-channel-settings-error-cancel-message",messageTextTwo:"",closeOneButton:!0,closeSecondButton:!0};break;case"unresolvedDisable":newconfig={heroImage:imgError,title:titleError,acceptBtLabel:"glomo-channel-settings-unresolved-acceptbtn",cancelBtLabel:"glomo-channel-settings-unresolved-phone-bbva",messageTitle:"glomo-channel-settings-unresolved-disable-message-title",messageTextOne:"glomo-channel-settings-unresolved-disable-message",messageTextTwo:"",closeOneButton:!0,closeSecondButton:!0};break;case"unresolvedCancel":newconfig={heroImage:imgError,title:titleError,acceptBtLabel:"glomo-channel-settings-unresolved-acceptbtn",cancelBtLabel:"glomo-channel-settings-unresolved-phone-bbva",messageTitle:"glomo-channel-settings-unresolved-cancel-message-title",messageTextOne:"glomo-channel-settings-unresolved-cancel-message",messageTextTwo:"",closeOneButton:!0,closeSecondButton:!0};break;}return{code:"modal-error",selectedConfig:{openMaximized:!0,fullHeight:!0,iconOnlyFullHeight:!0,className:"channel-settings-confirm",title:newconfig.title,heroImage:newconfig.heroImage,acceptBtLabel:newconfig.acceptBtLabel,cancelBtLabel:newconfig.cancelBtLabel,closeOnPrimaryButton:newconfig.closeOneButton,closeOnSecondaryButton:newconfig.closeSecondButton,template:{type:"paragraphs",values:[{title:newconfig.messageTitle,class:"spacing content-fs-xl"},{text:newconfig.messageTextOne,class:"content-fs-ml"},{text:newconfig.messageTextTwo,class:"content-fs-ml"}]}}}}}],[{key:"is",get:function get(){return"glomo-channel-settings-dm"}},{key:"properties",get:function get(){return{/**
+       * Counter for the 3rd disable error modal
+       * @type {Number}
+       */failedDisable:{type:Number,value:0},/**
+       * Counter for the 3rd cancel error modal
+       * @type {Number}
+       */failedCancel:{type:Number,value:0},/**
+       * Reset flag
+       * @type {Boolean}
+       */resetFlag:{type:Boolean,value:!0},/**
+       * Product selector (disable and cancel) flag
+       * @type {Boolean}
+       */productSelectorFlag:{type:Boolean,value:!0},/**
+       * Phone number
+       * @type {String}
+       */phoneNumber:{type:String,value:""}}}}]);return GlomoChannelSettingsDm}(Polymer.mixinBehaviors([CellsBehaviors.i18nBehavior],Polymer.Element));customElements.define(GlomoChannelSettingsDm.is,GlomoChannelSettingsDm);</script></dom-module></div></body></html>

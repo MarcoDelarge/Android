@@ -1,0 +1,67 @@
+{
+    "data": {
+        "id": "135",
+        "alias": "PAGOS TARJETAS OTROS BANCOS",
+        "shortAlias": "OTROS BANC",
+        "operationType": {
+            "id": "EXTERNAL_CREDIT_CARD_PAYMENT",
+            "description": "PAGO DE TARJETAS DE OTROS BANCOS"
+        },
+        "notification": {
+            "notificationDay": 10,
+            "isActive": true,
+            "contactInformation": {
+                "contactDetailId": "3"
+            }
+        },
+        "contract": {
+            "number": "001101300210423386"
+        },
+        "operationDetail": {
+            "receiver": {
+                "contract": {
+                    "number": "4241375400322274",
+                    "numberType": {
+                        "id": "PAN",
+                        "name": "PAN"
+                    },
+                    "bank": {
+                        "id": "0009",
+                        "name": "SCOTIABANK PERU S.A.A."
+                    },
+                    "productType": {
+                        "id": "CARD",
+                        "name": "CARD"
+                    }
+                },
+                "holder": {
+                    "holderName": "MAGIC JUAN"
+                }
+            }
+        },
+        "operationImport": {
+            "currency": "PEN",
+            "amount": 20
+        },
+        "availableChannels": [
+            {
+                "availableChannel": {
+                    "id": "BMOV",
+                    "name": "BANCA MOVIL"
+                }
+            },
+            {
+                "availableChannel": {
+                    "id": "BNET",
+                    "name": "BANCA POR INTERNET"
+                }
+            },
+            {
+                "availableChannel": {
+                    "id": "BNET",
+                    "name": "BANCA POR INTERNET"
+                }
+            }
+        ]
+    }
+}

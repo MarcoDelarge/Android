@@ -1,0 +1,64 @@
+<html><head></head><body><div hidden="" by-polymer-bundler=""><dom-module id="credit-card-upgrade-contract-success-styles" assetpath="credit-card-upgrade-contract-success/"><template><style>:host{display:block;box-sizing:border-box;font-family:var(--cells-fontDefault, sans-serif);width:100%;position:absolute;top:0.03em;bottom:var(--cells-glomo-cta-footer-height, 4.75rem);overflow-y:auto;@apply --credit-card-upgrade-contract-success;}:host([hidden]), [hidden]{display:none !important;}cells-successful-response{--cells-atom-date-color:var(--bbva-white);--cells-successful-response-actions:{display:none;};--cells-successful-response-cells-atom-amount-huge:{--cells-atom-amount-currency-left_-_font-size:22px;--cells-atom-amount-fractional_-_font-size:22px;};--cells-successful-response-amount-description:{font-style:normal;padding-top:40px;};--cells-successful-response-cells-atom-amount:{padding:0px;};}*, *:before, *:after{box-sizing:inherit;}*:focus{@apply --cells-global-focus;}*:active{@apply --cells-global-active;}button:active{@apply --cells-global-active;}</style></template></dom-module><dom-module id="credit-card-upgrade-contract-success" assetpath="credit-card-upgrade-contract-success/"><template><style include="credit-card-upgrade-contract-success-styles credit-card-upgrade-contract-success-shared-styles"></style><slot></slot><cells-successful-response class="credit-card-upgrade" format-date="[[formatDate]]" local-currency="[[grantedCreditsCurrency]]" result="{{result}}"><div slot="header-details-primary"><ul class="cells-key-values-list inline"><template is="dom-repeat" items="[[result.headerDetailsPrimary]]" id="headerDetailsPrimaryList"><li><cells-key-values key="[[item.key]]" value="[[item.value]]" local-currency="[[item.localCurrency]]" language="[[item.language]]" mask-chars="[[item.maskChars]]" mask-visible-chars="[[item.visibleChars]]"></cells-key-values></li></template></ul></div><div slot="header-details-secondary"><ul class="cells-key-values-list inline"><template is="dom-repeat" items="[[result.headerDetailsSecondary]]" id="headerDetailsSecondaryList"><li><cells-key-values key="[[item.key]]" value="[[item.value]]" local-currency="[[item.localCurrency]]" language="[[item.language]]" mask-chars="[[item.maskChars]]" mask-visible-chars="[[item.visibleChars]]"></cells-key-values></li></template></ul></div></cells-successful-response></template><script>(function(){'use strict';Polymer({is:"credit-card-upgrade-contract-success",behaviors:[CellsBehaviors.i18nBehavior],properties:{/**
+       * @desc text that will be displayed on the header bar
+       * @type {String}
+       */headerTitleText:{type:String,notify:!0},/**
+       * @desc first heading to be displayed
+       * @type {String}
+       */successHeading:{type:String},/**
+       * @desc date at which the operation was performed
+       * @type {String}
+       */operationDate:{type:String},/**
+       * contract receipt format date
+       * @type {String}
+       */formatDate:{type:String},/**
+       * @desc title to be displayed
+       * @type {String}
+       */titleName:{type:String},/**
+       * @desc lable suffixed with the credit line
+       * @type {String}
+       */creditLineLabel:{type:String},/**
+       * @desc granted credit amount
+       * @type {String}
+       */grantedCreditsAmount:{type:String},/**
+       * @desc granted credit currency
+       * @type {String}
+       */grantedCreditsCurrency:{type:String},/**
+       * @desc url for the image
+       * @type {String}
+       */cardImageUrl:{type:String},/**
+       * @desc label above the shipping address
+       * @type {String}
+       */shippingAddressLabel:{type:String},/**
+       * @desc address can be office address or to be delivered address
+       * @type {String}
+       */shippingAddress:{type:String},/**
+       * @desc text to be dislayed in the info box
+       * @type {String}
+       */infoText:{type:String},/**
+       * @desc label for the operation number
+       * @type {String}
+       */operationNumberLabel:{type:String},/**
+       * @desc confirmation of the operation
+       * @type {String}
+       */operationNumber:{type:String},/**
+       * @desc Text suffixed to display email to be notified
+       * @type {String}
+       */mailInfoLabel:{type:String},/**
+       * @desc email to be notified
+       * @type {String}
+       */mailAddress:{type:String},/**
+       * @desc text on the button
+       * @type {String}
+       */primaryButtonText:{type:String,notify:!0},/**
+       * @desc payload to be recieved form previous page
+       * @type {String}
+       */previousPagePayload:{type:Object,observer:"_previousPayloadChanged"}},observers:["_mapToPayload(previousPagePayload, mailAddress)"],/**
+     * @desc observer for previousPagePayload
+     * @param {Object} data
+     */_previousPayloadChanged:function _previousPayloadChanged(data){if(data&&data.title){this.dispatchEvent(new CustomEvent("show-spinner"));this.dispatchEvent(new CustomEvent("request-customer-email"))}},/**
+     * The success data payload is retrieved from the previous page and is mapped to re
+     * respective properties
+     * @param {Object} data
+     */_mapToPayload:function _mapToPayload(data,mailAddress){var _this=this;if(data&&mailAddress){this.dispatchEvent(new CustomEvent("hide-spinner"));this.headerTitleText=this.t("credit-card-upgrade-contract-success-header-title");this.successHeading=this.t("credit-card-upgrade-contract-success-heading");this.creditLineLabel=this.t("credit-card-upgrade-contract-success-credit-line-label");this.shippingAddressLabel=this.t("credit-card-upgrade-contract-success-shipping-address-label");this.infoText=this.t("credit-card-upgrade-contract-success-info-text");this.operationNumberLabel=this.t("credit-card-upgrade-contract-success-operation-number-label");this.mailInfoLabel=this.t("credit-card-upgrade-contract-success-mail-info-label");this.primaryButtonText=this.t("credit-card-upgrade-contract-success-leave-button");this.titleName=data.title.name;this.operationDate=data.successResponse.operationDate;this.operationNumber=data.successResponse.operationNumber;this.grantedCreditsAmount=data.successResponse.grantedCredits[0].amount;this.grantedCreditsCurrency=data.successResponse.grantedCredits[0].currency;this.cardImageUrl=data.imageUrl;this.shippingAddress=data.userAddress;this.async(function(){_this.successResultData()},0)}},/**
+     * prepares a payload using the properties, which is used in cells-successful-response component
+     */successResultData:function successResultData(){this.result={date:this.operationDate,title:this.successHeading,origin:{avatar:{src:this.cardImageUrl,type:"card"},product:{name:" "}},exchangeRate:!0,amountLabel:this.titleName+" "+this.creditLineLabel,chargeAmount:{amount:this.grantedCreditsAmount,currency:this.grantedCreditsCurrency},topInfo:[{key:"",value:this.titleName,class:"bold spacing md"},{key:this.shippingAddressLabel,value:this.shippingAddress,class:"spacing whitespace"}],bottomInfo:[{key:this.operationNumberLabel,value:this.operationNumber,class:"inline secondary separator spacing"},{key:this.mailInfoLabel,value:this.mailAddress,class:"bold"}],message:{icon:"coronita:info",type:"info",text:this.infoText}}}})})();</script></dom-module></div></body></html>

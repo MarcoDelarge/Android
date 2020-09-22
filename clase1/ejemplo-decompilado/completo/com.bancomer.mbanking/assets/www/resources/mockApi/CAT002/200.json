@@ -1,0 +1,45 @@
+{
+    "data": [
+        {
+            "id": "B",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "BITEL"
+                }
+            ]
+        },
+        {
+            "id": "C",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "CLARO"
+                }
+            ]
+        },
+        {
+            "id": "E",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "ENTEL"
+                }
+            ]
+        },
+        {
+            "id": "M",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "MOVISTAR"
+                }
+            ]
+        }
+    ],
+    "pagination": {
+        "firstPage": "/catalogs/v0/catalogs/0942/records",
+        "lastPage": "/catalogs/v0/catalogs/0942/records?paginationKey=LAST",
+        "pageSize": 4
+    }
+}

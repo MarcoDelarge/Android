@@ -1,0 +1,46 @@
+{
+  "data": {
+    "id": "GJBD0Y36JYZ0YMJZ7GKN6JRXFM",
+    "delivery": {
+      "destination": {
+        "id": "BRANCH",
+        "name": "El cliente recoge la tarjeta de crédito en la sucursal. "
+      }
+    },
+    "paymentMethod": {
+      "id": "MINIMUM_AMOUNT_PAYMENT",
+      "name": "Monto Mínimo de Pago.",
+      "period": {
+        "id": "Monthly",
+        "name": "Mensual"
+      }
+    },
+    "grantedCredits": [
+      {
+        "amount": 111000,
+        "currency": "MXN"
+      }
+    ],
+    "relatedContracts": [
+      {
+        "relatedContractId": "YPH6N8KR2ATSR4595XD23FHG19BH2QTF0V7B71PD5QKAXBJ1S080",
+        "contractId": "xtChhilMSgUKkKfAJqVrUPg0s1eGIIhR5AhmsUfdMewTjn1LjcTWGZtQln5CGp4gcrOCxV9patA",
+        "number": "00740010001500002840",
+        "numberType": {
+          "id": "CCC",
+          "name": "Codigo Cuenta Cliente"
+        },
+        "product": {
+          "id": "ACCOUNTS",
+          "name": "Accounts"
+        },
+        "relationType": {
+          "id": "LINKED_WITH",
+          "name": "Indica que el contrato está vinculado a la tarjeta actual. Esta relación se puede usar para procesos adicionales, en los que una tarjeta debe tener una cuenta relacionada, por ejemplo, relacionar la cuenta predeterminada para cargar los movimientos que se realizarán con una tarjeta de débito. Relacione la cuenta predeterminada para cargar los pagos atrasados ​​de los últimos períodos de una tarjeta de crédito."
+        }
+      }
+    ],
+    "operationNumber": "8115423685",
+    "operationDate": "2018-11-15T14:42:00.000-06:00"
+  }
+}

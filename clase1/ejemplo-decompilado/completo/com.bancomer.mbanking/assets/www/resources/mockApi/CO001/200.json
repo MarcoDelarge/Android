@@ -1,0 +1,208 @@
+{
+  "data": [
+    {
+      "id": "BMK9ETNJ5K9FRFJ9SWFH354BF6YYJ06EB7922N8CVJSGGF35ATY0",
+      "name": "PRESTAMO PERSONAL INMEDIATO",
+      "description": "¿Necesitas dinero? Obtén un préstamo",
+      "priority": 0,
+      "isSimulationAllowed": false,
+      "isImproved": false,
+      "isShownInDashboard": true,
+      "amounts": [
+        {
+          "amount": "22300.0",
+          "currency": "MXN"
+        }
+      ],
+      "product": {
+        "id": "0PPI",
+        "productType": {
+          "id": "LOANS",
+          "name": "0PPI"
+        }
+      },
+      "origin": {
+        "id": "ALT",
+        "description": "ALTERNATIVE"
+      },
+      "image": {
+        "name": "avatar_CAMPAIGN0PPI-OF",
+        "id": "NKCQ02V6DV95E5ZK7JMVMG6M873EQH3P8PSX6FZC0DBHSTQVKXY69VBJJYSJ5K7EJZJ9JG9METJGG",
+        "url": "http://archivingbbva.axtel.mx:8082/v2/documents/logo?key=avatar_CAMPAIGN0PPI-OF"
+      }
+    },
+    {
+      "id": "DZH1M7T6YYJ9E3CDZNNZFPQP9C841C1NKE1V6SYZSQ7XT17JS7YG",
+      "name": "SEGURO DE VIDA INDIVIDUAL",
+      "description": "Protege a tu seres queridos con este seguro de vida",
+      "priority": 0,
+      "isSimulationAllowed": false,
+      "isImproved": false,
+      "isShownInDashboard": true,
+      "period": {
+          "startDate": "2019-03-15",
+          "endDate": "2019-03-15"
+      },
+      "amounts": [
+          {
+              "amount": "0.0",
+              "currency": "MX"
+          }
+      ],
+      "product": {
+          "id": "4046",
+          "productType": {
+              "id": "LIFEHEALTH-INSURANCE",
+              "name": "4046"
+          }
+      },
+      "origin": {
+          "description": "INSURANCE",
+          "id": "ALT"
+      },
+      "image": {
+          "url": "http://archivingbbva.axtel.mx:8082/v2/documents/logo?key=avatar_CAMPAIGN4046-OF",
+          "name": "avatar_CAMPAIGN4046-OF",
+          "id": "NKCQ02V6DV95E5ZK7JMVMG6M85FS2E19CD1XNMR8QXZDVQJWQ7WGXET74GW7QWZQTC67SZY4RQ2D0"
+      }
+    },
+    {
+      "id": "R2078MQJG4MPNDW0YSK58ZNJVMKTPQWCGQT275WNNCYDCNK1G9H0",
+      "description": "¿Necesitas dinero? Obtén un adelanto de tu sueldo",
+      "name": "ADELANTO EXPRESS",
+      "priority": 0,
+      "isSimulationAllowed": false,
+      "isImproved": false,
+      "isShownInDashboard": true,
+      "amounts": [
+        {
+          "amount": "2600.0",
+          "currency": "MXN"
+        }
+      ],
+      "product": {
+        "id": "ANOM",
+        "productType": {
+          "id": "PAYROLL",
+          "name": "ANOM"
+        }
+      },
+      "origin": {
+        "id": "ALT",
+        "description": "ALTERNATIVE"
+      },
+      "image": {
+        "name": "avatar_CAMPAIGNANOM-OF",
+        "id": "NKCQ02V6DV95E5ZK7JMVMG6M87R1Q4PN40DMJW8MG63DMGJ2NS2HJ5SNR656CKE80W32PDE7NX3TC",
+        "url": "http://archivingbbva.axtel.mx:8082/v2/documents/logo?key=avatar_CAMPAIGNANOM-OF"
+      }
+    },
+    {
+      "id": "V4008E44GMWG70NF9BRCV4RQSMNESFNDHNS0T9AF931KYMW665T0",
+      "name": "HIPOTECARIO",
+      "description": "Obtén un crédito hipotecario",
+      "priority": 0,
+      "isSimulationAllowed": false,
+      "isImproved": false,
+      "isShownInDashboard": true,
+      "amounts": [
+        {
+          "amount": "368326.89",
+          "currency": "MXN"
+        }
+      ],
+      "product": {
+        "id": "0HIP",
+        "productType": {
+          "id": "LOANS",
+          "name": "0HIP"
+        },
+        "subProductType": {
+          "id": "ADQUISITION",
+          "description": "adquisition"
+        }
+      },
+      "origin": {
+        "id": "ALT",
+        "description": "ALTERNATIVE"
+      },
+      "image": {
+        "name": "avatar_CAMPAIGN0HIP-OF",
+        "id": "NKCQ02V6DV95E5ZK7JMVMG6M877D0NSBA7ZT3YAV7D843BBPEDDFYP44MZVVYRR8GQ50CF5FDXGHE",
+        "url": "http://archivingbbva.axtel.mx:8082/v2/documents/logo?key=avatar_CAMPAIGN0HIP-OF"
+      }
+    },
+    {
+      "id": "G183C6JEN9SW1NSGZBZX203TKR2EJV8MKAX9T0GTH2JQAKWKMM90",
+      "name": "AUTOMOVIL",
+      "description": "Obtén un crédito de auto",
+      "priority": 0,
+      "isSimulationAllowed": false,
+      "isImproved": false,
+      "isShownInDashboard": true,
+      "amounts": [
+        {
+          "amount": "93300.0",
+          "currency": "MXN"
+        }
+      ],
+      "product": {
+        "id": "AUTO",
+        "productType": {
+          "id": "LOANS",
+          "name": "AUTO"
+        },
+        "subProductType": {
+          "id": "NEW",
+          "description": "new"
+        }
+      },
+      "origin": {
+        "id": "ALT",
+        "description": "ALTERNATIVE"
+      },
+      "image": {
+        "name": "avatar_CAMPAIGNAUTO-OF",
+        "id": "NKCQ02V6DV95E5ZK7JMVMG6M84Z8DZMWW4EKWH42TV0YTS7ZCB6M1CEBCYW6PERJQGQ3NFCDCTC1M",
+        "url": "http://archivingbbva.axtel.mx:8082/v2/documents/logo?key=avatar_CAMPAIGNAUTO-OF"
+      }
+    },
+    {
+      "id": "NQQ7SPCGNMKGSHCKWRYCG146Z63EFYF513P71KBMNKS483RTDJ8G",
+      "name": "CREDIT CARD UPGRADE",
+      "description": "Aumenta tu línea a de crédito y asciende tu tarjeta a Platinum",
+      "isSimulationAllowed": false,
+      "isImproved": false,
+      "isShownInDashboard": true,
+      "offerType": {},
+      "period": {
+        "startDate": "2018-06-30",
+        "endDate": "2018-07-30"
+      },
+      "amounts": [
+        {
+          "amount": "8000.0",
+          "currency": "MXN"
+        }
+      ],
+      "product": {
+        "id": "0595",
+        "contractId": "XKWS9D2P88418H1TK9HKC1PZC7A34KBTMCE0A4KW4H0B8R21QJY0",
+        "productType": {
+          "id": "CARDS",
+          "name": "CARDS"
+        }
+      },
+      "origin": {
+        "id": "CRM",
+        "description": "OFFER"
+      },
+      "category": {},
+      "image": {
+        "name": "avatar_CAMPAIGN0-OF",
+        "id": "NKCQ02V6DV95E5ZK7JMVMG6M86Y68JRD79F30875FWNK5EJEQM8M29PKYQCZ5FJQ23YVFBWPGSW80",
+        "url": "http://archivingbbva.axtel.mx:8082/v2/documents/logo?key=avatar_CAMPAIGN0595-OF"
+      }
+    }
+  ]
+}

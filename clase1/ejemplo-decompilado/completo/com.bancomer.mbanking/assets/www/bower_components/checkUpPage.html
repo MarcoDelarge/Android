@@ -1,0 +1,248 @@
+<html><head></head><body><div hidden="" by-polymer-bundler=""><dom-module id="cells-glomo-dm-contracts" assetpath="cells-glomo-dm-contracts/"><template><cells-generic-dp></cells-generic-dp></template><script>var CellsGlomoDmContracts=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(CellsGlomoDmContracts,_Polymer$mixinBehavio);function CellsGlomoDmContracts(){babelHelpers.classCallCheck(this,CellsGlomoDmContracts);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(CellsGlomoDmContracts).apply(this,arguments))}babelHelpers.createClass(CellsGlomoDmContracts,[{key:"successResponseHandler",/**
+   * common success response handler which calls the respective method for response handling based on operation code(opCode)
+   * @param {Object} - response payload
+   */value:function successResponseHandler(payload){if(!this.isEmptyObject(payload)){var responsePayload=this.extractResponsePayload(payload),handledResponse=!0;switch(responsePayload.opCode){case this.GET_FINANCIAL_OVERVIEW_OP_CODE:this.handleFinancialOverviewSuccess(responsePayload);break;default:handledResponse=!1;break;}if(handledResponse){this.cleanGlobalRespChannel()}}}/**
+   * common failure response handler which calls the respective method for response handling based on operation code(opCode)
+   * @param {Object} - response payload
+   */},{key:"errorResponseHandler",value:function errorResponseHandler(payload){if(!this.isEmptyObject(payload)){var responsePayload=this.extractResponsePayload(payload),handledResponse=!0;switch(responsePayload.opCode){case this.GET_FINANCIAL_OVERVIEW_OP_CODE:this.handleFinancialOverviewFailure(responsePayload);break;default:handledResponse=!1;break;}if(handledResponse){this.cleanGlobalErrorChannel()}}}/**
+   * function to get financial overview data from catalogs api source.
+   * @param {Object}
+   */},{key:"requestFinancialOverview",value:function requestFinancialOverview(payload){var paramsStr=(payload||{}).urlParams||"",endpoint="financial-overview?".concat(paramsStr);this.requestBuilder(this.resource,endpoint,"GET",this.GET_FINANCIAL_OVERVIEW_OP_CODE,{},{})}/**
+   * handles get financial overview request success response
+   * @param {Object} - response payload
+   */},{key:"handleFinancialOverviewSuccess",value:function handleFinancialOverviewSuccess(responsePayload){var status=responsePayload.status;if(200===status){var responseData=this.extractSuccessResponse(responsePayload);this.dispatchEvent(new CustomEvent("financial-overview-details-from-dm",{detail:responseData,bubbles:!0,composed:!0}))}}/**
+   * handles get financial overview request failure response
+   * @param {Object} - response payload
+   */},{key:"handleFinancialOverviewFailure",value:function handleFinancialOverviewFailure(responsePayload){var responseData=this.extractFailureResponse(responsePayload);this.dispatchEvent(new CustomEvent("financial-overview-details-data-error",{detail:responseData,bubbles:!0,composed:!0}))}}],[{key:"is",get:function get(){return"cells-glomo-dm-contracts"}},{key:"properties",get:function get(){return{/**
+       * resource used in API
+       * @type {String}
+       */resource:{type:String,value:"contracts"},/**
+       * cache storage to reduce network calls
+       * @type {Object}
+       */globalCacheStorage:{type:Object},/**
+       * global server config retrieved from native
+       * @type {Object}
+       */globalServerConfig:{type:Object},/**
+       * fetching Categorized Balance detail opCode constant
+       * @type {String}
+       */GET_FINANCIAL_OVERVIEW_OP_CODE:{type:String,value:"CFO001"}}}}]);return CellsGlomoDmContracts}(Polymer.mixinBehaviors([CellsBehaviors.CellsGlomoDmBehavior,CellsBehaviors.CellsGlomoDiacriticsBehavior,CellsBehaviors.CellsGlomoUtilsBehavior],Polymer.Element));window.customElements.define(CellsGlomoDmContracts.is,CellsGlomoDmContracts);</script></dom-module><dom-module id="glomo-checkup-dm" assetpath="glomo-checkup-dm/"><script>var GlomoCheckupDm=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(GlomoCheckupDm,_Polymer$mixinBehavio);function GlomoCheckupDm(){babelHelpers.classCallCheck(this,GlomoCheckupDm);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(GlomoCheckupDm).apply(this,arguments))}babelHelpers.createClass(GlomoCheckupDm,[{key:"init",/**
+   * Start DM
+   */value:function init(){this.requestAPI("financial-health-data",{urlParams:{fromDate:this.currentDate}})}/**
+   * Validate customer access
+   */},{key:"_customerStatus",value:function _customerStatus(){var _this=this,indicators=[],status={access:!1,state:""};if(this.payrollIndicators&&this.payrollIndicators.length){indicators=this.payrollIndicators.reduce(function(obj,item){if(item.indicatorId===_this.checkUpIndicators.arco||item.indicatorId===_this.checkUpIndicators.payroll){obj[item.indicatorId]=item.isActive}return obj},{});if(indicators.PAYROLL){status.access=!0}if(!indicators.PAYROLL){status.state=this.checkUpIndicators.payroll}}return status}/**
+   * Request Financial Health data if the customer has access
+   * @param {Array} newVal healthData
+   * @param {Array} oldVal
+   */},{key:"_requestHealthData",value:function _requestHealthData(newVal,oldVal){if(newVal){this.customerStatus=this._customerStatus();if(this.customerStatus.access){this.requestAPI("financial-health-data",{urlParams:{fromDate:this.currentDate}})}else{this.requestAPI("cfo",{urlParams:"contracts.productType=ACCOUNTS,CARDS,DEPOSITS"})}}}/**
+   * Handle Financial Health data success response
+   * @param {Array} apiData
+   */},{key:"_successHealthData",value:function _successHealthData(apiData){if(apiData){var data=apiData.find(function(item){return item.hasOwnProperty("healthStatus")&&item.hasOwnProperty("healthReasons")&&item.hasOwnProperty("business")});if(data&&0<data.business.length){this.healthData={status:data.healthStatus.description,reasons:this._setHealthDataReasons(data.healthReasons),tips:this._setHealthDataTips(data.business)};this._checkTip()}else{this._showNoPayroll()}}}/**
+   * Handle Financial Health data error response
+   * @param {Object} apiData error object
+   */},{key:"_errorHealthData",value:function _errorHealthData(apiData){this.customerStatus.access=!1;this.customerStatus.state=this.checkUpIndicators.data;var _iteratorNormalCompletion=!0,_didIteratorError=!1,_iteratorError=void 0;try{for(var _iterator=this.errorCodeList[Symbol.iterator](),_step,i;!(_iteratorNormalCompletion=(_step=_iterator.next()).done);_iteratorNormalCompletion=!0){i=_step.value;if(i.code===apiData["error-code"]){this.customerStatus.state=this.checkUpIndicators[i.type.toLowerCase()];break}}}catch(err){_didIteratorError=!0;_iteratorError=err}finally{try{if(!_iteratorNormalCompletion&&null!=_iterator.return){_iterator.return()}}finally{if(_didIteratorError){throw _iteratorError}}}this._showNoPayroll()}/**
+   * Filter and restructure the tips
+   * @param {Array} tips
+   */},{key:"_setHealthDataTips",value:function _setHealthDataTips(tips){var _this2=this,sortedTips=tips.map(function(i){var _type=_this2._getTypeTip(i.tip.id);return babelHelpers.defineProperty({type:_type.type,action:_type.offer,id:i.tip.id,business:i.businessType.name,title:i.tip.tittle.split("//")[0]},"info"===_type.type?"subtitle":"btnLabel",i.tip.tittle.split("//")[1])}).reduce(function(obj,j){obj["offer"===j.type?"a":"b"].push(j);return obj},{a:[],b:[]});return sortedTips.a.concat(sortedTips.b)}/**
+   * Filter and restructure the healthReasons
+   * @param {Array} reasons
+   */},{key:"_setHealthDataReasons",value:function _setHealthDataReasons(reasons){return reasons.map(function(i){return{id:i.idWhyHealth,status:parseInt(i.whyHealthDetail.split("//")[0]),description:i.whyHealthDetail.split("//")[1]}})}/**
+   * Request the API of currentTip
+   */},{key:"_checkTip",value:function _checkTip(){this.currentTip=this.healthData.tips[0];if("offer"===this.currentTip.type){//- CHECK API DISPONIBILITY
+if(!this[this.hypenToCamelCase(this.currentTip.action.api)+"ApiData"]){this.requestAPI(this.currentTip.action.api)}else{this._validateOfferAvailability(this[this.hypenToCamelCase(this.currentTip.action.api)+"ApiData"])}}else{this._showHealth()}}/**
+   * Check if currentTip offer is available
+   * @param {Array} products
+   */},{key:"_validateOfferAvailability",value:function _validateOfferAvailability(products){for(var _offer=!1,i=0,lg=products.length;i<lg;i++){if("offers"===this.currentTip.action.api&&products[i].product.id===this.currentTip.action.offerId){_offer=!0;this.currentTip.offer=products[i];break}}if(_offer){this._showHealth()}else{this.shift("healthData.tips");this._checkTip()}}/**
+   * Save the requested API response
+   * @param {Object} apiData
+   */},{key:"_successOfferData",value:function _successOfferData(apiData){this[this.hypenToCamelCase(this.currentTip.action.api)+"ApiData"]=apiData;this._checkTip()}/**
+   * Remove current invalid offer and try to get the next offer
+   */},{key:"_errorOfferData",value:function _errorOfferData(){this.shift("healthData.tips");this._checkTip()}/**
+   * Show the heart section
+   */},{key:"_showHealth",value:function _showHealth(){this.dispatchEvent(new CustomEvent("close-no-payroll"));this.dispatchEvent(new CustomEvent("show-health",{detail:{healthIcon:this.iconPathList[this.healthData.status],healthTitleText:"",healthStatusText:this.healthData.status,list:this.healthData.reasons},bubbles:!0,composed:!0}));this.dispatchEvent(new CustomEvent("show-tip",{detail:{heading:this.currentTip.title||"",imageUrl:this._setTipImage(),linkText:this.currentTip.btnLabel||"",subheading:this.currentTip.subtitle||""},bubbles:!0,composed:!0}))}/**
+   * Set the type of the offer based in the offerIdList list
+   * @param {Number} id
+   */},{key:"_getTypeTip",value:function _getTypeTip(id){// IS OFFER?
+for(var _type={type:"info",offer:null},i=0,arr=this.offerIdList,lg=arr.length;i<lg;i++){if(arr[i].tipId===id){_type.type="offer";_type.offer=arr[i]}}return _type}/**
+   * Set the status and image of the tip based in its id
+   */},{key:"_setTipImage",value:function _setTipImage(){var tipId=this.currentTip.id,action=this.currentTip.action,baseUrl="images/checkup",business="finance",status=this._setTipImageStatus(tipId);if(32<=tipId&&38>=tipId||43<=tipId&&48>=tipId){business="investment"}if(39<=tipId&&42>=tipId||49<=tipId&&51>=tipId){business="insurance"}return action?"".concat(baseUrl,"/").concat(action.icon):"".concat(baseUrl,"/tip_").concat(business,"_").concat(status,".svg")}/**
+   * Check the  Tip status
+   */},{key:"_setTipImageStatus",value:function _setTipImageStatus(tipId){if(!this.healthData.reasons.filter(function(i){return i.id===tipId})[0]){return""}if(1===this.healthData.reasons.filter(function(i){return i.id===tipId})[0].status){return"positive"}else{return"negative"}}/**
+   * Trigger dynamic event to navigate to the detail of the offer
+   */},{key:"_tipPressed",value:function _tipPressed(){this.navigateTo(this.currentTip.action.eventName,this.currentTip.offer)}/**
+   * Validate if acount is in MXN,  level account is N4 and diferent LIC type
+   */},{key:"_validateContractInfo",value:function _validateContractInfo(data){if(data){var contract=data.contracts.find(function(item){return item.hasOwnProperty("detail")&&item.hasOwnProperty("numberType")&&item.hasOwnProperty("id")}),specificAmount=contract.detail.specificAmounts.find(function(item){return item.hasOwnProperty("amounts")}),amount=specificAmount.amounts.find(function(item){return item.hasOwnProperty("currency")});if(contract&&amount.currency===this.accountCurrency&&contract.detail.level===this.accountLevel&&contract.numberType.id!==this.accountType){this.requestAPI("portabilities",{contract:contract.id})}else{this.portability=!1;this._showNoPayroll()}}}/**
+   * Validate if payrollList has PENDING or IN PROGRESS status
+   */},{key:"_validatePayrollInfo",value:function _validatePayrollInfo(data){if(data){var payrollList=data.find(function(item){return"PENDING"===item.status.id||"IN PROGRESS"===item.status.id});this.portability=!payrollList;this._showNoPayroll()}}/**
+   * Show informative screen to the customer without access
+   * @event show-no-payroll
+   */},{key:"_showNoPayroll",value:function _showNoPayroll(){var block="",selectedConfig={openMaximized:!0,hideCloseIcon:!0,iconOnlyFullHeight:!0,closeOnPrimaryButton:!1,className:"full-height medium-blue external-heading",heroImage:"images/checkup/checkup_no_data.svg",template:{type:"paragraphs",values:[]}};switch(this.customerStatus.state){case this.checkUpIndicators.arco:block=this.checkUpIndicators.arco.toLowerCase();break;case this.checkUpIndicators.payroll:block=this.checkUpIndicators.payroll.toLowerCase();selectedConfig.onAcceptDetail={page:this.t("checkup-".concat(block,"-page-page-name"))};if(this.portability){selectedConfig.acceptBtLabel=this.t("checkup-".concat(block,"-page-btn-text"))}break;case this.checkUpIndicators.data:default:block=this.checkUpIndicators.data.toLowerCase();break;}selectedConfig.template.values=[{title:this.t("checkup-".concat(block,"-page-title"))},{text:this.t("checkup-".concat(block,"-page-content"))}];this.dispatchEvent(new CustomEvent("show-no-payroll",{detail:selectedConfig,bubbles:!0,composed:!0}))}/**
+   * Navigation handle to payroll portability
+   */},{key:"openPayrollPortability",value:function openPayrollPortability(){this.navigateTo("payroll-portability",{currentControllerName:"checkUpPage"})}/**
+   * Handle all API requests
+   * @param {String} apiName
+   * @param {Object} apiDetail
+   */},{key:"requestAPI",value:function requestAPI(apiName,apiDetail){this.dispatchEvent(new CustomEvent("request-"+apiName,{detail:apiDetail||null,bubbles:!0,composed:!0}))}/**
+   * Handle all navigation events
+   * @param {String} page
+   * @param {Object} detail
+   * @event navigate-to-page
+   */},{key:"navigateTo",value:function navigateTo(page,detail){this.dispatchEvent(new CustomEvent("navigate-to-page",{detail:{page:page,params:detail},bubbles:!0,composed:!0}))}/**
+   * Handle all navigation events
+   * @event navigate-to-offer-detail-page
+   */},{key:"navigateToOfferDetail",value:function navigateToOfferDetail(){var offer="";if(39<=this.currentTip.id&&42>=this.currentTip.id||49<=this.currentTip.id&&51>=this.currentTip.id){offer="LIFE_INSURANCE"}if(31===this.currentTip.id){offer="EFI"}this.dispatchEvent(new CustomEvent("navigate-to-offer-detail-page",{detail:{offerType:offer},bubbles:!0,composed:!0}))}/**
+   * Transform hypen text to CamelCase
+   * @param {String} str
+   */},{key:"hypenToCamelCase",value:function hypenToCamelCase(str){return str.replace(/-(\S)/g,function(i){return i[1].toUpperCase()})}}],[{key:"is",get:function get(){return"glomo-checkup-dm"}},{key:"properties",get:function get(){return{/**
+       * List with customer ARCO and PAYROLL status
+       * @type {Array}
+       */payrollIndicators:{type:Array,observer:"_requestHealthData"},/**
+       * Show if the customer has access and the reason if he does not have access.
+       * @type {{access: boolean, state: string }}
+       */customerStatus:{type:Object,value:{access:!1,state:""}},/**
+       * List of lottie animation json files related to the health status
+       * @type {{statusName: string}}}
+       */iconPathList:{type:Object,value:{}},/**
+       * Define the cases that will be shown depending on the client's access status.
+       * @type {Object}
+       */checkUpIndicators:{type:Object,value:{arco:"ARCO",payroll:"PAYROLL",data:"DATA"}},/**
+       * Holds the customer Health data
+       * @type {{status: String, reasons: Array, tips: Array}}
+       */healthData:{type:Object},/**
+       * List of posible offers
+       * @type {Array}
+       */offerIdList:{type:Array},/**
+       * Active tip
+       * @type {Object}
+       */currentTip:{type:Object},/**
+       * List of error codes
+       * @type {Array}
+       */errorCodeList:{type:Array},/**
+       * account level that is accepted
+       * @type {String}
+       */accountLevel:{type:String,value:"04"},/**
+       * account type that isn't accepted
+       * @type {String}
+       */accountType:{type:String,value:"LIC"},/**
+       * if tue show the button to portability flow
+       * @type {String}
+       */portability:{type:Boolean,value:!1},/**
+       * account currency type
+       * @type {String}
+       */accountCurrency:{type:String,value:"MXN"},/**
+       * actual date
+       * @type {String}
+       */currentDate:{type:String,value:function value(){var date=new moment;return date.format("YYYY-MM-DD")}}}}}]);return GlomoCheckupDm}(Polymer.mixinBehaviors([CellsBehaviors.i18nBehavior],Polymer.Element));customElements.define(GlomoCheckupDm.is,GlomoCheckupDm);</script></dom-module><dom-module id="glomo-checkup-status-list-styles" assetpath="glomo-checkup-status-list/"><template><style>:host{display:block;box-sizing:border-box;font-family:var(--cells-fontDefault, sans-serif);@apply --glomo-checkup-status-list;}:host([hidden]), [hidden]{display:none !important;}*, *:before, *:after{box-sizing:inherit;}.list-item{display:-webkit-flex;display:-ms-flexbox;display:flex;font-family:var(--glomo-checkup-status-list-font-family, inherit);font-size:var(--glomo-checkup-status-list-font-size, inherit);}.list-item + .list-item{margin-top:var(--glomo-checkup-status-list-space-between-items, 30px);}.item-icon{margin-right:var(--glomo-checkup-status-list-icon-margin-right, 20px);width:var(--glomo-checkup-status-list-icon-width, 22px) !important;min-width:var(--glomo-checkup-status-list-icon-width, 22px) !important;height:var(--glomo-checkup-status-list-icon-height, 20px) !important;color:#121212;}.description{display:block;-webkit-flex-grow:2;-ms-flex-positive:2;flex-grow:2;}.ok{color:var(--glomo-checkup-status-list-ok-color, currentColor);@apply --glomo-checkup-status-list-ok;}.ok .item-icon{color:var(--glomo-checkup-status-list-icon-ok-color, #2a86ca);}.error{color:var(--glomo-checkup-status-list-error-color, currentColor);@apply --glomo-checkup-status-list-error;}.error .item-icon{color:var(--glomo-checkup-status-list-icon-error-color, #da3851);}</style></template></dom-module><dom-module id="glomo-checkup-status-list" assetpath="glomo-checkup-status-list/"><template><style include="glomo-checkup-status-list-styles glomo-checkup-status-list-shared-styles"></style><template id="statusList" is="dom-repeat" items="[[list]]" as="item" filter="_limitItems"><div class$="list-item [[getStatus(item.status)]]"><iron-icon class="item-icon" icon="[[getIcon(item.status)]]"></iron-icon><span class="description">[[item.description]]</span></div></template><slot></slot></template><script>var GlomoCheckupStatusList=/*#__PURE__*/function(_Polymer$Element){babelHelpers.inherits(GlomoCheckupStatusList,_Polymer$Element);function GlomoCheckupStatusList(){babelHelpers.classCallCheck(this,GlomoCheckupStatusList);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(GlomoCheckupStatusList).apply(this,arguments))}babelHelpers.createClass(GlomoCheckupStatusList,[{key:"getStatus",/**
+  * @desc Set the class needed for styling
+  * @param {Number} status
+  */value:function getStatus(status){var strStatus="";switch(status){case 1:strStatus="ok";break;default:strStatus="error";}return strStatus}/**
+  * @desc Set the icon for the item
+  * @param {Number} status
+  */},{key:"getIcon",value:function getIcon(status){var icon="";if(1===status){icon=this.iconOk||"coronita:help"}else{icon=this.iconError||"coronita:error"}return icon}/**
+  * @desc Limit the number of visible items
+  * @param {Objetc} item
+  * @param {Number} index
+  */},{key:"_limitItems",value:function _limitItems(item,index){return this.limit?index<this.limit+this.start&&index>=this.start?!0:!1:!0}/**
+  * @desc Refresh the items show in the list
+  */},{key:"_updateFilter",value:function _updateFilter(){this.$.statusList.render()}}],[{key:"is",get:function get(){return"glomo-checkup-status-list"}},{key:"properties",get:function get(){return{/**
+      * @desc List of objects with status and description
+      * @type {Array}
+      */list:Array,/**
+      * @desc Icon to show when status 1
+      * @type {String}
+      */iconOk:String,/**
+      * @desc Icon to show when status diferent to 1
+      * @type {String}
+      */iconError:String,/**
+      * @desc Limit the number of visible items
+      * @type {Number}
+      */start:{type:Number,value:0,notify:!0,reflectToAttribute:!0,observer:"_updateFilter"},/**
+      * @desc Limit the number of visible items
+      * @type {Number}
+      */limit:{type:Number,notify:!0,reflectToAttribute:!0,observer:"_updateFilter"}}}}]);return GlomoCheckupStatusList}(Polymer.Element);customElements.define(GlomoCheckupStatusList.is,GlomoCheckupStatusList);</script></dom-module><dom-module id="glomo-checkup-status-styles" assetpath="glomo-checkup-status/"><template><style>:host{display:block;box-sizing:border-box;font-family:var(--cells-fontDefault, sans-serif);font-size:var(--cells-text-size-14, 0.875rem);color:var(--bbva-white, #fff);--glomo-checkup-status-skeleton-bg-color:transparent;@apply --glomo-checkup-status;}:host([hidden]), [hidden]{display:none !important;}*, *:before, *:after{font:inherit;box-sizing:inherit;}.container{position:relative;padding:1.875rem;background:var(--bbva-glomo-checkup-status-bg-color, #1973B8);@apply --glomo-checkup-status-container;}.container:after{content:'';display:none;position:absolute;top:100%;left:0;margin-top:-0.0625rem;width:100%;background:var(--bbva-glomo-checkup-status-bg-color, #1973B8);@apply --glomo-checkup-status-container-after;}:host(.shape-rectangle) .container::after{display:block;height:1.875rem;}:host(.shape-diagonal) .container::after{display:block;height:6.375rem;-webkit-clip-path:polygon(0 0, 100% 0, 100% 1.9375rem, 0 100%);clip-path:polygon(0 0, 100% 0, 100% 1.9375rem, 0 100%);}.container-icon{position:relative;margin:-10px auto var(--gutter-width-2);width:8.75rem;height:8.125rem;overflow:hidden;@apply --glomo-checkup-status-container-icon;}.container-icon cells-atom-icon{position:absolute;top:50%;left:50%;width:100%;height:110px;-webkit-transform:translate(-50%, -50%);transform:translate(-50%, -50%);@apply --glomo-checkup-status-cells-atom-icon;}.container-icon .icon-skeleton{position:absolute;top:50%;left:50%;-webkit-transform:translate(-50%, -50%);transform:translate(-50%, -50%);width:4.125rem;height:4.125rem;border-radius:50%;background:rgba(255, 255, 255, 0.1);@apply --glomo-checkup-status-cells-icon-skeleton;}.container-icon .icon-skeleton:before{content:' ';position:absolute;background:rgba(255, 255, 255, 0.3);width:100%;height:100%;border-radius:50%;-webkit-transform:scale(0.4);transform:scale(0.4);-webkit-animation:reboteIn 2s 4;animation:reboteIn 2s 4;@apply --glomo-checkup-status-cells-lottie-skeleton-before;}.container-headers{text-align:center;@apply --glomo-checkup-status-container-headers;}.container-headers .header-title{margin-top:var(--gutter-height-3);opacity:0;-webkit-animation:slideIn .5s 1s forwards;animation:slideIn .5s 1s forwards;@apply --glomo-checkup-status-header-title;}.container-headers .header-subtitle{font-weight:500;padding-top:0.3125rem;letter-spacing:0.02rem;font-size:var(--cells-text-size-16, 1rem);opacity:0;-webkit-animation:slideIn .5s 1s forwards;animation:slideIn .5s 1s forwards;@apply --glomo-checkup-status-header-subtitle;}.container-headers .header-title-skeleton{width:100%;height:1.125rem;background-color:rgba(255, 255, 255, 0.1);@apply --glomo-checkup-status-header-title-skeleton;}.container-headers .header-subtitle-skeleton{margin-top:var(--gutter-height-1);width:25%;height:1.125rem;background-color:rgba(255, 255, 255, 0.1);@apply --glomo-checkup-status-header-subtitle-skeleton;}.skeleton{background:var(--glomo-checkup-status-skeleton-bg-color) no-repeat;background-image:linear-gradient(110deg, var(--glomo-checkup-status-skeleton-bg-color) 20px, rgba(255, 255, 255, 0.3) 20px, rgba(255, 255, 255, 0) 100%);background-size:200%;background-position:-100%;-webkit-animation:skeletonMove 2s ease-in-out .5s infinite;animation:skeletonMove 2s ease-in-out .5s infinite;-webkit-clip-path:polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);clip-path:polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);@apply --glomo-checkup-status-skeleton;}.skeleton.center{margin-left:auto;margin-right:auto;}.skeleton.small{width:30%;}.container-category-list{opacity:0;-webkit-animation:slideIn .5s 1.5s forwards;animation:slideIn .5s 1.5s forwards;-webkit-box-flex:2;flex-grow:2;margin:var(--gutter-height-3) 0 0;@apply --glomo-checkup-status-container-category-list;}.container-category-list glomo-checkup-status-list{text-align:left;line-height:1.5rem;--glomo-checkup-status-list-icon-error-color:var(--bbva-white);--glomo-checkup-status-list-icon-ok-color:var(--bbva-white);@apply --glomo-checkup-status-glomo-checkup-status-list;}@-webkit-keyframes slideIn{from{position:relative;opacity:0;top:20vh;}to{position:relative;opacity:1;top:0;}}@keyframes slideIn{from{position:relative;opacity:0;top:20vh;}to{position:relative;opacity:1;top:0;}}@-webkit-keyframes reboteIn{0%{-webkit-transform:scale(0.4);transform:scale(0.4);opacity:0;}50%{-webkit-transform:scale(0.5);transform:scale(0.5);opacity:1;}70%{-webkit-transform:scale(0.3);transform:scale(0.3);}}@keyframes reboteIn{0%{-webkit-transform:scale(0.4);transform:scale(0.4);opacity:0;}50%{-webkit-transform:scale(0.5);transform:scale(0.5);opacity:1;}70%{-webkit-transform:scale(0.3);transform:scale(0.3);}}@-webkit-keyframes skeletonMove{from{background-position:-100%;}to{background-position:200%;}}@keyframes skeletonMove{from{background-position:-100%;}to{background-position:200%;}}</style></template></dom-module><dom-module id="glomo-checkup-status" assetpath="glomo-checkup-status/"><template><style include="glomo-checkup-status-styles glomo-checkup-status-shared-styles"></style><div class="container"><div class="container-icon"><template is="dom-if" if="[[healthIcon]]"><cells-atom-icon src="[[healthIcon]]"></cells-atom-icon></template><template is="dom-if" if="[[!healthIcon]]"><div class="icon-skeleton"></div></template></div><div class="container-headers"><template is="dom-if" if="[[healthStatusText]]"><div class="header-title">{{t('glomo-checkup-status-header-title', healthHeaderText)}}</div><div class="header-subtitle">[[healthStatusText]]</div></template><template is="dom-if" if="[[!healthStatusText]]"><div class="header-title-skeleton skeleton"></div><div class="header-subtitle-skeleton skeleton center small"></div></template></div><template is="dom-if" if="[[list.length]]"><div class="container-category-list"><glomo-checkup-status-list list="[[list]]" limit="4" icon-ok="coronita:checkmark" icon-error="coronita:close"></glomo-checkup-status-list></div></template></div></template><script>{var _Polymer=Polymer,html=_Polymer.html,GlomoWhyHealth=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(GlomoWhyHealth,_Polymer$mixinBehavio);function GlomoWhyHealth(){babelHelpers.classCallCheck(this,GlomoWhyHealth);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(GlomoWhyHealth).apply(this,arguments))}babelHelpers.createClass(GlomoWhyHealth,null,[{key:"is",get:function get(){return"glomo-checkup-status"}},{key:"properties",get:function get(){return{/**
+         * Heart image rute
+         * @type {String}
+         */healthIcon:{type:String,value:""},/**
+         * Text header status
+         * @type {String}
+         */healthHeaderText:{type:String,value:""},/**
+         * Heart text status
+         * @type {String}
+         */healthStatusText:{type:String,value:""},/**
+         * List of why healths
+         * @type {Array}
+         */list:{type:Array}}}}]);return GlomoWhyHealth}(Polymer.mixinBehaviors([CellsBehaviors.i18nBehavior],Polymer.Element));/**
+   ![glomo-checkup-status screenshot](glomo-checkup-status.png)
+   `<glomo-checkup-status>` This component shows your financial health with a list of good or bad recommendations about your health.
+
+    Example:
+
+    ```html
+    <glomo-checkup-status
+      id="component0"
+      health-icon-anim="./lottie_animations/checkup_stable.json"
+      health-title-text="Tu salud financiera en BBVA Bancomer es"
+      health-status-text="Estable">
+    </glomo-checkup-status>
+    ```
+
+    ## Properties
+    + **result**: Object with the result of the operation.
+
+    ```json
+    {
+      healthIconAnim: './lottie_animations/checkup_stable.json',
+      healthStatusText: 'Estable',
+      list: [
+        {
+          status: 0,
+          description: 'Tomaste dinero de tu "colchón financiero"'
+        },
+        {
+          status: 0,
+          description: 'Te falta cubrir el total de la mensualidad de tu efectivo inmediato'
+        },
+        {
+          status: 0,
+          description: 'Te falta cubrir el total del pago de tus compras a meses sin intereses'
+        },
+        {
+          status: 1,
+          description: 'Los pagos que tienes que hacer a tu tarjeta no representan gran parte de tus ingresos'
+        },
+        {
+          status: 1,
+          description: 'Has cubierto tus gastos sin consumir todo tu dinero'
+        }
+      ]
+    }
+    ```
+
+    ## Styling
+    The following custom properties and mixins are available for styling:
+
+    ### Custom Properties
+    | Custom Property     | Selector | CSS Property | Value       |
+    | ------------------- | -------- | ------------ | ----------- |
+    | --cells-fontDefault | :host    | font-family  |  sans-serif |
+    ### @apply
+    | Mixins    | Selector | Value |
+    | --------- | -------- | ----- |
+    | --glomo-checkup-status | :host    | {} |
+    | --glomo-checkup-status-container | .container    | {} |
+    | --glomo-checkup-status-container-after | .container::after    | {} |
+    | --glomo-checkup-status-container-lottie | .container-lottie    | {} |
+    | --glomo-checkup-status-cells-lottie-animation | cells-lottie-animation    | {} |
+    | --glomo-checkup-status-cells-lottie-skeleton | .lottie-skeleton    | {} |
+    | --glomo-checkup-status-cells-lottie-skeleton-before | .lottie-skeleton::before    | {} |
+    | --glomo-checkup-status-container-headers | .container-headers    | {} |
+    | --glomo-checkup-status-header-title | .header-title    | {} |
+    | --glomo-checkup-status-header-subtitle | .header-subtitle    | {} |
+    | --glomo-checkup-status-skeleton | .skeleton    | {} |
+    | --glomo-checkup-status-container-category-list | .container-category-list    | {} |
+    | --glomo-checkup-status-glomo-checkup-status-list | glomo-checkup-status-list    | {} |
+
+    * @customElement
+    * @polymer
+    * @extends {Polymer.Element}
+    * @demo demo/index.html
+  */customElements.define(GlomoWhyHealth.is,GlomoWhyHealth)}</script></dom-module></div></body></html>

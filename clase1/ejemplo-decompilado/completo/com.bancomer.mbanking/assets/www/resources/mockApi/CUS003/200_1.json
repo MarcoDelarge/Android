@@ -1,0 +1,16 @@
+{
+  "_comment": "user with only one email",
+  "data": [
+    {
+      "contactDetailId": "EMAIL001",
+      "contact": "primary@gmail.COM",
+      "contactType": {
+        "id": "EMAIL",
+        "name": "PERSONAL"
+      },
+      "isPreferential": false,
+      "isChecked": true,
+      "lastUpdateDate": "2018-02-26"
+    }
+  ]
+}

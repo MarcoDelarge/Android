@@ -1,0 +1,12 @@
+{
+  "data": {
+    "benefit": {
+      "description": "!!!Felicidades¡¡¡Contrata esta oferta y te ganaras  30,000 puntos",
+      "benefitType": {
+        "benefitType": "AMOUNT",
+        "amount": 30000
+      }
+    }
+  },
+  "messages": []
+}

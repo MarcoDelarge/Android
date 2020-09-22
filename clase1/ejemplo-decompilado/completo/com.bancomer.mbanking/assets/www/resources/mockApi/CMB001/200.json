@@ -1,0 +1,28 @@
+{
+  "data": [
+    {
+      "id": "2456",
+      "scheduleDate": "2019-09-02T15:30:00.000Z",
+      "weekday": "MONDAY",
+      "description": "Horario CDMX"
+    },
+    {
+      "id": "2457",
+      "scheduleDate": "2019-09-02T15:30:00.000Z",
+      "weekday": "MONDAY",
+      "description": "Horario CDMX"
+    },
+    {
+      "id": "2458",
+      "scheduleDate": "2019-09-03T09:10:00.000Z",
+      "weekday": "MONDAY",
+      "description": "Horario CDMX"
+    },
+    {
+      "id": "2459",
+      "scheduleDate": "2019-09-04T12:00:00.000Z",
+      "weekday": "TUESDAY",
+      "description": "Horario CDMX"
+    }
+  ]
+}

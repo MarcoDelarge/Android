@@ -1,0 +1,164 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\Users\soyma\Documents\android-fundamentals\clase2\ejercicios\ImplicitIntentsReceiver\app\src\main\AndroidManifest.xml:18:1-43:12
+INJECTED from C:\Users\soyma\Documents\android-fundamentals\clase2\ejercicios\ImplicitIntentsReceiver\app\src\main\AndroidManifest.xml:18:1-43:12
+INJECTED from C:\Users\soyma\Documents\android-fundamentals\clase2\ejercicios\ImplicitIntentsReceiver\app\src\main\AndroidManifest.xml:18:1-43:12
+INJECTED from C:\Users\soyma\Documents\android-fundamentals\clase2\ejercicios\ImplicitIntentsReceiver\app\src\main\AndroidManifest.xml:18:1-43:12
+MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\405b40aa9d6448b3e2c3336df3db5d47\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\a947dfdeec33a2049b69db42acab7c7a\AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\750a2314d3c515a34a23646a12ce9c38\AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\7d28c76137a58c0e0d39cfd80187d209\AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-v4:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\ba850e691bfa18b88d9dd5bc988e5415\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\3993affcd1b3ebfc9eebd81093b13595\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\cd9c975590156b5e10f3f70edf50feb9\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\0df66d7409d21416778d2225812e43ed\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\8f308348ccfd48ac4d2f9e8cb700da71\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-compat:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\b6b91cd5d379a81a675bb1cf456a3734\AndroidManifest.xml:17:1-31:12
+MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\fdd055deca8a35ad109c7094290d975a\AndroidManifest.xml:17:1-30:12
+INJECTED from C:\Users\soyma\Documents\android-fundamentals\clase2\ejercicios\ImplicitIntentsReceiver\app\src\main\AndroidManifest.xml:18:1-43:12
+INJECTED from C:\Users\soyma\Documents\android-fundamentals\clase2\ejercicios\ImplicitIntentsReceiver\app\src\main\AndroidManifest.xml:18:1-43:12
+INJECTED from C:\Users\soyma\Documents\android-fundamentals\clase2\ejercicios\ImplicitIntentsReceiver\app\src\main\AndroidManifest.xml:18:1-43:12
+	package
+		ADDED from C:\Users\soyma\Documents\android-fundamentals\clase2\ejercicios\ImplicitIntentsReceiver\app\src\main\AndroidManifest.xml:19:5-58
+		INJECTED from C:\Users\soyma\Documents\android-fundamentals\clase2\ejercicios\ImplicitIntentsReceiver\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\soyma\Documents\android-fundamentals\clase2\ejercicios\ImplicitIntentsReceiver\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from C:\Users\soyma\Documents\android-fundamentals\clase2\ejercicios\ImplicitIntentsReceiver\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\soyma\Documents\android-fundamentals\clase2\ejercicios\ImplicitIntentsReceiver\app\src\main\AndroidManifest.xml:18:1-43:12
+		INJECTED from C:\Users\soyma\Documents\android-fundamentals\clase2\ejercicios\ImplicitIntentsReceiver\app\src\main\AndroidManifest.xml
+	android:versionCode
+		INJECTED from C:\Users\soyma\Documents\android-fundamentals\clase2\ejercicios\ImplicitIntentsReceiver\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\soyma\Documents\android-fundamentals\clase2\ejercicios\ImplicitIntentsReceiver\app\src\main\AndroidManifest.xml:18:1-43:12
+		INJECTED from C:\Users\soyma\Documents\android-fundamentals\clase2\ejercicios\ImplicitIntentsReceiver\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\Users\soyma\Documents\android-fundamentals\clase2\ejercicios\ImplicitIntentsReceiver\app\src\main\AndroidManifest.xml:18:11-69
+application
+ADDED from C:\Users\soyma\Documents\android-fundamentals\clase2\ejercicios\ImplicitIntentsReceiver\app\src\main\AndroidManifest.xml:21:5-41:19
+MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\405b40aa9d6448b3e2c3336df3db5d47\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\405b40aa9d6448b3e2c3336df3db5d47\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\a947dfdeec33a2049b69db42acab7c7a\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\a947dfdeec33a2049b69db42acab7c7a\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\750a2314d3c515a34a23646a12ce9c38\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\750a2314d3c515a34a23646a12ce9c38\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\7d28c76137a58c0e0d39cfd80187d209\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\7d28c76137a58c0e0d39cfd80187d209\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-v4:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\ba850e691bfa18b88d9dd5bc988e5415\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-v4:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\ba850e691bfa18b88d9dd5bc988e5415\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\3993affcd1b3ebfc9eebd81093b13595\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\3993affcd1b3ebfc9eebd81093b13595\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\cd9c975590156b5e10f3f70edf50feb9\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\cd9c975590156b5e10f3f70edf50feb9\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\0df66d7409d21416778d2225812e43ed\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\0df66d7409d21416778d2225812e43ed\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\8f308348ccfd48ac4d2f9e8cb700da71\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\8f308348ccfd48ac4d2f9e8cb700da71\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-compat:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\b6b91cd5d379a81a675bb1cf456a3734\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-compat:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\b6b91cd5d379a81a675bb1cf456a3734\AndroidManifest.xml:25:5-29:19
+MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\fdd055deca8a35ad109c7094290d975a\AndroidManifest.xml:24:5-28:19
+MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\fdd055deca8a35ad109c7094290d975a\AndroidManifest.xml:24:5-28:19
+	android:supportsRtl
+		ADDED from C:\Users\soyma\Documents\android-fundamentals\clase2\ejercicios\ImplicitIntentsReceiver\app\src\main\AndroidManifest.xml:26:9-35
+	android:label
+		ADDED from C:\Users\soyma\Documents\android-fundamentals\clase2\ejercicios\ImplicitIntentsReceiver\app\src\main\AndroidManifest.xml:24:9-41
+	android:roundIcon
+		ADDED from C:\Users\soyma\Documents\android-fundamentals\clase2\ejercicios\ImplicitIntentsReceiver\app\src\main\AndroidManifest.xml:25:9-54
+	android:icon
+		ADDED from C:\Users\soyma\Documents\android-fundamentals\clase2\ejercicios\ImplicitIntentsReceiver\app\src\main\AndroidManifest.xml:23:9-43
+	android:allowBackup
+		ADDED from C:\Users\soyma\Documents\android-fundamentals\clase2\ejercicios\ImplicitIntentsReceiver\app\src\main\AndroidManifest.xml:22:9-35
+	android:theme
+		ADDED from C:\Users\soyma\Documents\android-fundamentals\clase2\ejercicios\ImplicitIntentsReceiver\app\src\main\AndroidManifest.xml:27:9-40
+activity#com.example.android.implicitintentsreceiver.MainActivity
+ADDED from C:\Users\soyma\Documents\android-fundamentals\clase2\ejercicios\ImplicitIntentsReceiver\app\src\main\AndroidManifest.xml:28:9-40:20
+	android:name
+		ADDED from C:\Users\soyma\Documents\android-fundamentals\clase2\ejercicios\ImplicitIntentsReceiver\app\src\main\AndroidManifest.xml:28:19-47
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from C:\Users\soyma\Documents\android-fundamentals\clase2\ejercicios\ImplicitIntentsReceiver\app\src\main\AndroidManifest.xml:29:13-33:29
+action#android.intent.action.MAIN
+ADDED from C:\Users\soyma\Documents\android-fundamentals\clase2\ejercicios\ImplicitIntentsReceiver\app\src\main\AndroidManifest.xml:30:17-69
+	android:name
+		ADDED from C:\Users\soyma\Documents\android-fundamentals\clase2\ejercicios\ImplicitIntentsReceiver\app\src\main\AndroidManifest.xml:30:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\Users\soyma\Documents\android-fundamentals\clase2\ejercicios\ImplicitIntentsReceiver\app\src\main\AndroidManifest.xml:32:17-77
+	android:name
+		ADDED from C:\Users\soyma\Documents\android-fundamentals\clase2\ejercicios\ImplicitIntentsReceiver\app\src\main\AndroidManifest.xml:32:27-74
+intent-filter#action:name:android.intent.action.SEND+category:name:android.intent.category.DEFAULT+data:mimeType:text/plain
+ADDED from C:\Users\soyma\Documents\android-fundamentals\clase2\ejercicios\ImplicitIntentsReceiver\app\src\main\AndroidManifest.xml:35:13-39:29
+category#android.intent.category.DEFAULT
+ADDED from C:\Users\soyma\Documents\android-fundamentals\clase2\ejercicios\ImplicitIntentsReceiver\app\src\main\AndroidManifest.xml:36:17-76
+	android:name
+		ADDED from C:\Users\soyma\Documents\android-fundamentals\clase2\ejercicios\ImplicitIntentsReceiver\app\src\main\AndroidManifest.xml:36:27-73
+action#android.intent.action.SEND
+ADDED from C:\Users\soyma\Documents\android-fundamentals\clase2\ejercicios\ImplicitIntentsReceiver\app\src\main\AndroidManifest.xml:37:17-69
+	android:name
+		ADDED from C:\Users\soyma\Documents\android-fundamentals\clase2\ejercicios\ImplicitIntentsReceiver\app\src\main\AndroidManifest.xml:37:25-66
+data
+ADDED from C:\Users\soyma\Documents\android-fundamentals\clase2\ejercicios\ImplicitIntentsReceiver\app\src\main\AndroidManifest.xml:38:17-54
+	android:mimeType
+		ADDED from C:\Users\soyma\Documents\android-fundamentals\clase2\ejercicios\ImplicitIntentsReceiver\app\src\main\AndroidManifest.xml:38:23-52
+uses-sdk
+INJECTED from C:\Users\soyma\Documents\android-fundamentals\clase2\ejercicios\ImplicitIntentsReceiver\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\soyma\Documents\android-fundamentals\clase2\ejercicios\ImplicitIntentsReceiver\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\soyma\Documents\android-fundamentals\clase2\ejercicios\ImplicitIntentsReceiver\app\src\main\AndroidManifest.xml
+MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\405b40aa9d6448b3e2c3336df3db5d47\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\405b40aa9d6448b3e2c3336df3db5d47\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\a947dfdeec33a2049b69db42acab7c7a\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\a947dfdeec33a2049b69db42acab7c7a\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\750a2314d3c515a34a23646a12ce9c38\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\750a2314d3c515a34a23646a12ce9c38\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\7d28c76137a58c0e0d39cfd80187d209\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\7d28c76137a58c0e0d39cfd80187d209\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\ba850e691bfa18b88d9dd5bc988e5415\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-v4:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\ba850e691bfa18b88d9dd5bc988e5415\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\3993affcd1b3ebfc9eebd81093b13595\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\3993affcd1b3ebfc9eebd81093b13595\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\cd9c975590156b5e10f3f70edf50feb9\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\cd9c975590156b5e10f3f70edf50feb9\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\0df66d7409d21416778d2225812e43ed\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\0df66d7409d21416778d2225812e43ed\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\8f308348ccfd48ac4d2f9e8cb700da71\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\8f308348ccfd48ac4d2f9e8cb700da71\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-compat:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\b6b91cd5d379a81a675bb1cf456a3734\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-compat:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\b6b91cd5d379a81a675bb1cf456a3734\AndroidManifest.xml:21:5-23:58
+MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\fdd055deca8a35ad109c7094290d975a\AndroidManifest.xml:20:5-22:41
+MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\fdd055deca8a35ad109c7094290d975a\AndroidManifest.xml:20:5-22:41
+INJECTED from C:\Users\soyma\Documents\android-fundamentals\clase2\ejercicios\ImplicitIntentsReceiver\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\soyma\Documents\android-fundamentals\clase2\ejercicios\ImplicitIntentsReceiver\app\src\main\AndroidManifest.xml
+	tools:overrideLibrary
+		ADDED from [com.android.support:appcompat-v7:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\405b40aa9d6448b3e2c3336df3db5d47\AndroidManifest.xml:23:9-75
+	android:targetSdkVersion
+		INJECTED from C:\Users\soyma\Documents\android-fundamentals\clase2\ejercicios\ImplicitIntentsReceiver\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\soyma\Documents\android-fundamentals\clase2\ejercicios\ImplicitIntentsReceiver\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\soyma\Documents\android-fundamentals\clase2\ejercicios\ImplicitIntentsReceiver\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\Users\soyma\Documents\android-fundamentals\clase2\ejercicios\ImplicitIntentsReceiver\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\soyma\Documents\android-fundamentals\clase2\ejercicios\ImplicitIntentsReceiver\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\soyma\Documents\android-fundamentals\clase2\ejercicios\ImplicitIntentsReceiver\app\src\main\AndroidManifest.xml
+meta-data#android.support.VERSION
+ADDED from [com.android.support:appcompat-v7:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\405b40aa9d6448b3e2c3336df3db5d47\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\750a2314d3c515a34a23646a12ce9c38\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\750a2314d3c515a34a23646a12ce9c38\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\7d28c76137a58c0e0d39cfd80187d209\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\7d28c76137a58c0e0d39cfd80187d209\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-v4:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\ba850e691bfa18b88d9dd5bc988e5415\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-v4:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\ba850e691bfa18b88d9dd5bc988e5415\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\3993affcd1b3ebfc9eebd81093b13595\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\3993affcd1b3ebfc9eebd81093b13595\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\cd9c975590156b5e10f3f70edf50feb9\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\cd9c975590156b5e10f3f70edf50feb9\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\0df66d7409d21416778d2225812e43ed\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\0df66d7409d21416778d2225812e43ed\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\8f308348ccfd48ac4d2f9e8cb700da71\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\8f308348ccfd48ac4d2f9e8cb700da71\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-compat:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\b6b91cd5d379a81a675bb1cf456a3734\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-compat:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\b6b91cd5d379a81a675bb1cf456a3734\AndroidManifest.xml:26:9-28:38
+	android:value
+		ADDED from [com.android.support:appcompat-v7:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\405b40aa9d6448b3e2c3336df3db5d47\AndroidManifest.xml:28:13-35
+	android:name
+		ADDED from [com.android.support:appcompat-v7:26.1.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\405b40aa9d6448b3e2c3336df3db5d47\AndroidManifest.xml:27:13-51
+meta-data#android.arch.lifecycle.VERSION
+ADDED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\fdd055deca8a35ad109c7094290d975a\AndroidManifest.xml:25:9-27:47
+	android:value
+		ADDED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\fdd055deca8a35ad109c7094290d975a\AndroidManifest.xml:27:13-44
+	android:name
+		ADDED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\soyma\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\fdd055deca8a35ad109c7094290d975a\AndroidManifest.xml:26:13-58

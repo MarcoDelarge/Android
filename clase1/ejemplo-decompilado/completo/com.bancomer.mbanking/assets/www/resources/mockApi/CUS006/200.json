@@ -1,0 +1,17 @@
+{
+    "data": {
+      "contactDetailId": "C001987887689",
+      "contact": "987654321",
+      "contactType": {
+        "id": "MOBILE_NUMBER",
+        "name": "TELEFONO MOVIL"
+      },
+      "phoneCompany": {
+        "id": "M",
+        "name": "MOVISTAR"
+      },
+      "isPreferential": false,
+      "adsAllowed": false,
+      "lastUpdateDate": "2018-02-27"
+    }
+  }

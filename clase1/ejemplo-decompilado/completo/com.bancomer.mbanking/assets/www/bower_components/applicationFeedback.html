@@ -1,0 +1,13 @@
+<html><head></head><body><div hidden="" by-polymer-bundler=""><dom-module id="glomo-opinator-iframe-manager" assetpath="glomo-opinator-iframe-manager/"><template></template><script>var _Polymer=Polymer,mixinBehaviors=_Polymer.mixinBehaviors,Element=_Polymer.Element,_CellsBehaviors=CellsBehaviors,i18nBehavior=_CellsBehaviors.i18nBehavior,GlomoOpinatorIframeManagerBehavior=_CellsBehaviors.GlomoOpinatorIframeManagerBehavior,GlomoOpinatorIframeManagerMx=/*#__PURE__*/function(_mixinBehaviors){babelHelpers.inherits(GlomoOpinatorIframeManagerMx,_mixinBehaviors);function GlomoOpinatorIframeManagerMx(){babelHelpers.classCallCheck(this,GlomoOpinatorIframeManagerMx);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(GlomoOpinatorIframeManagerMx).apply(this,arguments))}babelHelpers.createClass(GlomoOpinatorIframeManagerMx,[{key:"_startTimeout",/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  * IFRAME & VEIL MANAGER
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */ /**
+   * Starts a timeout that will be stopped when the iframe web is loaded
+   * @event opinator-timeout-error
+   */value:function _startTimeout(){var _this=this;return Polymer.Async.timeOut.run(function(){_this._hasFailed=!0;var errorDetail={code:"COMUNICATION-ERROR-INFO",selectedConfig:{className:"error",openMaximized:!1,iconOnlyFullHeight:!0,template:{type:"paragraphs",values:[{icon:"coronita:alert"},{title:"alert-COMUNICATION-ERROR-INFO-title-modal"},{text:"alert-COMUNICATION-ERROR-INFO-message"}]}}};if(_this.counterTryFeedbackError<_this.maxTryFeedbackError){_this.counterTryFeedbackError+=1;errorDetail.selectedConfig.acceptBtLabel="alert-GENERAL-ERROR-accept";errorDetail.selectedConfig.cancelBtLabel="alert-LOGOUT-exit"}else{_this.counterTryFeedbackError=0;errorDetail.selectedConfig.acceptBtLabel="alert-LOGOUT-exit"}_this._dispatchEvent("opinator-timeout-error",errorDetail)},this.loadingTimeout)}}],[{key:"is",get:function get(){return"glomo-opinator-iframe-manager-mx"}},{key:"properties",get:function get(){return{/**
+       * Counter to show modal
+       * @type number
+       */counterTryFeedbackError:{type:Number,value:0},/**
+       * Max number of attempts on feedback error
+       * @type number
+       */maxTryFeedbackError:{type:Number,value:3,readOnly:!0}}}}]);return GlomoOpinatorIframeManagerMx}(mixinBehaviors([i18nBehavior,GlomoOpinatorIframeManagerBehavior// eslint-disable-next-line new-cap
+],GlomoOpinatorIframeManagerBehavior(Element)));customElements.define(GlomoOpinatorIframeManagerMx.is,GlomoOpinatorIframeManagerMx);</script></dom-module></div></body></html>

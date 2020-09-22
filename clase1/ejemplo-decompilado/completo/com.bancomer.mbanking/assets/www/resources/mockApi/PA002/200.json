@@ -1,0 +1,126 @@
+{
+  "data": {
+    "initialAmount": {
+      "amount": 600,
+      "currency": "MXN"
+    },
+    "terms": {
+      "number": 2,
+      "frequency": "MONTHLY"
+    },
+    "rates": [
+      {
+        "rateType": {
+          "id": "CAT",
+          "name": "Costo Anual Total"
+        },
+        "calculationDate": "2018-10-29",
+        "mode": {
+          "id": "PERCENTAGE",
+          "name": "Percentage"
+        },
+        "unit": {
+          "percentage": 51.3
+        }
+      },
+      {
+        "rateType": {
+          "id": "TASA_ANUAL",
+          "name": "Tasa Anual"
+        },
+        "mode": {
+          "id": "PERCENTAGE",
+          "name": "Percentage"
+        },
+        "unit": {
+          "percentage": 0
+        }
+      },
+      {
+        "rateType": {
+          "id": "TASA_MENSUAL",
+          "name": "Tasa Mensual"
+        },
+        "mode": {
+          "id": "PERCENTAGE",
+          "name": "Percentage"
+        },
+        "unit": {
+          "percentage": 0
+        }
+      },
+      {
+        "rateType": {
+          "id": "TASA_ORDINARIA",
+          "name": "Tasa Ordinaria"
+        },
+        "mode": {
+          "id": "PERCENTAGE",
+          "name": "Percentage"
+        },
+        "unit": {
+          "percentage": 0
+        }
+      },
+      {
+        "rateType": {
+          "id": "TASA_MORATORIA",
+          "name": "Tasa Moratoria"
+        },
+        "mode": {
+          "id": "PERCENTAGE",
+          "name": "Percentage"
+        },
+        "unit": {
+          "percentage": 0
+        }
+      }
+    ],
+    "purposeGroup": {
+      "id": "00156",
+      "name": "Destino"
+    },
+    "loanBreakDown": [
+      {
+        "id": "INSTALLMENT",
+        "name": "Installment",
+        "amount": 150,
+        "currency": "MXN"
+      },
+      {
+        "id": "GROSS_AMOUNT",
+        "name": "Gross amount",
+        "amount": 600,
+        "currency": "MXN"
+      },
+      {
+        "id": "TOTAL_COST",
+        "name": "Total cost",
+        "amount": 600,
+        "currency": "MXN"
+      }
+    ],
+    "product": {
+      "id": "NO_VALUE",
+      "subproduct": {
+        "id": "CD01"
+      }
+    },
+    "additionalProducts": [
+      {
+        "managementCompany": {
+          "id": "No aplica",
+          "name": "No aplica"
+        },
+        "productType": {
+          "id": "INSURANCES",
+          "name": "Insurances"
+        },
+        "isDefaultSelected": true,
+        "amount": {
+          "amount": 0
+        }
+      }
+    ]
+  }
+}

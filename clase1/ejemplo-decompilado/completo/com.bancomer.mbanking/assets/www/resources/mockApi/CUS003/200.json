@@ -1,0 +1,122 @@
+{
+  "data": [
+    {
+      "contactDetailId": "1234",
+      "contact": "*****865",
+      "contactType": {
+        "id": "PHONE_NUMBER",
+        "name": "phone"
+      },
+      "country": {
+        "id": "PE",
+        "name": "Perú"
+      },
+      "regionalCode": "045",
+      "extension": "555",
+      "isPreferential": true,
+      "isChecked": true,
+      "adsAllowed": true
+    },
+    {
+      "contactDetailId": "1235",
+      "contact": "*****064",
+      "contactType": {
+        "id": "MOBILE_NUMBER",
+        "name": "Mobile"
+      },
+      "country": {
+        "id": "PE",
+        "name": "Perú"
+      },
+      "phoneCompany": {
+        "id": "TELCEL",
+        "name": "Telcel"
+      },
+      "isPreferential": true,
+      "isChecked": true,
+      "adsAllowed": true
+    },
+    {
+      "contactDetailId": "1236",
+      "contact": "****deo@gmail.com",
+      "contactType": {
+        "id": "EMAIL",
+        "name": "email"
+      },
+      "isPreferential": true,
+      "isChecked": true,
+      "adsAllowed": true
+    },
+    {
+      "contactDetailId": "1237",
+      "contact": "*******@bbva.com",
+      "contactType": {
+        "id": "WORK_EMAIL",
+        "name": "email"
+      },
+      "isPreferential": true,
+      "isChecked": false,
+      "adsAllowed": true
+    },
+    {
+      "contactDetailId": "1238",
+      "contact": "*******@fb.com",
+      "contactType": {
+        "id": "FACEBOOK_EMAIL",
+        "name": "email"
+      },
+      "isPreferential": true,
+      "isChecked": false,
+      "adsAllowed": true
+    },
+    {
+      "contactDetailId": "O00147787981211",
+      "contact": "123456",
+      "contactType": {
+        "id": "OFFICE_NUMBER",
+        "name": "TELEFONO OFICINA"
+      },
+      "regionalCode": "052",
+      "extension": "1211",
+      "isPreferential": false,
+      "adsAllowed": false,
+      "lastUpdateDate": "2018-02-27"
+    },
+    {
+      "contactDetailId": "C001987887689",
+      "contact": "123457689",
+      "contactType": {
+        "id": "MOBILE_NUMBER",
+        "name": "TELEFONO MOVIL"
+      },
+       "phoneCompany": {
+        "id": "M",
+        "name": "MOVISTAR"
+      },
+      "isPreferential": false,
+      "adsAllowed": false,
+      "lastUpdateDate": "2018-02-27"
+    },
+    {
+      "contactDetailId": "EMAIL001",
+      "contact": "**********primary@gmail.COM",
+      "contactType": {
+        "id": "EMAIL",
+        "name": "PERSONAL"
+      },
+      "isPreferential": false,
+      "isChecked": false,
+      "lastUpdateDate": "2018-02-26"
+    },
+    {
+      "contactDetailId": "EMAIL006",
+      "contact": "acbdRRE@facebook.com",
+      "contactType": {
+        "id": "FACEBOOK_EMAIL",
+        "name": "FACEBOOK"
+      },
+      "isPreferential": false,
+      "lastUpdateDate": "2018-02-27"
+    }
+  ]
+}

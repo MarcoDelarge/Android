@@ -1,0 +1,1516 @@
+{
+    "data": [
+        {
+            "id": "00001",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "BANXICO"
+                }
+            ]
+        },
+        {
+            "id": "40002",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "BANAMEX"
+                }
+            ]
+        },
+        {
+            "id": "40003",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "SERFIN"
+                }
+            ]
+        },
+        {
+            "id": "40004",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "ATLANTICO"
+                }
+            ]
+        },
+        {
+            "id": "30006",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "BANCOMEXT"
+                }
+            ]
+        },
+        {
+            "id": "40007",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "CITIBANK"
+                }
+            ]
+        },
+        {
+            "id": "30009",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "BANOBRAS"
+                }
+            ]
+        },
+        {
+            "id": "40014",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "SANTANDER"
+                }
+            ]
+        },
+        {
+            "id": "30019",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "BANJERCITO"
+                }
+            ]
+        },
+        {
+            "id": "40021",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "HSBC"
+                }
+            ]
+        },
+        {
+            "id": "0023",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "FINANCIERA MEXICO"
+                }
+            ]
+        },
+        {
+            "id": "40025",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "SURESTE"
+                }
+            ]
+        },
+        {
+            "id": "40030",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "BAJIO"
+                }
+            ]
+        },
+        {
+            "id": "40032",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "IXE"
+                }
+            ]
+        },
+        {
+            "id": "40036",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "INBURSA"
+                }
+            ]
+        },
+        {
+            "id": "40037",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "INTERACCIONES"
+                }
+            ]
+        },
+        {
+            "id": "40042",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "MIFEL"
+                }
+            ]
+        },
+        {
+            "id": "40044",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "SCOTIABANK"
+                }
+            ]
+        },
+        {
+            "id": "40058",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "BANREGIO"
+                }
+            ]
+        },
+        {
+            "id": "40059",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "INVEX"
+                }
+            ]
+        },
+        {
+            "id": "40060",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "BANSI"
+                }
+            ]
+        },
+        {
+            "id": "40062",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "AFIRME"
+                }
+            ]
+        },
+        {
+            "id": "40072",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "BANORTE/ IXE"
+                }
+            ]
+        },
+        {
+            "id": "40086",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "BANCEN"
+                }
+            ]
+        },
+        {
+            "id": "80100",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "ONE CARD"
+                }
+            ]
+        },
+        {
+            "id": "40101",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "CREMI"
+                }
+            ]
+        },
+        {
+            "id": "40102",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "ACCENDO BANCO"
+                }
+            ]
+        },
+        {
+            "id": "40103",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "AMERICAN EXPRES"
+                }
+            ]
+        },
+        {
+            "id": "40106",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "BAMSA"
+                }
+            ]
+        },
+        {
+            "id": "40107",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "BOSTON"
+                }
+            ]
+        },
+        {
+            "id": "40108",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "TOKYO"
+                }
+            ]
+        },
+        {
+            "id": "40110",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "JP MORGAN"
+                }
+            ]
+        },
+        {
+            "id": "40112",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "BMONEX"
+                }
+            ]
+        },
+        {
+            "id": "40113",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "VE POR MAS"
+                }
+            ]
+        },
+        {
+            "id": "40114",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "BANK ONE"
+                }
+            ]
+        },
+        {
+            "id": "40116",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "ING"
+                }
+            ]
+        },
+        {
+            "id": "40124",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "DEUTSCHE"
+                }
+            ]
+        },
+        {
+            "id": "40126",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "CREDIT SUISSE"
+                }
+            ]
+        },
+        {
+            "id": "40127",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "AZTECA"
+                }
+            ]
+        },
+        {
+            "id": "40128",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "AUTOFIN"
+                }
+            ]
+        },
+        {
+            "id": "40129",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "BARCLAYS"
+                }
+            ]
+        },
+        {
+            "id": "40130",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "COMPARTAMOS"
+                }
+            ]
+        },
+        {
+            "id": "40131",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "BANCO FAMSA"
+                }
+            ]
+        },
+        {
+            "id": "40132",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "MULTIVA BANCO"
+                }
+            ]
+        },
+        {
+            "id": "40133",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "ACTINVER"
+                }
+            ]
+        },
+        {
+            "id": "40134",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "WALMART (BANCO WALTMART)"
+                }
+            ]
+        },
+        {
+            "id": "30135",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "NAFIN"
+                }
+            ]
+        },
+        {
+            "id": "40136",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "INTERCAM BANCO"
+                }
+            ]
+        },
+        {
+            "id": "40137",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "BANCOPPEL"
+                }
+            ]
+        },
+        {
+            "id": "40138",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "ABC CAPITAL"
+                }
+            ]
+        },
+        {
+            "id": "40139",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "UBS BANK"
+                }
+            ]
+        },
+        {
+            "id": "40140",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "CONSUBANCO"
+                }
+            ]
+        },
+        {
+            "id": "40141",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "VOLKSWAGEN"
+                }
+            ]
+        },
+        {
+            "id": "40143",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "CIBANCO"
+                }
+            ]
+        },
+        {
+            "id": "40145",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "BBASE"
+                }
+            ]
+        },
+        {
+            "id": "40146",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "BICENTENARIO"
+                }
+            ]
+        },
+        {
+            "id": "40147",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "BANKAOOL"
+                }
+            ]
+        },
+        {
+            "id": "40148",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "PAGATODO"
+                }
+            ]
+        },
+        {
+            "id": "40149",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "FORJADORES"
+                }
+            ]
+        },
+        {
+            "id": "40150",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "INMOBILIARIO"
+                }
+            ]
+        },
+        {
+            "id": "40151",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "DONDE"
+                }
+            ]
+        },
+        {
+            "id": "40152",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "BANCREA"
+                }
+            ]
+        },
+        {
+            "id": "40153",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "CHIHUAHUA"
+                }
+            ]
+        },
+        {
+            "id": "40154",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "BANCO FINTERRA"
+                }
+            ]
+        },
+        {
+            "id": "40155",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "ICBC"
+                }
+            ]
+        },
+        {
+            "id": "40156",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "SABADELL"
+                }
+            ]
+        },
+        {
+            "id": "40158",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "MIZUHO BANK"
+                }
+            ]
+        },
+        {
+            "id": "40160",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "BANCO S3"
+                }
+            ]
+        },
+        {
+            "id": "40161",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "BANCRECER"
+                }
+            ]
+        },
+        {
+            "id": "30166",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "BANSEFI"
+                }
+            ]
+        },
+        {
+            "id": "30167",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "TESORERIA DE LA FEDERACION"
+                }
+            ]
+        },
+        {
+            "id": "30168",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "HIPOTECARIA FED"
+                }
+            ]
+        },
+        {
+            "id": "00245",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "MEXPAGO TRANSACCIONES"
+                }
+            ]
+        },
+        {
+            "id": "00252",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "SOCIEDAD DE FACILIDADES MULTIROTATIVAS"
+                }
+            ]
+        },
+        {
+            "id": "00264",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "RATIMA"
+                }
+            ]
+        },
+        {
+            "id": "00265",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "CELLPAY"
+                }
+            ]
+        },
+        {
+            "id": "00271",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "CONEXION YUCATECA"
+                }
+            ]
+        },
+        {
+            "id": "00277",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "INVERSIONES ACCIONARIAS LANDUS"
+                }
+            ]
+        },
+        {
+            "id": "00293",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "GRIBMA"
+                }
+            ]
+        },
+        {
+            "id": "90600",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "MONEXCB"
+                }
+            ]
+        },
+        {
+            "id": "90601",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "GBM"
+                }
+            ]
+        },
+        {
+            "id": "90602",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "MASARI"
+                }
+            ]
+        },
+        {
+            "id": "90605",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "VALUE"
+                }
+            ]
+        },
+        {
+            "id": "90606",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "ESTRUCTURADORES"
+                }
+            ]
+        },
+        {
+            "id": "90607",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "TIBER"
+                }
+            ]
+        },
+        {
+            "id": "90608",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "VECTOR"
+                }
+            ]
+        },
+        {
+            "id": "90610",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "B&B"
+                }
+            ]
+        },
+        {
+            "id": "90612",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "MAJAPARA"
+                }
+            ]
+        },
+        {
+            "id": "90613",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "MULTIVA CBOLSA"
+                }
+            ]
+        },
+        {
+            "id": "90614",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "ACCIVAL"
+                }
+            ]
+        },
+        {
+            "id": "90615",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "MERRILL LYNCH"
+                }
+            ]
+        },
+        {
+            "id": "90616",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "FINAMEX"
+                }
+            ]
+        },
+        {
+            "id": "90617",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "VALMEX"
+                }
+            ]
+        },
+        {
+            "id": "90618",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "UNICA (UNICA, CASA DE CAMBIO)"
+                }
+            ]
+        },
+        {
+            "id": "90619",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "MAPFRE"
+                }
+            ]
+        },
+        {
+            "id": "90620",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "PROFUTURO"
+                }
+            ]
+        },
+        {
+            "id": "90621",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "CB ACTINVER"
+                }
+            ]
+        },
+        {
+            "id": "90622",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "OACTIN"
+                }
+            ]
+        },
+        {
+            "id": "90623",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "SKANDIA"
+                }
+            ]
+        },
+        {
+            "id": "90626",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "CBDEUTSCHE"
+                }
+            ]
+        },
+        {
+            "id": "90627",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "ZURICH"
+                }
+            ]
+        },
+        {
+            "id": "90628",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "ZURICHVI"
+                }
+            ]
+        },
+        {
+            "id": "90630",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "CB INTERCAM"
+                }
+            ]
+        },
+        {
+            "id": "90631",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "CI BOLSA"
+                }
+            ]
+        },
+        {
+            "id": "90632",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "BULLTICK CASA DE BOLSA"
+                }
+            ]
+        },
+        {
+            "id": "90633",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "STERLING CASA DE CAMBIO"
+                }
+            ]
+        },
+        {
+            "id": "90634",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "FINCOMUN"
+                }
+            ]
+        },
+        {
+            "id": "90636",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "HDI SEGUROS"
+                }
+            ]
+        },
+        {
+            "id": "90637",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "ORDER"
+                }
+            ]
+        },
+        {
+            "id": "90638",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "AKALA"
+                }
+            ]
+        },
+        {
+            "id": "90639",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "EUROFIMEX CASA DE CAMBIO"
+                }
+            ]
+        },
+        {
+            "id": "90640",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "CB JP MORGAN"
+                }
+            ]
+        },
+        {
+            "id": "90642",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "REFORMA"
+                }
+            ]
+        },
+        {
+            "id": "90644",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "C BOLSA BANORTE"
+                }
+            ]
+        },
+        {
+            "id": "90646",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "STP"
+                }
+            ]
+        },
+        {
+            "id": "90647",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "TELECOM"
+                }
+            ]
+        },
+        {
+            "id": "90648",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "EVERCORE"
+                }
+            ]
+        },
+        {
+            "id": "90649",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "OSKNDIA"
+                }
+            ]
+        },
+        {
+            "id": "90651",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "SEGMTY"
+                }
+            ]
+        },
+        {
+            "id": "90652",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "ASEA"
+                }
+            ]
+        },
+        {
+            "id": "90653",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "KUSPIT"
+                }
+            ]
+        },
+        {
+            "id": "90655",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "SOFIEXPRESS"
+                }
+            ]
+        },
+        {
+            "id": "90656",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "UNAGRA"
+                }
+            ]
+        },
+        {
+            "id": "90659",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "ASP INTEGRA OPC"
+                }
+            ]
+        },
+        {
+            "id": "90670",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "LIBERTAD"
+                }
+            ]
+        },
+        {
+            "id": "90671",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "HUASTECAS"
+                }
+            ]
+        },
+        {
+            "id": "90673",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "GNP"
+                }
+            ]
+        },
+        {
+            "id": "90674",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "AXA"
+                }
+            ]
+        },
+        {
+            "id": "90675",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "FICREA"
+                }
+            ]
+        },
+        {
+            "id": "90676",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "C B INBURSA"
+                }
+            ]
+        },
+        {
+            "id": "90677",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "CAJA POP MEXICA"
+                }
+            ]
+        },
+        {
+            "id": "90678",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "SURA"
+                }
+            ]
+        },
+        {
+            "id": "90679",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "FND"
+                }
+            ]
+        },
+        {
+            "id": "90680",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "CRISTOBAL COLON"
+                }
+            ]
+        },
+        {
+            "id": "90681",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "PRINCIPAL"
+                }
+            ]
+        },
+        {
+            "id": "90682",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "PERSEVERANCIA"
+                }
+            ]
+        },
+        {
+            "id": "90683",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "CAJA TELEFONIST"
+                }
+            ]
+        },
+        {
+            "id": "90684",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "TRANSFER"
+                }
+            ]
+        },
+        {
+            "id": "90685",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "FONDO (FIRA)"
+                }
+            ]
+        },
+        {
+            "id": "90686",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "INVERCAP"
+                }
+            ]
+        },
+        {
+            "id": "90687",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "INFONAVIT"
+                }
+            ]
+        },
+        {
+            "id": "90689",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "FOMPED"
+                }
+            ]
+        },
+        {
+            "id": "90691",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "BTG PACTUAL"
+                }
+            ]
+        },
+        {
+            "id": "90692",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "XXI"
+                }
+            ]
+        },
+        {
+            "id": "00830",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "UNISOLUCIONES"
+                }
+            ]
+        },
+        {
+            "id": "00834",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "CREDICLUB"
+                }
+            ]
+        },
+        {
+            "id": "00835",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "LIVERPOOL"
+                }
+            ]
+        },
+        {
+            "id": "00837",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "FICEN"
+                }
+            ]
+        },
+        {
+            "id": "00838",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "IBI SERVICES"
+                }
+            ]
+        },
+        {
+            "id": "00895",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "GLOBAL CARD"
+                }
+            ]
+        },
+        {
+            "id": "90901",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "CLS"
+                }
+            ]
+        },
+        {
+            "id": "90902",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "INDEVAL"
+                }
+            ]
+        },
+        {
+            "id": "81869",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "FINUTIL"
+                }
+            ]
+        },
+        {
+            "id": "51994",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "BANCA MIFEL"
+                }
+            ]
+        },
+        {
+            "id": "82169",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "FINANCIERA INDEPENDENCIA"
+                }
+            ]
+        },
+        {
+            "id": "82269",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "BEPENSA"
+                }
+            ]
+        },
+        {
+            "id": "82769",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "TOKA INVESTMENT PR"
+                }
+            ]
+        },
+        {
+            "id": "52908",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "OPERADORA BROXEL"
+                }
+            ]
+        },
+        {
+            "id": "32000",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "CREDOMATIC"
+                }
+            ]
+        },
+        {
+            "id": "53624",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "CONFIABLE Y EFECTIVO A LA MANO"
+                }
+            ]
+        },
+        {
+            "id": "93643",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "BROXEL"
+                }
+            ]
+        },
+        {
+            "id": "84000",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "CONTROL DE CARTERAS ESPECIALES"
+                }
+            ]
+        },
+        {
+            "id": "24691",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "FMM CONSUMO"
+                }
+            ]
+        },
+        {
+            "id": "15669",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "CONCREEC"
+                }
+            ]
+        },
+        {
+            "id": "65865",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "BRADESCARD DE MEXICO"
+                }
+            ]
+        },
+        {
+            "id": "17700",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "TRUST MANAGEMENT SOURCING"
+                }
+            ]
+        },
+        {
+            "id": "82000",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "CREDITO GLOBAL"
+                }
+            ]
+        },
+        {
+            "id": "69700",
+            "descriptions": [
+                {
+                    "language": "SPA",
+                    "value": "PRESTACIONES UNIVERSALES MONEX"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,113 @@
+{
+  "data": {
+    "total": {
+      "amount": 500,
+      "currency": "PEN"
+    },
+    "capital": {
+      "amount": 1000,
+      "currency": "PEN"
+    },
+    "interest": {
+      "amount": 130,
+      "currency": "PEN"
+    },
+    "rates": [
+      {
+        "rateType": {
+          "id": "TEA",
+          "name": "Tasa Efectivo Anual"
+        },
+        "mode": {
+          "id": "PERCENTAGE",
+          "name": "Percentage"
+        },
+        "unit": {
+          "percentage": "14.9"
+        }
+      },
+      {
+        "rateType": {
+          "id": "TCEA",
+          "name": "Tasa Costo Efectivo Anual"
+        },
+        "mode": {
+          "id": "PERCENTAGE",
+          "name": "Percentage"
+        },
+        "unit": {
+          "percentage": "38.41"
+        }
+      }
+    ],
+    "scheduledPayments": [
+      {
+        "maturityDate": "2017-05-24",
+        "total": {
+          "amount": 250,
+          "currency": "PEN"
+        },
+        "capital": {
+          "amount": 300,
+          "currency": "PEN"
+        },
+        "interest": {
+          "amount": 12,
+          "currency": "PEN"
+        },
+        "fee": {
+          "amount": 12,
+          "currency": "PEN"
+        }
+      },
+      {
+        "maturityDate": "2017-06-24",
+        "total": {
+          "amount": 250,
+          "currency": "PEN"
+        },
+        "capital": {
+          "amount": 300,
+          "currency": "PEN"
+        },
+        "interest": {
+          "amount": 12,
+          "currency": "PEN"
+        },
+        "fee": {
+          "amount": 12,
+          "currency": "PEN"
+        }
+      }
+    ],
+    "downPayment": {
+      "amount": 1500,
+      "currency": "MXN"
+    },
+    "previousPayments": {
+      "amount": 3500,
+      "currency": "MXN"
+    },
+    "downPaymentPending": {
+      "amount": 1500,
+      "currency": "MXN"
+    },
+    "balanceDueAtCutOff": {
+      "amount": 6000,
+      "currency": "MXN"
+    },
+    "overdueAtCutOff": {
+      "amount": 3000,
+      "currency": "MXN"
+    },
+    "totalBalanceDueAtCutOff": {
+      "amount": 2500,
+      "currency": "MXN"
+    },
+    "firstInstallment": {
+      "amount": 1000,
+      "currency": "MXN"
+    },
+    "firstInstallmentDate": "2018-04-09"
+  }
+}

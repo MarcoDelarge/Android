@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "severity": "FATAL",
+  "http-status": 401,
+  "error-code": "alreadyRequested",
+  "error-message": "Ya existe una solicitud previa a esta llamada",
+  "consumer-request-id": "c38f7864-0a73-4354-a35b-86aecd9dfebd",
+  "system-error-code": "alreadyRequested",
+  "system-error-description": "Ya existe una solicitud previa a esta llamada",
+  "system-error-cause": "There are pending requests for phone number: 0445561278426"
+}

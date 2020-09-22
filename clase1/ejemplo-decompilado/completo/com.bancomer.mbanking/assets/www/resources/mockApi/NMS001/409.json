@@ -1,0 +1,10 @@
+{
+    "version": 1,
+    "severity": "FATAL",
+    "http-status": 409,
+    "error-code": "UGE0939",
+    "error-message": "CAP SOLICITADO DEBE ESTAR INFORMADO",
+    "consumer-request-id": "5F40559E-AA86-4B43-8521-0771B81074BD",
+    "system-error-code": "functionalError",
+    "system-error-description": "Error funcional por defecto."
+}

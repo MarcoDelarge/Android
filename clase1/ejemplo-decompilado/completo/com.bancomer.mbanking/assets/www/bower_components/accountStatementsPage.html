@@ -1,0 +1,121 @@
+<html><head></head><body><div hidden="" by-polymer-bundler=""><dom-module id="cells-glomo-account-statements-styles" assetpath="cells-glomo-account-statements/"><template><style>:host{display:block;box-sizing:border-box;font-family:var(--cells-fontDefault, sans-serif);@apply --cells-glomo-account-statements;--cells-glomo-page-content-header:{margin-top:50px;font-size:14px;font-weight:400;};}:host([hidden]), [hidden]{display:none !important;}*, *:before, *:after{box-sizing:inherit;}:host{--cells-product-item-amount-amount:{color:var(--bbva-white);font-size:20px;};--cells-product-item:{margin:0;padding:0;color:var(--bbva-white);};--cells-product-item-background-color:var(--bbva-navy);--cells-product-item-active-background-color:var(--bbva-navy);--cells-product-item-color:var(--bbva-white);--cells-product-item-item-name:{color:var(--bbva-white);font-weight:bold;font-size:18px;font-style:medium;};--cells-product-item-amount-label-color:var(--bbva-white);--cells-radio-button-radio-check-size:0.5rem;--cells-radio-button-radio-check-background-color:#1973b8;--cells-glomo-list-modal-date-selected-item-color:white;--cells-glomo-list-modal-max-height-scroll:60vh;}:host cells-atom-date{display:inline;color:var(--bbva-600);}:host iron-icon{--iron-icon-fill-color:#1973B8;}.account-statements-header{background:var(--bbva-navy);padding-top:1rem;padding-left:1.875rem;padding-right:1.875rem;padding-bottom:1.875rem;}.account-statements-header h4{padding-bottom:1.375rem;color:var(--bbva-white);-webkit-appearance:none;-moz-appearance:none;appearance:none;margin-bottom:0;font-size:16px;}.radio-button{display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-ms-flex-align:center;align-items:center;font-weight:500;font-size:18px;}.account-statements-select{margin-left:1.875rem;margin-right:1.875rem;margin-bottom:30px;}.account-statements-button{text-align:center;margin-bottom:30px;}.account-statements-message-information{margin-left:1.875rem;margin-right:1.875rem;margin-bottom:50px;}.account-statements-not-cutoff-icon{margin:40px 0px;}.account-statements-message-title h4{-webkit-appearance:none;-moz-appearance:none;appearance:none;margin-bottom:0;font-size:16px;margin-bottom:30px;}.account-statements-message-title{margin-top:50px;margin-left:1.875rem;}.account-statements-text-cutoff-date{margin-right:1.875rem;font-size:14px;font-style:italic;}.other-account-statements{margin-top:12px;}.account-statements-button{margin:40px 0px;}cells-middle-modal{--cells-middle-modal-md-overlay-background-color:var(--bbva-navy);--cells-middle-modal-md-overlay-opacity:0.9;--cells-middle-modal-md-content-padding:1.25em 0em 1.25em 0em;--cells-middle-modal:{margin-left:-30px;z-index:2;};}cells-glomo-list-modal{text-align:left;}.modal-selector{border:var(--bbva-white-core-blue);width:100%;height:60px;background-color:var(--bbva-100);color:var(--bbva-500);border-bottom:1px solid var(--bbva-500);margin-top:22px;}.spinner{background-color:var(--bbva-white);width:100vw;opacity:0.9;top:0px;bottom:0px;margin:auto 0px;left:0px;@apply --cells-glomo-offer-footer-spinner;}.grid-container{display:grid;grid-template-columns:auto auto;}.flex-column-first{display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-ms-flex-align:center;align-items:center;-webkit-justify-content:flex-start;-ms-flex-pack:start;justify-content:flex-start;margin-left:10px;}.flex-column-second{display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-ms-flex-align:center;align-items:center;-webkit-justify-content:flex-end;-ms-flex-pack:end;justify-content:flex-end;margin-right:10px;}.btn-account{background-color:#0d5a9c;}.flex-column{display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-align-items:flex-start;-ms-flex-align:start;align-items:flex-start;}button:focus{outline:none;}button:disabled,
+button[disabled]{background-color:var(--bbva-200);}.ptoptext{font-size:12px;margin-bottom:8px;}.pmaintext{font-size:16px;}.uppercase{text-transform:uppercase;}.btn-text, --cells-atom-date.btn-text{font-family:"Bento Sans Book", var(--cells-fontDefault, sans-serif);color:var(--bbva-600);}</style></template></dom-module><dom-module id="cells-glomo-account-statements" assetpath="cells-glomo-account-statements/"><template><style include="cells-glomo-account-statements-styles cells-glomo-account-statements-shared-styles cells-modal-alert-shared-styles"></style><div class="account-statements-header"><h4 class="uppercase">[[titleOperation]]</h4><cells-product-item name="[[accountName]]" description="[[accountNumber]]" primary-amount="[[accountAmount]]" local-currency="[[accountAmount.currency]]" visible-chars="[[visibleCharNumber]]" img-src="[[imageCard]]"></cells-product-item></div><div class="account-statements-message-title"><h4 class="uppercase">[[t('cells-glomo-account-statements-title-consultation-period', 'Periodo de consulta')]]</h4></div><template is="dom-if" if="[[haveCutOffDate]]"><div class="account-statements-message-information"><cells-icon-message type="info" icon="coronita:info" message="[[t('cells-glomo-account-statements-text-message-info', 'Puedes consultar estados de cuenta que tengan hasta 10 años.')]]"></cells-icon-message></div><div class="account-statements-select"><cells-radio-group selected="{{selected}}"><cells-radio-button><div class="radio-button"><span>[[t('cells-glomo-account-statements-text-radio-button-last-account-statement', 'Último estado de cuenta')]]</span></div><span class="account-statements-text-cutoff-date">[[t('cells-glomo-account-statements-text-cutoff-date', 'Fecha de corte: ')]]<cells-atom-date date="[[dateObject.date]]" format="[[dateFormat]]" locale="[[lang]]"></cells-atom-date></span></cells-radio-button><cells-radio-button hidden$="[[hideRadioButton]]"><div class="radio-button"><span>[[t('cells-glomo-account-statements-text-radio-button-other-account-statements', 'Otros estados de cuenta')]]</span></div></cells-radio-button></cells-radio-group><button id="boton" class="modal-selector" on-tap="openModal" type="button" hidden$="[[isSelectVisible]]"><div class="grid-container"><div class="flex-column-first"><div class="flex-column"><div class="ptoptext" hidden$="[[isTopTextButton]]">[[t('cells-glomo-account-statements-text-cutoff-date-button', 'Fecha de corte')]]</div><div class="pmaintext"><cells-atom-date date="[[messageCutOffDate]]" format="[[dateFormat]]" locale="[[lang]]" class="btn-text"></cells-atom-date><div hidden$="[[!isTopTextButton]]" class="btn-text">[[t('cells-glomo-account-statements-text-cutoff-date-button', 'Fecha de corte')]]</div></div></div></div><div class="flex-column-second"><iron-icon icon="coronita:unfold" class="modal-icon icon-size-24"></iron-icon></div></div></button><cells-middle-modal id="modal_options" close-on-click="" open="{{isModalOpen}}"><cells-glomo-list-modal data="[[listModalData]]" date="" icon="[[modalIcon]]" date-format="[[dateFormat]]" lang="[[lang]]"></cells-glomo-list-modal></cells-middle-modal></div><div class="account-statements-button"><cells-st-button on-tap="consultAccountStatements"><button class="btn-account" disabled="[[isDisabledButton]]">[[t('cells-glomo-account-statements-text-button-consult', 'Consultar')]]</button></cells-st-button></div></template><template is="dom-if" if="[[!haveCutOffDate]]"><div class="account-statements-not-cutoff-icon"><cells-glomo-page-content icon="glomo:astronaut-spaceship" header="[[t('cells-glomo-account-statements-text-not-cutoff', 'No tienes estados de cuenta para consultar.')]]" content-icon-width="165" content-icon-height="145" show-icon="" show-header="" show-text=""></cells-glomo-page-content></div><div class="account-statements-button"><cells-st-button on-tap="consultAccountStatements"><button class="btn-account" disabled="[[isDisabledButton]]">[[t('cells-glomo-account-statements-text-button-accept', 'Entendido')]]</button></cells-st-button></div></template></template><script>(function(){'use strict';Polymer({is:"cells-glomo-account-statements",behaviors:[CellsBehaviors.i18nBehavior],properties:{/**
+       * @desc account origin
+       * @type {Object}
+       */accountOrigin:Object,/**
+       * @desc account number
+       * @type {Object}
+       */accountNumber:{type:Object,computed:"getAccountNumber(accountOrigin)"},/**
+       * @desc account Amount
+       * @type {Object}
+       */accountAmount:{type:Object,computed:"getAccountAmount(accountOrigin)"},/**
+       * @desc account Name
+       * @type {String}
+       */accountName:{type:String,computed:"getAccountName(accountOrigin)"},/**
+       * @desc Account masked
+       * @type {Number}
+       */visibleCharNumber:{type:Number,value:5},/**
+       * @desc Modal Open
+       * @type {Boolean}
+       */isModalOpen:{type:Boolean,notify:!0},/**
+       * @desc list  date of cutt
+       * @type {Array}
+       */listModalData:{type:Array,value:[]},/**
+       * @desc Icon checkmark
+       * @type {String}
+       */modalIcon:String,/**
+       * @desc boolean to show/hide button
+       * @type {Boolean}
+       */isSelectVisible:{type:Boolean,value:!0},/**
+       * @desc variable that receives the channel data from the native
+       * @type {Object}
+       */account:{type:Object,observer:"accountChanged"},/**
+       * @desc Variable that is responsible for observing changes in the radio group
+       * @type {Number}
+       */selected:{type:Number,value:0,observer:"selectedChanged"},/**
+       * @desc list of account statements
+       * @type {Array}
+       */listCutOffDate:Array,/**
+       * @desc format date
+       * @type {String}
+       */dateFormat:{type:String,value:"DD MMMM YYYY"},/**
+       * @desc language
+       * @type {String}
+       */lang:{type:String,value:window.AppConfig.lang,readOnly:!0},/**
+       * @desc Variable to assign the account status that will be queried
+       * @type {Object}
+       */dateObject:Object,/**
+      * @desc Variable to assign the account status that will be queried
+      * @type {String}
+      */idOtherStatus:String,/**
+       * @desc boolean to show/hide button
+       * @type {Boolean}
+       */isDisabledButton:{type:Boolean,value:!0},/**
+       * @desc Variable responsible for modifying the title
+       * @type {String}
+       */titleOperation:String,/**
+       * @desc Constant type of operation
+       * @type {String}
+       */titleTypeOperation:{type:String,value:"ACCOUNTS"},/**
+      * @desc image card in product item
+      * @type {String}
+      */imageCard:{type:String,computed:"getImageCard(accountOrigin)"},/**
+       * @desc visible top text button
+       * @type {String}
+       */isTopTextButton:{type:Boolean,value:!0},/**
+       * @desc text message on the button
+       * @type {String}
+       */messageCutOffDate:String,/**
+       * @desc Variable responsible for making visible or invisible the component of radio button
+       * @type {Boolean}
+       */hideRadioButton:{type:Boolean,value:!1},/**
+       * @desc Variable responsible for making visible or invisible when have not date of cut
+       * @type {Boolean}
+       */haveCutOffDate:{type:Boolean,value:!1}},listeners:{"cells-glomo-list-modal-selected":"listModalSelected"},/**
+     * opens the date off cute list
+     */openModal:function openModal(){this.$$("#modal_options").setAttribute("open",!0)},/**
+      * @desc this method assigns the value of account name
+      * @type {Object}
+      */getAccountName:function getAccountName(accountOrigin){return accountOrigin.alias?accountOrigin.alias:accountOrigin.title.name},/**
+     * @desc this method assigns the value of imagecard
+     * @type {Object}
+     */getImageCard:function getImageCard(accountOrigin){if(this.account.productType!==this.titleTypeOperation){return accountOrigin.images[0].url}},/**
+     * @desc this method assigns the value of account number
+     * @type {Object}
+     */getAccountNumber:function getAccountNumber(accountOrigin){return{value:accountOrigin.number,masked:!0}},/**
+     * @desc this method assigns the value of account amount
+     * @type {Object}
+     */getAccountAmount:function getAccountAmount(accountOrigin){if(this.account.productType===this.titleTypeOperation){return{amount:accountOrigin.availableBalance.currentBalances[0].amount,currency:accountOrigin.availableBalance.currentBalances[0].currency}}else{return{amount:accountOrigin.disposedBalance.currentBalances[0].amount,currency:accountOrigin.disposedBalance.currentBalances[0].currency,label:this.t("cells-glomo-account-statements-text-message-card")}}},/**
+     * @desc This method is responsible for observing changes in the group of radio buttons.
+     * @param {Number} selected
+     */selectedChanged:function selectedChanged(selected){if(1===selected){this.set("isSelectVisible",!1);this.set("isDisabledButton",!0)}else{this.set("messageCutOffDate",this.t("cells-glomo-account-statements-text-cutoff-date-button"));this.set("isTopTextButton",!0);this.set("isSelectVisible",!0);this.set("isDisabledButton",!1)}},/**
+     * @desc This method is responsible for checking the Account typeOperation.
+     * Account = 'ACCOUNT'
+     * Card = 'CARD'
+     * @param {Object} account
+     */accountChanged:function accountChanged(account){if(account.productType===this.titleTypeOperation){this.set("titleOperation",this.t("cells-glomo-account-statements-title-account","Cuenta"))}else{this.set("titleOperation",this.t("cells-glomo-account-statements-title-card","Tarjeta"))}},/**
+     * @desc This method receives the information from the channel with the id (CardId or AccountId) and launches the request for get the list of account statements
+     * @param {Object} account
+     */accountStatementsList:function accountStatementsList(account){var _this=this;this.dispatchEvent(new CustomEvent("show-spinner"));this.set("account",account);var productType="",eventList="",eventAccountOrigin="",payload={};productType=account.productType;switch(productType){case"ACCOUNTS":eventList="request-account-statements-list-accounts";eventAccountOrigin="request-account-user-data";payload={accountId:account.productId};break;case"CARDS":eventList="request-account-statements-list-cards";eventAccountOrigin="request-card-user-data";payload={cardId:account.productId};break;}Polymer.Async.timeOut.run(function(){_this.dispatchEvent(new CustomEvent(eventList,{detail:payload}))});Polymer.Async.timeOut.run(function(){_this.dispatchEvent(new CustomEvent(eventAccountOrigin,{detail:payload}))})},/**
+     * @desc This method receives the response of the request server from the list of cut dates and processes it.
+     * @param {Array} listCutOffDate
+     */onResponseSucessAccountStatementsList:function onResponseSucessAccountStatementsList(listCutOffDate){var _this2=this;if(0===listCutOffDate.length){this.set("haveCutOffDate",!1)}else if(1===listCutOffDate.length){this.set("hideRadioButton",!0);this.set("haveCutOffDate",!0);this.set("dateObject",{date:this.reverseDateFormat(listCutOffDate[0].cutOffDate),id:listCutOffDate[0].id})}else{this.set("hideRadioButton",!1);this.set("haveCutOffDate",!0);this.set("modalIcon","coronita:checkmark");this.set("dateObject",{date:this.reverseDateFormat(listCutOffDate[0].cutOffDate),id:listCutOffDate[0].id});var arrayList=listCutOffDate.map(function(item){return{id:item.id,title:_this2.reverseDateFormat(item.cutOffDate)}});arrayList.shift();this.set("listModalData",arrayList)}this.dispatchEvent(new CustomEvent("hide-spinner"))},/**
+     * @desc listen to middle modal changes
+     */listModalSelected:function listModalSelected(detail){this.debounce("onSelectItem",function(){this.set("isModalOpen",!1);this.set("isTopTextButton",!1);this.set("idOtherStatus",detail.detail.id);this.set("messageCutOffDate",detail.detail.selected);this.set("isDisabledButton",!1)},200)},/**
+     * @desc this method consults the account statement (PDF)
+     */consultAccountStatements:function consultAccountStatements(){if(!this.haveCutOffDate){this.dispatchEvent(new CustomEvent("do-backstep"))}else{this.dispatchEvent(new CustomEvent("show-spinner"));var financialStatementsId="";financialStatementsId=0===this.selected?this.dateObject.id:this.idOtherStatus;var eventList="",payload={};switch(this.account.productType){case"ACCOUNTS":eventList="request-account-statements-PDF-accounts";payload={accountId:this.account.productId,financialStatementsId:financialStatementsId};break;case"CARDS":eventList="request-account-statements-PDF-cards";payload={cardId:this.account.productId,financialStatementsId:financialStatementsId};break;}this.dispatchEvent(new CustomEvent(eventList,{detail:payload}))}},/**
+     * @desc This method receives the information from the dm of the origin account - (Card or Account)
+     * @param {Object} payload with the account details
+     */processAccountData:function processAccountData(payload){if(payload){this.set("accountOrigin",payload.accountDetails)}},/**
+     * @desc This method receives the information from the dm of the origin account - Card
+     */processCardData:function processCardData(payload){if(payload){this.set("accountOrigin",payload.cardDetails)}},/**
+     * @desc This method receive base 64 code code and launch the event for show the pdf
+     * @param {Object} response with base64
+     */onResponseSucessAccountStatementsPDF:function onResponseSucessAccountStatementsPDF(response){this.dispatchEvent(new CustomEvent("hide-spinner"));this.dispatchEvent(new CustomEvent("response-account-statements-PDF-success",{detail:response.base64}))},/**
+     * @desc format the date 12/12/2017 to 2017-12-12
+     * @param {String} date with the format 12/12/2017
+     */reverseDateFormat:function reverseDateFormat(date){return date.split("/").reverse().join("-")},/**
+     * @desc hide spinner screen security
+     */securityScreenCancellationAccounts:function securityScreenCancellationAccounts(){this.dispatchEvent(new CustomEvent("hide-spinner"))},/**
+     * @desc hide spinner screen security
+     */securityScreenCancellationCards:function securityScreenCancellationCards(){this.dispatchEvent(new CustomEvent("hide-spinner"))}})})();</script></dom-module></div></body></html>

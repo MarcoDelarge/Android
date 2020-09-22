@@ -1,0 +1,173 @@
+<html><head></head><body><div hidden="" by-polymer-bundler=""><dom-module id="glomo-credit-card-holder-offer-success-styles" assetpath="glomo-credit-card-holder-offer-success/"><template><style>:host{display:block;box-sizing:border-box;font-family:var(--cells-fontDefault, sans-serif);@apply --glomo-credit-card-holder-offer-success;--cells-operations-list__link-icon-atom-icon:{height:54px;};--cells-operations-list__link-icon-label:{font-size:12px;};}:host([hidden]), [hidden]{display:none !important;}*, *:before, *:after{box-sizing:inherit;}:host{--cells-operations-list-list__link:{width:150px;padding:15px;display:flex;align-items:center;};--cells-operations-list-list:{justify-content:center;};--cells-fontDefaultNormalItalic:{margin:5px 25px;font-style:italic;};}cells-successful-response{--cells-atom-date-color:white;--cells-from-to-inital-bg:transparent;--cells-from-to-list-inital-before:transparent;--cells-operations-list-list-bg-color:white;--cells-operations-list-list__link-color:#237ABA;--cells-text-size-ml:0.875rem;--cells-icon-message-padding-left:30px;--cells-icon-message-padding-right:30px;--cells-successful-response-info:{padding:30px 0 21px;};--cells-successful-response-title:{margin-top:0;};--cells-successful-response-title:{margin:0;padding:0;font-size:20px;font-weight:500;};--cells-successful-response-subtitle:{margin:0;};--cells-successful-response-otherInfo:{margin:0;padding:30px;};--cells-successful-response-otherInfo-item:{line-height:1.375rem;};--cells-successful-response-otherInfo-spacing:{margin-bottom:1.875rem;};--cells-icon-message-info:{background-color:rgba(212,237,252, 0.5);};--cells-icon-message:{padding:2rem 1rem 1.5rem;};--cells-successful-response-actions:{padding:30px 0;min-height:0;};--cells-successful-response-more-info:{padding-bottom:140px;};--cells-st-button-bg-color:var(--bbva-medium-blue);--cells-from-to-list:{height:80px;};--cells-from-to-list-item:{padding:10px;};--cells-from-to-initial:{border-radius:0;height:60px;width:60px;};--cells-contact-avatar:{--cells-contact-avatar-size:80px;};--cells-contact-avatar-image:{border-radius:0;width:63px;margin-left:10px;};--cells-from-to-list-item-odd:{padding-right:13.83px;};--cells-from-to-info-name:{font-size:16px;};--cells-icon-message-message:{margin-top:10px;};--cells-from-to-item:{display:flex;flex-direction:column;};--cells-from-to-item-odd:{align-items:flex-end;};--cells-from-to-info-name:{order:-4;};--cells-from-to-info-description:{order:-3;margin:0 0 5px;font-weight:400;};--cells-molecule-mask-margin-top:10px;--cells-molecule-mask-font-style:italic;--cells-molecule-mask-font-weight:400;--cells-successful-response-subtitle:{margin:5px 0px 20px 0px;padding:0;font-weight:300;};--cells-successful-response-info:{padding:30px 0 0;display:flex;flex-direction:column;};--cells-successful-response-info-fees-container:{margin-top:10px;order:1;};--cells-successful-response-cells-atom-amount-huge:{padding:10px 0 50px;order:4;justify-content:center;font-weight:300;};--cells-atom-amount-fractional:{font-size:1.375rem;};--cells-atom-amount-currency-left:{font-size:1.375rem;};--cells-operations-list-list__link:{color:var(--bbva-medium-blue);};--cells-operations-list-list__link-active:{color:var(--bbva-medium-blue);background:transparent;};--cells-successful-response-contact-avatar:{left:calc(50% - 50px);width:100px;height:60px;border-radius:25px;--cells-contact-avatar-image_-_border-radius:{.cells-contact-avatar__image{border-radius:0;}};};--cells-successful-response-operations-list:{text-align:center;};--cells-fontDefaultMedium:{font-size:14px;font-weight:700;};--cells-successful-response-info-fees-container:{font-weight:300;};--cells-header-additional-info:{display:none;};--cells-successful-response-more-info-message:{width:300px;margin:0 auto;padding:0;};--cells-successful-response-more-info-message:{margin:0 1.5rem 1.5rem 1.5rem;};}.payroll-portability-success{--cells-successful-response-info-bg-color:var(--bbva-core-blue);}.ft-success-header{--cells-successful-response-info-bg-color:var(--bbva-green);}</style></template></dom-module><dom-module id="glomo-credit-card-holder-offer-success" assetpath="glomo-credit-card-holder-offer-success/"><template><style include="glomo-credit-card-holder-offer-success-styles glomo-credit-card-holder-offer-success-shared-styles"></style><cells-successful-response id="header" result="{{result}}" format-date="[[dateFormat]]" disable-buttons="[[showButtons]]" local-currency="[[currency]]" additional-offer="[[isTriplePlayOfferCard]]"></cells-successful-response></template><script>var GlomoCreditCardHolderOfferSuccess=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(GlomoCreditCardHolderOfferSuccess,_Polymer$mixinBehavio);function GlomoCreditCardHolderOfferSuccess(){babelHelpers.classCallCheck(this,GlomoCreditCardHolderOfferSuccess);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(GlomoCreditCardHolderOfferSuccess).apply(this,arguments))}babelHelpers.createClass(GlomoCreditCardHolderOfferSuccess,[{key:"ready",value:function ready(){babelHelpers.get(babelHelpers.getPrototypeOf(GlomoCreditCardHolderOfferSuccess.prototype),"ready",this).call(this);this.addEventListener("cells-successful-response-click-primary",this.confirmDeparture.bind(this));this.addEventListener("operation-click",this._buttonOperation.bind(this));this.addEventListener("go-to-other-offer",this._buttonOffer.bind(this));this.set("headerTitleText",this.t("glomo-credit-card-holder-offer-success-title-toolbar"));this.set("headerLeftIcon",this.CLOSE_CONSTANT)}},{key:"_buttonOperation",value:function _buttonOperation(e){if("contracts"===((e||{}).detail||{}).id){this.dispatchEvent(new CustomEvent("show-customer-contracts"))}else if(this.buttonAction===this.WALLET_CONSTANT){this._showWallet()}else if(this.buttonAction===this.BRANCH_OFFICES_CONSTANT){this._showBrancOffices()}}},{key:"_showWallet",value:function _showWallet(){this.dispatchEvent(new CustomEvent("show-wallet"))}},{key:"_showBrancOffices",value:function _showBrancOffices(){this.dispatchEvent(new CustomEvent("show-branch-offices"))}},{key:"responseCreditCardHolderSuccess",value:function responseCreditCardHolderSuccess(data){if(data&&data.triplePlayOfferType){this.isTriplePlayOfferCard=!0;this.triplePlayOfferType=data.triplePlayOfferType}this.dispatchEvent(new CustomEvent("show-spinner"));this.dispatchEvent(new CustomEvent("request-user-email"));this.set("responseData",data)}},{key:"creditCardHolderSuccessApproval",value:function creditCardHolderSuccessApproval(responseData,dataAccount){var avatarSrc=responseData&&responseData.image&&responseData.image.url,amountData=responseData&&responseData.amount&&responseData.amount.amount,currencyData=responseData&&responseData.amount&&responseData.amount.currency,nameData=responseData&&responseData.title&&responseData.title.name;this.set("buttonAction",this.WALLET_CONSTANT);this.changeHeaderColor("ft-success-header");if(responseData.paymentMethod===this.NO_DOMICILIATION_PAYMENT_CONSTANT){this.result={date:responseData.operationDate,title:this.SUCCESS_TITLE_TEXT_CONSTANT,origin:{avatar:{src:avatarSrc},product:{name:" "}},chargeAmount:{amount:amountData,currency:currencyData},topInfo:[{value:"".concat(nameData),class:"bold lg"},this.muskInformation(responseData),{key:this.isTriplePlayOfferCard?"glomo-credit-card-holder-offer-success-text-mode-payment-not-domiciled":this.GLOMO_SUCCESS_TEXT_MODE_PAYMENT_CONSTANT,value:this.SUCCESS_NO_DOMICILIATION_CONSTANT,class:this.CLASS_BOLD_SPACING_CONSTANT},this.accountChargeInformation(responseData,dataAccount),this.accountChargeNameInformation(responseData,dataAccount),this.accountChargeMuskInformation(responseData,dataAccount),{key:this.SUCCESS_SHIPPING_ADDRESS_CONSTANT},{value:responseData.typology===this.HOME_TYP_CONSTANT?"glomo-credit-card-holder-offer-success-text-home":"glomo-credit-card-holder-offer-success-text-sucursal",class:this.CLASS_BOLD_CONSTANT},this.maskAddressInformation(responseData)],fees:[{text:this._setTopInfoFees(responseData)}],message:this.messageInformation(responseData),bottomInfo:[{key:this.SUCCESS_TEXT_FOLIO_CONSTANT,value:responseData.operationNumber,class:this.CLASS_INLINE_SECONDARY_SEPARATOR_CONSTANT},{key:this.SUCCESS_TEXT_BBVA_CONSTANT,class:this.CLASS_BOLD_SPACING_MD_CONSTANT},{key:"glomo-credit-card-holder-offer-success-text-one",value:"glomo-credit-card-holder-offer-success-text-two",class:"inline bold"},{key:"glomo-credit-card-holder-offer-success-text-three",class:this.CLASS_INLINE_SPACING_CONSTANT},{key:this.SUCCESS_TEXT_MESSAGE_EMAIL_CONSTANT},{value:"\xB7 ".concat(this.email),class:this.CLASS_BOLD_CONSTANT}],operations:[],buttons:{primary:{text:this.SUCCESS_TEXT_EXIT_CONSTANT,action:this.GO_TO_NEXT_CONSTANT},secondary:{hidden:this.TRUE_CONSTANT}},additionalOfferInfo:[]}}else{this.result={date:responseData.operationDate,title:this.SUCCESS_TITLE_TEXT_CONSTANT,origin:{avatar:{src:avatarSrc},product:{name:" "}},chargeAmount:{amount:amountData,currency:currencyData},topInfo:[{value:"".concat(nameData),class:"bold lg"},this.muskInformation(responseData),{key:this.isTriplePlayOfferCard?"glomo-credit-card-holder-offer-success-text-mode-payment-domiciled":this.GLOMO_SUCCESS_TEXT_MODE_PAYMENT_CONSTANT,value:this._setTopInfoValue(responseData.paymentMethod),class:this.CLASS_BOLD_SPACING_CONSTANT},this.accountChargeInformation(responseData,dataAccount),this.accountChargeNameInformation(responseData,dataAccount),this.accountChargeMuskInformation(responseData,dataAccount),{key:this.SUCCESS_SHIPPING_ADDRESS_CONSTANT},{value:responseData.typology===this.HOME_TYP_CONSTANT?"glomo-credit-card-holder-offer-success-text-home":"glomo-credit-card-holder-offer-success-text-sucursal",class:this.CLASS_BOLD_CONSTANT},this.maskAddressInformation(responseData)],fees:[{text:this._setTopInfoFees(responseData)}],message:this.messageInformation(responseData),bottomInfo:[{key:this.SUCCESS_TEXT_FOLIO_CONSTANT,value:responseData.operationNumber,class:this.CLASS_INLINE_SECONDARY_SEPARATOR_CONSTANT},{key:this.SUCCESS_TEXT_BBVA_CONSTANT,class:this.CLASS_BOLD_SPACING_MD_CONSTANT},{key:"glomo-credit-card-holder-offer-success-text-one",value:"glomo-credit-card-holder-offer-success-text-two",class:"inline bold"},{key:"glomo-credit-card-holder-offer-success-text-three",class:this.CLASS_INLINE_SPACING_CONSTANT},{key:this.SUCCESS_TEXT_MESSAGE_EMAIL_CONSTANT},{value:"\xB7 ".concat(this.email),class:this.CLASS_BOLD_CONSTANT}],operations:[],buttons:{primary:{text:this.SUCCESS_TEXT_EXIT_CONSTANT,action:this.GO_TO_NEXT_CONSTANT},secondary:{hidden:this.TRUE_CONSTANT}},additionalOfferInfo:[]}}this.showInformation()}},{key:"creditCardHolderPendingApproval",value:function creditCardHolderPendingApproval(responseData){var avatarSrc=responseData&&responseData.image&&responseData.image.url,amountData=responseData&&responseData.amount&&responseData.amount.amount,currencyData=responseData&&responseData.amount&&responseData.amount.currency,nameData=responseData&&responseData.title&&responseData.title.name;this.changeHeaderColor("portability");this.set("currency",currencyData);this.result={title:"glomo-credit-card-holder-offer-success-title-text-pending-approval",origin:{avatar:{src:avatarSrc},product:{name:" "}},chargeAmount:{amount:amountData,currency:currencyData},topInfo:[{value:"".concat(nameData),class:"bold lg"},this.muskInformation(responseData)],fees:[{text:this._setTopInfoFees(responseData)}],message:this.messageInformation(responseData),operations:[{label:this.SUCCESS_TEXT_SUCURSALES_CONSTANT,icon:this.ICON_PLACE_CONSTANT,id:"shareOperation"}],buttons:{primary:{text:this.SUCCESS_TEXT_EXIT_CONSTANT,action:this.GO_TO_NEXT_CONSTANT},secondary:{hidden:this.TRUE_CONSTANT}},additionalOfferInfo:[]};this.showInformation()}},{key:"creditCardHolderPrecontractionPerformed",value:function creditCardHolderPrecontractionPerformed(responseData,dataAccount){var avatarSrc=responseData&&responseData.image&&responseData.image.url,amountData=responseData&&responseData.amount&&responseData.amount.amount,currencyData=responseData&&responseData.amount&&responseData.amount.currency,nameData=responseData&&responseData.title&&responseData.title.name;this.set("buttonAction",this.BRANCH_OFFICES_CONSTANT);this.changeHeaderColor("payroll-portability-success");if(responseData.paymentMethod===this.NO_DOMICILIATION_PAYMENT_CONSTANT){this.result={date:responseData.operationDate,title:"glomo-credit-card-holder-offer-success-title-text-precontraction-performed",origin:{avatar:{src:avatarSrc},product:{name:" "}},chargeAmount:{amount:amountData,currency:currencyData},topInfo:[{value:"".concat(nameData),class:"bold lg spacing"},this.muskInformation(responseData),{key:this.GLOMO_SUCCESS_TEXT_MODE_PAYMENT_CONSTANT,value:this.SUCCESS_NO_DOMICILIATION_CONSTANT,class:this.CLASS_BOLD_SPACING_CONSTANT},this.accountChargeInformation(responseData,dataAccount),this.accountChargeNameInformation(responseData,dataAccount),this.accountChargeMuskInformation(responseData,dataAccount),{key:this.SUCCESS_SHIPPING_ADDRESS_CONSTANT},{value:responseData.typology===this.HOME_TYP_CONSTANT?"glomo-credit-card-holder-offer-success-text-home":"glomo-credit-card-holder-offer-success-text-sucursal",class:"bold  "},this.maskAddressInformation(responseData)],fees:[{text:this._setTopInfoFees(responseData)}],message:this.messageInformation(responseData),bottomInfo:[{key:this.SUCCESS_TEXT_FOLIO_CONSTANT,value:responseData.operationNumber,class:this.CLASS_INLINE_SECONDARY_SEPARATOR_CONSTANT},{key:this.SUCCESS_TEXT_BBVA_CONSTANT,class:this.CLASS_BOLD_SPACING_MD_CONSTANT},{key:this.SUCCESS_TEXT_MESSAGE_EMAIL_CONSTANT},{value:"\u2022 ".concat(this.email),class:this.CLASS_BOLD_CONSTANT}],operations:[{label:this.SUCCESS_TEXT_SUCURSALES_CONSTANT,icon:this.ICON_PLACE_CONSTANT,class:"center"}],buttons:{primary:{text:this.SUCCESS_TEXT_EXIT_CONSTANT,action:this.GO_TO_NEXT_CONSTANT},secondary:{hidden:this.TRUE_CONSTANT}},additionalOfferInfo:[]}}else{this.result={date:responseData.operationDate,title:"glomo-credit-card-holder-offer-success-title-text-precontraction-performed",origin:{avatar:{src:avatarSrc},product:{name:" "}},chargeAmount:{amount:amountData,currency:currencyData},topInfo:[{value:"".concat(nameData),class:"bold lg spacing"},this.muskInformation(responseData),{key:this.GLOMO_SUCCESS_TEXT_MODE_PAYMENT_CONSTANT,value:this._setTopInfoValue(responseData.paymentMethod),class:this.CLASS_BOLD_SPACING_CONSTANT},this.accountChargeInformation(responseData,dataAccount),this.accountChargeNameInformation(responseData,dataAccount),this.accountChargeMuskInformation(responseData,dataAccount),{key:this.SUCCESS_SHIPPING_ADDRESS_CONSTANT},{value:responseData.typology===this.HOME_TYP_CONSTANT?"glomo-credit-card-holder-offer-success-text-home":"glomo-credit-card-holder-offer-success-text-sucursal",class:"bold  "},this.maskAddressInformation(responseData)],fees:[{text:this._setTopInfoFees(responseData)}],message:this.messageInformation(responseData),bottomInfo:[{key:this.SUCCESS_TEXT_FOLIO_CONSTANT,value:responseData.operationNumber,class:this.CLASS_INLINE_SECONDARY_SEPARATOR_CONSTANT},{key:this.SUCCESS_TEXT_BBVA_CONSTANT,class:this.CLASS_BOLD_SPACING_MD_CONSTANT},{key:this.SUCCESS_TEXT_MESSAGE_EMAIL_CONSTANT},{value:"\xB7 ".concat(this.email),class:this.CLASS_BOLD_CONSTANT}],operations:[{label:this.SUCCESS_TEXT_SUCURSALES_CONSTANT,icon:this.ICON_PLACE_CONSTANT,class:"center"}],buttons:{primary:{text:this.SUCCESS_TEXT_EXIT_CONSTANT,action:this.GO_TO_NEXT_CONSTANT},secondary:{hidden:this.TRUE_CONSTANT}},additionalOfferInfo:[]}}this.showInformation()}},{key:"backstep",value:function backstep(e){this.dispatchEvent(new CustomEvent("do-backstep"))}},{key:"showInformation",value:function showInformation(){if(this.isTriplePlayOfferCard){this.additionalInfoForTriplePlayCard()}this.dispatchEvent(new CustomEvent("hide-spinner"));this.set("showButtons",!1)}/**
+  * @desc show/ hide address information
+  * @param {Object} response
+  */},{key:"maskAddressInformation",value:function maskAddressInformation(response){var address="",location=response&&response.userAddress&&response.userAddress.location;if(location&&response.typology===this.HOME_TYP_CONSTANT){var stateID=location.state&&location.state.id,stateName=location.state&&location.state.name,countryName=location.country&&location.country.name,addressName=location.addressName,zipCode=location.zipCode;if(!response.maskAddres){address={musk:{value:"".concat(stateID,", ").concat(countryName),chars:30,simbol:"&bull;"},class:"inline"}}else{address={value:"".concat(addressName,", ").concat(stateName,"\n          ").concat(this.t("glomo-credit-card-holder-offer-success-address-zip-code")," ").concat(zipCode),class:"inline cursive"}}}return address}/**
+  * @desc show/ hide musk Information
+  * @param {Object} response
+  */},{key:"muskInformation",value:function muskInformation(response){var musk="";if(response.typology===this.HOME_TYP_CONSTANT){musk={musk:{value:response&&response.number,chars:5,simbol:"&bull;"},class:"spacing"}}else{musk={class:"spacing"}}return musk}/**
+  * @desc show message depending shipping address
+  * @param {Object} response
+  */},{key:"messageInformation",value:function messageInformation(response){var message="";if(response.typology===this.HOME_TYP_CONSTANT){message={type:this.INFO_CONSTANT,text:"".concat(this.t("glomo-credit-card-holder-offer-success-message-text-primary"),"<br/>\n          <br/>").concat(this.t("glomo-credit-card-holder-offer-success-message-text-secondary")),icon:this.ICON_INFO_CONSTANT}}else{message={type:this.INFO_CONSTANT,text:"".concat(this.t("glomo-credit-card-holder-offer-success-message-two-text-primary"),"<br/>\n          <br/>").concat(this.t("glomo-credit-card-holder-offer-success-message-two-text-secondary")),icon:this.ICON_INFO_CONSTANT}}return message}/**
+  * @desc show/ hide charge account text
+  * @param {Object} response
+  * @param {Object} dataAccount
+  */},{key:"accountChargeInformation",value:function accountChargeInformation(response,dataAccount){var account="";if(0!==Object.keys(this.accountInformation).length&&response.typology===this.HOME_TYP_CONSTANT&&response.paymentMethod!==this.NO_DOMICILIATION_PAYMENT_CONSTANT&&response.subproductId!==this.CREA_CARD_CONSTANT){account={key:"glomo-credit-card-holder-offer-success-text-charge-account",class:"inline "}}return account}/**
+  * @desc show account name/alias
+  * @param {Object} response
+  * @param {Object} dataAccount
+  */},{key:"accountChargeNameInformation",value:function accountChargeNameInformation(response,dataAccount){var account="",alias=dataAccount&&dataAccount.accountDetails&&dataAccount.accountDetails.alias,name=dataAccount&&dataAccount.accountDetails&&dataAccount.accountDetails.title&&dataAccount.accountDetails.title.name;if(0!==Object.keys(this.accountInformation).length&&response.typology===this.HOME_TYP_CONSTANT&&response.paymentMethod!==this.NO_DOMICILIATION_PAYMENT_CONSTANT&&response.subproductId!==this.CREA_CARD_CONSTANT){account={key:"",value:alias?alias:name,class:"bold inline "}}return account}/**
+  * @desc show/hide account charge musk
+  * @param {Object} response
+  * @param {Object} dataAccount
+  */},{key:"accountChargeMuskInformation",value:function accountChargeMuskInformation(response,dataAccount){var account="";if(0!==Object.keys(this.accountInformation).length&&response.typology===this.HOME_TYP_CONSTANT&&response.paymentMethod!==this.NO_DOMICILIATION_PAYMENT_CONSTANT&&response.subproductId!==this.CREA_CARD_CONSTANT){account={musk:{value:dataAccount&&dataAccount.accountDetails&&dataAccount.accountDetails.number,chars:5,simbol:"&bull;"},class:this.CLASS_INLINE_SPACING_CONSTANT}}return account}/**
+  * @desc change header color
+  * @param {String} className
+  */},{key:"changeHeaderColor",value:function changeHeaderColor(className){var topInfo=this.$$("#header");if(null!==topInfo){topInfo.classList.add(className)}this.dispatchEvent(new CustomEvent("change-header-color",{detail:className}))}/**
+  * @desc is the card offer an INFINITE card
+  * @return {Boolean}
+  */},{key:"_isInfinite",value:function _isInfinite(cardTitle){return cardTitle?cardTitle.id===this.INFINITE_CARD:!1}/**
+  * @desc is the card offer an INFINITE card
+  * @return {Boolean}
+  */},{key:"_isHome",value:function _isHome(delivery){return delivery?delivery.id===this.HOME_CONSTANT:!1}/**
+   * @desc set email from dm
+   * @param {String} email
+   */},{key:"setEmailUser",value:function setEmailUser(email){if(this.validateEmail(email)){this.set("email",this.removeAsterisks(email));this.dispatchEvent(new CustomEvent("request-account-info",{detail:{number:(this.responseData||{}).accountNumber}}))}}/**
+   * @desc set account info from dm
+   * @param {Object} response
+   */},{key:"responseAccountInfo",value:function responseAccountInfo(response){var accountCRM=((response||{}).accountDetails||{}).alias,accountALT=(((response||{}).accountDetails||{}).title||{}).name;this.set("accountInformation",accountCRM||accountALT||{});if(this.responseData.cardId){this.creditCardHolderSuccessApproval(this.responseData,response)}else{this.creditCardHolderPrecontractionPerformed(this.responseData,response)}}/**
+   * @desc set topInfo value from result
+   * @param {String} paymentMethod
+   */},{key:"_setTopInfoValue",value:function _setTopInfoValue(paymentMethod){var topInfo;if(paymentMethod===this.MINIMUM_AMOUNT_PAYMENT_CONSTANT){topInfo="glomo-credit-card-holder-offer-success-text-minimum-payment"}else if(paymentMethod===this.MINIMUM_AMOUNT_PAYMENT_TO_AVOID_INTEREST_CONSTANT){topInfo="glomo-credit-card-holder-offer-success-text-msi"}else{topInfo=this.SUCCESS_NO_DOMICILIATION_CONSTANT}return topInfo}/**
+   * @desc set topInfo fees from result
+   * @param {String} paymentMethod
+   */},{key:"_setTopInfoFees",value:function _setTopInfoFees(responseData){return"\n      ".concat(responseData&&responseData.title&&responseData.title.name," ").concat(this.t("glomo-credit-card-holder-offer-success-text-line-credit"))}},{key:"confirmDeparture",value:function confirmDeparture(){var e=0<arguments.length&&arguments[0]!==void 0?arguments[0]:"";if("creditCardWithPayroll"===this.triplePlayOfferType){var infoModal={code:"triple-play-offer-payroll",selectedConfig:{acceptBtLabel:"glomo-credit-card-holder-offer-success-alert-button-accept",cancelBtLabel:"glomo-credit-card-holder-offer-success-alert-button-cancel",onAcceptDetail:{accountId:this.responseData.accountId,isTriplePlayOffer:this.isTriplePlayOfferCard},className:"full-height-error credit-card-holder",openMaximized:!0,title:"glomo-credit-card-holder-offer-success-alert-title",heroImage:"./images/triplePlay/payroll@.png",template:{type:"paragraphs",values:[{class:"spacing"},{title:"glomo-credit-card-holder-offer-success-alert-value-text-title",class:"title-center spacing"},{text:"glomo-credit-card-holder-offer-success-alert-value-text-one",class:"spacing"},{text:"glomo-credit-card-holder-offer-success-alert-value-text-two"}]}}};this.dispatchEvent(new CustomEvent("show-confirm-exit-modal",{detail:infoModal,bubbles:!0,composed:!0}))}else{this.backstep(e)}}/*
+  * Launch portability event
+  */},{key:"_buttonOffer",value:function _buttonOffer(){this.dispatchEvent(new CustomEvent("show-payroll-portability-event",{detail:{accountId:this.responseData.accountId,isTriplePlay:this.isTriplePlayOfferCard},bubbles:!0,composed:!0}))}/**
+   * Method to attach the extra information when it is a triple play offer
+   */},{key:"additionalInfoForTriplePlayCard",value:function additionalInfoForTriplePlayCard(){this.result.topInfo.push({key:"glomo-credit-card-holder-offer-success-refund-type",class:this.CLASS_BOLD_MARGIN_TOP_CONSTANT},{value:"glomo-credit-card-holder-offer-success-refund-text",class:this.CLASS_BOLD_CONSTANT});this.result.operations.push({label:"glomo-credit-card-holder-offer-success-text-open-wallet",icon:"coronita:wallet",id:"recharge"},{label:"glomo-credit-card-holder-offer-success-text-open-contracts",icon:"coronita:pdf",id:"contracts"});if("creditCardWithPayroll"===this.triplePlayOfferType){this.result.additionalOfferInfo.push({image:"./images/triplePlay/payroll.png"},{title:"glomo-credit-card-holder-offer-success-additional-info-first-title-text",class:"title-center spacing"},{text:"glomo-credit-card-holder-offer-success-additional-info-first-text",class:"spacing"},{button:!0,buttonLabel:"glomo-credit-card-holder-offer-success-additional-info-first-text-button"})}if("onlyCreditCard"===this.triplePlayOfferType){this.result.additionalOfferInfo.push({image:"./images/triplePlay/starYellow.png"},{title:"glomo-credit-card-holder-offer-success-additional-info-second-title-text",class:"title-center spacing"},{text:"glomo-credit-card-holder-offer-success-additional-info-second-text",class:"spacing"},{text:"glomo-credit-card-holder-offer-success-additional-info-third-text",class:"spacing"},{button:!1})}}}],[{key:"is",get:function get(){return"glomo-credit-card-holder-offer-success"}},{key:"properties",get:function get(){return{/**
+      * title of the page header computes based on fundNumber
+      * @type {String}
+      */headerTitleText:{type:String,notify:!0},/**
+       * @desc header left icon
+       * @type {String}
+       */headerLeftIcon:{type:String,notify:!0},/**
+       * primary button text from cells-glomo-cta-container
+       * @type {String}
+       */primaryButtonText:{type:String,notify:!0},/**
+       * @desc format date
+       * @type {String}
+       */dateFormat:{type:String},/**
+       * @desc show or hide buttons
+       * @type {Boolean}
+       */showButtons:{type:Boolean,value:!0},typeCard:{type:String,notify:!0},currency:{type:String},maskAddress:{type:Boolean,value:!1},/**
+       * @desc is the card offer an INFINITE card
+       * @type {Boolean}
+       */isInfinite:{type:Boolean,value:!1,computed:"_isInfinite(typeCard)",readOnly:!0},/**
+       * @desc constant for infinite card id
+       * @type {String}
+       */INFINITE_CARD:{type:String,value:"INFINITE_CARD"},/**
+       * @desc email of user
+       * @type {String}
+       */email:{type:String},grantedCreditsAmount:{type:Number},folio:{type:Number},delivery:{type:String},/**
+      * @desc constant for info
+      * @type {String}
+      */INFO_CONSTANT:{type:String,value:"info"},/**
+      * @desc constant for close
+      * @type {String}
+      */CLOSE_CONSTANT:{type:String,value:"close"},/**
+      * @desc constant for HOME
+      * @type {String}
+      */HOME_CONSTANT:{type:String,value:"HOME"},/**
+      * @desc constant for wallet
+      * @type {String}
+      */WALLET_CONSTANT:{type:String,value:"wallet"},/**
+      * @desc constant for branch offices
+      * @type {String}
+      */BRANCH_OFFICES_CONSTANT:{type:String,value:"branchOffices"},/**
+      * @desc constant for no domiciliation payment
+      * @type {String}
+      */NO_DOMICILIATION_PAYMENT_CONSTANT:{type:String,value:"NO_DOMICILIATION_PAYMENT"},/**
+      * @desc constant fot minimum amount payment
+      * @type {String}
+      */MINIMUM_AMOUNT_PAYMENT_CONSTANT:{type:String,value:"MINIMUM_AMOUNT_PAYMENT"},/**
+      * @desc constant fot minimum amount payment to avoid interest
+      * @type {String}
+      */MINIMUM_AMOUNT_PAYMENT_TO_AVOID_INTEREST_CONSTANT:{type:String,value:"MINIMUM_AMOUNT_TO_AVOID_INTEREST_PAYMENT"},/**
+      * @desc constant for glomo-credit-card-holder-offer-success-text-mode-payment label
+      * @type {String}
+      */GLOMO_SUCCESS_TEXT_MODE_PAYMENT_CONSTANT:{type:String,value:"glomo-credit-card-holder-offer-success-text-mode-payment"},/**
+      * @desc constant for glomo-credit-card-holder-offer-success-no-domiciliation label
+      * @type {String}
+      */SUCCESS_NO_DOMICILIATION_CONSTANT:{type:String,value:"glomo-credit-card-holder-offer-success-no-domiciliation"},/**
+      * @desc constant for glomo-credit-card-holder-offer-success-text-shipping-address label
+      * @type {String}
+      */SUCCESS_SHIPPING_ADDRESS_CONSTANT:{type:String,value:"glomo-credit-card-holder-offer-success-text-shipping-address"},/**
+      * @desc constant for glomo-credit-card-holder-offer-success-text-folio label
+      * @type {String}
+      */SUCCESS_TEXT_FOLIO_CONSTANT:{type:String,value:"glomo-credit-card-holder-offer-success-text-folio"},/**
+      * @desc constant for glomo-credit-card-holder-offer-success-text-BBVA label
+      * @type {String}
+      */SUCCESS_TEXT_BBVA_CONSTANT:{type:String,value:"glomo-credit-card-holder-offer-success-text-BBVA"},/**
+      * @desc constant for glomo-credit-card-holder-offer-success-text-message-email label
+      * @type {String}
+      */SUCCESS_TEXT_MESSAGE_EMAIL_CONSTANT:{type:String,value:"glomo-credit-card-holder-offer-success-text-message-email"},/**
+      * @desc constant for glomo-credit-card-holder-offer-success-text-exit label
+      * @type {String}
+      */SUCCESS_TEXT_EXIT_CONSTANT:{type:String,value:"glomo-credit-card-holder-offer-success-text-exit"},/**
+      * @desc constant for glomo-credit-card-holder-offer-success-text-sucursales label
+      * @type {String}
+      */SUCCESS_TEXT_SUCURSALES_CONSTANT:{type:String,value:"glomo-credit-card-holder-offer-success-text-sucursales"},/**
+      * @desc constant for sucursal label
+      * @type {String}
+      */SUCURSAL_TYP_CONSTANT:{type:String,value:"sucursal"},/**
+      * @desc constant for domicilio label
+      * @type {String}
+      */HOME_TYP_CONSTANT:{type:String,value:"domicilio"},/**
+      * @desc constant for glomo-credit-card-holder-offer-success-text-credit-card label
+      * @type {String}
+      */SUCCESS_TEXT_CREDIT_CARD_CONSTANT:{type:String,value:"glomo-credit-card-holder-offer-success-text-credit-card"},/**
+      * @desc constant for glomo-credit-card-holder-offer-success-title-text label
+      * @type {String}
+      */SUCCESS_TITLE_TEXT_CONSTANT:{type:String,value:"glomo-credit-card-holder-offer-success-title-text"},/**
+      * @desc constant for inline spacing class
+      * @type {String}
+      */CLASS_INLINE_SPACING_CONSTANT:{type:String,value:"inline spacing"},/**
+      * @desc constant coronita:place icon
+      * @type {String}
+      */ICON_PLACE_CONSTANT:{type:String,value:"coronita:place"},/**
+      * @desc constant coronita:info icon
+      * @type {String}
+      */ICON_INFO_CONSTANT:{type:String,value:"coronita:info"},/**
+      * @desc constant for go-to-next
+      * @type {String}
+      */GO_TO_NEXT_CONSTANT:{type:String,value:"go-to-next"},/**
+      * @desc constant for true value
+      * @type {String}
+      */TRUE_CONSTANT:{type:String,value:"true"},/**
+      * @desc constant for bold class
+      * @type {String}
+      */CLASS_BOLD_CONSTANT:{type:String,value:"bold-value"},/**
+      * @desc constant for bold spacing class
+      * @type {String}
+      */CLASS_BOLD_SPACING_CONSTANT:{type:String,value:"bold spacing"},/**
+      * @desc constant for bold spacing md class
+      * @type {String}
+      */CLASS_BOLD_SPACING_MD_CONSTANT:{type:String,value:"bold spacing md"},/**
+      * @desc constant for inline secondary separator class
+      * @type {String}
+      */CLASS_INLINE_SECONDARY_SEPARATOR_CONSTANT:{type:String,value:"inline secondary separator"},/**
+      * @desc constant for Crea card
+      * @type {String}
+      */CREA_CARD_CONSTANT:{type:String,value:"AG"},/**
+      * @desc Object for account Information
+      * @type {Object}
+      */accountInformation:{type:Object,value:function value(){return{}}},/**
+       * @desc Return boolean condition if is other card offer
+       * @type {Boolean}
+       */isTriplePlayOfferCard:{type:Boolean,value:!1},/**
+       * @desc Save the text of the triple play offer type
+       * @type {String}
+       */triplePlayOfferType:{type:String,value:""},/**
+       * @desc constant for spacing top separator class
+       * @type {String}
+       */CLASS_BOLD_MARGIN_TOP_CONSTANT:{type:String,value:"spacingTop"}}}}]);return GlomoCreditCardHolderOfferSuccess}(Polymer.mixinBehaviors([CellsBehaviors.i18nBehavior,CellsBehaviors.CellsGlomoUtilsBehavior],Polymer.Element));window.customElements.define(GlomoCreditCardHolderOfferSuccess.is,GlomoCreditCardHolderOfferSuccess);</script></dom-module></div></body></html>

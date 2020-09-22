@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "severity": "FATAL",
+  "http-status": 409,
+  "error-code": "scheduleNotAllowed",
+  "error-message": "La operación está fuera de las horas permitidas",
+  "consumer-request-id": "b4823874-d0e8-4b8e-9b5f-2e27949076db",
+  "system-error-code": "scheduleNotAllowed",
+  "system-error-description": "La operación está fuera de las horas permitidas"
+}

@@ -1,0 +1,4 @@
+#Sun Sep 20 22:02:55 CDT 2020
+base.0=/Users/developer/Documents/android-fundamentals/clase2/ScrollingText/app/build/intermediates/transforms/dexMerger/debug/0
+path.0=classes.dex
+renamed.0=classes.dex

@@ -1,0 +1,120 @@
+{
+    "data": {
+        "maturityDate": "2020-05-14",
+        "title": {
+            "id": "13",
+            "subProduct": {
+                "id": "0300"
+            }
+        },
+        "initialAmount": {
+            "amount": 4000.00,
+            "currency": "MXN"
+        },
+        "currencies": [
+            {
+                "currency": "MXN",
+                "isMajor": true
+            }
+        ],
+        "term": {
+            "number": "028",
+            "depositTimeType": {
+                "id": "DAY"
+            }
+        },
+        "interestPayment": {
+            "liquidationType": {
+                "id": "LIQUIDATION_DEADLINE"
+            },
+            "liquidationWindows": [
+                {
+                    "interests": [
+                        {
+                            "grossBenefit": {
+                                "amount": 21.62,
+                                "currency": "MXN"
+                            },
+                            "netBenefit": {
+                                "amount": 17.18,
+                                "currency": "MXN"
+                            }
+                        }
+                    ],
+                    "totalInterests": {
+                        "amount": 4.44,
+                        "currency": "MXN"
+                    }
+                }
+            ]
+        },
+        "totalNetBenefits": {
+            "amount": 4017.18,
+            "currency": "MXN"
+        },
+        "annualRate": 6.9500,
+        "annualTotalProfit": {
+            "rates": [
+                {
+                    "rateType": "NOMINAL_ANNUAL_TOTAL_PROFIT",
+                    "unit": {
+                        "unitType": "PERCENTAGE",
+                        "percentage": 7.18
+                    }
+                },
+                {
+                    "rateType": "REAL_ANNUAL_TOTAL_PROFIT",
+                    "unit": {
+                        "unitType": "PERCENTAGE",
+                        "percentage": 2.95
+                    }
+                }
+            ]
+        },
+        "relatedContracts": [
+            {
+                "contractId": "**********1100283609",
+                "relatedContractId": "**********1100283609"
+            }
+        ],
+        "depositId": "00740010161373293793",
+        "number": "0000000000001",
+        "numberType": {
+            "id": "CCC",
+            "name": "Código Cuenta Cliente"
+        },
+        "depositType": {
+            "id": "COMMON_DEPOSIT"
+        },
+        "openingDate": "2020-04-16T00:00:00.000-0500",
+        "isAutomaticRenovation": true,
+        "deliveries": [
+            {
+                "deliveryType": "VIRTUAL",
+                "documentType": "TICKET",
+                "contactDetails": [
+                    {
+                        "contactDetailId": "***REO@CORREO.COM"
+                    }
+                ]
+            }
+        ],
+        "petitionerBusinessAgent": {
+            "id": "323"
+        },
+        "renovationType": {
+            "id": "AUTOMATIC",
+            "description": "Renovar inversión con ganancia"
+        },
+        "operationData": {
+            "operationNumber": "0040164004",
+            "referenceNumber": "0040164004"
+        }
+    },
+    "messages": [
+        {
+            "code": "WIA0187",
+            "message": "Contratación exitosa"
+        }
+    ]
+}

@@ -1,0 +1,88 @@
+{
+  "data": {
+    "accountId": "S3K1X5T2PY5C8B796QBPSVMBKY6TME0E2J2EKDPE9HVBD3YRFTXG",
+    "number": "00740010001500001820",
+    "numberType": {
+      "id": "CCC",
+      "name": "Customer Account Code"
+    },
+    "accountType": {
+      "id": "15-0230",
+      "name": "SIN CHEQ"
+    },
+    "title": {
+      "id": "15-0230",
+      "name": "TARJETA NOMINA BASICA BANCOMER"
+    },
+    "alias": "0001AH1820",
+    "openingDate": "2018-05-14",
+    "currencies": [
+      {
+        "currency": "MXN",
+        "isMajor": true
+      }
+    ],
+    "availableBalance": {
+      "currentBalances": [
+        {
+          "amount": "999999255.00",
+          "currency": "MXN"
+        }
+      ],
+      "postedBalances": [
+        {
+          "amount": "0.00",
+          "currency": "MXN"
+        }
+      ],
+      "pendingBalances": [
+        {
+          "amount": "1000000000.00",
+          "currency": "MXN"
+        }
+      ]
+    },
+    "status": {
+      "id": "ACTIVATED",
+      "name": "ACTIVA"
+    },
+    "formats": [
+      {
+        "number": "012180015000018209",
+        "numberType": {
+          "id": "CLABE",
+          "name": "Clave Bancaria Estandarizada"
+        }
+      }
+    ],
+    "bank": {
+      "bankId": "0074",
+      "name": "BBVA BANCOMER",
+      "branch": {
+        "branchId": "0010",
+        "name": "D.F. IZAZAGA"
+      }
+    },
+    "participants": [],
+    "holds": [
+      {
+        "holdId": "CHECK_INCOME",
+        "name": "Check income",
+        "totalHeldAmounts": [
+          {
+            "amount": "0.00",
+            "currency": "MXN"
+          }
+        ]
+      }
+    ],
+    "joint": {
+      "id": "SINGLE",
+      "name": "Individual"
+    },
+    "accountFamily": {
+      "id": "COMMON",
+      "name": "Common Account"
+    }
+  }
+}

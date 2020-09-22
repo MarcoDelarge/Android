@@ -1,0 +1,11 @@
+{
+    "version": 1,
+    "severity": "ERROR",
+    "http-status": 409,
+    "error-code": "aliasAlreadyExists",
+    "error-message": "El alias introducido ya está registrado. Por favor, ingresa uno nuevo.",
+    "consumer-request-id": "a1fb8757-f774-4831-b495-693b57914b59",
+    "system-error-code": "aliasAlreadyExists",
+    "system-error-description": "El alias introducido ya está registrado. Por favor, ingresa uno nuevo.",
+    "system-error-cause": "CNE1315: ERROR DESCRIPCION YA EXISTE ERROR EXISTE DESC IGUAL    0"
+  }

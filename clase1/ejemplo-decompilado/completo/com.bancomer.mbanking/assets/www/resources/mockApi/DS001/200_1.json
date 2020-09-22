@@ -1,0 +1,174 @@
+{
+    "data": [
+        {
+            "id": "VKPP5Y69WESCEWCXPGG31557MM",
+            "localAmount": {
+                "amount": 5000,
+                "currency": "MXN"
+            },
+            "originAmount": {
+                "amount": 5000,
+                "currency": "MXN"
+            },
+            "moneyFlow": {
+                "id": "INCOME",
+                "name": "La operación agrega fondos al saldo disponible o crédito otorgado en el caso de productos de crédito"
+            },
+            "concept": "PAGARE LIQUIDABLE AL VENC. M N",
+            "transactionType": {
+                "id": "DEPOSIT_CONTRIBUTION",
+                "name": "Transacción que representa el retiro de efectivo de una cuenta para el pago de la contribución de depósito.",
+                "internalCode": {
+                    "id": "DEPOSIT_CONTRIBUTION"
+                }
+            },
+            "operationDate": "2019-09-09",
+            "accountedDate": "2019-09-09T00:00:00.000-05:00",
+            "valuationDate": "2019-09-09T00:00:00.000-05:00",
+            "financingType": {
+                "id": "NON_FINANCING",
+                "name": "Transacción que no puede ser financiada"
+            },
+            "status": {
+                "id": "SETTLED",
+                "name": "Representa que la transacción se ha cumplido."
+            },
+            "contract": {
+                "id": "VKPP5Y69WESCEWCXPGG31557MM",
+                "number": "19",
+                "numberType": {
+                    "id": "CCC",
+                    "name": "Código Cuenta Cliente"
+                },
+                "product": {
+                    "id": "DEPOSITS",
+                    "name": "Deposits"
+                }
+            },
+            "detail": {
+                "maturityDate": "2019-12-05T00:00:00.000-06:00",
+                "interestRate": "0002.000",
+                "term": {
+                    "number": "90",
+                    "depositTimeType": {
+                        "id": "WORKING_DAY",
+                        "name": "WORKING_DAY"
+                    }
+                },
+                "interestPayment": {
+                    "liquidationType": {
+                        "id": "LIQUIDATION_DEADLINE",
+                        "name": "Se refiere a la liquidación del depósito a la fecha límite"
+                    },
+                    "liquidationWindows": [
+                        {
+                            "period": {
+                                "id": "WORKING_DAY",
+                                "name": "Se refiere al período de depósitos es por DIA HABIL"
+                            },
+                            "startDate": "2019-12-05",
+                            "endDate": "2019-09-06",
+                            "interests": [
+                                {
+                                    "grossBenefit": {
+                                        "amount": 15.00,
+                                        "currency": "MXN"
+                                    },
+                                    "netBenefit": {
+                                        "amount": 7.31,
+                                        "currency": "MXN"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "id": "DMTZPCNF3785AQ87E6AKH6K740",
+            "localAmount": {
+                "amount": 5000,
+                "currency": "MXN"
+            },
+            "originAmount": {
+                "amount": 5000,
+                "currency": "MXN"
+            },
+            "moneyFlow": {
+                "id": "INCOME",
+                "name": "La operación agrega fondos al saldo disponible o crédito otorgado en el caso de productos de crédito"
+            },
+            "concept": "PAGARE LIQUIDABLE AL VENC. M N",
+            "transactionType": {
+                "id": "DEPOSIT_CONTRIBUTION",
+                "name": "Transacción que representa el retiro de efectivo de una cuenta para el pago de la contribución de depósito.",
+                "internalCode": {
+                    "id": "DEPOSIT_CONTRIBUTION"
+                }
+            },
+            "operationDate": "2019-09-06",
+            "accountedDate": "2019-09-06T00:00:00.000-05:00",
+            "valuationDate": "2019-09-06T00:00:00.000-05:00",
+            "financingType": {
+                "id": "NON_FINANCING",
+                "name": "Transacción que no puede ser financiada"
+            },
+            "status": {
+                "id": "SETTLED",
+                "name": "Representa que la transacción se ha cumplido."
+            },
+            "contract": {
+                "id": "DMTZPCNF3785AQ87E6AKH6K740",
+                "number": "18",
+                "numberType": {
+                    "id": "CCC",
+                    "name": "Código Cuenta Cliente"
+                },
+                "product": {
+                    "id": "DEPOSITS",
+                    "name": "Deposits"
+                }
+            },
+            "detail": {
+                "maturityDate": "2019-12-05T00:00:00.000-06:00",
+                "interestRate": "0002.000",
+                "term": {
+                    "number": "90",
+                    "depositTimeType": {
+                        "id": "WORKING_DAY",
+                        "name": "WORKING_DAY"
+                    }
+                },
+                "interestPayment": {
+                    "liquidationType": {
+                        "id": "LIQUIDATION_DEADLINE",
+                        "name": "Se refiere a la liquidación del depósito a la fecha límite"
+                    },
+                    "liquidationWindows": [
+                        {
+                            "period": {
+                                "id": "WORKING_DAY",
+                                "name": "Se refiere al período de depósitos es por DIA HABIL"
+                            },
+                            "startDate": "2019-12-05",
+                            "endDate": "2019-09-06",
+                            "interests": [
+                                {
+                                    "grossBenefit": {
+                                        "amount": 15.00,
+                                        "currency": "MXN"
+                                    },
+                                    "netBenefit": {
+                                        "amount": 7.31,
+                                        "currency": "MXN"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                },
+            }
+        }
+    ]
+}

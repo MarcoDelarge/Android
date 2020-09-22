@@ -1,0 +1,708 @@
+<html><head></head><body><div hidden="" by-polymer-bundler=""><dom-module id="cells-modal-select-amount-styles" assetpath="cells-modal-select-amount/"><template><style>:host{box-sizing:border-box;display:block;--cells-bottom-modal-header-shadow-dragging:none;--cells-bottom-modal-footer-shadow-dragging:none;--cells-bottom-modal-header-wrapper:{min-height:3rem;color:var(--bbva-600, #121212);};--cells-bottom-modal-full-height-body:{display:flex;flex-direction:column;padding:3rem 1.5rem 1.5rem;padding-top:0 !important;};--cells-bottom-modal-footer:{box-shadow:none!important;height:auto;display:flex;flex-direction:column;padding:0 1.5rem 3rem;};--cells-btn--extend:{display:block;};@apply --cells-modal-select-amount;}:host(.ios-top-padding){padding-top:1.25rem;}@supports (padding-top: constant(safe-area-inset-top)){:host(.ios-top-padding){--safe-area-inset-top:constant(safe-area-inset-top);padding-top:var(--safe-area-inset-top, 0);}}@supports (padding-top: env(safe-area-inset-top)){:host(.ios-top-padding){--safe-area-inset-top:env(safe-area-inset-top);padding-top:var(--safe-area-inset-top, 0);}}cells-bottom-modal{--cells-bottom-modal-full-height-body:{min-height:12.5rem;};--cells-bottom-modal-heading:{padding-top:0.9375rem;padding-bottom:0.9375rem;};@apply --cells-modal-select-amount-bottom-modal;}cells-molecule-amount-input{@apply --cells-modal-select-amount-input;}cells-icon-message{margin:0 0 1.875rem 0;@apply --cells-modal-select-amount-message;}.btn--primary{margin:auto auto 1.125rem;width:9rem;@apply --cells-modal-select-amount-btn-primary;}.btn--transparent{margin:0 auto;font-size:0.8125rem;color:var(--bbva-medium-blue, #237ABA);@apply --cells-fontDefaultBold;@apply --cells-modal-select-amount-btn-transparent;}.btn--transparent:active{opacity:0.5;@apply --cells-modal-select-amount-btn-transparent-active;}.amountInputTitle{font-size:var(--cells-text-size-ml, 0.9375rem);color:var(--bbva-600, #121212);margin-top:1.5rem;@apply --cells-modal-select-amount-input-title;}cells-enter-limited-amount{--cells-enter-limited-amount__textInfo:{margin-bottom:0;margin-left:1rem;};--cells-st-button-bg-color-disabled:var(--bbva-200, #E9E9E9);@apply --cells-modal-select-amount-enter-limited-amount;}cells-st-button{text-align:center;display:flex;justify-content:center;--cells-st-button-text-color-link:var(--bbva-dark-medium-blue, #1973b8);--cells-st-button-text-size:var(--cells-text-size-ml, 0.9375rem);@apply --cells-modal-select-amount-button-cancel;}.container__button{display:flex;justify-content:center;}.centered{text-align:center;}</style></template></dom-module><dom-module id="cells-modal-select-amount" assetpath="cells-modal-select-amount/"><template><style include="cells-modal-select-amount-styles cells-modal-select-amount-shared-styles"></style><cells-bottom-modal id="modal" class="modal no-shadow" full-height="" no-cancel-on-outside-click="" close-icon-id="[[closeIcon]]" opened="{{opened}}" i-o-s-fixed-header="[[iOSFixedHeader]]"><h1 heading="" slot="heading">[[t(title, '_Other amount')]]</h1><template is="dom-if" if="[[showAboveMessage]]"><cells-icon-message id="message" class$="[[aboveClassMessage]]" type="[[aboveTypeMessage]]" icon="[[aboveIconMessage]]" icon-size="[[aboveIconSize]]" message="[[_aboveMessage]]"></cells-icon-message></template><p class$="amountInputTitle [[amountInputTitleExtraClass]]">[[t(amountInputTitle, '_Introduce el importe a pagar')]]</p><cells-enter-limited-amount name="[[name]]" currency-code="[[currencyCode]]" local-currency="[[localCurrency]]" language="[[language]]" set-amount="[[defaultValue]]" min-value="[[min]]" max-value="[[max]]" icon-code="[[iconCode]]" icon-size="[[iconSize]]" label="[[t(amountInputLabel)]]" show-min-and-max="[[range]]" error-range-message="[[range]]" numeral-positive-only="[[numeralPositiveOnly]]" button-text="[[buttonAcceptText]]" on-amount-set="_handlerLimitedAmount" amount="{{ value }}" show-info-message="[[showBelowMessage]]" info-icon="[[belowIconMessage]]" info-icon-size="[[belowIconSize]]" info-message="[[_belowMessage]]" info-class="[[belowClassMessage]]" info-type="[[belowTypeMessage]]" extra-config-limited-amount="[[extraConfigLimitedAmount]]" max-value-error-message="[[maxValueErrorMessage]]" max-value-info-message="[[maxValueInfoMessage]]" max-value-info-message-after="[[maxValueInfoMessageAfter]]"></cells-enter-limited-amount><section class="container__button"><cells-st-button hidden="[[hideCancelButton]]" class="link"><button on-click="close">[[t(buttonCancelText, '_Cancelar')]]</button></cells-st-button></section></cells-bottom-modal></template><script>/*eslint "new-cap": [2, {"capIsNewExceptions": ["AmountBehavior"] }]*/var CellsModalSelectAmount=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(CellsModalSelectAmount,_Polymer$mixinBehavio);function CellsModalSelectAmount(){babelHelpers.classCallCheck(this,CellsModalSelectAmount);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(CellsModalSelectAmount).apply(this,arguments))}babelHelpers.createClass(CellsModalSelectAmount,[{key:"ready",value:function ready(){babelHelpers.get(babelHelpers.getPrototypeOf(CellsModalSelectAmount.prototype),"ready",this).call(this);this.addEventListener("close",this.reset.bind(this))}/**
+   * Opens modal
+   * @param payload
+   */},{key:"open",value:function open(payload){if(payload){this.setModalSelectAmount(payload)}this.set("opened",!0)}/**
+   * Notify modal status (close/Opens)
+   * @param opened
+   * @private
+   */},{key:"_modalStatus",value:function _modalStatus(opened){this.dispatchEvent(new CustomEvent("cells-modal-select-amount-".concat(opened?"opened":"closed"),{bubbles:!0,composed:!0}))}/**
+   * Set message property
+   * @param max
+   * @param localCurrency
+   * @param currency
+   * @param language
+   * @returns {string}
+   * @private
+   */},{key:"_setAboveMessage",value:function _setAboveMessage(max,localCurrency,currency,language){if(!this.verifyValueDisabled){var symbol=this._getCurrencyAsSymbol(localCurrency,currency),integer=this._getAbsIntegerPart(max,language),separator=this._getSeparator(language),decimal=this._getFractionalPart(max),negative=this._isNegative(max)?"-":"",amount=symbol+negative+integer+separator+decimal;return"".concat(this.t("cells-modal-select-amount-message-max")," ").concat(amount)}}/**
+   * Config max amount info and error message
+   * @private
+   */},{key:"_setBelowMessage",value:function _setBelowMessage(){this.errorMessage="cells-modal-select-amount-message-error";if(this.configAmount){this.currencyCode=this.configAmount.debtCurrency;this.errorMessage=this.configAmount.errorMessage||this.errorMessage;this._belowMessage=this.t("cells-modal-select-amount-message-info");if(this.configAmount.sourceCurrency){this.max=this.configAmount.sourceCurrency.amount;this.maxCurrency=this.configAmount.sourceCurrency.currency}else{this.max=0}}}/**
+   * Closes modal.
+   * If property <em>closeOn</em> is set to <b>true</b>, modal will
+   * close automatically.
+   * In any case, event is fired.
+   */},{key:"close",value:function close(){this.dispatchEvent(new CustomEvent("cells-modal-select-amount-close",{bubbles:!0,composed:!0,detail:this.value}));if(this.closeOn){this.set("opened",!1);this.reset()}}/**
+   * Notify event on save
+   */},{key:"continue",value:function _continue(){this.dispatchEvent(new CustomEvent("cells-modal-select-amount-continue",{bubbles:!0,composed:!0,detail:this.value}));this.close()}/**
+   * Reset input
+   */},{key:"reset",value:function reset(){if(!this.verifyValueDisabled){this.set("value","");this.set("defaultValue","");this.set("setAmount","");this.set("max",0);this.set("min",0)}else{this.value=void 0;this.defaultValue=void 0;this.setAmount=void 0;this.shadowRoot.querySelector("cells-enter-limited-amount").reset()}}/**
+   * Observer callback triggered after any change on <em>_value</em>.
+   * Will set save button disabled if:
+   * - new value equals default value
+   * - new value is empty
+   * - new value doesn't pass pattern test (if <em>pattern</em> is set)
+   * - new value has min and max length requirements (if <em>minLength</em> and/or <em>maxLength</em> are set)
+   * @param value
+   * @private
+   */},{key:"_valueChanged",value:function _valueChanged(value){if(!this.verifyValueDisabled){var isDisabled=!value,maxCurrency=this.maxCurrency?this.maxCurrency:this.currencyCode;if(!isDisabled){if(this.min){isDisabled=value<this.min}if(0<this.max){isDisabled=value>this.max&&this.currencyCode===maxCurrency}}this.set("disabled",isDisabled);if(value>this.max&&this.currencyCode===maxCurrency){this._changeMessageConfig("error",this.belowIconMessageError,this.errorMessage)}else{this._changeMessageConfig("info",this.belowIconMessage,"cells-modal-select-amount-message-info")}}}/**
+   * Change message config
+   * @param type
+   * @param icon
+   * @param message
+   * @private
+   */},{key:"_changeMessageConfig",value:function _changeMessageConfig(type,icon,message){var currency=this._getCurrencyAsSymbol(this.localCurrency,this.currencyCode),max=this.getFormattedAmount(this.max,this.currencyCode,this.localCurrency,"es");this.belowTypeMessage=type;this.belowIconMessage=icon;this._belowMessage=this.t(message,"",{currency:currency,max:max})}/**
+   * Handler limited amount
+   * @param event
+   */},{key:"_handlerLimitedAmount",value:function _handlerLimitedAmount(event){this.value=this.get("detail.amount",event);this.continue()}/**
+   * Set modal select amount
+   * @param config
+   */},{key:"setModalSelectAmount",value:function setModalSelectAmount(config){this.min=this.get("minValue",config);this.max=this.get("amountValue",config);this.currencyCode=this.get("currency",config);this.localCurrency=this.get("currency",config);this.defaultValue=this.get("altAmount",config)}/**
+   * @param min
+   * @param max
+   * @returns {boolean}
+   * @private
+   */},{key:"_rangeComputed",value:function _rangeComputed(min,max){return!!(min&&max)}}],[{key:"is",get:function get(){return"cells-modal-select-amount"}},{key:"properties",get:function get(){return{defaultValue:{type:Number},/**
+       * Field value to edit
+       * @type {String}
+       */value:{type:Number,notify:!0,observer:"_valueChanged"},/**
+       * Set amount in input
+       * @type {Number}
+       */setAmount:Number,/**
+       * Field name and input placeholder
+       * @type {String}
+       */placeholder:String,/**
+       * Flags whether the modal is open or not
+       * @type {Boolean}
+       */title:{type:String,value:"cells-modal-select-amount-other-amount"},/**
+       * Flags whether the modal is open or not
+       * @type {Boolean}
+       */opened:{type:Boolean,observer:"_modalStatus",value:!1},/**
+       * Flags if modal window should close on "closing"
+       * @type {Boolean}
+       * @value false
+       */closeOn:{type:Boolean,value:!1},/**
+       * Icon to use into modal's header
+       * @type {String}
+       * @value 'coronita:close'
+       */closeIcon:{type:String,value:"coronita:close"},/**
+       * Lang separator
+       * @type {String}
+       */language:{type:String,value:"es"},/**
+       * Min value length
+       * @type {Number}
+       */min:Number,/**
+       * Max value length
+       * @type {Number}
+       */max:Number,/**
+       * Flag for show above message
+       * @type {Boolean}
+       */showAboveMessage:{type:Boolean,value:!1},/**
+       * Above message
+       * @type {String}
+       */_aboveMessage:{type:String,computed:"_setAboveMessage(max, localCurrency, currencyCode, language)"},/**
+       * Above message class
+       * @type {String}
+       */aboveClassMessage:{type:String,value:""},/**
+       * Above message type
+       * @type {String}
+       */aboveTypeMessage:{type:String,value:"info"},/**
+       * Above message icon
+       * @type {String}
+       */aboveIconMessage:{type:String,value:"coronita:info"},/**
+       * Above icon size
+       * @type {String}
+       */aboveIconSize:{type:String,value:16},/**
+       * Config amount
+       * @type {Object}
+       */configAmount:{type:Object,observer:"_setBelowMessage"},/**
+       * Flag for show below message
+       * @type {Boolean}
+       */showBelowMessage:{type:Boolean,value:!1},/**
+       * Below message
+       * @type {String}
+       */_belowMessage:{type:String},/**
+       * Below message class
+       * @type {String}
+       */belowClassMessage:{type:String,value:"below-message inline"},/**
+       * Below message type
+       * @type {String}
+       */belowTypeMessage:{type:String,value:"info"},/**
+       * Below message icon
+       * @type {String}
+       */belowIconMessage:{type:String,value:"coronita:info"},/**
+       * Below message icon error
+       * @type {String}
+       */belowIconMessageError:{type:String,value:"coronita:error"},/**
+       * Below icon size
+       * @type {String}
+       */belowIconSize:{type:String,value:16},/**
+       * Disabled form
+       * @type {Boolean}
+       */disabled:{type:Boolean,value:!0},/**
+       * Currency code
+       * @type {String}
+       */currencyCode:String,/**
+       * Local currency
+       * @type {String}
+       */localCurrency:String,/**
+       * Allow only positive amount values
+       */numeralPositiveOnly:{type:Boolean,value:!1},/**
+       * Flag for show range message error
+       * @type {Boolean}
+       */range:{type:Boolean,value:!1,computed:"_rangeComputed(min, max)"},/**
+       * Error message
+       * @type {String}
+       */errorMessage:{type:String,value:"cells-modal-select-amount-message-error"},/**
+       * Max Currency
+       * @type {String}
+       */maxCurrency:String,/**
+       * Rage message after number
+       * @type {String}
+       */rageMessageAfterNumber:{type:String,value:"cells-modal-select-amount-range-message-after"},/**
+       * Rage message before number
+       * @type {String}
+       */rageMessageBeforeNumber:{type:String,value:"cells-modal-select-amount-range-message-before"},/**
+       * Amount Input Label
+       * @type {String}
+       */amountInputLabel:{type:String,value:"cells-modal-select-amount-input-label"},/**
+       * Amount Input Title
+       * @type {String}
+       */amountInputTitle:{type:String,value:"cells-modal-select-amount-input-title"},/**
+       * Button cancel text
+       * @type {String}
+       */buttonCancelText:{type:String,value:"cells-modal-select-amount-button-text-cancel"},/**
+       * Button accept text
+       * @type {String}
+       */buttonAcceptText:{type:String,value:"cells-modal-select-amount-button-text-accept"},/**
+       * If true, determines if fixed header should
+       * be displayed to avoid 'loosing' native widgets (such as battery level, hour...)
+       */iOSFixedHeader:{type:Boolean,value:!1},/**
+       * Flag to Disable cancel Btn
+       */hideCancelButton:{type:Boolean,value:!1},/**
+       * Extra title input class
+       */amountInputTitleExtraClass:{type:String,value:""},/**
+       * Flag to verify value
+       */verifyValueDisabled:{type:Boolean,value:!1},/**
+       * Extra Config Cells Enter Limited Amount
+       */extraConfigLimitedAmount:{type:Boolean,value:!1},/**
+       * info message of maxValue
+       */maxValueInfoMessage:{type:String,value:"cells-enter-limited-amount-available-balance-max-value-info-message"},/**
+       * Error message when the amount is bigger than maxValue
+       */maxValueErrorMessage:{type:String,value:"cells-enter-limited-amount-available-balance-max-value-error-message"},/**
+       * Max value info message after
+       */maxValueInfoMessageAfter:{type:String,value:""}}}}]);return CellsModalSelectAmount}(Polymer.mixinBehaviors([CellsBehaviors.i18nBehavior],CellsBehaviors.AmountBehavior(Polymer.Element)));window.customElements.define(CellsModalSelectAmount.is,CellsModalSelectAmount);</script></dom-module><dom-module id="glomo-interest-simulator-dm" assetpath="glomo-interest-simulator-dm/"><template></template><script>// eslint-disable-next-line
+var GlomoInterestSimulatorDm=/*#__PURE__*/function(_CellsBehaviors$Amoun){babelHelpers.inherits(GlomoInterestSimulatorDm,_CellsBehaviors$Amoun);function GlomoInterestSimulatorDm(){babelHelpers.classCallCheck(this,GlomoInterestSimulatorDm);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(GlomoInterestSimulatorDm).apply(this,arguments))}babelHelpers.createClass(GlomoInterestSimulatorDm,[{key:"_casesAdvice",/**
+   * @private Validations for Advices
+   * @param {*} paymentMethods
+   */value:function _casesAdvice(paymentMethods){return{insufficientBalance:this.totalAccountAmounts<paymentMethods.minimumAmount.values.amount,one:paymentMethods.amountSelected.values.amount===paymentMethods.minimumAmount.values.amount,two:paymentMethods.amountSelected.values.amount>paymentMethods.minimumAmount.values.amount&&paymentMethods.amountSelected.values.amount<paymentMethods.minimumAmountToAvoidInterest.values.amount,three:paymentMethods.amountSelected.values.amount===paymentMethods.minimumAmountToAvoidInterest.values.amount,four:paymentMethods.amountSelected.values.amount>paymentMethods.minimumAmountToAvoidInterest.values.amount&&paymentMethods.amountSelected.values.amount<paymentMethods.totalDebtAmount.values.amount,five:paymentMethods.amountSelected.values.amount>=paymentMethods.totalDebtAmount.values.amount,six:paymentMethods.amountSelected.values.amount<paymentMethods.minimumAmount.values.amount,same:paymentMethods.minimumAmount.values.amount===paymentMethods.amountSelected.values.amount&&paymentMethods.minimumAmountToAvoidInterest.values.amount===paymentMethods.amountSelected.values.amount&&paymentMethods.totalDebtAmount.values.amount===paymentMethods.amountSelected.values.amount}}/**
+   * @private Generic Dispatch Event
+   * @param {*} eventName
+   * @param {*} detail
+   * @param {*} bubbles
+   * @param {*} composed
+   */},{key:"_fire",value:function _fire(eventName){var detail=1<arguments.length&&arguments[1]!==void 0?arguments[1]:null,bubbles=2<arguments.length&&arguments[2]!==void 0?arguments[2]:!0,composed=3<arguments.length&&arguments[3]!==void 0?arguments[3]:!0;this.dispatchEvent(new CustomEvent(eventName,{detail:detail,bubbles:bubbles,composed:composed}))}/**
+   * @private Hide Spinner
+   */},{key:"_hideSpinner",value:function _hideSpinner(){this._fire("close-control-veil")}/**
+   * @private validate if existing amount
+   * @param {*} payload
+   */},{key:"_isExistingAmount",value:function _isExistingAmount(payload){var paymentMethods=this.paymentMethods,mappedAmountsList=[];Object.keys(paymentMethods).forEach(function(key){return mappedAmountsList.push(paymentMethods[key])});var amountSelected=mappedAmountsList.filter(function(method){return method.values.amount===payload.paymentAmounts[0].amount});return 0<amountSelected.length?this.c(amountSelected,"0.debtType"):"OTHER_AMOUNT"}/**
+   * Exit Interest Simulator
+   */},{key:"manageBackButton",value:function manageBackButton(){this._fire("close-modal-opened");this._fire("exit-interest-simulator-page");this.reset()}/**
+   * Set payment for navigate to card payment
+   */},{key:"navigateToCardPayment",value:function navigateToCardPayment(){var accounts=this.c(this.accountList,"0.products");if(accounts&&0<accounts.length){var amountSelected=this.c(this.paymentMethods,"amountSelected");this._fire("navigate-to-card-payment",{productId:this.productId});this._fire("set-data-to-card-payment",{debtType:amountSelected.debtType,amount:amountSelected.values,interests:this.interest})}else{this._fire("exit-not-have-accounts-event")}}/**
+   * @private Open Multiple Type Modals
+   * @param {*} type
+   * @param {*} className
+   * @param {*} openMaximized
+   * @param {*} extraConfig
+   */},{key:"_openModal",value:function _openModal(type){var className=1<arguments.length&&arguments[1]!==void 0?arguments[1]:"error",openMaximized=2<arguments.length&&arguments[2]!==void 0?arguments[2]:!1,extraConfig=3<arguments.length&&arguments[3]!==void 0?arguments[3]:null,exitModal={code:"".concat(type,"-INTEREST-SIMULATOR"),time:0,selectedConfig:{className:className,closeOnPrimaryButton:!0,iconOnlyFullHeight:!0,openMaximized:openMaximized,template:{type:"paragraphs",values:[{icon:"coronita:alert",class:"spacing"},{text:"",class:"strong"},{text:"alert-EXIT-INTEREST-SIMULATOR-message",class:""}]},acceptBtLabel:"alert-"+type+"-INTEREST-SIMULATOR-accept",onAcceptDetail:{},cancelBtLabel:"alert-"+type+"-INTEREST-SIMULATOR-cancel",onCancelDetail:{}}};if(extraConfig){delete exitModal.selectedConfig.cancelBtLabel;delete exitModal.selectedConfig.onCancelDetail;Object.assign(exitModal.selectedConfig,{cancelFromHeaderEvent:"cancel",title:"glomo-interest-simulator-more-info"});exitModal.selectedConfig.template.values=[{icon:"coronita:info",class:"spacing"},{text:"glomo-interest-simulator-more-info-title",class:""},{text:this.simulationDate,class:"spacing"},{text:"glomo-interest-simulator-more-info-first-paragraph",class:"interest-simulator"},{text:"glomo-interest-simulator-more-info-second-paragraph",class:"interest-simulator"}]}var eventName="show-"+type.toLowerCase()+"-simulator-modal";this._fire(eventName,exitModal)}/**
+   * Reset data in product
+   * @param {*} data
+   */},{key:"resetProduct",value:function resetProduct(){this.product=void 0}/**
+   * Set data in product
+   * @param {*} data
+   */},{key:"setProduct",value:function setProduct(data){this.product=data;this._productExistObserve()}/**
+   * @private observer for set request
+   */},{key:"_productExistObserve",value:function _productExistObserve(){if(this.productId&&this.product){if(!this.paymentMethods){this.setPaymentMethods(this.product);this.setRequestPost(this.paymentMethods.minimumAmountToAvoidInterest.values);this._fire("get-card-detail-from-local-storage",{key:this._cardDetailLocalStorageDataKey})}}}/**
+   * Post Success Response
+   * @param {*} payload
+   */},{key:"postSuccessResponse",value:function postSuccessResponse(payload){this._hideSpinner();if(payload){this.set("simulationDate",moment(this.c(payload,"simulationDate")).format("LL"));this.set("interest",this.c(payload,"fees.itemizeFees.0.amount"));var amountSelected=this.c(payload,"paymentAmounts.0"),data={paymentAmounts:this.paymentMethods,simulationDate:this.simulationDate,subtitle:{amount:this.getFormattedAmount(this.c(this.interest,"amount"),this.currency,this.currency,this.formatterExtraConfig.language,this.formatterExtraConfig.decimals,this.formatterExtraConfig.separator,this.formatterExtraConfig.symbol),currency:this.currency}};Object.assign(data.paymentAmounts,{amountSelected:{debtType:this._isExistingAmount(payload),values:amountSelected,currency:this.currency}});this.paymentMethods=void 0;this.set("paymentMethods",data.paymentAmounts);this._fire("set-interest-simulator-data",data)}}/**
+   * Post Error Response
+   * @param {*} payload
+   */},{key:"postErrorResponse",value:function postErrorResponse(payload){this._hideSpinner();var data={paymentAmounts:this.paymentMethods,simulationDate:void 0,subtitle:{amount:this.getFormattedAmount(0,this.currency,this.currency,this.formatterExtraConfig.language,this.formatterExtraConfig.decimals,this.formatterExtraConfig.separator,this.formatterExtraConfig.symbol),currency:this.currency}};Object.assign(data.paymentAmounts,{amountSelected:this.paymentMethods.minimumAmountToAvoidInterest});this.paymentMethods=void 0;this.set("paymentMethods",data.paymentAmounts);this._fire("set-error-response-data",data);if(this.setChangeTextInfoMessage){this._fire("set-simulator-positive-balance",!this.setChangeTextInfoMessage)}this._fire("set-disable-advice-error",this.setChangeTextInfoMessage);this._fire("set-error-configuration",!0)}/**
+Retry Request Post
+   */},{key:"retryRequestPost",value:function retryRequestPost(){this.setRequestPost(this.paymentMethods.minimumAmountToAvoidInterest.values)}/**
+   * @private set advice configuration
+   * @param {*} paymentMethods
+   */},{key:"_setAdviceConfiguration",value:function _setAdviceConfiguration(paymentMethods){var cases=this._casesAdvice(paymentMethods),cardAdviceBody;switch(!0){case cases.same:cardAdviceBody={imageUrl:"./images/interestSimulator/card-health.svg",titleText:"glomo-interest-simulator-with-this-pay",linkText:void 0,linkIcon:void 0,list:["glomo-interest-simulator-recover-your-credit","glomo-interest-simulator-liquidate-the-total-debt","glomo-interest-simulator-you-can-deal-with-emergencies"]};break;case cases.insufficientBalance||cases.six:cardAdviceBody={imageUrl:"./images/interestSimulator/customer_comes_first.svg",titleText:"glomo-interest-simulator-take-care-of-your-finances",linkText:"glomo-interest-simulator-more-info",linkIcon:"coronita:info",list:["glomo-interest-simulator-pay-less-than-the-minimum","glomo-interest-simulator-we-suggest-you-credit-your-accounts"]};break;case cases.one:cardAdviceBody={imageUrl:"./images/interestSimulator/cactus.svg",titleText:"glomo-interest-simulator-with-this-pay",linkText:"glomo-interest-simulator-more-info",linkIcon:"coronita:info",list:["glomo-interest-simulator-generate-more-interest","glomo-interest-simulator-stop-covering","glomo-interest-simulator-keep-your-credit-without-delay","glomo-interest-simulator-will-take-more"]};break;case cases.two:cardAdviceBody={imageUrl:"./images/interestSimulator/idea.svg",titleText:"glomo-interest-simulator-with-this-pay",linkText:"glomo-interest-simulator-more-info",linkIcon:"coronita:info",list:["glomo-interest-simulator-generate-interest","glomo-interest-simulator-could-stop-covering","glomo-interest-simulator-keep-your-credit-without-delay"]};break;case cases.three:cardAdviceBody={imageUrl:"./images/interestSimulator/success.svg",titleText:"glomo-interest-simulator-with-this-pay",linkText:"glomo-interest-simulator-more-info",linkIcon:"coronita:info",list:["glomo-interest-simulator-avoid-interests","glomo-interest-simulator-cover-the-partialities","glomo-interest-simulator-you-release-a-part"]};break;case cases.four:cardAdviceBody={imageUrl:"./images/interestSimulator/extraordinary_retribution_dollar.svg",titleText:"glomo-interest-simulator-with-this-pay",linkText:"glomo-interest-simulator-more-info",linkIcon:"coronita:info",list:["glomo-interest-simulator-avoid-interests","glomo-interest-simulator-you-are-close-to-liquidating","glomo-interest-simulator-you-release-important-part-of-your-line"]};break;case cases.five:cardAdviceBody={imageUrl:"./images/interestSimulator/think_big.svg",titleText:"glomo-interest-simulator-with-this-pay",linkText:void 0,linkIcon:void 0,list:["glomo-interest-simulator-you-recover-the-total","glomo-interest-simulator-you-cover-the-total-debt","glomo-interest-simulator-can-you-cope"]};break;}this._fire("set-interest-simulator-advice-configuration",cardAdviceBody)}/**
+   * @private observe acounts available amounts
+   */},{key:"_setAccountsTotalAmountObserve",value:function _setAccountsTotalAmountObserve(){var accounts=this.c(this.accountList,"0.products"),totalAccountsAmounts=0;if(accounts&&0<accounts.length){this.set("primaryButtonLabel","glomo-interest-simulator-continue-button");totalAccountsAmounts=accounts.map(function(accountAmounts){return accountAmounts.primaryAmount.amount}).reduce(function(acc,amount){return acc+amount})}else{this.set("primaryButtonLabel","glomo-interest-simulator-continue-button-not-have-accounts")}this.set("totalAccountAmounts",totalAccountsAmounts);this._fire("set-total-amount-accounts",this.totalAccountAmounts)}/**
+   * @private set button status
+   * @param {*} paymentMethods
+   */},{key:"_setContinueStatus",value:function _setContinueStatus(paymentMethods){if(paymentMethods&&paymentMethods.amountSelected){var state=paymentMethods.amountSelected.values.amount>this.totalAccountAmounts&&!this.setChangeTextInfoMessage;this._setAdviceConfiguration(paymentMethods);this._fire("set-continue-configuration",state);if(!this.disabledHappened&&this.setChangeTextInfoMessage){this._fire("set-continue-configuration",!state);this.disabledHappened=!0}return state}}/**
+   * Request Exit Simulator
+   */},{key:"setExitSimulator",value:function setExitSimulator(){this._openModal("EXIT")}/**
+   * Open Other Amount Modal
+   */},{key:"setModalAnotherAmount",value:function setModalAnotherAmount(){this._fire("set-modal-configuarion",{localCurrency:this.currency,currencyCode:this.currency,title:"glomo-interest-simulator-modal-title",amountInputTitle:"glomo-interest-simulator-modal-amount-input-title",amountInputTitleExtraClass:"centered",selectAmountMessageInfo:"glomo-interest-simulator-after-message",amountInputLabel:"glomo-interest-simulator-modal-input-amount-label"});this._fire("open-modal-select-amount")}/**
+   * set modal of more info card advice
+   */},{key:"setMoreInfoModal",value:function setMoreInfoModal(){this._openModal("MORE-INFO","info",!0,!0)}/**
+   * Set Amount of modal selector
+   * @param {*} amount
+   */},{key:"setOtherAmount",value:function setOtherAmount(amount){var otherAmount={amount:amount,currency:this.currency};this._fire("close-modal-select-amount");if(this.setChangeTextInfoMessage){this._fire("change-text-info-message","glomo-aggregation-interest-simulator-positive-balance-info-after");this._fire("set-simulator-positive-balance",this.setChangeTextInfoMessage);this._fire("set-continue-configuration",!this.setChangeTextInfoMessage)}this.setRequestPost(otherAmount)}/**
+   * Set Payment Methods
+   * @param {*} product
+   */},{key:"setPaymentMethods",value:function setPaymentMethods(product){if(product){this.set("product",product);this.setPositiveBalance(this.product);var paymentAmounts=this.c(product,"paymentMethods.0.paymentAmounts"),LAST_PERIOD_AMOUNT=paymentAmounts.filter(function(method){return"LAST_PERIOD_AMOUNT"===method.id}),MINIMUM_AMOUNT=paymentAmounts.filter(function(method){return"MINIMUM_AMOUNT"===method.id}),MINIMUM_AMOUNT_TO_AVOID_INTEREST=paymentAmounts.filter(function(method){return"MINIMUM_AMOUNT_TO_AVOID_INTEREST"===method.id}),TOTAL_DEBT_AMOUNT=paymentAmounts.filter(function(method){return"TOTAL_DEBT_AMOUNT"===method.id}),emptyAmount={amount:0,currency:this.currency},mappedPaymentMethods={minimumAmount:{debtType:"MINIMUM_AMOUNT",values:this.c(MINIMUM_AMOUNT,"0.values.0",emptyAmount)},minimumAmountToAvoidInterest:{debtType:"MINIMUM_AMOUNT_TO_AVOID_INTEREST",values:this.c(MINIMUM_AMOUNT_TO_AVOID_INTEREST,"0.values.0",emptyAmount)},lastPeriodAmount:{debtType:"LAST_PERIOD_AMOUNT",values:this.c(LAST_PERIOD_AMOUNT,"0.values.0",emptyAmount)},totalDebtAmount:{debtType:"TOTAL_DEBT_AMOUNT",values:this.c(TOTAL_DEBT_AMOUNT,"0.values.0",emptyAmount)}};if(0===this.totalAccountAmounts){this._fire("set-total-amount-accounts-modal",mappedPaymentMethods.totalDebtAmount.values)}this.set("paymentMethods",mappedPaymentMethods)}}/**
+   * Set Flag of Positive Balance
+   * @param {*} product
+   */},{key:"setPositiveBalance",value:function setPositiveBalance(product){var balances={granted:this.c(product,"grantedCredits.0.amount"),available:this.c(product,"availableBalance.currentBalances.0.amount")},isPositiveBalance=balances.granted<balances.available;this.set("setChangeTextInfoMessage",isPositiveBalance);this._fire("set-simulator-positive-balance",isPositiveBalance)}/**
+   * Set Post Request
+   * @param {*} payload
+   */},{key:"setRequestPost",value:function setRequestPost(payload){var NEW_AMOUNT=this.c(payload,"amount");if(NEW_AMOUNT!==this.currentAmount&&this.paymentMethods){this._fire("set-card-id-to-request",this.productId);this._fire("set-api-version-to-request",this.cardsApiVersion);this._fire("request-post-interest-simulator",{paymentAmounts:[{amount:NEW_AMOUNT,currency:this.c(payload,"currency",this.currency)}]});this._showSpinner();this.set("currentAmount",NEW_AMOUNT)}}/**
+   * @private Show Spinner
+   */},{key:"_showSpinner",value:function _showSpinner(){this._fire("open-control-veil")}/**
+   * Reset Method
+   */},{key:"reset",value:function reset(){this.productId=void 0;this.paymentMethods=void 0;this.currentAmount=void 0;this.disabledHappened=!1;this.setChangeTextInfoMessage=!1}/**
+  * Save first viewing digital card tooltip info in local Storage to disable for this user after acceses
+  */},{key:"disableDigitalCardInfoTooltip",value:function disableDigitalCardInfoTooltip(){this._localStorageData.deactivateTooltip=!0;this._setLocalStorageData()}/**
+   * Send event to set data in local storage
+   */},{key:"_setLocalStorageData",value:function _setLocalStorageData(){var dataStorage={key:this._cardDetailLocalStorageDataKey,value:this._localStorageData};this._fire("set-tooltip-into-local-storage",dataStorage)}/**
+   * Response to storage data load
+   * get-local-storage-success or get-local-storage-error
+   * @param {Object} storageResponse
+   */},{key:"getCardDetailLocalStorage",value:function getCardDetailLocalStorage(storageResponse){var res=this.c(storageResponse,"value.deactivateTooltip");this._fire("set-disable-show-tooltip",!0===res)}}],[{key:"is",/* global moment */get:function get(){return"glomo-interest-simulator-dm"}},{key:"properties",get:function get(){return{/**
+       * @description Dashboard Accounts List
+       * @type Array
+       */accountList:{type:Array,value:function value(){return[]},observer:"_setAccountsTotalAmountObserve"},/**
+       * amount to request
+       */currentAmount:Number,/**
+       * @description Formatter Configuration
+       * @type {Object}
+       */formatterExtraConfig:{type:Object,value:function value(){return{language:"es-mx",decimals:!0,separator:!0,symbol:!0}}},/**
+       * @description total fees
+       * @type {Object}
+       */interest:Object,/**
+       * @description Payment Methods
+       * @type {Object}
+       */paymentMethods:Object,/**
+       * @description product
+       * @type {Object}
+       */product:{type:Object},/**
+       * @description productID
+       * @type {String}
+       */productId:{type:String,observer:"_productExistObserve"},/**
+       * @@description Cards API Version
+       * @type {String}
+       */cardsApiVersion:{type:String,value:"1"},/**
+       * @description Total acumulated amount of accounts
+       * @type {Number}
+       */totalAccountAmounts:{type:Number,value:0},/**
+       * @description Button Status
+       * @type {Boolean}
+       */continueStatus:{type:Boolean,computed:"_setContinueStatus(paymentMethods)"},/**
+       * Local storage key to save _localStorageData
+       * @type {String}
+       */_cardDetailLocalStorageDataKey:{type:String,value:"interest_simulator_tooltip"},/**
+       *  Save data received from local storage
+       * @type {Object}
+       */_localStorageData:{type:Object,value:function value(){return{}}},/**
+       * Change text if positive balance its true
+       */setChangeTextInfoMessage:{type:Boolean,value:!1},disabledHappened:{type:Boolean,value:!1},/**
+       * Set primary button label
+       */primaryButtonLabel:{type:String,notify:!0,value:"glomo-interest-simulator-continue-button"}}}}]);return GlomoInterestSimulatorDm}(CellsBehaviors.AmountBehavior(Polymer.mixinBehaviors([CellsBehaviors.i18nBehavior,CellsBehaviors.CellsCheckNestedKeysBehavior],Polymer.Element)));customElements.define(GlomoInterestSimulatorDm.is,GlomoInterestSimulatorDm);</script></dom-module><dom-module id="glomo-aggregation-interest-simulator-styles" assetpath="glomo-aggregation-interest-simulator/"><template><style>:host{display:block;box-sizing:border-box;font-family:var(--cells-fontDefault, sans-serif);@apply --glomo-aggregation-interest-simulator;}:host .interest-simulator-input-slider{--cells-input-slider-wrapper-slider:{padding:0px 16px 0px 16px;};@apply --glomo-aggregation-interest-simulator-input-slider;}:host .divider{background:#d3d3d3;border:none;height:1px;@apply --glomo-aggregation-interest-simulator-divider;}:host cells-summary-view{padding:16px 0px 0px 0px;--cells-summary-view-title:{@apply --cells-fontDefaultNormal;color:black;};--cells-summary-view-comission:{display:none;};--cells-summary-view-quantity:{font-size:var(--cells-text-size-20, 1.25rem);@apply --cells-fontDefaultBold;};@apply --glomo-aggregation-interest-simulator-summary;}:host .interest-simulator-tooltip{position:fixed;width:100vw;height:100vh;top:0;left:0;z-index:999;background-color:rgba(0, 0, 0, 0);opacity:0;transition:opacity 0.2s ease-in-out;@apply --glomo-aggregation-interest-simulator-tool-tip;}:host .interest-simulator-tooltip_content{margin-top:4.5rem;width:230px;right:0;margin-right:5.4rem;background-color:var(--bbva-medium-blue, #237ABA);position:absolute;top:128px;display:flex;flex-direction:column;align-items:flex-start;padding:1rem;box-sizing:border-box;color:var(--bbva-white, #fff);@apply --glomo-aggregation-interest-simulator-tool-tip-content;}:host .interest-simulator-tooltip_content_text{font-size:var(--cells-text-size-15, 0.9375rem);line-height:var(--lineHeightTypeSmall, 1.5rem);font-weight:normal;letter-spacing:normal;margin-bottom:0.5rem;@apply --glomo-aggregation-interest-simulator-tool-tip-text;}:host .interest-simulator-tooltip_content_button{width:100%;display:flex;justify-content:flex-end;@apply --glomo-aggregation-interest-simulator-tool-tip-content-st-button;}:host .interest-simulator-tooltip_content_button button{color:var(--bbva-white, #fff);font-size:var(--cells-text-size-12, 0.75rem);font-weight:500;@apply --glomo-aggregation-interest-simulator-tool-tip-content-button;}:host .interest-simulator-tooltip_content:after{content:'';position:absolute;left:calc(100%/2);top:-5px;width:0;height:0;border-left:5px solid transparent;border-bottom:5px solid var(--bbva-medium-blue, #237ABA);clear:both;@apply --glomo-aggregation-interest-simulator-tool-tip-content-after;}:host .showTooltip{opacity:1;transition:opacity 0.4s ease-in-out;@apply --glomo-aggregation-interest-simulator-tool-tip-hide-anim;}:host .zero{display:none;}:host .interest-simulator-info-box{text-align:center;padding:8px 32px 24px 40px;@apply --glomo-aggregation-interest-simulator-info-box;}:host .interest-simulator-error{padding:0px 16px 0px 16px;--cells-icon-message-message:{letter-spacing:0;text-align:center;line-height:24px;};@apply --glomo-aggregation-interest-simulator-error;}:host .interest-simulator-accordion{padding:0px 16px 0px 16px;--cells-accordion-step-title-color:var(--bbva-600, #121212);--cells-accordion-step-header-padding:0px;--cells-accordion-step-header-height:auto;--cells-accordion-step-align-items:flex-start;--cells-accordion-step-icon-right-margin:1 0 16px 16px;--cells-accordion-step-title-icon-right-margin:0;--cells-accordion-step-header-border-bottom:0;--cells-accordion-step-has-currency-margin:0;--cells-accordion-step-has-currency:none;--cells-accordion-step-icon-right-width:24px;--cells-accordion-step-title:{position:absolute;};--cells-accordion-step-subtitle:{position:static;padding-top:4px;margin-right:8px;text-align:end;font-size:var(--cells-text-size-16, 1rem);--cells-accordion-step-subtitle-color:var(--bbva-medium-blue, #1973b8);@apply --cells-fontDefaultMedium;};--cells-accordion-step-content-after:{box-shadow:none;};--cells-accordion-step-content-before:{box-shadow:none;};--cells-accordion-step-content:{border:1px solid transparent;};--cells-accordion-step-currency-content-margins:{margin:0px;padding:0px;};--cells-accordion-step-currency-close-title:{@apply --cells-fontDefaultNormal;};--cells-accordion-step-currency-open-title:{@apply --cells-fontDefaultNormal;};@apply --glomo-aggregation-interest-simulator-accordion;}:host .full{@apply --cells-fontDefaultBold;@apply --glomo-aggregation-interest-simulator-button-full;}:host .interest-simulator-link{text-align:center;margin:16px 0px 8px 0px;@apply --cells-fontDefaultMedium;@apply --glomo-aggregation-interest-simulator-link;}:host .interest-simulator-text{@apply --cells-fontDefaultMedium;font-size:var(--cells-text-size-15, 0.9375rem);@apply --glomo-aggregation-interest-simulator-text;}:host .interest-simulator-message{display:inline-flex;letter-spacing:0;line-height:16px;font-size:var(--cells-text-size-13, 0.8125rem);@apply --glomo-aggregation-interest-simulator-message;}:host .accordion-description{font-size:var(--cells-text-size-16, 1rem);margin:16px 0px 0px 0px;letter-spacing:0;line-height:24px;@apply --cells-fontDefaultLight;@apply --glomo-aggregation-interest-simulator-description;}:host .accordion-calculation-date-text{font-size:var(--cells-text-size-16, 1rem);margin:0px 0px 0px 0px;letter-spacing:0;line-height:24px;@apply --cells-fontDefaultLight;@apply --glomo-aggregation-interest-simulator-data-text;}:host .accordion-calculation-date{font-size:var(--cells-text-size-16, 1rem);margin:0px 0px 0px 0px;letter-spacing:0;line-height:24px;@apply --cells-fontDefaultLight;@apply --glomo-aggregation-interest-simulator-calculation-date;}:host .interest-simulator-positive-balance-info{padding:0px 16px 0px 16px;--cells-icon-message-message:{letter-spacing:0;text-align:center;line-height:24px;};@apply --glomo-aggregation-interest-positive-balance-info;}:host .interest-simulator-input-amount{padding:0px 16px 0px 16px;@apply --glomo-aggregation-interest-input-amount;}:host .interest-simulator-input-amount-title{padding:0px 16px 0px 16px;text-align:center;font-size:var(--cells-text-size-15, 0.9375rem);margin-bottom:16px;@apply --cells-fontDefaultLight;@apply --glomo-aggregation-interest-input-amount-title;}:host .interest-simulator-general-failure{padding:16px 16px 0px 16px;--cells-icon-message-message:{letter-spacing:0;text-align:center;line-height:24px;};@apply --glomo-aggregation-interest-simulator-general-failure;}:host([slider="less"]){@apply --glomo-aggregation-interest-simulator-slider-less;}:host([slider="less"]) cells-input-slider{--cells-input-slider-container-color:#e9e9e9;--cells-input-slider-active-color:red;}:host([slider="minimum"]){@apply --glomo-aggregation-interest-simulator-slider-minimum;}:host([slider="minimum"]) cells-input-slider{--cells-input-slider-container-color:#e9e9e9;--cells-input-slider-active-color:orange;}:host([slider="middle"]){@apply --glomo-aggregation-interest-simulator-slider-middle;}:host([slider="middle"]) cells-input-slider{--cells-input-slider-container-color:#e9e9e9;--cells-input-slider-active-color:#f8cd51;}:host([slider="intermediate"]){@apply --glomo-aggregation-interest-simulator-slider-intermediate;}:host([slider="intermediate"]) cells-input-slider{--cells-input-slider-container-color:#e9e9e9;--cells-input-slider-active-color:#48AE64;}:host([slider="max"]){@apply --glomo-aggregation-interest-simulator-slider-max;}:host([slider="max"]) cells-input-slider{--cells-input-slider-container-color:#e9e9e9;--cells-input-slider-active-color:#388d4f;}:host([slider="error"]){@apply --glomo-aggregation-interest-simulator-slider-max;}:host([slider="error"]) cells-input-slider{--cells-input-slider-container-color:#e9e9e9;--cells-input-slider-active-color:#e9e9e9;opacity:0.7;}:host([type="error"]){--cells-summary-view-title:{opacity:0.6;};--cells-summary-view-quantity:{opacity:0.6;};@apply --glomo-aggregation-interest-simulator-type-error;}:host([accordion="blocked"]){--cells-accordion-step:{opacity:0.6;pointer-events:none;};@apply --glomo-aggregation-interest-simulator-accordion-blocked;}</style></template></dom-module><dom-module id="glomo-aggregation-interest-simulator" assetpath="glomo-aggregation-interest-simulator/"><template><style include="glomo-aggregation-interest-simulator-styles glomo-aggregation-interest-simulator-shared-styles"></style><slot></slot><dom-if if="[[generalFailure]]"><template><div class="interest-simulator-general-failure"><cells-icon-message type="error" icon="coronita:alert" message="[[t('glomo-aggregation-interest-simulator-general-failure')]]"><div slot="actions"><cells-st-button class="link transparent full"><button on-tap="_tryAgain">[[t(tryText)]]</button></cells-st-button></div></cells-icon-message></div></template></dom-if><dom-if if="[[!generalFailure]]"><template><dom-if if="[[!positiveBalance]]"><template><cells-summary-view id="[[id]]]" show-addition="" summary-view-title="[[t(summaryViewTitle)]]" operation="[[currentAmount]]" operation-amount-class="decimals-hidden" no-fees-message="[[noFeesMessage]]" local-currency="[[localCurrency]]" hide-primary-button="true"></cells-summary-view><div class="interest-simulator-input-slider"><cells-input-slider min="[[minimumAmountSlider]]" max="[[maximumAmountSlider]]" step="1" slider-value="[[amountSelected]]" hide-timeline="" hide-value="false" on-current-slider-value="_simulatorChanged"></cells-input-slider></div><div class$="interest-simulator-tooltip [[interestSimulatorTooltip]]" id="interestSimulatorToolTip" on-click="_clickOnToolTip"><div id="tooltipContent" class="interest-simulator-tooltip_content"><span class="interest-simulator-tooltip_content_text">[[t('glomo-aggregation-interest-simulator-tooltip-text')]]</span><cells-st-button class="interest-simulator-tooltip_content_button transparent"><button on-click="_clickOnToolTip">[[t('glomo-aggregation-interest-simulator-tooltip-button-label')]]</button></cells-st-button></div></div><div class="interest-simulator-info-box"><cells-icon-message type="[[interestSimulatorMessage.type]]" icon="[[interestSimulatorMessage.icon]]" message="[[t(interestSimulatorMessage.message)]]" class="inline interest-simulator-message"></cells-icon-message></div><dom-if if="[[!responseError]]"><template><div class="interest-simulator-accordion"><dom-if if="[[showAccordion]]"><template><cells-accordion-step class="has-currency no-left-icons" header-class="disable-outline" heading="[[t('glomo-aggregation-interest-simulator-approximate-interest')]]" subtitle="[[accordionConfig.subtitle.amount]]" single-open="" icon-right="coronita:expand" icon-right-collapse="coronita:collapse"><p class="accordion-description">[[t(accordionText)]]</p><p class="accordion-calculation-date-text">[[t('glomo-aggregation-interest-simulator-calculation-date')]]</p><p class="accordion-calculation-date">[[accordionConfig.calculationDate]]</p></cells-accordion-step><hr class="divider"></template></dom-if><dom-if if="[[showEqualAmountsInfo]]"><template><div class="interest-simulator-equal-amounts"><cells-icon-message type="info" icon="coronita:info" message="[[t('glomo-aggregation-interest-simulator-equal-amounts')]]"></cells-icon-message></div></template></dom-if></div></template></dom-if><dom-if if="[[responseError]]"><template><div class="interest-simulator-error"><cells-icon-message type="error" icon="coronita:alert" message="[[t('glomo-aggregation-interest-simulator-amount-response-error')]]"><div slot="actions"><cells-st-button class="link transparent full"><button on-tap="_tryAgain">[[t(tryText)]]</button></cells-st-button></div></cells-icon-message></div></template></dom-if><div class="interest-simulator-link"><cells-st-button class="link"><button class="interest-simulator-text" on-tap="_simulatorOnTapLink">[[t('glomo-aggregation-interest-simulator-link-label')]]</button></cells-st-button></div></template></dom-if><template is="dom-if" if="[[positiveBalance]]"><cells-summary-view id="[[id]]]" show-addition="" summary-view-title="[[t('glomo-aggregation-interest-simulator-positive-balance')]]" operation="[[currentAmount]]" operation-amount-class="decimals-hidden" no-fees-message="[[noFeesMessage]]" local-currency="[[localCurrency]]" hide-primary-button="true"></cells-summary-view><div class="interest-simulator-positive-balance-info"><cells-icon-message type="info" icon="coronita:info" message="[[t(positiveBalanceInfoMessage)]]"></cells-icon-message></div><div class="interest-simulator-link"><cells-st-button class="link"><button class="interest-simulator-text" on-tap="_simulatorOnTapLink">[[t('glomo-aggregation-interest-simulator-link-label')]]</button></cells-st-button></div></template></template></dom-if></template><script>var GlomoAggregationInterestSimulator=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(GlomoAggregationInterestSimulator,_Polymer$mixinBehavio);function GlomoAggregationInterestSimulator(){babelHelpers.classCallCheck(this,GlomoAggregationInterestSimulator);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(GlomoAggregationInterestSimulator).apply(this,arguments))}babelHelpers.createClass(GlomoAggregationInterestSimulator,[{key:"_setAmount",/**
+   * @desc Take those sent by the DM and format
+   * @param {*} amounts
+   */value:function _setAmount(amounts){if(!this.responseError){if(!this.minimumAmountSlider){this.set("minimumAmountSlider",this.get("paymentAmounts.minimumAmount.values.amount",amounts));this.set("maximumAmountSlider",this.get("paymentAmounts.totalDebtAmount.values.amount",amounts));if(!this.disableShowToolTip){this.set("interestSimulatorTooltip","showTooltip")}}this.set("amounts",this.get("paymentAmounts",amounts));this._setLimitsSlider(this.get("paymentAmounts",amounts));this._isMinimumPaymentValid(this.get("paymentAmounts",amounts));if(this.minimumPaymentValid){this.set("accordionConfig",{subtitle:amounts.subtitle,calculationDate:amounts.simulationDate});this.set("amountSelected",this.get("paymentAmounts.amountSelected.values.amount",amounts));this._setColorSlider(this.get("paymentAmounts.amountSelected.values.amount",amounts));this._equalAmountsValidation(this.get("paymentAmounts.minimumAmountToAvoidInterest.values.amount",amounts))}}}/**
+   * @desc Valid when the minimum amount, the amount not to generate interest and the total debt are equal
+   * @param {*} amounts
+   */},{key:"_equalAmountsValidation",value:function _equalAmountsValidation(amountToAvoidInterest){if(0===this.amountSelected){this.set("type","error")}else{this.set("type","")}if(amountToAvoidInterest===this.minimumAmountSlider&&amountToAvoidInterest===this.maximumAmountSlider){this.set("interestSimulatorTooltip","hide");this.set("type","error");this.set("slider","error");this.set("showAccordion",!1);this.set("showEqualAmountsInfo",!0);this.set("summaryViewTitle","glomo-aggregation-interest-simulator-equal-amounts-summary-title")}}/**
+   * @desc Set the slider limits that are modified by another amount
+   * @param {*} amounts
+   */},{key:"_setLimitsSlider",value:function _setLimitsSlider(amounts){var amountSelected=amounts.amountSelected.values.amount,modifyMaximumAmount=!0;if(amountSelected<this.minimumAmountSlider){this.minimumAmountSlider=amountSelected;modifyMaximumAmount=!1}if(amountSelected>this.maximumAmountSlider&&modifyMaximumAmount){this.maximumAmountSlider=amountSelected}}/**
+   * @desc Get the change in the slider to check the interest
+   * @param {*} amounts
+   */},{key:"_simulatorChanged",value:function _simulatorChanged(amount){if("number"===typeof this.amountSelected&&this.minimumPaymentValid){this._dispatch("simulator-amount-event",{amount:this.get("detail",amount)})}}/**
+   * @desc Validation to display the minimum amount message
+   * @param {*} amountSelected
+   */},{key:"_showMessageMinAmount",value:function _showMessageMinAmount(amountSelected){return this.amounts?this.amounts.minimumAmount.values.amount===amountSelected:!1}/**
+   * @desc Validation to show the amount message so as not to generate interest
+   * @param {*} amountSelected
+   */},{key:"_showMessageMiddleAmount",value:function _showMessageMiddleAmount(amountSelected){return this.amounts?this.amounts.minimumAmountToAvoidInterest.values.amount===amountSelected:!1}/**
+   * @desc Validation to display the total debt message
+   * @param {*} amountSelected
+   */},{key:"_showMessageMaxAmount",value:function _showMessageMaxAmount(amountSelected){return this.amounts?this.amounts.totalDebtAmount.values.amount===amountSelected:!1}/**
+   * @desc Message displayed in the summary title
+   * @param {*} messageMinAmount
+   * @param {*} messageMiddleAmount
+   * @param {*} messageMaxAmount
+   */},{key:"_showMessageAmount",value:function _showMessageAmount(messageMinAmount,messageMiddleAmount,messageMaxAmount){this.set("accordionText","glomo-aggregation-interest-simulator-cutoff-date");if(messageMinAmount){this.set("summaryViewTitle","glomo-aggregation-interest-simulator-minimum-payment");this.set("slider","minimum")}else if(messageMiddleAmount){this.set("summaryViewTitle","glomo-aggregation-interest-simulator-middle-payment");this.set("accordionText","glomo-aggregation-interest-simulator-not-to-generate-interest");this.set("slider","middle")}else if(messageMaxAmount){this.set("summaryViewTitle","glomo-aggregation-interest-simulator-maximum-payment");this.set("accordionText","glomo-aggregation-interest-simulator-not-to-generate-interest");this.set("slider","max")}else{this.set("summaryViewTitle","glomo-aggregation-interest-simulator-link-label")}this._validationPreviousPayments()}/**
+   * @desc Set color slider
+   * @param {*} amounts
+   */},{key:"_setColorSlider",value:function _setColorSlider(amountSelected){if(amountSelected<this.amounts.minimumAmount.values.amount){this.set("slider","less")}else if(amountSelected<this.amounts.minimumAmountToAvoidInterest.values.amount){this.set("slider","middle")}else if(amountSelected<this.amounts.totalDebtAmount.values.amount){this.set("slider","intermediate")}else if(amountSelected>this.amounts.totalDebtAmount.values.amount){this.set("slider","max")}}/**
+   * @desc Validate the amount selected on the slider with the maximum amount in the accounts
+   * @param {*} amountSelected
+   */},{key:"_isValidAmount",value:function _isValidAmount(amountSelected){if(this.totalAccountAmounts<this.minimumAmountSlider){this.maximumAmountSlider=amountSelected;this.amountSelected=amountSelected;this.set("interestSimulatorMessage",{type:"error",icon:"coronita:alert",message:"glomo-aggregation-interest-simulator-insufficient-balance"})}else if(amountSelected>this.totalAccountAmounts){this.set("interestSimulatorMessage",{type:"error",icon:"coronita:alert",message:"glomo-aggregation-interest-simulator-amount-not-available"})}else{this.set("interestSimulatorMessage",{type:"info",icon:"coronita:checkmark",message:"glomo-aggregation-interest-simulator-amount-available"})}}/**
+   * @desc Validate if I have already made a payment
+   * @param {*} amountSelected
+   */},{key:"_validationPreviousPayments",value:function _validationPreviousPayments(){var previousPaymentsMessage=!1;if(0===this.amounts.minimumAmount.values.amount&&0===this.amounts.minimumAmountToAvoidInterest.values.amount&&0<this.amounts.totalDebtAmount.values.amount&&this.messageMiddleAmount){previousPaymentsMessage=!0;this.set("interestSimulatorMessage",{type:"error",icon:"coronita:alert",message:"glomo-aggregation-interest-simulator-previous-payments-message"});this.set("summaryViewTitle","glomo-aggregation-interest-simulator-middle-payment")}if(0===this.amounts.minimumAmount.values.amount&&0<this.amounts.minimumAmountToAvoidInterest.values.amount&&0<this.amounts.totalDebtAmount.values.amount&&this.messageMinAmount){previousPaymentsMessage=!0;this.set("interestSimulatorMessage",{type:"error",icon:"coronita:alert",message:"glomo-aggregation-interest-simulator-minimum-payment-message"})}if(previousPaymentsMessage&&this.totalAccountAmounts){this.set("accordion","blocked");this._dispatch("primary-button-disabled-event",!0)}else{this.set("accordion","")}}/**
+   * @desc Validate the minimum payment
+   * @param {*} payment
+   */},{key:"_isMinimumPaymentValid",value:function _isMinimumPaymentValid(payment){if(this.totalAccountAmounts<this.minimumAmountSlider){this.set("amountSelected",this.get("minimumAmount.values.amount",payment));this.set("type","error");this.set("showAccordion",!1);this.set("minimumPaymentValid",!1);this.set("slider","error")}else{this.set("type","");this.set("showAccordion",!0);this.set("minimumPaymentValid",!0)}}/**
+   * @desc Click on another quantity
+   */},{key:"_simulatorOnTapLink",value:function _simulatorOnTapLink(){this._dispatch("simulator-link-event")}/**
+   * @desc Try to connect services
+   */},{key:"_tryAgain",value:function _tryAgain(){var _this=this;this.maxEntry++;var eventName=3>this.maxEntry?"try-again-event":"max-entry-return-event";if("max-entry-return-event"===eventName){this.resetValues()}else{this._dispatch("open-control-veil");setTimeout(function(){_this._dispatch("close-control-veil")},5e3)}this._dispatch(eventName)}/**
+   * @desc Dynamic text for connection retries
+   * @param {*} entry
+   */},{key:"_maxEntryText",value:function _maxEntryText(entry){return 2>entry?"glomo-aggregation-interest-simulator-retry-text":"glomo-aggregation-interest-simulator-retry-max-text"}/**
+   * @desc Gives the necessary format to show in the summary
+   * @param {*} entry
+   */},{key:"_setCurrentAmount",value:function _setCurrentAmount(amountSelected,localCurrency){return{amount:{amount:amountSelected,currency:localCurrency}}}/**
+   * @desc Input amount validation
+   * @param {*} entry
+   */},{key:"_inputAmountValidation",value:function _inputAmountValidation(inputAmount){this.isValidInputAmount=inputAmount>this.totalAccountAmounts}/**
+   * @desc Show or hide input amount
+   * @param {*} entry
+   */},{key:"_showInputAmount",value:function _showInputAmount(){this.showInputAmount=!0}/**
+   * @desc Generic Dispatch Event
+   *  @param {*} name
+   * @param {*} detail
+   */},{key:"_dispatch",value:function _dispatch(name,detail){this.dispatchEvent(new CustomEvent(name,{bubbles:!0,composed:!0,detail:detail}))}/**
+   * @desc Reset Values
+   */},{key:"resetValues",value:function resetValues(){this.set("amountSelected",void 0);this.set("minimumAmountSlider",null);this.set("showEqualAmountsInfo",!1);this.set("responseError",!1);this.set("amounts",void 0);this.set("maxEntry",0);var getAccordion=this.shadowRoot.querySelector(".has-currency");if(getAccordion){getAccordion.close()}}/**
+   * @desc Show or hide tool tip
+   */},{key:"_clickOnToolTip",value:function _clickOnToolTip(){var _this2=this;setTimeout(function(){_this2.set("interestSimulatorTooltip","zero")},1e3);this.set("interestSimulatorTooltip","hideTooltip");this.set("disableShowToolTip",!0);if(!this.hasClicked){this._dispatch("interest-simulator-tooltip");this.set("hasClicked",!0)}}/**
+   * @desc Show error case
+   */},{key:"_sliderError",value:function _sliderError(flag){if(flag){this.set("type","error");this.set("minimumAmountSlider",this.amountSelected);this.set("maximumAmountSlider",this.amountSelected);this.set("slider","error");this._dispatch("enable-button-action",!1)}else{this.set("type","");this.set("slider","")}}}],[{key:"is",get:function get(){return"glomo-aggregation-interest-simulator"}},{key:"properties",get:function get(){return{/**
+       * @desc Defines the color of the slider
+       * @type {String}
+       */slider:{type:String,value:"minimum",reflectToAttribute:!0},/**
+       * @desc It is used to show an error case
+       * @type {String}
+       */type:{type:String,value:null,reflectToAttribute:!0},/**
+       * @desc It is used to enable or disabled accordion
+       * @type {String}
+       */accordion:{type:String,value:null,reflectToAttribute:!0},/**
+       * @desc local Currency
+       * @type {String}
+       */localCurrency:String,/**
+       * @desc Shows the amount selected in the slider
+       * @type {Number}
+       */amountSelected:{type:Number},/**
+       * @desc Gives the necessary format to show in the summary
+       * @type {Object}
+       */currentAmount:{type:Object,computed:"_setCurrentAmount(amountSelected, localCurrency)"},/**
+       * @desc Amounts for simulator configuration
+       * @type {Object}
+       */amounts:Object,/**
+       * @desc Validation to display the minimum amount message
+       * @type {Boolean}
+       */messageMinAmount:{type:Boolean,computed:"_showMessageMinAmount(amountSelected)"},/**
+       * @desc Validation to show the amount message so as not to generate interest
+       * @type {Boolean}
+       */messageMiddleAmount:{type:Boolean,computed:"_showMessageMiddleAmount(amountSelected)"},/**
+       * @desc Validation to display the total debt message
+       * @type {Boolean}
+       */messageMaxAmount:{type:Boolean,computed:"_showMessageMaxAmount(amountSelected)"},/**
+       * @desc Message displayed in the summary title
+       * @type {Boolean}
+       */messageAmount:{type:Boolean,computed:"_showMessageAmount(messageMinAmount, messageMiddleAmount, messageMaxAmount)"},/**
+       * @desc Validate the amount selected in the slider
+       * @type {Boolean}
+       */isValidAmount:{type:Boolean,computed:"_isValidAmount(amountSelected)"},/**
+       * @desc Validate the minimum payment
+       * @type {Boolean}
+       */minimumPaymentValid:{type:Boolean,value:!1},/**
+       * @desc No fees message
+       * @type {String}
+       */noFeesMessage:{type:String,value:"interest"},/**
+       * @desc Maximum amount in accounts
+       * @type {Number}
+       */totalAccountAmounts:Number,/**
+       * @desc Accordion Component Data Settings
+       * @type {Object}
+       */accordionConfig:Object,/**
+       * @desc Displays a message in case of unsuccessful response
+       * @type {Boolean}
+       */responseError:{type:Boolean,value:!1,observer:"_sliderError"},/**
+       * @desc Counter to retry connecting services
+       * @type {Number}
+       */maxEntry:{type:Number,value:0},/**
+       * @desc Dynamic text for connection retries
+       * @type {String}
+       */tryText:{type:String,value:"glomo-aggregation-interest-simulator-retry-text",computed:"_maxEntryText(maxEntry)"},/**
+       * @desc Show or hide positive balance
+       * @type {Boolean}
+       */positiveBalance:{type:Boolean,value:!1},/**
+       * @desc Input Amount
+       * @type {Number}
+       */inputAmount:{type:Number,notify:!0,observer:"_inputAmountValidation"},/**
+       * @desc Input Amount Validation
+       * @type {Boolean}
+       */isValidInputAmount:{type:Boolean,value:!1,notify:!0},/**
+       * @desc General failure info box
+       * @type {Boolean}
+       */generalFailure:{type:Boolean,value:!1},/**
+       * @desc Minimum amount slider
+       * @type {Boolean}
+       */minimumAmountSlider:Number,/**
+       * @desc Maximum amount slider
+       * @type {Boolean}
+       */maximumAmountSlider:Number,/**
+       * @desc Show or hidden accordion step
+       * @type {Boolean}
+       */showAccordion:{type:Boolean,value:!0},/**
+       * @desc Show or hidden accordion step
+       * @type {Boolean}
+       */showEqualAmountsInfo:{type:Boolean,value:!1},secondaryAmounts:{type:Object},/**
+       * @description disable Show ToolTip
+       * @type {Boolean}
+       */disableShowToolTip:{type:Boolean,value:!1},/**
+       * @description has tooltip clicked
+       * @type {Boolean}
+       */hasClicked:{type:Boolean,value:!1},/**
+       * @description class for tooltip
+       */interestSimulatorTooltip:String,/**
+       * @description Positive Balance Info Message
+       */positiveBalanceInfoMessage:{type:String,value:"glomo-aggregation-interest-simulator-positive-balance-info"}/**
+       * @description Reset the value to class close
+       */}}}]);return GlomoAggregationInterestSimulator}(Polymer.mixinBehaviors([CellsBehaviors.i18nBehavior],Polymer.Element));customElements.define(GlomoAggregationInterestSimulator.is,GlomoAggregationInterestSimulator);</script></dom-module><dom-module id="cells-card-advice-styles" assetpath="cells-card-advice/"><template><style>:host{display:block;box-sizing:border-box;font-family:var(--cells-fontDefault, sans-serif);@apply --cells-card-advice;}:host([hidden]), [hidden]{display:none !important;}*, *:before, *:after{box-sizing:inherit;}.card-advice{display:flex;flex-direction:column;align-items:center;width:100%;padding:1rem;padding-top:1.5rem;border:none;border-radius:0.125rem;background-color:var(--cells-card-advice-bg-color, var(--bbva-medium-blue));border-bottom:1px solid var(--bbva-300);font-family:inherit;line-height:1.6;font-size:var(--cells-card-advice-font-size, 0.9375rem);line-height:var(--cells-card-advice-line-height, 1.5rem);text-align:center;color:var(--cells-card-advice-color, var(--bbva-white));@apply --cells-card-advice-container;}.card-advice__img{display:block;margin-bottom:1.5rem;height:80px;width:100%;@apply --cells-card-advice-img;}.card-advice__title{font-size:var(--cells-text-size-18, 18px);font-weight:500;margin-bottom:0.5rem;@apply --cells-card-advice-title;}.card-advice__text{margin:0 0 1rem;font-weight:200;@apply --cells-card-advice-text;}.card-advice__link{display:flex;align-items:center;margin:0;text-decoration:none;font-weight:500;color:var(--cells-card-advice-link-color, var(--bbva-white));@apply --cells-card-advice-link;}.card-advice__link .link-icon{margin-right:0.5rem;@apply --cells-card-advice-link-icon;}.icon{font-size:var(--cells-card-advice-icon-size, 1rem);@apply --cells-card-advice-icon;}.cells-card-advice-list-item{--cells-lists-color:var(--cells-card-advice-color, var(--bbva-white));--cells-lists-listItem-bullet-border-bottom-color:var(--cells-card-advice-listItem-bullet-color, var(--bbva-teal, #2dcccd));--cells-lists-listItem-icon-color:var(--cells-card-advice-listItem-icon-color, var(--bbva-teal, #2dcccd));padding:0;margin-bottom:1.75rem;margin-top:0.75rem;text-align:left;@apply --cells-card-advice-list-item-custom;}</style></template></dom-module><dom-module id="cells-card-advice" assetpath="cells-card-advice/"><template><style include="cells-card-advice-styles cells-card-advice-shared-styles"></style><div class="card-advice" on-click="_clickHandler"><iron-image preload="" id="image" class="card-advice__img" placeholder="[[defaultImageUrl]]" src="[[imageUrl]]" sizing="contain"></iron-image><cells-heading level="[[headingLevel]]" class="card-advice__title" hidden$="[[!titleText]]">[[t(titleText)]]</cells-heading><template is="dom-if" if="[[text]]"><p id="text" class="card-advice__text" inner-h-t-m-l="[[t(textFormatted)]]"></p></template><template is="dom-if" if="[[list]]"><cells-lists class$="[[listItemClass]]" list="[[list]]" icon-list="[[iconList]]"></cells-lists></template><p id="link" class="card-advice__link" on-click="_onLinkClick"><cells-atom-icon class="link-icon" id="icon" icon="[[linkIcon]]" hidden$="[[!linkIcon]]"></cells-atom-icon><span id="linkText" class="link-text">[[t(linkText)]]</span></p></div></template><script>var CellsCardAdvice=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(CellsCardAdvice,_Polymer$mixinBehavio);function CellsCardAdvice(){babelHelpers.classCallCheck(this,CellsCardAdvice);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(CellsCardAdvice).apply(this,arguments))}babelHelpers.createClass(CellsCardAdvice,[{key:"_clickHandler",/**
+   * Fired after clicking the component
+   * @event card-advice-click
+   */value:function _clickHandler(e){var newEvent=new CustomEvent("card-advice-click",{bubbles:!0,composed:!0});this.dispatchEvent(newEvent)}},{key:"formatText",value:function formatText(text){var _this=this;this.textFormatted=text&&Object.keys(this.mapCharFormat||{}).reduce(function(acc,char){return acc.replace(new RegExp(char,"g"),_this.mapCharFormat[char])},text)}/**
+   * Fired after clicking on component link
+   * @event card-advice-link-click
+   */},{key:"_onLinkClick",value:function _onLinkClick(e){this.dispatchEvent(new CustomEvent("card-advice-link-click",{bubbles:!0,composed:!0}))}}],[{key:"is",get:function get(){return"cells-card-advice"}},{key:"properties",get:function get(){return{/**
+       * Title
+       */titleText:{type:String,value:""},/**
+       * Image url
+       */imageUrl:{type:String,value:""},/**
+       * Default image url
+       */defaultImageUrl:{type:String,value:null},/**
+       * Icon to be show in footer link
+       */linkIcon:{type:String,value:""},/**
+       * Text to be show in footer link
+       */linkText:{type:String,value:""},/**
+       * Body text
+       */text:{type:String,value:"",observer:"formatText"},textFormatted:{type:String,value:""},/**
+       * Level heading
+       */headingLevel:{type:Number,value:3},mapCharFormat:{type:Object,value:{"\n":"<br>"}},/**
+       * List of texts
+       */list:{type:Object},/**
+       * Custom icon for list's items
+       */iconList:{type:Object},/**
+       * Custom css class
+       */listItemClass:{type:String,value:"cells-card-advice-list-item"}}}}]);return CellsCardAdvice}(Polymer.mixinBehaviors([CellsBehaviors.i18nBehavior],Polymer.Element));customElements.define(CellsCardAdvice.is,CellsCardAdvice);</script></dom-module><dom-module id="cells-dm-global-apis-cards-bgadpmock" assetpath="cells-dm-global-apis-cards-bgadpmock/"><template></template><script>/*eslint new-cap: 0*/ /*global BGADPCards*/ /*global BGADPArCardsV0*/ /*global BGADPCardsV0*/ /*global BGADPCardsV1*/ /*global NPMBGADPCardsV1*/ /**
+ * # cells-dm-global-apis-cards-bgadpmock
+ * ![Certificated](https://img.shields.io/badge/certificated-yes-brightgreen.svg) ![Polymer 2.x](https://img.shields.io/badge/Polymer-2.x-green.svg)
+ * [Demo of component in Cells Catalog](https://catalogs.platform.bbva.com/cells)
+ *
+ * CELLS Data Manager for GLOBAL APIS Cards.
+ * Example:
+ *
+ * ```html
+ * <cells-dm-global-apis-cards-bgadpmock></cells-dm-global-apis-cards-bgadpmock>
+ * ```
+ * @polymer
+ * @customElement
+ * @summary CELLS Data Manager for GLOBAL APIS Cards
+ * @extends {Polymer.Element}
+ * @demo demo/index.html
+ */var CellsDmGlobalApisCardsBGADPMock=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(CellsDmGlobalApisCardsBGADPMock,_Polymer$mixinBehavio);function CellsDmGlobalApisCardsBGADPMock(){babelHelpers.classCallCheck(this,CellsDmGlobalApisCardsBGADPMock);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(CellsDmGlobalApisCardsBGADPMock).apply(this,arguments))}babelHelpers.createClass(CellsDmGlobalApisCardsBGADPMock,[{key:"getAllCards",/**
+   * Get all customer cards
+   */value:function getAllCards(params){var cards=1<arguments.length&&arguments[1]!==void 0?arguments[1]:[],service=this._getService("Cards",this.cardsApiVersion,"cards.get",{headers:this.headers||{},host:this.host,version:this.cardsApiVersion,requiredToken:this.requiredToken,params:params,native:this.native});return service.generateRequest().then(function(){var response=this._parseResponse(service.getLastResponse())||[],newCards=response.concat(cards);if(this.nextKey){var newParams=Object.assign(params||{},{paginationKey:this.nextKey});this.getAllCards(newParams,newCards)}else{this.set("cards",newCards);this.dispatchEvent(new CustomEvent("set-cards",{detail:newCards,bubbles:!0,composed:!0}));return newCards}}.bind(this),this._generateErrorFireEventHandler("error-on-get-cards"))}/**
+   * Get cards
+   */},{key:"getCards",value:function getCards(params){var _this=this,service=this._getService("Cards",this.cardsApiVersion,"cards.get",{host:this.host,headers:this.headers||{},params:params,version:this.cardsApiVersion,requiredToken:this.requiredToken,native:this.native});return service.generateRequest().then(function(){var response=_this._parseResponse(service.getLastResponse());_this.set("cards",response);_this.dispatchEvent(new CustomEvent("set-cards",{bubbles:!0,composed:!0,detail:response}));return response},this._generateErrorFireEventHandler("error-on-get-cards"))}/**
+   * Get Card
+   */},{key:"getCard",value:function getCard(){var _this2=this,params=0<arguments.length&&arguments[0]!==void 0?arguments[0]:{},service=this._getService("Cards",this.cardsApiVersion,"cards.card.get",{host:this.host,headers:this.headers||{},params:Object.assign({"card-id":this.cardId},params),version:this.cardsApiVersion,requiredToken:this.requiredToken,native:this.native});return service.generateRequest().then(function(){var response=_this2._parseResponse(service.getLastResponse());_this2.set("card",response);_this2.dispatchEvent(new CustomEvent("set-card",{bubbles:!0,composed:!0,detail:response}));return response},this._generateErrorFireEventHandler("error-on-get-card"))}/**
+   * Get Card Conditions
+   */},{key:"getCardConditions",value:function getCardConditions(){var _this3=this,params=0<arguments.length&&arguments[0]!==void 0?arguments[0]:{},service=this._getService("Cards",this.cardsApiVersion,"cards.card.conditions.get",{host:this.host,headers:this.headers||{},params:Object.assign({"card-id":this.cardId},params),version:this.cardsApiVersion,requiredToken:this.requiredToken,native:this.native});return service.generateRequest().then(function(){var response=_this3._parseResponse(service.getLastResponse());_this3.dispatchEvent(new CustomEvent("set-card-conditions",{bubbles:!0,composed:!0,detail:response}));return response},this._generateErrorFireEventHandler("error-on-get-card-conditions"))}/**
+   * Get Card Financial Statements
+   */},{key:"getCardFinancialStatements",value:function getCardFinancialStatements(cardId){var _this4=this,service=this._getService("Cards",this.cardsApiVersion,"cards.card.financialStatements.get",{host:this.host,headers:this.headers||{},params:{"card-id":cardId||this.cardId},version:this.cardsApiVersion,requiredToken:this.requiredToken,native:this.native});service.generateRequest().then(function(){var response=_this4._parseResponse(service.getLastResponse());_this4.cardFinancialStatements=response;_this4.dispatchEvent(new CustomEvent("set-card-financial-statements",{bubbles:!0,composed:!0,detail:response}))},this._generateErrorFireEventHandler("error-on-get-card-financial-statements"))}/**
+   * Get Card Financial Statements Balances
+   */},{key:"getCardFinancialStatementsBalances",value:function getCardFinancialStatementsBalances(cardId){var _this5=this,service=this._getService("Cards",this.cardsApiVersion,"cards.card.financialStatements.balances.get",{host:this.host,headers:this.headers||{},params:{"card-id":cardId||this.cardId},version:this.cardsApiVersion,requiredToken:this.requiredToken,native:this.native});service.generateRequest().then(function(){var response=_this5._parseResponse(service.getLastResponse());_this5.cardFinancialStatementsBalances=response;_this5.dispatchEvent(new CustomEvent("set-card-financial-statements-balances",{bubbles:!0,composed:!0,detail:response}))},this._generateErrorFireEventHandler("error-on-get-card-financial-statements-balances"))}/**
+   * Get Card Financial Statement PDF Data
+   */},{key:"getCardFinancialStatementPdf",value:function getCardFinancialStatementPdf(params){var _this6=this,service=this._getService("Cards",this.cardsApiVersion,"cards.card.financialStatements.financialStatement.get",{host:this.host,headers:{"Content-Type":"application/pdf",Accept:"*/*"},params:params,version:this.cardsApiVersion,requiredToken:this.requiredToken,native:this.native,responseType:this.responseType});service.generateRequest().then(function(data){var response=data.responseObject;_this6.dispatchEvent(new CustomEvent("set-card-financial-statement-pdf",{bubbles:!0,composed:!0,detail:response}))},this._generateErrorFireEventHandler("error-on-get-card-financial-statement-pdf"))}/**
+   * Get Card Indicators
+   */},{key:"getCardIndicators",value:function getCardIndicators(cardId){var _this7=this,service=this._getService("Cards",this.cardsApiVersion,"cards.card.indicators.get",{host:this.host,headers:this.headers||{},params:{"card-id":cardId||this.cardId},version:this.cardsApiVersion,requiredToken:this.requiredToken,native:this.native});service.generateRequest().then(function(){var response=_this7._parseResponse(service.getLastResponse());_this7.cardIndicators=response;_this7.dispatchEvent(new CustomEvent("set-card-indicators",{bubbles:!0,composed:!0,detail:response}));return response},this._generateErrorFireEventHandler("error-on-get-card-indicators"))}/**
+   * Get Card CVV
+   */},{key:"getCardCvv",value:function getCardCvv(id){var _this8=this;if(this.publicKey&&""!==this.publicKey){var service=this._getService("Cards",this.cardsApiVersion,"cards.card.securityData.get",{host:this.host,headers:this.headers||{},params:{"card-id":id,publicKey:this.publicKey},version:this.cardsApiVersion,requiredToken:this.requiredToken,native:this.native});service.generateRequest().then(function(){var response=_this8._parseResponse(service.getLastResponse());_this8.dispatchEvent(new CustomEvent("parse-card-cvv",{bubbles:!0,composed:!0,detail:{value:response.length?response[0].code:"",format:_this8.cvvParseFormat}}))},this._generateErrorFireEventHandler("error-on-get-card-cvv"))}else{this.dispatchEvent(new CustomEvent("error-on-get-card-cvv-no-public-key",{bubbles:!0,composed:!0}))}}/**
+   * Cards balances
+   */},{key:"getCardsBalances",value:function getCardsBalances(params){var _this9=this,service=this._getService("Cards",this.cardsApiVersion,"cards.balances.get",{host:this.host,headers:this.headers||{},params:params,version:this.cardsApiVersion,requiredToken:this.requiredToken,native:this.native});return service.generateRequest().then(function(){var response=_this9._parseResponse(service.getLastResponse())||[];_this9.set("balances",response);_this9.dispatchEvent(new CustomEvent("set-cards-balances",{bubbles:!0,composed:!0,detail:response}))},this._generateErrorFireEventHandler("error-on-get-cards-balances"))}/**
+   * Cards activations
+   * @param {String} id
+   */},{key:"getCardActivations",value:function getCardActivations(id){var _this10=this,service=this._getService("Cards",this.cardsApiVersion,"cards.card.activations.get",{host:this.host,headers:this.headers||{},params:{"card-id":id},version:this.cardsApiVersion,requiredToken:this.requiredToken,native:this.native});return service.generateRequest().then(function(){var response=_this10._parseResponse(service.getLastResponse())||[];_this10.set("cardActivations",response);_this10.dispatchEvent(new CustomEvent("set-card-activations",{bubbles:!0,composed:!0,detail:response}))},this._generateErrorFireEventHandler("error-on-get-card-activations"))}/**
+   * Update alias
+   */},{key:"patchCardAlias",value:function patchCardAlias(alias){var _this11=this,service=this._getService("Cards",this.cardsApiVersion,"cards.card.patch",{host:this.host,headers:this.headers||{},body:{alias:alias},params:Object.assign({"card-id":this.cardId}),version:this.cardsApiVersion,requiredToken:this.requiredToken,native:this.native});return service.generateRequest().then(function(){var response=_this11._parseResponse(service.getLastResponse());_this11.set("card",response);_this11.dispatchEvent(new CustomEvent("patch-alias",{bubbles:!0,composed:!0,detail:alias}));_this11.dispatchEvent(new CustomEvent("patch-card",{bubbles:!0,composed:!0,detail:response}))},this._generateErrorFireEventHandler("error-on-patch-card"))}/**
+   * Update card
+   */},{key:"patchCardStatus",value:function patchCardStatus(params){var _this12=this,service=this._getService("Cards",this.cardsApiVersion,"cards.card.patch",{host:this.host,headers:this.headers||{},body:params,params:Object.assign({"card-id":this.cardId}),version:this.cardsApiVersion,requiredToken:this.requiredToken,native:this.native});service.generateRequest().then(function(){var response=_this12._parseResponse(service.getLastResponse())||[];_this12.dispatchEvent(new CustomEvent("patch-card-status",{bubbles:!0,composed:!0,detail:response}))},this._generateErrorFireEventHandler("error-on-patch-card-status"))}},{key:"patchCardActivations",value:function patchCardActivations(id,body){var _this13=this,service=this._getService("Cards",this.cardsApiVersion,"cards.card.activations.patch",{host:this.host,headers:this.headers||{},body:body,params:Object.assign({"card-id":id}),version:this.cardsApiVersion,requiredToken:this.requiredToken,native:this.native});return service.generateRequest().then(function(){var response=_this13._parseResponse(service.getLastResponse());_this13.set("cardActivations",response);_this13.dispatchEvent(new CustomEvent("patch-activations-successful",{bubbles:!0,composed:!0,detail:response}))},this._generateErrorFireEventHandler("error-on-patch-card-activations"))}/**
+   * Resource for managing an operational activation related to a card
+   * @param {Object} params
+   * {
+   *    activationId: 'ON_OFF',
+   *    body: { isActive : true }
+   * }
+   * @event patch-activations-successful
+   * @event error-on-patch-card-activations
+   */},{key:"patchCardActivationWithParams",value:function patchCardActivationWithParams(params){if(params.activationId&&params.body){this.patchCardActivation(this.cardId,params.activationId,params.body)}}/**
+   * Patches an specific card activation
+   * @param {*} cardId
+   * @param {*} activationId
+   * @param {*} body
+   */},{key:"patchCardActivation",value:function patchCardActivation(cardId,activationId,body){var _this14=this,service=this._getService("Cards",this.cardsApiVersion,"cards.card.activations.activation.patch",{host:this.host,headers:this.headers||{},body:body,params:Object.assign({"card-id":cardId,"activation-id":activationId}),version:this.cardsApiVersion,requiredToken:this.requiredToken,native:this.native});if(this.secondFactorToken){service.headers=service.headers||{};service.headers.Authorization=this.secondFactorToken}return service.generateRequest().then(function(){var response=_this14._parseResponse(service.getLastResponse());if(response.activationId){var newCardActivations=_this14.cardActivations||[],activationIndex=newCardActivations.findIndex(function(activation){return activation.activationId===activationId});if(-1!==activationIndex){newCardActivations[activationIndex].isActive=body.isActive}_this14.set("cardActivations",newCardActivations);_this14.dispatchEvent(new CustomEvent("patch-activations-successful",{bubbles:!0,composed:!0,detail:newCardActivations}))}},this._generateErrorFireEventHandler("error-on-patch-card-activations"))}/**
+   * Get card installments plans
+   */},{key:"getInstallmentsPlans",value:function getInstallmentsPlans(params){var service=this._getTransactionsService(params,"cards.card.installmentsPlans.get");service.generateRequest().then(this._handleGetTransactionsSuccess.bind(this,service),this._generateErrorFireEventHandler("error-on-get-card-transactions"))}/**
+   * Get card transactions
+   */},{key:"getTransactions",value:function getTransactions(params){var service=this._getTransactionsService(params);service.generateRequest().then(this._handleGetTransactionsSuccess.bind(this,service),this._generateErrorFireEventHandler("error-on-get-card-transactions"))}},{key:"_getTransactionsService",value:function _getTransactionsService(params){var apiPath=1<arguments.length&&arguments[1]!==void 0?arguments[1]:"cards.card.transactions.get";return this._getService("Cards",this.cardsApiVersion,apiPath,{host:this.host,headers:this.headers||{},params:Object.assign({"card-id":this.cardId},params),version:this.cardsApiVersion,requiredToken:this.requiredToken,native:this.native})}},{key:"_handleGetTransactionsSuccess",value:function _handleGetTransactionsSuccess(service){var response=this._parseResponse(service.getLastResponse())||[];if(0===response.length&&!this.transactionsEmptyIsRequired){this._onEmptyPageReached()}else{this.set("transactions",response);this.dispatchEvent(new CustomEvent("set-card-transactions",{bubbles:!0,composed:!0,detail:response}))}}/**
+   * Empty page reached event handler
+   */},{key:"_onEmptyPageReached",value:function _onEmptyPageReached(){this.emptyPageReached=!0;this.loading=!1;if(this.page){this.dispatchEvent(new CustomEvent("empty-page-reached",{bubbles:!0,composed:!0}))}else{this.set("transactions",[]);this.dispatchEvent(new CustomEvent("set-card-transactions",{bubbles:!0,composed:!0,detail:this.transactions}))}}/**
+   * Get more installments plans
+   */},{key:"getMoreInstallmentsPlans",value:function getMoreInstallmentsPlans(params){this._getTransactionsNextPage(params,this.getInstallmentsPlans)}/**
+  * Get more pages transactions service
+  */},{key:"getMoreTransactions",value:function getMoreTransactions(params){this._getTransactionsNextPage(params)}},{key:"_getTransactionsNextPage",value:function _getTransactionsNextPage(params){var callback=1<arguments.length&&arguments[1]!==void 0?arguments[1]:this.getTransactions,syncPage=this.page&&(this.pagination||{}).page===this.page;if(!syncPage){this._generatePagination(this.pagination||{page:0})}this._checkEmptyPageReached();var validPage=this.loadPagesUntilEmptyPage||this.page<=this.totalPages;if(!this.emptyPageReached&&this.pagination&&validPage&&this.nextKey){this.dispatchEvent(new CustomEvent("get-more-data",{detail:!0,bubbles:!0,composed:!0}));var allParams=Object.assign(params||{},{expand:"&paginationKey="+this.nextKey});callback.call(this,allParams)}}/**
+  * Check if empty page was reached
+  */},{key:"_checkEmptyPageReached",value:function _checkEmptyPageReached(){if(this.loadPagesUntilEmptyPage&&this.pagination.totalElements<this.pagination.pageSize){this._onEmptyPageReached()}}/**
+   * Get card transaction detail
+   */},{key:"getTransactionDetail",value:function getTransactionDetail(){var _this15=this,service=this._getService("Cards",this.cardsApiVersion,"cards.card.transactions.transaction.get",{host:this.host,headers:this.headers||{},params:Object.assign({"card-id":this.cardId,"transaction-id":this.transactionId}),requiredToken:this.requiredToken,native:this.native});service.generateRequest().then(function(){var response=_this15._parseResponse(service.getLastResponse())||{};response.operations=[{label:"cells-successful-response-card-detail-share",id:"share",icon:"coronita:share",operative:"PURCHASE"===(response.transactionType||{}).id?"cardPurchaseDetail":"cardBasicDetail"}];_this15.set("transactionDetail",response);_this15.dispatchEvent(new CustomEvent("set-card-transaction-detail",{bubbles:!0,composed:!0,detail:response}))},this._generateErrorFireEventHandler("error-on-get-card-transaction-detail"))}/**
+   * Get card offers detail
+   */},{key:"getCardCashAdvances",value:function getCardCashAdvances(params){var _this16=this,service=this._getService("Cards",this.cardsApiVersion,"cards.card.cashAdvances.post",{host:this.host,headers:this.headers||{},params:Object.assign({"card-id":this.cardId}),body:params,requiredToken:this.requiredToken,native:this.native});service.generateRequest().then(function(){var response=_this16._parseResponse(service.getLastResponse());_this16.set("cashAdvances",response);_this16.dispatchEvent(new CustomEvent("set-card-cash-advances",{detail:response,bubbles:!0,composed:!0}))},this._generateErrorFireEventHandler("error-on-get-card-cash-advances"))}/**
+   * Get card offers detail
+   */},{key:"getOfferDetail",value:function getOfferDetail(){var _this17=this,service=this._getService("Cards",this.cardsApiVersion,"cards.card.offers.offer.get",{host:this.host,headers:this.headers||{},params:Object.assign({"card-id":this.cardId,"offer-id":this.offerId}),requiredToken:this.requiredToken,native:this.native});service.generateRequest().then(function(){var response=_this17._parseResponse(service.getLastResponse());_this17.set("offerDetail",response);_this17.dispatchEvent(new CustomEvent("set-card-offer-detail",{detail:response,bubbles:!0,composed:!0}))},this._generateErrorFireEventHandler("error-on-get-card-offer-detail"))}/**
+   * Get card offers detail
+   */},{key:"getOfferSimulation",value:function getOfferSimulation(offer){var _this18=this,service=this._getService("Cards",this.cardsApiVersion,"cards.card.offers.offer.simulations.post",{host:this.host,headers:this.headers||{},params:Object.assign({"card-id":this.cardId,"offer-id":this.offerId}),body:offer,requiredToken:this.requiredToken,native:this.native});service.generateRequest().then(function(){var response=_this18._parseResponse(service.getLastResponse());_this18.set("offerSimulation",response);_this18.dispatchEvent(new CustomEvent("set-card-offer-simulation",{detail:response,bubbles:!0,composed:!0}))},this._generateErrorFireEventHandler("error-on-get-card-offer-simulation"))}/**
+   * POST payments simulation
+   */},{key:"postPaymentSimulation",value:function postPaymentSimulation(body){var _this19=this,service=this._getNpmService("Cards",this.cardsApiVersion,"CardsCardPaymentsSimulatePost",{host:this.host,headers:this.headers,params:Object.assign({"card-id":this.cardId}),version:this.cardsApiVersion,body:body,requiredToken:this.requiredToken,native:this.native});service.generateRequest().then(function(){var response=_this19._parseResponse(service.getLastResponse());_this19.dispatchEvent(new CustomEvent("set-cards-payments-simulate",{detail:response,bubbles:!0,composed:!0}))},this._generateErrorFireEventHandler("error-on-post-cards-payments-simulate"))}/**
+   * POST payments /cards/v1/cards/{card-id}/payments
+   * @param {Object} body
+   * @event set-cards-payments
+   * @event error-on-post-cards-payments'
+   */},{key:"postPayment",value:function postPayment(body){var _this20=this,service=this._getNpmService("Cards",this.cardsApiVersion,"CardsCardPaymentsPost",{host:this.host,headers:this.headers,params:Object.assign({"card-id":this.cardId}),version:this.cardsApiVersion,body:body,requiredToken:this.requiredToken,native:this.native});service.generateRequest().then(function(){var response=_this20._parseResponse(service.getLastResponse());_this20.dispatchEvent(new CustomEvent("set-cards-payments",{detail:response,bubbles:!0,composed:!0}))},this._generateErrorFireEventHandler("error-on-post-cards-payments"))}/**
+   * GET card limits
+   */},{key:"getCardLimits",value:function getCardLimits(){var _this21=this,service=this._getService("Cards",this.cardsApiVersion,"cards.card.limits.get",{host:this.host,headers:this.headers||{},params:Object.assign({"card-id":this.cardId}),native:this.native});service.generateRequest().then(function(){var response=_this21._parseResponse(service.getLastResponse());_this21.set("getLimitsResponse",response);_this21.dispatchEvent(new CustomEvent("get-card-limits-response",{detail:response,bubbles:!0,composed:!0}))},this._generateErrorFireEventHandler("error-on-get-card-limits"))}/**
+   * PUT card limits
+   */},{key:"putCardLimit",value:function putCardLimit(body){var _this22=this,service=this._getService("Cards",this.cardsApiVersion,"cards.card.limits.limit.put",{host:this.host,headers:this.headers||{},params:Object.assign({"card-id":this.cardId,"limit-id":this.limitId}),body:body,native:this.native});service.generateRequest().then(function(){var response=_this22._parseResponse(service.getLastResponse());_this22.set("putLimitsResponse",response);_this22.dispatchEvent(new CustomEvent("put-card-limits-response",{detail:response,bubbles:!0,composed:!0}))},this._generateErrorFireEventHandler("error-on-put-card-limits"))}/**
+  * PUT card block
+  */},{key:"putCardBlock",value:function putCardBlock(){var service=this._getService("Cards",this.cardsApiVersion,"cards.card.blocks.block.put",{host:this.host,params:Object.assign({"card-id":this.cardId,"block-id":this.blockId}),requiredToken:this.requiredToken,native:this.native,body:{reason:{id:"Al"},isActive:!0,isReissued:this.isReissued||!1}});service.generateRequest().then(function(){var response=this._parseResponse(service.getLastResponse());this.set("putCardBlockResponse",response);this.dispatchEvent(new CustomEvent("put-card-block-response",{detail:response,bubbles:!0,composed:!0}))}.bind(this),this._generateErrorFireEventHandler("error-on-put-card-block"))}/**
+   * Post Cancellations
+   */},{key:"postCardsCancellations",value:function postCardsCancellations(body){var _this23=this,params=1<arguments.length&&arguments[1]!==void 0?arguments[1]:{},service=this._getService("Cards",this.cardsApiVersion,"cards.card.cancellations.post",{host:this.host,headers:this.headers||{},params:params,body:body,version:this.cardsApiVersion,requiredToken:this.requiredToken,native:this.native}),requestService=service.generateRequest();requestService.then(function(){var response=_this23._parseResponse(service.getLastResponse());_this23.dispatchEvent(new CustomEvent("cancel-cards-response",{bubbles:!0,composed:!0,detail:response}))},this._generateErrorFireEventHandler("error-on-post-cards"))}/**
+   * POST Card ObtainDisposedBalance
+   * @param body
+   * @param params
+   */},{key:"postObtainDisposedBalance",value:function postObtainDisposedBalance(body){var _this24=this,params=1<arguments.length&&arguments[1]!==void 0?arguments[1]:{},service=this._getService("ArCards",this.cardsApiVersion,"obtainDisposedBalance.post",{host:this.host,headers:this.headers||{},params:params,body:body,version:this.cardsApiVersion,requiredToken:this.requiredToken,native:this.native}),requestService=service.generateRequest();requestService.then(function(){var response=_this24._parseResponse(service.getLastResponse());_this24.dispatchEvent(new CustomEvent("post-obtain-disposed-balance-response",{bubbles:!0,composed:!0,detail:response}))},this._generateErrorFireEventHandler("error-on-post-obtain-disposed-balance"))}/**
+   * POST Card proposals
+   *
+   * @param {Object} params
+   */},{key:"postCardProposals",value:function postCardProposals(params){var _this25=this,service=this._getService("Cards",this.cardsApiVersion,"proposals.post",{host:this.host,body:params,requiredToken:this.requiredToken,native:this.native});if(this.secondFactorToken){service.headers=Object.assign({},service.headers,{Authorization:this.secondFactorToken})}service.generateRequest().then(function(){var response=_this25._parseResponse(service.getLastResponse());_this25.set("cardProposals",response);_this25.dispatchEvent(new CustomEvent("set-card-proposals",{bubbles:!0,composed:!0,detail:response}))},this._generateErrorFireEventHandler("error-on-get-card-proposals"))}/**
+   * Post cards
+   * @param {Object} body
+   * @param {Object} params
+   * @event post-cards
+   * @event error-on-post-cards
+   */},{key:"postCards",value:function postCards(body){var _this26=this,params=1<arguments.length&&arguments[1]!==void 0?arguments[1]:{},service=this._getService("Cards",this.cardsApiVersion,"cards.post",{host:this.host,headers:this.headers||{},params:params,body:body,version:this.cardsApiVersion,requiredToken:this.requiredToken,native:this.native}),requestService=service.generateRequest();requestService.then(function(){var response=_this26._parseResponse(service.getLastResponse());_this26.set("postCardsResponse",response);_this26.dispatchEvent(new CustomEvent("post-cards",{bubbles:!0,composed:!0,detail:response}))},this._generateErrorFireEventHandler("error-on-post-cards"))}/**
+   * POST Cards Cards proposals
+   *
+   * @param {Object} params
+   * @event post-cards-cards-proposals-init
+   * @event set-cards-cards-proposals
+   * @event error-on-get-cards-cards-proposals
+   */},{key:"postCardsCardsProposals",value:function postCardsCardsProposals(params){var _this27=this;this.dispatchEvent(new CustomEvent("post-cards-cards-proposals-init",{bubbles:!0,composed:!0}));var service=this._getService("Cards",this.cardsApiVersion,"cards.card.proposals.post",{host:this.host,body:params.body,params:Object.assign({"card-id":params.cardId}),requiredToken:this.requiredToken,native:this.native});return service.generateRequest().then(function(){var response=_this27._parseResponse(service.getLastResponse());_this27.set("cardsCardsProposals",response);_this27.dispatchEvent(new CustomEvent("set-cards-cards-proposals",{bubbles:!0,composed:!0,detail:response}))},this._handleApiErrorAndFireSeverityError("error-on-get-cards-cards-proposals"))}/**
+   * Get Card Offer
+   * @event get-card-init
+   */},{key:"postOfferCard",value:function postOfferCard(body){var _this28=this,params=1<arguments.length&&arguments[1]!==void 0?arguments[1]:{},path="0"===this.cardsApiVersion?"offers.offer.simulate.post":"offers.offer.simulations.post";this.dispatchEvent(new CustomEvent("get-card-init",{bubbles:!0,composed:!0}));var service=this._getService("Cards",this.cardsApiVersion,path,{host:this.host,body:body,params:Object.assign({"offer-id":params.offerId}),version:this.cardsApiVersion,requiredToken:this.requiredToken,native:this.native});return service.generateRequest().then(function(){var response=_this28._parseResponse(service.getLastResponse());_this28.set("cardOffer",response);_this28.dispatchEvent(new CustomEvent("set-card-offer",{bubbles:!0,composed:!0,detail:{}}));_this28.dispatchEvent(new CustomEvent("success-on-get-card-offer",{bubbles:!0,composed:!0}))},this._generateErrorFireEventHandler("error-on-get-card-offer"))}/**
+* GET Related Contracts
+   * @event get-card-related-contracts-response
+   * @event error-on-get-card-related-contracts
+*/},{key:"getCardRelatedContracts",value:function getCardRelatedContracts(){var service=this._getService("Cards",this.cardsApiVersion,"cards.card.relatedContracts.get",{host:this.host,params:Object.assign({"card-id":this.cardId}),requiredToken:this.requiredToken,native:this.native});service.generateRequest().then(function(){var response=this._parseResponse(service.getLastResponse());this.set("relatedContracts",response);this.dispatchEvent(new CustomEvent("get-card-related-contracts-response",{detail:response,bubbles:!0,composed:!0}))}.bind(this),this._generateErrorFireEventHandler("error-on-get-card-related-contracts"))}/**
+   * POST Cards Related Contracts
+   *
+   * @param {Object} params
+   * @event post-cards-cards-proposals-init
+   * @event post-cards-related-contracts-response
+   * @event error-on-post-cards-related-contracts
+   */},{key:"postCardsRelatedContracts",value:function postCardsRelatedContracts(params){var _this29=this;this.body={relatedContractId:params.relatedContractId,contractId:params.contractId,number:params.number,numberType:{id:params.numberTypeId,name:params.numberTypeName},product:{id:params.productId,name:params.productName},relationType:{id:params.relationTypeId,name:params.relationTypeName}};this.dispatchEvent(new CustomEvent("post-cards-related-contracts-init",{bubbles:!0,composed:!0}));var service=this._getService("Cards",this.cardsApiVersion,"cards.card.relatedContracts.post",{host:this.host,params:Object.assign({"card-id":this.cardId}),body:this.body,requiredToken:this.requiredToken,native:this.native});service.generateRequest().then(function(){var response=_this29._parseResponse(service.getLastResponse());_this29.set("relatedContracts",response);_this29.dispatchEvent(new CustomEvent("post-cards-related-contracts-response",{bubbles:!0,composed:!0,detail:response}))},this._generateErrorFireEventHandler("error-on-post-cards-related-contracts"))}/**
+   * Post cards
+   * @param {Object} body
+   * @param {Object} params
+   * @event post-cards
+   * @event error-on-post-cards
+   */},{key:"postSuggestCards",value:function postSuggestCards(body){var _this30=this,params=1<arguments.length&&arguments[1]!==void 0?arguments[1]:{},service=this._getService("Cards",this.cardsApiVersion,"cards.suggestCards.post",{host:this.host,headers:this.headers||{},params:params,body:body,version:this.cardsApiVersion,requiredToken:this.requiredToken,native:this.native}),requestService=service.generateRequest();requestService.then(function(){var response=_this30._parseResponse(service.getLastResponse())||[];_this30.dispatchEvent(new CustomEvent("post-suggest-cards",{bubbles:!0,composed:!0,detail:response}))},this._generateErrorFireEventHandler("error-on-post-suggest-cards"))}/**
+   * Post cards suggestion
+   * @param {Object} body
+   * @param {Object} params
+   * @event post-suggestion-cards
+   * @event error-on-post-suggestion-cards
+   */},{key:"postSuggestionsCards",value:function postSuggestionsCards(body){var _this31=this,params=1<arguments.length&&arguments[1]!==void 0?arguments[1]:{},service=this._getService("Cards",this.cardsApiVersion,"cardsSuggestions.post",{host:this.host,headers:this.headers||{},params:params,body:body,version:this.cardsApiVersion,requiredToken:this.requiredToken,native:this.native}),requestService=service.generateRequest();requestService.then(function(){var response=_this31._parseResponse(service.getLastResponse())||[];_this31.dispatchEvent(new CustomEvent("post-suggestion-cards",{bubbles:!0,composed:!0,detail:response}))},this._generateErrorFireEventHandler("error-on-post-suggestion-cards"))}/**
+   *  Card installments plans simulate/execution
+   */},{key:"postInstallmentsPlans",value:function postInstallmentsPlans(body,simulate){var _this32=this,simulateParams={api:"cards.card.installmentsPlans.simulate.post",success:"post-cards-installments-plans-simulate-response",error:"error-on-post-cards-installments-plans-simulate"},executeParams={api:"cards.card.installmentsPlans.post",success:"post-cards-installments-plans-execution-response",error:"error-on-post-cards-installments-plans-execution"},serviceParams=simulate?simulateParams:executeParams,service=this._getService("Cards",this.cardsApiVersion,serviceParams.api,{host:this.host,headers:this.headers||{},params:Object.assign({"card-id":this.cardId}),body:body,version:this.cardsApiVersion,requiredToken:this.requiredToken,native:this.native});service.generateRequest().then(function(){var response=_this32._parseResponse(service.getLastResponse());if(response){_this32.dispatchEvent(new CustomEvent(serviceParams.success,{bubbles:!0,composed:!0,detail:response}))}else{_this32._generateErrorFireEventHandler(serviceParams.error)()}},this._generateErrorFireEventHandler(serviceParams.error))}/**
+   * PUT card PIN
+   * @param {Object} body
+   * @event put-card-pin-response
+   * @event error-on-put-card-pin
+   */},{key:"putCardPin",value:function putCardPin(){var _this33=this,e=0<arguments.length&&arguments[0]!==void 0?arguments[0]:{},pinBlock=e.value,service=this._getService("Cards",this.cardsApiVersion,"cards.card.pin.put",{host:this.host,requiredToken:this.requiredToken,headers:this.headers||{},params:Object.assign({"card-id":this.cardId}),body:{pin:pinBlock},native:this.native});service.generateRequest().then(function(){var response={response:"OK"};_this33.dispatchEvent(new CustomEvent("put-card-pin-response",{detail:response,bubbles:!0,composed:!0}))},this._generateErrorFireEventHandler("error-on-put-card-pin"))}}],[{key:"is",get:function get(){return"cells-dm-global-apis-cards-bgadpmock"}},{key:"properties",get:function get(){return{/**
+       * Chosen domain to make requests.
+       */host:String,/**
+       * Additional headers for the request
+       * @type {Object}
+       */headers:Object,/**
+       * Card Id
+       */cardId:String,/**
+       * Card
+       */card:{type:Object,notify:!0},/**
+       * Cards list
+       */cards:{type:Array,notify:!0},/**
+       * CVV
+       */cvv:{type:Object,notify:!0},/**
+       * Card Financial Statements
+       */cardFinancialStatements:{type:Array,notify:!0},/**
+       * Card Financial Statements Balances
+       */cardFinancialStatementsBalances:{type:Array,notify:!0},/**
+       * Balances
+       */balances:{type:Array,notify:!0},/**
+       * Card transactions
+       */transactions:{type:Array,notify:!0},/**
+       * Transaction id
+       */transactionsId:String,/**
+       * Transaction detail object
+       */transactionDetail:{type:Object,notify:!0},/**
+       * Offer id
+       */offerId:String,/**
+       * Limit id
+       */limitId:String,/**
+       * Offers detail object
+       */offerDetail:{type:Object,notify:!0},/**
+       * Cash Advances object
+       */cashAdvances:{type:Object,notify:!0},/**
+       * Offers simulation object
+       */offerSimulation:{type:Object,notify:!0},/**
+       * Card Offer
+       * @type  {Object}
+       */cardOffer:{type:Object,notify:!0},/**
+       * Get limits response object
+       */getLimitsResponse:{type:Object,notify:!0},/**
+       * Put limits response object
+       */putLimitsResponse:{type:Object,notify:!0},/**
+      * Put block response object
+      */putCardBlockResponse:{type:Object,notify:!0},/**
+      * Get block types response object
+      */getCardBlockTypesResponse:{type:Object,notify:!0},/**
+       * Card activations
+       */cardActivations:{type:Array,notify:!0},/**
+      * Get cards related contracts response object
+      */relatedContracts:{type:Object,notify:!0},/**
+       * Suggested Cards
+       */suggestCards:{type:Array,notify:!0},/**
+       * Cards API version
+       */cardsApiVersion:{type:String,value:"0"},/**
+       * Native requests
+       */native:{type:Boolean,value:!1},/**
+       * requiredToken, 'jwt' or 'tsec' or empty
+       */requiredToken:{type:String,value:"tsec"},/**
+       * Public key for api calls
+       * @type  {String}
+       */publicKey:{type:String,value:""},/**
+       * Info card proposals
+       * @type  {Object}
+       */cardProposals:{type:Object,notify:!0},/**
+       * Response of cardsCardsProposals post
+       * @type {Object}
+       */cardsCardsProposals:{type:Object,notify:!0},/**
+       * Format to decrypt cvv
+       * @type  {String}
+       */cvvParseFormat:{type:String,value:"f#f#f#4040404040"},/**
+       * Load pages until empty page is reached
+       */loadPagesUntilEmptyPage:{type:Boolean,value:!1},/**
+       * An empty page was reached
+       */emptyPageReached:{type:Boolean,value:!1},/**
+       * Transactions empty is not required
+       */transactionsEmptyIsRequired:{type:Boolean,value:!1},/**
+       * Token used when the operation required second token authentication
+       */secondFactorToken:{type:String}}}}]);return CellsDmGlobalApisCardsBGADPMock}(Polymer.mixinBehaviors([CellsBehaviors.CellsGlobalApisHandleRequest,CellsBehaviors.CellsGlobalApisHandleRequestSign,CellsBehaviors.CellsGlobalApisHandleRequestError,CellsBehaviors.CellsGlobalApisServiceGetter],Polymer.Element));window.customElements.define(CellsDmGlobalApisCardsBGADPMock.is,CellsDmGlobalApisCardsBGADPMock);</script></dom-module></div></body></html>

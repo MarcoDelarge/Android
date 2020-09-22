@@ -1,0 +1,42 @@
+{
+  "data": {
+    "title": {
+        "id": "13-0300",
+        "name": "PAGARE LIQUIDABLE AL VENC. M N"
+    },
+    "currentBalances": [
+        {
+            "amount": 50000.00,
+            "currency": "MXN"
+        }
+    ],
+    "currencies": [
+        {
+            "currency": "MXN",
+            "isMajor": true
+        }
+    ],
+    "depositId": "Uvn6wi1Rh6Dv_O_HY3oHqLiXtFWKMiVnLrJd5-iQWiVY2Fd2tzfeiA",
+    "number": "00740010001369260978",
+    "numberType": {
+        "id": "LIC",
+        "name": "Local Internal Code"
+    },
+    "depositType": {
+        "id": "COMMON_DEPOSIT",
+        "name": "Common Deposit"
+    },
+    "bank": {
+        "bankId": "0074",
+        "name": "BBVA BANCOMER",
+        "branch": {
+            "branchId": "0010",
+            "name": "D.F. IZAZAGA"
+        }
+    },
+    "alias": "INVE0978",
+    "openingDate": "2019-08-01",
+    "totalContributions": "4"
+  },
+  "messages": []
+}

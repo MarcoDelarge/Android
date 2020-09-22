@@ -1,0 +1,11 @@
+{
+    "data": {
+        "policyNumber": "198E980001",
+        "operationNumber": "000000247",
+        "operationDate": "2019-01-09 19:15:00",
+        "validityPeriod": {
+            "startDate": "2019-01-09",
+            "endDate": "2019-01-09"
+        }
+    }
+}

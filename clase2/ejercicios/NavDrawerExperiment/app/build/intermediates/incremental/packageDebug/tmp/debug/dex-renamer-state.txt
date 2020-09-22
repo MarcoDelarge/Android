@@ -1,0 +1,4 @@
+#Sun Sep 20 22:36:50 CDT 2020
+base.0=/Users/developer/Documents/android-fundamentals/clase2/ejercicios/NavDrawerExperiment/app/build/intermediates/transforms/dexMerger/debug/0
+path.0=classes.dex
+renamed.0=classes.dex

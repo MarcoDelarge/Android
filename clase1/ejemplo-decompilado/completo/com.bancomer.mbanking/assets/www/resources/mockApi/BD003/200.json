@@ -1,0 +1,33 @@
+{
+  "data": [{
+      "documentTemplate": {
+        "id": "CONDICIONES GENERALES VIDA SEGURA BANCOMER",
+        "templateType": {
+          "id": "PDF",
+          "description": "PDF file"
+        }
+      },
+      "id": "GMDFTRC001"
+    },
+    {
+      "documentTemplate": {
+        "id": "FORMATO PARA CONTRATAR CARGOS RECURRENTES",
+        "templateType": {
+          "id": "PDF",
+          "description": "PDF file"
+        }
+      },
+      "id": "GMDDMCN003"
+    },
+    {
+      "documentTemplate": {
+        "id": "FORMATO DE DOMICILIACION",
+        "templateType": {
+          "id": "PDF",
+          "description": "PDF file"
+        }
+      },
+      "id": "GMDCNSV010"
+    }
+  ]
+}

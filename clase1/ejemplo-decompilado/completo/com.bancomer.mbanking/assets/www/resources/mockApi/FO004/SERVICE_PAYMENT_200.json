@@ -1,0 +1,76 @@
+{
+    "data": {
+        "id": "16",
+        "alias": "SERVICE_PAYMENT TRY1",
+        "operationType": {
+            "id": "SERVICE_PAYMENT",
+            "description": "PAGO DE SERVICIOS"
+        },
+        "notification": {
+            "contactInformation": {
+                "contactDetailId": "0"
+            }
+        },
+        "contract": {
+            "number": "00110241000299972039",
+            "numberType": {
+                "id": "CCC",
+                "name": "CUSTOMER ACCOUNT CODE"
+            },
+            "productType": {
+                "id": "ACCOUNT",
+                "name": "ACCOUNT"
+            }
+        },
+        "operationDetail": {
+            "service": {
+                "id": "00110010004389005",
+                "name": "SEDAPAL"
+            },
+            "bill": {
+                "id": "0005670",
+                "reference": "0005670",
+                "holder": "GONZALO CALDERON PIN"
+            },
+            "additionalFields": [
+                {
+                    "additionalPaymentField": {
+                        "id": "0005670"
+                    }
+                },
+                {
+                    "additionalPaymentField": {
+                        "id": "001"
+                    }
+                }
+            ]
+        },
+        "availableChannels": [
+            {
+                "availableChannel": {
+                    "id": "AGEX",
+                    "name": "AGENTE EXPRESS"
+                }
+            },
+            {
+                "availableChannel": {
+                    "id": "BMOV",
+                    "name": "BANCA MOVIL"
+                }
+            },
+            {
+                "availableChannel": {
+                    "id": "BNET",
+                    "name": "BANCA POR INTERNET"
+                }
+            },
+            {
+                "availableChannel": {
+                    "id": "SMS",
+                    "name": "BANCA SMS"
+                }
+            }
+        ],
+        "creationDate": "2018-12-12T15:26:06.000-0600"
+    }
+}

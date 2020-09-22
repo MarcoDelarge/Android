@@ -1,0 +1,69 @@
+{
+  "data": {
+    "id": "18",
+    "alias": "DATA JELSY USD",
+    "shortAlias": "glomo",
+    "operationType":
+    {
+      "id": "MOBILE_TRANSFER",
+      "description": "RECARGA DE TARJETA REGALO"
+    },
+    "notification":
+    {
+      "notificationDay": 0,
+      "isActive": false,
+      "contactInformation":
+      {
+        "contactDetailId": "0"
+      }
+    },
+    "contract":
+    {
+      "number": "001104860190049136",
+      "numberType": {
+        "id": "PAN",
+        "name": "Primary Account Number"
+      },
+      "productType": {
+        "id": "ACCOUNT",
+        "name": "Accounts"
+      }
+    },
+    "operationDetail":
+    {
+      "receiver":
+      {
+        "mobile": "943141810"
+      }
+    },
+    "operationImport":
+    {
+      "currency": "SOL",
+      "amount": 60
+    },
+    "availableChannels": [
+      {
+        "availableChannel":
+        {
+          "id": "BMOV",
+          "name": "BANCA MOVIL"
+        }
+      },
+      {
+        "availableChannel":
+        {
+          "id": "BNET",
+          "name": "BANCA POR INTERNET"
+        }
+      },
+      {
+        "availableChannel":
+        {
+          "id": "BNET",
+          "name": "BANCA POR INTERNET"
+
+        }
+      }
+    ]
+  }
+}

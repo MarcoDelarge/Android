@@ -1,0 +1,72 @@
+{
+    "data": {
+        "id": "4",
+        "alias": "RECARGA TIM1",
+        "shortAlias": "RECARGA",
+        "operationType": {
+            "id": "MOBILE_TOP_UP",
+            "description": "RECARGA DE CELULARES"
+        },
+        "notification": {
+            "notificationDay": 3,
+            "isActive": true,
+            "contactInformation": {
+                "contactDetailId": "0"
+            }
+        },
+        "contract": {
+            "number": "00110130000105045341",
+            "numberType": {
+                "id": "CCC",
+                "name": "CUSTOMER ACCOUNT CODE"
+            },
+            "productType": {
+                "id": "ACCOUNT",
+                "name": "ACCOUNT"
+            }
+        },
+        "operationDetail": {
+            "mobile": "997670262",
+            "serviceProvider": {
+                "id": "TIM1",
+                "name": "CLARO"
+            }
+        },
+        "operationImport": {
+            "currency": "PEN",
+            "amount": 5
+        },
+        "availableChannels": [
+            {
+                "availableChannel": {
+                    "id": "BMOV",
+                    "name": "BANCA MOVIL"
+                }
+            },
+            {
+                "availableChannel": {
+                    "id": "BNET",
+                    "name": "BANCA POR INTERNET"
+                }
+            },
+            {
+                "availableChannel": {
+                    "id": "NACA",
+                    "name": "OFICINAS"
+                }
+            },
+            {
+                "availableChannel": {
+                    "id": "SMS",
+                    "name": "BANCA SMS"
+                }
+            },
+            {
+                "availableChannel": {
+                    "id": "SMS",
+                    "name": "BANCA SMS"
+                }
+            }
+        ]
+    }
+}

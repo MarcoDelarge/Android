@@ -1,0 +1,15 @@
+{
+  "data": {
+      "id": "21",
+      "openingDate": "2019-11-25 13:20:13",
+      "maturityDate": "2020-01-10",
+      "renovationType": {
+          "id": "ACCOUNT",
+          "description": "Sin renovación automatica"
+      },
+      "operationData": {
+          "operationNumber": "0060335009",
+          "referenceNumber": "pHwgJk8W7Ca_ssxHDwtwSA"
+      }
+  }
+}

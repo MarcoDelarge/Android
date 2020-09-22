@@ -1,0 +1,80 @@
+{
+    "data": {
+        "id": "117",
+        "alias": "TEST007RG67IU",
+        "operationType": {
+            "id": "INTERNAL_TRANSFER",
+            "description": "TRANSFERENCIAS A TERCEROS"
+        },
+        "notification": {
+            "contactInformation": {
+                "contactDetailId": "0"
+            }
+        },
+        "contract": {
+            "number": "00110130000210411744",
+            "numberType": {
+                "id": "CCC",
+                "name": "CCC"
+            },
+            "productType": {
+                "id": "ACCOUNT",
+                "name": "ACCOUNT"
+            }
+        },
+        "operationDetail": {
+            "receiver": {
+                "contract": {
+                    "number": "00110130000105047646",
+                    "numberType": {
+                        "id": "CCC",
+                        "name": "CCC"
+                    },
+                    "productType": {
+                        "id": "ACCOUNT",
+                        "name": "ACCOUNT"
+                    }
+                },
+                "holder": {
+                    "holderName": "GLENIA ALEJANDRA CARDONA BOTELLO"
+                }
+            }
+        },
+        "operationImport": {
+            "currency": "PEN",
+            "amount": 50
+        },
+        "availableChannels": [
+            {
+                "availableChannel": {
+                    "id": "AGEX",
+                    "name": "AGENTE EXPRESS"
+                }
+            },
+            {
+                "availableChannel": {
+                    "id": "ATM",
+                    "name": "CAJERO ATM"
+                }
+            },
+            {
+                "availableChannel": {
+                    "id": "BMOV",
+                    "name": "BANCA MOVIL"
+                }
+            },
+            {
+                "availableChannel": {
+                    "id": "BNET",
+                    "name": "BANCA POR INTERNET"
+                }
+            },
+            {
+                "availableChannel": {
+                    "id": "SMS"
+                }
+            }
+        ],
+        "creationDate": "2018-08-15T12:00:57.000-0500"
+    }
+}

@@ -1,0 +1,119 @@
+{
+  "data": {
+    "id": "11",
+    "openingDate": "2019-12-30",
+    "maturityDate": "2019-12-31",
+    "operationData": {
+      "operationNumber": "0040168002",
+      "referenceNumber": "EckfRNc6NfIasuUyxmJbCA"
+    },
+    "specificAmounts": [
+      {
+        "id": "AVAILABLE_AMOUNT",
+        "amount": {
+          "amount": 78000.00,
+          "currency": "MXN"
+        }
+      },
+      {
+        "id": "TOTAL_DEPOSIT_AMOUNT",
+        "amount": {
+          "amount": 22000.00,
+          "currency": "MXN"
+        }
+      }
+    ],
+    "taxes": {
+      "itemizeTaxes": [
+        {
+          "amount": 0.06,
+          "currency": "MXN",
+          "taxType": {
+            "id": "Impuesto retenido",
+            "name": "Impuesto retenido"
+          }
+        }
+      ]
+    },
+    "totalNetBenefits": {
+      "amount": 2000.50,
+      "currency": "MXN"
+    },
+    "annualTotalProfit": {
+      "rates": [
+        {
+          "rateType": "NOMINAL_ANNUAL_TOTAL_PROFIT",
+          "unit": {
+            "unitType": "PERCENTAGE",
+            "percentage": 17
+          }
+        },
+        {
+          "rateType": "REAL_ANNUAL_TOTAL_PROFIT",
+          "unit": {
+            "unitType": "PERCENTAGE",
+            "percentage": 13
+          }
+        },
+        {
+          "rateType": "INTEREST_BEFORE_TAXES",
+          "unit": {
+            "unitType": "PERCENTAGE",
+            "percentage": 16
+          }
+        },
+        {
+          "rateType": "INCOME_TAXES",
+          "unit": {
+            "unitType": "PERCENTAGE",
+            "percentage": 15.4600
+          }
+        }
+      ]
+    },
+    "initialAmount": {
+      "amount": 2000,
+      "currency": "MXN"
+    },
+    "renovationType": {
+      "id": "AUTOMATIC",
+      "description": "Renovar inversión con ganancias"
+    },
+    "term": {
+      "number": "1",
+      "impositionTimeType": {
+        "id": "DAY"
+      }
+    },
+    "relatedContracts": [
+      {
+        "contractId": "00740680001100267701"
+      }
+    ],
+    "origin": {
+      "originType": {
+        "id": "REQUESTED_BY_CUSTOMER"
+      }
+    },
+    "interestPayment": {
+      "liquidationWindows": [
+        {
+          "interests": [
+            {
+              "grossBenefit": {
+                "amount": 0.56,
+                "currency": "MXN"
+              },
+              "netBenefit": {
+                "amount": 0.50,
+                "currency": "MXN"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "messages": [
+  ]
+}

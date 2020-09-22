@@ -1,0 +1,450 @@
+<html><head></head><body><div hidden="" by-polymer-bundler=""><dom-module id="glomo-pin-request-dm" assetpath="glomo-pin-request-dm/"><template></template><script>var GlomoPinRequestDm=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(GlomoPinRequestDm,_Polymer$mixinBehavio);function GlomoPinRequestDm(){babelHelpers.classCallCheck(this,GlomoPinRequestDm);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(GlomoPinRequestDm).apply(this,arguments))}babelHelpers.createClass(GlomoPinRequestDm,[{key:"setInitialData",/**
+   * Initialize the pin request page
+   * @param {Object} data
+   */value:function setInitialData(data){if(data&&data.cardId&&data.operativeAction){this.set("successAction",!1);this.set("cvvValue","");this.set("cardId",data.cardId);this.set("operativeAction",data.operativeAction);this.set("headerText",this.operativeAction===this.OPERATIVE_PIN_VIEW_CONST?this.t("glomo-pin-request-title-header"):this.t("glomo-cvv-request-activate-card-header"));this.dispatchEvent(new CustomEvent("init-default-values-event",{bubbles:!0,composed:!0}));this.dispatchEvent(new CustomEvent("show-indication-text-event",{bubbles:!0,composed:!0,detail:this.operativeAction===this.OPERATIVE_PIN_VIEW_CONST?this.t("glomo-cvv-request-indication-text-pin"):this.t("glomo-cvv-request-indication-text-activate")}));this.dispatchEvent(new CustomEvent("show-recomended-message-event",{bubbles:!0,composed:!0,detail:this.operativeAction===this.OPERATIVE_PIN_VIEW_CONST?!1:!0}))}}/**
+   * get the CVV from the UI
+   * @param {Number} cvv
+   */},{key:"setCvvValue",value:function setCvvValue(cvv){this.set("cvvValue",cvv?cvv:this.cvvValue);this.dispatchEvent(new CustomEvent("send-cvv-to-native-event",{bubbles:!0,composed:!0,detail:{cardId:this.cardId,cvvValue:this.cvvValue,operativeAction:this.operativeAction}}))}/**
+   * Handle the Data from native
+   * @param {String} value
+   */},{key:"handleResponse",value:function handleResponse(data){if(0<Object.entries(data).length&&this.cvvValue){this.set("successAction",!0);this.dispatchEvent(new CustomEvent("set-custom-info-event",{bubbles:!0,composed:!0,detail:data}));this.dispatchEvent(new CustomEvent("success-pin-action-event",{bubbles:!0,composed:!0,detail:this.successAction}));this.dispatchEvent(new CustomEvent("finish-loaded-pin-event",{bubbles:!0,composed:!0}))}}/**
+   * Get the encripted cvv from native
+   * @param {String} handledCvv
+   */},{key:"handleNativeCvv",value:function handleNativeCvv(handledCvv){if(handledCvv&&this.cvvValue){this.dispatchEvent(new CustomEvent("activate-card-request-event",{bubbles:!0,composed:!0,detail:{cardId:this.cardId,id:"CVV2",value:handledCvv}}))}}/**
+   * configure modal error for the activate card failure response
+   * @param {Object} payload
+   */},{key:"activateFailureModal",value:function activateFailureModal(errorMessage){if(errorMessage&&this.cvvValue){var message=errorMessage.hasOwnProperty("messages")?errorMessage.messages[0].message.split("#")[0]:"",code="activate-retry-failure",acceptBt=this.t("glomo-cvv-request-activate-rety-button"),values=[{text:this.t("glomo-cvv-request-wrong-activate-message")}],configAtmMessage;if(message===this.ATM_ACTIVATE_MESSAGE_ERROR){configAtmMessage={code:"atm-activate-failure",acceptBtn:"glomo-cvv-request-btn-understood",cancelBtn:"",header:"",message:"glomo-cvv-request-activate-atm"}}else if(message===this.LIMIT_REACHED_CONST){code="activate-limit-reached";acceptBt=this.t("glomo-cvv-request-btn-understood");values=[{text:this.t("glomo-cvv-request-wrong-activate-limit-reached")},{linkIcon:"coronita:telephone",iconClass:"icon-size-24",link:this.t("glomo-cvv-request-wrong-activate-icon-link"),eventName:"call-bbva-line",class:"below-paragraph"}]}var configModal={code:code,acceptBt:acceptBt,values:values},errorModal=message===this.ATM_ACTIVATE_MESSAGE_ERROR?this._pinRequestModal(configAtmMessage):this._configActivateErrorModal(configModal);this.dispatchEvent(new CustomEvent("finish-loaded-pin-event",{bubbles:!0,composed:!0}));this.dispatchEvent(new CustomEvent("open-activate-error-modal-event",{bubbles:!0,composed:!0,detail:errorModal}))}}/**
+   * Configuration for error modal active card
+   * @param {Object} configModal
+   */},{key:"_configActivateErrorModal",value:function _configActivateErrorModal(configModal){return{code:configModal.code,selectedConfig:{openMaximized:!0,className:"active-error-card",title:this.t("glomo-cvv-request-activate-card-header"),heroImage:this.GENERAL_ERROR,message:this.t("glomo-cvv-request-wrong-activate-title"),acceptBtLabel:configModal.acceptBt,template:{type:"paragraphs",values:configModal.values}}}}/**
+   * call function when the limit is reached
+   */},{key:"dispatchCallEvent",value:function dispatchCallEvent(){this.dispatchEvent(new CustomEvent("call-event",{bubbles:!0,composed:!0,detail:{phoneNumber:this.PHONE_CONST,extension:""}}))}/**
+   * Open atm branch locator
+   */},{key:"openAtmBranchLocator",value:function openAtmBranchLocator(){this.dispatchEvent(new CustomEvent("navigate-to-atm-branch-locator-event",{bubbles:!0,composed:!0,detail:"atmBranches"}))}/**
+   * open toast in product detail
+   */},{key:"openNativeToast",value:function openNativeToast(){this.dispatchEvent(new CustomEvent("open-native-toast-event",{bubbles:!0,composed:!0,detail:{message:this.t("glomo-cvv-request-success-activate-card-message")}}))}/**
+   * Set functionality for thr leftIcon header action
+   */},{key:"headerExit",value:function headerExit(){var event=!this.successAction?"pin-request-exit-modal-event":"pin-request-exit-page-event",configModal={code:"pin-request-exit",acceptBtn:"glomo-cvv-request-btn-exit",cancelBtn:"glomo-cvv-request-btn-continue",header:"glomo-cvv-request-exit-title",message:"glomo-cvv-request-exit-message"},detail=!this.successAction?this._pinRequestModal(configModal):{};this.dispatchEvent(new CustomEvent(event,{bubbles:!0,composed:!0,detail:detail}))}/**
+   * Handle error message
+   * @param {Object} responseError
+   */},{key:"sendErrorMessageView",value:function sendErrorMessageView(responseError){if(responseError&&this.cvvValue){this.set("successAction",!1);var configModal={code:"400"===responseError?"wrong-pin-request":"bad-pin-request",acceptBtn:"glomo-cvv-request-btn-understood",cancelBtn:"",header:"400"===responseError?"glomo-cvv-request-wrong-cvv":"glomo-cvv-request-bad-request-title",message:"400"===responseError?"":"glomo-cvv-request-bad-request-title-message"},event="400"===responseError?"wrong-pin-request-error-modal-event":"bad-pin-request-error-modal-event";this.dispatchEvent(new CustomEvent(event,{bubbles:!0,composed:!0,detail:this._pinRequestModal(configModal)}));this.dispatchEvent(new CustomEvent("finish-loaded-pin-event",{bubbles:!0,composed:!0}))}}/**
+   * prepare the modal for any error or exit page
+   * @param {Object} config
+   */},{key:"_pinRequestModal",value:function _pinRequestModal(config){return{code:config.code,selectedConfig:{className:"pr-exit-modal",openMaximized:!1,iconOnlyFullHeight:!0,acceptBtLabel:this.t(config.acceptBtn),cancelBtLabel:this.t(config.cancelBtn),template:{type:"paragraphs",values:[{icon:this.alertIcon},{text:this.t(config.header)},{text:this.t(config.message)}]}}}}/**
+   * Generates navigation to help view
+   */},{key:"pinRequestHelpIconTapped",value:function pinRequestHelpIconTapped(){var cvvModal={code:"EDIT-CONFIRM",selectedConfig:{openMaximized:!0,className:"pin-info header--white icon-message-first",title:this.t("glomo-pin-request-title-header-help"),heroImage:this.CARD_IMG,iconPositionConfig:{type:"info",icon:"coronita:help"},template:{type:"paragraphs",values:[{text:this.t("glomo-pin-request-help-text")}]},acceptBtLabel:this.t("glomo-pin-request-help-button")}};this.dispatchEvent(new CustomEvent("pin-help-modal-event",{bubbles:!0,composed:!0,detail:cvvModal}))}/**
+   * Handle Otp response
+   */},{key:"handleOtp",value:function handleOtp(){this.dispatchEvent(new CustomEvent("finish-loaded-pin-event",{bubbles:!0,composed:!0}))}}],[{key:"is",get:function get(){return"glomo-pin-request-dm"}},{key:"properties",get:function get(){return{/**
+       * header-text-changed
+       * @type {String}
+       */headerText:{type:String,notify:!0},/**
+       * Card id from product detail
+       * @type {String}
+       */cardId:String,/**
+       *
+       * Operative Id tapped from native
+       * @type {String}
+       */operativeAction:String,/**
+       * Value for CVV
+       * @type {String}
+       */cvvValue:String,/**
+       * Value which show/hide the PIN view
+       * @type {Boolean}
+       */successAction:{type:Boolean,value:!1},/**
+       * constant for operative pin view
+       * @type{String}
+       */OPERATIVE_PIN_VIEW_CONST:{type:String,value:"CD001"},/**
+       * constant for operative activate card
+       * @type{String}
+       */OPERATIVE_ACTIVATE_CARD_CONST:{type:String,value:"CD002"},/**
+       * constant for src image
+       * @type{String}
+       */CARD_IMG:String,/**
+       * constant for general error image
+       * @type{String}
+       */GENERAL_ERROR:String,/**
+       * constant for phone constant
+       * @type{String}
+       */PHONE_CONST:{type:String,value:"8002262663"},/**
+       * constant for activate in ATM error message
+       * @type {String}
+       */ATM_ACTIVATE_MESSAGE_ERROR:{type:String,value:"MPE3521"},/**
+       * constant for limit reached error message
+       * @type {String}
+       */LIMIT_REACHED_CONST:{type:String,value:"MPE3232"},/**
+       * @type {String}
+       * @description alert icon constant
+       */alertIcon:{type:String,value:"coronita:alert"}}}}]);return GlomoPinRequestDm}(Polymer.mixinBehaviors([CellsBehaviors.CellsGlomoUtilsBehavior,CellsBehaviors.i18nBehavior],Polymer.Element));customElements.define(GlomoPinRequestDm.is,GlomoPinRequestDm);</script></dom-module><dom-module id="cells-badge-styles" assetpath="cells-badge/"><template><style>:host{display:inline-block;font-size:0.625rem;line-height:1rem;border-width:1px;border-style:solid;color:var(--cells-badge-default-color, var(--bbva-white-core-blue, #1464A5));border-color:var(--cells-badge-default-color, var(--bbva-white-core-blue, #1464A5));@apply --cells-badge;}:host([hidden]), [hidden]{display:none !important;}:host(.fill){color:var(--cells-badge-fill-color, var(--bbva-white, #FFFFFF));background-color:var(--cells-badge-default-color, var(--bbva-white-core-blue, #1464A5));}:host(.success){color:var(--cells-badge-success-color, var(--bbva-green, #48AE64));border-color:var(--cells-badge-success-color, var(--bbva-green, #48AE64));}:host(.success.fill){color:var(--cells-badge-fill-color, var(--bbva-white, #FFFFFF));background-color:var(--cells-badge-success-color, var(--bbva-green, #48AE64));}:host(.warning){color:var(--cells-badge-warning-color, var(--bbva-orange, #F7893B));border-color:var(--cells-badge-warning-color, var(--bbva-orange, #F7893B));}:host(.warning.fill){color:var(--cells-badge-fill-color, var(--bbva-white, #FFFFFF));background-color:var(--cells-badge-warning-color, var(--bbva-orange, #F7893B));}:host(.error){color:var(--cells-badge-error-color, var(--bbva-dark-coral, #D44B50));border-color:var(--cells-badge-error-color, var(--bbva-dark-coral, #D44B50));}:host(.error.fill){color:var(--cells-badge-fill-color, var(--bbva-white, #FFFFFF));background-color:var(--cells-badge-error-color, var(--bbva-dark-coral, #D44B50));}:host(.neutral){color:var(--cells-badge-neutral-color, var(--bbva-500, #666666));border-color:var(--cells-badge-neutral-color, var(--bbva-500, #666666));}:host(.neutral.fill){color:var(--cells-badge-fill-color, var(--bbva-white, #FFFFFF));background-color:var(--cells-badge-neutral-color, var(--bbva-500, #666666));}span{height:0.625rem;padding:0.125rem 0.25rem;display:inline-block;font-size:inherit;line-height:1em;text-transform:uppercase;@apply --cells-badge-span;}:host(.full-radius){border-radius:0.625rem;height:1.25rem;@apply --cells-badge-full-radius;}:host(.full-radius) span{padding:0.3125rem 0.75rem;@apply --cells-badge-full-radius-span;}</style></template></dom-module><dom-module id="cells-badge" assetpath="cells-badge/"><template><style include="cells-badge-styles cells-badge-shared-styles"></style><span>[[label]]</span></template><script>/*
+* 
+*
+* # &lt;cells-badge&gt;
+*
+* ![Certificated](https://img.shields.io/badge/certificated-yes-brightgreen.svg) ![Polymer 2.x](https://img.shields.io/badge/Polymer-2.x-green.svg)
+*
+* [Demo of component in Cells Catalog](https://catalogs.platform.bbva.com/cells)
+*
+* `<cells-badge>` displays a text badge with different styles depending on the used class.
+*
+* Example:
+*
+* ```html
+* <cells-badge label="Financiable"></cells-badge>
+* ```
+*
+* __Available classes:__
+*
+* * _The component used without any class has blue color and border._
+*
+* | Class name    | Color     | Style                                                                          |
+* |:--------------|:----------|:-------------------------------------------------------------------------------|
+* | `success`     | green     | -                                                                              |
+* | `warning`     | orange    | -                                                                              |
+* | `error`       | red       | -                                                                              |
+* | `neutral`     | dark grey | -                                                                              |
+* | `fill`        | -         | inverted colors (text in white and background in the color set by other class) |
+* | `full-radius` | -         | rounded corners                                                                |
+*
+* ## Styling
+*
+* The following custom properties and mixins are available for styling:
+*
+* ### Custom Properties
+* | Custom Property             | Selector             | CSS Property     | Value                  |
+* | --------------------------- | -------------------- | ---------------- | ---------------------- |
+* | --cells-badge-default-color | :host                | color            | --bbva-white-core-blue |
+* | --cells-badge-default-color | :host                | border-color     | --bbva-white-core-blue |
+* | --cells-badge-fill-color    | :host(.fill)         | color            | --bbva-white           |
+* | --cells-badge-default-color | :host(.fill)         | background-color | --bbva-white-core-blue |
+* | --cells-badge-success-color | :host(.success)      | color            | --bbva-green           |
+* | --cells-badge-success-color | :host(.success)      | border-color     | --bbva-green           |
+* | --cells-badge-fill-color    | :host(.success.fill) | color            | --bbva-white           |
+* | --cells-badge-success-color | :host(.success.fill) | background-color | --bbva-green           |
+* | --cells-badge-warning-color | :host(.warning)      | color            | --bbva-orange          |
+* | --cells-badge-warning-color | :host(.warning)      | border-color     | --bbva-orange          |
+* | --cells-badge-fill-color    | :host(.warning.fill) | color            | --bbva-white           |
+* | --cells-badge-warning-color | :host(.warning.fill) | background-color | --bbva-orange          |
+* | --cells-badge-error-color   | :host(.error)        | color            | --bbva-dark-coral      |
+* | --cells-badge-error-color   | :host(.error)        | border-color     | --bbva-dark-coral      |
+* | --cells-badge-fill-color    | :host(.error.fill)   | color            | --bbva-white           |
+* | --cells-badge-error-color   | :host(.error.fill)   | background-color | --bbva-dark-coral      |
+* | --cells-badge-neutral-color | :host(.neutral)      | color            | --bbva-500             |
+* | --cells-badge-neutral-color | :host(.neutral)      | border-color     | --bbva-500             |
+* | --cells-badge-fill-color    | :host(.neutral.fill) | color            | --bbva-white           |
+* | --cells-badge-neutral-color | :host(.neutral.fill) | background-color | --bbva-500             |
+* ### @apply
+* | Mixins                         | Selector                 | Value |
+* | ------------------------------ | ------------------------ | ----- |
+* | --cells-badge                  | :host                    | {}    |
+* | --cells-badge-span             | span                     | {}    |
+* | --cells-badge-full-radius      | :host(.full-radius)      | {}    |
+* | --cells-badge-full-radius-span | :host(.full-radius) span | {}    |
+*
+* @customElement
+* @polymer
+* @summary Text badge with different styles
+* @extends {Polymer.Element}
+* @hero cells-badge.png
+* @demo demo/index.html
+* */var CellsBadge=/*#__PURE__*/function(_Polymer$Element){babelHelpers.inherits(CellsBadge,_Polymer$Element);function CellsBadge(){babelHelpers.classCallCheck(this,CellsBadge);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(CellsBadge).apply(this,arguments))}babelHelpers.createClass(CellsBadge,null,[{key:"is",get:function get(){return"cells-badge"}},{key:"properties",get:function get(){return{/**
+       * Badge text label.
+       *
+       * @property label
+       * @type {String}
+       */label:{type:String}}}}]);return CellsBadge}(Polymer.Element);customElements.define(CellsBadge.is,CellsBadge);</script></dom-module><dom-module id="cells-card-cover-info-styles" assetpath="cells-card-cover-info/"><template><style>:host{display:inline-block;box-sizing:border-box;position:relative;text-align:left;color:var(--cells-card-cover-info-number-color, var(--bbva-white, #FFFFFF));@apply --cells-card-cover-info;--cells-molecule-card-cover-icon-background-color:transparent;--cells-molecule-card-cover-background-color:var(--cells-card-cover-info-overlay-color, rgba(255, 255, 255, 0.5));--cells-molecule-card-cover:{display:block;};}:host([hidden]), [hidden]{display:none !important;}:host([fluid]){width:var(--cells-molecule-card-cover-fluid-max-width, 100vw);height:calc(var(--cells-molecule-card-cover-fluid-max-width, 100vw) * (63.08/100));}*, *:before, *:after{box-sizing:inherit;}.data{padding:var(--cells-card-cover-info-data-padding, 0 0.75rem);position:absolute;bottom:0;left:0;width:100%;height:45%;display:flex;flex-direction:column;@apply --cells-card-cover-info-data;}.cover{display:block;@apply --cells-card-cover-info-cover;}.badge{font-size:0.75rem;font-weight:bold;height:1.0625rem;line-height:1.0625rem;border-radius:2px;position:absolute;top:0.75rem;right:0.75rem;--cells-badge-success-color:var(--cells-card-cover-info-badge-success-color, var(--bbva-green, #48AE64));--cells-badge-neutral-color:var(--cells-card-cover-info-badge-neutral-color, var(--bbva-500, #666666));--cells-badge-error-color:var(--cells-card-cover-info-badge-error-color, var(--bbva-red, #DA3851));--cells-badge-default-color:var(--cells-card-cover-info-badge-default-color, var(--bbva-white-core-blue, #1464A5));--cells-badge-span:{height:1.0625rem;line-height:1.0625rem;padding:0 0.25rem;};@apply --cells-font-smoothing;@apply --cells-card-cover-info-badge;}.owner{font-size:0.75rem;letter-spacing:1px;margin:var(--cells-card-cover-info-owner-margin, 0 0 0.5625rem);text-transform:uppercase;max-width:75%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;@apply --cells-card-cover-info-owner;}.number{font-size:1.25rem;margin:var(--cells-card-cover-info-number-margin, 0 0 0.625rem);word-spacing:2px;flex:1;@apply --cells-card-cover-info-number;}.expiration-date{font-size:var(--cells-card-cover-info-expiration-date-font-size, 0.625rem);position:absolute;top:var(--cells-card-cover-info-expiration-date-top, 2.6875rem);left:var(--cells-card-cover-info-expiration-date-left, 3.125rem);@apply --cells-card-cover-info-expiration-date;}.status{text-align:var(--cells-card-cover-info-status-text-align, right);@apply --cells-card-cover-info-status;}</style></template></dom-module><dom-module id="cells-card-cover-info" assetpath="cells-card-cover-info/"><script>function _templateObject4_802ff540ef2011eaab893dabf4ddef4d(){var data=babelHelpers.taggedTemplateLiteral(["\n        <div class=\"status\" hidden$=\"[[statusHidden]]\">\n          <slot name=\"status\">\n            <cells-badge class$=\"[[_computeBadgeClass(status)]] fill badge\" label=\"[[t(_statusLabel)]]\"></cells-badge>\n          </slot>\n        </div>\n\n        <div class=\"data\">\n          <slot name=\"before-data\"></slot>\n          <div class=\"number\" hidden$=\"[[!_formattedPan]]\">[[_formattedPan]]</div>\n          <cells-heading class=\"owner\" level=\"[[headingLevel]]\" hidden$=\"[[!owner]]\">[[owner]]</cells-heading>\n          <div class=\"expiration-date\" hidden$=\"[[!expirationDate]]\">[[expirationDate]]</div>\n          <slot name=\"after-data\"></slot>\n        </div>\n      "]);_templateObject4_802ff540ef2011eaab893dabf4ddef4d=function _templateObject4_802ff540ef2011eaab893dabf4ddef4d(){return data};return data}function _templateObject3_802ff540ef2011eaab893dabf4ddef4d(){var data=babelHelpers.taggedTemplateLiteral(["\n        <cells-molecule-card-cover-ccds-wrapper class=\"cover\"\n          fluid=\"[[fluid]]\"\n          alt=\"[[alt]]\"\n          fade=\"[[fade]]\"\n          show-overlay=\"[[showOverlay]]\"\n          preload=\"[[preload]]\"\n          placeholder=\"[[placeholder]]\"\n          aria-hidden$=\"[[_computeAriaHidden(alt)]]\"\n          width=\"[[width]]\"\n          height=\"[[height]]\"\n          image-src=\"[[src]]\"\n          default-image=\"[[defaultSrc]]\">\n        </cells-molecule-card-cover-ccds-wrapper>\n      "]);_templateObject3_802ff540ef2011eaab893dabf4ddef4d=function _templateObject3_802ff540ef2011eaab893dabf4ddef4d(){return data};return data}function _templateObject2_802ff540ef2011eaab893dabf4ddef4d(){var data=babelHelpers.taggedTemplateLiteral([""]);_templateObject2_802ff540ef2011eaab893dabf4ddef4d=function _templateObject2_802ff540ef2011eaab893dabf4ddef4d(){return data};return data}function _templateObject_802ff540ef2011eaab893dabf4ddef4d(){var data=babelHelpers.taggedTemplateLiteral(["\n        <style include=\"cells-card-cover-info-styles cells-card-cover-info-shared-styles\"></style>\n\n        ","\n        ","\n        ","\n      "]);_templateObject_802ff540ef2011eaab893dabf4ddef4d=function _templateObject_802ff540ef2011eaab893dabf4ddef4d(){return data};return data}var FORMAT_PAN_PATTERN="xxxx xxxx xxxx xxxx",CellsCardCoverInfo=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(CellsCardCoverInfo,_Polymer$mixinBehavio);function CellsCardCoverInfo(){babelHelpers.classCallCheck(this,CellsCardCoverInfo);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(CellsCardCoverInfo).apply(this,arguments))}babelHelpers.createClass(CellsCardCoverInfo,[{key:"_computeFormattedNumber",value:function _computeFormattedNumber(number,formatPan){if(number===void 0||!formatPan){return number}var digits=babelHelpers.toConsumableArray(number);return digits.reduce(function(accumulator,current){return accumulator.replace("x",current)},FORMAT_PAN_PATTERN)}},{key:"_computeBadgeClass",value:function _computeBadgeClass(status){return this.statusBadgeClassesMap[status]}},{key:"_computeStatusLabel",value:function _computeStatusLabel(status){if(status in this.statusBadgeClassesMap){return"".concat(CellsCardCoverInfo.is,"-").concat(status)}return status}},{key:"_computeAriaHidden",value:function _computeAriaHidden(alt){return alt?"false":"true"}}],[{key:"is",get:function get(){return"cells-card-cover-info"}},{key:"properties",get:function get(){return{/**
+       * Owner name (first and last name).
+       */owner:String,/**
+       * Card PAN number (16 digits).
+       */pan:{type:String,value:""},/**
+       * Sets whether the PAN should be formatted in groups of 4 digits.
+       */formatPan:{type:Boolean,value:!1},/**
+       * Returns the formatted PAN (4 groups of 4 digits separated by spaces).
+       */_formattedPan:{type:String,readOnly:!0,computed:"_computeFormattedNumber(pan, formatPan)"},/**
+       * Card status.
+       * If the status doesn't match one of the predefined values ('active' | 'inactive' | 'blocked')
+       * it won't be automatically translated unless a translation key for that value is provided.
+       * Predefined values also have the corresponding `className` for the status badge defined in `statusBadgeClassesMap`.
+       */status:{type:String,value:"active"},/**
+       * Computed label for the card status badge.
+       */_statusLabel:{type:String,computed:"_computeStatusLabel(status)"},/**
+       * Card expiration date (formatted).
+       * Example: "05/20"
+       */expirationDate:String,/**
+       * `src` of the card image.
+       */src:String,/**
+       * Fallback `src` for the card image.
+       */defaultSrc:String,/**
+       * Alternative text for the card image.
+       */alt:{type:String,value:""},/**
+       * When preload is true, setting fade to true will cause the image to fade into place.
+       */fade:Boolean,/**
+       * When true, any change to the src property will cause the placeholder image
+       * to be shown until the new image has loaded.
+       */preload:Boolean,/**
+       * Image to show as placeholder while the image loads if preload is true.
+       */placeholder:String,/**
+       * Card width. Applied to the whole component.
+       */width:Number,/**
+       * Card height. Applied to the whole component.
+       */height:Number,/**
+       * `aria-level` attribute that will be applied to the card heading (owners's name).
+       */headingLevel:{type:Number,value:2},/**
+       * Object with the card status (key) and class name (value) that will be applied to the status badge.
+       * ([Check out `<cells-badge>`](https://globaldevtools.bbva.com/bitbucket/projects/CA/repos/cells-badge/))
+       * for more info about the available styling classes.
+       * @type {Object}
+       */statusBadgeClassesMap:{type:Object,value:function value(){return{active:"success",inactive:"neutral",blocked:"error"}}},/**
+       * Set to true to hide the card status badge.
+       */statusHidden:Boolean,/**
+       * Set to true to show a semitransparent overlay over the image card.
+       * The overlay color can be set using a CSS Custom Property.
+       */showOverlay:Boolean,/**
+       * Set to true to make the image fit the viewport width.
+       * When this attribute is set as true, the `width` and `height` properties refers to the
+       * image source size instead of the container size.
+       * The size of the container is set using CSS (`--cells-molecule-card-cover-fluid-max-width`).
+       */fluid:{type:Boolean,value:!1,reflectToAttribute:!0}}}},{key:"template",get:function get(){return Polymer.html(_templateObject_802ff540ef2011eaab893dabf4ddef4d(),this.customStyles,this.cardCoverTemplate,this.cardDataTemplate)}/**
+   * Template extension point for custom <style> tag (applied after the own component styles).
+   */},{key:"customStyles",get:function get(){return Polymer.html(_templateObject2_802ff540ef2011eaab893dabf4ddef4d())}/**
+   * Template extension point for the card cover element.
+   */},{key:"cardCoverTemplate",get:function get(){return Polymer.html(_templateObject3_802ff540ef2011eaab893dabf4ddef4d())}/**
+   * Template extension point for the card data.
+   */},{key:"cardDataTemplate",get:function get(){return Polymer.html(_templateObject4_802ff540ef2011eaab893dabf4ddef4d())}}]);return CellsCardCoverInfo}(Polymer.mixinBehaviors([CellsBehaviors.i18nBehavior],Polymer.Element));/**
+ * ![Certificated](https://img.shields.io/badge/certificated-yes-brightgreen.svg)
+ * ![Polymer 2.x](https://img.shields.io/badge/Polymer-2.x-green.svg)
+ *
+ * [Demo of component in Cells Catalog](https://catalogs.platform.bbva.com/cells)
+ *
+ * # cells-card-cover-info
+ *
+ * `<cells-card-cover-info>` displays a card image with its associated information (owner's name, PAN, expiration date and status) over it.
+ *
+ * It uses [`<cells-molecule-card-cover-ccds-wrapper>`](https://globaldevtools.bbva.com/bitbucket/projects/BGCM/repos/cells-molecule-card-cover-ccds-wrapper/) to load an image with the appropriate dimensions (@2x, @1x) depending on the device pixel ratio.
+ *
+ * Example:
+ * ```html
+ * <cells-card-cover-info
+ *   width="256"
+ *   height="160"
+ *   src="https://openapi.bbva.com/ccds/covers?pg=Z1&BIN=553656"
+ *   owner="Nuria Pérez"
+ *   pan="2345345595784930"
+ *   expiration-date="05/20"
+ *   status="active">
+ * </cells-card-cover-info>
+ * ```
+ *
+ * ## Sizing
+ *
+ * Only one attribute size (`width` or `height`) is required to keep the original image aspect ratio.
+ *
+ * ### `fluid`
+ *
+ * When the `fluid` boolean attribute is used, `width` and `height` refers to the image source size (the params passed in the image URL) instead of the container size. The container size is set using CSS and can be customized setting the variable `--cells-molecule-card-cover-fluid-max-width` (`100vw` by default).
+ *
+ * ## Available slots
+ *
+ * - `before-data`: content in this slot goes before the PAN number.
+ * - `after-data`: content in this slot goes after the expiration date.
+ * - `status`: wraps the default badge status.
+ *
+ * ## Template extension points
+ *
+ * The component has several template extension points that can be overriden by a child class.
+ *
+ * - `customStyles`: empty template literal expression placed after the component styles. It's intended to include your own styles.
+ * - `cardCoverTemplate`: contains the component that displays the card image (`<cells-molecule-card-cover-ccds-wrapper>`).
+ * - `cardDataTemplate`: contains the card associated data (owner, PAN, expiration date and the status badge).
+ *
+ * Check out [Polymer docs about template inheritance](https://www.polymer-project.org/2.0/docs/devguide/dom-template#inherit).
+ *
+ * ## Styling
+ *
+ * The following custom properties and mixins are available for styling:
+ *
+ * ### Custom Properties
+ *
+ * | Custom Property                             | Selector       | CSS Property                                 | Value                      |
+ * | ------------------------------------------- | -------------- | -------------------------------------------- | -------------------------- |
+ * | --cells-card-cover-info-number-color        | :host          | color                                        | --bbva-white               |
+ * | --cells-card-cover-info-overlay-color       | :host          | --cells-molecule-card-cover-background-color | rgba(255, 255, 255, 0.5)   |
+ * | --cells-molecule-card-cover-fluid-max-width | :host([fluid]) | width                                        | 100vw                      |
+ * | --cells-molecule-card-cover-fluid-max-width | :host([fluid]) | height                                       | calc( 100vw * (63.08/100)) |
+ * | --cells-card-cover-info-data-padding        | .data          | padding                                      | 0 0.75rem                  |
+ * | --cells-card-cover-info-badge-success-color | .badge         | --cells-badge-success-color                  | --bbva-green               |
+ * | --cells-card-cover-info-badge-neutral-color | .badge         | --cells-badge-neutral-color                  | --bbva-500                 |
+ * | --cells-card-cover-info-badge-error-color   | .badge         | --cells-badge-error-color                    | --bbva-red                 |
+ * | --cells-card-cover-info-badge-default-color | .badge         | --cells-badge-default-color                  | --bbva-white-core-blue     |
+ * | --cells-card-cover-info-owner-margin        | .owner         | margin                                       | 0 0 0.5625rem              |
+ * | --cells-card-cover-info-number-margin       | .number        | margin                                       | 0 0 0.625rem               |
+ * | --cells-card-cover-info-expiration-date-font-size | .expiration-date | font-size                            | 0.625rem                   |
+ * | --cells-card-cover-info-expiration-date-top | .expiration-date | top                                        | 2.6875rem                  |
+ * | --cells-card-cover-info-expiration-date-left| .expiration-date | left                                       | 3.125rem                   |
+ * | --cells-card-cover-info-status-text-align   | .status        | text-align                                   | right                      |
+ *
+ * ### @apply
+ *
+ * | Mixins                         | Selector | Value |
+ * | ------------------------------ | -------- | ----- |
+ * | --cells-card-cover-info        | :host    | {}    |
+ * | --cells-card-cover-info-data   | .data    | {}    |
+ * | --cells-card-cover-info-cover  | .cover   | {}    |
+ * | --cells-font-smoothing         | .badge   | {}    |
+ * | --cells-card-cover-info-badge  | .badge   | {}    |
+ * | --cells-card-cover-info-owner  | .owner   | {}    |
+ * | --cells-card-cover-info-number | .number  | {}    |
+ * | --cells-card-cover-info-expiration-date | .expiration-date  | {}    |
+ * | --cells-card-cover-info-status | .status  | {}    |
+ *
+ * @polymer
+ * @customElement
+ * @summary Displays a card image with its associated information.
+ * @extends {Polymer.Element}
+ * @demo demo/index.html
+ * @hero cells-card-cover-info.png
+ */window.customElements.define(CellsCardCoverInfo.is,CellsCardCoverInfo);</script></dom-module><dom-module id="cells-pin-viewer-styles" assetpath="cells-pin-viewer/"><template><style>:host{display:block;box-sizing:border-box;font-family:var(--cells-fontDefault, sans-serif);@apply --cells-pin-viewer;}:host([hidden]), [hidden]{display:none !important;}*, *:before, *:after{box-sizing:inherit;}.pin-text{letter-spacing:0.5rem;margin-right:-0.5rem;font-size:0.9375rem;@apply --cells-pin-viewer-pin-text;}.pin-container{text-align:center;padding:0.75rem 0.5rem;width:auto;display:inline-block;background-color:var(--bbva-100);@apply --cells-pin-viewer-pin-container;}</style></template></dom-module><dom-module id="cells-pin-viewer" assetpath="cells-pin-viewer/"><template><style include="cells-pin-viewer-styles cells-pin-viewer-shared-styles"></style><div class="pin-container"><span class="pin-text">[[_displayedPinValue]]</span></div></template><script>var CellsPinViewer=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(CellsPinViewer,_Polymer$mixinBehavio);function CellsPinViewer(){babelHelpers.classCallCheck(this,CellsPinViewer);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(CellsPinViewer).apply(this,arguments))}babelHelpers.createClass(CellsPinViewer,[{key:"_computedDisplayedPinValue",/**
+   * @description Returns the PIN Number or the mask value
+   * @param {Boolean} isPinMasked Value of boolean property
+   * @param {String} pinNumber Value of PIN Number
+   * @param {String} maskChars Value of char used for mask
+   */value:function _computedDisplayedPinValue(isPinMasked,pinNumber,maskChars){return isPinMasked?maskChars.repeat(pinNumber.length):pinNumber}}],[{key:"is",get:function get(){return"cells-pin-viewer"}},{key:"properties",get:function get(){return{/**
+       * @type {String}
+       * @description Contains the PIN number
+       */pinNumber:String,/**
+       * @type {String}
+       * @description Char for mask the PIN number
+       */maskChars:{type:String,value:"\u2022"},/**
+       * @type {String}
+       * @description Contains the value to show on screen
+       */_displayedPinValue:{type:String,computed:"_computedDisplayedPinValue(isPinMasked,pinNumber,maskChars)"},/**
+       * @type {Boolean}
+       * @description True or false if we want to mask the PIN number
+       */isPinMasked:{type:Boolean,value:!1}}}}]);return CellsPinViewer}(Polymer.mixinBehaviors([CellsBehaviors.i18nBehavior],Polymer.Element));customElements.define(CellsPinViewer.is,CellsPinViewer);</script></dom-module><dom-module id="glomo-cvv-request-styles" assetpath="glomo-cvv-request/"><template><style>:host{display:block;box-sizing:border-box;padding:1.5rem 1rem;font-family:var(--cells-fontDefault, sans-serif);@apply --glomo-cvv-request;}:host([hidden]), [hidden]{display:none !important;}*, *:before, *:after{box-sizing:inherit;}.title-pin{font-size:18px;font-weight:bold;letter-spacing:0;line-height:1.5rem;@apply --glomo-cvv-request-title-cvv;}.titlePin{--cells-molecule-input-invalid-field-label-color:{color:var(--bbva-dark-red, #B92A45);};}.card-title{font-weight:bold;font-size:1rem;letter-spacing:0;line-height:1rem;margin:auto;width:50%;@apply --glomo-cvv-request-card-title;}.card-text-label{font-weight:bold;font-size:1rem;letter-spacing:0;text-align:center;line-height:1rem;margin-bottom:1.5rem;@apply --glomo-cvv-request-card-text-label;}.indication-text{font-size:18px;color:#121212;letter-spacing:0;line-height:2rem;@apply --glomo-cvv-request-indication-text;}.help-text{font-size:1.125em;letter-spacing:0;line-height:1.25rem;@apply --glomo-cvv-request-help-text;}.icon-help{color:var(--bbva-medium-blue);width:17px;height:17px;@apply --glomo-cvv-request-icon-help;}cells-molecule-input{margin-top:1.5rem;--cells-molecule-input-text-error-color:var(--bbva-dark-red);--cells-molecule-input-has-content-invalid-icon:var(--bbva-500);--cells-molecule-input-text-error:{font-size:0.875rem;letter-spacing:0;line-height:1.25rem;font-weight:0;};@apply --glomo-cvv-request-cells-molecule-input;}.recommendation-message{font-size:17px;margin-top:2rem;@apply --glomo-cvv-request-recommendation-message;}cells-st-button{margin-top:1.25rem;--cells-st-button-secondary-disabled:{--cells-st-button-text-color-secondary:var(--bbva-400);};@apply --glomo-cvv-request-cells-st-button;}.card-container{text-align:center;@apply --glomo-cvv-request-card-container;}cells-atom-icon{color:var(--bbva-medium-blue);width:17px;height:17px;@apply --glomo-cvv-request-cells-atom-icon;}.input-icon{padding:0.1875rem;display:inline;position:relative;@apply --glomo-cvv-request-input-icon;}.error-message{display:-webkit-box;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;flex-direction:row;flex-wrap:nowrap;font-size:0.875rem;color:var(--bbva-dark-red);@apply --glomo-cvv-request-error-message;}.icon-error{color:var(--bbva-dark-red);width:17px;height:17px;@apply --glomo-cvv-request-icon-error;}.error-text{margin-left:0.6875rem;letter-spacing:0;line-height:1.25rem;width:100%;@apply --glomo-cvv-request-error-text;}.error-help{margin-left:0.25rem;@apply --glomo-cvv-request-error-help;}.label-help-text{margin-top:0.5rem;@apply --glomo-cvv-request-label-help-text;}.continue-button{text-align:center;@apply --glomo-cvv-request-continue-button;}.timer-label{display:-webkit-box;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;flex-direction:row;-webkit-box-pack:center;justify-content:center;-webkit-box-align:center;align-items:center;line-height:1.5rem;font-family:BentonSansBBVA-Medium;color:var(--bbva-medium-blue);margin-bottom:0.625rem;@apply --glomo-cvv-request-timer-label;}cells-circular-timer{--cells-circular-timer-count-font-size:0.9375rem;--cells-circular-timer-count-text-color:var(--bbva-medium-blue);@apply --glomo-cvv-request-cells-circular-timer;}cells-card-cover-info{--cells-card-cover-info-expiration-date-top:2rem;--cells-card-cover-info-expiration-date-left:7.8125rem;--cells-card-cover-info-number-margin:0 0 0 0.625rem;margin-bottom:1.875rem;width:256px;height:160px;@apply --glomo-cvv-request-cells-card-cover-info;}cells-icon-message{--cells-icon-message-inline:{-webkit-box-pack:center;justify-content:center;color:var(--bbva-dark-red);line-height:1.25rem;};@apply --glomo-cvv-request-cells-cells-icon-message;}cells-pin-viewer{padding-bottom:1.5rem;@apply --glomo-cvv-request-cells-cells-pin-viewer;}</style></template></dom-module><dom-module id="glomo-cvv-request" assetpath="glomo-cvv-request/"><template><style include="glomo-cvv-request-styles glomo-cvv-request-shared-styles"></style><template id="cvvRequest" is="dom-if" if="[[!successAction]]"><p class="title-pin">[[t('glomo-cvv-request-title')]]</p><span class="indication-text">[[indicationText]]</span><cells-molecule-input id="cvvText" label="[[labelInput]]" type="[[typeInput]]" max-length="[[maxLengthInput]]" min="[[minLengthInput]]" allowed-chars="[[allowedCharsInput]]" allowed-value="[[allowedValueInput]]" icon="[[closeIcon]]" icon-label="icon-label-clear" auto-validate="" invalid="{{isInvalid}}" value="{{cvvValue}}"></cells-molecule-input><div class="label-help-text"><div slot="error-content" class="error-message" hidden$="[[!checkMessageInput]]"><span><cells-atom-icon class="icon-error" icon="[[alertIcon]]"></cells-atom-icon></span><span class="error-text"><span>[[t('glomo-cvv-request-input-message-error')]]</span><cells-atom-icon class="icon-help" on-tap="_helpAction" icon="[[helpIcon]]"></cells-atom-icon></span></div><div hidden$="[[checkMessageInput]]"><span class="help-text">[[t('glomo-cvv-request-input-help-text')]]</span><div class="input-icon"><cells-atom-icon on-tap="_helpAction" icon="[[helpIcon]]"></cells-atom-icon></div></div></div><cells-icon-message class="recommendation-message" icon="[[infoIcon]]" type="info" message="[[t('glomo-cvv-request-input-message-advice')]]" hidden$="[[isPinRequest]]"></cells-icon-message><div class="continue-button"><cells-st-button class="secondary" on-click="_sendCvv"><button disabled="[[buttonDisabled]]">[[t('glomo-cvv-request-btn-continue')]]</button></cells-st-button></div></template><template id="viewPin" is="dom-if" if="[[successAction]]"><div id="timerContainer" class="card-container"><span class="card-title">[[t('glomo-cvv-request-card-text')]] [[customerInfo.cardType]]</span><cells-card-cover-info status-hidden="true" src="[[customerInfo.cardImage]]" owner="[[customerInfo.owner]]" expiration-date="[[cardDateFormat(customerInfo.expirationDate)]]" pan="[[cardNumFormat(customerInfo.pan)]]" width="[[width]]" height="[[height]]" status="[[customerInfo.status]]"></cells-card-cover-info><p class="card-text-label">[[t('glomo-cvv-request-card-text-pin')]]</p><cells-pin-viewer is-pin-masked="[[isPinMasked]]" pin-number="[[pinNumberInput]]"></cells-pin-viewer>[[t('glomo-cvv-request-card-text-visualize')]]<div id="timerLabel" class="timer-label"><cells-atom-icon icon="[[clockIcon]]"></cells-atom-icon><cells-circular-timer id="circular" timeout="{{timeout}}" disabled-animation="[[disabledAnimation]]" size="[[sizeTimer]]" reset-timer="{{resetTimer}}" stroke-width="0" on-timeout="onTimeout" off=""></cells-circular-timer><slot name="after-timer">[[t('glomo-cvv-request-card-text-time')]]</slot></div><cells-st-button class="secondary" on-click="_sendCvv"><button disabled="[[pinButtonDisabled]]">[[t('glomo-cvv-request-btn-again')]]</button></cells-st-button></div></template></template><script>var GlomoCvvRequest=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(GlomoCvvRequest,_Polymer$mixinBehavio);function GlomoCvvRequest(){babelHelpers.classCallCheck(this,GlomoCvvRequest);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(GlomoCvvRequest).apply(this,arguments))}babelHelpers.createClass(GlomoCvvRequest,[{key:"_init",/**
+   * Initialize properties
+   */value:function _init(){this.isInvalid=!1;this.customerInfo={};this.successAction=!1;this.pinButtonDisabled=!0;this.buttonDisabled=!0;this.checkMessageInput=!1;this.cvvValue="";this.timeout=0}/**
+   * Prepare card info data
+   * @param {Object} cardInfo
+   */},{key:"setCardInfo",value:function setCardInfo(cardInfo){if(cardInfo){this.set("customerInfo",cardInfo);this.set("pinNumberInput",cardInfo.pinNumber);this.set("pinNumber",cardInfo.pinNumber)}}/**
+   * Show nip for 10 seconds
+   * @param {Boolean} isSuccess
+   */},{key:"successActionChange",value:function successActionChange(isSuccess){this.successAction=isSuccess;this.isPinMasked=!1;this.pinButtonDisabled=!0;this.timeout=1e4;this._starTimeout()}/**
+   * Start time of the view nip counter
+   */},{key:"_starTimeout",value:function _starTimeout(){this.$.viewPin.render();this.isPinMasked=!1;this.pinButtonDisabled=!0;this.timeout=1e4;this.$$("#circular").reset();this.$$("#circular").start()}/**
+   * Stop the timer to hide nip
+   */},{key:"onTimeout",value:function onTimeout(){this.isPinMasked=!0;this.pinNumberInput=this.defaultPinNumber;this.pinButtonDisabled=!1}/**
+   * Show again the nip
+   */},{key:"_viewNip",value:function _viewNip(){this.pinNumberInput=this.pinNumber;this._starTimeout();this.dispatchEvent(new CustomEvent("send-cvv",{bubbles:!0,composed:!0}))}/**
+   * Validate the cvv input value
+   * @param {String} cvvValue
+   */},{key:"_validateCvv",value:function _validateCvv(cvvValue){if(cvvValue.trim().length===this.cvvLength){this.isInvalid=!1;this.buttonDisabled=!1;this.checkMessageInput=!1}else{this.isInvalid=!0;this.checkMessageInput=!!cvvValue.trim().length;this.buttonDisabled=!0}}/**
+   * Dispatch an event when click on button to send the CVV
+   */},{key:"_sendCvv",value:function _sendCvv(){this.dispatchEvent(new CustomEvent("send-cvv",{bubbles:!0,composed:!0,detail:this.cvvValue}))}/**
+   * Dispatch and event when click on icon help
+   */},{key:"_helpAction",value:function _helpAction(){this.dispatchEvent(new CustomEvent("open-modal-help-event",{bubbles:!0,composed:!0}))}/**
+   * Give format to product number
+   * @param {String} value
+   */},{key:"cardNumFormat",value:function cardNumFormat(value){if(value){var cardNum=value.toString();return 16===cardNum.length?[cardNum.substring(0,4),cardNum.substring(4,8),cardNum.substring(8,12),cardNum.substring(12,16)].join(" "):value}}/**
+   * Give format to expiration date
+   * @param {String} value
+   */},{key:"cardDateFormat",value:function cardDateFormat(value){if(value){var date=value.toString();return moment(date).format("MM/YY")}}}],[{key:"is",get:function get(){return"glomo-cvv-request"}},{key:"properties",get:function get(){return{/**
+       * @type {String}
+       * @description close icon constant
+       */closeIcon:{type:String,value:"coronita:close"},/**
+       * @type {String}
+       * @description indication text for pin view or activate card
+       */indicationText:String,/**
+       * @type {String}
+       * @description alert icon constant
+       */alertIcon:{type:String,value:"coronita:alert"},/**
+       * @type {String}
+       * @description help icon constant
+       */helpIcon:{type:String,value:"coronita:help"},/**
+       * @type {String}
+       * @description info icon constant
+       */infoIcon:{type:String,value:"coronita:info"},/**
+       * @type {String}
+       * @description clock icon constant
+       */clockIcon:{type:String,value:"coronita:clock"},/**
+       * @type {String}
+       * @description Number of CVV
+       */cvvValue:{type:String,observer:"_validateCvv"},/**
+       * @type {String}
+       * @description Label for molecule input
+       */labelInput:String,/**
+       * @type {String}
+       * @description Type for molecule input
+       */typeInput:String,/**
+       * @type {Number}
+       * @description Max of input values for molecule input
+       */maxLengthInput:Number,/**
+       * @type {Number}
+       * @description Min of input values for molecule input
+       */minLengthInput:Number,/**
+       * @type {String}
+       * @description Regex for allowed values in molecule input
+       */allowedValueInput:String,/**
+       * @type {String}
+       * @description Regex for allowed chars in molecule input
+       */allowedCharsInput:String,/**
+       * @type {Number}
+       * @description Icon size for error message in molecule input
+       */iconSizeErrorMessage:Number,/**
+       * @type {Boolean}
+       * @description True or false if the message has to be shown
+       */checkMessageInput:Boolean,/**
+       * @type {Boolean}
+       * @description True or false if the button is disabled
+       */buttonDisabled:Boolean,/**
+       * @type {Number}
+       * @description Size of the tip icon
+       */iconSizeInputTip:{type:Number,value:17},/**
+       * @type {Boolean}
+       * @description True or false if the form was correct
+       */successAction:Boolean,/**
+       * @type {Object}
+       * @description Info of customer: card and pin
+       */customerInfo:{type:Object,value:function value(){return{}}},/**
+       * value for pin input
+       * @type {String}
+       */pinNumberInput:String,/**
+       * value for incoming pin number
+       * @type {String}
+       */pinNumber:String,/**
+       * masked pin number
+       * @type {String}
+       */defaultPinNumber:{type:String,value:"0000"},/**
+       * @type {Number}
+       * @description Size of the timer icon
+       */iconSizeTimer:{type:Number,value:16},/**
+       * @type {Number}
+       * @description Size of the timer's wrapper
+       */sizeTimer:{type:Number,value:40},/**
+       * @type {Number}
+       * @description Value of timeout
+       */timeout:Number,/**
+       * @type {Boolean}
+       * @description Char for mask the account number
+       */disabledAnimation:{type:Boolean,value:!0},/**
+       * @type {Number}
+       * @description Width of the card
+       */width:Number,/**
+       * @type {Number}
+       * @description Height of the card
+       */height:Number,/**
+       * @type {Boolean}
+       * @description Flag for reset timer
+       */resetTimer:{type:Boolean,value:!1},/**
+       * hide or show recomendation message
+       * @type {Boolean}
+       */isPinRequest:Boolean,/**
+       * @type {Boolean}
+       * @description True or false if the button is disabled
+       */pinButtonDisabled:Boolean,/**
+       * @type {Boolean}
+       * @description True or false if we want to mask the Pin Number
+       */isPinMasked:{type:Boolean,value:!1},/**
+       * validate input content
+       * @type {Boolean}
+       */isInvalid:{type:Boolean,value:!1},/**
+       * cvv length value
+       * @type {Number}
+       */cvvLength:{type:Number,value:3}}}}]);return GlomoCvvRequest}(Polymer.mixinBehaviors([CellsBehaviors.i18nBehavior],Polymer.Element));customElements.define(GlomoCvvRequest.is,GlomoCvvRequest);</script></dom-module></div></body></html>

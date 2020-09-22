@@ -1,0 +1,58 @@
+{
+  "data": {
+    "id": "234567893456789034567890",
+    "goalAmount": {
+      "amount": 125200.99,
+      "currency": "MXN"
+    },
+    "alias": "Honda City Car 2009",
+    "creationDate": "2018-03-28T10:51:00.000-05:00",
+    "operationNumber": "8937220783623",
+    "expirationDate": "2019-01-06",
+    "category": {
+      "id": "CAR",
+      "name": "Car"
+    },
+    "isScheduled": true,
+    "scheduledDeposit": {
+      "depositAmount": {
+        "amount": 5267.78,
+        "currency": "MXN"
+      },
+      "period": {
+        "dayOfMonth": 10,
+        "frequency": {
+          "id": "MONTHLY",
+          "name": "Monthly"
+        }
+      }
+    },
+    "status": "ACTIVE",
+    "relatedContract": {
+      "id": "omv8j3jwndoh2f3834gtrg",
+      "number": "1234567890098765",
+      "product": {
+        "productType": {
+          "id": "ACCOUNTS",
+          "name": "Accounts"
+        },
+        "numberType": {
+          "id": "SIMPLE_ACCOUNT",
+          "name": "Simple Account."
+        }
+      }
+    },
+    "balances": [
+      {
+        "id": "CURRENT_AMOUNT",
+        "name": "Current balance of the pocket.",
+        "mode": "AMOUNT",
+        "unit": {
+          "amount": 31267.5,
+          "currency": "MXN"
+        }
+      }
+    ],
+    "priority": "1"
+  }
+}

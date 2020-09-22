@@ -1,0 +1,151 @@
+<html><head></head><body><div hidden="" by-polymer-bundler=""><dom-module id="glomo-card-activations-controller" assetpath="glomo-card-activations-controller/"><template><cells-dm-global-apis-cards id="dm" host="[[host]]" card-id="[[productId]]" cards-api-version="[[cardsApiVersion]]" required-token="[[requiredToken]]" native="[[native]]" otp-id="[[otpId]]" card-activations="[[cardActivations]]" on-set-card-activations="_handleSuccessActivation" on-error-on-get-card-activations="_handleErrorActivation" on-patch-activations-successful="_handleSucessPatchActivation" on-error-on-patch-card-activations="_handleErrorPatchActivation" on-signature-request-new-sms="_handleOtpNewSms" on-wrong-otp="_handleErrorOtpSms"></cells-dm-global-apis-cards></template><script>var GlomoCardActivationsController=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(GlomoCardActivationsController,_Polymer$mixinBehavio);function GlomoCardActivationsController(){babelHelpers.classCallCheck(this,GlomoCardActivationsController);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(GlomoCardActivationsController).apply(this,arguments))}babelHelpers.createClass(GlomoCardActivationsController,[{key:"reset",/**
+   * Reset method
+   */value:function reset(){this.cardActivations=void 0;this._cachedCardActivations=void 0;this._fireEvent("glomo-card-activations-checked-switch-global",!1)}/** GLOBAL */ /**
+   * helper Method to call patchMainCardActivations() with payload.isActive:true
+   */},{key:"firstAccessPatchMainStatusTrue",value:function firstAccessPatchMainStatusTrue(){this.patchMainCardActivations({isActive:!0})}/**
+   * helper Method to call patchMainCardActivations() with payload.isActive:false
+   */},{key:"firstAccessPatchMainStatusFalse",value:function firstAccessPatchMainStatusFalse(){this.patchMainCardActivations({isActive:!1})}/**
+   * Initiate card activations patch from global state switch.
+   * @param {*} payload object with the value of the global activation state
+   */},{key:"patchMainCardActivations",value:function patchMainCardActivations(){var payload=0<arguments.length&&arguments[0]!==void 0?arguments[0]:{},isActive=payload.isActive===void 0?payload:payload.isActive;if(this._isCardActivationFirstAccess()){this._saveStorage({visited:!0});this.showHelpModal("CARD-ACTIVATIONS-FIRST-ACCESS-PATCH-MAIN-STATUS-".concat(isActive.toString().toUpperCase()))}else{if(this.productId&&this._cachedCardActivations){this._fireEvent("glomo-card-activations-enable-switch",!1);this._fireEvent("glomo-card-activations-disable-switch-label",!0);this._fireEvent("open-otp-modal");this.setIsActiveCachedCardActivations(isActive);this.patchCardActivations(this._cachedCardActivations)}}}/**
+   * Launch card activations patch.
+   * @param {*} cardActivations activations to send
+   */},{key:"patchCardActivations",value:function patchCardActivations(cardActivations){var _this=this;if(this.productId&&cardActivations){this._fireEvent("open-control-veil");var newActivations=cardActivations.map(function(activation){var oldActivation=_this._findPartialActivation(_this.cardActivations,activation.activationId);if(oldActivation.isActive!==activation.isActive){return activation}},this).filter(function(activation){return activation!==void 0});if(this.allowOnlyOnOffPatching){this.signRequestMethod="_doCardOnOffActivationPatch";this._doCardOnOffActivationPatch(this.productId,"ON_OFF",cardActivations)}else{this.$.dm.patchCardActivations(this.productId,newActivations)}}}/**
+   * Patches ON-OFF card activation using PATCH /activations/{activation-id}
+   * @param {*} productId
+   * @param {*} activationId
+   * @param {*} cardActivations
+   */},{key:"_doCardOnOffActivationPatch",value:function _doCardOnOffActivationPatch(productId,activationId,cardActivations){var onOffActivation=(cardActivations||[]).find(function(activation){return activation.activationId===activationId});if(onOffActivation){this.$.dm.patchCardActivation(productId,activationId,{isActive:onOffActivation.isActive})}}/**
+   * Saves the state of the card activations.
+   */},{key:"saveCardActivations",value:function saveCardActivations(){this.cardActivations=this._getClonedObjectsArray(this._cachedCardActivations)}/**
+   * Sets a new value fot _cachedCardActivations
+   * @param {*} cardActivations
+   */},{key:"setCachedCardActivations",value:function setCachedCardActivations(cardActivations){this._cachedCardActivations=cardActivations}/**
+   * Sets the original value of the card activations.
+   */},{key:"resetCachedCardActivations",value:function resetCachedCardActivations(){if(JSON.stringify(this.cardActivations)!==JSON.stringify(this._cachedCardActivations)){this._cachedCardActivations=this._getClonedObjectsArray(this.cardActivations)}}/**
+   * Sets all the isActive values from _cachedCardActivations equal to the in parameter.
+   * @param {*} isActive
+   */},{key:"setIsActiveCachedCardActivations",value:function setIsActiveCachedCardActivations(isActive){this._cachedCardActivations=this._cachedCardActivations.map(function(current){current.isActive=isActive;return current})}/**
+   * Manages the behavior when the OTP window closes
+   */},{key:"manageOtpClosing",value:function manageOtpClosing(){if(this._successPatchActivation){this.saveCardActivations()}else{this.resetCachedCardActivations()}this._fireEvent("close-control-veil");this._fireEvent("glomo-card-activations-enable-switch",!0);this._fireEvent("glomo-card-activations-disable-switch-label",!1)}},{key:"_getGlobalStatus",value:function _getGlobalStatus(cardActivations){return cardActivations.find(function(activation){return"ON_OFF"!==activation.activationId&&activation.isActive})?!0:!1}},{key:"_checkMainStatus",value:function _checkMainStatus(){var actives=!0,mainStatus,cardActivations=this._cachedCardActivations||[];cardActivations.forEach(function(operation){if("ON_OFF"===operation.activationId){mainStatus=operation.isActive}else{actives=actives&&operation.isActive}});this.mainTextStatus=mainStatus?actives?"on":"mixed":"off";return mainStatus}},{key:"_mainStatusObserver",value:function _mainStatusObserver(cachedCardActivations){if(cachedCardActivations){var mainStatus=this._checkMainStatus();this._fireEvent("glomo-card-activations-card-main-status",this.mainTextStatus);this._fireEvent("glomo-card-activations-checked-switch-global",mainStatus);this._successPatchActivation=!1}}},{key:"_parsePartialActivationObserver",value:function _parsePartialActivationObserver(cachedCardActivations,selectedCard){var cardStatus=(((selectedCard||{}).summary||{}).cardStatus||{}).key,isCardCorporate=this._isCorporateCard(selectedCard);if(cachedCardActivations&&"locked"!==cardStatus&&!isCardCorporate){this._fireEvent("glomo-card-activations-enable-switch",!0);this._fireEvent("glomo-card-activations-disable-switch-label",!1);if(this.cardTypeActivations&&selectedCard&&selectedCard.cardType){this._fireEvent("glomo-card-activations-partial-activations",this._parsePartialActivations(cachedCardActivations,this.cardTypeActivations,(selectedCard.cardType||{}).id))}}else{this._fireEvent("glomo-card-activations-enable-switch",!1);this._fireEvent("glomo-card-activations-disable-switch-label",!0)}}/**
+   * Checks is the card is corporate or not
+   * @param card {Object}
+   * @return {boolean}
+   * @private
+   */},{key:"_isCorporateCard",value:function _isCorporateCard(card){return(card||{}).isBusiness}},{key:"_parsePartialActivations",value:function _parsePartialActivations(cardActivations,cardTypeActivations,cardTypeId){var _this2=this,partialActivations=[];if(cardActivations){cardActivations.forEach(function(activation){if("ON_OFF"!==activation.activationId&&cardTypeActivations[cardTypeId].find(function(cardType){return cardType===activation.activationId})){var partialMapping=_this2._partialActivationsMapping[activation.activationId]||{};partialActivations=[].concat(babelHelpers.toConsumableArray(partialActivations),[{id:activation.activationId,name:_this2.t(partialMapping.listTitle)||"",additionalDescription:activation.isActive?_this2.t(partialMapping.listStatusOn):_this2.t(partialMapping.listStatusOff)}])}})}return partialActivations}},{key:"_handleSuccessActivation",value:function _handleSuccessActivation(e){this.cardActivations=e.detail||[];this._fireEvent("glomo-card-activations-set-card-activation-success",this.cardActivations)}},{key:"_handleSucessPatchActivation",value:function _handleSucessPatchActivation(event){var _this3=this;this._successPatchActivation=!0;var response=event.detail||[],cardActivationsAux=this._getClonedObjectsArray(this.cardActivations);response.forEach(function(newActivation){var partialActivation=_this3._findPartialActivation(cardActivationsAux,newActivation.activationId);Object.assign(partialActivation,newActivation)});this.cardActivations=cardActivationsAux;var mainStatus=this._checkMainStatus();this._fireEvent("close-control-veil");this._fireEvent("card-product-detail-switch-".concat(mainStatus?"on":"off"));this._fireEvent("glomo-card-activations-patch-activation-success",this.cardActivations);var successMessage="glomo-card-activations-success-message-"+this.mainTextStatus;this._fireEvent("glomo-card-activations-patch-activation-success-message",successMessage);this._fireEvent(successMessage);this._fireEvent("glomo-card-activations-refresh-dashboard",!0)}},{key:"_handleErrorActivation",value:function _handleErrorActivation(error){this._fireEvent("glomo-card-activations-service-error",{code:"CARD-SWITCH-SERVICE-ERROR",selectedConfig:{iconOnlyFullHeight:!0,acceptBtLabel:"alert-CARD-SWITCH-SERVICE-ERROR-accept",template:{type:"paragraphs",values:[{icon:"coronita:alert"},{text:this._getActivationErrorMessage(error)}]}}});this.resetCachedCardActivations()}/**
+   * Get activation error message from object or return default error message
+   * @param {*} error
+   */},{key:"_getActivationErrorMessage",value:function _getActivationErrorMessage(){var error=0<arguments.length&&arguments[0]!==void 0?arguments[0]:{},errorMessage=this.get("detail.messages.0.message",error);return errorMessage?errorMessage:"alert-CARD-SWITCH-SERVICE-ERROR-message"}},{key:"_handleErrorOtpSms",value:function _handleErrorOtpSms(){this._fireEvent("glomo-card-activations-otp-sms-error",{code:"card-activations-wrong-sms",selectedConfig:{iconOnlyFullHeight:!0,acceptBtLabel:"alert-card-activations-wrong-sms-accept",template:{type:"paragraphs",values:[{icon:"coronita:alert"},{title:"alert-card-activations-wrong-sms-message-title"},{text:"alert-card-activations-wrong-sms-message-text"}]}}})}/**
+   * Handles Activation Patch Error
+   * @param {Object} error
+   * @return {void}
+   */},{key:"_handleErrorPatchActivation",value:function _handleErrorPatchActivation(error){this.resetCachedCardActivations();this._fireEvent("close-control-veil");this._fireEvent("glomo-card-activations-patch-activation-error",error.detail)}/** STORAGE */ /**
+  * Load storage data (first access)
+  */},{key:"loadCardActivationsStorage",value:function loadCardActivationsStorage(){this._fireEvent("get-native-local-storage",{key:this.localStorageKey})}},{key:"_saveStorage",value:function _saveStorage(data){this.set("_storage",Object.assign(this.storage||{},data));this._fireEvent("set-native-local-storage",{key:this.localStorageKey,value:this._storage})}/**
+   * Response to storage data load
+   *
+   * @param {Object} response
+   */},{key:"getCardActivationsStorage",value:function getCardActivationsStorage(response){var STORAGE_KEY_NOT_FOUND=999;this.set("_storage",response.code===STORAGE_KEY_NOT_FOUND?{visited:!1}:response)}/** CARDS */ /**
+   * Navigate to configByOperation page
+   */},{key:"navigateToConfigByOperation",value:function navigateToConfigByOperation(){if(this._isCardActivationFirstAccess()){this._saveStorage({visited:!0});this.showHelpModal("CARD-ACTIVATIONS-FIRST-ACCESS-CONFIG-BY-OPERATION")}else{this._fireEvent("navigate-to-card-config-by-operation",{productId:this.productId})}}/**
+   * Get card activations values.
+   */},{key:"getCardActivations",value:function getCardActivations(){this._fireEvent("glomo-card-activations-enable-switch",!1);this._fireEvent("glomo-card-activations-disable-switch-label",!0);this.$.dm.getCardActivations(this.productId)}/** CONFIG BY OPERATION */ /**
+   * Navigate to card partial activation pages.
+   * @param {*} event
+   */},{key:"navigateToConfigPartial",value:function navigateToConfigPartial(event){var page=(this._partialActivationsMapping[event.productId]||{}).page;this._fireEvent("navigate-to-"+page,{productId:this.productId});this._fireEvent("glomo-card-activations-activation-type",event.productId)}},{key:"_parseSelectedCard",value:function _parseSelectedCard(selectedCard){if(selectedCard){this._fireEvent("glomo-card-activations-card-alias",selectedCard.alias);this._fireEvent("glomo-card-activations-card-number",selectedCard.number)}}/** PARTIAL ACTIVATION */ /**
+   * Manage the buttons when the user selects a different partial activation value.
+   * @param {*} event
+   */},{key:"onPartialActivationChanged",value:function onPartialActivationChanged(event){var disabled=event.value===this._getPartialActivationStatus(this.cardActivations,this.partialActivationType),partialActivationButtonsConfig={buttons:{primary:{text:"cells-confirm-buttons-card-config-partial-accept",disabled:disabled},secondary:{text:"cells-confirm-buttons-card-config-partial-cancel",class:"link"}}};this._allowPartialActivation=0===event.value;var cardActivations=this._getClonedObjectsArray(this._cachedCardActivations);this._findPartialActivation(cardActivations,this.partialActivationType).isActive=!event.value?!0:!1;this.setCachedCardActivations(cardActivations);this._fireEvent("glomo-card-activations-partial-change",partialActivationButtonsConfig)}/**
+   * Update partial card activation value and launch card activations patch.
+   */},{key:"confirmPartialActivation",value:function confirmPartialActivation(){if(this._cachedCardActivations&&this.partialActivationType){(this._findPartialActivation(this._cachedCardActivations,this.partialActivationType)||{}).isActive=this._allowPartialActivation;this._findPartialActivation(this._cachedCardActivations,"ON_OFF").isActive=this._getGlobalStatus(this._cachedCardActivations);this.patchCardActivations(this._cachedCardActivations)}}},{key:"_findPartialActivation",value:function _findPartialActivation(activations,activation){return activations.find(function(item){return item.activationId===activation})}},{key:"_partialActivationStatusOberver",value:function _partialActivationStatusOberver(cardActivations,partialActivationType){if(cardActivations&&partialActivationType){this._fireEvent("glomo-card-activations-partial-activation-select",this._getPartialActivationStatus(cardActivations,partialActivationType))}}},{key:"_getPartialActivationStatus",value:function _getPartialActivationStatus(cardActivations,partialActivationType){return(this._findPartialActivation(cardActivations,partialActivationType)||{}).isActive?0:1}/** UTILS */ /**
+   *  Add authentication type to service request
+   */},{key:"signTypeRequest",value:function signTypeRequest(sign){this.$.dm.signTypeRequest(sign)}/**
+   * Send a sign request
+   */},{key:"signRequest",value:function signRequest(header){if(this.signRequestMethod){this.$.dm.secondFactorToken=header;this[this.signRequestMethod](this.productId,"ON_OFF",this._cachedCardActivations)}else{this.$.dm.signRequest(header)}}/**
+   * Implement this method to make a new otp request
+   */},{key:"signGetNewOtp",value:function signGetNewOtp(){this._handleOtpNewSms()}/**
+   * Handle close sign modal event
+   */},{key:"signReset",value:function signReset(){this.manageOtpClosing()}},{key:"_handleOtpNewSms",value:function _handleOtpNewSms(){if(this._cachedCardActivations){this.patchCardActivations(this._cachedCardActivations)}}/**
+   * Check and Set the flag 'cardActivationsFirstAccess' in local storage
+   */},{key:"_isCardActivationFirstAccess",value:function _isCardActivationFirstAccess(){return!(this._storage||{}).visited}/**
+   * Fire a event to show Help Modal First Access
+   */},{key:"showHelpModal",value:function showHelpModal(code){this._fireEvent("card-activations-first-access",{code:code||"CARD-ACTIVATIONS-FIRST-ACCESS",primaryButtonClass:"primary",selectedConfig:{className:"full-height-info",closeIconSize:20,openMaximized:!0,title:"alert-CARD-ACTIVATIONS-FIRST-ACCESS-title-modal",heroImage:"./images/mobileOnOff.png",acceptBtLabel:"info-UNDERSTAND-accept",template:{type:"paragraphs",values:[{title:"alert-CARD-ACTIVATIONS-FIRST-ACCESS-title",class:"full-height-info"},{text:"alert-CARD-ACTIVATIONS-FIRST-ACCESS-text",class:"full-height-info"},{icon:"coronita:info",iconClass:"icon-size-24",message:"alert-CARD-ACTIVATIONS-FIRST-ACCESS-message",type:"info"}]}}})}},{key:"_fireEvent",value:function _fireEvent(event,detail){this.dispatchEvent(new CustomEvent(event,{bubbles:!0,composed:!0,detail:detail}))}},{key:"_getClonedObjectsArray",value:function _getClonedObjectsArray(array){if(array){return array.map(function(item){return Object.assign({},item)})}else{return null}}}],[{key:"is",get:function get(){return"glomo-card-activations-controller"}},{key:"properties",get:function get(){return{/** GLOBAL */ /**
+       * Host of request
+       */host:String,/**
+       *
+       */otpId:{type:String,value:"card-activations"},/**
+       * Card Id
+       */productId:{type:String},/**
+       * Cards API version
+       * @type {String}
+       */cardsApiVersion:{type:String},/**
+       * Native request config
+       */native:{type:Boolean},/**
+       * requiredToken, 'jwt' or 'tsec' or empty
+       */requiredToken:{type:String,value:"tsec"},/** Initial and final state of the card activations */cardActivations:{type:Array,observer:"resetCachedCardActivations"},/**
+       * Global status of the card activation.
+       * Valid values are "on" / "off" / "mixed".
+       */mainTextStatus:{type:String},/** CONFIG BY OPERATION */ /**
+       * Card Data Selected
+       */selectedCard:{type:Object,observer:"_parseSelectedCard"},/**
+       * Available activations for each card type.
+       * Example
+       * {
+            CREDIT_CARD: ['ECOMMERCE_ACTIVATION', 'FOREIGN_PURCHASES_ACTIVATION', 'CASHWITHDRAWAL_ACTIVATION'],
+            DEBIT_CARD: ['ECOMMERCE_ACTIVATION', 'FOREIGN_PURCHASES_ACTIVATION']
+          }
+       */cardTypeActivations:Object,/**
+       * state of the activations of the card for internal use and state recover
+       */_cachedCardActivations:{type:Array,observer:"_mainStatusObserver"},_partialActivationsMapping:{type:Object,value:{ECOMMERCE_ACTIVATION:{page:"card-ecommerce-activation",listTitle:"glomo-card-ecommerce-activation-title",listStatusOn:"glomo-card-ecommerce-activation-status-on",listStatusOff:"glomo-card-ecommerce-activation-status-off"},FOREIGN_PURCHASES_ACTIVATION:{page:"card-foreign-purchases-activation",listTitle:"glomo-card-foreign-purchases-activation-title",listStatusOn:"glomo-card-foreign-purchases-activation-status-on",listStatusOff:"glomo-card-foreign-purchases-activation-status-off"},CASHWITHDRAWAL_ACTIVATION:{page:"card-cash-withdrawal-activation",listTitle:"glomo-card-cash-withdrawal-activation-title",listStatusOn:"glomo-card-cash-withdrawal-activation-status-on",listStatusOff:"glomo-card-cash-withdrawal-activation-status-off"}}},/** PARTIAL ACTIVATION */ /**
+       * Id of the partial activation.
+       */partialActivationType:String,_successPatchActivation:{type:Boolean,value:!1},_allowPartialActivation:{type:Boolean,value:!1},/**
+       * Allow only on-off card patching
+       */allowOnlyOnOffPatching:{type:Boolean,value:!1},/**
+       * Method to be executed on signRequest method
+       */signRequestMethod:{type:String},/**
+       * storage key name
+       */localStorageKey:{type:String,value:"card_activations"},/**
+       * Object received from localStorage
+       */_storage:{type:Object}}}},{key:"observers",get:function get(){return["_partialActivationStatusOberver(_cachedCardActivations, partialActivationType)","_parsePartialActivationObserver(_cachedCardActivations, selectedCard)"]}}]);return GlomoCardActivationsController}(Polymer.mixinBehaviors([CellsBehaviors.i18nBehavior],Polymer.Element));customElements.define(GlomoCardActivationsController.is,GlomoCardActivationsController);</script></dom-module><script>/*eslint wrap-iife: ["error", "inside"]*/(function(){window.CellsNativePlugins=window.CellsNativePlugins||{};window.CellsNativePlugins.Encryption={generatekpub:function generatekpub(successCallback,errorCallback){window.CellsNativePlugins.pluginManager.execute(successCallback,errorCallback,"Encryption","generatekpub")},encrypt:function encrypt(options,successCallback,errorCallback){window.CellsNativePlugins.pluginManager.execute(successCallback,errorCallback,"Encryption","encrypt",options)},decrypt:function decrypt(options,successCallback,errorCallback){window.CellsNativePlugins.pluginManager.execute(successCallback,errorCallback,"Encryption","decrypt",options)}}})(window);</script><script>/**
+  `<cells-mobile-libmcrypt>` allows the app to decrypt or encrypt a given string.
+
+  Example:
+
+  ```html
+  <cells-mobile-libmcrypt></cells-mobile-libmcrypt>
+  ```
+
+  * @customElement
+  * @polymer
+  * @extends {Polymer.Element}
+  * @demo demo/index.html
+*/var CellsMobileLibmcrypt=/*#__PURE__*/function(_Polymer$Element){babelHelpers.inherits(CellsMobileLibmcrypt,_Polymer$Element);function CellsMobileLibmcrypt(){babelHelpers.classCallCheck(this,CellsMobileLibmcrypt);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(CellsMobileLibmcrypt).apply(this,arguments))}babelHelpers.createClass(CellsMobileLibmcrypt,[{key:"generatekpub",/**
+   * Generates a new public key to use on decrypt/encrypt.
+   *
+   * @return {Object}
+   *   {
+   *     resultCode : (Integer)
+   *     params : (Object)
+   *   }
+   *
+   */value:function generatekpub(){var _this=this;return new Promise(function(resolve,reject){if(window.CellsNativePlugins&&window.CellsNativePlugins.Encryption){window.CellsNativePlugins.Encryption.generatekpub(function(response){_this._fireEvent("public-key-generated",response);resolve(response)},function(error){_this._fireEvent("error",error);reject(error)})}else{reject(_this._throwGenericError())}})}/**
+   * The text passed as argument is passed to the native plugin to be decrypted.
+   *
+   * @param {string} value the text that would be decrypted
+   * @param {string} mask the mask applied to format value after decryption
+   *
+   *
+   * @return {string} value decrypted
+   *
+   */},{key:"decrypt",value:function decrypt(options){var _this2=this;return new Promise(function(resolve,reject){if(window.CellsNativePlugins&&window.CellsNativePlugins.Encryption){window.CellsNativePlugins.Encryption.decrypt(options,function(response){_this2._fireEvent("value-decrypted",response);resolve(response)},function(error){_this2._fireEvent("error",error);reject(error)})}else{reject(_this2._throwGenericError())}})}/**
+   * The text and tag passed as argument is passed to the native plugin to be encrypted.
+   *
+   * @param {Object}
+   *   {
+   *     value : (String) Value to be encrypted
+   *     keyTag : (String) The tag allows selecting the key to be used to encrypted (optional)
+   *   }
+   *
+   * @return {string} value encrypted
+   *
+   */},{key:"encrypt",value:function encrypt(params){var _this3=this;return new Promise(function(resolve,reject){if(window.CellsNativePlugins&&window.CellsNativePlugins.Encryption){window.CellsNativePlugins.Encryption.encrypt(params,function(response){_this3._fireEvent("value-encrypted",response);resolve(response)},function(error){_this3._fireEvent("error",error);reject(error)})}else{reject(_this3._throwGenericError())}})}},{key:"_fireEvent",value:function _fireEvent(eventName,detail){this.dispatchEvent(new CustomEvent(eventName,{detail:detail,bubbles:!1}))}},{key:"_throwGenericError",value:function _throwGenericError(){var errorMessage="Native Plugin Encryption is not present (not installed).",errorObject={resultCode:-2,params:errorMessage};console.warn(errorMessage);this._fireEvent("error",errorObject);return errorMessage}}],[{key:"is",get:function get(){return"cells-mobile-libmcrypt"}},{key:"properties",get:function get(){return{}}}]);return CellsMobileLibmcrypt}(Polymer.Element);customElements.define(CellsMobileLibmcrypt.is,CellsMobileLibmcrypt);</script></div></body></html>

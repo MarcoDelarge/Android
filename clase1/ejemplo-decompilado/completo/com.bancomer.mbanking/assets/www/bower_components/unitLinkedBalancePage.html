@@ -1,0 +1,71 @@
+<html><head></head><body><div hidden="" by-polymer-bundler=""><dom-module id="glomo-unit-linked-detail-dm" assetpath="glomo-unit-linked-detail-dm/"><template></template><script>var GlomoUnitLinkedDetailDm=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(GlomoUnitLinkedDetailDm,_Polymer$mixinBehavio);function GlomoUnitLinkedDetailDm(){babelHelpers.classCallCheck(this,GlomoUnitLinkedDetailDm);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(GlomoUnitLinkedDetailDm).apply(this,arguments))}babelHelpers.createClass(GlomoUnitLinkedDetailDm,[{key:"reset",/**
+   * reset method to reset properties
+   * @param {object} pageActive
+   */value:function reset(pageActive){if(pageActive&&!pageActive.value){this.set("contractId",void 0)}}/**
+   * Dispatch the request service with the contract ID
+   * @param {String} contractId
+   */},{key:"_requestPolicies",value:function _requestPolicies(newContract){if("undefined"!==newContract&&newContract){this.productName="undefined"===this.productName?this.t(this.policyConst):this.productName;var product=this.productName.replace(/%20/g," ");this.set("policyAlias",product);this.set("policyNumber",{number:this.accountNumber.substring(10,20)});this.dispatchResquestPolicies()}}/**
+   * dispatch the request of the mlb policies
+   */},{key:"dispatchResquestPolicies",value:function dispatchResquestPolicies(){this._handleDispatchEvent("request-policies-mlb",this.contractId)}/**
+   * prepare the payload response that comes from DM
+   * @param {Object} payload
+   */},{key:"handleMlbPolicies",value:function handleMlbPolicies(payload){this._handleDispatchEvent("finish-handle-mlb-balance");this._handleDispatchEvent("handle-mlb-summary",this._headerPolicies(payload.balances));this._handleDispatchEvent("handle-mlb-policies",this._bodyPolicies(payload.balances))}/**
+   * hanlde payload to return a header param
+   * @param {Object} payload
+   */},{key:"_headerPolicies",value:function _headerPolicies(payload){return[{localCurrency:payload.portfolioValue.currency,key:this.t("glomo-equity-contract-balance-dm-valuation-title")+payload.portfolioValue.currency,value:[{amount:payload.portfolioValue.amount,currencyCode:payload.portfolioValue.currency,class:"amount-huge"}]}]}/**
+   * handle payload to return a body param
+   * @param {Object} payload
+   */},{key:"_bodyPolicies",value:function _bodyPolicies(payload){var _this=this,items=[];this.balancesId.forEach(function(balance){var policiesPayload=_this._getPoliciesData(payload,balance);if(policiesPayload&&0!==policiesPayload.currentBalance.amount){items.push({name:policiesPayload.increaseType.name,description:!1,primaryAmount:{amount:policiesPayload.currentBalance.amount,currency:policiesPayload.currentBalance.currency},localCurrency:_this.localCurrency,scale:0})}});return items}/**
+   * search the ID in the responsePayload
+   * @param {Object} payload
+   * @param {String} id
+   */},{key:"_getPoliciesData",value:function _getPoliciesData(payload,id){var balance=payload.increases.find(function(item){return item.increaseType.id===id});return balance?balance:null}/**
+   * send ID to the contract detial
+   */},{key:"sendContractId",value:function sendContractId(){var mlbContractDetail=[{title:this.t("glomo-equity-contract-detail-dm-general-title"),items:[{key:this.t("glomo-unit-linked-detail-product-detail-title"),value:this.t("glomo-unit-linked-detail-product-detail")},{key:this.t("glomo-unit-linked-detail-product-detail-number"),label:!0,value:this.policyNumber.number,class:"cursive"}]}];this._handleDispatchEvent("show-policy-detail",mlbContractDetail)}/**
+   * prepare data for the edit alias flow
+   */},{key:"prepareEditEvent",value:function prepareEditEvent(){this._handleDispatchEvent("send-alias-data",{id:this.contractId,type:"account"})}/**
+   * prepare error info
+   */},{key:"prepareErrorInfo",value:function prepareErrorInfo(){this._handleDispatchEvent("finish-handle-mlb-balance");this._handleDispatchEvent("unit-linked-handle-balances-failure",!0)}},{key:"_configErrorMessage",value:function _configErrorMessage(){var message,hideRetryLoadListButton=!1;if(this.requestTries<this.maxAttempts){this.requestTries++;message=this.t("glomo-unit-linked-detail-rety-error-message")}else{this.requestTries=0;message=this.t("glomo-unit-linked-detail-last-error-message");hideRetryLoadListButton=!0}var errorMessage={messageType:this.errorType,messageText:message,hideRetryLoadListButton:hideRetryLoadListButton};return errorMessage}/**
+   * dispatch events
+   * @param {Object} event
+   * @param {Object} details
+   */},{key:"_handleDispatchEvent",value:function _handleDispatchEvent(event){var details=1<arguments.length&&arguments[1]!==void 0?arguments[1]:{};this.dispatchEvent(new CustomEvent(event,{bubbles:!0,composed:!0,detail:details}))}}],[{key:"is",get:function get(){return"glomo-unit-linked-detail-dm"}},{key:"properties",get:function get(){return{/**
+      * account number of the product
+      * @type {String}
+      */accountNumber:String,/**
+      * policy-number-changed
+      * @type {Object}
+      */policyNumber:{type:Object,notify:!0},/**
+       * product name
+       * @type {String}
+       */productName:String,/**
+       * policy-alias-changed
+       * @type {String}
+       */policyAlias:{type:String,notify:!0},/**
+       * Contract ID
+       * @type {String}
+       */contractId:{type:String,observer:"_requestPolicies"},/**
+       * cash type
+       * @type {String}
+       */cash:{type:String,value:"CASH"},/**
+       * local currency
+       * @type {String}
+       */localCurrency:String,/**
+       * balances ID from response payload
+       * @type {Array}
+       */balancesId:{type:Array,value:function value(){return[]}},/**
+       * error type
+       * @type {String}
+       */errorType:{type:String,value:"error"},/**
+       * counter for the retry error info
+       * @type {Number}
+       */requestTries:{type:Number,value:0},/**
+       * max attempts to do the callback service
+       * @type {Number}
+       */maxAttempts:{type:Number,value:3},/**
+       * Policy constant
+       * @type {String}
+       */policyConst:String,/**
+       * product id from params
+       * @type {String}
+       */productId:String}}}]);return GlomoUnitLinkedDetailDm}(Polymer.mixinBehaviors([CellsBehaviors.i18nBehavior],Polymer.Element));customElements.define(GlomoUnitLinkedDetailDm.is,GlomoUnitLinkedDetailDm);</script></dom-module></div></body></html>

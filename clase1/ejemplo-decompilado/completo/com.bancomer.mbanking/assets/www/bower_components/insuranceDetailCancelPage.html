@@ -1,0 +1,119 @@
+<html><head></head><body><div hidden="" by-polymer-bundler=""><dom-module id="glomo-insurance-dm" assetpath="glomo-insurance-dm/"><template></template><script>var GlomoInsuranceDm=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(GlomoInsuranceDm,_Polymer$mixinBehavio);function GlomoInsuranceDm(){babelHelpers.classCallCheck(this,GlomoInsuranceDm);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(GlomoInsuranceDm).apply(this,arguments))}babelHelpers.createClass(GlomoInsuranceDm,[{key:"setInsuranceInfo",/**
+   * Receive the insurance data
+   * @param {Object} payload
+   */value:function setInsuranceInfo(payload){this.dispatchEvent(new CustomEvent("page-loaded",{bubbles:!0,composed:!0}));this._setConsultInfo(payload);this._setCancelInfo(payload);this._setDetailInfo(payload);this._setHeaderTitle(payload.policyNumber);this._requestEmailUser()}/**
+   * Create the header title with policy number
+   * @param {String} policy
+   */},{key:"_setHeaderTitle",value:function _setHeaderTitle(policy){if(policy){this.set("headerTitle",this.t("glomo-insurance-consult-header-title"));this.set("headerTitleNumber",policy)}}/**
+   * Set insurance information for the Detail Page
+   * @param {Object} payload
+   */},{key:"_setDetailInfo",value:function _setDetailInfo(payload){this.dispatchEvent(new CustomEvent("send-detail-info",{detail:{headerTitle:this.t("glomo-insurance-detail-header-title"),detailInfo:[{key:this.t("glomo-insruance-dm-type-insurance"),value:payload.product.name},{key:this.t("glomo-insruance-dm-policy"),value:payload.policyNumber},{key:this.t("glomo-insruance-dm-hiring-date"),hiringDate:{date:payload.operationDate,locale:this.localeDate,format:this.detailFormatDate}},{key:this.t("glomo-insruance-dm-beneficiaries")}],phoneNumbers:{cdmxNum:this.cdmxNumber,republicNum:this.republicNumber}}}))}/**
+   * Set insurance information for Consult Page
+   * @param {Object} payload
+   */},{key:"_setConsultInfo",value:function _setConsultInfo(payload){this.set("consultInsuranceInfo",{productName:payload.product.name,cardBusiness:this.t("glomo-insruance-dm-insurance"),cardReferenceText:this.t("glomo-insruance-dm-policy-number"),cardProductNumber:payload.policyNumber,callCenterNum:this.callCenterNumber})}/**
+   * Set insurance info for Cancel Detail Page
+   * @param {Object} payload
+   */},{key:"_setCancelInfo",value:function _setCancelInfo(payload){this.dispatchEvent(new CustomEvent("send-cancell-info",{bubbles:!0,composed:!0,detail:{headerTitle:this.t("glomo-insurance-cancel-detail-header-title"),cancelInfo:{id:payload.id,insuranceType:payload.product.name,policyNumber:payload.policyNumber,hiringDate:{date:payload.operationDate,locale:this.localeDate,format:this.cancelFormatDate}},successData:{locale:this.localeDate,format:this.successFormatDate,cdmxNumber:this.cdmxNumber,republicNumber:this.republicNumber,refreshProductType:this.refreshProductType}}}))}/**
+   * Request the email user
+   */},{key:"_requestEmailUser",value:function _requestEmailUser(){this.dispatchEvent(new CustomEvent("request-email-user",{bubbles:!0,composed:!0}))}/**
+   * Clean the properties when exit process
+   */},{key:"cleanProperties",value:function cleanProperties(){this.set("headerTitle","");this.set("headerTitleNumber","");this.set("consultInsuranceInfo",{});this.set("productId","");this.dispatchEvent(new CustomEvent("clean-properties-success"))}}],[{key:"is",get:function get(){return"glomo-insurance-dm"}},{key:"properties",get:function get(){return{/**
+       * Title fot the header
+       * @type {String}
+       */headerTitle:{type:String,notify:!0},/**
+       * Number for header title
+       * @type {String}
+       */headerTitleNumber:{type:String,notify:!0},/**
+       * Information of insurance for Consult Page
+       * @type {Object}
+       */consultInsuranceInfo:{type:Object,value:{},notify:!0},/**
+       * Phone number for cdmx
+       * @type {String}
+       */cdmxNumber:{type:String},/**
+       * Phone number for republic area
+       * @type {String}
+       */republicNumber:{type:String},/**
+       * Phone number for call center
+       * @type {String}
+       */callCenterNumber:{type:String},/**
+       * Profruct id for cancel insurance
+       * @type {String}
+       */productId:{type:String},/**
+       * Locale for dates
+       * @type {String}
+       */localeDate:{type:String,notify:!0},/**
+       * Format for date in Detail Page
+       * @type {String}
+       */detailFormatDate:{type:String,value:"DD MMMM Y"},/**
+       * Format for date in Cancel Page
+       * @type {String}
+       */cancelFormatDate:{type:String,value:"DD MMMM YYYY"},/**
+       * Format for date in Success Page
+       * @type {String}
+       */successFormatDate:{type:String,value:"DD MMMM YYYY, HH:mm:ss [h]"},/**
+       * Product for refresh dashboard
+       * @type {String}
+       */refreshProductType:{type:String,value:"INSURANCES"}}}}]);return GlomoInsuranceDm}(Polymer.mixinBehaviors([CellsBehaviors.CellsGlomoDmBehavior,CellsBehaviors.CellsGlomoDiacriticsBehavior,CellsBehaviors.CellsGlomoUtilsBehavior,CellsBehaviors.i18nBehavior],Polymer.Element));customElements.define(GlomoInsuranceDm.is,GlomoInsuranceDm);</script></dom-module><dom-module id="glomo-insurance-consult-styles" assetpath="glomo-insurance-consult/"><template><style>:host{display:block;height:90vh;box-sizing:border-box;font-family:var(--cells-fontDefault, sans-serif);position:relative;background-color:var(--bbva-100, #f4f4f4);@apply --glomo-insurance-consult;--cells-alert-manager-inner-toast:{box-shadow:0;margin-left:0;margin-right:0;margin-bottom:0;};}:host([hidden]), [hidden]{display:none !important;}*, *:before, *:after{box-sizing:inherit;}.separator{height:10px;background-color:var(--bbva-100, #f4f4f4);}.main-container{margin:0 10px 10px 10px;background:var(--bbva-white, #FFFFFF);box-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.15);border-radius:2px;text-align:center;}.title-main{font-size:18px;font-weight:500;margin:0;padding-top:20px;padding-bottom:20px;}.simulate-card{height:150px;display:-webkit-box;display:flex;-webkit-box-pack:center;justify-content:center;margin-bottom:10px;}.policy-number{margin-bottom:20px;color:var(--bbva-medium-blue, #1973B8);font-size:14px;font-weight:bold;text-transform:none;--cells-copy-button-bg-color:var(--bbva-white, #FFFFFF);--cells-copy-button-pill:{display:none;};--cells-copy-button-wrapper:{color:var(--bbva-medium-blue, #1973B8);padding:0;height:auto;font-size:14px;font-weight:bold;text-transform:none;};--cells-copy-button-wrapper-copied:{background-color:white;color:var(--bbva-medium-blue, #1973B8);};}.detail-insurance{margin:0;color:var(--bbva-medium-blue, #1973B8);font-weight:bold;padding-bottom:20px;}.black-font{font-weight:500;}.call-center{background:var(--bbva-white, #FFFFFF);box-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.15);border-radius:2px;text-align:center;}.call-text{margin:0;padding:30px;font-size:14px;}.cancel-container{background:var(--bbva-medium-blue, #1973B8);text-align:center;padding-top:20px;}.cancel-btn{background:rgba(255, 255, 255, 0.1);color:var(--bbva-white, #FFFFFF);width:66px;height:66px;border-radius:100%;margin-left:auto;margin-right:auto;display:-webkit-box;display:flex;-webkit-box-pack:center;justify-content:center;-webkit-box-align:center;align-items:center;}.cancel-text{color:var(--bbva-white, #FFFFFF);margin:0;padding-top:5px;padding-bottom:20px;font-size:12px;}.wraper{position:fixed;bottom:0;}.copy-alert{--cells-modal-alert-bg-color:var(--bbva-green, #48AE64);--cells-modal-alert-color:var(--bbva-white, #FFFFFF);--iron-overlay-backdrop-opacity:0.0;--cells-icon-message_-_padding-bottom:30px;}</style></template></dom-module><dom-module id="cells-copy-button-styles" assetpath="cells-copy-button/"><template><style>:host{display:inline-block;font-size:10px;text-transform:uppercase;@apply --cells-copy-button;}:host([hidden]), [hidden]{display:none !important;}button{cursor:pointer;padding:0;background-color:transparent;text-transform:inherit;font-size:inherit;font-family:inherit;border:0;touch-action:manipulation;@apply --cells-copy-button-button;}button::-moz-focus-inner{padding:0;border-style:none;}.btn-wrapper{position:relative;background-color:var(--cells-copy-button-bg-color, #343B4A);color:var(--cells-copy-button-color, #F0F0F0);height:var(--cells-copy-button-height, 30px);border-radius:var(--cells-copy-button-border-radius, 20px);padding:var(--cells-copy-button-border-width, 1px);display:flex;align-items:center;flex-direction:row-reverse;@apply --cells-copy-button-wrapper;}.text{padding:var(--cells-copy-button-text-padding, 0 16px);}:host(.empty) .text{padding:0;}.pill{background-color:var(--cells-copy-button-pill-bg-color, #F0F0F0);color:var(--cells-copy-button-pill-color, #343B4A);border-radius:var(--cells-copy-button-border-radius, 20px);padding:var(--cells-copy-button-pill-padding, 0 14px);line-height:var(--cells-copy-button-height, 30px);font-weight:var(--cells-copy-button-pill-font-weight, bold);@apply --cells-copy-button-pill;}.hidden{border:0;clip:rect(0 0 0 0);width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;position:absolute;}:host([copied]) .btn-wrapper{background-color:var(--cells-copy-button-copied-bg-color, #1DFD92);color:var(--cells-copy-button-copied-color, #343B4A);@apply --cells-copy-button-wrapper-copied;}button:focus > span{background-color:var(--cells-copy-button-focus-bg-color, #004383);@apply --cells-copy-button-wrapper-focus;}button:focus .pill{color:var(--cells-copy-button-pill-focus-color, #004383);@apply --cells-copy-button-pill-focus;}button:not(:-moz-focusring):focus > span{box-shadow:none;@apply --cells-copy-button-wrapper-focus-not-moz-focusring;}button:focus,
+button > span:focus{outline:none;}</style></template></dom-module><dom-module id="cells-copy-button" assetpath="cells-copy-button/"><template strip-whitespace=""><style include="cells-copy-button-styles cells-copy-button-shared-styles"></style><button type="button" tabindex="0" autocomplete="off" on-click="_onClick"><span tabindex="-1" class="btn-wrapper"><span class="pill">[[_actionText]]</span> <span class="text"><slot></slot></span></span></button> <input class="hidden" type="text" value="[[clipboardText]]" aria-hidden="true" tabindex="-1" readonly=""></template><script>var CellsCopyButton=/*#__PURE__*/function(_Polymer$Element){babelHelpers.inherits(CellsCopyButton,_Polymer$Element);function CellsCopyButton(){babelHelpers.classCallCheck(this,CellsCopyButton);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(CellsCopyButton).apply(this,arguments))}babelHelpers.createClass(CellsCopyButton,[{key:"_computeActionText",value:function _computeActionText(copied,actionText,actionTextCopied){return copied?actionTextCopied:actionText}},{key:"_onClick",value:function _onClick(e){if(this.copied){return}// cache the button element
+this._button=this._button||this.shadowRoot.querySelector("button");var copiedText=this.shadowRoot.querySelector("input.hidden");copiedText.select();try{this._iosSelection(copiedText);document.execCommand("Copy");if(this._vibrationSupported&&this.vibrateOnCopy){window.navigator.vibrate(this.vibrationDuration)}this._onCopy();this.blur()}catch(err){this._setCopied(!1);console.error("Unable to copy text")}}},{key:"_iosSelection",value:function _iosSelection(node){var range=document.createRange();range.selectNodeContents(node);var selection=window.getSelection();selection.removeAllRanges();selection.addRange(range);node.setSelectionRange(0,999999)}},{key:"_onCopy",value:function _onCopy(){var _this=this;this._setCopied(!0);var timeout=setTimeout(function(){clearTimeout(timeout);_this._setCopied(!1);// prevent the button to receive the focus again when
+// the user press key tab after clicking the button using the keyboard
+_this._button.focus();_this._button.blur()},this.duration)}},{key:"_vibrationSupported",get:function get(){return"vibrate"in window.navigator}}],[{key:"is",get:function get(){return"cells-copy-button"}},{key:"properties",get:function get(){return{/**
+       * Action text.
+       */actionText:{type:String,value:"Copy"},/**
+       * Action text after clicking the button.
+       */actionTextCopied:{type:String,value:"Copied!"},_actionText:{type:String,computed:"_computeActionText(copied, actionText, actionTextCopied)"},/**
+       * Text that will be copied to clipboard after clicking the button.
+       */clipboardText:String,/**
+       * Time in milliseconds until the button is reset to its intial state after clicking on it.
+       */duration:{type:Number,value:1500},/**
+       * Returns the copied state.
+       */copied:{type:Boolean,value:!1,readOnly:!0,notify:!0,reflectToAttribute:!0},/**
+       * Set to true to vibrate after copying text in browsers that support vibration API.
+       */vibrateOnCopy:{type:Boolean,value:!1},/**
+       * Duration in miliseconds of the vibration.
+       */vibrationDuration:{type:Number,value:20}}}}]);return CellsCopyButton}(Polymer.Element);customElements.define(CellsCopyButton.is,CellsCopyButton);</script></dom-module><dom-module id="cells-glomo-card-view-styles" assetpath="cells-glomo-card-view/"><template><style>:host{display:block;position:absolute;box-sizing:border-box;font-family:var(--cells-fontDefault, sans-serif);@apply --cells-glomo-card-view;}:host([hidden]), [hidden]{display:none !important;}*, *:before, *:after{box-sizing:inherit;}.business-name{margin:0;font-size:10px;color:var(--bbva-dark-core-blue, #043263);position:absolute;font-weight:500;left:0.6rem;top:1.5rem;@apply --cells-glomo-card-view-business-name;}.reference-text{--cells-key-values-key:{margin:0;position:absolute;font-size:10px;color:var(--bbva-dark-core-blue, #043263);font-weight:500;left:7.4375rem;top:4.6875rem;transform:translate(-50%, -50%);-webkit-transform:translate(-50%, -50%);};@apply --cells-glomo-card-view-reference-text;}.product-number{--cells-key-values-value:{margin:0;position:absolute;font-size:19px;color:var(--bbva-dark-core-blue, #043263);left:7.4375rem;top:4.6875rem;transform:translate(-50%, -50%);-webkit-transform:translate(-50%, 50%);};@apply --cells-glomo-card-view-product-number;}</style></template></dom-module><dom-module id="cells-glomo-card-view" assetpath="cells-glomo-card-view/"><template><style include="cells-glomo-card-view-styles cells-glomo-card-view-shared-styles"></style><slot></slot><iron-icon icon="[[iconCard]]" style$="width: [[iconWidth]]px; height: [[iconHeight]]px;"></iron-icon><p class="business-name">[[businessText]]</p><cells-key-values class="reference-text product-number" key="[[referenceText]]" value="[[productNumber]]"></cells-key-values></template><script>var CellsGlomoCardView=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(CellsGlomoCardView,_Polymer$mixinBehavio);function CellsGlomoCardView(){babelHelpers.classCallCheck(this,CellsGlomoCardView);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(CellsGlomoCardView).apply(this,arguments))}babelHelpers.createClass(CellsGlomoCardView,null,[{key:"is",get:function get(){return"cells-glomo-card-view"}},{key:"properties",get:function get(){return{/**
+       * Width for the icon
+       * @type {Number}
+       */iconWidth:{type:Number},/**
+       * Height for the icon
+       * @type {Number}
+       */iconHeight:{type:Number},/**
+       * Card ilustration to show
+       * @type {String}
+       */iconCard:{type:String},/**
+       * The business of the product
+       * @type {String}
+       */businessText:{type:String},/**
+       * The reference of the product
+       * @type {String}
+       */referenceText:{type:String},/**
+       * The number of the product
+       * @type {String}
+       */productNumber:{type:String}}}}]);return CellsGlomoCardView}(Polymer.mixinBehaviors([CellsBehaviors.i18nBehavior],Polymer.Element));customElements.define(CellsGlomoCardView.is,CellsGlomoCardView);</script></dom-module><dom-module id="glomo-insurance-consult" assetpath="glomo-insurance-consult/"><template><style include="glomo-insurance-consult-styles glomo-insurance-consult-shared-styles"></style><slot></slot><div class="separator"></div><div class="main-container"><p class="title-main">[[consultInsuranceInfo.productName]]</p><div class="simulate-card"><cells-glomo-card-view icon-card="[[cardIlustration]]" icon-width="[[cardWidth]]" icon-height="[[cardHeight]]" business-text="[[consultInsuranceInfo.cardBusiness]]" reference-text="[[consultInsuranceInfo.cardReferenceText]]" product-number="[[consultInsuranceInfo.cardProductNumber]]"></cells-glomo-card-view></div><cells-copy-button class="policy-number" clipboard-text="[[consultInsuranceInfo.cardProductNumber]]" on-tap="_showAlert">[[t('glomo-insurance-consult-copy-policy')]]</cells-copy-button><p class="detail-insurance" on-tap="_showDetails">[[t('glomo-insurance-consult-detail-insurance')]]</p></div><div class="wraper"><div class="call-center"><p class="call-text">[[t('glomo-insurance-consult-call-center')]] <span class="black-font">[[consultInsuranceInfo.callCenterNum]]</span>.</p></div><div class="cancel-container"><div class="cancel-btn" on-tap="_cancelInsurance"><cells-atom-icon class="icon-size-24" icon="coronita:close"></cells-atom-icon></div><p class="cancel-text">[[t('glomo-insurance-consult-cancel-insurance')]]</p></div><cells-modal-alert class="copy-alert" opened="{{modalOpen}}" duration="[[modalDuration]]" toast="[[modalToast]]"><p style="margin: 0;">[[t('glomo-insurance-consult-copy-policy-success')]]</p></cells-modal-alert></div></template><script>var GlomoInsuranceConsult=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(GlomoInsuranceConsult,_Polymer$mixinBehavio);function GlomoInsuranceConsult(){babelHelpers.classCallCheck(this,GlomoInsuranceConsult);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(GlomoInsuranceConsult).apply(this,arguments))}babelHelpers.createClass(GlomoInsuranceConsult,[{key:"_showAlert",/**
+   * Show alert for policy number copied
+   */value:function _showAlert(){this.set("modalOpen",!0)}/**
+   * Event for show all details for insurance
+   */},{key:"_showDetails",value:function _showDetails(){this.dispatchEvent(new CustomEvent("show-all-details",{bubbles:!0,composed:!0}))}/**
+   * Event for cancel the insurance hiring
+   */},{key:"_cancelInsurance",value:function _cancelInsurance(){this.dispatchEvent(new CustomEvent("go-cancel-insurance",{bubbles:!0,composed:!0}))}}],[{key:"is",get:function get(){return"glomo-insurance-consult"}},{key:"properties",get:function get(){return{/**
+       * Card ilustration to show
+       * @type {String}
+       */cardIlustration:{type:String,value:"glomo:card_insurance"},/**
+       * Whidth for card ilustration
+       * @type {Number}
+       */cardWidth:{type:Number,value:238},/**
+       * Height for card ilustration
+       * @type {Number}
+       */cardHeight:{type:Number,value:150},/**
+       * Information for insurance huring
+       * @type {Object}
+       */consultInsuranceInfo:{type:Object,value:{}},/**
+       * Time for duration the modal opened
+       * @type {Number}
+       */modalDuration:{type:Number,value:1e3},/**
+       * Indicate if the modal is toast
+       * @type {Boolean}
+       */modalToast:{type:Boolean,value:!0},/**
+       * Indicate if the modal is opened
+       * @type {Boolean}
+       */modalOpen:{type:Boolean,value:!1}}}}]);return GlomoInsuranceConsult}(Polymer.mixinBehaviors([CellsBehaviors.i18nBehavior],Polymer.Element));customElements.define(GlomoInsuranceConsult.is,GlomoInsuranceConsult);</script></dom-module></div></body></html>

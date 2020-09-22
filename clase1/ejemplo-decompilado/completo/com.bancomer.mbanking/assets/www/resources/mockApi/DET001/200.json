@@ -1,0 +1,234 @@
+{
+  "data": [
+      {
+          "id": "QE0H8CVKFZX9W28CCYFKENF5TW",
+          "localAmount": {
+              "amount": 3000.00,
+              "currency": "MXN"
+          },
+          "originAmount": {
+              "amount": 3000.00,
+              "currency": "MXN"
+          },
+          "moneyFlow": {
+              "id": "INCOME",
+              "name": "La operación agrega fondos al saldo disponible o crédito otorgado en el caso de productos de crédito"
+          },
+          "concept": "PAGARE LIQUIDABLE AL VENC. M N",
+          "transactionType": {
+              "id": "DEPOSIT_CONTRIBUTION",
+              "name": "Transacción que representa el retiro de efectivo de una cuenta para el pago de la contribución de depósito.",
+              "internalCode": {
+                  "id": "DEPOSIT_CONTRIBUTION"
+              }
+          },
+          "operationDate": "2019-12-19",
+          "accountedDate": "2019-12-19T00:00:00.000-06:00",
+          "valuationDate": "2019-12-19T00:00:00.000-06:00",
+          "financingType": {
+              "id": "NON_FINANCING",
+              "name": "Transacción que no puede ser financiada"
+          },
+          "status": {
+              "id": "SETTLED",
+              "name": "Representa que la transacción se ha cumplido."
+          },
+          "contract": {
+              "id": "QE0H8CVKFZX9W28CCYFKENF5TW",
+              "number": "7",
+              "numberType": {
+                  "id": "CCC",
+                  "name": "Código Cuenta Cliente"
+              },
+              "product": {
+                  "id": "DEPOSITS",
+                  "name": "Deposits"
+              }
+          }
+      },
+      {
+          "id": "KNZRBEV813W9Z1T2D1PHG59QEM",
+          "localAmount": {
+              "amount": 30000.00,
+              "currency": "MXN"
+          },
+          "originAmount": {
+              "amount": 30000.00,
+              "currency": "MXN"
+          },
+          "moneyFlow": {
+              "id": "INCOME",
+              "name": "La operación agrega fondos al saldo disponible o crédito otorgado en el caso de productos de crédito"
+          },
+          "concept": "PAGARE LIQUIDABLE AL VENC. M N",
+          "transactionType": {
+              "id": "DEPOSIT_CONTRIBUTION",
+              "name": "Transacción que representa el retiro de efectivo de una cuenta para el pago de la contribución de depósito.",
+              "internalCode": {
+                  "id": "DEPOSIT_CONTRIBUTION"
+              }
+          },
+          "operationDate": "2019-10-08",
+          "accountedDate": "2019-10-08T00:00:00.000-05:00",
+          "valuationDate": "2019-10-08T00:00:00.000-05:00",
+          "financingType": {
+              "id": "NON_FINANCING",
+              "name": "Transacción que no puede ser financiada"
+          },
+          "status": {
+              "id": "SETTLED",
+              "name": "Representa que la transacción se ha cumplido."
+          },
+          "contract": {
+              "id": "KNZRBEV813W9Z1T2D1PHG59QEM",
+              "number": "6",
+              "numberType": {
+                  "id": "CCC",
+                  "name": "Código Cuenta Cliente"
+              },
+              "product": {
+                  "id": "DEPOSITS",
+                  "name": "Deposits"
+              }
+          }
+      },
+      {
+          "id": "HQ3DRK7ZT33XPBYRHNF7XHPSGW",
+          "localAmount": {
+              "amount": 100000.00,
+              "currency": "MXN"
+          },
+          "originAmount": {
+              "amount": 100000.00,
+              "currency": "MXN"
+          },
+          "moneyFlow": {
+              "id": "INCOME",
+              "name": "La operación agrega fondos al saldo disponible o crédito otorgado en el caso de productos de crédito"
+          },
+          "concept": "PAGARE LIQUIDABLE AL VENC. M N",
+          "transactionType": {
+              "id": "DEPOSIT_CONTRIBUTION",
+              "name": "Transacción que representa el retiro de efectivo de una cuenta para el pago de la contribución de depósito.",
+              "internalCode": {
+                  "id": "DEPOSIT_CONTRIBUTION"
+              }
+          },
+          "operationDate": "2019-10-08",
+          "accountedDate": "2019-10-08T00:00:00.000-05:00",
+          "valuationDate": "2019-10-08T00:00:00.000-05:00",
+          "financingType": {
+              "id": "NON_FINANCING",
+              "name": "Transacción que no puede ser financiada"
+          },
+          "status": {
+              "id": "SETTLED",
+              "name": "Representa que la transacción se ha cumplido."
+          },
+          "contract": {
+              "id": "HQ3DRK7ZT33XPBYRHNF7XHPSGW",
+              "number": "5",
+              "numberType": {
+                  "id": "CCC",
+                  "name": "Código Cuenta Cliente"
+              },
+              "product": {
+                  "id": "DEPOSITS",
+                  "name": "Deposits"
+              }
+          }
+      },
+      {
+          "id": "35QTVXR50H4GAFYKRM3C8RNB1C",
+          "localAmount": {
+              "amount": 10000.00,
+              "currency": "MXN"
+          },
+          "originAmount": {
+              "amount": 10000.00,
+              "currency": "MXN"
+          },
+          "moneyFlow": {
+              "id": "INCOME",
+              "name": "La operación agrega fondos al saldo disponible o crédito otorgado en el caso de productos de crédito"
+          },
+          "concept": "PAGARE LIQUIDABLE AL VENC. M N",
+          "transactionType": {
+              "id": "DEPOSIT_CONTRIBUTION",
+              "name": "Transacción que representa el retiro de efectivo de una cuenta para el pago de la contribución de depósito.",
+              "internalCode": {
+                  "id": "DEPOSIT_CONTRIBUTION"
+              }
+          },
+          "operationDate": "2019-10-08",
+          "accountedDate": "2019-10-08T00:00:00.000-05:00",
+          "valuationDate": "2019-10-08T00:00:00.000-05:00",
+          "financingType": {
+              "id": "NON_FINANCING",
+              "name": "Transacción que no puede ser financiada"
+          },
+          "status": {
+              "id": "SETTLED",
+              "name": "Representa que la transacción se ha cumplido."
+          },
+          "contract": {
+              "id": "35QTVXR50H4GAFYKRM3C8RNB1C",
+              "number": "4",
+              "numberType": {
+                  "id": "CCC",
+                  "name": "Código Cuenta Cliente"
+              },
+              "product": {
+                  "id": "DEPOSITS",
+                  "name": "Deposits"
+              }
+          }
+      },
+      {
+          "id": "S1GZ8QFGHKRE1YSJ16SP13KANG",
+          "localAmount": {
+              "amount": 50000.00,
+              "currency": "MXN"
+          },
+          "originAmount": {
+              "amount": 50000.00,
+              "currency": "MXN"
+          },
+          "moneyFlow": {
+              "id": "INCOME",
+              "name": "La operación agrega fondos al saldo disponible o crédito otorgado en el caso de productos de crédito"
+          },
+          "concept": "PAGARE LIQUIDABLE AL VENC. M N",
+          "transactionType": {
+              "id": "DEPOSIT_CONTRIBUTION",
+              "name": "Transacción que representa el retiro de efectivo de una cuenta para el pago de la contribución de depósito.",
+              "internalCode": {
+                  "id": "DEPOSIT_CONTRIBUTION"
+              }
+          },
+          "operationDate": "2019-10-07",
+          "accountedDate": "2019-10-07T00:00:00.000-05:00",
+          "valuationDate": "2019-10-07T00:00:00.000-05:00",
+          "financingType": {
+              "id": "NON_FINANCING",
+              "name": "Transacción que no puede ser financiada"
+          },
+          "status": {
+              "id": "SETTLED",
+              "name": "Representa que la transacción se ha cumplido."
+          },
+          "contract": {
+              "id": "S1GZ8QFGHKRE1YSJ16SP13KANG",
+              "number": "1",
+              "numberType": {
+                  "id": "CCC",
+                  "name": "Código Cuenta Cliente"
+              },
+              "product": {
+                  "id": "DEPOSITS",
+                  "name": "Deposits"
+              }
+          }
+      }
+  ]
+}

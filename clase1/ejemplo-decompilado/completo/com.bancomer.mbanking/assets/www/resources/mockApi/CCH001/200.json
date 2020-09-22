@@ -1,0 +1,38 @@
+{
+  "data": {
+    "cardId": "0AeKFgbD0FVrEf0Q0Iuih5_Li6HIGexsG5MkmLLkAXA",
+    "number": "4772143005344755",
+    "numberType": {
+      "id": "PAN",
+      "name": "Número de cuenta principal"
+    },
+    "cardType": {
+      "id": "CREDIT_CARD",
+      "name": "Credit Card"
+    },
+    "title": {
+      "id": "AP",
+      "name": "TARJETA BANCOMER PLATINUM"
+    },
+    "physicalSupport": {
+      "id": "NORMAL_PLASTIC",
+      "name": "NP"
+    },
+    "currencies": [
+      {
+        "currency": "MXN",
+        "isMajor": true
+      }
+    ],
+    "openingDate": "2018-11-15T00:00:00.000-06:00",
+    "relatedContracts": [],
+    "delivery": {
+      "destination": {
+        "id": "HOME",
+        "name": "El envío de la tarjeta de crédito está en casa."
+      }
+    },
+    "operationNumber": "8115364259",
+    "operationDate": "2018-11-15 00:00:00:000000"
+  }
+}

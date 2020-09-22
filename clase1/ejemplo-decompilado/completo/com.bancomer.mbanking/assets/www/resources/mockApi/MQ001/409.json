@@ -1,0 +1,22 @@
+{
+    "version": 1,
+    "severity": "FATAL",
+    "http-status": 409,
+    "error-code": "CNE1501",
+    "error-message": "LOS DATOS INGRESADOS NO SON VALIDOS, VERIFICA E INTENTA NUEVAMENTE",
+    "consumer-request-id": "ac3481a6-c41a-4041-b63a-598193b1e070",
+    "system-error-code": "functionalError",
+    "system-error-description": "Error funcional por defecto.",
+    "error-metainfo": {
+        "property": [
+            {
+                "value": "REGISTRO NO ENCONTRA",
+                "name": "v1"
+            },
+            {
+                "value": "DO",
+                "name": "v2"
+            }
+        ]
+    }
+}

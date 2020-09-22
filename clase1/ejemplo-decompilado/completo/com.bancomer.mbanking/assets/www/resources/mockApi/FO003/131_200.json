@@ -1,0 +1,75 @@
+{
+    "data": {
+        "id": "131",
+        "alias": "THIRDCARDDALLAS",
+        "shortAlias": "THIRDALLA",
+        "operationType": {
+            "id": "INTERNAL_CREDIT_CARD_PAYMENT",
+            "description": "PAGO DE TARJETA DE TERCEROS BBVA"
+        },
+        "notification": {
+            "notificationDay": 12,
+            "isActive": true,
+            "contactInformation": {
+                "contactDetailId": "5"
+            }
+        },
+        "contract": {
+            "number": "001101300201031947"
+        },
+        "operationDetail": {
+            "receiver": {
+                "contract": {
+                    "number": "4919098000012811",
+                    "numberType": {
+                        "id": "PAN",
+                        "name": "PAN"
+                    },
+                    "productType": {
+                        "id": "CARD",
+                        "name": "CARD"
+                    }
+                },
+                "holder": {
+                    "holderName": "GALARZA MENDIETA ANTONIO"
+                }
+            }
+        },
+        "operationImport": {
+            "currency": "PEN",
+            "amount": 120
+        },
+        "availableChannels": [
+            {
+                "availableChannel": {
+                    "id": "AGEX",
+                    "name": "AGENTE EXPRESS"
+                }
+            },
+            {
+                "availableChannel": {
+                    "id": "BMOV",
+                    "name": "BANCA MOVIL"
+                }
+            },
+            {
+                "availableChannel": {
+                    "id": "BNET",
+                    "name": "BANCA POR INTERNET"
+                }
+            },
+            {
+                "availableChannel": {
+                    "id": "SMS",
+                    "name": "BANCA SMS"
+                }
+            },
+            {
+                "availableChannel": {
+                    "id": "SMS",
+                    "name": "BANCA SMS"
+                }
+            }
+        ]
+    }
+}

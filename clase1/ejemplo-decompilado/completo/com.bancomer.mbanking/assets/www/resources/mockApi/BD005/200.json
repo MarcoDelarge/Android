@@ -1,0 +1,14 @@
+{
+    "data": [
+      {
+        "documentTemplate": {
+          "id": "CONTRATO UNICO DIGITAL",
+          "templateType": {
+            "id": "PDF",
+            "description": "PDF file"
+          }
+        },
+        "id": "GMDCTUD011"
+      }
+    ]
+  }

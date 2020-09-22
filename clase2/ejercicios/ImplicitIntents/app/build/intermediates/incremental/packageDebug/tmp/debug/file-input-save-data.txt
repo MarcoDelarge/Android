@@ -1,0 +1,7 @@
+#Internal package file, do not edit.
+#Mon Sep 21 23:39:28 CDT 2020
+0.baseType=DIRECTORY
+0.base=C\:\\Users\\soyma\\Documents\\android-fundamentals\\clase2\\ejercicios\\ImplicitIntents\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+0.path=classes.dex
+0.set=DEX
+count=1

@@ -1,0 +1,25 @@
+{
+
+  "version": 1,
+
+  "severity": "FATAL",
+
+  "http-status": 409,
+
+  "error-code": "AAA",
+
+  "error-message": "SOLICITUD CON DATOS FALTANTES",
+
+  "consumer-request-id": "A08CFBFF-B322-40F5-B127-18924D16B8C9",
+
+  "system-error-code": "functionalError",
+
+  "system-error-description": "Error funcional por defecto.",
+
+  "error-metainfo": {
+
+
+
+  }
+
+}

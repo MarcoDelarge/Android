@@ -1,0 +1,11 @@
+{
+    "version": 1,
+    "severity": "FATAL",
+    "http-status": 409,
+    "error-code": "BGE0832",
+    "error-message": "APLICACION NO DISPONIBLE",
+    "consumer-request-id": "134e62ad-6dde-4e1d-8d35-f3b4734d0448",
+    "system-error-code": "functionalError",
+    "system-error-description": "Error funcional por defecto.",
+    "system-error-cause": "BGE0832: APLICACION NO DISPONIBLE"
+}

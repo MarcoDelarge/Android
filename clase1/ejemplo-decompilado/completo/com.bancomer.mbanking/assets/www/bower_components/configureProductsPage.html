@@ -1,0 +1,216 @@
+<html><head></head><body><div hidden="" by-polymer-bundler=""><dom-module id="glomo-configure-products-dm" assetpath="glomo-configure-products-dm/"><template></template><script>var GlomoConfigureProductsDm=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(GlomoConfigureProductsDm,_Polymer$mixinBehavio);function GlomoConfigureProductsDm(){babelHelpers.classCallCheck(this,GlomoConfigureProductsDm);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(GlomoConfigureProductsDm).apply(this,arguments))}babelHelpers.createClass(GlomoConfigureProductsDm,[{key:"nativeData",/**
+   * check if is the first time in the config products page
+   * @param {Object} newVal
+   */value:function nativeData(newVal){this.nativeFalgs=newVal;if(newVal&&newVal.isFirstTime){this.prepareInfoModal()}this._handleDispatchEvent("products-in-process");this._handleDispatchEvent("request-products-configuration-event")}/**
+   * prepare the info Modal for config products
+   * @param {Boolean} isEquity
+   */},{key:"prepareInfoModal",value:function prepareInfoModal(){var secondOption=this.nativeFalgs.isEquity?this.t("glomo-configure-products-list-equity-options-subtitle"):this.t("glomo-configure-products-list-options-subtitile-2");this._handleDispatchEvent("cp-info-modal-event",this._infoConfigModal(secondOption))}/**
+   * config info modal
+   * @param {Object} newval
+   * @param {String} secondOption
+   */},{key:"_infoConfigModal",value:function _infoConfigModal(secondOption){var bulletIcon="coronita:bullet1";return{code:"config-prods-info",primaryButtonClass:"primary",selectedConfig:{className:"cp-info-modal",openMaximized:!0,title:this.t("glomo-configure-products-info-header"),heroImage:this.imgOnOff,acceptBtLabel:"info-UNDERSTAND-accept",template:{type:"paragraphs",values:[{title:this.t("glomo-configure-products-list-title")},{icon:bulletIcon,text:this.t("glomo-configure-products-list-options-subtitile-1")},{icon:bulletIcon,text:secondOption},{icon:"coronita:info",iconClass:"icon-size-24",message:this.t("glomo-configure-products-info-message"),type:"info"}]}}}}/**
+   * prepare the payload response that comes from DM
+   * @param {Object} responsePayload
+   */},{key:"handleConfigProducts",value:function handleConfigProducts(responsePayload){this._handleDispatchEvent("finish-loaded-products");this._handleDispatchEvent("handled-config-products",this._setConfigureProductsPayload(responsePayload))}/**
+   * Prepare the payload of the configuration list products
+   * @param {Object} payload
+   */},{key:"_setConfigureProductsPayload",value:function _setConfigureProductsPayload(payload){var _this=this,prods=[],editables=!payload.find(function(item){return!0===item.isEditable});this.productTypes.forEach(function(family){var productsPayload=_this._getFamilyProducts(payload,family.type);if(productsPayload&&0<productsPayload.length){var productDetail=[];productsPayload.forEach(function(detail){if(detail&&detail.contract&&detail.contract.product){if(!detail.isVisible&&(detail.contract.product.id===_this.equityType||detail.contract.product.id===_this.freeEquityType||detail.contract.product.id===_this.cedEquityType)){return}productDetail.push({id:detail.id,description:{value:"\u2022 ".concat(_this.fiveDigitsFormat(detail.contract.number))},name:detail.contract.product.description,img:"",isVisible:detail.isVisible,isEditable:detail.isEditable})}});var product={productType:_this.t(family.title),productFamily:family.type,isEquity:family.type===_this.equityType||family.type===_this.freeEquityType||family.type===_this.cedEquityType?!0:!1,detail:productDetail};if(0<productDetail.length){prods.push(product)}}});var visibles=!!prods.find(function(item){return!1===item.detail.isVisible});return{products:prods,allVisibles:visibles,notEditables:editables}}/**
+   * Search in the payload for the family product type
+   * @param {Object} list
+   * @param {String} type
+   */},{key:"_getFamilyProducts",value:function _getFamilyProducts(list,type){var _this2=this,familyProduct=[];if(type===this.equityType||type===this.freeEquityType||type===this.cedEquityType){familyProduct=list.filter(function(element){return(element.contract.product||{}).id===type})}else{familyProduct=list.filter(function(element){return(element.contract||{}).productType===type})}switch(type){case this.accountType:case this.privateBankingType:familyProduct=familyProduct.filter(function(item){return(item.contract.product||{}).id!==_this2.INVEST_FUND_TYPE&&(item.contract.product||{}).id!==_this2.equityType&&(item.contract.product||{}).id!==_this2.freeEquityType&&(item.contract.product||{}).id!==_this2.cedEquityType});break;case this.cardType:familyProduct=familyProduct.filter(function(item){return(item.contract.product||{}).id!==_this2.TP_TYPE});break;case this.INVEST_FUND_TYPE:familyProduct=list.filter(function(item){return(item.contract.product||{}).id===_this2.INVEST_FUND_TYPE});break;}return familyProduct?familyProduct:null}/**
+   * check if the user will hide an equity contract to show a warning
+   * @param {Object} configProducts
+   */},{key:"prepareChangedProducts",value:function prepareChangedProducts(configProducts){this.set("productsToUpdate",this._setProductsToUpdate(configProducts));var equityProds=this._getEquityProducts(configProducts);if(equityProds){this._handleDispatchEvent("cp-confirm-modal-event",this._showConfigProdsInfoModal(equityProds))}else{this._handleDispatchEvent("products-in-process");this._handleDispatchEvent("send-changes-event",this.productsToUpdate)}}/**
+   * prepare the body for the update patch request
+   * @param {Object} configProducts
+   */},{key:"_setProductsToUpdate",value:function _setProductsToUpdate(configProducts){var productsArray=[];configProducts.forEach(function(element){element.detail.forEach(function(detail){if(detail.isEditable){productsArray.push({id:detail.id,isVisible:detail.isVisible})}})});return productsArray}/**
+   * check if the user hides an equity contract
+   * @param {Object} list
+   */},{key:"_getEquityProducts",value:function _getEquityProducts(list){var _this3=this,familyProduct=list.filter(function(product){if(product.productFamily===_this3.equityType||product.productFamily===_this3.freeEquityType||product.productFamily===_this3.cedEquityType){return product}});if(0<familyProduct.length){var equityHidden=[{title:this.t("glomo-configure-products-confirm-title")},{text:this.t("glomo-configure-products-confirm-subtitle")}];familyProduct.forEach(function(product){product.detail.forEach(function(detail){if(!1===detail.isVisible){var number=detail.description.value,masked=_this3.fiveDigitsFormat(number);equityHidden.push({text:"<b>".concat(detail.name,"</b> \u2022<i>").concat(masked,"</i>")})}})});equityHidden.push({text:this.t("glomo-configure-products-confirm-message")});return 3<equityHidden.length?equityHidden:null}else{return null}}/**
+   * modal to show a warning when the user hides an equity contract
+   * @param {Object} equityProds
+   */},{key:"_showConfigProdsInfoModal",value:function _showConfigProdsInfoModal(equityProds){return{code:"cp-modal-confirm",selectedConfig:{className:"cp-confirm-modal",openMaximized:!0,title:this.t("glomo-configure-products-info-header"),heroImage:this.equityAlertImg,acceptBtLabel:this.t("glomo-configure-products-hide"),onAcceptDetail:this.productsToUpdate,cancelBtLabel:"alert-CHANGE-USER-cancel",template:{type:"paragraphs",values:equityProds}}}}/**
+   * prepare an error modal to show it to the user
+   */},{key:"errorModalConfig",value:function errorModalConfig(){var error;if(3>this.tries){this.tries++;error=this._configurationRetryError()}else{this.tries=0;error=this._configurationExitError()}this._handleDispatchEvent("finish-patching-request");this._handleDispatchEvent("cp-error-modal-config-event",error)}/**
+   * configuration to show the retry info modal
+   */},{key:"_configurationRetryError",value:function _configurationRetryError(){return{code:"cp-modal-confirm",selectedConfig:{className:"cp-error-modal",openMaximized:!1,iconOnlyFullHeight:!0,acceptBtLabel:"alert-DATA-CHANGED-cancel",onAcceptDetail:this.productsToUpdate,cancelBtLabel:"alert-CHANGE-USER-cancel",template:{type:"iconMessage",values:{icon:"coronita:alert",message:this.t("glomo-configure-products-error-message-1")}}}}}/**
+   * configuration to show the exit info modal
+   */},{key:"_configurationExitError",value:function _configurationExitError(){return{code:"cp-error-out",selectedConfig:{className:"cp-error-modal",openMaximized:!1,iconOnlyFullHeight:!0,acceptBtLabel:"alert-LOGOUT-exit",template:{type:"iconMessage",values:{icon:"coronita:alert",message:this.t("glomo-configure-products-error-message-2")}}}}}/**
+   * handle the dispatch event
+   * @param {String} event
+   * @param {Object} detail
+   */},{key:"_handleDispatchEvent",value:function _handleDispatchEvent(event,detail){this.dispatchEvent(new CustomEvent(event,{bubbles:!0,composed:!0,detail:detail}))}}],[{key:"is",get:function get(){return"glomo-configure-products-dm"}},{key:"properties",get:function get(){return{/**
+       * property for native flags
+       * @type {Object}
+       */nativeFalgs:{type:Object,value:function value(){}},/**
+       * family products type
+       * @type {Array}
+       */productTypes:{type:Array,value:function value(){return[]}},/**
+       * body for the patch request
+       * @type {Array}
+       */productsToUpdate:{type:Array,value:function value(){return[]}},/**
+       * card type constant
+       * @type {String}
+       */cardType:{type:String,value:"CARD"},/**
+       * account type constant
+       * @type {String}
+       */accountType:{type:String,value:"ACCOUNT"},/**
+       * private banking type constant
+       * @type {String}
+       */privateBankingType:{type:String,value:"PRIVATE_BANKING_PORTFOLIO"},/**
+       * tp type constant
+       * @type {String}
+       */TP_TYPE:{type:String,value:"TP"},/**
+       * investment fund type constant
+       * @type {String}
+       */INVEST_FUND_TYPE:{type:String,value:"SI"},/**
+       * equity type constant
+       * @type {String}
+       */equityType:{type:String,value:"PT"},/**
+       * free equity type constant
+       * @type {String}
+       */freeEquityType:{type:String,value:"LP"},/**
+       * CED equity products family constant
+       * @type {String}
+       */cedEquityType:{type:String,value:"CE"},/**
+       * tries to show error model
+       * @type {Number}
+       */tries:{type:Number,value:0},/**
+       * constant for image on-off
+       * @type {String}
+       */imgOnOff:String,/**
+       * image path constant
+       * @type {String}
+       */imgCard:String,/**
+       * constant path for src img
+       * @type {String}
+       */equityAlertImg:String}}}]);return GlomoConfigureProductsDm}(Polymer.mixinBehaviors([CellsBehaviors.i18nBehavior,CellsBehaviors.CellsGlomoUtilsBehavior],Polymer.Element));customElements.define(GlomoConfigureProductsDm.is,GlomoConfigureProductsDm);</script></dom-module><dom-module id="glomo-configure-products-styles" assetpath="glomo-configure-products/"><template><style>:host{display:block;box-sizing:border-box;font-family:var(--cells-fontDefault, sans-serif);height:100%;@apply --glomo-configure-products;}:host([hidden]), [hidden]{display:none !important;}*, *:before, *:after{font:inherit;box-sizing:inherit;}:host{--cells-checkbox-button:{width:-webkit-min-content;width:-moz-min-content;width:min-content;};--cells-checkbox-button-body-label:{display:none;};--cells-checkbox-button-checkbox-size:32px;--cells-atom-icon:{color:var(--bbva-light-blue);};--cells-glomo-cta-container-position:relative;--cells-confirm-buttons-button:{margin-top:4px;};--cells-glomo-page-content-header:{margin-top:24px;margin-bottom:8px;font-size:20px;font-weight:bold;};--cells-glomo-page-content-subtitle:{font-size:20px;margin-bottom:16px;};}:host .configure-title{min-width:288px;min-height:72px;margin-top:24px;margin-right:16px;margin-left:16px;margin-bottom:16px;font-size:18px;line-height:1.6;@apply --glomo-configure-products-configure-title;}:host .products-header{font-weight:bold;padding-top:16px;padding-left:16px;padding-bottom:16px;@apply --glomo-configure-products-products-header;}:host .products{padding-bottom:188px;z-index:2;@apply --glomo-configure-products-products;}:host .check-all{padding-top:8px;padding-left:16px;padding-bottom:16px;border-bottom:1px solid var(--bbva-200);display:-webkit-box;display:flex;-webkit-box-align:center;align-items:center;@apply --glomo-configure-products-check-all;}:host .check-all-title{margin-left:17px;@apply --glomo-configure-products-check-all-title;}:host .product-family{border-bottom:1px solid var(--bbva-200);@apply --glomo-configure-products-product-family;}:host .family-title{margin-top:8px;padding:16px;font-weight:bold;@apply --glomo-configure-products-family-title;}:host #uncheckable-product{--cells-product-item-item-title:{-webkit-box-orient:horizontal;-webkit-box-direction:normal;flex-direction:row;};--cells-product-item-description-value:{padding-bottom:6px;};--cells-product-item-item-name:{padding-right:4px;};padding-bottom:0px;margin-left:50px;@apply --glomo-configure-products-uncheckable-product;}:host #checkable-product{padding:0px;padding-top:13px;margin-left:17px;display:-webkit-inline-box;display:inline-flex;@apply --glomo-configure-products-checkable-product;}:host .always-visible-message{padding-top:8px;padding-left:70px;margin-bottom:16px;font-size:12px;@apply --glomo-configure-products-always-visible-message;}:host .list-item{display:-webkit-box;display:flex;-webkit-box-pack:justify;justify-content:space-between;-webkit-box-align:center;align-items:center;@apply --glomo-configure-products-list-item;}:host .enable-checkbox{padding-left:16px;padding-bottom:8px;margin-bottom:16px;display:-webkit-box;display:flex;@apply --glomo-configure-products-enable-checkbox;}:host .img-cards{margin-right:16px;@apply --glomo-configure-products-img-cards;}:host #none-editable-items{display:-webkit-box;display:flex;-webkit-box-pack:center;justify-content:center;-webkit-box-align:start;align-items:flex-start;--cells-product-item-item:{text-align:center;};--cells-product-item-item-label:{color:var(--bbva-navy);};--cells-product-item-item-title:{-webkit-box-orient:horizontal;-webkit-box-direction:normal;flex-direction:row;};--cells-product-item-item-name:{padding-right:4px;};--cells-product-item-item-additional:{position:relative;bottom:4px;};@apply --glomo-configure-products-none-editable-items;}:host .warning-info{width:100%;height:200px;margin-top:40px;margin-bottom:16px;padding-left:16px;padding-right:16px;font-size:1.2em;font-weight:normal;background-color:rgba(212, 237, 252, 0.5);text-align:center;@apply --glomo-configure-products-warning-info;}:host .warning-info-icon{min-width:24px;min-height:24px;margin-top:40px;@apply --glomo-configure-products-warning-info-icon;}:host .confirm-button{text-align:center;margin-bottom:40px;@apply --glomo-configure-products-confirm-button;}:host cells-modal-alert{display:-webkit-box;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;flex-direction:column;width:100%;min-height:4.375rem;margin:0 auto;padding:1.25rem 0;position:fixed;left:0;bottom:0;@apply --glomo-configure-products-cells-modal-alert;}</style></template></dom-module><dom-module id="glomo-configure-products" assetpath="glomo-configure-products/"><template><style include="glomo-configure-products-styles glomo-configure-products-shared-styles"></style><slot></slot><template is="dom-if" if="[[productsList.notEditables]]"><cells-glomo-page-content src="[[emptyImg]]" header="[[t('glomo-configure-products-without-products-title')]]" subtitle="[[t('glomo-configure-products-without-products-subtitle')]]" content-icon-width="300" content-icon-height="130" show-icon="" show-header="" show-subtitle=""></cells-glomo-page-content><div class="none-editable-items"><template is="dom-repeat" items="[[configProducts]]" as="products"><template is="dom-repeat" items="[[products.detail]]" as="detail"><cells-product-item id="none-editable-items" name="[[detail.name]]" description="[[detail.description]]" visible-chars="[[detail.chars]]"></cells-product-item></template></template></div><div class="confirm-button"><cells-st-button><button on-click="_backToSettings">[[t('glomo-configure-products-undestand')]]</button></cells-st-button></div></template><template is="dom-if" if="[[!productsList.notEditables]]"><div class="configure-title"><label>[[t('glomo-configure-products-title')]]</label></div><div class="products-header"><label>[[t('glomo-configure-products-header')]]</label></div><div class="check-all"><cells-checkbox-button checked="{{checkAll}}" on-cells-checkbox-button-toggled="_mainToggled"></cells-checkbox-button><div class="check-all-title">[[t('glomo-configure-products-all-products')]]</div></div><div class="products"><template is="dom-repeat" items="[[configProducts]]" as="families"><div class="product-family"><div class="family-title"><label>[[families.productType]]</label><template is="dom-if" if="[[families.isEquity]]"><div class="warning-info"><cells-atom-icon class="warning-info-icon" icon="coronita:info"></cells-atom-icon><p>[[t('glomo-configure-products-warning-info-text')]]</p></div></template></div><template is="dom-repeat" items="[[families.detail]]" as="detail"><template is="dom-if" if="[[detail.isEditable]]"><div class="list-item"><div class="enable-checkbox"><cells-checkbox-button checked="[[detail.isVisible]]" on-tap="_checkState"></cells-checkbox-button><cells-product-item id="checkable-product" name="[[detail.name]]" description="[[detail.description]]" visible-chars="[[detail.chars]]"></cells-product-item></div><div><img class="img-cards" src="[[detail.img]]"></div></div></template><template is="dom-if" if="[[!detail.isEditable]]"><cells-product-item id="uncheckable-product" name="[[detail.name]]" description="[[detail.description]]" visible-chars="[[detail.chars]]"></cells-product-item><div class="always-visible-message"><cells-atom-icon icon="coronita:info"></cells-atom-icon><label>[[t('glomo-configure-products-always-visible')]]</label></div></template></template></div></template></div><template is="dom-if" if="[[!toastOpen]]"><cells-confirm-buttons config="[[configButtons]]"></cells-confirm-buttons></template><cells-modal-alert toast="" type="success" content="[[t(&quot;glomo-configure-products-succes-toast&quot;)]]" opened="[[toastOpen]]" on-close="_backToSettings"></cells-modal-alert></template></template><script>{/**
+    `<glomo-configure-products>` Description.
+
+    Example:
+
+    ## Styling
+    The following custom properties and mixins are available for styling:
+
+    ### Custom Properties
+    | Custom Property     | Selector | CSS Property | Value       |
+    | ------------------- | -------- | ------------ | ----------- |
+    | --cells-fontDefault | :host    | font-family  |  sans-serif |
+    ### @apply
+    | Mixins    | Selector | Value |
+    | --------- | -------- | ----- |
+    | --glomo-configure-products | :host    | {} |
+
+    * @customElement
+    * @polymer
+    * @extends {Polymer.Element}
+    * @demo demo/index.html
+  */var GlomoConfigureProducts=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(GlomoConfigureProducts,_Polymer$mixinBehavio);function GlomoConfigureProducts(){babelHelpers.classCallCheck(this,GlomoConfigureProducts);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(GlomoConfigureProducts).apply(this,arguments))}babelHelpers.createClass(GlomoConfigureProducts,[{key:"_prepareConfigProducts",/**
+     * prepare the data of the products from the incoming payload
+     * @param {Object} newProducts
+     * @param {Object} oldProducts
+     */value:function _prepareConfigProducts(newProducts){this.set("originals",[]);if(newProducts){this.set("configProducts",newProducts.products);if(!newProducts.notEditables){this._setOriginalProducts(newProducts.products);this.set("checkAll",newProducts.allVisibles);this.set("isDisable",!0);this._setConfigurationButtons(!0)}}}/**
+     * set a copy with the original products
+     * @param {Objects} products
+     */},{key:"_setOriginalProducts",value:function _setOriginalProducts(products){var _this=this;products.forEach(function(elementProd){if(elementProd&&elementProd.detail){var detail=[];elementProd.detail.forEach(function(elementDetail){if(elementDetail&&elementDetail.description){detail.push({id:elementDetail.id,description:{value:elementDetail.description.value,masked:elementDetail.description.masked},name:elementDetail.name,chars:elementDetail.chars,img:elementDetail.img,isVisible:elementDetail.isVisible,isEditable:elementDetail.isEditable})}});_this.push("originals",{productFamily:elementProd.productFamily,productType:elementProd.productType,isEquity:elementProd.isEquity,detail:detail})}})}/*
+    ** check the state of the checkbox to choose all products
+    @param {Object} evt
+    */},{key:"_mainToggled",value:function _mainToggled(evt){var _this2=this;this.set("checkAll",evt.target.checked);this.configProducts.forEach(function(product,index1){product.detail.forEach(function(element,index2){_this2.set("configProducts."+index1+".detail."+index2+".isVisible",_this2.checkAll)})});this._prepareUpdatedProducts("",this.checkAll);this._setConfigurationButtons(!!this._checkProductsModificacions())}/**
+     * check the state of the checkboxes
+     * @param {Object} event
+     */},{key:"_checkState",value:function _checkState(event){this._prepareUpdatedProducts(event.model.get("detail.id"),event.target.checked);this._setConfigurationButtons(!!this._checkProductsModificacions())}/**
+     * prepre the updated products to hide and show
+     * @param {String} id
+     * @param {Boolean} isVisible
+     */},{key:"_prepareUpdatedProducts",value:function _prepareUpdatedProducts(id,isVisible){if(id){this._setConfigProducts(id,isVisible);var arrVisibles=this.configProducts.map(function(item){return!!item.detail.reduce(function(last,current){return last&&current.isVisible},!0)}),visibles=arrVisibles.reduce(function(last,current){return last&&current},!0);this.set("checkAll",visibles)}else{this.configProducts.forEach(function(element){element.detail.map(function(product){product.isVisible=isVisible})})}}/**
+     * change isVisible of the object that has the same
+     * ID that the user select from a product with the checkbox
+     * @param {String} id
+     * @param {Boolean} visible
+     */},{key:"_setConfigProducts",value:function _setConfigProducts(id,visible){this.configProducts.forEach(function(product){product.detail.forEach(function(element){if(element.id===id){element.isVisible=visible}})})}/**
+     * check if was a modification in the products
+     */},{key:"_checkProductsModificacions",value:function _checkProductsModificacions(){var _this3=this,equals=!0;this.originals.forEach(function(element,index1){element.detail.forEach(function(item,index2){equals=equals&&item.isVisible===_this3.configProducts[index1].detail[index2].isVisible})});return equals}/**
+     * Set the configuration to disable or enable the primary button
+     * @param {Boolean} disable
+     */},{key:"_setConfigurationButtons",value:function _setConfigurationButtons(disable){var configurationValue={buttons:{primary:{text:this.t("glomo-configure-products-save"),action:"prepare-changes-event",detail:this.configProducts,disabled:disable},secondary:{text:this.t("glomo-configure-products-cancel"),class:"link",action:"reset-transactions-event"}}};this.set("configButtons",configurationValue)}/**
+     * close spinner and open the success toast footer
+     */},{key:"openSuccessToast",value:function openSuccessToast(){this.set("toastOpen",!0);this._handleDispatchEvent("finish-patching-request")}/**
+     * back to native settings options menu
+     */},{key:"_backToSettings",value:function _backToSettings(){this.set("toastOpen",!1);this._handleDispatchEvent("dashboard-accounts-refresh");this._handleDispatchEvent("back-to-settings-event")}/**
+    * handle the dispatch event
+    * @param {String} event
+    * @param {Object} detail
+    */},{key:"_handleDispatchEvent",value:function _handleDispatchEvent(event){this.dispatchEvent(new CustomEvent(event,{bubbles:!0,composed:!0}))}}],[{key:"is",get:function get(){return"glomo-configure-products"}},{key:"properties",get:function get(){return{/**
+         * payload of products
+         * @type {Object}
+         */productsList:{type:Object,observer:"_prepareConfigProducts"},/**
+         * List of the configuration products
+         * @type {Object}
+         */configProducts:Object,/**
+         * original products upcoming
+         * @type {Array}
+         */originals:{type:Array,value:function value(){return[]}},/**
+         * Check all boxes
+         * @type {Boolean}
+         */checkAll:Boolean,/**
+         * equity hidden flag
+         * @type {Boolean}
+         */equityHidden:Boolean,/**
+         * configuration of buttons
+         * @type {Object}
+         */configButtons:{type:Object},/**
+         * disable the primary button
+         * @type {Boolean}
+         */isDisable:Boolean,/**
+         * Open the toast
+         * @type {Boolean}
+         */toastOpen:{type:Boolean,value:!1},/**
+         * constant path for not editable prods img
+         * @type {String}
+         */emptyImg:String}}}]);return GlomoConfigureProducts}(Polymer.mixinBehaviors([CellsBehaviors.i18nBehavior],Polymer.Element));customElements.define(GlomoConfigureProducts.is,GlomoConfigureProducts)}</script></dom-module><dom-module id="cells-glomo-dm-financial-overview" assetpath="cells-glomo-dm-financial-overview/"><template></template><script>var CellsGlomoDmFinancialOverview=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(CellsGlomoDmFinancialOverview,_Polymer$mixinBehavio);function CellsGlomoDmFinancialOverview(){babelHelpers.classCallCheck(this,CellsGlomoDmFinancialOverview);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(CellsGlomoDmFinancialOverview).apply(this,arguments))}babelHelpers.createClass(CellsGlomoDmFinancialOverview,[{key:"requestConfigProducts",/**
+   * creates a request Payload for the configuration products
+   */value:function requestConfigProducts(){var endpoint="contracts-configurations?paginationKey=".concat(this.paginationConst);this.requestBuilder(this.resource,endpoint,"GET",this.GET_CONFIG_PRODS_OP_CODE,{},{})}/**
+   * send updated products for hide or show it
+   * @param {Object} products
+   */},{key:"sendUpdatedProducts",value:function sendUpdatedProducts(products){this.set("originalUpdateProds",products);this._handlerDispatchEvent("patching-products-in-process");var endpoint="contracts-configurations";this.requestBuilder(this.resource,endpoint,"PATCH",this.PATCH_CONFIG_PRODS_OP_CODE,{data:products.slice(0,10)},{})}/**
+   * Handle de success payload from the financial overview API's
+   * @param {Object} payload
+   */},{key:"successResponseHandler",value:function successResponseHandler(payload){if(!this.isEmptyObject(payload)){var responsePayload=this.extractResponsePayload(payload);if(responsePayload.opCode===this.GET_CONFIG_PRODS_OP_CODE){this._sendConfigureProductsSuccess(responsePayload)}else if(responsePayload.opCode===this.PATCH_CONFIG_PRODS_OP_CODE){if(10<this.originalUpdateProds.length){this.sendUpdatedProducts(this.originalUpdateProds.slice(10))}else{this._successPatchResponse(responsePayload)}}this.cleanGlobalRespChannel()}}/**
+   * Handle de error payload from the financial overview API's
+   * @param {Object} payload
+   */},{key:"errorResponseHandler",value:function errorResponseHandler(payload){if(!this.isEmptyObject(payload)){var responsePayload=this.extractResponsePayload(payload);if(responsePayload.opCode===this.PATCH_CONFIG_PRODS_OP_CODE){this._handlerDispatchEvent("error-config-products-response")}this.cleanGlobalRespChannel()}}/**
+   * dispatch an event sending the configure products response
+   * @param {Object} responsePayload
+   */},{key:"_sendConfigureProductsSuccess",value:function _sendConfigureProductsSuccess(responsePayload){if(200===responsePayload.status){var _this$listConfigProdu;(_this$listConfigProdu=this.listConfigProducts).push.apply(_this$listConfigProdu,babelHelpers.toConsumableArray(this.extractSuccessResponse(responsePayload)));if("pagination"in responsePayload.response_body&&responsePayload.response_body.pagination.page>this.paginationConst&&responsePayload.response_body.data&&0!==responsePayload.response_body.data.length%10){this.paginationConst=(responsePayload.response_body.pagination||{}).page;this.requestConfigProducts()}else{this._handlerDispatchEvent("config-products-response",this.listConfigProducts);this.set("paginationConst",1);this.set("listConfigProducts",[])}}}/**
+   * handle de data info to know if patch was success
+   * @param {Object} responsePayload
+   */},{key:"_successPatchResponse",value:function _successPatchResponse(responsePayload){if(204===responsePayload.status){this._handlerDispatchEvent("success-config-products-response");this.set("originalUpdateProds",[]);this.set("listUpdateProducts",{})}}/**
+   * @desc dispatch events
+   * @param {String}
+   * @param {Object}
+   */},{key:"_handlerDispatchEvent",value:function _handlerDispatchEvent(eventName){var details=1<arguments.length&&arguments[1]!==void 0?arguments[1]:{};this.dispatchEvent(new CustomEvent(eventName,{bubbles:!0,composed:!0,detail:details}))}}],[{key:"is",get:function get(){return"cells-glomo-dm-financial-overview"}},{key:"properties",get:function get(){return{/**
+       * resource used in API
+       * @type {String}
+       */resource:{type:String,value:"financial-overview",readOnly:!0},/**
+       * config products opCode constant
+       * @type {String}
+       */GET_CONFIG_PRODS_OP_CODE:{type:String,value:"CP001",readOnly:!0},/**
+       * patch products opCode constant
+       * @type {String}
+       */PATCH_CONFIG_PRODS_OP_CODE:{type:String,value:"CP002",readOnly:!0},/**
+      * global server config retrieved from native
+      * @type {Object}
+      */globalServerConfig:{type:Object},/**
+       * constant for the pagination response
+       * @type {Number}
+       */paginationConst:{type:Number,value:1},/**
+       * set the list products
+       * @type {Array}
+       */listConfigProducts:{type:Array,value:function value(){return[]}},/**
+       * set the original updated products
+       * @type {Array}
+       */originalUpdateProds:{type:Array,value:function value(){return[]}},/**
+       * set the list for update products
+       * @type {Object}
+       */listUpdateProducts:{type:Object,value:function value(){}}}}}]);return CellsGlomoDmFinancialOverview}(Polymer.mixinBehaviors([CellsBehaviors.CellsGlomoDmBehavior,CellsBehaviors.CellsGlomoDiacriticsBehavior,CellsBehaviors.CellsGlomoUtilsBehavior],Polymer.Element));customElements.define(CellsGlomoDmFinancialOverview.is,CellsGlomoDmFinancialOverview);</script></dom-module></div></body></html>

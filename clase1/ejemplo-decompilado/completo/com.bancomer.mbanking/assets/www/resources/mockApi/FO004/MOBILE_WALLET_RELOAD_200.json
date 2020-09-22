@@ -1,0 +1,47 @@
+{
+    "data": {
+        "id": "143",
+        "alias": "Mobile wallet reload ALIAS",
+        "operationType": {
+            "id": "MOBILE_WALLET_RELOAD",
+            "description": "Mobile wallet reload description"
+        },
+        "notification": {
+            "contactInformation": {
+                "contactDetailId": "0"
+            }
+        },
+        "contract": {
+            "number": "00110130000210411744",
+            "numberType": {
+                "id": "CCC",
+                "name": "CCC"
+            },
+            "productType": {
+                "id": "ACCOUNT",
+                "name": "ACCOUNT"
+            }
+        },
+        "operationImport": {
+            "currency": "PEN",
+            "amount": 50
+        },
+        "availableChannels": [
+            {
+                "availableChannel": {
+                    "id": "BMOV"
+                }
+            },
+            {
+                "availableChannel": {
+                    "id": "BNET"
+                }
+            }
+        ],
+        "operationDetail": {
+            "reloadType": "BIM",
+            "mobile": "343534543"
+        },
+        "creationDate": "2018-08-15T12:25:33.000-0500"
+    }
+}

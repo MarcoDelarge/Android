@@ -1,0 +1,44 @@
+<html><head></head><body><div hidden="" by-polymer-bundler=""><dom-module id="cells-step-select-operation-type-styles" assetpath="cells-step-select-operation-type/"><template><style>:host{display:block;box-sizing:border-box;font-family:var(--cells-fontDefault, sans-serif);@apply --cells-step-select-operation-type;}:host .full p{margin-left:1rem;margin-right:1rem;line-height:1.5rem;margin-bottom:0.5rem;font-size:var(--cells-text-size-ml, 0.9375rem);color:var(--bbva-600, #121212);}:host .full div{padding-left:1rem;padding-right:1rem;padding-bottom:0.5rem;padding-top:0.5rem;}:host .full div cells-key-values{--cells-key-values-key-span:{font-size:0.938rem;color:var(--bbva-medium-blue, #1973B8);};}:host .full div:active{background-color:var(--bbva-100);}:host .full hr{margin-left:1rem;margin-right:1rem;margin-top:0;margin-bottom:0;color:var(--bbva-100);background-color:var(--bbva-100);border-color:var(--bbva-100);}:host .filled{padding-top:8px;}:host .filled span{font-size:0.938rem;}:host([hidden]), [hidden]{display:none !important;}*, *:before, *:after{font:inherit;box-sizing:inherit;}:host(:not([decorated])){--cells-step-after-position:relative;}:host(:not([active])){pointer-events:none;}:host(:not([active])) .full p{opacity:.3;}:host(:not([active])) .full div cells-key-values{--cells-key-values-key-span:{font-size:0.938rem;opacity:.3;};--cells-key-values-value-item:{opacity:.3 !important;};}:host(:not([active])) .full hr{color:var(--bbva-100);background-color:var(--bbva-100);border-color:var(--bbva-100);opacity:.3;}</style></template></dom-module><dom-module id="cells-step-select-operation-type" assetpath="cells-step-select-operation-type/"><template><style include="cells-step-select-operation-type-styles cells-step-select-operation-type-shared-styles"></style><cells-step id="stepOperationType" active="{{active}}" step-title="[[stepTitle]]" current-step="[[currentStep]]" max-steps="[[maxSteps]]" change-label="[[changeLabel]]" hide-current-step-label="[[hideCurrentStepLabel]]" collapsed="{{collapsed}}" fixed="[[fixed]]" show-help-icon="[[showHelpIcon]]" class-to-toggle="step-active" disable-change="[[shouldHideChangeButton]]" previous="[[previous]]" next="[[next]]" scrolled="[[scrolled]]" decorated="[[decorated]]" info-message-type="[[cellsStepInfoMessageType]]" info-message-key="[[cellsStepInfoMessageKey]]"><div slot="filled"><div class="filled"><span>[[t(operationType)]]</span></div></div><div slot="full"><div class="full"><p>[[t(operationDescription)]]</p><template is="dom-if" if="[[operations]]"><template is="dom-repeat" items="[[operations]]"><div on-tap="_detectTypeOperation"><cells-key-values class="dl-reversed" key="[[item.key]]" value="[[item.value]]"></cells-key-values></div><template is="dom-if" if="[[!item.lastOperation]]"><hr></template></template></template></div></div></cells-step></template><script>/**
+  `<cells-step-select-operation-type>` Description.
+
+  Example:
+
+  ```html
+  <cells-step-select-operation-type></cells-step-select-operation-type>
+  ```
+
+  ## Styling
+  The following custom properties and mixins are available for styling:
+
+  ### Custom Properties
+  | Custom Property     | Selector | CSS Property | Value       |
+  | ------------------- | -------- | ------------ | ----------- |
+  | --cells-fontDefault | :host    | font-family  |  sans-serif |
+  ### @apply
+  | Mixins    | Selector | Value |
+  | --------- | -------- | ----- |
+  | --cells-step-select-operation-type | :host    | {} |
+
+  * @customElement
+  * @polymer
+  * @extends {Polymer.Element}
+  * @demo demo/index.html
+*/var CellsStepSelectOperationType=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(CellsStepSelectOperationType,_Polymer$mixinBehavio);function CellsStepSelectOperationType(){babelHelpers.classCallCheck(this,CellsStepSelectOperationType);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(CellsStepSelectOperationType).apply(this,arguments))}babelHelpers.createClass(CellsStepSelectOperationType,[{key:"isValid",/*
+  * @desc The template require this function in true for cells-step funcionality
+  * @return {Boolean}
+  */value:function isValid(){return!0}/*
+  * @desc Detect which operation type was pressed and send a event
+  * type {Array}
+  */},{key:"_detectTypeOperation",value:function _detectTypeOperation(event){this.collapsed=!0;this.decorated=!1;this.previousSibling.decorated=!1;this.set("operationType",event.model.__data.item.key);this.dispatchEvent(new CustomEvent("change-step-event",{bubbles:!0,composed:!0}));this.dispatchEvent(new CustomEvent(event.model.__data.item.event,{detail:!0}))}}],[{key:"is",get:function get(){return"cells-step-select-operation-type"}},{key:"properties",get:function get(){return{/*
+      * @desc Receipt the structure of the operations for set un the HTML
+      * @type {Array}
+      */operations:Array,/*
+      * @desc Set the information in the collapsed section
+      * @type {String}
+      */operationType:String,/*
+      * @desc Used for collapsed the cells-step component
+      * @type {Boolean}
+      */collapsed:Boolean,/*
+      * @desc Set a description in a each operation type
+      * @type {String}
+      */operationDescription:String}}}]);return CellsStepSelectOperationType}(Polymer.mixinBehaviors([CellsBehaviors.i18nBehavior,CellsBehaviors.StepBehavior,CellsBehaviors.ProductsBehavior,CellsBehaviors.GlobalProductsListsBehavior],Polymer.Element));customElements.define(CellsStepSelectOperationType.is,CellsStepSelectOperationType);</script></dom-module></div></body></html>

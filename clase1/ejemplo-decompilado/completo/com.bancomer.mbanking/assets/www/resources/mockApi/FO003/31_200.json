@@ -1,0 +1,84 @@
+{
+    "data": {
+        "id": "31",
+        "alias": "TRANS TERCER CTA CANCELADA",
+        "shortAlias": "TRASTERCWE",
+        "operationType": {
+            "id": "INTERNAL_TRANSFER",
+            "description": "TRANSFERENCIAS A TERCEROS"
+        },
+        "notification": {
+            "notificationDay": 10,
+            "isActive": true,
+            "contactInformation": {
+                "contactDetailId": "1",
+                "value": "BBVA123@GMAIL.COM"
+            }
+        },
+        "contract": {
+            "number": "001101300210429627",
+            "numberType": {
+                "id": "CCC",
+                "name": "CUSTOMER ACCOUNT CODE"
+            },
+            "productType": {
+                "id": "ACCOUNT",
+                "name": "ACCOUNT"
+            }
+        },
+        "operationDetail": {
+            "receiver": {
+                "contract": {
+                    "number": "001101300201027028",
+                    "numberType": {
+                        "id": "PAN",
+                        "name": "PRIMARY ACCOUNT NUMBER"
+                    },
+                    "productType": {
+                        "id": "CARD",
+                        "name": "CARD"
+                    }
+                },
+                "holder": {
+                    "holderName": "RICARDO URBINA POMA"
+                }
+            }
+        },
+        "operationImport": {
+            "currency": "PEN",
+            "amount": 311.77
+        },
+        "availableChannels": [
+            {
+                "availableChannel": {
+                    "id": "AGEX",
+                    "name": "AGENTE EXPRESS"
+                }
+            },
+            {
+                "availableChannel": {
+                    "id": "ATM",
+                    "name": "CAJERO ATM"
+                }
+            },
+            {
+                "availableChannel": {
+                    "id": "BMOV",
+                    "name": "BANCA MOVIL"
+                }
+            },
+            {
+                "availableChannel": {
+                    "id": "BNET",
+                    "name": "BANCA POR INTERNET"
+                }
+            },
+            {
+                "availableChannel": {
+                    "id": "SMS",
+                    "name": "BANCA SMS"
+                }
+            }
+        ]
+    }
+}

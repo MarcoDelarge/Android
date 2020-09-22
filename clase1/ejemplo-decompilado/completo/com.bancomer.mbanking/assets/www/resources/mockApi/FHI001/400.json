@@ -1,0 +1,11 @@
+{
+    "version": 1,
+    "severity": "FATAL",
+    "http-status": 409,
+    "error-code": "01179004",
+    "error-message": "No existe informacion con los datos proporcionados.",
+    "consumer-request-id": "abad84df-bdad-4c5f-b01c-d80910440d85",
+    "system-error-code": "functionalError",
+    "system-error-description": "Error funcional por defecto.",
+    "system-error-cause": "01179004(MCHF): No existe informacion con los datos proporcionados."
+}

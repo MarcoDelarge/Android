@@ -1,0 +1,34 @@
+{
+  "data": [
+      {
+      "documentTemplate": {
+        "id": "RECOLOCACION",
+        "templateType": {
+          "id": "PDF",
+          "description": "PDF file"
+        }
+      },
+      "id": "GMDFTRC001"
+    },
+    {
+      "documentTemplate": {
+        "id": "DOMICILIACION ",
+        "templateType": {
+          "id": "PDF",
+          "description": "PDF file"
+        }
+      },
+      "id": "GMDDMCN003"
+    },
+    {
+      "documentTemplate": {
+        "id": "CONTRATO CREDITON NOMINA C/SEGURO DE VIDA",
+        "templateType": {
+          "id": "PDF",
+          "description": "PDF file"
+        }
+      },
+      "id": "GMDCNSV010"
+    }
+  ]
+}

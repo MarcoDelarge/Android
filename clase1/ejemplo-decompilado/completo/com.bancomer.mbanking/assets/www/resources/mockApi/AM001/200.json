@@ -1,0 +1,32 @@
+{
+  "data": {
+      "id": "97162287",
+      "firstName": "VELMA",
+      "lastName": "GRADDY",
+      "secondLastName": "CHAVOUSTIE",
+      "contactDetails": [
+          {
+              "id": "1",
+              "contact": "PRUEBA.GLOMO7@MAIL.COM",
+              "contactType": "EMAIL"
+          },
+          {
+              "id": "2",
+              "contact": "46722311",
+              "extension": "71291",
+              "contactType": "PHONE_NUMBER"
+          }
+      ],
+      "businessAgentType": {
+          "id": "TRADITIONAL",
+          "name": "GESTOR REMOTO"
+      },
+      "scheduleTimes": [
+          {
+              "id": "WEEK",
+              "startTime": "14:00:00",
+              "endTime": "17:00:00"
+          }
+      ]
+  }
+}

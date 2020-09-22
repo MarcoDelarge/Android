@@ -1,0 +1,38 @@
+{
+"data": [
+    {
+        "situationType": {
+            "id": "PARTIALLY_INSURED"
+        },
+        "insuranceType": "LIFE_HEALTH",
+        "insurances": [
+            {
+                "optionType": "CURRENT",
+                "insuredAmount": {
+                    "amount": 99339,
+                    "currency": "MXN"
+                },
+                "terms": [
+                    {
+                        "number": 6,
+                        "frequency": "MONTHLY"
+                    }
+                ]
+            },
+            {
+                "optionType": "OPTIMAL",
+                "insuredAmount": {
+                    "amount": 1500000,
+                    "currency": "MXN"
+                },
+                "terms": [
+                    {
+                        "number": 18,
+                        "frequency": "MONTHLY"
+                    }
+                ]
+            }
+        ]
+    }
+]
+}

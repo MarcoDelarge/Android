@@ -1,0 +1,65 @@
+{
+    "data": [
+      
+      {
+        "id": "0001",
+        "description": "TITULAR MASCULINO"
+      },
+      {
+        "id": "0002",
+        "description": "TITULAR  FEMENINO"
+      },
+      {
+        "id": "0003",
+        "description": "CONYUGE"
+      },
+      {
+        "id": "0004",
+        "description": "HIJO"
+      },
+      {
+        "id": "0005",
+        "description": "CONCUBINARIO"
+      },
+      {
+        "id": "0006",
+        "description": "OTRO"
+      },
+      {
+        "id": "0007",
+        "description": "PADRE"
+      },
+      {
+        "id": "0008",
+        "description": "MADRE"
+      },
+      {
+        "id": "0009",
+        "description": "SUEGROS"
+      },
+      {
+        "id": "0010",
+        "description": "ABUELO/ABUELA"
+      },
+      {
+        "id": "0012",
+        "description": "HERMANO"
+      },
+      {
+        "id": "0033",
+        "description": "AMIGO"
+      },
+      {
+        "id": "0022",
+        "description": "SUEGRO/A"
+      },
+      {
+        "id": "EMAIL",
+        "description": "CORREO ELECTRONICO"
+      },
+      {
+        "id": "PORT",
+        "description": "PORTAL AUTOSERVICIO"
+      }
+    ]
+  }

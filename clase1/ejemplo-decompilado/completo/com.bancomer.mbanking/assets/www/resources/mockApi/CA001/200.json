@@ -1,0 +1,24 @@
+{
+  "data": [
+    {
+      "activationId": "ON_OFF",
+      "isActive": true,
+      "name": ""
+    },
+    {
+      "activationId": "CASHWITHDRAWAL_ACTIVATION",
+      "isActive": true,
+      "name": "Disposición de efectivo"
+    },
+    {
+      "activationId": "FOREIGN_PURCHASES_ACTIVATION",
+      "isActive": false,
+      "name": "Compras en el exterior"
+    },
+    {
+      "activationId": "ECOMMERCE_ACTIVATION",
+      "isActive": true,
+      "name": "Compras por Internet"
+    }
+  ]
+}

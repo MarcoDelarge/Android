@@ -1,0 +1,84 @@
+{
+    "data": {
+        "id": "142",
+        "alias": "TRANS INTERBAN MOD1",
+        "shortAlias": "TR INT",
+        "operationType": {
+            "id": "INTERBANK_TRANSFER",
+            "description": "TRANSFERENCIAS INTERBANCARIAS"
+        },
+        "notification": {
+            "notificationDay": 10,
+            "isActive": true,
+            "contactInformation": {
+                "contactDetailId": "0"
+            }
+        },
+        "contract": {
+            "number": "00110241000288953342",
+            "numberType": {
+                "id": "CCC",
+                "name": "CUSTOMER ACCOUNT CODE"
+            },
+            "productType": {
+                "id": "ACCOUNT",
+                "name": "ACCOUNT"
+            }
+        },
+        "operationDetail": {
+            "receiver": {
+                "contract": {
+                    "number": "00219100000188008956",
+                    "isOwner": false,
+                    "numberType": {
+                        "id": "CCC",
+                        "name": "CCC"
+                    },
+                    "bank": {
+                        "id": "002",
+                        "name": "CREDITO DEL PERU"
+                    },
+                    "productType": {
+                        "id": "ACCOUNT",
+                        "name": "ACCOUNT"
+                    }
+                },
+                "holder": {
+                    "holderName": "CAVERO LEAL",
+                    "identityDocuments": [
+                        {
+                            "documentNumber": "43557923   ",
+                            "documentType": {
+                                "id": "DNI"
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        "operationImport": {
+            "currency": "PEN",
+            "amount": 1099.97
+        },
+        "availableChannels": [
+            {
+                "availableChannel": {
+                    "id": "BMOV",
+                    "name": "BANCA MOVIL"
+                }
+            },
+            {
+                "availableChannel": {
+                    "id": "BNET",
+                    "name": "BANCA POR INTERNET"
+                }
+            },
+            {
+                "availableChannel": {
+                    "id": "BNET",
+                    "name": "BANCA POR INTERNET"
+                }
+            }
+        ]
+    }
+}

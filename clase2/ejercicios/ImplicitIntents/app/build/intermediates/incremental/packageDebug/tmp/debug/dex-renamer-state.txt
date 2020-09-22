@@ -1,0 +1,4 @@
+#Mon Sep 21 23:39:28 CDT 2020
+base.0=C\:\\Users\\soyma\\Documents\\android-fundamentals\\clase2\\ejercicios\\ImplicitIntents\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+path.0=classes.dex
+renamed.0=classes.dex

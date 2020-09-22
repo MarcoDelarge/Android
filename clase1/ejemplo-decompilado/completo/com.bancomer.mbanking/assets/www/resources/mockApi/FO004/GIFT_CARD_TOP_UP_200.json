@@ -1,0 +1,42 @@
+{
+    "data": {
+        "id": "119",
+        "alias": "PREPAID CARD TOP UP ALIAS",
+        "operationType": {
+            "id": "GIFT_CARD_TOP_UP"
+        },
+        "notification": {
+            "contactInformation": {
+                "contactDetailId": "0"
+            }
+        },
+        "contract": {
+            "number": "00110130000210411744",
+            "numberType": {
+                "id": "CCC",
+                "name": "CCC"
+            },
+            "productType": {
+                "id": "ACCOUNT",
+                "name": "ACCOUNT"
+            }
+        },
+        "operationImport": {
+            "currency": "PEN",
+            "amount": 50
+        },
+        "availableChannels": [
+            {
+                "availableChannel": {
+                    "id": "BMOV"
+                }
+            },
+            {
+                "availableChannel": {
+                    "id": "BNET"
+                }
+            }
+        ],
+        "creationDate": "2018-08-15T12:25:33.000-0500"
+    }
+}

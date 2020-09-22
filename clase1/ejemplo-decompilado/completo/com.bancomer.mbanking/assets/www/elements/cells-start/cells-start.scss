@@ -1,0 +1,62 @@
+:host {
+  display: block;
+  box-sizing: border-box;
+  padding-bottom: 100px;
+  font-family: var(--cells-fontDefault, sans-serif);
+  @apply --cells-start;
+}
+
+:host([hidden]), [hidden] {
+  display: none !important;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/**
+ * Empty mixins to set outline for :focus and :active states.
+ * These mixins are meant to be set in an application's theme.
+ * --cells-global-focus, --cells-global-active
+ */
+@each $state in ('focus', 'active') {
+  *:#{$state} {
+    @apply --cells-global-#{$state};
+  }
+}
+
+button:active { @apply --cells-global-active; }
+
+a {
+  color: black;
+  cursor: pointer;
+}
+
+.pagelink {
+  margin: 30px;
+  text-align: center;
+  width: 90%;
+}
+
+.card {
+  min-width: 3.75rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  cursor: pointer;
+  color: var(--bbva-white, #fff);
+  background-color: var(--bbva-medium-blue, #237ABA);
+  width: 90%;
+  @apply --cells-fontDefaultMedium
+}
+
+.cardsContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.header {
+  margin-bottom: 0.5rem;
+  @apply --cells-fontDefaultMedium;
+}

@@ -1,0 +1,4 @@
+#Sun Sep 20 19:53:46 CDT 2020
+base.0=/Users/developer/Documents/curso-android/android-fundamentals-apps-v2/TwoActivities/app/build/intermediates/transforms/dexMerger/debug/0
+path.0=classes.dex
+renamed.0=classes.dex

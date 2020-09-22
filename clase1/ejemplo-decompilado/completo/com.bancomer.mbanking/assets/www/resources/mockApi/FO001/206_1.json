@@ -1,0 +1,138 @@
+
+{
+  "data": [
+    { 
+      "_comment": "Please do not change id here",
+      "id": "19",
+      "alias": "Envío dinero efectivo paginationKey=1",
+      "shortAlias": "EnvioDinero",
+      "operationType": {
+        "id": "MOBILE_TRANSFER",
+        "description": "Efectivo Móvil"
+      }
+    },
+    {
+      "_comment": "Please do not change id here",
+      "id": "114",
+      "alias": "RECAR_CLARO_DALLAS paginationKey=1",
+      "shortAlias": "CLARODALLA",
+      "operationType": {
+          "id": "MOBILE_TOP_UP",
+          "description": "RECARGA DE CELULARES"
+      },
+      "notification": {
+          "notificationDay": 19
+      }
+    },
+    {
+      "_comment": "Please do not change id here, its added in detail FO response",
+      "id": "118",
+      "alias": "DATA JELSY USD paginationKey=1",
+      "shortAlias": "glomo",
+      "operationType": {
+          "id": "MOBILE_TRANSFER",
+          "description": "RECARGA DE TARJETA REGALO"
+      },
+      "notification": {
+          "notificationDay": 19
+      }
+    },
+    {
+      "_comment": "Please do not change id here",
+      "id": "1115",
+      "alias": "Transfer Padre paginationKey=1",
+      "shortAlias": "TransPapa",
+      "operationType": {
+        "id": "GIFT_CARD_TOP_UP",
+        "description": "Transferencias a terceros"
+      },
+      "notification": {
+        "notificationDay": 15
+      }
+    },
+    {
+      "_comment": "Please do not change id here",
+      "id": "1138",
+      "alias": "EFECTIVO MOVI PRUEB1 paginationKey=1",
+      "shortAlias": "EFEMOVIL",
+      "operationType": {
+          "id": "MOBILE_WALLET_RELOAD",
+          "description": "RECARGA BIM"
+      },
+      "notification": {
+          "notificationDay": 0
+      }
+    },
+    {
+      "_comment": "Please do not change id here",
+      "id": "1131",
+      "alias": "Pago tarjeta BBVA primo  paginationKey=1",
+      "shortAlias": "pagTarj",
+      "operationType": {
+        "id": "INTERNAL_CREDIT_CARD_PAYMENT",
+        "description": "Pago de tarjeta de terceros"
+      },
+      "notification": {
+        "notificationDay": 5
+      }
+    },
+    {
+      "_comment": "Please do not change id here",
+      "id": "1135",
+      "alias": "PAGOS TARJETAS OTROS BANCOS paginationKey=1",
+      "shortAlias": "OTROS BANC",
+      "operationType": {
+          "id": "EXTERNAL_CREDIT_CARD_PAYMENT",
+          "description": "PAGO DE TARJETAS DE OTROS BANCOS"
+      },
+      "notification": {
+          "notificationDay": 10
+      }
+    },
+    {
+      "_comment": "Please do not change id here",
+      "id": "1117",
+      "alias": "TEST007RG67IU paginationKey=1",
+      "operationType": {
+          "id": "INTERNAL_TRANSFER",
+          "description": "TRANSFERENCIAS A TERCEROS"
+      },
+      "notification": {
+          "notificationDay": 0
+      }
+    },
+    {
+      "_comment": "Please do not change id here",
+      "id": "1142",
+      "alias": "TRANSFERENCI TERCEROS paginationKey=1",
+      "shortAlias": "TRANSFERE",
+      "operationType": {
+          "id": "INTERBANK_TRANSFER",
+          "description": "TRANSFERENCIAS INTERBANCARIAS"
+      },
+      "notification": {
+          "notificationDay": 3
+      }
+    },
+    {
+      "_comment": "Please do not change id here",
+      "id": "1g3369m-pnfin4-4ewq0e-a1a3f9-45kmp",
+      "alias": "Pago DirecTV paginationKey=1",
+      "shortAlias": "Directv",
+      "operationType": {
+        "id": "SERVICE_PAYMENT",
+        "description": "Pago de servicios"
+      },
+      "notification": {
+        "notificationDay": 18
+      }
+    }
+  ],
+  "pagination": {
+    "links": {
+        "first": "/frequent-operations/v0/frequent-operations",
+        "last": "/frequent-operations/v0/frequent-operations?paginationKey=LAST",
+        "next": "/frequent-operations/v0/frequent-operations?paginationKey=2&pageSize="
+    }
+}
+}

@@ -1,0 +1,26 @@
+{
+    "data": [
+        {
+            "id": "0DV8THBTBGXEAYSPAZ0GMAQGQBA34KBTMCE0A4KW4H0B8R21QJY0",
+            "product": {
+                "number": "4915667396723720",
+                "numberType": {
+                    "id": "PAN",
+                    "name": "Primary Account Number"
+                },
+                "productType": {
+                    "id": "ACCOUNT",
+                    "name": "Card type"
+                },
+                "bank": {
+                    "id": "0072",
+                    "name": "BANORTE"
+                },
+                "specificProductType": {
+                    "id": "DEBIT_CARD",
+                    "name": "Tarjeta de débito"
+                }
+            }
+        }
+    ]
+}

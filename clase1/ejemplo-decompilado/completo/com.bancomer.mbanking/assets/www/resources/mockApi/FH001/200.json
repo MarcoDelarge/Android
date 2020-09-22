@@ -1,0 +1,90 @@
+{  
+  "data":[  
+    {  
+      "month":"102018",
+      "finalDate":"2018-10-12 00:00:00:000000",
+      "profile":"JCasper-Murphy",
+      "healthStatus":{  
+        "id":0.179,
+        "description":"Estable"
+      },
+      "healthReasons":[
+        {  
+          "idWhyHealth":39,
+          "whyHealthDetail":"1//Has cubierto tus gastos sin consumir todo tu dinero"
+        },
+        { 
+        "idWhyHealth":10,
+        "whyHealthDetail":"0//Te falta cubrir el total de la mensualidad de tu efectivo inmediato"
+        },
+        { 
+        "idWhyHealth":9,
+        "whyHealthDetail":"0//Te falta cubrir el total del pago de tus compras a meses sin intereses"
+        },
+        { 
+        "idWhyHealth":18,
+        "whyHealthDetail":"1//Los pagos que tienes que hacer a tu tarjeta no representan gran parte de tus ingresos"
+        }
+        ],
+      "business":[  
+        {  
+          "businessType":{  
+            "id":1,
+            "name":"Financiero"
+          },
+          "tip":{  
+            "id":39,
+            "tittle":"Te recomendamos proteger a tus seres queridos con un seguro de vida y da un propósito a tu dinero //Busca dejar 2 años de tus gastos actuales",
+            "image":{  
+              "name":"CHEKUP_IMAGE_TIP_INFO_F",
+              "url":"http://archivingbbva.axtel.mx:8082/v2/documents/logo?key=CHEKUP_IMAGE_TIP_INFO_F"
+            },
+            "amount":{  
+              "amount":0.77,
+              "currency":"MXN"
+            },
+            "percentage":"0.6"
+          }
+        },
+        {  
+          "businessType":{  
+            "id":2,
+            "name":"Seguros"
+          },
+          "tip":{  
+            "id":31,
+            "tittle":"Identifica cuáles gastos son más un deseo que una necesidad//Intenta reducirlos",
+            "image":{  
+              "name":"CHEKUP_IMAGE_TIP_INFO_F",
+              "url":"http://archivingbbva.axtel.mx:8082/v2/documents/logo?key=CHEKUP_IMAGE_TIP_INFO_F"
+            },
+            "amount":{  
+              "amount":309.23,
+              "currency":"MXN"
+            },
+            "percentage":"0.74"
+          }
+        },
+        {  
+          "businessType":{  
+            "id":3,
+            "name":"Inversiones"
+          },
+          "tip":{  
+            "id":18,
+            "tittle":"Aprovecha y da un propósito a tu dinero antes de que te lo gastes//Ahorra para alcanzar tus metas",
+            "image":{  
+              "name":"CHEKUP_IMAGE_TIP_INFO_F",
+              "url":"http://archivingbbva.axtel.mx:8082/v2/documents/logo?key=CHEKUP_IMAGE_TIP_INFO_F"
+            },
+            "amount":{  
+              "amount":3050.22,
+              "currency":"MXN"
+            },
+            "percentage":"0.0"
+          }
+        }
+      ]
+    }
+  ]
+}

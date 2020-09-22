@@ -1,0 +1,116 @@
+<html><head></head><body><div hidden="" by-polymer-bundler=""><dom-module id="cells-adjustable-text-styles" assetpath="cells-adjustable-text/"><template><style>:host{display:block;box-sizing:border-box;font-family:var(--cells-fontDefault, sans-serif);@apply --cells-adjustable-text;}:host .content{padding:var(--cells-adjustable-text-padding-content, var(--cells-atom-subheader-padding-2x) var(--cells-atom-subheader-padding-2x) 0);}:host .content-title{color:var(--cells-adjustable-text-title-color, var(--bbva-600, #121212));font-size:var(--cells-adjustable-text-title-font-size, var(--cells-text-size-xl));padding-bottom:var(--cells-adjustable-text-title-padding-botom, var(--cells-atom-subheader-padding-1x));@apply --cells-fontDefaultMedium;@apply --cells-adjustable-text-content-title;}:host .content-description-complete{height:auto;padding-bottom:60px;color:var(--cells-adjustable-text-description-color-complete, var(--bbva-600, #121212));font-size:var(--cells-adjustable-text-description-font-size-complete, var(--cells-text-size-l));white-space:pre-line;line-height:var(--cells-adjustable-text-description-line-height-complete, 1.5);@apply --cells-fontDefaultLight;@apply --cells-adjustable-text-content-description-complete;}:host .content-description{color:var(--cells-adjustable-text-description-color, var(--bbva-600, #121212));font-size:var(--cells-adjustable-text-description-font-size, var(--cells-text-size-l));white-space:pre-line;line-height:var(--cells-adjustable-text-description-line-height, 1.5);max-height:var(--cells-adjustable-text-description-height, 43vh);@apply --cells-fontDefaultLight;@apply --cells-adjustable-text-content-description;}:host .content-btn{color:var(--cells-adjustable-text-btn, var(--bbva-600, #121212));font-size:var(--cells-adjustable-text-btn-font-size, var(--cells-text-size-l));padding-top:var(--cells-adjustable-text-btn-padding-top, var(--cells-atom-subheader-padding-1x));cursor:pointer;@apply --cells-fontDefaultMedium;@apply --cells-adjustable-text-content-btn;}:host .complete{max-height:var(--cells-adjustable-text-complete-height, 43vh);text-overflow:ellipsis;overflow:var(--cells-adjustable-text-complete-overflow, scroll);overflow-wrap:break-word;@apply --cells-ajustable-text-complete;}:host .hide{text-overflow:ellipsis;overflow:hidden;max-height:var(--cells-adjustable-text-hide-height, 19vh);@apply --cells-ajustable-text-hide;}:host([hidden]), [hidden]{display:none !important;}*, *:before, *:after{font:inherit;box-sizing:inherit;}</style></template></dom-module><dom-module id="cells-adjustable-text" assetpath="cells-adjustable-text/"><template><style include="cells-adjustable-text-styles cells-adjustable-text-shared-styles"></style><slot></slot><div class="content"><template is="dom-if" if="[[showTitle]]"><div class="content-title">[[title]]</div></template><template is="dom-if" if="[[showDescription]]"><div class$="content-wrapper {{change}}"><div id="text" class="content-description">[[description]]</div></div><template is="dom-if" if="[[showBtn]]"><div class="content-btn" on-tap="_clickHideShow">[[t(buttonText)]]</div></template></template></div></template><script>/**
+    `<cells-adjustable-text>` Description.
+
+    Example:
+
+    ```html
+    <cells-adjustable-text show-title show-description></cells-adjustable-text>
+    ```
+
+    This component is meant to be an adjustable text when the info area is higher than the 50% screen height
+
+    ## Styling
+    The following custom properties and mixins are available for styling:
+
+    ### Custom Properties
+| Custom Property                                           | Selector                       | CSS Property     |         Value                         |
+| --------------------------------------------------------- | ------------------------------ | ---------------- | ------------------------------------- |
+| --cells-fontDefault                                       | :host                          | font-family      |  sans-serif                           |
+| --cells-adjustable-text-title-color                       | .content-title                 | color            |  --bbva-600                           |
+| --cells-adjustable-text-title-font-size                   | .content-title                 | font-size        |  --cells-text-size-xl                 |
+| --cells-adjustable-text-title-padding-botom               | .content-title                 | padding-botom    |  --cells-atom-subheader-padding-1x    |
+| --cells-adjustable-text-description-color                 | .content-description           | color            |  --bbva-600                           |
+| --cells-adjustable-text-description-font-size             | .content-description           | font-size        |  --cells-text-size-l                  |
+| --cells-adjustable-text-description-line-height           | .content-description           | line-height      |  1.5                                  |
+| --cells-adjustable-text-description-height                | .content-description           | max-height       |  29vh                                 |
+| --cells-adjustable-text-description-color-complete        | .content-description-complete  | color            |  --bbva-600                           |
+| --cells-adjustable-text-description-font-size-complete    | .content-description-complete  | font-size        |  --cells-text-size-l                  |
+| --cells-adjustable-text-description-line-height-complete  | .content-description-complete  | line-height      |  1.5                                  |
+| --cells-adjustable-text-description-height-complete       | .content-description-complete  | max-height       |  29vh                                 |
+| --cells-adjustable-text-btn                               | .content-btn                   | color            |  --bbva-600                           |
+| --cells-adjustable-text-btn-font-size                     | .content-btn                   | font-size        |  --cells-text-size-l                  |
+| --cells-adjustable-text-btn-padding-top                   | .content-btn                   | padding-top      |  --cells-text-size-l                  |
+| --cells-adjustable-text-complete-height                   | .complete                      | max-height       |  41vh                                 |
+| --cells-adjustable-text-hide-height                       | .hide                          | max-height       |  19vh                                 |
+    ### @apply
+| Mixins                                               | Selector                       | Value |
+| ---------------------------------------------------- | ----------------------         | ----- |
+| --cells-adjustable-text                              | :host                          |  {}   |
+| --cells-adjustable-text-content-title                | .content-title                 |  {}   |
+| --cells-adjustable-text-content-description          | .content-description           |  {}   |
+| --cells-adjustable-text-content-description-complete | .content-description-complete  |  {}   |
+| --cells-adjustable-text-content-btn                  | .content-btn                   |  {}   |
+| --cells-ajustable-text-complete                      | .complete                      |  {}   |
+| --cells-ajustable-text-hide                          | .hide                          |  {}   |
+    * @Summary This component is meant to be an adjustable text when the info area is higher than the 50% screen height
+    * @customElement
+    * @polymer
+    * @extends {Polymer.Element}
+    * @demo demo/index.html
+    * @hero cells-adjustable-text.png
+  */var CellsAdjustableText=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(CellsAdjustableText,_Polymer$mixinBehavio);function CellsAdjustableText(){babelHelpers.classCallCheck(this,CellsAdjustableText);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(CellsAdjustableText).apply(this,arguments))}babelHelpers.createClass(CellsAdjustableText,[{key:"heightValue",value:function heightValue(value){this.description=value;var el=this.$$("#text");el.innerHTML=this.description;this._textCalc()}/**
+   *@desc function to get data of an API
+   */},{key:"getData",value:function getData(data){this.title=data.title;this.description=data.description}/**
+   *@desc render of Dom-If to calculate the height of the text description
+   * and screen height
+   */},{key:"_textCalc",value:function _textCalc(){if(!0===this.adjustableText){this.set("textHeight",this.$$("#text").clientHeight);if(this.textHeight>this.screenHeight){this.set("change",this.hide);this.set("showBtn",!0);this.set("buttonText",this.t(this.btnTextMore));this.textHide=!this.textHide}else{this.set("showBtn",!1)}}else{this.$$("#text").className=this.textComplete}}/**
+   * @desc Hide or show a part of the text description when it is higher than the screen height, and show or hide the show more, show less button
+   */},{key:"_clickHideShow",value:function _clickHideShow(){this.textHide=!this.textHide;this.change=this.textHide?this.hide:this.complete;var eventName="text-".concat(this.textHide?this.hiddenEvent:this.visibleEvent);this.buttonText=this.buttonText===this.t(this.btnTextMore)?this.t(this.btnTextLess):this.t(this.btnTextMore);this.dispatchEvent(new CustomEvent(eventName,{bubbles:!0,composed:!0}))}}],[{key:"is",get:function get(){return"cells-adjustable-text"}},{key:"properties",get:function get(){return{/**
+       * @desc  a flag to show or hide the title
+       * @type {Boolean}
+       */showTitle:{type:Boolean,value:!1},/**
+       * title value
+       * @type {String}
+       */title:{type:String,value:""},/**
+       *@desc a flag to show or hide the description
+       *@type {Boolean}
+       */showDescription:{type:Boolean,value:!1},/**
+       *@desc description value
+       *@type {String}
+       */description:{type:String,observer:"heightValue"},/**
+       *@desc a flag to show or hide the button
+       *@type {Boolean}
+       */showBtn:{type:Boolean,value:!1},/**
+       *@desc button show more/less
+       *@type {String}
+       */buttonText:{type:String,value:""},/**
+       *@desc The number of miliseconds to wait for the renderization of
+       * text descrioption
+       * @type {Number}
+       */responsiveness:{type:Number,value:100},/**
+       *@desc The height from which the content is hidden.
+       *@type {Number}
+       */screenHeight:{type:Number,value:120},/**
+       *@desc The text height
+       *@type {Number}
+       */textHeight:Number,/**
+       *@desc a flag to show or hide a part of the text
+       *@type {Boolean}
+       */textHide:{type:Boolean,value:!1},/**
+       *@desc Class to hide or show the content
+       *@type {String}
+       */change:String,/**
+       *@desc name of hide class
+       *@type {String}
+       */hide:{type:String,value:"hide"},/**
+       *@desc name of complete class
+       *@type {String}
+       */complete:{type:String,value:"complete"},/**
+       *@desc name of visible event
+       *@type {String}
+       */visibleEvent:{type:String,value:"visible"},/**
+       *@desc name of hidden event
+       *@type {String}
+       */hiddenEvent:{type:String,value:"hidden"},/**
+       *@desc A flag to calc the text height to hide it or not.
+       *@type {Boolean}
+       */adjustableText:{type:Boolean,value:!1},/**
+       *@desc name of content-description-complete class
+       *@type {String}
+       */textComplete:{type:String,value:"content-description-complete"},/**
+       *@desc show more button value
+       *@type {String}
+       */btnTextMore:{type:String,value:"cells-adjustable-text-more"},/**
+       *@desc show less button value
+       *@type {String}
+       */btnTextLess:{type:String,value:"cells-adjustable-text-less"}}}}]);return CellsAdjustableText}(Polymer.mixinBehaviors([CellsBehaviors.i18nBehavior],Polymer.Element));customElements.define(CellsAdjustableText.is,CellsAdjustableText);</script></dom-module></div></body></html>

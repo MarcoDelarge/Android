@@ -1,0 +1,60 @@
+{
+    "data": {
+        "id": "9",
+        "alias": "PASVELLA",
+        "operationType": {
+            "id": "MOBILE_TRANSFER",
+            "description": "EFECTIVO MóVIL"
+        },
+        "notification": {
+            "notificationDay": 0,
+            "isActive": false,
+            "contactInformation": {
+                "contactDetailId": "0"
+            }
+        },
+        "contract": {
+            "number": "00110130000210422207",
+            "numberType": {
+                "id": "CCC",
+                "name": "CUSTOMER ACCOUNT CODE"
+            },
+            "productType": {
+                "id": "ACCOUNT",
+                "name": "ACCOUNT"
+            }
+        },
+        "operationDetail": {
+            "receiver": {
+                "holder": {
+                    "holderName": "ANGELICA NICOLAU NICOLAU"
+                },
+                "mobile": "989229011"
+            }
+        },
+        "operationImport": {
+            "currency": "PEN",
+            "amount": 40
+        },
+        "availableChannels": [
+            {
+                "availableChannel": {
+                    "id": "BMOV",
+                    "name": "BANCA MOVIL"
+                }
+            },
+            {
+                "availableChannel": {
+                    "id": "BNET",
+                    "name": "BANCA POR INTERNET"
+                }
+            },
+            {
+                "availableChannel": {
+                    "id": "BNET",
+                    "name": "BANCA POR INTERNET"
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,137 @@
+{
+    "data": {
+      "accountId": "mhgfjytdtr3355634",
+      "number": "001104860190049136",
+      "numberType": {
+        "id": "IBAN",
+        "name": "International Bank Account Number"
+      },
+      "formats": [
+        {
+          "number": "0182 1642 03 0201537412",
+          "numberType": {
+            "id": "CCC",
+            "name": "Customer Account Code"
+          }
+        }
+      ],
+      "accountFamily": {
+        "id": "COMMON",
+        "name": "Common Account."
+      },
+      "accountType": {
+        "id": "14-260",
+        "name": "Cuenta Express Bancomer"
+      },
+      "title": {
+        "id": "14-260",
+        "name": "Cuenta Express Bancomer"
+      },
+      "joint": {
+        "id": "SINGLE",
+        "name": "Individual"
+      },
+      "bank": {
+        "bankId": "0101",
+        "name": "BBVA Continental",
+        "branch": {
+          "branchId": "4000",
+          "name": "Oficina Principal"
+        }
+      },
+      "alias": "Work account",
+      "address": {
+        "addressName": "Av. Pte.Roque Saenz Pena 991",
+        "city": "Buenos Aires",
+        "state": "Buenos Aires",
+        "country": {
+          "id": "AR",
+          "name": "Argentina"
+        },
+        "zipCode": "C1035AAE",
+        "alias": "Current address"
+      },
+      "openingDate": "2010-02-02",
+      "status": {
+        "id": "ACTIVATED",
+        "name": "Account blocked"
+      },
+      "image": {
+        "id": "IMAGE_ACCOUNT",
+        "name": "Image of the account",
+        "url": "http://.../image.jpg"
+      },
+      "relatedContracts": [
+        {
+          "relatedContractId": "1235",
+          "number": "4940 1970 8307 5555",
+          "numberType": {
+            "id": "PAN",
+            "name": "Permanent Account Number"
+          },
+          "product": {
+            "id": "CARDS",
+            "name": "Cards"
+          },
+          "relationType": {
+            "id": "LINKED_WITH",
+            "name": "Linked with"
+          }
+        }
+      ],
+      "currencies": [
+        {
+          "currency": "EUR",
+          "isMajor": false
+        },
+        {
+          "currency": "USD",
+          "isMajor": true
+        }
+      ],
+      "availableBalance": {
+        "currentBalances": [
+          {
+            "amount": 500,
+            "currency": "EUR"
+          },
+          {
+            "amount": 556.05,
+            "currency": "USD"
+          }
+        ],
+        "postedBalances": [
+          {
+            "amount": 550,
+            "currency": "EUR"
+          },
+          {
+            "amount": 611.66,
+            "currency": "USD"
+          }
+        ],
+        "pendingBalances": [
+          {
+            "amount": -50,
+            "currency": "EUR"
+          },
+          {
+            "amount": -55.61,
+            "currency": "USD"
+          }
+        ]
+      },
+      "participants": [
+        {
+          "participantId": "1234123276",
+          "firstName": "Ricardo",
+          "lastName": "Martin",
+          "participantType": {
+            "id": "HOLDER",
+            "name": "Holder"
+          }
+        }
+      ],
+      "offerId": "CHRISTMAS_CAMPAIGN"
+    }
+  }

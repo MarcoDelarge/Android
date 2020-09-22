@@ -1,0 +1,370 @@
+<html><head></head><body><div hidden="" by-polymer-bundler=""><dom-module id="iron-autogrow-textarea" assetpath="iron-autogrow-textarea/"><template><style>:host{display:inline-block;position:relative;width:400px;border:1px solid;padding:2px;-moz-appearance:textarea;-webkit-appearance:textarea;overflow:hidden;}.mirror-text{visibility:hidden;word-wrap:break-word;@apply --iron-autogrow-textarea;}.fit{@apply --layout-fit;}textarea{position:relative;outline:none;border:none;resize:none;background:inherit;color:inherit;width:100%;height:100%;font-size:inherit;font-family:inherit;line-height:inherit;text-align:inherit;@apply --iron-autogrow-textarea;}textarea::-webkit-input-placeholder{@apply --iron-autogrow-textarea-placeholder;}textarea:-moz-placeholder{@apply --iron-autogrow-textarea-placeholder;}textarea::-moz-placeholder{@apply --iron-autogrow-textarea-placeholder;}textarea:-ms-input-placeholder{@apply --iron-autogrow-textarea-placeholder;}</style><div id="mirror" class="mirror-text" aria-hidden="true">&nbsp;</div><div class="textarea-container fit"><textarea id="textarea" name$="[[name]]" aria-label$="[[label]]" autocomplete$="[[autocomplete]]" autofocus$="[[autofocus]]" inputmode$="[[inputmode]]" placeholder$="[[placeholder]]" readonly$="[[readonly]]" required$="[[required]]" disabled$="[[disabled]]" rows$="[[rows]]" minlength$="[[minlength]]" maxlength$="[[maxlength]]"></textarea></div></template></dom-module><script>Polymer({is:"iron-autogrow-textarea",behaviors:[Polymer.IronValidatableBehavior,Polymer.IronControlState],properties:{/**
+       * Use this property instead of `bind-value` for two-way data binding.
+       * @type {string|number}
+       */value:{observer:"_valueChanged",type:String,notify:!0},/**
+       * This property is deprecated, and just mirrors `value`. Use `value` instead.
+       * @type {string|number}
+       */bindValue:{observer:"_bindValueChanged",type:String,notify:!0},/**
+       * The initial number of rows.
+       *
+       * @attribute rows
+       * @type number
+       * @default 1
+       */rows:{type:Number,value:1,observer:"_updateCached"},/**
+       * The maximum number of rows this element can grow to until it
+       * scrolls. 0 means no maximum.
+       *
+       * @attribute maxRows
+       * @type number
+       * @default 0
+       */maxRows:{type:Number,value:0,observer:"_updateCached"},/**
+       * Bound to the textarea's `autocomplete` attribute.
+       */autocomplete:{type:String,value:"off"},/**
+       * Bound to the textarea's `autofocus` attribute.
+       */autofocus:{type:Boolean,value:!1},/**
+       * Bound to the textarea's `inputmode` attribute.
+       */inputmode:{type:String},/**
+       * Bound to the textarea's `placeholder` attribute.
+       */placeholder:{type:String},/**
+       * Bound to the textarea's `readonly` attribute.
+       */readonly:{type:String},/**
+       * Set to true to mark the textarea as required.
+       */required:{type:Boolean},/**
+       * The minimum length of the input value.
+       */minlength:{type:Number},/**
+       * The maximum length of the input value.
+       */maxlength:{type:Number},/**
+       * Bound to the textarea's `aria-label` attribute.
+       */label:{type:String}},listeners:{input:"_onInput"},/**
+     * Returns the underlying textarea.
+     * @return {!HTMLTextAreaElement}
+     */get textarea(){return this.$.textarea},/**
+     * Returns textarea's selection start.
+     * @return {number}
+     */get selectionStart(){return this.$.textarea.selectionStart},/**
+     * Returns textarea's selection end.
+     * @return {number}
+     */get selectionEnd(){return this.$.textarea.selectionEnd},/**
+     * Sets the textarea's selection start.
+     */set selectionStart(value){this.$.textarea.selectionStart=value},/**
+     * Sets the textarea's selection end.
+     */set selectionEnd(value){this.$.textarea.selectionEnd=value},attached:function attached(){/* iOS has an arbitrary left margin of 3px that isn't present
+       * in any other browser, and means that the paper-textarea's cursor
+       * overlaps the label.
+       * See https://github.com/PolymerElements/paper-input/issues/468.
+       */var IS_IOS=navigator.userAgent.match(/iP(?:[oa]d|hone)/);if(IS_IOS){this.$.textarea.style.marginLeft="-3px"}},/**
+     * Returns true if `value` is valid. The validator provided in `validator`
+     * will be used first, if it exists; otherwise, the `textarea`'s validity
+     * is used.
+     * @return {boolean} True if the value is valid.
+     */validate:function validate(){// Use the nested input's native validity.
+var valid=this.$.textarea.validity.valid;// Only do extra checking if the browser thought this was valid.
+if(valid){// Empty, required input is invalid
+if(this.required&&""===this.value){valid=!1}else if(this.hasValidator()){valid=Polymer.IronValidatableBehavior.validate.call(this,this.value)}}this.invalid=!valid;this.fire("iron-input-validate");return valid},_bindValueChanged:function _bindValueChanged(bindValue){this.value=bindValue},_valueChanged:function _valueChanged(value){var textarea=this.textarea;if(!textarea){return}// If the bindValue changed manually, then we need to also update
+// the underlying textarea's value. Otherwise this change was probably
+// generated from the _onInput handler, and the two values are already
+// the same.
+if(textarea.value!==value){textarea.value=!(value||0===value)?"":value}this.bindValue=value;this.$.mirror.innerHTML=this._valueForMirror();// Manually notify because we don't want to notify until after setting value.
+this.fire("bind-value-changed",{value:this.bindValue})},_onInput:function _onInput(event){var eventPath=Polymer.dom(event).path;this.value=eventPath?eventPath[0].value:event.target.value},_constrain:function _constrain(tokens){var _tokens;tokens=tokens||[""];// Enforce the min and max heights for a multiline input to avoid measurement
+if(0<this.maxRows&&tokens.length>this.maxRows){_tokens=tokens.slice(0,this.maxRows)}else{_tokens=tokens.slice(0)}while(0<this.rows&&_tokens.length<this.rows){_tokens.push("")}// Use &#160; instead &nbsp; of to allow this element to be used in XHTML.
+return _tokens.join("<br/>")+"&#160;"},_valueForMirror:function _valueForMirror(){var input=this.textarea;if(!input){return}this.tokens=input&&input.value?input.value.replace(/&/gm,"&amp;").replace(/"/gm,"&quot;").replace(/'/gm,"&#39;").replace(/</gm,"&lt;").replace(/>/gm,"&gt;").split("\n"):[""];return this._constrain(this.tokens)},_updateCached:function _updateCached(){this.$.mirror.innerHTML=this._constrain(this.tokens)}});</script><dom-module id="cells-autogrow-textarea-styles" assetpath="cells-autogrow-textarea/"><template><style>:host{display:block;font-family:var(--cells-fontDefault, sans-serif);box-sizing:border-box;position:relative;padding:16px;background-color:var(--cells-autogrow-textarea-background-color, #F4F4F4);border-bottom:var(--cells-autogrow-textarea-border-bottom, 1px solid #bbbbbb);min-height:var(--cells-autogrow-textarea-min-height, 80px);@apply --cells-autogrow-textarea;}:host([hidden]), [hidden]{display:none !important;}*, *:before, *:after{box-sizing:inherit;}iron-autogrow-textarea{width:100%;border:none;--iron-autogrow-textarea:{margin-left:0px !important;};@apply --cells-autogrow-iron-element-style;}.area-label{font-size:1rem;color:var(--cells-autogrow-textarea-label-color, var(--bbva-500, #BDBDBD));@apply --cells-autogrow-textarea-area-label;}.area-label.selected{font-size:0.75rem;color:var(--cells-autogrow-textarea-label-selected-color, var(--bbva-500, #BDBDBD));@apply --cells-autogrow-textarea-area-label-selected;}.area{-webkit-appearance:none;}</style></template></dom-module><dom-module id="cells-autogrow-textarea" assetpath="cells-autogrow-textarea/"><template><style include="cells-autogrow-textarea-styles cells-autogrow-textarea-shared-styles"></style><span id="label" class$="area-label [[_selectAreaClass(areaValue)]]">[[areaLabel]]</span><iron-autogrow-textarea id="ironArea" on-focus="_focusChanged" on-blur="_blurChanged" class="area" value="{{areaValue}}" style$="max-height: [[areaMaxHeight]]px; min-height: [[areaMinHeight]]px;" on-value-changed="_areaValueChanged"></iron-autogrow-textarea></template><script>(function(){'use strict';Polymer({/**
+     * fires when the iron-autogrow-textarea gets focused or blured
+     * @event cells-autogrow-textarea-focus-changed
+     *
+     * fires when the user types text inside text-area with text as payload
+     * @event cells-autogrow-textarea-value-changed
+     */is:"cells-autogrow-textarea",properties:{/**
+       * @type {String}
+       * text-area label
+       */areaLabel:String,/**
+       * @type {String}
+       * text-area value
+       */areaValue:{type:String,notify:!0},/**
+       * @type {Number}
+       * text-area max height after which it can scroll
+       */areaMaxHeight:Number,/**
+       * @type {Number}
+       * text-area max height after which it can scroll
+       */areaMinHeight:Number},listeners:{tap:"_areaTapped"},/**
+     * iron-autogrow-textarea on-focus event method
+     * @param {*} e
+     */_focusChanged:function _focusChanged(e){this.dispatchEvent(new CustomEvent("cells-autogrow-textarea-focus-changed",{detail:!0,bubbles:!0,composed:!0}))},/**
+     * iron-autogrow-textarea on-blur event method
+     * @param {*} e
+     */_blurChanged:function _blurChanged(e){this.dispatchEvent(new CustomEvent("cells-autogrow-textarea-focus-changed",{detail:!1,bubbles:!0,composed:!0}));if(!this.areaValue||0===this.areaValue.length){this.$.label.classList.remove("selected")}},/**
+     * generic tap method on cells-autogrow-textarea
+     * @param {*} e
+     */_areaTapped:function _areaTapped(e){this.$.label.classList.add("selected")},/**
+     * iron-autogrow-textarea on-value-changed event method
+     * dispatches event with text-area value as payload
+     * @param {Object} e
+     */_areaValueChanged:function _areaValueChanged(e){this.dispatchEvent(new CustomEvent("cells-autogrow-textarea-value-changed",{detail:e.detail.value,bubbles:!0,composed:!0}))},/**
+     * method on areaLabel that toggles class when selected
+     * @param {String} val
+     */_selectAreaClass:function _selectAreaClass(val){return val&&0<val.length?"selected":""}})})();</script></dom-module><dom-module id="cells-message-composer-styles" assetpath="cells-message-composer/"><template><style>:host{display:block;box-sizing:border-box;font-family:var(--cells-fontDefault, sans-serif);@apply --cells-message-composer;}:host([hidden]), [hidden]{display:none !important;}*, *:before, *:after{font:inherit;box-sizing:inherit;}.infoContainer{background-color:var(--bbva-navy, #072146);@apply --cells-message-composer-infoContainer;}.item-wrapper{position:relative;background-color:var(--bbva-navy, #072146);padding:30px 30px 0 30px;@apply --cells-message-composer-item-wrapper;}.item-wrapper .title-wrapper{display:flex;justify-content:space-between;@apply --cells-message-composer-title-wrapper;}.item-wrapper .title-wrapper .item-title{color:var(--bbva-white, #fff);font-weight:bold;@apply --cells-message-composer-item-title;}.item-wrapper .title-wrapper .item-link{font-family:var(--BentonSansBBVA-Bold);font-weight:bold;font-size:14px;color:var(--bbva-light-blue, #5BBEFF);@apply --cells-message-composer-item-link;}.item-wrapper .item-contact{--cells-key-values-key:{color:var(--bbva-white, #fff);font-family:var(--BentonSansBBVA-Bold);font-weight:bold;text-transform:capitalize;};--cells-key-values-value:{color:var(--bbva-white, #fff);font-size:14px;text-transform:lowercase;};@apply --cells-message-composer-item-contact;}.item-wrapper .decorator{margin-bottom:0;margin-top:31px;border:0.5px rgba(255, 255, 255, 0.3) solid;@apply --cells-message-composer-decorator;}.text-area-title{padding:30px 0px 20px 30px;@apply --cells-message-composer-text-area-title;}.text-area{margin:0 30px;@apply --cells-message-composer-text-area;}.message-wrapper{padding:10px 30px;display:flex;@apply --cells-message-composer-message-wrapper;}.message-wrapper .message-icon{color:var(--cells-message-composer-message-icon-color, var(--bbva-light-blue, #5BBEFF));@apply --cells-message-composer-message-wrapper-message-icon;}.message-wrapper .message{padding-left:10px;color:var(--bbva-500, #666666);@apply --cells-message-composer-message-wrapper-message;}.footer{padding:30px 0px;display:flex;justify-content:center;@apply --cells-message-composer-footer;}</style></template></dom-module><dom-module id="cells-message-composer" assetpath="cells-message-composer/"><template><style include="cells-message-composer-styles cells-message-composer-shared-styles"></style><div class="content"><div class="infoContainer"><template is="dom-repeat" items="[[infoList]]"><div class="item-wrapper"><div class="title-wrapper"><p class="item-title">[[t(item.title)]]</p><p class="item-link" hidden$="[[!item.showLink]]" on-tap="_linkAction">[[t(itemLink)]]</p></div><cells-key-values class="item-contact" key="[[item.contactName]]" value="[[item.contact]]" hidden$="[[!item.showContact]]"></cells-key-values><hr class="decorator"></div></template></div><p class="text-area-title">[[t(textAreaTitle)]]</p><cells-autogrow-textarea id="autoGrowTextArea" class="text-area" area-label="[[t(textAreaLabel)]]" area-min-height="[[textAreaMinHeight]]" area-max-height="[[textAreaMaxHeight]]" area-value="{{message}}"></cells-autogrow-textarea><div class="message-wrapper" hidden$="[[!showMessage]]"><iron-icon class="message-icon" icon$="[[messageIcon]]" style$="width: [[iconSize]]px; height: [[iconSize]]px;" aria-hidden="true"></iron-icon><iron-label class="message">[[t(commentsMessage)]]</iron-label></div><div class="footer"><cells-st-button class="primary" on-tap="_submitData"><button disabled="[[!showPrimaryButton]]">[[t(primaryButtonText)]]</button></cells-st-button></div></div><slot></slot></template><script>{var _Polymer=Polymer,html=_Polymer.html,CellsMessageComposer=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(CellsMessageComposer,_Polymer$mixinBehavio);function CellsMessageComposer(){babelHelpers.classCallCheck(this,CellsMessageComposer);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(CellsMessageComposer).apply(this,arguments))}babelHelpers.createClass(CellsMessageComposer,[{key:"_messageChanged",/**
+     * Observer to watch message property changes
+     * @param {String} newVal
+     * @param {String} oldVal
+     */value:function _messageChanged(newVal,oldVal){this.set("showPrimaryButton",!!newVal)}/**
+     * Function to emit on-tap event and pass the object as payload
+     * @param {Object} event
+     */},{key:"_linkAction",value:function _linkAction(){this.set("unmasked",!this.unmasked);this.set("itemLink",this.unmasked?"cells-message-composer-mask-contact-info-text":"cells-message-composer-unmask-contact-info-text");this.dispatchEvent(new CustomEvent("toggle-contact",{detail:this.unmasked,bubbles:!0,composed:!0}))}/**
+     * Function to emit 'submit-message-data' event and pass the message as payload
+     * @param {Object} event
+     */},{key:"_submitData",value:function _submitData(event){this.dispatchEvent(new CustomEvent("submit-message-data",{detail:this.message,bubbles:!0,composed:!0}));this.reset();this.$.autoGrowTextArea.blur()}/**
+     * Function to reset data
+     */},{key:"reset",value:function reset(pageActive){if(pageActive&&!pageActive.value){this.set("message",void 0);this.set("infoList",void 0);this.set("itemLink","cells-message-composer-unmask-contact-info-text");this.set("unmasked",!1)}}}],[{key:"is",get:function get(){return"cells-message-composer"}},{key:"properties",get:function get(){return{/**
+         * Email senders and receivers information.
+         * @type {Array}
+         */infoList:{type:Array},/**
+         * link text
+         * @type {String}
+         */itemLink:{type:String,value:"cells-message-composer-unmask-contact-info-text"},/**
+         * Boolean to either show or hide comment message
+         * @type {Boolean}
+         */showMessage:{type:Boolean,value:!0},/**
+         * Comment message icon
+         * @type {String}
+         */messageIcon:{type:String,value:"coronita:info"},/**
+         * Unmasked boolean whether contact is currently masked or unmasked
+         * @type {Boolean}
+         */unmasked:{type:Boolean,value:!1},/**
+         * Comment message icon size
+         * @type {String}
+         */iconSize:{type:String,value:"18"},/**
+         * Comment message
+         * @type {String}
+         */commentsMessage:{type:String,value:"cells-message-composer-comments-message"},/**
+         * Text area title
+         * @type {String}
+         */textAreaTitle:{type:String,value:"cells-message-composer-message-title"},/**
+         * Text area Min Height
+         * @type {Number}
+         */textAreaMinHeight:Number,/**
+         * Text area Max Height
+         * @type {Number}
+         */textAreaMaxHeight:Number,/**
+         * Text area label
+         * @type {String}
+         */textAreaLabel:{type:String,value:"cells-message-composer-comments"},/**
+         * Primary button text
+         * @type {String}
+         */primaryButtonText:{type:String,value:"cells-message-composer-primary-button"},/**
+         * Composed message
+         * @type {String}
+         */message:{type:String,observer:"_messageChanged"},/**
+         * Show Primary Button
+         * @type {Boolean}
+         */showPrimaryButton:{type:Boolean,value:!1}}}}]);return CellsMessageComposer}(Polymer.mixinBehaviors([CellsBehaviors.i18nBehavior],Polymer.Element));/**
+    `<cells-message-composer>` Description.
+
+    Example:
+
+    ```html
+    <cells-message-composer></cells-message-composer>
+    ```
+
+    ## Styling
+    The following custom properties and mixins are available for styling:
+
+    ### Custom Properties
+    | Custom Property     | Selector | CSS Property | Value       |
+    | ------------------- | -------- | ------------ | ----------- |
+    | --cells-fontDefault | :host    | font-family  |  sans-serif |
+    ### @apply
+    | Mixins    | Selector | Value |
+    | --------- | -------- | ----- |
+    | --cells-message-composer | :host    | {} |
+
+    * @customElement
+    * @polymer
+    * @extends {Polymer.Element}
+    * @demo demo/index.html
+  */customElements.define(CellsMessageComposer.is,CellsMessageComposer)}</script></dom-module><dom-module id="glomo-email-composer-dm" assetpath="glomo-email-composer-dm/"><template><cells-dm-global-apis-customers id="dmCustomers" customer-id="[[customerId]]" host="[[host]]" headers="[[headers]]" customers="{{userDetailDataList}}" customer-contacts="{{contactDetailData}}" required-token="[[requiredToken]]" native="[[native]]"></cells-dm-global-apis-customers></template><script>/*eslint no-useless-escape: 0*/var GlomoEmailComposerDm=/*#__PURE__*/function(_Polymer$Element){babelHelpers.inherits(GlomoEmailComposerDm,_Polymer$Element);function GlomoEmailComposerDm(){babelHelpers.classCallCheck(this,GlomoEmailComposerDm);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(GlomoEmailComposerDm).apply(this,arguments))}babelHelpers.createClass(GlomoEmailComposerDm,[{key:"pageActive",/**
+   * @desc called when page is active
+   */value:function pageActive(){this.dispatchEvent(new CustomEvent("show-spinner"));this.set("customerId",((this.globalCacheStorage||{}).customer||{}).customerId);this.$.dmCustomers.getCustomers();this.$.dmCustomers.getCustomerContacts()}/**
+   * Reset properties on exit
+   */},{key:"reset",value:function reset(pageActive){if(pageActive&&!pageActive.value){this.set("maskedEmail",void 0);this.set("unmaskedEmail",void 0);this.set("userDetailData",void 0);this.set("contactDetailData",void 0);this.set("userDetailDataList",void 0)}}/**
+   * @desc observer attached to userDetailDataList to filter the userDetailData with current customerId
+   * @param {Array} newVal
+   * @param {Array} oldVal
+   */},{key:"_getUserDetailData",value:function _getUserDetailData(newVal,oldVal){var _this=this;if(Array.isArray(newVal)){var uData=newVal.find(function(item){return item.customerId===_this.customerId});this.set("userDetailData",uData)}}/**
+   * @desc complex observer watching the change for userDetailData, emailData and emailClicked
+   * @param {Object} userDetailData
+   * @param {Object} contactDetailData
+   */},{key:"_receiverDataChanged",value:function _receiverDataChanged(userDetailData,contactDetailData){this.dispatchEvent(new CustomEvent("hide-spinner"));if(userDetailData&&contactDetailData){this.set("clientBankerData",[Object.assign({},this.senderReceiverData),Object.assign({},this.getSenderContactDetail(userDetailData,contactDetailData))]);this.dispatchEvent(new CustomEvent("send-sender-reciver-data",{detail:this.clientBankerData,bubbles:!0,composed:!0}))}}/**
+   * @desc observer watch change in senderReceiverData property
+   * @param {Object} newValue
+   * @param {Object} oldValue
+   */},{key:"_senderReceiverDataChanged",value:function _senderReceiverDataChanged(newValue,oldValue){if(newValue){this.dispatchEvent(new CustomEvent("show-spinner"))}}/**
+   * @desc request to post the message
+   * @param {String} message
+   */},{key:"requestPostMessage",value:function requestPostMessage(data){if(data){this.dispatchEvent(new CustomEvent("show-spinner"));var sendEmailPayload={eventCode:this.sendEmailEventCode,senderId:this.senderId,devices:[{id:this.devicesId,serviceProvider:{id:this.serviceProviderId},receivers:[this.clientBankerData[0].contact]}],message:{messageBody:this.createMessageBody(this.clientBankerData[0].contactName,this.clientBankerData[1].contactName,data)}};this.dispatchEvent(new CustomEvent("send-email-message-data",{detail:Object.assign({},sendEmailPayload),bubbles:!0,composed:!0}));var copyEmailPayload={eventCode:this.copyEmailEventCode,senderId:this.senderId,devices:[{id:this.devicesId,serviceProvider:{id:this.serviceProviderId},receivers:[]}],message:{messageBody:this.createMessageBody(this.clientBankerData[0].contactName,this.clientBankerData[1].contactName,data)}};this.dispatchEvent(new CustomEvent("copy-email-message-data",{detail:Object.assign({},copyEmailPayload),bubbles:!0,composed:!0}))}}/**
+   * @desc return message body in this format "{\"sSASSISTANCENAME\":\"Adrian\",\"sSCLIENTNAME\":\"Lorena Lopez Garduno\",\"sSCLIENTMESSAGE\":\"Prueba mensaje para GR\"}"
+   * @param {String} receiverName
+   * @param {String} clientName
+   * @param {String} message
+   */},{key:"createMessageBody",value:function createMessageBody(receiverName,clientName,message){this.phoneNumber=this._formatNumberAndId(this.globalCacheStorage.customer.phoneNumber);this.clientId=this.clientId||this._formatNumberAndId(this.globalCacheStorage.customer.clientId);var escChar="\"",messageFinal="".concat(this.phoneNumberLabel,": ").concat(this.phoneNumber," ").concat(this.numberClientLabel,": ").concat(this.clientId," ").concat(message),data=["sSASSISTANCENAME",":",receiverName,",","sSCLIENTNAME",":",clientName,",","sSCLIENTMESSAGE",":",messageFinal.trim()];return"{"+escChar+data.join(escChar)+escChar+"}"}/**
+   * @desc hold response data from post call
+   */},{key:"responsePostMessage",value:function responsePostMessage(){this.dispatchEvent(new CustomEvent("hide-spinner"));var payload=[];if(this.senderEmailData){payload.push({listInfo:[this.senderEmailData]})}this.dispatchEvent(new CustomEvent("go-to-success-page",{detail:payload,bubbles:!0,composed:!0}))}/**
+   * @desc request to mask or unmask the email
+   * @param {String} payload
+   */},{key:"toggleEmail",value:function toggleEmail(unmasked){if(unmasked){if(!this.unmaskedEmail){this.dispatchEvent(new CustomEvent("show-spinner"));this.dispatchEvent(new CustomEvent("request-email-unmasked-payload",{detail:{unmasked:!0},bubbles:!0,composed:!0}))}else{this.set("senderEmailData",this.unmaskedEmail);this.fireSenderReceiverData()}}else{this.set("senderEmailData",this.maskedEmail);this.fireSenderReceiverData()}}},{key:"fireSenderReceiverData",value:function fireSenderReceiverData(){this.dispatchEvent(new CustomEvent("send-sender-reciver-data",{detail:[Object.assign({},this.senderReceiverData),Object.assign({},this._constructUserData(this.userDetailData,this.senderEmailData))],bubbles:!0,composed:!0}))}/**
+   * @desc get email address for sender
+   * @param {Object} userDetail
+   * @param {Object} contactDetailData
+   */},{key:"getSenderContactDetail",value:function getSenderContactDetail(userDetail,contactDetailData){var _this2=this,senderEmail;contactDetailData.forEach(function(obj){if("EMAIL"===obj.contactType.id){senderEmail=_this2._formatEmail((obj||{}).contact);_this2.set("senderEmailData",senderEmail);if(!_this2.maskedEmail){_this2.set("maskedEmail",senderEmail)}else{_this2.set("unmaskedEmail",senderEmail)}}});return this._constructUserData(userDetail,this.senderEmailData)}/**
+   * @desc format email address when masked
+   * @param {String} email
+   */},{key:"_formatEmail",value:function _formatEmail(email){var asteriskRegex=/\*/g,formattedEmail="";if("string"===typeof email){formattedEmail=email.match(asteriskRegex)?"".concat(this.maskCharacter).concat(email.replace(asteriskRegex,"")):email}return formattedEmail}/**
+   * format Number and Id
+   * @param {*} field
+   */},{key:"_formatNumberAndId",value:function _formatNumberAndId(field){if(field){var formatField="".concat(this.maskCharacter).concat(field.substr(-4));return formatField}}/**
+   * @desc returns the payload for sender
+   * @param {Object} userDetail
+   */},{key:"_constructUserData",value:function _constructUserData(userDetail,senderEmail){return{id:"sender",title:"cells-message-composer-sender",showLink:!0,contactName:this._getName(userDetail||{}),contact:senderEmail,showContact:!0}}/**
+   * returns full name with provided data
+   * @param {Object} data
+   */},{key:"_getName",value:function _getName(data){var name=(data.firstName?"".concat(data.firstName," "):"")+(data.middleName?"".concat(data.middleName," "):"")+(data.lastName?"".concat(data.lastName," "):"")+(data.secondLastName?"".concat(data.secondLastName):"");return name}/**
+   * @desc error handler
+   * @param {Object} errorResponse
+   */},{key:"errorHandler",value:function errorHandler(errorResponse){this.dispatchEvent(new CustomEvent("hide-spinner"));this.dispatchEvent(new CustomEvent("email-composer-error",{detail:errorResponse}))}}],[{key:"is",get:function get(){return"glomo-email-composer-dm"}},{key:"properties",get:function get(){return{/**
+       * @desc hold email of sender
+       * @type {Object}
+       */contactDetailData:{type:Object},/**
+       * @desc customer detail data
+       * @type {Object}
+       */userDetailData:{type:Object},/**
+       * @desc list of users obtained from the api
+       * @type {Array}
+       */userDetailDataList:{type:Array,observer:"_getUserDetailData"},/**
+       * @desc hold reciver object
+       * @type {Object}
+       */senderReceiverData:{type:Object,observer:"_senderReceiverDataChanged"},/**
+       * @desc Sender Email Data
+       * @type {String}
+       */senderEmailData:String,/**
+       * @desc recevier and sender data
+       * @type {String}
+       */clientBankerData:Array,/**
+       * @desc event code for send email
+       * @type {String}
+       */sendEmailEventCode:String,/**
+       * @desc event code for copy email
+       * @type {String}
+       */copyEmailEventCode:String,/**
+       * @desc sender id
+       * @type {String}
+       */senderId:String,/**
+       * @desc devices id
+       * @type {String}
+       */devicesId:String,/**
+       * @desc service provider id
+       * @type {String}
+       */serviceProviderId:String,/**
+       * Mask character
+       * @type {String}
+       */maskCharacter:String,/**
+       * Unmasked Email
+       * @type {String}
+       */unmaskedEmail:String,/**
+       * Masked Email
+       * @type {String}
+       */maskedEmail:String,/**
+       * String to store customer Id
+       * @type {String}
+       */customerId:String,/**
+       * cache storage to reduce network calls
+       * @type {Object}
+       */globalCacheStorage:{type:Object},/**
+       * global server config retrieved from native
+       * @type {Object}
+       */globalServerConfig:{type:Object},/**
+       * API host
+       * @type {String}
+       */host:String,/**
+       * native flag
+       * @type {Boolean}
+       */native:Boolean,/**
+       * required token
+       * @type {String}
+       */requiredToken:String,/**
+       * Extra headers for requests
+       */headers:{type:Object,value:function value(){return{"Accept-Language":"es"}}},/**
+       * Text phone number message
+       * @type {String}
+       */phoneNumberLabel:String,/**
+       * Text phone number message
+       * @type {String}
+       */numberClientLabel:String,/**
+       * This phone number client
+       * @type {String}
+       */phoneNumber:String,/**
+       * This number client
+       * @type {String}
+       */clientId:String}}},{key:"observers",get:function get(){return["_receiverDataChanged(userDetailData, contactDetailData)"]}}]);return GlomoEmailComposerDm}(Polymer.Element);customElements.define(GlomoEmailComposerDm.is,GlomoEmailComposerDm);</script></dom-module><dom-module id="cells-glomo-dm-notifications" assetpath="cells-glomo-dm-notifications/"><template></template><script>Polymer({is:"cells-glomo-dm-notifications",behaviors:[CellsBehaviors.CellsGlomoDmBehavior,CellsBehaviors.CellsGlomoDiacriticsBehavior,CellsBehaviors.CellsGlomoUtilsBehavior],properties:{/**
+     * resource used in API
+     * @type {String}
+     */resource:{type:String,value:"notifications"},/**
+     * constant for the get opCode
+     * @type {String}
+     */GET_NOTIFICATIONS_OP_CODE:{type:String,value:"GNL001"},/**
+     * constant for the get opCode
+     * @type {String}
+     */POST_CHANGE_UNREAD_NOTIFICATIONS_OP_CODE:{type:String,value:"PNL001"},/**
+     * constant for the post notification opCode
+     * @type {String}
+     */POST_NOTIFICATIONS_MESSAGE_OP_CODE:{type:String,value:"NMS001"},/**
+     * constant for the post email notification opCode
+     * @type {String}
+     */POST_EMAIL_NOTIFICATIONS_OP_CODE:{type:String,value:"EMN001"},/**
+     * cache storage to reduce network calls
+     * @type {Object}
+     */globalCacheStorage:{type:Object},/**
+     * global server config retrieved from native
+     * @type {Object}
+     */globalServerConfig:{type:Object}},/**
+   * creates a request Payload for get notifications @param {Object} param this,
+   * is the event of request-notifications-event event on cells-glomo-notification-list.
+   * url example: https://{{environment}}-glomo-mx.prev.grupobbva.com/SRVS_A02/notifications/v0/notifications?contract.number=[[customerId]]
+   */requestNotifications:function requestNotifications(){var store=this.globalCacheHandler(),customerId=store.get("customer").get("customerId").getVal(),endpoint="notifications?contract.number=".concat(customerId);this.requestBuilder(this.resource,endpoint,"GET",this.GET_NOTIFICATIONS_OP_CODE,{},{})},/**
+   * creates a request Payload for post notifications  this,
+   * url example: https://{{environment}}-glomo-mx.prev.grupobbva.com/SRVS_A02/notifications/v0/notifications
+   */requestMessageNotification:function requestMessageNotification(payload){var requestBody=payload,endpoint="notifications";this.requestBuilder(this.resource,endpoint,"POST",this.POST_NOTIFICATIONS_MESSAGE_OP_CODE,requestBody,{})},/**
+   * creates a request Payload for post emal notifications  this,
+   * url example: https://{{environment}}-glomo-mx.prev.grupobbva.com/SRVS_A02/notifications/v0/notifications/send/?customerId=JVoe2CjYn4ymodkhCMKlYg
+   */requestEmailNotification:function requestEmailNotification(payload){var store=this.globalCacheHandler(),customerId=store.get("customer").get("customerId").getVal(),endpoint="notifications/send/?customerId=".concat(customerId);this.requestBuilder(this.resource,endpoint,"POST",this.POST_EMAIL_NOTIFICATIONS_OP_CODE,payload,{})},/**
+   * creates a request Payload for change unread notifications @param {Object} param this,
+   * is the event of change-unread-notifications-event event on cells-glomo-notification-list.
+   * url example: https://{{environment}}-glomo-mx.prev.grupobbva.com/SRVS_A02/notifications/v0/notifications/mark-as-unread
+   */requestChangeUnreadNotifications:function requestChangeUnreadNotifications(){var endpoint="notifications/mark-as-unread";this.requestBuilder(this.resource,endpoint,"POST",this.POST_CHANGE_UNREAD_NOTIFICATIONS_OP_CODE,{},{})},/**
+   * common success response handler which calls the respective method for response handling based on operation code(opCode)
+   * @param {Object} - response payload
+   */successResponseHandler:function successResponseHandler(payload){if(!this.isEmptyObject(payload)){var responsePayload=this.extractResponsePayload(payload),handledResponse=!0;switch(responsePayload.opCode){case this.GET_NOTIFICATIONS_OP_CODE:this.handleGetNotificationsSuccess(responsePayload);break;case this.POST_CHANGE_UNREAD_NOTIFICATIONS_OP_CODE:this.handlePostChangeUnreadNotificationsSuccess(responsePayload);break;case this.POST_NOTIFICATIONS_MESSAGE_OP_CODE:this.handlePostMessageNotificationSuccess(responsePayload);case this.POST_EMAIL_NOTIFICATIONS_OP_CODE:this.handlePostEmailNotificationSuccess(responsePayload);default:handledResponse=!1;break;}if(handledResponse){this.cleanGlobalRespChannel()}}},/**
+   * common failure response handler which calls the respective method for response handling based on operation code(opCode)
+   * @param {Object} - response payload
+   */errorResponseHandler:function errorResponseHandler(payload){if(!this.isEmptyObject(payload)){var handledResponse=!0,responsePayload=this.extractResponsePayload(payload);switch(responsePayload.opCode){case this.GET_NOTIFICATIONS_OP_CODE:this.handleGetNotificationsFailure(responsePayload);break;case this.POST_CHANGE_UNREAD_NOTIFICATIONS_OP_CODE:this.handlePostChangeUnreadNotificationsFailure(responsePayload);break;case this.POST_NOTIFICATIONS_MESSAGE_OP_CODE:this.handlePostMessageNotificationFailure(responsePayload);case this.POST_EMAIL_NOTIFICATIONS_OP_CODE:this.handlePostEmailNotificationFailure(responsePayload);default:this.cleanGlobalErrorChannel();break;}if(handledResponse){this.cleanGlobalErrorChannel()}}},/**
+   * handles fetch notifications request success response
+   * @param {Object} - response payload, must contain status, response_body.data(Array)
+   */handleGetNotificationsSuccess:function handleGetNotificationsSuccess(responsePayload){var status=responsePayload.status;if(200===status){var responseData=this.extractSuccessResponse(responsePayload);this.dispatchEvent(new CustomEvent("notifications-data-from-dm",{detail:responseData}))}else if(204===status){this.dispatchEvent(new CustomEvent("notifications-empty-response-from-dm"))}},/**
+   * handles fetch notifications request failure response
+   * @param {Object} - response payload
+   */handleGetNotificationFailure:function handleGetNotificationFailure(responsePayload){this.dispatchEvent(new CustomEvent("notifications-error-data-from-dm"))},/**
+   * handles fetch change unread notifications request success response
+   * @param {Object} - response payload, must contain status.
+   */handlePostChangeUnreadNotificationsSuccess:function handlePostChangeUnreadNotificationsSuccess(responsePayload){var status=responsePayload.status;if(200===status){var responseData=this.extractSuccessResponse(responsePayload);this.dispatchEvent(new CustomEvent("notifications-unread-changes-from-dm"))}else if(204===status){this.dispatchEvent(new CustomEvent("notifications-unread-changes-empty-from-dm"))}},/**
+   * handles fetch change unread notifications request failure response
+   * @param {Object} - response payload
+   */handlePostChangeUnreadNotificationsFailure:function handlePostChangeUnreadNotificationsFailure(responsePayload){this.dispatchEvent(new CustomEvent("notifications-unread-changes-error-from-dm"))},/**
+   * handles message notifications request success response
+   * @param {Object} - response payload, must contain status.
+   */handlePostMessageNotificationSuccess:function handlePostMessageNotificationSuccess(responsePayload){var status=responsePayload.status,responseData=this.extractSuccessResponse(responsePayload);this.dispatchEvent(new CustomEvent("notifications-message-from-dm",{detail:responseData}))},/**
+   * handles fetch message notifications request failure response
+   * @param {Object} - response payload
+   */handlePostMessageNotificationFailure:function handlePostMessageNotificationFailure(responsePayload){this.fireStandardError("notifications-message-error-from-dm",responsePayload)},/**
+   * handles email notifications request success response
+   * @param {Object} - response payload, must contain status.
+   */handlePostEmailNotificationSuccess:function handlePostEmailNotificationSuccess(responsePayload){var status=responsePayload.status,responseData=this.extractSuccessResponse(responsePayload);this.dispatchEvent(new CustomEvent("notifications-email-from-dm",{detail:responseData}))},/**
+   * handles fetch email notifications request failure response
+   * @param {Object} - response payload
+   */handlePostEmailNotificationFailure:function handlePostEmailNotificationFailure(responsePayload){this.fireStandardError("notifications-email-error-from-dm",responsePayload)}});</script></dom-module></div></body></html>

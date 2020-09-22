@@ -1,0 +1,14 @@
+{
+    "data": {
+        "breakDown": {
+            "total": {
+                "amount": 1000,
+                "currency": "MXN"
+            },
+            "outstandingBalance": {
+                "amount": 1000,
+                "currency": "MXN"
+            }
+        }
+    }
+}

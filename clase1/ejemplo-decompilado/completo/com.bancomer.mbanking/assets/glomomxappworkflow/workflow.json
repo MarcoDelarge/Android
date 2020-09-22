@@ -1,0 +1,3715 @@
+{
+  "data": {
+    "BGMQRCodePaymentsSettingsScreen": {
+      "enrollmentAppDefault": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.DefaultQRCodePaymentsAppActivity",
+        "ios": "",
+        "isModal": "false"
+      },
+      "unsubscribeCodi": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.UnsubscribeCodiActivity",
+        "ios": "",
+        "isModal": "false"
+      }
+    },
+    "BGMUnsubscribeCodiScreen": {
+      "goDashboard": {
+        "android": "com.bbva.bgm.accountsui.activity.DashboardActivity",
+        "ios": "",
+        "isModal": "false"
+      },
+      "failure": {
+        "android": "com.bbva.bgm.basetnpui.activity.BaseTransfersPaymentFailureActivity",
+        "ios": "",
+        "isModal": "true"
+      }
+    },
+    "BGMNotificationCodiCellsScreen": {
+      "notificationPaymentRequest": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.NotificationCodiDetailActivity",
+        "iOS": "BGMCodiNotificationType1ViewController",
+        "isModal": "true"
+      },
+      "notificationPaymentCharge": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.PayDetailCodiActivity",
+        "iOS": "BGMCodiNotificationViewController",
+        "isModal": "true"
+      },
+      "notificationAccountValidation": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.VerifiedAccountCodiActivity",
+        "iOS": "BGMCodiNotificationValidateViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMChargeMessageCellsScreen": {
+      "historicalQrPayments": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.HistoricalQrPaymentsActivity",
+        "iOS": "",
+        "isModal": "false"
+      }
+    },
+    "BGMDefaultQRCodePaymentsAppScreen": {
+      "goDashboard": {
+        "android": "com.bbva.bgm.accountsui.activity.DashboardActivity",
+        "iOS": "",
+        "isModal": "false"
+      }
+    },
+    "BGMSplashScreen": {
+      "existingUser": {
+        "android": "com.bbva.bgm.loginui.activity.LoginActivity",
+        "iOS": "BGMLoginViewController",
+        "isModal": "true"
+      },
+      "newUser": {
+        "android": "com.bbva.bgm.loginui.activity.WelcomeExperienceActivity",
+        "iOS": "BGMWelcomeViewController",
+        "isModal": "false"
+      },
+      "upgradeApp": {
+        "android": "com.bbva.bgm.loginui.activity.UpgradeApplicationActivity",
+        "iOS": "BGMVersionUpdateViewController",
+        "isModal": "true"
+      },
+      "whatsNew": {
+        "android": "com.bbva.bgm.loginui.activity.WhatsNewActivity",
+        "iOS": "BGMWhatsNewViewController",
+        "isModal": "false"
+      },
+      "tokenMovil": {
+        "android": "com.bbva.bgm.loginui.softtoken.activity.TokenMovilActivity",
+        "iOS": "BGMConnectSDK.BGMTokenMovilSelectionViewController",
+        "isModal": "false"
+      },
+      "quickMenu": {
+        "android": "com.bbva.bgm.accountsui.activity.DashboardActivity",
+        "iOS": "",
+        "isModal": "true"
+      },
+      "localeChanged": {
+        "android": "com.bbva.bgm.accountsui.activity.DashboardActivity",
+        "iOS": "",
+        "isModal": "true"
+      },
+      "notificationCodi": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.NotificationCodiTriggerActivity",
+        "iOS": "",
+        "isModal": "true"
+      }
+    },
+    "BGMWhatsNewScreen": {
+      "existingUser": {
+        "android": "com.bbva.bgm.loginui.activity.LoginActivity",
+        "iOS": "BGMLoginViewController",
+        "isModal": "true"
+      },
+      "upgradeApp": {
+        "android": "com.bbva.bgm.loginui.activity.UpgradeApplicationActivity",
+        "iOS": "BGMVersionUpdateViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMWelcomeExperienceScreen": {
+      "newUser": {
+        "android": "com.bbva.bgm.loginui.activity.LoginActivity",
+        "iOS": "BGMLoginViewController",
+        "isModal": "true"
+      },
+      "upgradeApp": {
+        "android": "com.bbva.bgm.loginui.activity.UpgradeApplicationActivity",
+        "iOS": "BGMVersionUpdateViewController",
+        "isModal": "true"
+      },
+      "registrationTNC": {
+        "android": "com.bbva.bgm.baseui.activity.ComingSoonActivity",
+        "iOS": "",
+        "isModal": "false"
+      },
+      "atmBranches": {
+        "android": "com.bbva.bgm.locatorui.activity.LocatorMapActivity",
+        "iOS": "BGMAtmAndBranchLocatorViewController",
+        "isModal": "false"
+      },
+      "termsAndConditions": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "pdfViewer",
+        "iOS": "BGMWebTermsAndConditionsController",
+        "isModal": "true"
+      }
+    },
+    "BGMBillPayCompletedScreen": {
+      "notificationDetail": {
+        "android": "com.bbva.bgm.notificationui.activity.NotificationDetailActivity",
+        "iOS": "BGMNoticeViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMLoginScreen": {
+      "default": {
+        "android": "com.bbva.bgm.accountsui.activity.DashboardActivity",
+        "iOS": "BGMNewDashboardViewController",
+        "isModal": "false"
+      },
+      "securitySettings": {
+        "android": "com.bbva.bgm.userprofileui.activity.SecSettingsWebActivity",
+        "cellsPage": "securityMenuPage",
+        "iOS": "BGMWebSecuritySettingsViewController",
+        "isModal": "false"
+      },
+      "showOptionsLogin": {
+        "android": "com.bbva.bgm.loginui.activity.LoginErrorOptionsActivity",
+        "iOS": "BGMShowOptionsLoginVC",
+        "isModal": "true"
+      },
+      "helpOnOff": {
+        "android": "com.bancomer.mbanking.shopping.modules.helpOnOff.view.HelpOnOffBActivity",
+        "iOS": "BGMShowOptionsLoginVC",
+        "isModal": "false"
+      },
+      "seeCvv": {
+        "android": "com.bancomer.mbanking.shopping.modules.seeCvv.view.SeeCvvBActivity",
+        "iOS": "BGMShowOptionsLoginVC",
+        "isModal": "false"
+      },
+      "blockedUser": {
+        "android": "com.bbva.bgm.userprofileui.activity.PasswordBlockedActivity",
+        "iOS": "BGMBlockPasswordViewController",
+        "isModal": "true"
+      },
+      "upgradeApp": {
+        "android": "com.bbva.bgm.loginui.activity.UpgradeApplicationActivity",
+        "iOS": "BGMVersionUpdateViewController",
+        "isModal": "true"
+      },
+      "configuration": {
+        "android": "com.bbva.bgm.userprofileui.activity.ConfigMenuWebActivity",
+        "cellsPage": "settingsPage",
+        "iOS": "BGMWebSettingsViewController",
+        "isModal": "false"
+      },
+      "securitySettings": {
+          "android": "com.bbva.bgm.userprofileui.activity.SecSettingsWebActivity",
+          "cellsPage": "securityMenuPage",
+          "iOS": "BGMWebSecuritySettingsViewController",
+          "isModal": "false"
+      },
+      "tokenMovil": {
+        "android": "com.bbva.bgm.loginui.softtoken.activity.TokenMovilActivity",
+        "iOS": "BGMTokenMovilSelectionViewController",
+        "isModal": "false"
+      },
+      "cardlessWithdrawal": {
+        "android": "com.bbva.bgm.cardlesswithdrawalui.activity.CardlessWithdrawalActivity",
+        "iOS": "BGMCWInitViewController",
+        "isModal": "true"
+      },
+      "atmBranches": {
+        "android": "com.bbva.bgm.locatorui.activity.LocatorMapActivity",
+        "iOS": "BGMAtmAndBranchLocatorViewController",
+        "isModal": "false"
+      },
+      "assistance": {
+        "android": "com.bbva.bgm.accountsui.activity.AssistanceActivity",
+        "iOS": "BGMNewAssistanceViewController",
+        "isModal": "false"
+      },
+      "applications": {
+        "android": "com.bbva.bgm.accountsui.activity.ApplicationsActivity",
+        "iOS": "BGMAppMenuViewController",
+        "isModal": "false"
+      },
+      "about": {
+        "android": "com.bbva.bgm.accountsui.activity.AboutCellsActivity",
+        "cellsPage": "aboutPage",
+        "iOS": "BGMWebAboutViewController",
+        "isModal": "false"
+      },
+      "paymentCart": {
+        "android": "com.bbva.bgm.baseui.activity.ComingSoonActivity",
+        "iOS": "",
+        "isModal": "false"
+      },
+      "smartToken": {
+        "android": "com.bbva.bgm.baseui.activity.ComingSoonActivity",
+        "iOS": "",
+        "isModal": "false"
+      },
+      "exchangeRate": {
+        "android": "com.bbva.bgm.exchangerateui.activity.ExchangeRateActivity",
+        "iOS": "BGMExchangeRate.BGMExchangeRateViewController",
+        "isModal": "false"
+      },
+      "attentionPoints": {
+        "android": "com.bbva.bgm.baseui.activity.ComingSoonActivity",
+        "iOS": "",
+        "isModal": "false"
+      },
+      "communicateToUs": {
+        "android": "com.bbva.bgm.baseui.activity.ComingSoonActivity",
+        "iOS": "",
+        "isModal": "false"
+      },
+      "historicalBill": {
+        "android": "com.bbva.bgm.cardlesswithdrawalui.activity.HistoricalMenuActivity",
+        "iOS": "BGMBillPayHistoricalListViewController",
+        "isModal": "false"
+      },
+      "historicalCardless": {
+        "android": "com.bbva.bgm.cardlesswithdrawalui.activity.HistoricalMainActivity",
+        "iOS": "BGMCWHistoricalInitViewController",
+        "isModal": "false"
+      },
+      "termsAndConditions": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "pdfViewer",
+        "iOS": "BGMWebTermsAndConditionsController",
+        "isModal": "true"
+      },
+      "feedBack": {
+        "android": "com.bbva.bgm.baseui.activity.FeedbackActivity",
+        "iOS": "",
+        "isModal": "true"
+      },
+      "qrPayments": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.InfoQrPaymentsActivity",
+        "iOS": "BGMQRPaymentInfoViewController",
+        "isModal": "false"
+      },
+      "qrCodePayments": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.PaymentsQrReaderActivity",
+        "iOS": "",
+        "isModal": "false"
+      },
+      "paymentsVerifyQr": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.QrVerifyInformationActivity",
+        "iOS": "BGMReadQRViewController",
+        "isModal": "true"
+      },
+      "readQr": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.QrReaderCellsActivity",
+        "cellsPage": "codiEnrollPage",
+        "iOS": "",
+        "isModal": "false"
+      }
+    },
+    "BGMTokenMovilScreen": {
+      "qrcode": {
+        "android": "com.bbva.bgm.connectsdk.activity.BarcodeCaptureActivity",
+        "iOS": "BGMQrCodeScannerViewController",
+        "isModal": "false"
+      },
+      "securityCode": {
+        "android": "com.bbva.bgm.loginui.softtoken.activity.GenerateCodeActivity",
+        "iOS": "BGMGenerateSecureCodeViewController",
+        "isModal": "true"
+      },
+      "register": {
+        "android": "com.bbva.bgm.loginui.softtoken.activity.QRCodeRegisterActivity",
+        "iOS": "BGMQrRegisterViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMQRCodeScannerScreen": {
+      "register": {
+        "android": "com.bbva.bgm.loginui.softtoken.activity.QRCodeRegisterActivity",
+        "iOS": "BGMQrRegisterViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMQRCodeRegisterScreen": {
+      "generateCode": {
+        "android": "com.bbva.bgm.loginui.softtoken.activity.GenerateCodeActivity",
+        "iOS": "BGMGenerateSecureCodeViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMEditAssistanceTabScreen": {
+      "failure": {
+        "android": "com.bbva.bgm.basetnpui.activity.BaseTransfersPaymentFailureActivity",
+        "iOS": "BGMErrorPresenterThreeViewController",
+        "isModal": "true"
+      },
+      "tabNotifications": {
+        "android": "com.bbva.bgm.accountsui.fragment.ComingSoonFragment",
+        "iOS": "BGMComingSoonViewController",
+        "isModal": "false"
+      },
+      "tabDashboard": {
+        "android": "com.bbva.bgm.accountsui.activity.DashboardActivity",
+        "iOS": "BGMNewDashboardViewController",
+        "isModal": "false"
+      },
+      "tabFrequents": {
+        "android": "com.bbva.bgm.accountsui.fragment.ComingSoonFragment",
+        "iOS": "BGMComingSoonViewController",
+        "isModal": "false"
+      },
+      "tabCheckup": {
+        "android": "com.bbva.bgm.accountsui.fragment.ComingSoonFragment",
+        "iOS": "BGMWebCheckUpViewController",
+        "isModal": "false"
+      },
+      "tabAssistance": {
+        "android": "com.bbva.bgm.accountsui.fragment.ComingSoonFragment",
+        "iOS": "BGMAssistanceViewController",
+        "isModal": "false"
+      },
+      "profile": {
+        "android": "com.bbva.bgm.userprofileui.activity.UserProfileActivity",
+        "iOS": "BGMUserProfileViewController",
+        "isModal": "false"
+      },
+      "configuration": {
+        "android": "com.bbva.bgm.userprofileui.activity.ConfigMenuWebActivity",
+        "cellsPage": "settingsPage",
+        "iOS": "BGMWebSettingsViewController",
+        "isModal": "false"
+      },
+      "securitySettings": {
+          "android": "com.bbva.bgm.userprofileui.activity.SecSettingsWebActivity",
+          "cellsPage": "securityMenuPage",
+          "iOS": "BGMWebSecuritySettingsViewController",
+          "isModal": "false"
+      },
+      "tokenMovil": {
+        "android": "com.bbva.bgm.loginui.softtoken.activity.TokenMovilActivity",
+        "iOS": "BGMTokenMovilSelectionViewController",
+        "isModal": "false"
+      },
+      "cardlessWithdrawal": {
+        "android": "com.bbva.bgm.cardlesswithdrawalui.activity.CardlessWithdrawalActivity",
+        "iOS": "BGMCWInitViewController",
+        "isModal": "true"
+      },
+      "atmBranches": {
+        "android": "com.bbva.bgm.locatorui.activity.LocatorMapActivity",
+        "iOS": "BGMAtmAndBranchLocatorViewController",
+        "isModal": "false"
+      },
+      "clarificationList": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "clarificationsListPage",
+        "iOS": "BGMWebClarificationsListController",
+        "isModal": "false"
+      },
+      "assistance": {
+        "android": "com.bbva.bgm.accountsui.activity.AssistanceActivity",
+        "iOS": "BGMNewAssistanceViewController",
+        "isModal": "false"
+      },
+      "applications": {
+        "android": "com.bbva.bgm.accountsui.activity.ApplicationsActivity",
+        "iOS": "BGMAppMenuViewController",
+        "isModal": "false"
+      },
+      "about": {
+        "android": "com.bbva.bgm.accountsui.activity.AboutCellsActivity",
+        "cellsPage": "aboutPage",
+        "iOS": "BGMWebAboutViewController",
+        "isModal": "false"
+      },
+      "paymentCart": {
+        "android": "com.bbva.bgm.baseui.activity.ComingSoonActivity",
+        "iOS": "",
+        "isModal": "false"
+      },
+      "smartToken": {
+        "android": "com.bbva.bgm.baseui.activity.ComingSoonActivity",
+        "iOS": "",
+        "isModal": "false"
+      },
+      "exchangeRate": {
+        "android": "com.bbva.bgm.exchangerateui.activity.ExchangeRateActivity",
+        "iOS": "BGMExchangeRate.BGMExchangeRateViewController",
+        "isModal": "false"
+      },
+      "attentionPoints": {
+        "android": "com.bbva.bgm.baseui.activity.ComingSoonActivity",
+        "iOS": "",
+        "isModal": "false"
+      },
+      "communicateToUs": {
+        "android": "com.bbva.bgm.baseui.activity.ComingSoonActivity",
+        "iOS": "",
+        "isModal": "false"
+      },
+      "historicalBill": {
+        "android": "com.bbva.bgm.cardlesswithdrawalui.activity.HistoricalMenuActivity",
+        "iOS": "BGMBillPayHistoricalListViewController",
+        "isModal": "false"
+      },
+      "historicalCardless": {
+        "android": "com.bbva.bgm.cardlesswithdrawalui.activity.HistoricalMainActivity",
+        "iOS": "BGMCWHistoricalInitViewController",
+        "isModal": "false"
+      },
+      "qrPayments": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.InfoQrPaymentsActivity",
+        "iOS": "BGMQRPaymentInfoViewController",
+        "isModal": "true"
+      },
+      "paymentsVerifyQr": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.QrVerifyInformationActivity",
+        "iOS": "BGMReadQRViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMDashboardScreen": {
+      "account": {
+        "android": "com.bbva.bgm.accountsui.activity.AccountDetailActivity",
+        "iOS": "BGMAccountDetailViewController",
+        "isModal": "false"
+      },
+      "promotions": {
+        "android": "com.bbva.bgm.promotionsfeatures.promotionsLanding.view.PromotionsLandingActivity",
+        "iOS": "ShoppingViewControllerB",
+        "isModal": "false"
+      },
+      "card": {
+        "android": "com.bbva.bgm.accountsui.activity.CardDetailActivity",
+        "iOS": "BGMCardDetailViewController",
+        "isModal": "false"
+      },
+      "cardDetail": {
+        "android": "com.bbva.bgm.accountsui.activity.CardDetailCellsWebActivity",
+        "cellsPage": "cardDetail",
+        "iOS": "BGMWebCardDetailViewController",
+        "isModal": "false"
+      },
+      "facialBiometricInvite": {
+        "android": "com.bbva.bgm.bgmbiometricsauthenticationuiandroid.activity.FacialBiometricInviteActivity",
+        "iOS": "BGMConnectSDK.BGMEnrollUpdate",
+        "isModal": "true"
+      },
+      "deposit": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "deposit",
+        "iOS": "BGMWebDepositDetailViewController",
+        "isModal": "false"
+      },
+      "loan": {
+        "android": "com.bbva.bgm.accountsui.activity.LoanDetailActivity",
+        "iOS": "BGMLoanDetailViewController",
+        "isModal": "false"
+      },
+      "tabNotificationsCells": {
+        "android": "com.bbva.bgm.baseui.fragment.CellsWebFragment",
+        "cellsPage": "pushNotificationListPage",
+        "iOS": "BGMNotificationsListViewController"
+      },
+      "notificationDetail": {
+        "android": "com.bbva.bgm.notificationui.activity.NotificationDetailActivity",
+        "iOS": "BGMNoticeViewController",
+        "isModal": "true"
+      },
+      "tabParaMi": {
+        "android": "com.bbva.bgm.accountsui.fragment.ComingSoonFragment",
+        "iOS": "BGMForMeViewController",
+        "isModal": "false"
+      },
+      "tabFrequents": {
+        "android": "com.bbva.bgm.accountsui.fragment.ComingSoonFragment",
+        "iOS": "BGMComingSoonViewController",
+        "isModal": "false"
+      },
+      "tabCheckup": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "checkUpPage",
+        "iOS": "BGMWebCheckUpViewController",
+        "isModal": "true"
+      },
+      "tabAssistance": {
+        "android": "com.bbva.bgm.accountsui.fragment.AssistanceFragment",
+        "iOS": "BGMAssistanceViewController",
+        "isModal": "true"
+      },
+      "tabAssistanceSection": {
+        "android": "com.bbva.bgm.baseui.fragment.CellsWebFragment",
+        "cellsPage": "assistanceSection",
+        "iOS": "BGMAssistanceSectionPageViewController",
+        "isModal": "true"
+      },
+      "smartAssistant": {
+        "android": "com.bbva.bgm.accountsui.amelia.activity.SmartAssistantWebActivity",
+        "cellsPage": "sa",
+        "iOS": "BGMWebSmartAssistantViewController",
+        "isModal": "false"
+      },
+      "emailComposerPage": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "emailComposer",
+        "iOS": "BGMEmailComposerViewController",
+        "isModal": "true"
+      },
+      "assistanceSectionInfoPage": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "assistanceSectionInfo",
+        "iOS": "BGMAssistanceSectionInfoPageViewController",
+        "isModal": "true"
+      },
+      "patrimonialEquitityAssistancePageInfo": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "patrimonialEquitityAssistancePage",
+        "iOS": "BGMEquityAssistPageViewController",
+        "isModal": "true"
+      },
+      "transfer": {
+        "android": "com.bbva.bgm.transfersui.activity.TransfersActivity",
+        "iOS": "BGMTransferMainFormViewController",
+        "isModal": "true"
+      },
+      "autoBill": {
+        "android": "com.bbva.bgm.autobillpayui.activity.AutoBillPayLaunchActivity",
+        "iOS": "BGMAutomaticBillPay.BGMAutoBillPayLaunchViewController",
+        "isModal": "false"
+      },
+      "billPay": {
+        "android": "com.bbva.bgm.billpayui.activity.BillPaymentsActivity",
+        "iOS": "BGMBillPayFormViewController",
+        "isModal": "true"
+      },
+      "cardlessWithdrawal": {
+        "android": "com.bbva.bgm.cardlesswithdrawalui.activity.CardlessWithdrawalActivity",
+        "iOS": "BGMCWInitViewController",
+        "isModal": "true"
+      },
+      "cardlessWithdrawalInfo": {
+        "android": "com.bbva.bgm.cardlesswithdrawalui.activity.InformationScreenCardlessWithdrawal",
+        "iOS": "BGMCWIntroductionViewController",
+        "isModal": "true"
+      },
+      "cardPay": {
+        "android": "com.bbva.bgm.cardpayui.activity.CardPaymentsActivity",
+        "iOS": "BGMCreditCardPaymentFormViewController",
+        "isModal": "true"
+      },
+      "mobileTopUp": {
+        "android": "com.bbva.bgm.mobiletopupui.activity.MobileTopUpActivity",
+        "iOS": "BGMMobileTopUpViewController",
+        "isModal": "true"
+      },
+      "loyaltyPoints": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "cardsLoy,altyDescPage",
+        "iOS": "",
+        "isModal": "true"
+      },
+      "assistanceManager": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "assistanceManagerBenefitsPage",
+        "iOS": "BGMWebAssistanceManagerViewController",
+        "isModal": "true"
+      },
+      "assistanceManagerInfo": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "assistanceManagerInfoPage",
+        "iOS": "BGMWebAssistanceManagerViewController",
+        "isModal": "true"
+      },
+      "ocCreditCardLimitIncrease": {
+        "android": "com.bbva.bgm.occclimitincreaseui.activity.OCCreditLimitIncreaseActivity",
+        "iOS": "BGMOCAccessCreditCardLimitIncreaseViewController",
+        "isModal": "true"
+      },
+      "ocInstantCash": {
+        "android": "com.bbva.bgm.ocinstantcashui.activity.OCInstantCashActivity",
+        "iOS": "BGMInstaCashViewController",
+        "isModal": "true"
+      },
+      "ocLoan": {
+        "android": "com.bbva.bgm.ocloanui.activity.LoanSimulationActivity",
+        "iOS": "BGMOCLoanFormViewController",
+        "isModal": "true"
+      },
+      "profile": {
+        "android": "com.bbva.bgm.userprofileui.activity.UserProfileActivity",
+        "iOS": "BGMUserProfileViewController",
+        "isModal": "false"
+      },
+      "configuration": {
+        "android": "com.bbva.bgm.userprofileui.activity.ConfigMenuWebActivity",
+        "cellsPage": "settingsPage",
+        "iOS": "BGMWebSettingsViewController",
+        "isModal": "false"
+      },
+      "tokenMovil": {
+        "android": "com.bbva.bgm.loginui.softtoken.activity.TokenMovilActivity",
+        "iOS": "BGMTokenMovilSelectionViewController",
+        "isModal": "false"
+      },
+      "atmBranches": {
+        "android": "com.bbva.bgm.locatorui.activity.LocatorMapActivity",
+        "iOS": "BGMAtmAndBranchLocatorViewController",
+        "isModal": "false"
+      },
+      "clarificationList": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "clarificationsListPage",
+        "iOS": "BGMWebClarificationsListController",
+        "isModal": "false"
+      },
+      "assistance": {
+        "android": "com.bbva.bgm.accountsui.activity.AssistanceActivity",
+        "iOS": "BGMNewAssistanceViewController",
+        "isModal": "false"
+      },
+      "applications": {
+        "android": "com.bbva.bgm.accountsui.activity.ApplicationsActivity",
+        "iOS": "BGMAppMenuViewController",
+        "isModal": "false"
+      },
+      "about": {
+        "android": "com.bbva.bgm.accountsui.activity.AboutCellsActivity",
+        "cellsPage": "aboutPage",
+        "iOS": "BGMWebAboutViewController",
+        "isModal": "false"
+      },
+      "paymentCart": {
+        "android": "com.bbva.bgm.baseui.activity.ComingSoonActivity",
+        "iOS": "",
+        "isModal": "false"
+      },
+      "smartToken": {
+        "android": "com.bbva.bgm.baseui.activity.ComingSoonActivity",
+        "iOS": "",
+        "isModal": "false"
+      },
+      "exchangeRate": {
+        "android": "com.bbva.bgm.exchangerateui.activity.ExchangeRateActivity",
+        "iOS": "BGMExchangeRate.BGMExchangeRateViewController",
+        "isModal": "false"
+      },
+      "attentionPoints": {
+        "android": "com.bbva.bgm.baseui.activity.ComingSoonActivity",
+        "iOS": "",
+        "isModal": "false"
+      },
+      "communicateToUs": {
+        "android": "com.bbva.bgm.baseui.activity.ComingSoonActivity",
+        "iOS": "",
+        "isModal": "false"
+      },
+      "historicalBill": {
+        "android": "com.bbva.bgm.cardlesswithdrawalui.activity.HistoricalMenuActivity",
+        "iOS": "BGMBillPayHistoricalListViewController",
+        "isModal": "false"
+      },
+      "historicalCardless": {
+        "android": "com.bbva.bgm.cardlesswithdrawalui.activity.HistoricalMainActivity",
+        "iOS": "BGMCWHistoricalInitViewController",
+        "isModal": "false"
+      },
+      "ocMortgage": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "mortgagePage",
+        "iOS": "BGMWebOCMortgageViewController",
+        "isModal": "true"
+      },
+      "carLoan": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "carLoanPage",
+        "iOS": "BGMWebOCMortgageViewController",
+        "isModal": "true"
+      },
+      "creditCardHolder": {
+        "android": "com.bbva.bgm.accountsui.activity.DashboardRefreshCellsWebActivity",
+        "cellsPage": "creditCardHolderPage",
+        "iOS": "BGMWebOCCreditCardHolderViewController",
+        "isModal": "true"
+      },
+      "payrollAdvance": {
+        "android": "com.bbva.bgm.accountsui.activity.DashboardRefreshCellsWebActivity",
+        "cellsPage": "payrollAdvanceContractPage",
+        "iOS": "BGMWebOCPayrollAdvanceViewController",
+        "isModal": "true"
+      },
+      "creditCardUpgrade": {
+        "android": "com.bbva.bgm.accountsui.activity.DashboardRefreshCellsWebActivity",
+        "cellsPage": "creditCardUpgradePage",
+        "iOS": "BGMWebOCCreditCardUpgradeViewController",
+        "isModal": "true"
+      },
+      "frequentDetail": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "frequentOperationsDetailPage",
+        "iOS": "BGMWebFrequentDetailViewControlller",
+        "isModal": "true"
+      },
+      "frequentUpdate": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "frequentOperationUpdatePage",
+        "iOS": "BGMWebFrequentUpdateViewController",
+        "isModal": "true"
+      },
+      "giftCardTopUp": {
+        "android": "com.bbva.bgm.cardtopupui.activity.PrepaidCardTopUpActivity",
+        "iOS": "BGMPrepaidCardTopUp.BGMPrepaidCardTopUpFormController",
+        "isModal": "true"
+      },
+      "mobileWalletTopUp": {
+        "android": "com.bbva.bgm.mobiletopupui.activity.MobileTopUpContActivity",
+        "iOS": "BGMContMobileTopUpViewController",
+        "isModal": "true"
+      },
+      "failure": {
+        "android": "com.bbva.bgm.connectsdk.activity.base.BaseFailureActivity",
+        "iOS": "BGMErrorPresenterThreeViewController",
+        "isModal": "true"
+      },
+      "feedBack": {
+        "android": "com.bbva.bgm.baseui.activity.FeedbackActivity",
+        "iOS": "",
+        "isModal": "true"
+      },
+      "productDetailInsurance": {
+        "android": "com.bbva.bgm.accountsui.activity.DashboardRefreshCellsWebActivity",
+        "cellsPage": "insuranceDetailCancelPage",
+        "iOS": "BGMWebInsuranceDetailsViewController",
+        "isModal": "true"
+      },
+      "productDetailUnitLinked": {
+        "android": "com.bbva.bgm.accountsui.activity.DashboardRefreshCellsWebActivity",
+        "cellsPage": "unitLinkedBalancePage",
+        "iOS": "BGMWebEquityContractDetailViewController",
+        "isModal": "true"
+      },
+      "oneClickInsurance": {
+        "android": "com.bbva.bgm.accountsui.activity.DashboardRefreshCellsWebActivity",
+        "cellsPage": "lifeInsuranceMainPage",
+        "iOS": "BGMWebOCLifeInsuranceViewController",
+        "isModal": "true"
+      },
+      "qrPayments": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.InfoQrPaymentsActivity",
+        "iOS": "BGMQRPaymentInfoViewController",
+        "isModal": "false"
+      },
+      "paymentsVerifyQr": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.QrVerifyInformationActivity",
+        "iOS": "BGMReadQRViewController",
+        "isModal": "true"
+      },
+      "qrTransferPayments": {
+        "android": "com.bbva.bgm.transfersui.activity.TransfersActivity",
+        "iOS": "",
+        "isModal": "true"
+      },
+      "equityContract": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "patrimonialContractDetailsPage",
+        "iOS": "BGMWebEquityContractDetailViewController",
+        "isModal": "true"
+      },
+      "upgradeApp": {
+        "android": "com.bbva.bgm.loginui.activity.UpgradeApplicationActivity",
+        "iOS": "BGMVersionUpdateViewController",
+        "isModal": "true"
+      },
+      "askMoneyQrGenerate": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.QrGeneratorAskMoneyActivity",
+        "iOS": "BGMGenerateDynamicCodeFormViewController",
+        "isModal": "true"
+      },
+      "qrAskMoneyAdvantage": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.QrInfoAdvantagesActivity",
+        "iOS": "BGMQRAskForMoneyViewController",
+        "isModal": "true"
+      },
+      "accountUpgrade": {
+        "android": "com.bbva.bgm.fobui.activity.upgrade.ExpedientUpdateAlertActivity",
+        "iOS": "BGMOUpgradeInformationViewController",
+        "isModal": "true"
+      },
+      "accountUpgradeLastStep": {
+        "android": "com.bbva.bgm.fobui.activity.upgrade.ExpedientUpdateLastStepActivity",
+        "iOS": "BGMORegisterClientViewController",
+        "isModal": "true"
+      },
+      "onboardingCodi": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.OnBoardingCodiCellsActivity",
+        "cellsPage": "codiWelcomePage",
+        "iOS": "BGMWebEnrollCodiViewController",
+        "isModal": "true"
+      },
+      "codiSubsecuent": {
+        "android": "",
+        "cellsPage": "codiEnrollPage",
+        "iOS": "BGMWebSubsecuentViewController",
+        "isModal": "true"
+      },
+      "codiSuccessRegistration": {
+          "android": "",
+          "cellsPage": "codiAccountValidationPage",
+          "iOS": "BGMWebCoDiSuccessViewController",
+          "isModal": "true"
+      },
+      "readQR": {
+        "android": "",
+        "cellsPage": "codiEnrollPage",
+        "iOS": "BGMWebReadCoDiQrViewController",
+        "isModal": "true"
+      },
+      "notificationPayResponse": {
+        "android": "",
+        "iOS": "BGMCodiNotificationType1ViewController",
+        "isModal": "false"
+      },
+      "notificationNotPresential": {
+        "android": "",
+        "cellsPage": "codiEnrollPage",
+        "iOS": "BGMNotificationCodiDecrypt",
+        "isModal": "false"
+      },
+      "notificationPushStatus": {
+        "android": "",
+        "iOS": "BGMCodiNotificationViewController",
+        "isModal": "false"
+      },
+      "notificationPushValidate": {
+        "android": "",
+        "iOS": "BGMCodiNotificationValidateViewController",
+        "isModal": "false"
+      },
+      "historicalQrPayments": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.HistoricalQrPaymentsActivity",
+        "iOS": "BGMHistoricalQrPaymentsViewController",
+        "isModal": "false"
+      },
+      "enrollmentAppDefault": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.DefaultQRCodePaymentsAppActivity",
+        "iOS": "BGMCheckPaymentsCodiViewController",
+        "idModal": "true"
+      },
+      "paymentsQr": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.PaymentsQrReaderActivity",
+        "iOS": "",
+        "isModal": "false"
+      },
+      "readQr": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.QrTriggerCellsActivity",
+        "cellsPage": "codiEnrollPage",
+        "iOS": "",
+        "isModal": "false"
+      },
+      "notificationCodi": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.NotificationCodiTriggerActivity",
+        "iOS": "",
+        "isModal": "true"
+      },
+      "hmacChargeMessagePayments": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.HistoricalQrPaymentsActivity",
+        "iOS": "",
+        "isModal": "false"
+      },
+      "fundDetail": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "fund",
+        "iOS": "BGMWebFundDetailsViewController",
+        "isModal": "false"
+      },
+      "payrollPortability": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "payrollPortabilityCreatePage",
+        "iOS": "BGMWebPayrollPortabilityViewController",
+        "isModal": "true"
+      },
+      "contingencyCampaign": {
+        "android": "com.bbva.bgm.accountsui.activity.ContingencyActivity",
+        "iOS": "BGMContingencyCampaignDetailViewController",
+        "isModal": "true"
+      },
+      "securitySettings": {
+        "android": "com.bbva.bgm.userprofileui.activity.SecSettingsWebActivity",
+        "cellsPage": "securityMenuPage",
+        "iOS": "BGMWebSecuritySettingsViewController",
+        "isModal": "false"
+      },
+      "ocDepositHiring": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "depositHiring",
+        "iOS": "BGMWebOCDepositHiringViewController",
+        "isModal": "true"
+      },
+      "paymentPlanFinance": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "ppfContractPage",
+        "iOS": "BGMPaymentPlanFinanceViewController",
+        "isModal": "true"
+      },
+      "paymentPlanFinanceError": {
+        "android": "com.bbva.bgm.accountsui.activity.ErrorOfferPPFActivity",
+        "iOS": "BGMPaymentPlanFinanceViewController",
+        "isModal": "true"
+      },
+      "creditCardHolderNoticePage": {
+        "android": "com.bbva.bgm.accountsui.activity.DashboardRefreshCellsWebActivity",
+        "cellsPage": "creditCardHolderNoticePage",
+        "iOS": "BGMCreditCardHolderNoticePageViewController",
+        "isModal": "true"
+      },
+      "digitalTurn": {
+        "android": "com.bbva.bgm.accountsui.activity.DashboardRefreshCellsWebActivity",
+        "cellsPage": "requestBranchAppointmentPage",
+        "iOS": "BGMWebOnlineAppointmentViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMOffersForMeScreen": {
+      "tabNotifications": {
+        "android": "com.bbva.bgm.accountsui.fragment.ComingSoonFragment",
+        "iOS": "BGMComingSoonViewController",
+        "isModal": "false"
+      },
+      "tabDashboard": {
+        "android": "com.bbva.bgm.accountsui.activity.DashboardActivity",
+        "iOS": "BGMNewDashboardViewController",
+        "isModal": "false"
+      },
+      "tabFrequents": {
+        "android": "com.bbva.bgm.accountsui.fragment.ComingSoonFragment",
+        "iOS": "BGMComingSoonViewController",
+        "isModal": "false"
+      },
+      "tabCheckup": {
+        "android": "com.bbva.bgm.accountsui.fragment.ComingSoonFragment",
+        "iOS": "BGMWebCheckUpViewController",
+        "isModal": "false"
+      },
+      "tabAssistance": {
+        "android": "com.bbva.bgm.accountsui.fragment.ComingSoonFragment",
+        "iOS": "BGMAssistanceViewController",
+        "isModal": "false"
+      },
+      "profile": {
+        "android": "com.bbva.bgm.userprofileui.activity.UserProfileActivity",
+        "iOS": "BGMUserProfileViewController",
+        "isModal": "false"
+      },
+      "configuration": {
+        "android": "com.bbva.bgm.userprofileui.activity.ConfigMenuWebActivity",
+        "cellsPage": "settingsPage",
+        "iOS": "BGMWebSettingsViewController",
+        "isModal": "false"
+      },
+      "securitySettings": {
+          "android": "com.bbva.bgm.userprofileui.activity.SecSettingsWebActivity",
+          "cellsPage": "securityMenuPage",
+          "iOS": "BGMWebSecuritySettingsViewController",
+          "isModal": "false"
+      },
+      "tokenMovil": {
+        "android": "com.bbva.bgm.loginui.softtoken.activity.TokenMovilActivity",
+        "iOS": "BGMTokenMovilSelectionViewController",
+        "isModal": "false"
+      },
+      "cardlessWithdrawal": {
+        "android": "com.bbva.bgm.cardlesswithdrawalui.activity.CardlessWithdrawalActivity",
+        "iOS": "BGMCWInitViewController",
+        "isModal": "true"
+      },
+      "atmBranches": {
+        "android": "com.bbva.bgm.locatorui.activity.LocatorMapActivity",
+        "iOS": "BGMAtmAndBranchLocatorViewController",
+        "isModal": "false"
+      },
+      "clarificationList": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "clarificationsListPage",
+        "iOS": "BGMWebClarificationsListController",
+        "isModal": "false"
+      },
+      "assistance": {
+        "android": "com.bbva.bgm.accountsui.activity.AssistanceActivity",
+        "iOS": "BGMNewAssistanceViewController",
+        "isModal": "false"
+      },
+      "applications": {
+        "android": "com.bbva.bgm.accountsui.activity.ApplicationsActivity",
+        "iOS": "BGMAppMenuViewController",
+        "isModal": "false"
+      },
+      "about": {
+        "android": "com.bbva.bgm.accountsui.activity.AboutCellsActivity",
+        "cellsPage": "aboutPage",
+        "iOS": "BGMWebAboutViewController",
+        "isModal": "false"
+      },
+      "paymentCart": {
+        "android": "com.bbva.bgm.baseui.activity.ComingSoonActivity",
+        "iOS": "",
+        "isModal": "false"
+      },
+      "smartToken": {
+        "android": "com.bbva.bgm.baseui.activity.ComingSoonActivity",
+        "iOS": "",
+        "isModal": "false"
+      },
+      "exchangeRate": {
+        "android": "com.bbva.bgm.exchangerateui.activity.ExchangeRateActivity",
+        "iOS": "BGMExchangeRate.BGMExchangeRateViewController",
+        "isModal": "false"
+      },
+      "attentionPoints": {
+        "android": "com.bbva.bgm.baseui.activity.ComingSoonActivity",
+        "iOS": "",
+        "isModal": "false"
+      },
+      "communicateToUs": {
+        "android": "com.bbva.bgm.baseui.activity.ComingSoonActivity",
+        "iOS": "",
+        "isModal": "false"
+      },
+      "historicalBill": {
+        "android": "com.bbva.bgm.cardlesswithdrawalui.activity.HistoricalMenuActivity",
+        "iOS": "BGMBillPayHistoricalListViewController",
+        "isModal": "false"
+      },
+      "historicalCardless": {
+        "android": "com.bbva.bgm.cardlesswithdrawalui.activity.HistoricalMainActivity",
+        "iOS": "BGMCWHistoricalInitViewController",
+        "isModal": "false"
+      },
+      "ocCreditCardLimitIncrease": {
+        "android": "com.bbva.bgm.occclimitincreaseui.activity.OCCreditLimitIncreaseActivity",
+        "iOS": "BGMOCAccessCreditCardLimitIncreaseViewController",
+        "isModal": "true"
+      },
+      "ocInstantCash": {
+        "android": "com.bbva.bgm.ocinstantcashui.activity.OCInstantCashActivity",
+        "iOS": "BGMInstaCashViewController",
+        "isModal": "true"
+      },
+      "ocLoan": {
+        "android": "com.bbva.bgm.ocloanui.activity.LoanSimulationActivity",
+        "iOS": "BGMOCLoanFormViewController",
+        "isModal": "true"
+      },
+      "ocMortgage": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "mortgagePage",
+        "iOS": "BGMWebOCMortgageViewController",
+        "isModal": "true"
+      },
+      "carLoan": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "carLoanPage",
+        "iOS": "BGMWebOCMortgageViewController",
+        "isModal": "true"
+      },
+      "ocDepositHiring": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "depositHiring",
+        "iOS": "BGMWebOCDepositHiringViewController",
+        "isModal": "true"
+      },
+      "creditCardHolder": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "creditCardHolderPage",
+        "iOS": "BGMWebOCCreditCardHolderViewController",
+        "isModal": "true"
+      },
+      "payrollAdvance": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "payrollAdvanceContractPage",
+        "iOS": "BGMWebOCPayrollAdvanceViewController",
+        "isModal": "true"
+      },
+      "creditCardUpgrade": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "creditCardUpgradePage",
+        "iOS": "BGMWebOCCreditCardUpgradeViewController",
+        "isModal": "true"
+      },
+      "payrollPortability": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "payrollPortabilityCreatePage",
+        "iOS": "BGMWebPayrollPortabilityViewController",
+        "isModal": "true"
+      },
+      "oneClickInsurance": {
+        "android": "com.bbva.bgm.accountsui.activity.DashboardRefreshCellsWebActivity",
+        "cellsPage": "lifeInsuranceMainPage",
+        "iOS": "BGMWebOCLifeInsuranceViewController",
+        "isModal": "true"
+      },
+      "qrPayments": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.InfoQrPaymentsActivity",
+        "iOS": "BGMQRPaymentInfoViewController",
+        "isModal": "true"
+      },
+      "paymentsVerifyQr": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.QrVerifyInformationActivity",
+        "iOS": "BGMReadQRViewController",
+        "isModal": "true"
+      },
+      "upgradeApp": {
+        "android": "com.bbva.bgm.loginui.activity.UpgradeApplicationActivity",
+        "iOS": "BGMVersionUpdateViewController",
+        "isModal": "true"
+      },
+      "contingencyCampaign": {
+        "android": "com.bbva.bgm.accountsui.activity.ContingencyActivity",
+        "iOS": "BGMContingencyCampaignDetailViewController",
+        "isModal": "true"
+      },
+      "paymentPlanFinance": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "ppfContractPage",
+        "iOS": "BGMPaymentPlanFinanceViewController",
+        "isModal": "true"
+      },
+      "creditCardHolderNoticePage": {
+        "android": "com.bbva.bgm.accountsui.activity.DashboardRefreshCellsWebActivity",
+        "cellsPage": "creditCardHolderNoticePage",
+        "iOS": "BGMCreditCardHolderNoticePageViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMNewCardDetailScreen": {
+        "webView": {
+          "android": "",
+          "iOS": "ShoppingWebViewController",
+          "isModal": "true"
+        }
+    },
+    "BGMFrequentOperationsScreen": {
+      "tabNotifications": {
+        "android": "com.bbva.bgm.accountsui.fragment.ComingSoonFragment",
+        "iOS": "BGMComingSoonViewController",
+        "isModal": "false"
+      },
+      "tabParaMi": {
+        "android": "com.bbva.bgm.accountsui.fragment.ComingSoonFragment",
+        "iOS": "BGMForMeViewController",
+        "isModal": "false"
+      },
+      "tabDashboard": {
+        "android": "com.bbva.bgm.accountsui.activity.DashboardActivity",
+        "iOS": "BGMNewDashboardViewController",
+        "isModal": "false"
+      },
+      "tabCheckup": {
+        "android": "com.bbva.bgm.accountsui.fragment.ComingSoonFragment",
+        "iOS": "BGMWebCheckUpViewController",
+        "isModal": "false"
+      },
+      "tabAssistance": {
+        "android": "com.bbva.bgm.accountsui.fragment.ComingSoonFragment",
+        "iOS": "BGMAssistanceViewController",
+        "isModal": "false"
+      },
+      "profile": {
+        "android": "com.bbva.bgm.userprofileui.activity.UserProfileActivity",
+        "iOS": "BGMUserProfileViewController",
+        "isModal": "false"
+      },
+      "configuration": {
+        "android": "com.bbva.bgm.userprofileui.activity.ConfigMenuWebActivity",
+        "cellsPage": "settingsPage",
+        "iOS": "BGMWebSettingsViewController",
+        "isModal": "false"
+      },
+      "securitySettings": {
+          "android": "com.bbva.bgm.userprofileui.activity.SecSettingsWebActivity",
+          "cellsPage": "securityMenuPage",
+          "iOS": "BGMWebSecuritySettingsViewController",
+          "isModal": "false"
+      },
+      "tokenMovil": {
+        "android": "com.bbva.bgm.loginui.softtoken.activity.TokenMovilActivity",
+        "iOS": "BGMTokenMovilSelectionViewController",
+        "isModal": "false"
+      },
+      "cardlessWithdrawal": {
+        "android": "com.bbva.bgm.cardlesswithdrawalui.activity.CardlessWithdrawalActivity",
+        "iOS": "BGMCWInitViewController",
+        "isModal": "true"
+      },
+      "atmBranches": {
+        "android": "com.bbva.bgm.locatorui.activity.LocatorMapActivity",
+        "iOS": "BGMAtmAndBranchLocatorViewController",
+        "isModal": "false"
+      },
+      "assistance": {
+        "android": "com.bbva.bgm.accountsui.activity.AssistanceActivity",
+        "iOS": "BGMNewAssistanceViewController",
+        "isModal": "false"
+      },
+      "applications": {
+        "android": "com.bbva.bgm.accountsui.activity.ApplicationsActivity",
+        "iOS": "BGMAppMenuViewController",
+        "isModal": "false"
+      },
+      "about": {
+        "android": "com.bbva.bgm.accountsui.activity.AboutCellsActivity",
+        "cellsPage": "aboutPage",
+        "iOS": "BGMWebAboutViewController",
+        "isModal": "false"
+      },
+      "paymentCart": {
+        "android": "com.bbva.bgm.baseui.activity.ComingSoonActivity",
+        "iOS": "",
+        "isModal": "false"
+      },
+      "smartToken": {
+        "android": "com.bbva.bgm.baseui.activity.ComingSoonActivity",
+        "iOS": "",
+        "isModal": "false"
+      },
+      "exchangeRate": {
+        "android": "com.bbva.bgm.exchangerateui.activity.ExchangeRateActivity",
+        "iOS": "BGMExchangeRate.BGMExchangeRateViewController",
+        "isModal": "false"
+      },
+      "attentionPoints": {
+        "android": "com.bbva.bgm.baseui.activity.ComingSoonActivity",
+        "iOS": "",
+        "isModal": "false"
+      },
+      "communicateToUs": {
+        "android": "com.bbva.bgm.baseui.activity.ComingSoonActivity",
+        "iOS": "",
+        "isModal": "false"
+      },
+      "historicalBill": {
+        "android": "com.bbva.bgm.cardlesswithdrawalui.activity.HistoricalMenuActivity",
+        "iOS": "BGMBillPayHistoricalListViewController",
+        "isModal": "false"
+      },
+      "historicalCardless": {
+        "android": "com.bbva.bgm.cardlesswithdrawalui.activity.HistoricalMainActivity",
+        "iOS": "BGMCWHistoricalInitViewController",
+        "isModal": "false"
+      },
+      "frequentDetail": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "frequentOperationsDetailPage",
+        "iOS": "BGMWebFrequentDetailViewControlller",
+        "isModal": "true"
+      },
+      "frequentUpdate": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "frequentOperationUpdatePage",
+        "iOS": "BGMWebFrequentUpdateViewController",
+        "isModal": "true"
+      },
+      "transfers": {
+        "android": "com.bbva.bgm.transfersui.activity.TransfersActivity",
+        "iOS": "BGMTransferMainFormViewController",
+        "isModal": "true"
+      },
+      "mobileWalletTopUp": {
+        "android": "com.bbva.bgm.mobiletopupui.activity.MobileTopUpContActivity",
+        "iOS": "BGMContMobileTopUpViewController",
+        "isModal": "true"
+      },
+      "giftCardTopUp": {
+        "android": "com.bbva.bgm.cardtopupui.activity.PrepaidCardTopUpActivity",
+        "iOS": "BGMPrepaidCardTopUp.BGMPrepaidCardTopUpFormController",
+        "isModal": "true"
+      },
+      "cardPay": {
+        "android": "com.bbva.bgm.cardpayui.activity.CardPaymentsActivity",
+        "iOS": "BGMCreditCardPaymentFormViewController",
+        "isModal": "true"
+      },
+      "billPay": {
+        "android": "com.bbva.bgm.billpayui.activity.BillPaymentsActivity",
+        "iOS": "BGMBillPayFormViewController",
+        "isModal": "true"
+      },
+      "failure": {
+        "android": "com.bbva.bgm.basetnpui.activity.BaseTransfersPaymentFailureActivity",
+        "iOS": "BGMErrorPresenterThreeViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMNotificationsScreen": {
+      "tabDashboard": {
+        "android": "com.bbva.bgm.accountsui.activity.DashboardActivity",
+        "iOS": "BGMNewDashboardViewController",
+        "isModal": "false"
+      },
+      "tabParaMi": {
+        "android": "com.bbva.bgm.accountsui.fragment.ComingSoonFragment",
+        "iOS": "BGMForMeViewController",
+        "isModal": "false"
+      },
+      "tabFrequents": {
+        "android": "com.bbva.bgm.accountsui.fragment.ComingSoonFragment",
+        "iOS": "BGMComingSoonViewController",
+        "isModal": "false"
+      },
+      "tabCheckup": {
+        "android": "com.bbva.bgm.accountsui.fragment.ComingSoonFragment",
+        "iOS": "BGMWebCheckUpViewController",
+        "isModal": "false"
+      },
+      "tabAssistance": {
+        "android": "com.bbva.bgm.accountsui.fragment.ComingSoonFragment",
+        "iOS": "BGMAssistanceViewController",
+        "isModal": "false"
+      },
+      "profile": {
+        "android": "com.bbva.bgm.userprofileui.activity.UserProfileActivity",
+        "iOS": "BGMUserProfileViewController",
+        "isModal": "false"
+      },
+      "configuration": {
+        "android": "com.bbva.bgm.userprofileui.activity.ConfigMenuWebActivity",
+        "cellsPage": "settingsPage",
+        "iOS": "BGMWebSettingsViewController",
+        "isModal": "false"
+      },
+      "securitySettings": {
+          "android": "com.bbva.bgm.userprofileui.activity.SecSettingsWebActivity",
+          "cellsPage": "securityMenuPage",
+          "iOS": "BGMWebSecuritySettingsViewController",
+          "isModal": "false"
+      },
+      "tokenMovil": {
+        "android": "com.bbva.bgm.loginui.softtoken.activity.TokenMovilActivity",
+        "iOS": "BGMTokenMovilSelectionViewController",
+        "isModal": "false"
+      },
+      "cardlessWithdrawal": {
+        "android": "com.bbva.bgm.cardlesswithdrawalui.activity.CardlessWithdrawalActivity",
+        "iOS": "BGMCWInitViewController",
+        "isModal": "true"
+      },
+      "atmBranches": {
+        "android": "com.bbva.bgm.locatorui.activity.LocatorMapActivity",
+        "iOS": "BGMAtmAndBranchLocatorViewController",
+        "isModal": "false"
+      },
+      "assistance": {
+        "android": "com.bbva.bgm.accountsui.activity.AssistanceActivity",
+        "iOS": "BGMNewAssistanceViewController",
+        "isModal": "false"
+      },
+      "applications": {
+        "android": "com.bbva.bgm.accountsui.activity.ApplicationsActivity",
+        "iOS": "BGMAppMenuViewController",
+        "isModal": "false"
+      },
+      "about": {
+        "android": "com.bbva.bgm.accountsui.activity.AboutCellsActivity",
+        "cellsPage": "aboutPage",
+        "iOS": "BGMWebAboutViewController",
+        "isModal": "false"
+      },
+      "paymentCart": {
+        "android": "com.bbva.bgm.baseui.activity.ComingSoonActivity",
+        "iOS": "",
+        "isModal": "false"
+      },
+      "smartToken": {
+        "android": "com.bbva.bgm.baseui.activity.ComingSoonActivity",
+        "iOS": "",
+        "isModal": "false"
+      },
+      "exchangeRate": {
+        "android": "com.bbva.bgm.exchangerateui.activity.ExchangeRateActivity",
+        "iOS": "BGMExchangeRate.BGMExchangeRateViewController",
+        "isModal": "false"
+      },
+      "attentionPoints": {
+        "android": "com.bbva.bgm.baseui.activity.ComingSoonActivity",
+        "iOS": "",
+        "isModal": "false"
+      },
+      "communicateToUs": {
+        "android": "com.bbva.bgm.baseui.activity.ComingSoonActivity",
+        "iOS": "",
+        "isModal": "false"
+      },
+      "historicalBill": {
+        "android": "com.bbva.bgm.cardlesswithdrawalui.activity.HistoricalMenuActivity",
+        "iOS": "BGMBillPayHistoricalListViewController",
+        "isModal": "false"
+      },
+      "historicalCardless": {
+        "android": "com.bbva.bgm.cardlesswithdrawalui.activity.HistoricalMainActivity",
+        "iOS": "BGMCWHistoricalInitViewController",
+        "isModal": "false"
+      },
+      "notice": {
+        "android": "",
+        "iOS": "BGMNoticeViewController",
+        "isModal": "false"
+      },
+      "promo": {
+        "android": "",
+        "iOS": "BGMPromoViewController",
+        "isModal": "false"
+      },
+      "payment": {
+        "android": "",
+        "iOS": "BGMPaymentViewController",
+        "isModal": "false"
+      },
+      "withdrawal": {
+        "android": "",
+        "iOS": "BGMWithdrawalViewController",
+        "isModal": "false"
+      },
+      "credit": {
+        "android": "",
+        "iOS": "BGMCreditApprovalViewController",
+        "isModal": "false"
+      },
+      "charge": {
+        "android": "",
+        "iOS": "BGMChargeViewController",
+        "isModal": "false"
+      },
+      "store": {
+        "android": "",
+        "iOS": "BGMStoreViewController",
+        "isModal": "false"
+      },
+      "qrPayments": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.InfoQrPaymentsActivity",
+        "iOS": "BGMQRPaymentInfoViewController",
+        "isModal": "true"
+      },
+      "paymentsVerifyQr": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.QrVerifyInformationActivity",
+        "iOS": "BGMReadQRViewController",
+        "isModal": "true"
+      },
+      "clarificationList": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "clarificationsListPage",
+        "iOS": "BGMWebClarificationsListController",
+        "isModal": "false"
+      }
+    },
+    "BGMAccountDetailScreen": {
+      "moreInfo": {
+        "android": "com.bbva.bgm.accountsui.activity.AccountMoreInfoActivity",
+        "iOS": "BGMAccountsMoreInformationViewController",
+        "isModal": "true"
+      },
+      "transfers": {
+        "android": "com.bbva.bgm.transfersui.activity.TransfersActivity",
+        "iOS": "BGMTransferMainFormViewController",
+        "isModal": "true"
+      },
+      "billPay": {
+        "android": "com.bbva.bgm.billpayui.activity.BillPaymentsActivity",
+        "iOS": "BGMBillPayFormViewController",
+        "isModal": "true"
+      },
+      "editAlias": {
+        "android": "com.bbva.bgm.accountsui.activity.EditAliasActivity",
+        "iOS": "BGMBaseEditAliasViewController",
+        "isModal": "false"
+      },
+      "cardlessWithdrawal": {
+        "android": "com.bbva.bgm.cardlesswithdrawalui.activity.CardlessWithdrawalActivity",
+        "iOS": "BGMCWInitViewController",
+        "isModal": "true"
+      },
+      "cardlessWithdrawalInfo": {
+        "android": "com.bbva.bgm.cardlesswithdrawalui.activity.InformationScreenCardlessWithdrawal",
+        "iOS": "BGMCWIntroductionViewController",
+        "isModal": "true"
+      },
+      "cardPay": {
+        "android": "com.bbva.bgm.cardpayui.activity.CardPaymentsActivity",
+        "iOS": "BGMCreditCardPaymentFormViewController",
+        "isModal": "true"
+      },
+      "mobileTopUp": {
+        "android": "com.bbva.bgm.mobiletopupui.activity.MobileTopUpActivity",
+        "iOS": "BGMMobileTopUpViewController",
+        "isModal": "true"
+      },
+      "giftCardTopUp": {
+        "android": "com.bbva.bgm.cardtopupui.activity.PrepaidCardTopUpActivity",
+        "iOS": "BGMPrepaidCardTopUp.BGMPrepaidCardTopUpFormController",
+        "isModal": "true"
+      },
+      "associableMobile": {
+        "android": "com.bbva.bgm.changespeiui.activity.ChangeSPEIActivity",
+        "iOS": "BGMLinkViewController",
+        "isModal": "false"
+      },
+      "safetyPay": {
+        "android": "com.bbva.bgm.baseui.activity.ComingSoonActivity",
+        "iOS": "",
+        "isModal": "false"
+      },
+      "mobileWalletTopUp": {
+        "android": "com.bbva.bgm.mobiletopupui.activity.MobileTopUpContActivity",
+        "iOS": "BGMContMobileTopUpViewController",
+        "isModal": "true"
+      },
+      "onlineShop": {
+        "android": "com.bbva.bgm.baseui.activity.ComingSoonActivity",
+        "iOS": "",
+        "isModal": "false"
+      },
+      "donations": {
+        "android": "com.bbva.bgm.baseui.activity.ComingSoonActivity",
+        "iOS": "",
+        "isModal": "false"
+      },
+      "myPayments": {
+        "android": "com.bbva.bgm.baseui.activity.ComingSoonActivity",
+        "iOS": "",
+        "isModal": "false"
+      },
+      "seeTransaction": {
+        "android": "com.bbva.bgm.accountsui.activity.TransactionsActivity",
+        "iOS": "BGMTransactionListViewController",
+        "isModal": "false"
+      },
+      "moreOperations": {
+        "android": "com.bbva.bgm.accountsui.activity.MoreActionsActivity",
+        "iOS": "BGMOperationsViewController",
+        "isModal": "true"
+      },
+      "pocketsList": {
+        "android": "com.bbva.bgm.accountsui.activity.DashboardRefreshCellsWebActivity",
+        "cellsPage": "pocketsListPage",
+        "iOS": "BGMWebPocketViewController",
+        "isModal": "false"
+      },
+      "noticePocket": {
+        "android": "com.bbva.bgm.accountsui.activity.DashboardRefreshCellsWebActivity",
+        "cellsPage": "pocketsNoticePage",
+        "iOS": "BGMWebPocketViewController",
+        "isModal": "true"
+      },
+      "accountStatement": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "accountStatementsPage",
+        "iOS": "BGMWebAccountStatementsController",
+        "isModal": "true"
+      },
+      "accountShare": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "shareProductAccountPage",
+        "iOS": "BGMWebAccountShareController",
+        "isModal": "true"
+      },
+      "transaction": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "accountTransactionDetail",
+        "iOS": "BGMWebTransactionDetailViewController",
+        "isModal": "false"
+      },
+      "payrollPortability": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "payrollPortabilityCreatePage",
+        "iOS": "BGMWebPayrollPortabilityViewController",
+        "isModal": "true"
+      },
+      "qrAskMoneyAdvantage": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.QrInfoAdvantagesActivity",
+        "iOS": "BGMQRAskForMoneyViewController",
+        "isModal": "true"
+      },
+      "qrPayments": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.InfoQrPaymentsActivity",
+        "iOS": "BGMQRPaymentInfoViewController",
+        "isModal": "true"
+      },
+      "qrCodePayments": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.PaymentsQrReaderActivity",
+        "iOS": "BGMQRPaymentInfoViewController",
+        "isModal": "true"
+      },
+      "onboardingCodi": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.OnBoardingCodiCellsActivity",
+        "cellsPage": "codiWelcomePage",
+        "iOS": "BGMWebEnrollCodiViewController",
+        "isModal": "true"
+      },
+      "askMoneyQrGenerate": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.QrGeneratorAskMoneyActivity",
+        "iOS": "BGMGenerateDynamicCodeFormViewController",
+        "isModal": "true"
+      },
+      "accountUpgrade": {
+        "android": "com.bbva.bgm.fobui.activity.upgrade.ExpedientUpdateAlertActivity",
+        "iOS": "BGMOUpgradeInformationViewController",
+        "isModal": "true"
+      },
+      "paymentsVerifyQr": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.QrVerifyInformationActivity",
+        "iOS": "BGMReadQRViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMAccountMoreInfoScreen": {
+      "payrollPortabilityList": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "payrollPortabilityListPage",
+        "iOS": "BGMWebPayrollPortabilityListViewController",
+        "isModal": "true"
+      },
+      "createQRDataFromDetail": {
+        "android": "",
+        "cellsPage": "codiEnrollPage",
+        "iOS": "BGMWebCreateCoDiQRViewController",
+        "isModal": "true"
+      },
+      "aboutQrOperations": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.AboutQrOperationsActivity",
+        "iOS": "",
+        "isModal": "true"
+      },
+      "registrationBanxicoCodi": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.RegistrationBanxicoCodiCellsActivity",
+        "cellsPage": "codiEnrollPage",
+        "iOS": "",
+        "isModal": "true"
+      },
+      "noValidatedAccounts": {
+        "android": "",
+        "iOS": "BGMCoDiWarningViewController",
+        "isModal": "true"
+      },
+      "onboardingCodi": {
+          "android": "com.bbva.bgm.qrpaymentsui.activity.OnBoardingCodiCellsActivity",
+          "cellsPage": "codiWelcomePage",
+          "iOS": "BGMWebEnrollCodiViewController",
+          "isModal": "true"
+      }
+    },
+    "BGMCreateQrCellsScreen": {
+      "moreInfo": {
+        "android": "com.bbva.bgm.accountsui.activity.AccountMoreInfoActivity",
+        "iOS": "BGMAccountsMoreInformationViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMRegistrationBanxicoCodiCellsScreen": {
+      "reistrationBanxicoSuccess": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.RegistrationBanxicoCodiScuccessActivity",
+        "iOS": "",
+        "isModal": "true"
+      }
+    },
+    "BGMCheckUpScreen": {
+      "profile": {
+        "android": "com.bbva.bgm.userprofileui.activity.UserProfileActivity",
+        "iOS": "BGMUserProfileViewController",
+        "isModal": "false"
+      },
+      "configuration": {
+        "android": "com.bbva.bgm.userprofileui.activity.ConfigMenuWebActivity",
+        "cellsPage": "settingsPage",
+        "iOS": "BGMWebSettingsViewController",
+        "isModal": "false"
+      },
+      "securitySettings": {
+          "android": "com.bbva.bgm.userprofileui.activity.SecSettingsWebActivity",
+          "cellsPage": "securityMenuPage",
+          "iOS": "BGMWebSecuritySettingsViewController",
+          "isModal": "false"
+      },
+      "tokenMovil": {
+        "android": "com.bbva.bgm.loginui.softtoken.activity.TokenMovilActivity",
+        "iOS": "BGMTokenMovilSelectionViewController",
+        "isModal": "false"
+      },
+      "cardlessWithdrawal": {
+        "android": "com.bbva.bgm.cardlesswithdrawalui.activity.CardlessWithdrawalActivity",
+        "iOS": "BGMCWInitViewController",
+        "isModal": "true"
+      },
+      "atmBranches": {
+        "android": "com.bbva.bgm.locatorui.activity.LocatorMapActivity",
+        "iOS": "BGMAtmAndBranchLocatorViewController",
+        "isModal": "false"
+      },
+      "assistance": {
+        "android": "com.bbva.bgm.accountsui.activity.AssistanceActivity",
+        "iOS": "BGMNewAssistanceViewController",
+        "isModal": "false"
+      },
+      "applications": {
+        "android": "com.bbva.bgm.accountsui.activity.ApplicationsActivity",
+        "iOS": "BGMAppMenuViewController",
+        "isModal": "false"
+      },
+      "about": {
+        "android": "com.bbva.bgm.accountsui.activity.AboutCellsActivity",
+        "cellsPage": "aboutPage",
+        "iOS": "BGMWebAboutViewController",
+        "isModal": "false"
+      },
+      "paymentCart": {
+        "android": "com.bbva.bgm.baseui.activity.ComingSoonActivity",
+        "iOS": "",
+        "isModal": "false"
+      },
+      "smartToken": {
+        "android": "com.bbva.bgm.baseui.activity.ComingSoonActivity",
+        "iOS": "",
+        "isModal": "false"
+      },
+      "exchangeRate": {
+        "android": "com.bbva.bgm.exchangerateui.activity.ExchangeRateActivity",
+        "iOS": "BGMExchangeRate.BGMExchangeRateViewController",
+        "isModal": "false"
+      },
+      "attentionPoints": {
+        "android": "com.bbva.bgm.baseui.activity.ComingSoonActivity",
+        "iOS": "",
+        "isModal": "false"
+      },
+      "communicateToUs": {
+        "android": "com.bbva.bgm.baseui.activity.ComingSoonActivity",
+        "iOS": "",
+        "isModal": "false"
+      },
+      "historicalBill": {
+        "android": "com.bbva.bgm.cardlesswithdrawalui.activity.HistoricalMenuActivity",
+        "iOS": "BGMBillPayHistoricalListViewController",
+        "isModal": "false"
+      },
+      "historicalCardless": {
+        "android": "com.bbva.bgm.cardlesswithdrawalui.activity.HistoricalMainActivity",
+        "iOS": "BGMCWHistoricalInitViewController",
+        "isModal": "false"
+      },
+      "qrPayments": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.InfoQrPaymentsActivity",
+        "iOS": "BGMQRPaymentInfoViewController",
+        "isModal": "true"
+      },
+      "paymentsVerifyQr": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.QrVerifyInformationActivity",
+        "iOS": "BGMReadQRViewController",
+        "isModal": "true"
+      },
+      "clarificationList": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "clarificationsListPage",
+        "iOS": "BGMWebClarificationsListController",
+        "isModal": "false"
+      }
+    },
+    "BGMCardDetailScreen": {
+      "ocCreditCardLimitIncrease": {
+        "android": "com.bbva.bgm.occclimitincreaseui.activity.OCCreditLimitIncreaseActivity",
+        "iOS": "BGMOCAccessCreditCardLimitIncreaseViewController",
+        "isModal": "true"
+      },
+      "cardDigitalDetail": {
+        "android": "com.bbva.bgm.accountsui.activity.CardDigitalDetailActivity",
+        "iOS": "DigitalCardDetailViewController",
+        "isModal": "false"
+      },
+      "pinRequest": {
+        "android": "com.bbva.bgm.accountsui.activity.CvvCellsPageActivity",
+        "cellsPage": "pinRequest",
+        "iOS": "BGMWebPinRequestViewController",
+        "isModal": "true"
+      },
+      "activateCard": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "activateTdcPage",
+        "iOS": "BGMWebPinRequestViewController",
+        "isModal": "true"
+      },
+      "cardPoints": {
+        "android": "com.bbva.bgm.rewards.points.view.PointsActivity",
+        "iOS": "RewardsViewController",
+        "isModal": "false"
+      },
+      "generateDigitalCard": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "iOS": "BGMWebDigitalCardActivationController",
+        "cellsPage": "cardGenerate",
+        "isModal": "true"
+      },
+      "minimumPaymentInfo": {
+        "android": "com.bbva.bgm.accountsui.activity.MinimumPaymentInfoActivity",
+        "iOS": "",
+        "isModal": "false"
+      },
+      "moreInfo": {
+        "android": "com.bbva.bgm.accountsui.activity.CardMoreInfoActivity",
+        "iOS": "BGMCardsMoreInformationViewController",
+        "isModal": "true"
+      },
+      "tempBlockInfo": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "cardOnOffHelpPage",
+        "iOS": "BGMWebCardOnOffController",
+        "isModal": "true"
+      },
+      "permanentCardBlock": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "cardPermBlockConfirmPage",
+        "iOS": "BGMWebPermanentCardBlockController",
+        "isModal": "true"
+      },
+      "temporaryCardBlock": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "cardOnOffPage",
+        "iOS": "BGMWebCardOnOffController",
+        "isModal": "true"
+      },
+      "cardReceiptInfo": {
+        "android": "com.bbva.bgm.accountsui.activity.CardReceiptInfoActivity",
+        "iOS": "BGMCreditCardReceiptInfoViewController",
+        "isModal": "true"
+      },
+      "reminderMessage": {
+        "android": "com.bbva.bgm.accountsui.activity.CardReceiptInfoActivity",
+        "iOS": "BGMAddReminderMessageViewController",
+        "isModal": "true"
+      },
+      "transfers": {
+        "android": "com.bbva.bgm.transfersui.activity.TransfersActivity",
+        "iOS": "BGMTransferMainFormViewController",
+        "isModal": "true"
+      },
+      "billPay": {
+        "android": "com.bbva.bgm.billpayui.activity.BillPaymentsActivity",
+        "iOS": "BGMBillPayFormViewController",
+        "isModal": "true"
+      },
+      "editAlias": {
+        "android": "com.bbva.bgm.accountsui.activity.EditAliasActivity",
+        "iOS": "BGMBaseEditAliasViewController",
+        "isModal": "false"
+      },
+      "cardPay": {
+        "android": "com.bbva.bgm.cardpayui.activity.CardPaymentsActivity",
+        "iOS": "BGMCreditCardPaymentFormViewController",
+        "isModal": "true"
+      },
+      "giftCardTopUp": {
+        "android": "com.bbva.bgm.cardtopupui.activity.PrepaidCardTopUpActivity",
+        "iOS": "BGMPrepaidCardTopUp.BGMPrepaidCardTopUpFormController",
+        "isModal": "true"
+      },
+      "safetyPay": {
+        "android": "com.bbva.bgm.baseui.activity.ComingSoonActivity",
+        "iOS": "",
+        "isModal": "false"
+      },
+      "seeTransaction": {
+        "android": "com.bbva.bgm.accountsui.activity.TransactionsActivity",
+        "iOS": "BGMTransactionListViewController",
+        "isModal": "false"
+      },
+      "moreOperations": {
+        "android": "com.bbva.bgm.accountsui.activity.MoreActionsActivity",
+        "iOS": "BGMOperationsViewController",
+        "isModal": "true"
+      },
+      "accountStatement": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "accountStatementsPage",
+        "iOS": "BGMWebAccountStatementsController",
+        "isModal": "true"
+      },
+      "financialTransactionsList": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "transactionListFinancePage",
+        "iOS": "BGMWebTransactionListFinanceController",
+        "isModal": "true"
+      },
+      "financialTransactionSimulation": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "transactionSimulationFinancePage",
+        "iOS": "BGMWebFinanceTransactionSimulationController",
+        "isModal": "true"
+      },
+      "transaction": {
+        "android": "com.bbva.bgm.accountsui.activity.TransactionDetailActivity",
+        "iOS": "BGMTransactionDetailViewController",
+        "isModal": "false"
+      },
+      "qrPayments": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.InfoQrPaymentsActivity",
+        "iOS": "BGMQRPaymentInfoViewController",
+        "isModal": "true"
+      },
+      "qrAskMoneyAdvantage": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.QrInfoAdvantagesActivity",
+        "iOS": "BGMQRAskForMoneyViewController",
+        "isModal": "true"
+      },
+      "askMoneyQrGenerate": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.QrGeneratorAskMoneyActivity",
+        "iOS": "BGMGenerateDynamicCodeFormViewController",
+        "isModal": "true"
+      },
+      "debitCardTransaction": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "accountTransactionDetail",
+        "iOS": "BGMWebTransactionDetailViewController",
+        "isModal": "false"
+      }
+    },
+    "BGMDepositDetailScreen": {
+      "editAlias": {
+        "android": "com.bbva.bgm.accountsui.activity.EditAliasActivity",
+        "iOS": "BGMBaseEditAliasViewController",
+        "isModal": "false"
+      },
+      "moreInfo": {
+        "android": "com.bbva.bgm.accountsui.activity.DepositMoreInfoActivity",
+        "iOS": "BGMDepositsMoreInformationViewController",
+        "isModal": "true"
+      },
+      "seeTransaction": {
+        "android": "com.bbva.bgm.accountsui.activity.TransactionsActivity",
+        "iOS": "BGMTransactionListViewController",
+        "isModal": "false"
+      }
+    },
+    "BGMFundDetailScreen": {
+      "editAlias": {
+        "android": "com.bbva.bgm.accountsui.activity.EditAliasActivity",
+        "iOS": "BGMBaseEditAliasViewController",
+        "isModal": "false"
+      },
+      "moreInfo": {
+        "android": "com.bbva.bgm.accountsui.activity.FundMoreInfoActivity",
+        "iOS": "BGMFundsMoreInformationViewController",
+        "isModal": "true"
+      },
+      "seeTransaction": {
+        "android": "com.bbva.bgm.accountsui.activity.TransactionsActivity",
+        "iOS": "BGMTransactionListViewController",
+        "isModal": "false"
+      }
+    },
+    "BGMLoanDetailScreen": {
+      "editAlias": {
+        "android": "com.bbva.bgm.accountsui.activity.EditAliasActivity",
+        "iOS": "BGMBaseEditAliasViewController",
+        "isModal": "false"
+      },
+      "moreInfo": {
+        "android": "com.bbva.bgm.accountsui.activity.LoanMoreInfoActivity",
+        "iOS": "BGMLoansMoreInformationViewController",
+        "isModal": "true"
+      },
+      "installments": {
+        "android": "com.bbva.bgm.accountsui.activity.InstallmentsActivity",
+        "iOS": "BGMInstallmentsViewController",
+        "isModal": "false"
+      },
+      "payCreditConsumer": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "loanPaymentsPage",
+        "iOS": "BGMWebLoanPaymentViewController",
+        "isModal": "false"
+      },
+      "payMortgageLoan": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "mortgageLoanPaymentPage",
+        "iOS": "BGMWebLoanPaymentViewController",
+        "isModal": "false"
+      },
+      "payCarLoan": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "carLoanPaymentPage",
+        "iOS": "BGMWebLoanPaymentViewController",
+        "isModal": "false"
+      }
+    },
+    "BGMTransactionsScreen": {
+      "filter": {
+        "android": "com.bbva.bgm.accountsui.activity.TransactionFilterActivity",
+        "iOS": "BGMTransactionSearchViewController",
+        "isModal": "true"
+      },
+      "details": {
+        "android": "com.bbva.bgm.accountsui.activity.TransactionDetailActivity",
+        "iOS": "BGMTransactionDetailViewController",
+        "isModal": "false"
+      },
+      "accountDetails": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "accountTransactionDetail",
+        "iOS": "BGMWebTransactionDetailViewController",
+        "isModal": "false"
+      }
+    },
+    "BGMTransactionDetailScreen": {
+      "financialTransactionSimulation": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "transactionSimulationFinancePage",
+        "iOS": "BGMWebFinanceTransactionSimulationController",
+        "isModal": "true"
+      },
+      "clarificationsManagement": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "clarificationsManagementPage",
+        "iOS": "BGMWebClarificationsManagementController",
+        "isModal": "true"
+      }
+    },
+    "BGMTransfersScreen": {
+      "success": {
+        "android": "com.bbva.bgm.transfersui.activity.TransferCompletedActivity",
+        "iOS": "BGMTransferCompleteViewController",
+        "isModal": "true"
+      },
+      "viewAllProducts": {
+        "android": "com.bbva.bgm.basetnpui.activity.ViewAllAccountsActivity",
+        "iOS": "BGMBaseTAPViewAllAccountsViewController",
+        "isModal": "true"
+      },
+      "viewAllContacts": {
+        "android": "com.bbva.bgm.contactsui.activity.FindContactsActivity",
+        "iOS": "BGMBaseTAPViewAllContactsViewController",
+        "isModal": "true"
+      },
+      "newDestination": {
+        "android": "com.bbva.bgm.transfersui.activity.CreateDestinationActivity",
+        "iOS": "BGMNewDestinationViewController",
+        "isModal": "true"
+      },
+      "checkIfRecipientExists": {
+        "android": "com.bbva.bgm.transfersui.fragment.CheckForRecipientInformationFragment",
+        "iOS": "BGMCheckForRecipientInformationViewController",
+        "isModal": "false"
+      },
+      "newDestinationError": {
+        "android": "com.bbva.bgm.transfersui.activity.SearchUserErrorActivity",
+        "iOS": "BGMNewDestinationErrorViewController",
+        "isModal": "true"
+      },
+      "newDestinationWithReceivers": {
+        "android": "com.bbva.bgm.transfersui.fragment.CreateDestinationFragment",
+        "iOS": "BGMNewDestinationUsingReciversViewController",
+        "isModal": "false"
+      },
+      "contactWasPreviouslySaved": {
+        "android": "com.bbva.bgm.contactsui.activity.SavedContactFoundActivity",
+        "iOS": "BGMContactWasPreviouslySavedViewController",
+        "isModal": "true"
+      },
+      "multipleResponseReceivers": {
+        "android": "com.bbva.bgm.transfersui.fragment.MultipleReceiversFragment",
+        "iOS": "BGMMultipleReceiverViewController",
+        "isModal": "false"
+      },
+      "transferTimeWarning": {
+        "android": "com.bbva.bgm.transfersui.activity.TransferInfoActivity",
+        "iOS": "BGMTransferTimeWarningViewController",
+        "isModal": "true"
+      },
+      "failure": {
+        "android": "com.bbva.bgm.basetnpui.activity.BaseTransfersPaymentFailureActivity",
+        "iOS": "BGMTransferErrorViewController",
+        "isModal": "true"
+      },
+      "warning": {
+        "android": "com.bbva.bgm.transfersui.activity.InsufficientFundsActivity",
+        "iOS": "BGMErrorPresenterTwoViewController",
+        "isModal": "true"
+      },
+      "ctsWarning": {
+        "android": "com.bbva.bgm.transfersui.activity.TransferInfoCTSActivity",
+        "iOS": "BGMErrorPresenterViewController",
+        "isModal": "true"
+      },
+      "paymentTypeInfo": {
+        "android": "com.bbva.bgm.basetnpui.activity.TransferTypeHelpActivity",
+        "iOS": "BGMPaymentTypeInfoViewController",
+        "isModal": "true"
+      },
+      "scheduledTransfer": {
+        "android": "com.bbva.bgm.transfersui.activity.ScheduledTransferActivity",
+        "iOS": "BGMTransferScheduledViewController",
+        "isModal": "true"
+      },
+      "transferTypeHelp": {
+        "android": "com.bbva.bgm.basetnpui.activity.TransferTypeHelpActivity",
+        "iOS": "BGMPaymentTypeInfoViewController",
+        "isModal": "true"
+      },
+      "termsAndConditions": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "pdfViewer",
+        "iOS": "BGMWebTermsAndConditionsController",
+        "isModal": "true"
+      },
+      "timeoutScreen": {
+        "android": "com.bbva.bgm.connectsdk.activity.base.BaseFailureActivity",
+        "iOS": "BGMErrorPresenterThreeViewController",
+        "isModal": "true"
+      },
+      "transactions": {
+        "android": "com.bbva.bgm.accountsui.activity.TransactionsActivity",
+        "iOS": "BGMTransactionListViewController",
+        "isModal": "false"
+      },
+      "transferQrFail": {
+        "android": "com.bbva.bgm.transfersui.activity.FailQrTransferActivity",
+        "iOS": "",
+        "isModal": "true"
+      },
+      "rejectPayments": {
+        "android": "com.bbva.bgm.transfersui.activity.RejectCodiPaymentsActivity",
+        "iOS": "",
+        "isModal": "true"
+      },
+      "accountUpgrade": {
+        "android": "com.bbva.bgm.fobui.activity.upgrade.ExpedientUpdateAlertActivity",
+        "iOS": "BGMOUpgradeInformationViewController",
+        "isModal": "true"
+      },
+      "onboardingCodi": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.OnBoardingCodiCellsActivity",
+        "cellsPage": "codiWelcomePage",
+        "iOS": "BGMWebEnrollCodiViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMTransferCompletedScreen": {
+      "feedBack": {
+        "android": "com.bbva.bgm.baseui.activity.FeedbackActivity",
+        "iOS": "",
+        "isModal": "true"
+      },
+      "email": {
+        "android": "com.bbva.bgm.baseui.activity.EmailComposerActivity",
+        "iOS": "BGMEmailNotificationViewController",
+        "isModal": "true"
+      },
+      "addFrequentOperation": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "frequentOperationsReactivePage",
+        "iOS": "BGMWebFrequentOprnAddViewController",
+        "isModal": "true"
+      },
+      "informationSPEI": {
+        "android": "com.bbva.bgm.transfersui.activity.InfoSpeiActivity",
+        "iOS": "BGMTransferInfoSPEIViewController",
+        "isModal": "true"
+      },
+      "notificationDetail": {
+        "android": "com.bbva.bgm.notificationui.activity.NotificationDetailActivity",
+        "iOS": "BGMNoticeViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMCardPayCompletedScreen": {
+      "addFrequentOperation": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "frequentOperationsReactivePage",
+        "iOS": "BGMWebFrequentOprnAddViewController",
+        "isModal": "true"
+      },
+      "notificationDetail": {
+        "android": "com.bbva.bgm.notificationui.activity.NotificationDetailActivity",
+        "iOS": "BGMNoticeViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMBillPaymentsScreen": {
+      "searchService": {
+        "android": "com.bbva.bgm.billpayui.activity.FindServiceActivity",
+        "iOS": "BGMBillPaymentCategoryViewController",
+        "isModal": "true"
+      },
+      "serviceData": {
+        "android": "com.bbva.bgm.billpayui.activity.ServiceDataActivity",
+        "iOS": "BGMBillPaymentsAmountSelectionViewController",
+        "isModal": "true"
+      },
+      "success": {
+        "android": "com.bbva.bgm.billpayui.activity.BillPayCompletedActivity",
+        "iOS": "BGMBillPaymentConfirmationViewController",
+        "isModal": "true"
+      },
+      "viewAll": {
+        "android": "com.bbva.bgm.billpayui.activity.StoredServiceListActivity",
+        "iOS": "BGMBillPaymentsViewAllController",
+        "isModal": "true"
+      },
+      "viewAllProducts": {
+        "android": "com.bbva.bgm.basetnpui.activity.ViewAllAccountsActivity",
+        "iOS": "BGMBaseTAPViewAllAccountsViewController",
+        "isModal": "true"
+      },
+      "failure": {
+        "android": "com.bbva.bgm.basetnpui.activity.BaseTransfersPaymentFailureActivity",
+        "iOS": "BGMErrorPresenterThreeViewController",
+        "isModal": "true"
+      },
+      "timeoutScreen": {
+        "android": "com.bbva.bgm.connectsdk.activity.base.BaseFailureActivity",
+        "iOS": "BGMErrorPresenterThreeViewController",
+        "isModal": "true"
+      },
+      "transactions": {
+        "android": "com.bbva.bgm.accountsui.activity.TransactionsActivity",
+        "iOS": "BGMTransactionListViewController",
+        "isModal": "false"
+      },
+      "notificationDetail": {
+        "android": "com.bbva.bgm.notificationui.activity.NotificationDetailActivity",
+        "iOS": "BGMNoticeViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMFindServiceScreen": {
+      "serviceData": {
+        "android": "com.bbva.bgm.billpayui.activity.ServiceDataActivity",
+        "iOS": "BGMBillPaymentsAmountSelectionViewController",
+        "isModal": "true"
+      },
+      "failure": {
+        "android": "com.bbva.bgm.basetnpui.activity.BaseTransfersPaymentFailureActivity",
+        "iOS": "BGMErrorPresenterThreeViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMServiceDataScreen": {
+      "serviceScanner": {
+        "android": "com.bbva.bgm.connectsdk.activity.BarcodeCaptureActivity",
+        "iOS": "BGMBillPaymentsBarcodeViewController",
+        "isModal": "false"
+      },
+      "serviceDataHelp": {
+        "android": "com.bbva.bgm.billpayui.activity.ServiceDataHelpActivity",
+        "iOS": "BGMBillPayReferenceHelpViewController",
+        "isModal": "true"
+      },
+      "failure": {
+        "android": "com.bbva.bgm.basetnpui.activity.BaseTransfersPaymentFailureActivity",
+        "iOS": "BGMErrorPresenterThreeViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMStoredServiceListScreen": {
+      "serviceData": {
+        "android": "com.bbva.bgm.billpayui.activity.ServiceDataActivity",
+        "iOS": "BGMBillPaymentsAmountSelectionViewController",
+        "isModal": "true"
+      },
+      "multipleBillAmount": {
+        "android": "com.bbva.bgm.billpayui.activity.MultiServiceDataActivity",
+        "iOS": "BGMBillPaymentsMultiAmountController",
+        "isModal": "true"
+      }
+    },
+    "BGMBillPaymentsViewAllScreen": {
+      "editAlias": {
+        "android": "com.bbva.bgm.accountsui.activity.EditAliasActivity",
+        "iOS": "BGMBaseEditAliasViewController",
+        "isModal": "false"
+      },
+      "multipleBillAmount": {
+        "android": "com.bbva.bgm.billpayui.activity.MultiServiceDataActivity",
+        "iOS": "BGMBillPaymentsMultiAmountController",
+        "isModal": "true"
+      }
+    },
+    "BGMBillPaymentsCompletedScreen": {
+      "feedBack": {
+        "android": "com.bbva.bgm.baseui.activity.FeedbackActivity",
+        "iOS": "",
+        "isModal": "true"
+      },
+      "email": {
+        "android": "com.bbva.bgm.baseui.activity.EmailComposerActivity",
+        "iOS": "BGMEmailNotificationViewController",
+        "isModal": "true"
+      },
+      "notificationDetail": {
+        "android": "com.bbva.bgm.notificationui.activity.NotificationDetailActivity",
+        "iOS": "BGMNoticeViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMHistoricalBillPayScreen": {
+      "filter": {
+        "android": "com.bbva.bgm.billpayui.activity.SearchHistoricalBillActivity",
+        "iOS": "BGMBillPayHistoricalFilterViewController",
+        "isModal": "true"
+      },
+      "topUpFilter": {
+        "android": "com.bbva.bgm.billpayui.activity.SearchHistoricalBillActivity",
+        "iOS": "BGMTopUpHistoricalFilterViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMAutoBillPayLaunchScreen": {
+      "autoBillPayEnrollment": {
+        "android": "com.bbva.bgm.autobillpayui.activity.AutoBillPayEnrollmentFormActivity",
+        "iOS": "BGMAutomaticBillPay.BGMAutoBillPayEnrollmentFormUIController",
+        "isModal": "false"
+      },
+      "autoBillPayList": {
+        "android": "com.bbva.bgm.autobillpayui.activity.AutoBillPayListActivity",
+        "iOS": "BGMAutomaticBillPay.BGMAutoBillPayListViewController",
+        "isModal": "false"
+      },
+      "autoBillPayHistoricalList": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "",
+        "iOS": "BGMAutomaticBillPay.BGMBillPayHistoricalListViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMAutoBillPayEnrollProcessScreen": {},
+    "BGMAutoBillPayListScreen": {
+      "detailAutoBillPay": {
+        "android": "com.bbva.bgm.accountsui.fragment.ComingSoonFragment",
+        "iOS": "BGMAutomaticBillPay.BGMAutoBillPayDetailViewController",
+        "isModal": "false"
+      }
+    },
+    "BGMCardPaymentsScreen": {
+      "viewAll": {
+        "android": "com.bbva.bgm.cardpayui.activity.CardPaySearchActivity",
+        "iOS": "BGMCreditCardPaymentAllViewController",
+        "isModal": "true"
+      },
+      "viewAllProducts": {
+        "android": "com.bbva.bgm.basetnpui.activity.ViewAllAccountsActivity",
+        "iOS": "BGMSeeAllViewController",
+        "isModal": "true"
+      },
+      "success": {
+        "android": "com.bbva.bgm.billpayui.activity.ServiceConfirmationActivity",
+        "iOS": "BGMCardPaymentCompleteViewController",
+        "isModal": "false"
+      },
+      "otherAmount": {
+        "android": "com.bbva.bgm.baseui.activity.SecuritySignInActivity",
+        "iOS": "BGMOtherAmountViewController",
+        "isModal": "false"
+      },
+      "searchOtherCard": {
+        "android": "com.bbva.bgm.cardpayui.activity.PayOtherCardActivity",
+        "iOS": "BGMSearchOtherCardsViewController",
+        "isModal": "true"
+      },
+      "scheduledAddName": {
+        "android": "com.bbva.bgm.cardpayui.activity.ScheduledAddNameActivity",
+        "iOS": "BGMSearchOtherCardsViewController",
+        "isModal": "true"
+      },
+      "info": {
+        "android": "com.bbva.bgm.baseui.activity.SecuritySignInActivity",
+        "iOS": "BGMCardPaymentInfoViewController",
+        "isModal": "false"
+      },
+      "cardPayInfo": {
+        "android": "com.bbva.bgm.cardpayui.activity.CardPayInfoActivity",
+        "iOS": "BGMOtherCardInfoViewController",
+        "isModal": "true"
+      },
+      "transferTypeHelp": {
+        "android": "com.bbva.bgm.basetnpui.activity.TransferTypeHelpActivity",
+        "iOS": "BGMPaymentTypeInfoViewController",
+        "isModal": "true"
+      },
+      "failure": {
+        "android": "com.bbva.bgm.basetnpui.activity.BaseTransfersPaymentFailureActivity",
+        "iOS": "BGMErrorPresenterThreeViewController",
+        "isModal": "true"
+      },
+      "termsAndConditions": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "pdfViewer",
+        "iOS": "BGMWebTermsAndConditionsController",
+        "isModal": "true"
+      },
+      "notificationDetail": {
+        "android": "com.bbva.bgm.notificationui.activity.NotificationDetailActivity",
+        "iOS": "BGMNoticeViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMPayOtherCardScreen": {
+      "success": {
+        "android": "com.bbva.bgm.cardpayui.activity.CardReceiverInfoActivity",
+        "iOS": "",
+        "isModal": "true"
+      }
+    },
+    "BGMCardPaymentsCompletedScreen": {
+      "feedBack": {
+        "android": "com.bbva.bgm.baseui.activity.FeedbackActivity",
+        "iOS": "",
+        "isModal": "true"
+      },
+      "email": {
+        "android": "com.bbva.bgm.baseui.activity.EmailComposerActivity",
+        "iOS": "BGMEmailNotificationViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMMobileTopUpContScreen": {
+      "success": {
+        "android": "com.bbva.bgm.mobiletopupui.activity.MobileTopUpCompletedActivity",
+        "iOS": "BGMMobileTopUpConfirmationViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMMobileTopUpScreen": {
+      "newMobileUser": {
+        "android": "com.bbva.bgm.mobiletopupui.activity.TopupNewPhoneActivity",
+        "iOS": "BGMMobileTopUpNewViewController",
+        "isModal": "true"
+      },
+      "updateMobileUser": {
+        "android": "com.bbva.bgm.accountsui.fragment.ComingSoonFragment",
+        "iOS": "BGMMobileTopUpUpdateViewController",
+        "isModal": "false"
+      },
+      "success": {
+        "android": "com.bbva.bgm.mobiletopupui.activity.MobileTopUpCompletedActivity",
+        "iOS": "BGMMobileTopUpConfirmationViewController",
+        "isModal": "true"
+      },
+      "viewAllContacts": {
+        "android": "com.bbva.bgm.contactsui.activity.FindContactsActivity",
+        "iOS": "BGMBaseTAPViewAllContactsViewController",
+        "isModal": "true"
+      },
+      "viewAllProducts": {
+        "android": "com.bbva.bgm.basetnpui.activity.ViewAllAccountsActivity",
+        "iOS": "BGMBaseTAPViewAllAccountsViewController",
+        "isModal": "true"
+      },
+      "matchedCellNumber": {
+        "android": "com.bbva.bgm.accountsui.fragment.ComingSoonFragment",
+        "iOS": "BGMMobileTopUpSavedNumberMatchController",
+        "isModal": "false"
+      },
+      "noMobileProviders": {
+        "android": "com.bbva.bgm.accountsui.fragment.ComingSoonFragment",
+        "iOS": "BGMMobileTopUpNoServiceProvidersController",
+        "isModal": "false"
+      },
+      "failure": {
+        "android": "com.bbva.bgm.basetnpui.activity.BaseFailureActivity",
+        "iOS": "BGMErrorPresenterThreeViewController",
+        "isModal": "true"
+      },
+      "timeoutScreen": {
+        "android": "com.bbva.bgm.connectsdk.activity.base.BaseFailureActivity",
+        "iOS": "BGMErrorPresenterThreeViewController",
+        "isModal": "true"
+      },
+      "transactions": {
+        "android": "com.bbva.bgm.accountsui.activity.TransactionsActivity",
+        "iOS": "BGMTransactionListViewController",
+        "isModal": "false"
+      }
+    },
+    "BGMTopupNewPhoneScreen": {
+      "phoneMatch": {
+        "android": "com.bbva.bgm.mobiletopupui.activity.TopupPhoneMatchActivity",
+        "iOS": "BGMMobileTopUpSavedNumberMatchController",
+        "isModal": "true"
+      },
+      "noMobileProviders": {
+        "android": "com.bbva.bgm.accountsui.activity.MobileTopUpNoServiceProvidersActivity",
+        "iOS": "BGMMobileTopUpNoServiceProvidersController",
+        "isModal": "false"
+      }
+    },
+    "BGMMobileTopUpCompletedScreen": {
+      "feedBack": {
+        "android": "com.bbva.bgm.baseui.activity.FeedbackActivity",
+        "iOS": "",
+        "isModal": "true"
+      },
+      "email": {
+        "android": "com.bbva.bgm.baseui.activity.EmailComposerActivity",
+        "iOS": "BGMEmailNotificationViewController",
+        "isModal": "true"
+      },
+      "addFrequentOperation": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "frequentOperationsReactivePage",
+        "iOS": "BGMWebFrequentOprnAddViewController",
+        "isModal": "true"
+      },
+      "newMobileTopUp": {
+        "android": "com.bbva.bgm.mobiletopupui.activity.MobileTopUpContActivity",
+        "iOS": "BGMContMobileTopUpViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMPrepaidCardTopUpScreen": {
+      "success": {
+        "android": "com.bbva.bgm.cardtopupui.activity.PrepaidCardTopUpCompletedActivity",
+        "iOS": "BGMPrepaidCardTopUp.BGMPrepaidCardTopUpReceiptViewController",
+        "isModal": "true"
+      },
+      "failure": {
+        "android": "com.bbva.bgm.connectsdk.activity.base.BaseFailureActivity",
+        "iOS": "BGMErrorPresenterThreeViewController",
+        "isModal": "true"
+      },
+      "viewAllProducts": {
+        "android": "com.bbva.bgm.basetnpui.activity.ViewAllAccountsActivity",
+        "iOS": "BGMBaseTAPViewAllAccountsViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMPrepaidCardTopUpCompletedScreen": {
+      "feedBack": {
+        "android": "com.bbva.bgm.baseui.activity.FeedbackActivity.",
+        "iOS": "",
+        "isModal": "true"
+      },
+      "email": {
+        "android": "com.bbva.bgm.baseui.activity.EmailComposerActivity",
+        "iOS": "BGMEmailNotificationViewController",
+        "isModal": "true"
+      },
+      "addFrequentOperation": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "frequentOperationsReactivePage",
+        "iOS": "BGMWebFrequentOprnAddViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMCWHistoricalInitScreen": {
+      "historicalMenu": {
+        "android": "com.bbva.bgm.cardlesswithdrawalui.activity.HistoricalMenuActivity",
+        "iOS": "BGMCWHistoricalMenuViewController",
+        "isModal": "false"
+      },
+      "historicalCardlessWithdrawal": {
+        "android": "com.bbva.bgm.cardlesswithdrawalui.activity.HistoricalMainActivity",
+        "iOS": "BGMCWHistoricalViewController",
+        "isModal": "false"
+      },
+      "historicalDetailCardlessWithdrawal": {
+        "android": "com.bbva.bgm.cardlesswithdrawalui.activity.HistoricalDetailsActivity",
+        "iOS": "BGMCWHistoricalDetailViewController",
+        "isModal": "false"
+      },
+      "cardlessWithdrawal": {
+        "android": "com.bbva.bgm.cardlesswithdrawalui.activity.CardlessWithdrawalActivity",
+        "iOS": "BGMCWInitViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMCardlessWithdrawalScreen": {
+      "confirmCardlessWithDrawal": {
+        "android": "com.bbva.bgm.cardlesswithdrawalui.activity.OperationCompletedSomeonElseActivity",
+        "iOS": "BGMCWSuccessOperationViewController",
+        "isModal": "true"
+      },
+      "confirmCardlessWithDrawalForMe": {
+        "android": "com.bbva.bgm.cardlesswithdrawalui.activity.OperationCompletedToMeActivity",
+        "iOS": "BGMCWSuccessOperationForMeViewController",
+        "isModal": "true"
+      },
+      "registerNewContact": {
+        "android": "com.bbva.bgm.cardlesswithdrawalui.activity.NewContactActivity",
+        "iOS": "BGMCWRegisterNewContactViewController",
+        "isModal": "true"
+      },
+      "viewAllContacts": {
+        "android": "com.bbva.bgm.contactsui.activity.FindContactsActivity",
+        "iOS": "BGMBaseTAPViewAllContactsViewController",
+        "isModal": "true"
+      },
+      "viewAllAccounts": {
+        "android": "com.bbva.bgm.basetnpui.activity.ViewAllAccountsActivity",
+        "iOS": "BGMBaseTAPViewAllAccountsViewController",
+        "isModal": "true"
+      },
+      "informationContact": {
+        "android": "com.bbva.bgm.cardlesswithdrawalui.activity.ContactFoundActivity",
+        "iOS": "BGMCWInformationContactViewController",
+        "isModal": "false"
+      },
+      "errorOperation": {
+        "android": "com.bbva.bgm.cardlesswithdrawalui.activity.OperationRegisterErrorActivity",
+        "iOS": "BGMCWErrorViewController",
+        "isModal": "false"
+      },
+      "errorMessage": {
+        "android": "com.bbva.bgm.cardlesswithdrawalui.activity.OperationIncompleteActivity",
+        "iOS": "BGMErrorPresenterThreeViewController",
+        "isModal": "false"
+      },
+      "termsAndConditions": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "pdfViewer",
+        "iOS": "BGMWebTermsAndConditionsController",
+        "isModal": "true"
+      },
+      "cardlessWithdrawalInfo": {
+        "android": "com.bbva.bgm.cardlesswithdrawalui.activity.InformationScreenCardlessWithdrawal",
+        "iOS": "BGMCWIntroductionViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMCardlessWithdrawalInfoScreen": {
+      "cardlessWithdrawal": {
+        "android": "com.bbva.bgm.cardlesswithdrawalui.activity.CardlessWithdrawalActivity",
+        "iOS": "BGMCWInitViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMCardlessWithdrawalCompletedToMeScreen": {
+      "atmBranches": {
+        "android": "com.bbva.bgm.locatorui.activity.LocatorMapActivity",
+        "iOS": "BGMAtmAndBranchLocatorViewController",
+        "isModal": "false"
+      }
+    },
+    "BGMCardlessWithdrawalCompletedSomeonElseScreen": {
+      "atmBranches": {
+        "android": "com.bbva.bgm.locatorui.activity.LocatorMapActivity",
+        "iOS": "BGMAtmAndBranchLocatorViewController",
+        "isModal": "false"
+      },
+      "addFrequentOperation": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "frequentOperationsReactivePage",
+        "iOS": "BGMWebFrequentOprnAddViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMHistoricalDetailsScreen": {
+      "atmBranches": {
+        "android": "com.bbva.bgm.locatorui.activity.LocatorMapActivity",
+        "iOS": "BGMAtmAndBranchLocatorViewController",
+        "isModal": "false"
+      },
+      "historicalCardlessWithdrawal": {
+        "android": "com.bbva.bgm.cardlesswithdrawalui.activity.HistoricalMainActivity",
+        "iOS": "BGMCWHistoricalViewController",
+        "isModal": "false"
+      }
+    },
+    "BGMHistoricalCardlessWithdrawalScreen": {
+      "historicalDetailCardlessWithdrawal": {
+        "android": "com.bbva.bgm.cardlesswithdrawalui.activity.HistoricalDetailsActivity",
+        "iOS": "BGMCWHistoricalDetailViewController",
+        "isModal": "false"
+      }
+    },
+    "BGMOCInstantCashScreen": {
+      "instantCashSummary": {
+        "android": "com.bbva.bgm.ocinstantcashui.activity.OCInstantCashSummaryActivity",
+        "iOS": "BGMInstantCashSummaryViewController",
+        "isModal": "true"
+      },
+      "ocInstantCashHelp": {
+        "android": "com.bbva.bgm.ocinstantcashui.activity.OCInstantCashHelpActivity",
+        "iOS": "BGMInstaCashHelpViewController",
+        "isModal": "true"
+      },
+      "failure": {
+        "android": "com.bbva.bgm.basetnpui.activity.BaseTransfersPaymentFailureActivity",
+        "iOS": "BGMErrorPresenterThreeViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMOCInstantCashSummaryScreen": {
+      "instantCashSuccess": {
+        "android": "com.bbva.bgm.ocinstantcashui.activity.OCInstantCashCompletedActivity",
+        "iOS": "BGMOCInstantCashSuccessViewController",
+        "isModal": "true"
+      },
+      "callMe": {
+        "android": "com.bbva.bgm.baseui.activity.ComingSoonActivity",
+        "iOS": "",
+        "isModal": "false"
+      },
+      "failure": {
+        "android": "com.bbva.bgm.basetnpui.activity.BaseTransfersPaymentFailureActivity",
+        "iOS": "BGMErrorPresenterThreeViewController",
+        "isModal": "true"
+      },
+      "instantCashViewAll": {
+        "android": "com.bbva.bgm.basetnpui.activity.ViewAllAccountsActivity",
+        "iOS": "BGMInstantCashAllCardsViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMOCCreditLimitIncreaseScreen": {
+      "success": {
+        "android": "com.bbva.bgm.occclimitincreaseui.activity.CLISuccessActivity",
+        "iOS": "BGMOCCreditLimitIncrementSuccessViewController",
+        "isModal": "true"
+      },
+      "failure": {
+        "android": "com.bbva.bgm.basetnpui.activity.BaseTransfersPaymentFailureActivity",
+        "iOS": "BGMOCCCLimitErrorPresenterViewController",
+        "isModal": "true"
+      },
+      "creditLimitIncreaseTnc": {
+        "android": "com.bbva.bgm.baseui.activity.ComingSoonActivity",
+        "iOS": "",
+        "isModal": "false"
+      },
+      "termsAndConditions": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "pdfViewer",
+        "iOS": "BGMWebTermsAndConditionsController",
+        "isModal": "true"
+      }
+    },
+    "BGMChangeSPEIScreen": {
+      "termsAndConditions": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "pdfViewer",
+        "iOS": "BGMWebTermsAndConditionsController",
+        "isModal": "true"
+      }
+    },
+    "BGMLoanSimulationScreen": {
+      "loanSuccess": {
+        "android": "com.bbva.bgm.ocloanui.activity.LoanSuccessActivity",
+        "iOS": "BGMOCLoanSuccessViewController",
+        "isModal": "true"
+      },
+      "insuranceDetails": {
+        "android": "com.bbva.bgm.ocloanui.activity.InsuranceDetailActivity",
+        "iOS": "BGMOCLoanInsuranceDetailViewController",
+        "isModal": "false"
+      },
+      "failure": {
+        "android": "com.bbva.bgm.basetnpui.activity.BaseTransfersPaymentFailureActivity",
+        "iOS": "BGMErrorPresenterThreeViewController",
+        "isModal": "true"
+      },
+      "terms": {
+        "android": "com.bbva.bgm.connectsdk.activity.TermsAndConditionsActivity",
+        "iOS": "BGMDocumentsViewController",
+        "isModal": "true"
+      },
+      "preApprovedError": {
+        "android": "com.bbva.bgm.connectsdk.activity.base.BaseFailureActivity",
+        "iOS": "BGMConnectSDK.BGMError40XViewController",
+        "isModal": "true"
+      },
+      "atmBranchLocatorScreen": {
+        "android": "com.bbva.bgm.locatorui.activity.LocatorMapActivity",
+        "iOS": "BGMAtmAndBranchLocatorViewController",
+        "isModal": "false"
+      },
+      "termsAndConditions": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "pdfViewer",
+        "iOS": "BGMWebTermsAndConditionsController",
+        "isModal": "true"
+      }
+    },
+    "BGMUserProfileScreen": {
+      "profile": {
+        "android": "com.bbva.bgm.userprofileui.activity.UserProfileActivity",
+        "iOS": "BGMUserProfileViewController",
+        "isModal": "false"
+      },
+      "contacts": {
+        "android": "com.bbva.bgm.contactsui.activity.ContactsListActivity",
+        "iOS": "BGMContactsListViewController",
+        "isModal": "false"
+      },
+      "addEditContact": {
+        "android": "com.bbva.bgm.userprofileui.activity.ModifyContactActivity",
+        "iOS": "BGMEditBasicInfoViewController",
+        "isModal": "false"
+      },
+      "editAvatar": {
+        "android": "com.bbva.bgm.userprofileui.activity.AvatarPreviewActivity",
+        "iOS": "BGMEditAvatarViewController",
+        "isModal": "false"
+      },
+      "editPictureProfile": {
+        "android": "com.bbva.com.bbva.bgm.userprofileui.activity.EditAvatarActivity",
+        "iOS": "BGMEditAvatarNewViewController",
+        "isModal": "false"
+      },
+      "social": {
+        "android": "",
+        "iOS": "BGMSocialConnectViewController",
+        "isModal": "false"
+      },
+      "helpInfo": {
+        "android": "",
+        "iOS": "BGMFacialRecognitionViewController",
+        "isModal": "false"
+      },
+      "accessMode": {
+        "android": "",
+        "iOS": "BGMOpenFacialViewController",
+        "isModal": "false"
+      },
+      "assistance": {
+        "android": "",
+        "iOS": "BGMNewAssistanceViewController",
+        "isModal": "false"
+      },
+      "editPassword": {
+        "android": "com.bbva.bgm.userprofileui.activity.ModifyPasswordActivity",
+        "iOS": "BGMEditPasswordViewController",
+        "isModal": "true"
+      },
+      "deleteContact": {
+        "android": "com.bbva.bgm.baseui.activity.ComingSoonActivity",
+        "iOS": "",
+        "isModal": "false"
+      },
+      "avatarError": {
+        "android": "com.bbva.bgm.userprofileui.activity.InvalidMIMEWarningActivity",
+        "iOS": "BGMUserProfileImageFormatErrorViewController",
+        "isModal": "false"
+      },
+      "customerContracts": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "customerContractsListPage",
+        "iOS": "BGMWebCustomerContractController",
+        "isModal": "false"
+      },
+      "customerContractsHelp": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "customerContractsHelpPage",
+        "iOS": "BGMWebCustomerContractHelpController",
+        "isModal": "true"
+      },
+      "failure": {
+        "android": "com.bbva.bgm.basetnpui.activity.BaseTransfersPaymentFailureActivity",
+        "iOS": "BGMErrorPresenterThreeViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMConfigurationScreen": {
+      "editPassword": {
+        "android": "com.bbva.bgm.userprofileui.activity.ModifyPasswordActivity",
+        "iOS": "BGMEditPasswordViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMContactsListScreen": {
+      "contactDetails": {
+        "android": "com.bbva.bgm.contactsui.activity.ContactsDetailActivity",
+        "iOS": "BGMContactDetailViewController",
+        "isModal": "false"
+      }
+    },
+    "BGMModifyPasswordScreen": {
+      "blockedUser": {
+        "android": "com.bbva.bgm.userprofileui.activity.PasswordBlockedActivity",
+        "iOS": "BGMBlockPasswordViewController",
+        "isModal": "true"
+      },
+      "passwordPractices": {
+        "android": "com.bbva.bgm.userprofileui.activity.PasswordPracticesActivity",
+        "iOS": "BGMPasswordPracticesController",
+        "isModal": "true"
+      },
+      "failure": {
+        "android": "com.bbva.bgm.userprofileui.activity.ModifyPasswordErrorActivity",
+        "iOS": "BGMConnectSDK.BGMError40XViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMLocatorMapScreen": {
+      "branchDetail": {
+        "android": "com.bbva.bgm.locatorui.activity.BranchDetailActivity",
+        "iOS": "BGMBranchLocatorDetailViewController",
+        "isModal": "true"
+      },
+      "atmDetail": {
+        "android": "com.bbva.bgm.locatorui.activity.AtmDetailActivity",
+        "iOS": "BGMATMLocatorDetailViewController",
+        "isModal": "true"
+      },
+      "search": {
+        "android": "com.bbva.bgm.locatorui.activity.SearchMapActivity",
+        "iOS": "BGMAtmAndBranchLocatorViewController",
+        "isModal": "true"
+      },
+      "locationMessage": {
+        "android": "com.bbva.bgm.locatorui.activity.LocationMessageActivity",
+        "iOS": "BGMLocationMessageViewController",
+        "isModal": "true"
+      },
+      "digitalTurn": {
+        "android": "com.bbva.bgm.accountsui.activity.DashboardRefreshCellsWebActivity",
+        "cellsPage": "requestBranchAppointmentPage",
+        "iOS": "BGMWebOnlineAppointmentViewController",
+        "isModal": "true"
+      },
+      "digitalActiveTurn": {
+        "android": "com.bbva.bgm.accountsui.activity.DashboardRefreshCellsWebActivity",
+        "cellsPage": "requestBranchAppointmentListPage",
+        "iOS": "BGMWebAppointmentListViewController",
+        "isModal": "true"
+      },
+      "dashboard": {
+        "android": "com.bbva.bgm.accountsui.activity.DashboardActivity",
+        "iOS": "",
+        "isModal": "true"
+      }
+    },
+    "BGMBranchDetailScreen":{
+      "digitalTurn": {
+        "android": "com.bbva.bgm.accountsui.activity.DashboardRefreshCellsWebActivity",
+        "cellsPage": "requestBranchAppointmentPage",
+        "iOS": "BGMWebOnlineAppointmentViewController",
+        "isModal": "true"
+      },
+      "digitalActiveTurn": {
+        "android": "com.bbva.bgm.accountsui.activity.DashboardRefreshCellsWebActivity",
+        "cellsPage": "requestBranchAppointmentListPage",
+        "iOS": "BGMWebAppointmentListViewController",
+        "isModal": "true"
+      },
+      "dashboard": {
+        "android": "com.bbva.bgm.accountsui.activity.DashboardActivity",
+        "iOS": "",
+        "isModal": "false"
+      }
+    },
+    "BGMFindContactsScreen": {
+      "newMobileUser": {
+        "android": "com.bbva.bgm.mobiletopupui.activity.TopupNewPhoneActivity",
+        "iOS": "BGMMobileTopUpNewViewController",
+        "isModal": "true"
+      },
+      "registerNewContact": {
+        "android": "com.bbva.bgm.cardlesswithdrawalui.activity.NewContactActivity",
+        "iOS": "BGMCWRegisterNewContactViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMMainListPocketsScreen": {
+      "operationsPockets": {
+        "android": "com.bbva.bgm.accountsui.activity.OperationsListPocketActivity",
+        "iOS": "BGMPocketsDetailViewController",
+        "isModal": "true"
+      },
+      "failure": {
+        "android": "com.bbva.bgm.connectsdk.activity.base.BaseFailureActivity",
+        "iOS": "",
+        "isModal": "true"
+      },
+      "createPocket": {
+        "android": "com.bbva.bgm.accountsui.activity.DashboardRefreshCellsWebActivity",
+        "cellsPage": "pocketsCreatePage",
+        "iOS": "BGMWebPocketViewController",
+        "isModal": "true"
+      },
+      "deletePocket": {
+        "android": "com.bbva.bgm.accountsui.activity.DashboardRefreshCellsWebActivity",
+        "cellsPage": "pocketsDeleteMainPage",
+        "iOS": "BGMWebPocketViewController",
+        "isModal": "true"
+      },
+      "editPocket": {
+        "android": "com.bbva.bgm.accountsui.activity.DashboardRefreshCellsWebActivity",
+        "cellsPage": "pocketsEditprogrammingPage",
+        "iOS": "BGMWebPocketViewController",
+        "isModal": "true"
+      },
+      "editUnprogrammerPocket": {
+        "android": "com.bbva.bgm.accountsui.activity.DashboardRefreshCellsWebActivity",
+        "cellsPage": "pocketsEditUnprogrammerPage",
+        "iOS": "BGMWebPocketViewController",
+        "isModal": "true"
+      },
+      "addWithdrawMoney": {
+        "android": "com.bbva.bgm.accountsui.activity.DashboardRefreshCellsWebActivity",
+        "cellsPage": "pocketsAddWithdrawalMoneyMainPage",
+        "iOS": "BGMWebPocketViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMOperationCompletedSomeonElseScreen": {
+      "feedBack": {
+        "android": "com.bbva.bgm.baseui.activity.FeedbackActivity.",
+        "iOS": "",
+        "isModal": "true"
+      },
+      "email": {
+        "android": "com.bbva.bgm.baseui.activity.EmailComposerActivity",
+        "iOS": "BGMEmailNotificationViewController",
+        "isModal": "true"
+      },
+      "addFrequentOperation": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "frequentOperationsReactivePage",
+        "iOS": "BGMWebFrequentOprnAddViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMCellsWebScreen": {
+      "transfer": {
+        "android": "com.bbva.bgm.transfersui.activity.TransfersActivity",
+        "iOS": "BGMTransferMainFormViewController",
+        "isModal": "true"
+      },
+      "cardlessWithdrawal": {
+        "android": "com.bbva.bgm.cardlesswithdrawalui.activity.CardlessWithdrawalActivity",
+        "iOS": "BGMCWInitViewController",
+        "isModal": "true"
+      },
+      "cardPay": {
+        "android": "com.bbva.bgm.cardpayui.activity.CardPaymentsActivity",
+        "iOS": "BGMCreditCardPaymentFormViewController",
+        "isModal": "true"
+      },
+      "giftCardTopUp": {
+        "android": "com.bbva.bgm.cardtopupui.activity.PrepaidCardTopUpActivity",
+        "iOS": "BGMPrepaidCardTopUp.BGMPrepaidCardTopUpFormController",
+        "isModal": "true"
+      },
+      "mobileWalletTopUp": {
+        "android": "com.bbva.bgm.mobiletopupui.activity.MobileTopUpContActivity",
+        "iOS": "BGMContMobileTopUpViewController",
+        "isModal": "true"
+      },
+      "atmBranches": {
+        "android": "com.bbva.bgm.locatorui.activity.LocatorMapActivity",
+        "iOS": "BGMAtmAndBranchLocatorViewController",
+        "isModal": "false"
+      },
+      "paymentsMainQr": {
+        "android": "com.bbva.bgm.transfersui.activity.TransfersActivity",
+        "iOS": "BGMTransferMainFormViewController",
+        "isModal": "true"
+      },
+      "askMoneyCompleted": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.QrAskMoneyCompletedActivity",
+        "cellsPage": "codiEnrollPage",
+        "iOS": "BGMAskForMoneyCompletedViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMAccountValidationInfoWebScreen":{
+      "paymentsQr": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.PaymentsQrReaderActivity",
+        "iOS": "",
+        "isModal": "true"
+      }
+    },
+    "BGMFrequentOperationDetailScreen": {
+      "frequentUpdate": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "frequentOperationUpdatePage",
+        "iOS": "BGMWebFrequentUpdateViewController",
+        "isModal": "true"
+      },
+      "transfers": {
+        "android": "com.bbva.bgm.transfersui.activity.TransfersActivity",
+        "iOS": "BGMTransferMainFormViewController",
+        "isModal": "true"
+      },
+      "mobileWalletTopUp": {
+        "android": "com.bbva.bgm.mobiletopupui.activity.MobileTopUpContActivity",
+        "iOS": "BGMContMobileTopUpViewController",
+        "isModal": "true"
+      },
+      "giftCardTopUp": {
+        "android": "com.bbva.bgm.cardtopupui.activity.PrepaidCardTopUpActivity",
+        "iOS": "BGMPrepaidCardTopUp.BGMPrepaidCardTopUpFormController",
+        "isModal": "true"
+      },
+      "cardPay": {
+        "android": "com.bbva.bgm.cardpayui.activity.CardPaymentsActivity",
+        "iOS": "BGMCreditCardPaymentFormViewController",
+        "isModal": "true"
+      },
+      "billPay": {
+        "android": "com.bbva.bgm.billpayui.activity.BillPaymentsActivity",
+        "iOS": "BGMBillPayFormViewController",
+        "isModal": "true"
+      },
+      "failure": {
+        "android": "com.bbva.bgm.basetnpui.activity.BaseTransfersPaymentFailureActivity",
+        "iOS": "BGMErrorPresenterThreeViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMDashboardRefreshCellsWebScreen": {
+      "operationsPockets": {
+        "android": "com.bbva.bgm.accountsui.activity.OperationsListPocketActivity",
+        "iOS": "BGMPocketsDetailViewController",
+        "isModal": "true"
+      },
+      "dashboard": {
+        "android": "com.bbva.bgm.accountsui.activity.DashboardActivity",
+        "iOS": "",
+        "isModal": "true"
+      }
+    },
+    "BGMWebPocketViewControllerScreen": {
+      "operationsPockets": {
+        "android": "com.bbva.bgm.accountsui.activity.OperationsListPocketActivity",
+        "iOS": "BGMPocketsDetailViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMQrInfoAdvantagesScreen": {
+      "askMoneyQrGenerate": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.QrGeneratorAskMoneyActivity",
+        "iOS": "BGMGenerateDynamicCodeFormViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMQrGeneratorAskMoneyScreen": {
+      "askMoneyCompleted": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.QrAskMoneyCompletedActivity",
+        "cellsPage": "codiEnrollPage",
+        "iOS": "BGMAskForMoneyCompletedViewController",
+        "isModal": "true"
+      },
+      "createQRData": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "codiEnrollPage",
+        "iOS": "BGMWebCreateQRPayment",
+        "isModal": "true"
+      },
+      "viewAllAccounts": {
+        "android": "com.bbva.bgm.basetnpui.activity.ViewAllAccountsActivity",
+        "iOS": "BGMBaseTAPViewAllAccountsViewController",
+        "isModal": "true"
+      },
+      "codiEnrollment": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "codiEnrollPage",
+        "iOS": "BGMWebHistoricalQRPaymentsViewController",
+        "isModal": "true"
+      },
+      "onboardingCodi": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.OnBoardingCodiCellsActivity",
+        "cellsPage": "codiWelcomePage",
+        "iOS": "BGMWebEnrollCodiViewController",
+        "isModal": "true"
+      },
+      "validateCodiAccounts": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.ValidateAccountCellsActivity",
+        "cellsPage": "codiEnrollPage",
+        "iOS": "BGMQrCoDiValidatorViewController",
+        "isModal": "true"
+      },
+      "noValidatedAccounts": {
+        "android": "",
+        "iOS": "BGMCoDiWarningViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMInfoQrPaymentsScreen": {
+      "paymentsQr": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.PaymentsQrReaderActivity",
+        "iOS": "",
+        "isModal": "false"
+      }
+    },
+    "BGMPaymentsQrReaderScreen": {
+      "paymentsVerifyQr": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.QrVerifyInformationActivity",
+        "iOS": "BGMReadQRViewController",
+        "isModal": "true"
+      },
+      "paymentsGalleryQr": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.GalleryPaymentsActivity",
+        "iOS": "BGMGalleryImageViewController",
+        "isModal": "false"
+      },
+      "qrInfoDetails": {
+        "android": "",
+        "iOS": "BGMQRPaymentDetailInfoViewController",
+        "isModal": "false"
+      },
+      "paymentsMainQr": {
+        "android": "com.bbva.bgm.transfersui.activity.TransfersActivity",
+        "iOS": "BGMTransferMainFormViewController",
+        "isModal": "true"
+      },
+      "failure": {
+        "android": "com.bbva.bgm.basetnpui.activity.BaseTransfersPaymentFailureActivity",
+        "iOS": "BGMErrorPresenterThreeViewController",
+        "isModal": "true"
+      },
+      "askMoneyQrGenerate": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.QrGeneratorAskMoneyActivity",
+        "iOS": "BGMGenerateDynamicCodeFormViewController",
+        "isModal": "true"
+      },
+      "qrAskMoneyAdvantage": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.QrInfoAdvantagesActivity",
+        "iOS": "BGMQRAskForMoneyViewController",
+        "isModal": "true"
+      },
+      "readQr": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.QrReaderCellsActivity",
+        "cellsPage": "codiEnrollPage",
+        "iOS": "BGMWebHistoricalQRPaymentsViewController",
+        "isModal": "true"
+      },
+      "onboardingCodi": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.OnBoardingCodiCellsActivity",
+        "cellsPage": "codiWelcomePage",
+        "iOS": "BGMWebEnrollCodiViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMDestinataryQrPaymentsScreen": {
+      "paymentsMainQr": {
+        "android": "com.bbva.bgm.transfersui.activity.TransfersActivity",
+        "iOS": "BGMTransferMainFormViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMInsertCodeSmsCodiScreen": {
+      "codiEnrollment": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.EnrollmentCellsActivity",
+        "cellsPage": "codiEnrollPage",
+        "iOS": "",
+        "isModal": "true"
+      }
+    },
+    "BGMNotificationCodiTriggerScreen": {
+      "codiEnrollment": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.NotificationCodiCellsActivity",
+        "cellsPage": "codiEnrollPage",
+        "iOS": "BGMWebHistoricalQRPaymentsViewController",
+        "isModal": "false"
+      }
+    },
+    "BGMNotificationCodiDetailScreen": {
+      "pushNotificationPayment": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "iOS": "BGMWebHistoricalQRPaymentsViewController",
+        "isModal": "false"
+      },
+      "paymentsMainQr": {
+        "android": "com.bbva.bgm.transfersui.activity.TransfersActivity",
+        "iOS": "BGMTransferMainFormViewController",
+        "isModal": "true"
+      },
+      "rejectPayments": {
+        "android": "com.bbva.bgm.transfersui.activity.RejectCodiPaymentsActivity",
+        "iOS": "",
+        "isModal": "true"
+      },
+      "postoneCodiPayments": {
+        "android": "com.bbva.bgm.transfersui.activity.PostponeCodiPaymentsActivity",
+        "iOS": "",
+        "isModal": "true"
+      },
+      "billPay": {
+        "android": "com.bbva.bgm.billpayui.activity.BillPaymentsActivity",
+        "iOS": "BGMBillPayFormViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMHistoricalQrPaymentsScreen": {
+      "codiEnrollment": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "codiEnrollPage",
+        "iOS": "",
+        "isModal": "true"
+      },
+      "historicalQRPostponedDetail": {
+        "android": "",
+        "iOS": "BGMCodiNotificationType1ViewController",
+        "isModal": "false"
+      },
+      "historicalQrPaymentsDetailInterbank": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.HistoricalQrPaymentsDetailInterbankActivity",
+        "cellsPage": "codiEnrollPage",
+        "iOS": "",
+        "isModal": "false"
+      },
+      "historicalQrPaymentsDetailPostpone": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.NotificationCodiDetailActivity",
+        "iOS": "",
+        "isModal": "false"
+      },
+      "historicalQrPaymentsDetailios": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.HistoricalQrPaymentsDetailInterbankActivity",
+        "iOS": "BGMHistoricalQRPaymentsDetailViewController",
+        "isModal": "false"
+      },
+      "historicalQrPaymentsDetailInterbankios": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.HistoricalQrPaymentsDetailInterbankActivity",
+        "iOS": "BGMHistoricalQRPaymentsDetailInterbankViewController",
+        "isModal": "false"
+      },
+      "settings": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.QRCodePaymentsSettingsActivity",
+        "iOS": "BGMCoDiConfigurationViewController",
+        "isModal": "false"
+      },
+      "enrollmentAppDefault": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.DefaultQRCodePaymentsAppActivity",
+        "iOS": "BGMCheckPaymentsCodiViewController",
+        "isModal": "false"
+      }
+    },
+    "BGMQrReaderCellsScreen": {
+      "paymentsMainQr": {
+        "android": "com.bbva.bgm.transfersui.activity.TransfersActivity",
+        "iOS": "BGMTransferMainFormViewController",
+        "isModal": "true"
+      },
+      "billPay": {
+        "android": "com.bbva.bgm.billpayui.activity.BillPaymentsActivity",
+        "iOS": "BGMBillPayFormViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMEnrollmentCellsScreen": {
+      "paymentsMainQr": {
+        "android": "com.bbva.bgm.transfersui.activity.TransfersActivity",
+        "iOS": "BGMTransferMainFormViewController",
+        "isModal": "true"
+      },
+      "accountValidationInfo": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.AccountValidationInfoWebActivity",
+        "cellsPage": "codiAccountValidationPage",
+        "iOS": "",
+        "isModal": "true"
+      }
+    },
+    "BGMWebEquityContractDetailScreen": {
+      "transfers": {
+        "android": "com.bbva.bgm.transfersui.activity.TransfersActivity",
+        "iOS": "BGMTransferMainFormViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMQrTriggerCellsScreen": {
+      "readQr": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.QrReaderCellsActivity",
+        "cellsPage": "codiEnrollPage",
+        "iOS": "",
+        "isModal": "true"
+      },
+      "paymentsMainQr": {
+        "android": "com.bbva.bgm.transfersui.activity.TransfersActivity",
+        "iOS": "BGMTransferMainFormViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMCardDigitalDetailScreen": {
+      "seeCvv": {
+        "android": "com.bbva.bgm.accountsui.shopping.seeCvv.view.SeeCvvBActivity",
+        "iOS": "CvvViewControllerA",
+        "isModal": "false"
+      },
+      "cardDigitalOnOffInfo": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "cellsPage": "digitalCardOnOffHelpPage",
+        "iOS": "BGMWebDigitalCardOnOffHelpController",
+        "isModal": "true"
+      }
+    },
+    "BGMRewardsScreen": {
+      "webView": {
+        "android": "",
+        "iOS": "ShoppingWebViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMPromotionsLandingScreen": {
+      "configurePromotionsCategories": {
+        "android": "com.bbva.bgm.promotionsfeatures.configurePromotionCategories.view.ConfigurePromotionCategoriesActivity",
+        "iOS": "SelectFavoriteCategoryViewController",
+        "isModal": "false"
+      },
+      "promotionDetail": {
+        "android": "com.bbva.bgm.promotionsfeatures.promotionDetail.view.PromotionDetailBActivity",
+        "iOS": "ShoppingDetailViewControllerB",
+        "isModal": "true"
+      },
+      "promotionsMap": {
+        "android": "com.bbva.bgm.promotionsfeatures.promotionsMap.view.PromotionsMapActivity",
+        "iOS": "ShoppingMapViewControllerB",
+        "isModal": "true"
+      },
+      "promotionsFilter": {
+        "android": "com.bbva.bgm.promotionsfeatures.promotionsFilter.view.PromotionsFilterActivity",
+        "iOS": "ShoppingFilterViewControllerA",
+        "isModal": "true"
+      },
+      "promotionListCategories": {
+        "android": "com.bbva.bgm.promotionsfeatures.promotionsList.view.PromotionsListBActivity",
+        "iOS": "ShoppingListViewControllerB",
+        "isModal": "true"
+      },
+      "navigationHelp": {
+          "android": "",
+          "iOS": "GPSHelpViewController",
+          "isModal": "true"
+      },
+      "promotionsPermissionsHelp": {
+        "android": "com.bbva.bgm.promotionsfeatures.promotionsPermission.view.PromotionsPermissionsHelpActivity",
+        "iOS": "LocationAuthorizationViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMPromotionsMapScreen": {
+      "promotionDetail": {
+        "android": "com.bbva.bgm.promotionsfeatures.promotionDetail.view.PromotionDetailBActivity",
+        "iOS": "ShoppingDetailViewControllerB",
+        "isModal": "true"
+      },
+      "promotionsFilter": {
+        "android": "com.bbva.bgm.promotionsfeatures.promotionsFilter.view.PromotionsFilterActivity",
+        "iOS": "ShoppingFilterViewControllerA",
+        "isModal": "true"
+      },
+      "promotionsFilterResultsList": {
+        "android": "com.bbva.bgm.promotionsfeatures.promotionsFilterResultList.view.PromotionsFilterResultListActivity",
+        "iOS": "ShoppingListFilteredViewControllerB",
+        "isModal": "true"
+      },
+      "navigationHelp": {
+          "android": "",
+          "iOS": "GPSHelpViewController",
+          "isModal": "true"
+      },
+      "shoppingMapListScreen": {
+        "android": "",
+        "iOS": "ShoppingMapListViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMPromotionsFilterScreen": {
+      "promotionsFilterResultsList": {
+        "android": "com.bbva.bgm.promotionsfeatures.promotionsFilterResultList.view.PromotionsFilterResultListActivity",
+        "iOS": "ShoppingListFilteredViewControllerB",
+        "isModal": "true"
+      }
+    },
+    "BGMPromotionsFilterResultListScreen": {
+        "promotionDetail": {
+            "android": "com.bbva.bgm.promotionsfeatures.promotionDetail.view.PromotionDetailBActivity",
+            "iOS": "ShoppingDetailViewControllerB",
+            "isModal": "true"
+        }
+    },
+    "BGMPromotionsListBScreen": {
+      "promotionDetail": {
+        "android": "com.bbva.bgm.promotionsfeatures.promotionDetail.view.PromotionDetailBActivity",
+        "iOS": "ShoppingDetailViewControllerB",
+        "isModal": "true"
+      },
+      "promotionsMap": {
+        "android": "com.bbva.bgm.promotionsfeatures.promotionsMap.view.PromotionsMapActivity",
+        "iOS": "ShoppingMapViewControllerB",
+        "isModal": "true"
+      },
+      "navigationHelp": {
+          "android": "",
+          "iOS": "GPSHelpViewController",
+          "isModal": "true"
+      }
+    },
+    "BGMPromotionDetailBScreen": {
+      "promotionListEstablishment": {
+        "android": "com.bbva.bgm.promotionsfeatures.promotionEstablishmentList.view.PromotionEstablishmentListActivity",
+        "iOS": "StoreListViewController",
+        "isModal": "false"
+      },
+      "promotionContact": {
+        "android": "com.bbva.bgm.promotionsfeatures.promotionContact.view.PromotionContactActivity",
+        "iOS": "ShoppingContactViewController",
+        "isModal": "true"
+      },
+      "webView": {
+          "android": "",
+          "iOS": "ShoppingWebViewController",
+          "isModal": "true"
+      },
+      "promotionList": {
+          "android": "com.bbva.bgm.promotionsfeatures.promotionsList.view.PromotionsListBActivity",
+          "iOS": "ShoppingListViewControllerB",
+          "isModal": "true"
+      },
+      "promotionDetail": {
+          "android": "com.bbva.bgm.promotionsfeatures.promotionDetail.view.PromotionDetailBActivity",
+          "iOS": "ShoppingDetailViewControllerB",
+          "isModal": "true"
+      },
+      "promotionGuarantee": {
+          "android": "com.bbva.bgm.promotionsfeatures.promotionSatisfactionGuarantee.view.PromotionSatisfactionGuaranteeActivity",
+          "iOS": "ShoppingGuaranteeViewController",
+          "isModal": "true"
+      }
+    },
+    "BGMPromotionEstablishmentListScreen": {
+        "promotionEstablishmentMap": {
+            "android": "com.bbva.bgm.promotionsfeatures.promotionEstablishmentMap.view.PromotionEstablishmentMapActivity",
+            "iOS": "StoresMapViewController",
+            "isModal": "true"
+        }
+    },
+    "BGMShoppingMapListViewControllerScreen": {
+        "promotionDetail": {
+            "android": "",
+            "iOS": "ShoppingDetailViewControllerB",
+            "isModal": "true"
+        }
+    },
+    "BGMStoresMapViewControllerScreen": {
+      "webView": {
+        "android": "",
+        "iOS": "ShoppingWebViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMCardMoreInfoScreen": {
+      "cardDigitalDetail": {
+        "android": "com.bbva.bgm.accountsui.activity.CardDigitalDetailActivity",
+        "iOS": "DigitalCardDetailViewController",
+        "isModal": "false"
+      },
+      "generateDigitalCard": {
+        "android": "com.bbva.bgm.baseui.activity.CellsWebActivity",
+        "iOS": "BGMWebDigitalCardActivationController",
+        "cellsPage": "cardGenerate",
+        "isModal": "true"
+      }
+    },
+    "BGMCodiSettingsScreen": {
+      "enrollmentAppDefault": {
+        "android": "com.bbva.bgm.qrpaymentsui.activity.DefaultQRCodePaymentsAppActivity",
+        "iOS": "BGMCheckPaymentsCodiViewController"
+      }
+    },
+    "BGMCodiNotificacionScreen": {
+      "default": {
+        "android": "com.bbva.bgm.accountsui.activity.DashboardActivity",
+        "iOS": "BGMNewDashboardViewController",
+        "isModal": "false"
+      },
+      "notificationFromPush": {
+        "android": "",
+        "cellsPage": "codiEnrollPage",
+        "iOS": "BGMCodiDecrypt",
+        "isModal": "false"
+      },
+      "transfer": {
+        "android": "com.bbva.bgm.transfersui.activity.TransfersActivity",
+        "iOS": "BGMTransferMainFormViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMCoDiNotificationActionsScreen": {
+        "postponeMessage": {
+            "android": "",
+            "iOS": "BGMCoDiPostponeMessageViewController",
+            "isModal": "true"
+        }
+    },
+    "BGMFacialBiometricInviteScreen": {
+      "facialBiometricInstructions": {
+        "android": "com.bbva.bgm.bgmbiometricsauthenticationuiandroid.activity.FacialBiometricInstructionsActivity",
+        "iOS": "BGMConnectSDK.BGMBiometricSwipeViewController",
+        "isModal": "false"
+      },
+      "termsAncConditions": {
+        "android": "com.bbva.bgm.bgmbiometricsauthenticationuiandroid.activity.FacialBiometricsTermsAndConditionsActivity",
+        "iOS": "BGMConnectSDK.BGMFacialTermsAndCondiotions",
+        "isModal": "false"
+      }
+    },
+    "BGMFacialEnrollmentFailureScreen": {
+      "dashboard": {
+        "android": "com.bbva.bgm.accountsui.activity.DashboardActivity",
+        "iOS": "BGMNewDashboardViewController",
+        "isModal": "false"
+      }
+    },
+    "BGMFacialPictureInstructionsScreen": {
+      "facialBiometricEnrollmentAndUpdate": {
+        "android": "com.bbva.bgm.bgmbiometricsauthenticationuiandroid.activity.FacialBiometricEnrollmentAndUpdateActivity",
+        "iOS": "BGMConnectSDK.BGMBiometricSwipeViewController",
+        "isModal": "false"
+      }
+    },
+    "BGMFacialBiometricEnrollmentAndUpdateScreen": {
+      "dashboard": {
+        "android": "com.bbva.bgm.accountsui.activity.DashboardActivity",
+        "iOS": "BGMNewDashboardViewController",
+        "isModal": "false"
+      },
+      "facialEnrollmentSuccess": {
+        "android": "com.bbva.bgm.bgmbiometricsauthenticationuiandroid.activity.FacialEnrollmentSuccessActivity",
+        "iOS": "BGMConnectSDK.BGMSuccessfulFacial",
+        "isModal": "true"
+      },
+      "facialBiometricFailure": {
+        "android": "com.bbva.bgm.bgmbiometricsauthenticationuiandroid.activity.FacialEnrollmentFailureActivity",
+        "iOS": "BGMConnectSDK.BGMBiometricDataError",
+        "isModal": "true"
+      }
+    },
+    "BGMFacialEnrollmentSuccessScreen": {
+      "dashboard": {
+        "android": "com.bbva.bgm.accountsui.activity.DashboardActivity",
+        "iOS": "BGMNewDashboardViewController",
+        "isModal": "false"
+      }
+    },
+    "BGMFacialBiometricInstructionsScreen": {
+      "facialBiometricEnrollmentAndUpdate": {
+        "android": "com.bbva.bgm.bgmbiometricsauthenticationuiandroid.activity.FacialBiometricEnrollmentAndUpdateActivity",
+        "iOS": "BGMConnectSDK.BGMBiometricPerfectImage",
+        "isModal": "false"
+      }
+    },
+    "BGMReactivationSettingsScreen": {
+      "facialEnrollment": {
+        "android": "com.bbva.bgm.bgmbiometricsauthenticationuiandroid.activity.FacialBiometricInviteActivity",
+        "iOS": "BGMEnrollUpdate",
+        "isModal": "false"
+      },
+      "facialUpdate": {
+        "android": "com.bbva.bgm.bgmbiometricsauthenticationuiandroid.activity.FacialBiometricInviteActivity",
+        "iOS": "BGMEnrollUpdate",
+        "isModal": "false"
+      }
+    },
+    "BGMConfigMenuWebScreen": {
+      "cancelSuspensionChannel": {
+        "android": "com.bbva.bgm.userprofileui.activity.CancelSuspendChannelActivity",
+        "iOS": "BGMDigitalChannelViewController",
+        "isModal": "false"
+      }
+    },
+    "BGMContingencyScreen": {
+      "result": {
+        "android": "com.bbva.bgm.accountsui.activity.ContingencyCampaignResultActivity",
+        "iOS": "BGMContingencyCampaignResultViewController",
+        "isModal": "true"
+      },
+      "terms": {
+        "android": "com.bbva.bgm.accountsui.activity.ContingencyTermsActivity",
+        "iOS": "BGMContingencyTermsViewController",
+        "isModal": "true"
+      }
+    },
+    "BGMSecSettingsWebScreen": {
+      "reactivationSettings": {
+        "android": "com.bbva.bgm.userprofileui.activity.ReactivationSettingsActivity",
+        "iOS": "BGMEnrollUpdate",
+        "isModal": "false"
+      },
+      "accessesAndSigning": {
+        "android": "com.bbva.bgm.userprofileui.activity.AccessesAndSigningActivity",
+        "iOS": "BGMConfigurationViewController",
+        "isModal": "false"
+      }
+    }
+  }
+}

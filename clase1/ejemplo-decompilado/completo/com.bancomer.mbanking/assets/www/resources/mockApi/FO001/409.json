@@ -1,0 +1,11 @@
+{
+    "version": 1,
+    "severity": "FATAL",
+    "http-status": 409,
+    "error-code": "errorPerformedFrequentOperationTryAgain",
+    "error-message": "No se puede realizar la operación frecuente. Por favor, elimínala y guarda una nueva al terminar una operación.",
+    "consumer-request-id": "e0a4c25b-09ea-42b6-bf51-bf5e159a5fc2",
+    "system-error-code": "wrongCardNumber",
+    "system-error-description": "Old collections kept as a frequent operation, were migrated to the new system",
+    "system-error-cause": "KTE0010: NUMERO DE TARJETA INVALIDA"
+}

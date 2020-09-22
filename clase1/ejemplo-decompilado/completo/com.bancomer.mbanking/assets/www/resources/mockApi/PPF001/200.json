@@ -1,0 +1,27 @@
+{
+  "data": [
+    {
+      "id": "oYnaFel7lgEF3fklWxRz_jOBWakf0C36",
+      "name": "PPF",
+      "description": "PPF",
+      "priority": 2,
+      "isSimulationAllowed": false,
+      "isImproved": false,
+      "isShownInDashboard": true,
+      "period": { "startDate": "2020-05-29", "endDate": "2020-12-31" },
+      "amounts": [{ "amount": "0.0", "currency": "MXN" }],
+      "product": {
+        "id": "0724",
+        "contractId": "FXFCI8YPeMi42KR31mR751b7MUcRIueMwCVN04ZDlUM",
+        "productType": { "id": "CARDS", "name": "CARDS" }
+      },
+      "origin": { "id": "CRM", "description": "OFFER" },
+      "image": {
+        "id": "NKCQ02V6DV95E5ZK7JMVMG6M85FX0GZVSE57WJF3MD037KTFWHNNDYDQTA01Q25Z47NDMSZJZ92C4",
+        "name": "avatar_CAMPAIGN0724-OF",
+        "url": "http://archivingbbva.axtel.mx:8082/v2/documents/logo?key=avatar_CAMPAIGN0724-OF"
+      },
+      "isRead": false
+    }
+  ]
+}

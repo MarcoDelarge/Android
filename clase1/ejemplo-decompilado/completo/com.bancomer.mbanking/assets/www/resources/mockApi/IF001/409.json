@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "severity": "FATAL",
+  "http-status": 409,
+  "error-code": "fundInformationNotAvailableContactUs",
+  "error-message": "Hubo un error al mostrar el detalle de tu Fondo Mutuo. Por favor, comunícate con nosotros al (01) 595-0000 para poder ayudarte.",
+  "consumer-request-id": "e0a4c25b-09ea-42b6-bf51-bf5e159a5fc2",
+  "system-error-code": "FME2099",
+  "system-error-description": "Hubo un error al mostrar el detalle de tu Fondo Mutuo. Por favor, comunícate con nosotros al (01) 595-0000 para poder ayudarte.",
+  "system-error-cause": "MPE5114: NUMERO DE TARJETA INVALIDA"
+}

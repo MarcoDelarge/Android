@@ -1,0 +1,11 @@
+{
+    "version": 1,
+    "severity": "Fatal",
+    "http-status": 500,
+    "error-code": "errorToShowInformationTryAgain",
+    "error-message": "Hubo un error al mostrar la información. Por favor, intenta de nuevo en unos minutos.",
+    "consumer-request-id": "e0a4c25b-09ea-42b6-bf51-bf5e159a5fc2",
+    "system-error-code": "MPE2068",
+    "system-error-description": "El número de tarjeta es incorrecto.",
+    "system-error-cause": "NUMERO DE TARJETA INVALIDA"
+  }

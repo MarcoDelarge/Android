@@ -1,0 +1,26 @@
+{
+    "data": {
+        "id": "93JDAK",
+        "operationDate": "2019-01-01T10:10:00",
+        "breakDown": {
+            "total": {
+                "amount": 800,
+                "currency": "MXN"
+            },
+            "outstandingBalance": {
+                "amount": 0,
+                "currency": "MXN"
+            }
+        },
+        "installments": [
+            {
+                "number": 25,
+                "paymentAmount": {
+                    "mode": {
+                        "id": "TOTAL"
+                    }
+                }
+            }
+        ]
+    }
+}

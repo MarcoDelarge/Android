@@ -1,0 +1,209 @@
+{
+  "data": [
+    {
+      "id": "1535147980|C1",
+      "alias": "PRUEBAGLOMO 1",
+      "category": {
+        "id": "C1"
+      },
+      "isScheduled": true,
+      "scheduledDeposit": {
+        "depositAmount": {
+          "amount": 500,
+          "currency": "MXN"
+        }
+      },
+      "status": "ACTIVE",
+      "relatedContract": {
+        "id": "FWMMEXH0YCV1JT24Y2HVSFR48M",
+        "number": "1535147980",
+        "product": {
+          "productType": {
+            "id": "ACCOUNTS",
+            "name": "CUENTAS"
+          },
+          "numberType": {
+            "id": "CCC",
+            "name": "Código Cuenta Cliente."
+          }
+        }
+      },
+      "balances": [
+        {
+          "id": "CURRENT_AMOUNT",
+          "name": "Monto actual del pocket.",
+          "mode": "AMOUNT",
+          "unit": {
+            "amount": 50,
+            "currency": "MXN"
+          }
+        }
+      ],
+      "priority": "1"
+    },
+    {
+      "id": "1535147980|C2",
+      "alias": "PRUEBAS 2 GLOMO",
+      "category": {
+        "id": "C2"
+      },
+      "isScheduled": true,
+      "scheduledDeposit": {
+        "depositAmount": {
+          "amount": 0.01,
+          "currency": "MXN"
+        }
+      },
+      "status": "ACTIVE",
+      "relatedContract": {
+        "id": "FWMMEXH0YCV1JT24Y2HVSFR48M",
+        "number": "1535147980",
+        "product": {
+          "productType": {
+            "id": "ACCOUNTS",
+            "name": "CUENTAS"
+          },
+          "numberType": {
+            "id": "CCC",
+            "name": "Código Cuenta Cliente."
+          }
+        }
+      },
+      "balances": [
+        {
+          "id": "CURRENT_AMOUNT",
+          "name": "Monto actual del pocket.",
+          "mode": "AMOUNT",
+          "unit": {
+            "amount": 100,
+            "currency": "MXN"
+          }
+        }
+      ],
+      "priority": "2"
+    },
+    {
+      "id": "1535147980|C3",
+      "alias": "PRUEBAS GLOMO 3",
+      "category": {
+        "id": "C3"
+      },
+      "isScheduled": true,
+      "scheduledDeposit": {
+        "depositAmount": {
+          "amount": 1,
+          "currency": "MXN"
+        }
+      },
+      "status": "ACTIVE",
+      "relatedContract": {
+        "id": "FWMMEXH0YCV1JT24Y2HVSFR48M",
+        "number": "1535147980",
+        "product": {
+          "productType": {
+            "id": "ACCOUNTS",
+            "name": "CUENTAS"
+          },
+          "numberType": {
+            "id": "CCC",
+            "name": "Código Cuenta Cliente."
+          }
+        }
+      },
+      "balances": [
+        {
+          "id": "CURRENT_AMOUNT",
+          "name": "Monto actual del pocket.",
+          "mode": "AMOUNT",
+          "unit": {
+            "amount": 0.2,
+            "currency": "MXN"
+          }
+        }
+      ],
+      "priority": "3"
+    },
+    {
+      "id": "1535147980|C4",
+      "alias": "PRUEBAS GLOMO 4",
+      "category": {
+        "id": "C4"
+      },
+      "isScheduled": false,
+      "scheduledDeposit": {
+        "depositAmount": {
+          "amount": 0,
+          "currency": "MXN"
+        }
+      },
+      "status": "ACTIVE",
+      "relatedContract": {
+        "id": "FWMMEXH0YCV1JT24Y2HVSFR48M",
+        "number": "1535147980",
+        "product": {
+          "productType": {
+            "id": "ACCOUNTS",
+            "name": "CUENTAS"
+          },
+          "numberType": {
+            "id": "CCC",
+            "name": "Código Cuenta Cliente."
+          }
+        }
+      },
+      "balances": [
+        {
+          "id": "CURRENT_AMOUNT",
+          "name": "Monto actual del pocket.",
+          "mode": "AMOUNT",
+          "unit": {
+            "amount": 100000,
+            "currency": "MXN"
+          }
+        }
+      ],
+      "priority": "4"
+    },
+    {
+      "id": "1535147980|C5",
+      "alias": "PRUEBAS GLOMO 5",
+      "category": {
+        "id": "C5"
+      },
+      "isScheduled": true,
+      "scheduledDeposit": {
+        "depositAmount": {
+          "amount": 1000,
+          "currency": "MXN"
+        }
+      },
+      "status": "ACTIVE",
+      "relatedContract": {
+        "id": "FWMMEXH0YCV1JT24Y2HVSFR48M",
+        "number": "1535147980",
+        "product": {
+          "productType": {
+            "id": "ACCOUNTS",
+            "name": "CUENTAS"
+          },
+          "numberType": {
+            "id": "CCC",
+            "name": "Código Cuenta Cliente."
+          }
+        }
+      },
+      "balances": [
+        {
+          "id": "CURRENT_AMOUNT",
+          "name": "Monto actual del pocket.",
+          "mode": "AMOUNT",
+          "unit": {
+            "amount": 0.01,
+            "currency": "MXN"
+          }
+        }
+      ],
+      "priority": "5"
+    }
+  ]
+}

@@ -1,0 +1,142 @@
+{
+  "data": {
+    "loanType": {
+      "id": "CONSUME_PERSONAL",
+      "name": "Personal loan"
+    },
+    "number": "00740960960377309100",
+    "status": {
+      "id": "VALID",
+      "name": "El préstamo está en un estado válido",
+      "reason": {
+        "id": "ACCEPTED"
+      }
+    },
+    "contractingDate": "2018-12-18",
+    "initialAmounts": [
+      {
+        "amount": 500,
+        "currency": "MXN"
+      }
+    ],
+    "currencies": [
+      {
+        "currency": "MXN",
+        "isMajor": true
+      }
+    ],
+    "terms": {
+      "number": 2,
+      "frequency": "BI-WEEKLY"
+    },
+    "internalCode": {
+      "id": "PBCCMNOM03"
+    },
+    "relatedContracts": [
+      {
+        "contractId": "G183C6JEN9SW1NSGZBZX203TKR2EJV8MKAX9T0GTH2JQAKWKMM90",
+        "number": "00740010001500003213",
+        "numberType": {
+          "id": "LIC",
+          "name": "Código interno local"
+        },
+        "product": {
+          "id": "ACCOUNTS",
+          "name": "Cuenta"
+        },
+        "relationType": {
+          "id": "LINKED_WITH",
+          "name": "Ligado con"
+        }
+      }
+    ],
+    "operationNumber": "4145535727",
+    "additionalProducts": [
+      {
+        "id": "No aplica",
+        "managementCompany": {
+          "id": "No aplica",
+          "name": "No aplica"
+        },
+        "numberType": {
+          "id": "LIC",
+          "name": "Código interno local"
+        },
+        "amount": {
+          "amount": 0,
+          "currency": "MXN"
+        }
+      }
+    ],
+    "paymentMethod": {
+      "id": "PAC",
+      "name": "Pago Automático Sobre la Cuenta"
+    },
+    "rates": [
+      {
+        "rateType": {
+          "id": "TASA ANUAL",
+          "name": "tasa anual"
+        },
+        "unit": {
+          "percentage": 0
+        }
+      },
+      {
+        "rateType": {
+          "id": "TASA ORDINARIA",
+          "name": "tasa ordinaria"
+        },
+        "unit": {
+          "percentage": 0
+        }
+      },
+      {
+        "rateType": {
+          "id": "TASA MORATORIA",
+          "name": "tasa moratoria"
+        },
+        "unit": {
+          "percentage": 0
+        }
+      },
+      {
+        "rateType": {
+          "id": "Tasa mensual",
+          "name": "Tasa mensual"
+        },
+        "unit": {
+          "percentage": 0
+        }
+      },
+      {
+        "rateType": {
+          "id": "COMISION APERTURA",
+          "name": "comision apertura"
+        },
+        "unit": {
+          "amount": 34.8
+        }
+      }
+    ],
+    "loanBreakDown": [
+      {
+        "id": "INSTALLMENT",
+        "name": "Monto de la couta",
+        "amount": 100,
+        "currency": "MXN"
+      },
+      {
+        "id": "TOTAL_COST",
+        "name": "Costo Total",
+        "amount": 500,
+        "currency": "MXN"
+      },
+      {
+        "id": "NET_AMOUNT",
+        "name": "Importe neto de crédito, cantidad solicitada por el cliente.",
+        "currency": "MXN"
+      }
+    ]
+  }
+}

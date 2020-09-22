@@ -1,0 +1,39 @@
+<html><head></head><body><div hidden="" by-polymer-bundler=""><script type="text/javascript">/* global GlomoRequestBranchAppointmentListDmMixin */ /* global moment */ /* eslint-disable new-cap */var GlomoRequestBranchAppointmentListDmMixin=window.GlomoRequestBranchAppointmentListDmMixin||{};GlomoRequestBranchAppointmentListDmMixin.mixin=Polymer.dedupingMixin(function(base){return(/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(_class,_Polymer$mixinBehavio);function _class(){babelHelpers.classCallCheck(this,_class);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(_class).apply(this,arguments))}babelHelpers.createClass(_class,[{key:"ready",value:function ready(){babelHelpers.get(babelHelpers.getPrototypeOf(_class.prototype),"ready",this).call(this)}/**
+      * Show spinner
+      * @param {Boolean} open
+      * @event open-control-veil
+      * @event close-control-veil
+      */},{key:"_openSpinner",value:function _openSpinner(open){var event=open?"open-control-veil":"close-control-veil";this.dispatchEvent(new CustomEvent(event))}/**
+      * Return label according to the value of the received parameter
+      * @param {Boolean} isActive
+      * @return {String} 'Pendiente' || 'Concluido'
+      */},{key:"_getStatusLabel",value:function _getStatusLabel(isActive){return isActive?"Pendiente":"Concluido"}/**
+      * Method to return a date with a format
+      * @param {String} date
+      * @return {String} Date format
+      */},{key:"_getDate",value:function _getDate(date){return new moment(date).format(this.dateFormat)}/**
+      * Method to return a time with a format
+      * @param {String} date
+      */},{key:"_getTime",value:function _getTime(date){return"".concat(new moment(date).format(this.timeFormat)).concat(this.t("request-branch-appointment-step-confirm-hour"))}}],[{key:"properties",get:function get(){return{/**
+          * Object to save appointments
+          */digitalAppointments:{type:Object,notify:!0},/**
+          * Time format
+          */timeFormat:{type:String,value:"HH:mm"},/**
+          * Date format
+          */dateFormat:{type:String,value:"MM/DD/YYYY"},/**
+          * Page name
+          */pageName:String}}}]);return _class}(Polymer.mixinBehaviors([CellsBehaviors.AmountBehavior],base)))});</script><dom-module id="glomo-request-branch-appointment-list-dm-mx" assetpath="glomo-request-branch-appointment-list-dm/"><template></template><script>/* eslint-disable new-cap */ /* global GlomoRequestBranchAppointmentListDmMixin */var GlomoRequestBranchAppointmentListDmMx=/*#__PURE__*/function(_GlomoRequestBranchAp){babelHelpers.inherits(GlomoRequestBranchAppointmentListDmMx,_GlomoRequestBranchAp);function GlomoRequestBranchAppointmentListDmMx(){babelHelpers.classCallCheck(this,GlomoRequestBranchAppointmentListDmMx);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(GlomoRequestBranchAppointmentListDmMx).apply(this,arguments))}babelHelpers.createClass(GlomoRequestBranchAppointmentListDmMx,[{key:"parseDigitalAppointments",/**
+   * Method to analyze appointments
+   * @param {Array} appointments
+   */value:function parseDigitalAppointments(){var appointments=0<arguments.length&&arguments[0]!==void 0?arguments[0]:{},appointmentsData=appointments.requestBranchAppointmentList?appointments.requestBranchAppointmentList:{},digitalAppointments=(appointmentsData[0]||{}).digitalAppointments||[];this.set("digitalAppointments",this._mapDigitalAppointments(digitalAppointments));this._openSpinner(!1)}/**
+  * Method to select an appointment
+  * @param {Object} digitalAppointment
+  * @event digital-turn-detail
+  */},{key:"ticketSelected",value:function ticketSelected(digitalAppointment){this.dispatchEvent(new CustomEvent("digital-turn-detail",{detail:{page:"requestBranchAppointmentDetail",params:{digitalAppointment:digitalAppointment.appointmentDetail,fromPage:this.pageName,operationType:"EDIT"}}}))}/**
+  * Method for mapping appointments
+  * @param {Object} digitalAppointments
+  */},{key:"_mapDigitalAppointments",value:function _mapDigitalAppointments(digitalAppointments){var _this=this;return digitalAppointments.map(function(turn){return{isActive:turn.isActive,dateTime:turn.appointmentAttentionDate,additionalInformation:_this._getAdditionalInformation(turn.ticketNumber,turn.appointmentAttentionDate,turn.operationType),availableDate:_this._getDate(turn.appointmentAttentionDate),geolocation:turn.bank.branch.geolocation,status:{value:_this._getStatusLabel(turn.isActive),masked:!1},office:turn.bank.branch,folio:turn.operationNumber,appointmentDetail:turn}})}/**
+  * Method to obtain additional information
+  * @param {String} appointmentAttentionDate
+  * @param {Object} operativeType
+  */},{key:"_getAdditionalInformation",value:function _getAdditionalInformation(ticketNumber,appointmentAttentionDate,operativeType){return[{key:this.t("request-branch-appointment-detail-turn"),value:ticketNumber,className:"item__label text-right text-bold "},{key:this.t("request-branch-appointment-detail-time"),value:this._getTime(appointmentAttentionDate),className:"item__label text-right"},{key:this.t("request-branch-appointment-detail-operation"),value:this.t("request-branch-appointment-step-process-operation-".concat(operativeType.id)),className:"item__label text-right"}]}}],[{key:"is",get:function get(){return"glomo-request-branch-appointment-list-dm-mx"}},{key:"properties",get:function get(){return{}}}]);return GlomoRequestBranchAppointmentListDmMx}(GlomoRequestBranchAppointmentListDmMixin.mixin(Polymer.mixinBehaviors([CellsBehaviors.CellsGlomoUtilsBehavior,CellsBehaviors.i18nBehavior],Polymer.Element)));customElements.define(GlomoRequestBranchAppointmentListDmMx.is,GlomoRequestBranchAppointmentListDmMx);</script></dom-module></div></body></html>

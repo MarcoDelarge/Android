@@ -1,0 +1,45 @@
+{
+    "data": {
+        "id": "NMSA4KF7HBTE22859ABY0V0FGH3MAVGG51FX98W4SHZGDRE1WR70",
+        "operationNumber": "8238273",
+        "operationDate": "2018-09-04",
+        "status": {
+            "id": "PENDING",
+            "description": "PENDIENTE DE ENVIO"
+        },
+        "receiverContract": {
+            "product": {
+                "productType": {
+                    "specificProductType": {
+                        "id": "03",
+                        "name": "03"
+                    }
+                }
+            },
+            "numberType": {
+                "id": "CLABE",
+                "name": "Clave Bancaria Estandarizada"
+            },
+            "id": "PKNK9C5KC4R1EDQS0FTGEZQFR03E91WWD2N9PYPF58Y8ADXZT7N0",
+            "number": "012180029999773683"
+        },
+        "senderContract": {
+            "numberType": {
+                "id": "PAN",
+                "name": "NUM"
+            },
+            "product": {
+                "productType": {
+                    "specificProductType": {
+                        "id": "3M833Z6X6YTM2G1FQC2ZET4ST0",
+                        "name": "03"
+                    }
+                }
+            },
+            "bank": {
+                "id": "M9SQ0SJKDER6Z1HP8FTQR7WNH0",
+                "name": "SANTANDER"
+            }
+        }
+    }
+}

@@ -1,0 +1,403 @@
+<html><head></head><body><div hidden="" by-polymer-bundler=""><dom-module id="cells-step-deposits-offer-page-styles" assetpath="cells-step-deposits-offer-page/"><template><style>@charset "UTF-8";:host{display:block;box-sizing:border-box;font-family:var(--cells-fontDefault, sans-serif);--cells-input-slider-padding:0.5rem;--cells-input-slider-timeline-color:var(--bbva-600, #121212);--cells-paper-slider-text-color:var(--bbva-600, #121212);--cells-input-slider-timeline-ul:{--cells-input-slider-timeline-color:var(--bbva-600, #121212);color:var(bbva-600, #121212);};--cells-input-slider-label-title:{--cells-input-slider-timeline-color:var(--bbva-600, #121212);color:var(bbva-600, #121212);};--cells-input-slider-label-value:{--cells-input-slider-timeline-color:var(--bbva-600, #121212);color:var(bbva-600, #121212);};--cells-paper-slider-text-color:var(--bbva-600, #121212);--cells-input-slider-timeline-strechbehavior-last-text:{right:0;};@apply --cells-step-deposits-offer-page;}:host .offer-details{padding:0 1rem;--cells-enter-limited-amount__txt:{font-size:var(--cells-text-size-12, 0.75rem);line-height:1rem;};}:host .offer-details .list-title{--cells-atom-subheader-heading:{font-size:var(--cells-text-size-15, 0.9375rem);line-height:1.5rem;color:var(--bbva-600, #121212);@apply --cells-fontDefaultMedium;};}:host .offer-details .offer__currency{margin-bottom:0.5rem;}:host .offer-details .offer__currency .currency-description{font-size:var(--cells-text-size-15, 0.9375rem);line-height:1.5rem;}:host .offer-details .radio-icon{color:var(--bbva-dark-medium-blue, #1973b8);}:host .radio-group{margin-top:3rem;}:host .radio-group .radio-button-container{display:grid;grid-template-columns:auto auto;}:host .radio-group .radio-group-title{font-size:var(--cells-text-size-15, 0.9375rem);line-height:1.5rem;}:host .radio-group .payment-type-radio-group{-webkit-box-align:center;align-items:center;}:host .radio-group .payment-type-radio-group .liquidation-selector{width:unset;}:host .radio-group .payment-type-radio-group .radio-icon{margin-left:0.5rem;}:host .lists{margin-top:1.5rem;--cells-lists-responsive:{padding:1rem 0rem 1.5rem 0.5rem;};@apply --cells-step-deposits-offer-page-lists;}:host .lists .lists-title{color:var(--bbva-600, #121212);font-size:var(--cells-text-size-ml, 0.9375rem);@apply --cells-fontDefaultMedium;line-height:1.5rem;@apply --cells-step-deposits-offer-page-lists-title;}:host .offer-data{--cells-key-values-key:{@apply --cells-fontDefaultNormal;};--cells-key-values-value:{@apply --cells-fontDefaultNormal;};@apply --cells-step-deposits-offer-page-offer-data;}:host .offer-data .offer-data-title{color:var(--bbva-600, #121212);font-size:var(--cells-text-size-ml, 0.9375rem);line-height:3rem;@apply --cells-fontDefaultMedium;@apply --cells-step-deposits-offer-page-offer-data-title;}:host .offer-data .offer-data-info{font-size:var(--cells-text-size-ml, 0.9375rem);line-height:0.5rem;margin-top:1rem;@apply --cells-step-deposits-offer-page-offer-data-info;}:host .additional-tax-wrapper{margin:1.5rem 0rem;text-align:center;@apply --cells-step-deposits-offer-page-additional-tax;}:host .additional-tax-info{display:inline-block;@apply --cells-step-deposits-offer-page-additional-tax-info;}:host .additional-tax-icon{width:1.25rem;height:1.25rem;color:var(--bbva-medium-blue, #237aba);@apply --cells-step-deposits-offer-page-additional-tax-icon;}:host .bold-tax{@apply --cells-fontDefaultMedium;}:host .bold-key{--cells-key-values-key:{@apply --cells-fontDefaultMedium;};}:host .bold-value{--cells-key-values-inline-value:{@apply --cells-fontDefaultMedium;};}:host .warnings{color:var(--bbva-600, #121212);font-size:var(--cells-text-size-ml, 0.9375rem);text-align:center;@apply --cells-step-deposits-offer-page-warnings;}:host .slider{--cells-key-values-inline-key:{color:var(--bbva-600, #121212);font-size:var(--cells-text-size-15, 0.9375rem);};--cells-key-values-inline-value:{color:var(--bbva-600, #121212);font-size:var(--cells-text-size-18, 1.125rem);@apply --cells-fontDefaultMedium;};margin-bottom:0.5rem;}:host .wrapper-slider .range .timeline li span{--cells-input-slider-timeline-strechbehavior-text:{--cells-input-slider-timeline-color:var(--bbva-600, #121212) !important;color:var(bbva-600, #121212) !important;};--cells-input-slider-timeline-color:var(--bbva-600, #121212);}:host cells-input-slider custom-cells-paper-slider .timeline li span{color:var(--bbva-600, #121212);}:host .hide-button{--cells-st-button:{display:none;};}:host .buttons-container{margin:0;display:-webkit-box;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;flex-direction:column;-webkit-box-align:center;align-items:center;}:host .buttons-container p{font-size:var(--cells-text-size-15, 0.9375rem);line-height:1.5rem;text-align:center;font-style:italic;margin:0 0 1.5rem 0;}:host .buttons-container .questionnaire-button{padding-left:1rem;padding-right:1rem;}:host .warning-container{display:-webkit-box;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;flex-direction:row;margin-top:1rem;}:host .warning-container cells-atom-icon{color:var(--bbva-dark-red, red);margin-right:0.5rem;}:host .warning-container p{font-size:var(--cells-text-size-12, 1rem);}:host([hidden]), [hidden]{display:none !important;}:host([collapsed]){font-size:var(--cells-text-size-15, 0.9375rem);line-height:1.5rem;}:host([collapsed]) .divider{margin:0.5rem 0 1rem 0;height:0.0625rem;width:3rem;background-color:var(--bbva-200, #E9E9E9);}:host([collapsed]) .filled-amount-label{font-size:var(--cells-text-size-15, 0.9375rem);margin:1rem 0 0 0;@apply --cells-fontDefaultLight;}:host([collapsed]) .bold{--cells-key-values-value-amount:{@apply --cells-fontDefaultMedium;};}:host([collapsed]) cells-key-values{font-size:var(--cells-text-size-15, 0.9375rem);--cells-key-values-color:var(--bbva-white, #fff);@apply --cells-fontDefaultLight;--cells-key-values-value-amount:{font-size:var(--cells-text-size-15, 0.9375rem);};--cells-key-values-inline-value:{font-size:var(--cells-text-size-15, 0.9375rem);};}:host([collapsed]) .offer-data-summary{font-size:var(--cells-text-size-ml, 0.9375rem);line-height:1.5rem;@apply --cells-step-deposits-offer-page-offer-data-summary;}:host([collapsed]) .bold-key{--cells-key-values-key:{@apply --cells-fontDefaultMedium;};}:host([collapsed]) .bold-value{@apply --cells-fontDefaultMedium;}:host([collapsed]) .padding-key{--cells-key-values-key:{padding-right:3.5rem;};}:host([collapsed]) .after-key{--cells-key-values-key:{margin-top:-1rem;};}:host([collapsed]) .summary-warning{color:var(--bbva-white, #fff);font-size:var(--cells-text-size-12, 0.75rem);--iron-icon-width:1rem;--cells-icon-message-icon-color:var(--bbva-white, #fff);}:host([collapsed]) .summary-sub-warning{font-size:var(--cells-text-size-12, 0.75rem);margin-left:1.375rem;}</style></template></dom-module><dom-module id="cells-validate-amount-input-styles" assetpath="cells-validate-amount-input/"><template><style>:host{display:flex;flex-direction:column;align-items:center;box-sizing:border-box;font-family:var(--cells-fontDefault, sans-serif);--cells-molecule-amount-input:{margin-bottom:rem(8px);};--cells-molecule-amount-input-invalid:{background-color:var(--cells-validate-amount-input-error-bg, var(--bbva-white-coral));};}.amount-container{display:flex;align-items:flex-start;width:100%;margin-bottom:2rem;@apply --cells-validate-amount-input-amount-container;}.amount-container .currency-selector{display:flex;@apply --cells-validate-amount-input-currency-selector;}.amount-container .limited-amount-input{width:100%;@apply --cells-validate-amount-input-limited-amount-input;}</style></template></dom-module><dom-module id="cells-validate-amount-input" assetpath="cells-validate-amount-input/"><template><style include="cells-validate-amount-input-styles cells-validate-amount-input-shared-styles"></style><div class="amount-container"><template is="dom-if" if="[[image]]"><cells-select-modal class="currency-selector" image="[[image]]" hide-selector-icon="[[hideSelectorIcon]]"></cells-select-modal></template><cells-molecule-amount-input id="enterAmountInput" class$="[[__getAmountClasses(defaultAmountClasses, amountClasses)]]" pattern="[[pattern]]" set-amount="[[setAmount]]" amount="{{amount}}" max="[[maxChars]]" name="[[name]]" label="[[t(label)]]" currency-code="[[currencyCode]]" local-currency="[[localCurrency]]" language="[[language]]" icon-size="20" icon-code="coronita:close" numeral-positive-only="[[numeralPositiveOnly]]" invalid="[[!_valid]]" on-blur="_validate" on-focusout="_validate" on-amount-input-changed="__validateOnAmountChanged" info-message-icon="coronita:info" info-message="[[_computedInfoMessage]]" error-message-icon="coronita:alert" error-message="[[_computedErrorMessage]]" img-src="[[amountImage]]" disabled="[[disabled]]" auto-format="[[autoFormat]]" set-initial-decimals="[[setInitialDecimals]]"></cells-molecule-amount-input></div><slot id="extra" name="extra"></slot><cells-st-button class="secondary size-m" hidden$="[[hideContinueBtn]]"><button id="enterAmountBtn" type="button" class="cells-validate-amount-input__btn" disabled$="[[!_buttonIsEnabled]]" on-click="_sendAmountOutput">[[t('cells-validate-amount-input-continue', 'Continue')]]</button></cells-st-button></template><script>{/**
+    `<cells-validate-amount-input>` Description.
+
+    Example:
+    ```html
+    <cells-validate-amount-input
+      currency-code="PEN"
+      local-currency="PEN"
+      language="es"
+      name="unique-name"
+      icon-size="16"
+    ></cells-validate-amount-input>
+    ```
+
+    More examples of all different uses with different validations can be found on demo page.
+
+    ## Description
+
+    This component has a numeric input with a currency so that the user can enter an amount.
+
+    A currency selector can be set by setting a *flag-image*.
+
+    This component also validates the amount the user inputs against certain parameters:
+    * A minimum.
+    * A maximum.
+    * Multiple of a number.
+    * User available balance.
+
+    When validating against minimum and maximum, both error messages can be set, in order to set the same error instead of distinguishing between an amount below minimum or above
+    maximum. With this parameter, both errors will be the same.
+
+    There is also an *error-prefix* that can be set in order to have different error messages in different operatives.
+
+    ### Behavior
+
+    The behavior of the input and the info/error messages has been validated with UX and must have the following behavior. Any modification of this behavior should be validated
+    against all UX teams:
+
+    When input is empty:
+    * info message is shown (if set)
+    * button is disabled
+
+    Validations made on blur:
+    * Min, max, multiple.
+
+    Validations made on key press (when amount changes):
+    * User balance.
+
+    ### Error messages
+
+    #### Priority
+    1. User balance
+    2. Min/max
+    3. Multiple
+
+    #### Error message keys
+    Error message keys depend on error type. This way, all possible error keys would be:
+    * `${errorPrefix}`-error-min
+    * `${errorPrefix}`-error-max
+    * `${errorPrefix}`-error-multiple
+    * `${errorPrefix}`-error-user-balance
+
+    ## Styling
+
+    The following custom properties and mixins are available for styling:
+
+    ### Custom Properties
+    | Custom Property                        | Selector | CSS Property     | Value              |
+    | -------------------------------------- | -------- | ---------------- | ------------------ |
+    | --cells-fontDefault                    | :host >  | font-family      | sans-serif         |
+    | --cells-validate-amount-input-error-bg | :host >  | background-color | --bbva-white-coral |
+    ### @apply
+    | Mixins                                             | Selector | Value |
+    | -------------------------------------------------- | -------- | ----- |
+    | --cells-validate-amount-input-currency-selector    |          | {}    |
+    | --cells-validate-amount-input-limited-amount-input |          | {}    |
+    | --cells-validate-amount-input-amount-container     |          | {}    |
+
+
+    * @customElement
+    * @polymer
+    * @extends {Polymer.Element}
+    * @demo demo/index.html
+  */ /* eslint new-cap: [2, {"capIsNewExceptions": ["AmountBehavior"]}] */var CellsValidateAmountInput=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(CellsValidateAmountInput,_Polymer$mixinBehavio);function CellsValidateAmountInput(){babelHelpers.classCallCheck(this,CellsValidateAmountInput);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(CellsValidateAmountInput).apply(this,arguments))}babelHelpers.createClass(CellsValidateAmountInput,[{key:"reset",/**
+     * Resets this enterAmountInput's input value.
+     */value:function reset(){this.shadowRoot.querySelector("#enterAmountInput").reset()}/**
+     * Validates amount with every condition set
+     */},{key:"_validate",value:function _validate(){if(!this.amount&&0!==this.amount){this._valid=!0;return}var validData=[this.__validateUserBalance(this.userBalance,this.amount,this.errorPrefix),this.__validateMinAndMax(this.amount,this.min,this.max,this.errorPrefix),this.__validateMultiple(this.amount,this.multiple,this.errorPrefix)].find(function(data){return data&&!data.valid}),_ref=validData?validData:{valid:!0,errorMessage:null},valid=_ref.valid,errorMessage=_ref.errorMessage;this._valid=valid;this.errorMessage=this.customErrorMessage||errorMessage;this._fireEvent(this.amountChangedEventName,{amount:this.amount,isValid:this._valid})}/**
+     * Validation every time amount changed
+     */},{key:"__validateOnAmountChanged",value:function __validateOnAmountChanged(evt){var amount=evt.detail;if(!amount&&0!==amount){this._valid=!0;this.errorMessage=null;return}var _this$__validateUserB=this.__validateUserBalance(this.userBalance,amount,this.errorPrefix),valid=_this$__validateUserB.valid,errorMessage=_this$__validateUserB.errorMessage;this._valid=valid;this.errorMessage=errorMessage}/**
+     * Checks if user has enough balance for the amount user has introduced
+     * @param {number} userBalance
+     * @param {number} amount
+     * @param {String} errorPrefix
+     */},{key:"__validateUserBalance",value:function __validateUserBalance(userBalance,amount,errorPrefix){var valid=userBalance&&amount?amount<=userBalance:!0,errorMessage=valid?null:"".concat(errorPrefix,"-error-user-balance");return{valid:valid,errorMessage:errorMessage}}/**
+     * Checks if a multiple is set and amount introduced is multiple of that number
+     * @param {Number} amount
+     * @param {Number} multiple
+     * @param {String} errorPrefix
+     */},{key:"__validateMultiple",value:function __validateMultiple(amount,multiple,errorPrefix){var valid=multiple?0===amount%multiple:!0,errorMessage=valid?null:"".concat(errorPrefix,"-error-multiple");return{valid:valid,errorMessage:errorMessage}}/**
+     * Validates amount input with mix and max
+     * @param {Number} amount
+     * @param {Number} min
+     * @param {Number} max
+     * @param {String} errorPrefix
+     */},{key:"__validateMinAndMax",value:function __validateMinAndMax(amount,min,max,errorPrefix){if(min||max){var validatedData=[this.__validateMin(amount,min,errorPrefix),this.__validateMax(amount,max,errorPrefix)].find(function(data){return data&&!data.valid});return validatedData?validatedData:{valid:!0}}}/**
+     * Validates if amount is below max
+     * @param {Number} amount
+     * @param {Number} max
+     * @param {String} errorPrefix
+     */},{key:"__validateMax",value:function __validateMax(amount,max,errorPrefix){var valid=max?amount<=max:!0,errorMessage=valid?null:"".concat(errorPrefix,"-error-max");return{valid:valid,errorMessage:errorMessage}}/**
+     * Validates if amount is above min
+     * @param {Number} amount
+     * @param {Number} min
+     * @param {String} errorPrefix
+     */},{key:"__validateMin",value:function __validateMin(amount,min,errorPrefix){var valid=min?amount>=min:!0,errorMessage=valid?null:"".concat(errorPrefix,"-error-min");return{valid:valid,errorMessage:errorMessage}}/**
+     * Calculates remaining user balance
+     * @param {Number} amount
+     * @param {Number} userBalance
+     */},{key:"_calculateRemaining",value:function _calculateRemaining(amount,userBalance){return amount?userBalance-amount:userBalance}/**
+     * Generates an object containing all formated amounts available for translation function in locales.
+     * @param {Number} min
+     * @param {Number} max
+     * @param {Number} multiple
+     * @param {Number} userBalance
+     * @param {Number} _userRemainingBalance
+     * @param {String} localCurrency
+     * @param {String} language
+     * @param {Boolean} hideDecimalsMessage
+     */},{key:"computeAllAmounts",value:function computeAllAmounts(min,max,multiple,userBalance,_userRemainingBalance,localCurrency,currencyCode,language,hideDecimalsMessage){return{_max:this.getFormattedAmount(max,currencyCode,localCurrency,language,!hideDecimalsMessage,!0,!0),_min:this.getFormattedAmount(min,currencyCode,localCurrency,language,!hideDecimalsMessage,!0,!0),_userBalance:this.getFormattedAmount(userBalance,currencyCode,localCurrency,language,!hideDecimalsMessage,!0,!0),_remainingBalance:this.getFormattedAmount(_userRemainingBalance,currencyCode,localCurrency,language,!hideDecimalsMessage,!0,!0),_multiple:multiple}}/**
+     * Translates the info message set, this is made here because we have all amounts available for translation
+     * @param {String} infoMessage
+     * @param {Object} _allAmounts
+     * @param {Number} amount
+     * @param {String} remainingInfoMessage
+     */},{key:"computeInfoMessage",value:function computeInfoMessage(infoMessage,_allAmounts,amount,remainingInfoMessage,hideInfoMessage){if(hideInfoMessage){return""}if(amount!==void 0&&remainingInfoMessage){return this.t(remainingInfoMessage,"",_allAmounts)}return this.t(infoMessage,"",_allAmounts)}/**
+     * Translates the error message set, this is made here because we have all amounts available for translation
+     * @param {String} errorMessage
+     * @param {Object} _allAmounts
+     */},{key:"computeErrorMessage",value:function computeErrorMessage(errorMessage,_allAmounts){return this.t(errorMessage,"",_allAmounts)}/**
+     * Dispatches an event with the amount set
+     * @event continue-pressed
+     */},{key:"_sendAmountOutput",value:function _sendAmountOutput(){this._fireEvent(this.buttonEventName,this.amount)}},{key:"_fireEvent",value:function _fireEvent(eventName,amount){this.dispatchEvent(new CustomEvent(eventName,{bubbles:!0,composed:!0,detail:amount}))}/**
+     * Sets correct value for validate button to be enabled
+     * @param {Boolean} _valid
+     * @param {Number} amount
+     */},{key:"__setButtonEnabled",value:function __setButtonEnabled(_valid,amount){if(!amount){this._buttonIsEnabled=!1;return}this._buttonIsEnabled=_valid}/**
+     * Computed the classes set in <cells-molecule-amount-input> and return concat of string params.
+     * @param {String} defaultAmountClasses
+     * @param {String} amountClasses
+     * @returns {String}
+     */},{key:"__getAmountClasses",value:function __getAmountClasses(defaultAmountClasses,amountClasses){return"".concat(defaultAmountClasses," ").concat(amountClasses)}/**
+     * Negates _valid to set `invalid` value
+     * @param {Boolean} _valid
+     * @returns {Boolean}
+     */},{key:"_setInvalid",value:function _setInvalid(_valid){return!_valid}}],[{key:"is",get:function get(){return"cells-validate-amount-input"}},{key:"properties",get:function get(){return{/**
+        * Amount set in the input from the outside.
+        */setAmount:{type:Number},/**
+         * Output amount.
+         * Not visible
+         */amount:{type:Number},/**
+        * Input pattern validation
+        */pattern:{type:String},/**
+         * Allow only positive numbers in amount input
+         */numeralPositiveOnly:{type:Boolean,value:!1},/**
+         * Limit max characters in amount input
+         */maxChars:{type:Number},/**
+         * Name required in amount component
+         * Mandatory and needs to be unique to avoid conflicts with cleave.js
+         */name:{type:String,value:"enterAmount"},/**
+         * Language for the currency
+         */language:{type:String},/**
+         * ISO 4217 code for the currency
+         */currencyCode:{type:String},/**
+         * ISO 4217 code for the local currency
+         */localCurrency:{type:String},/**
+         * initial currency value before to be changed
+         */initialCurrency:{type:String},/**
+         * The icon size of the icon displayed on info and error messages. View documentation for the icon component
+         */iconSize:{type:String},/**
+         * When setted, the amount entered should be a multiple of this number
+         */multiple:{type:Number},/**
+        * Hide continue button
+        */hideContinueBtn:{type:Boolean,value:!1},/**
+         * Image to show in cells-molecule-amount-input component
+         */image:{type:String},/**
+         * Hide select-modal selector icon
+         */hideSelectorIcon:{type:Boolean},/**
+         * Image to place inside amount input
+         */amountImage:{type:String},/**
+         * Label to show as placeholder inside amount-input
+         */label:{type:String,value:"cells-validate-amount-input-amount"},/**
+         * Info message to show below amount input. Can be used with ${min} ${max} ${userBalance} ${multiple} ${_userRemainingBalance}
+         */infoMessage:{type:String},/**
+         * Already translated info message with amounts filled inside literal
+         */_computedInfoMessage:{type:String,computed:"computeInfoMessage(infoMessage, _allAmounts, amount, remainingInfoMessage, hideInfoMessage)"},/**
+         * Hide info message
+         */hideInfoMessage:{type:Boolean,value:!1},/**
+         * Hide amount decimals in info/error messages
+         */hideDecimalsMessage:{type:Boolean,value:!1},/**
+         * Max limit to validate amount
+         */max:{type:Number},/**
+         * Min limit to validate amount
+         */min:{type:Number},/**
+         * User Balance to validate amount input and calculate user remaining balance after the input
+         */userBalance:{type:Number},/**
+         * Auto calculated remaining balance with user balance and amount input
+         */_userRemainingBalance:{type:Number,computed:"_calculateRemaining(amount, userBalance)"},/**
+         * Auto calculated boolean indicating if amount is valid depending on limits/balance
+         */_valid:{type:Boolean,notify:!0},/**
+         * Negation of `_valid` to comply with cells inputs `invalid` property
+         */invalid:{type:Boolean,computed:"_setInvalid(_valid)",notify:!0,reflectToAttribute:!0},/**
+         * Indicates if continue button should be enabled
+         */_buttonIsEnabled:{type:Boolean,value:!1},/**
+         * Auto calculated object containing all amounts introduced, to correctly format them and use them in info/error messages
+         */_allAmounts:{type:Object,computed:"computeAllAmounts(min, max, multiple, userBalance, _userRemainingBalance, localCurrency, currencyCode, language, hideDecimalsMessage)"},/**
+         * Error message
+         */errorMessage:{type:String},/**
+         * Already translated error message with amounts filled inside literal
+         */_computedErrorMessage:{type:String,computed:"computeErrorMessage(errorMessage, _allAmounts)"},/**
+         * Prefix to include in error messages. This way every operative can have different keys for same error validation messages.
+         */errorPrefix:{type:String,value:"cells-validate-amount-input"},/**
+         * When user sets a remainingInfoMessage, user can see his remaining balance with a different message when entering an amount
+         */remainingInfoMessage:{type:String},/**
+         * If true, the element is disabled
+         */disabled:{type:Boolean},/**
+         * Event dispatched on validate button pressed
+         */buttonEventName:{type:String,value:"continue-pressed"},/**
+         * Event dispatched on amount changed pressed
+         */amountChangedEventName:{type:String,value:"amount-changed-on-blur"},/**
+         * Default class set in cells-molecule-amount-input
+        */defaultAmountClasses:{type:String,value:"limited-amount-input"},/**
+         * Class set in cells-molecule-amout-input
+         */amountClasses:{type:String,value:""},/**
+         * Flag to control if formatting of the initial amount is not necessary
+         * @type {Boolean}
+         */setInitialDecimals:{type:Boolean,value:!1},/**
+         * IF Enabled the value of the input will change to the output
+         * on blur. Turning "0" into "0.00"
+         * @type {Boolean}
+         */autoFormat:{type:Boolean,value:!1},/**
+         * Text label used when a custom message is needed at the error message
+         * @type {String}
+         */customErrorMessage:{type:String,value:""}}}},{key:"observers",get:function get(){return["__setButtonEnabled(_valid, amount)"]}}]);return CellsValidateAmountInput}(Polymer.mixinBehaviors([CellsBehaviors.i18nBehavior],CellsBehaviors.AmountBehavior(Polymer.Element)));window.customElements.define(CellsValidateAmountInput.is,CellsValidateAmountInput)}</script></dom-module><dom-module id="cells-step-deposits-offer-page" assetpath="cells-step-deposits-offer-page/"><script>function _templateObject_7add5920ef2011eaab893dabf4ddef4d(){var data=babelHelpers.taggedTemplateLiteral(["\n      <style include=\"cells-step-deposits-offer-page-styles cells-step-deposits-offer-page-shared-styles\"></style>\n      <cells-step id=\"stepContainer\"\n        step-title=\"[[stepTitle]]\"\n        change-label=\"[[t(changeLabel)]]\"\n        disable-change=\"[[disableChange]]\"\n        class-to-toggle=\"active\"\n        fixed=\"{{fixed}}\"\n        active=\"{{active}}\"\n        collapsed=\"{{collapsed}}\"\n        last-step=\"[[lastStep]]\"\n        scrolled=\"[[scrolled]]\"\n        previous=\"[[previous]]\"\n        next=\"[[next]]\"\n        current-step=\"[[currentStep]]\"\n        hide-header=\"[[hideHeader]]\">\n\n        <div slot=\"full\">\n          <cells-image-text-amount-cover\n            header-image-src=\"[[headerImageSrc]]\"\n            product-summary-text=\"[[productSummaryText]]\"\n          ></cells-image-text-amount-cover>\n\n          <main class=\"offer-details\">\n            <template is=\"dom-if\" if=\"[[selectedCurrency]]\">\n              <div class=\"offer__currency\">\n                <cells-atom-subheader class=\"list-title\">\n                  <span slot=\"heading\">[[t(inputCurrencyHeader)]]</span>\n                </cells-atom-subheader>\n                <p class=\"currency-description\">[[t(inputCurrencyDescription)]]</p>\n\n                <cells-select-modal\n                  id=\"currency-selector\"\n                  is-input-style\n                  image=\"[[selectedCurrency.labelImg.src]]\"\n                  item-selected=\"[[selectedCurrency.name]]\"\n                  secondary-selected=\"[[selectedCurrency.rightLabel]]\"\n                ></cells-select-modal>\n              </div>\n            </template>\n\n            <div class=\"offer__input-amount\">\n              <cells-atom-subheader class=\"list-title\">\n                <span slot=\"heading\">[[t(enterAmountHeader)]]</span>\n              </cells-atom-subheader>\n              <template is=\"dom-if\" if=\"[[amountSubHeader]]\">\n                <p class=\"amount-sub-header\" inner-h-t-m-l=\"[[t(amountSubHeader)]]\"></p>\n              </template>\n                <cells-validate-amount-input\n                  id=\"step-input-message-limited-amount\"\n                  on-amount-input-changed=\"_onAmountInputChanged\"\n                  on-dispatched-blur=\"_onAmountInputBlur\"\n                  amount-changed-event-name=\"[[amountChangedEventName]]\"\n                  on-focus=\"_hideStickyOnInputFocus\"\n                  on-blur=\"_showStickyOnInputBlur\"\n                  set-amount=\"[[amount.amount]]\"\n                  currency-code=\"[[amount.currency]]\"\n                  local-currency=\"[[amount.currency]]\"\n                  language=\"es-pe\"\n                  name=\"deposits-amount-input\"\n                  icon-size=\"16\"\n                  label=\"[[t(amountLabel)]]\"\n\n                  max=\"[[max]]\"\n                  min=\"[[min]]\"\n\n                  hide-decimals-message\n\n                  info-message=\"[[amountInfoMessage]]\"\n\n                  hide-continue-btn\n                  user-balance=\"[[maxAvailableBalance]]\"\n                  amount-classes=\"amount--xl\"\n                  error-prefix=\"deposits\"\n                  set-initial-decimals=\"[[setInitialDecimals]]\"\n                  auto-format=\"[[autoFormat]]\"\n                ></cells-validate-amount-input>\n            </div>\n\n            <div class=\"offer__slider\">\n              <cells-key-values\n                class=\"inline slider\"\n                key=\"cells-step-deposits-offer-page-slider-key\"\n                value=\"[[_selectedSliderLabel]]\"\n              ></cells-key-values>\n              <template is=\"dom-if\" if=\"[[__showSlider(sliderValues, selectedSliderIndex)]]\">\n                <cells-input-slider\n                  id=\"deposits-input-slider\"\n                  hide-title\n                  hide-value\n                  hide-unit\n                  class=\"deposit__input-slider\"\n                  array-values=\"[[sliderValues]]\"\n                  slider-value=\"{{selectedSliderIndex}}\"\n                ></cells-input-slider>\n              </template>\n            </div>\n\n            <template is=\"dom-if\" if=\"[[liquidationItems]]\">\n              <div class=\"radio-group\">\n                <p class=\"radio-group-title\">[[t(radioGroupTitle)]]</p>\n                <cells-radio-group id=\"deposits-radio-group\" class=\"payment-type-radio-group radio-button-container\" selected=\"{{selectedLiquidation}}\">\n                  <template is=\"dom-repeat\" items=[[liquidationItems]]>\n                      <cells-radio-button id$=\"liquidation-selector-[[index]]\" name=\"[[item.name]]\" class=\"liquidation-selector\" on-click=\"_onClickRadioGroup\">\n                        [[t(item.name)]]\n                      </cells-radio-button>\n                      <cells-atom-icon\n                        id$=\"tooltip-[[index]]\"\n                        icon=\"coronita:help\"\n                        class=\"icon-size-24 radio-icon\"\n                        on-click=\"_onHelpIconClicked\"\n                        data-item=\"[[item.id]]\"\n                        hidden$=\"[[!active]]\"\n                      ></cells-atom-icon>\n                  </template>\n                </cells-radio-group>\n              </div>\n            </template>\n\n            <template is=\"dom-if\" if=\"[[depositList.length]]\">\n              <div class=\"lists\">\n                <template is=\"dom-repeat\" items=[[depositList]]>\n                  <span class=\"lists-title\">[[t(item.title)]]</span>\n                  <cells-lists id=\"list\" class$=\"[[item.bullet]] [[item.font]] [[item.background]]\" list=\"[[item.list]]\" links=\"[[item.link]]\"></cells-lists>\n                </template>\n              </div>\n            </template>\n\n            <template is=\"dom-if\" if=\"[[offerData.detail]]\">\n              <div class=\"offer-data\">\n                <span class=\"offer-data-title\">[[t(offerData.detail.title)]]</span>\n                <template is=\"dom-repeat\" items=\"[[offerData.detail.values]]\">\n                  <cells-key-values\n                    class$=\"inline offer-data-info [[item.class]]\"\n                    key=\"[[item.key]]\"\n                    value=\"[[item.value]]\"\n                    local-currency=\"[[item.localCurrency]]\"\n                    language=\"[[item.language]]\">\n                    <p slot=\"after-key\" class=\"after-key\">[[item.afterKey]]</p>\n                  </cells-key-values>\n                </template>\n              </div>\n            </template>\n\n            <template is=\"dom-repeat\" items=\"[[offerData.detail.additionalTaxes]]\" as=\"tax\">\n              <div class=\"additional-tax-wrapper\">\n                <span inner-h-t-m-l=\"[[t(tax.text)]]\"></span>&nbsp;\n                <div class=\"additional-tax-info\">\n                  <span inner-h-t-m-l=\"[[t(tax.percentage)]]\" class=\"bold-tax\"></span>&nbsp;\n                  <cells-atom-icon\n                    icon=\"[[tax.icon]]\"\n                    class=\"additional-tax-icon\"\n                    on-tap=\"helpBtnTapped\">\n                  </cells-atom-icon>\n                </div>\n              </div>\n            </template>\n\n            <template is=\"dom-if\" if=\"[[infoMessage]]\">\n              <cells-icon-message-change-data\n                type=\"info\"\n                heading=\"[[infoMessageHeading]]\"\n                message=\"[[infoMessage]]\"\n                show-change-data\n                has-multiple-data\n                change-data-text=\"[[changeDataText]]\"\n              ></cells-icon-message-change-data>\n            </template>\n\n            <dom-repeat items=\"[[offerData.detail.warnings]]\" as=\"warning\">\n              <template>\n                <p class=\"warnings\" inner-h-t-m-l=\"[[warning]]\"></p>\n              </template>\n            </dom-repeat>\n\n            <cells-sticky-container enabled=\"[[!_hideSticky]]\">\n            <cells-summary-view\n              show-addition\n              show-loading-skeleton\n              summary-view-title=\"[[summaryViewTitle]]\"\n              operation-amount-class=\"amount-huge-decimals\"\n              operation=\"[[_operation]]\"\n              local-currency=\"[[totalInterests.currency]]\"\n              exchange-rate-icon=\"[[rateIcon]]\"\n              class=\"summary-view hide-button\"\n            ></cells-summary-view>\n            </cells-sticky-container>\n\n              <div class=\"buttons-container\">\n                  <p hidden$=\"[[isFatcaActive]]\">[[t(openModalText)]]</p>\n                  <cells-st-button class=\"primary size-m\" on-click=\"_onContinueButtonPressed\" hidden$=[[!isFatcaActive]]>\n                    <button id=\"deposits-next-button\" disabled$=\"[[_checkValidOffer(_operation, _hasEnoughBalance, min, amount, disabledNextButton)]]\">[[t('deposits-offer-page-summary-view-button-label')]]</button>\n                  </cells-st-button>\n\n                  <cells-st-button class=\"primary size-m\" on-click=\"_onButtonPressed\" hidden$=\"[[isFatcaActive]]\">\n                    <button id=\"deposits-fatca-button\" class=\"questionnaire-button\" disabled$=\"[[_checkValidOffer(_operation, _hasEnoughBalance, min, amount, disabledNextButton)]]\">[[t(openModalButtonLabel)]]</button>\n                  </cells-st-button>\n\n                  <template is=\"dom-if\" if=\"[[showErrorMessage]]\">\n                    <div class=\"warning-container\">\n                      <cells-atom-icon icon=\"[[errorIcon]]\" class$=\"[[iconSize]]\">\n                      </cells-atom-icon>\n                      <p>[[t(notEnoughBalanceText)]]<p>\n                    </div>\n                  </template>\n              </div>\n\n          </main>\n\n        </div>\n\n        <div slot=\"filled\" class=\"collapsed\">\n          <p class=\"filled-amount-label\">[[t('cells-step-deposits-offer-page-filled-invest-amount')]]</p>\n          <template is=\"dom-if\" if=\"[[!showOfferData]]\">\n            <cells-atom-amount\n              class=\"amount-huge-decimals\"\n              amount=\"[[amount.amount]]\"\n              currency-code=\"[[amount.currency]]\"\n              local-currency=\"PEN\"\n            ></cells-atom-amount>\n            <div class=\"divider\"></div>\n            <cells-key-values\n              class=\"inline\"\n              key=\"cells-step-deposits-offer-page-filled-period-label\"\n              value=\"[[_selectedSliderLabel]]\"\n            ></cells-key-values>\n            <cells-key-values\n              class=\"inline\"\n              key=\"cells-step-deposits-offer-page-filled-total-operation\"\n              value=\"[[_totalBenefits]]\"\n            ></cells-key-values>\n            <cells-key-values\n              class=\"inline\"\n              key=\"cells-step-deposits-offer-page-tax-name\"\n              value=\"[[rate]]%\"\n            ></cells-key-values>\n            <cells-key-values\n              class=\"inline\"\n              key=\"cells-step-deposits-offer-page-payment-method\"\n              value=\"[[_selectedLiquidationName]]\"\n            ></cells-key-values>\n            <cells-key-values\n              class=\"inline bold\"\n              key=\"cells-step-deposits-offer-page-total-amount-label\"\n              value=\"[[_totalToReceive]]\"\n            ></cells-key-values>\n          </template>\n          <template is=\"dom-if\" if=\"[[showOfferData]]\">\n            <cells-atom-amount\n              class=\"amount-huge-decimals\"\n              amount=\"[[offerData.amount.amount]]\"\n              currency-code=\"[[offerData.amount.currency]]\"\n              local-currency=\"[[offerData.amount.currency]]\"\n            ></cells-atom-amount>\n            <div class=\"divider\"></div>\n            <template is=\"dom-repeat\" items=\"[[offerData.summary.values]]\">\n              <cells-key-values\n                class$=\"inline offer-data-summary [[item.class]]\"\n                key=\"[[item.key]]\"\n                value=\"[[item.value]]\"\n                local-currency=\"[[item.localCurrency]]\"\n                language=\"[[item.language]]\">\n                <p slot=\"after-key\" class=\"after-key\">[[item.afterKey]]</p>\n              </cells-key-values>\n            </template>\n            <div class=\"divider\"></div>\n            <cells-icon-message\n              class=\"inline summary-warning\"\n              icon=\"[[offerData.summary.resumeTermWarning.icon.name]]\"\n              icon-size=\"[[offerData.summary.resumeTermWarning.icon.size]]\"\n              message=\"[[offerData.summary.resumeTermWarning.message]]\">\n            </cells-icon-message>\n            <p class=\"summary-sub-warning\">[[t(offerData.summary.resumeTermWarning.submessage)]]</p>\n          </template>\n        </div>\n      </cells-step>\n      "]);_templateObject_7add5920ef2011eaab893dabf4ddef4d=function _templateObject_7add5920ef2011eaab893dabf4ddef4d(){return data};return data}{/* globals _ */var _Polymer=Polymer,html=_Polymer.html,CellsStepDepositsOfferPage=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(CellsStepDepositsOfferPage,_Polymer$mixinBehavio);function CellsStepDepositsOfferPage(){babelHelpers.classCallCheck(this,CellsStepDepositsOfferPage);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(CellsStepDepositsOfferPage).apply(this,arguments))}babelHelpers.createClass(CellsStepDepositsOfferPage,[{key:"connectedCallback",value:function connectedCallback(){babelHelpers.get(babelHelpers.getPrototypeOf(CellsStepDepositsOfferPage.prototype),"connectedCallback",this).call(this);this.addEventListener("current-slider-value",this._setSliderIndex.bind(this));this.addEventListener("amount-changed-on-blur",this._setAmount.bind(this));this.addEventListener("open-exchange-rate-modal",this._sendSummaryTooltipEvent.bind(this))}},{key:"disconnectedCallback",value:function disconnectedCallback(){babelHelpers.get(babelHelpers.getPrototypeOf(CellsStepDepositsOfferPage.prototype),"disconnectedCallback",this).call(this);this.removeEventListener("current-slider-value",this._setSliderIndex.bind(this));this.removeEventListener("amount-changed-on-blur",this._setAmount.bind(this));this.removeEventListener("open-exchange-rate-modal",this._sendSummaryTooltipEvent.bind(this))}},{key:"_sendSummaryTooltipEvent",value:function _sendSummaryTooltipEvent(){this.dispatchEvent(new CustomEvent("open-exchange-tooltip-modal",{bubbles:!0,composed:!0,detail:"TREA_TOOLTIP"}))}},{key:"_setAmount",value:function _setAmount(evt){this.set("amount.amount",this.get("detail.amount",evt))}},{key:"_hideStickyOnInputFocus",value:function _hideStickyOnInputFocus(){this._hideSticky=!0}},{key:"_showStickyOnInputBlur",value:function _showStickyOnInputBlur(){this._hideSticky=!1}},{key:"_setSliderIndex",value:function _setSliderIndex(evt){var detail=(evt||{}).detail;this._checkProperties(detail,this.selectedSliderIndex);this.selectedSliderIndex=detail}},{key:"_computeOperation",value:function _computeOperation(totalInterests,rate){if(totalInterests&&rate){return{amount:totalInterests,fees:[],exchangeRate:{key:"cells-step-deposits-offer-page-rate",values:{exchangeRate:rate}}}}return null}},{key:"_computeHasEnoughBalance",value:function _computeHasEnoughBalance(maxAvailableBalance,min){var valid=maxAvailableBalance>=min;this.showErrorMessage=!valid;return valid}},{key:"_checkValidOffer",value:function _checkValidOffer(_operation,_hasEnoughBalance,min,amount,disabledNextButton){var valid=!!(_operation&&_hasEnoughBalance&&amount&&amount.amount>=min);return disabledNextButton?disabledNextButton:!valid}},{key:"_computeSelectedSliderLabel",value:function _computeSelectedSliderLabel(sliderValues,selectedSliderIndex){var selected=(sliderValues||[])["".concat(selectedSliderIndex)];return"1"===selected?"".concat(selected," ").concat(this.t("cells-step-deposits-offer-page-unit-single")):"".concat(selected," ").concat(this.t("cells-step-deposits-offer-page-unit"))}},{key:"_computeSelectedLiquidationName",value:function _computeSelectedLiquidationName(liquidationItems,selectedLiquidation){return liquidationItems&&selectedLiquidation!==void 0&&liquidationItems["".concat(selectedLiquidation)]?this.t(liquidationItems["".concat(selectedLiquidation)].name):""}},{key:"_computeSummaryViewTitleName",value:function _computeSummaryViewTitleName(summaryViewWithTerm,_selectedSliderLabel){return!0===summaryViewWithTerm?"".concat(this.t("cells-step-deposits-offer-page-to")," ").concat(_selectedSliderLabel," ").concat(this.t("deposits-offer-page-summary-view-total-operation")):"".concat(this.t("deposits-offer-page-summary-view-total-operation"))}},{key:"_computeAmountForKeyValues",value:function _computeAmountForKeyValues(amount){return amount?{amount:amount.amount,currencyCode:amount.currency}:void 0}},{key:"_computeHideHeader",value:function _computeHideHeader(collapsed){return!collapsed}},{key:"_onHelpIconClicked",value:function _onHelpIconClicked(event){var type=event.target.dataItem,name="open-tooltip";this.dispatchEvent(new CustomEvent(name,{bubbles:!0,composed:!0,detail:type}))}},{key:"_onButtonPressed",value:function _onButtonPressed(){this._hasChanges=!0;this.dispatchEvent(new CustomEvent("open-fatca-modal",{bubbles:!0,composed:!0}))}},{key:"_onContinueButtonPressed",value:function _onContinueButtonPressed(){this._hasChanges=!0;this.dispatchEvent(new CustomEvent("summary-closed",{detail:this.currentStep,bubbles:!0,composed:!0}))}},{key:"isValid",value:function isValid(){return this.selectedCurrency&&this.amount&&this.sliderValues[this.selectedSliderIndex]&&this.liquidationItems[this.selectedLiquidation]&&this._operation}},{key:"reset",value:function reset(){this.set("selectedCurrency",null);this.set("amount",null);this.set("sliderValues",[]);this.set("selectedSliderIndex",0);this.set("selectedLiquidation",0);this.set("totalInterests",null);this._hasChanges=!1}},{key:"_onAmountInputChanged",value:function _onAmountInputChanged(event){if(this.amount){this._checkProperties(this.amount.amount,event.detail);this.set("amount.amount",event.detail)}}},{key:"_onAmountInputBlur",value:function _onAmountInputBlur(event){event.stopPropagation();this.dispatchEvent(new CustomEvent("amount-changed-on-blur",{bubbles:!0,composed:!0,detail:this.amount}))}},{key:"_currencyChanged",value:function _currencyChanged(selectedCurrency,selectedCurrencyPrevious){var currencyCode=selectedCurrency?selectedCurrency.rightLabel:void 0;if(!this.amount){this.set("amount",{currency:currencyCode})}else{this.amount=Object.assign({},this.amount,{currency:currencyCode});this._checkProperties(selectedCurrency,selectedCurrencyPrevious)}}},{key:"__showSlider",value:function __showSlider(sliderValues,selectedSliderIndex){return sliderValues&&0<=selectedSliderIndex&&sliderValues[selectedSliderIndex]}/**
+     * Method that checks properties and assigns true in the property _hasChanges if current and previous are different
+     * @param {*} current value
+     * @param {*} previous value
+     * @private
+     */},{key:"_checkProperties",value:function _checkProperties(current,previous){this._hasChanges=previous!==void 0&&null!==previous&&current!==previous?!0:this._hasChanges}/**
+     * On click radio group
+     * @private
+     */},{key:"_onClickRadioGroup",value:function _onClickRadioGroup(){this._hasChanges=!0}/**
+     * check if the offer page has changes in data
+     */},{key:"checkHasChanges",value:function checkHasChanges(){var eventName=this._hasChanges?"has-changes-offer-page":"has-no-changes-offer-page";this.dispatchEvent(new CustomEvent(eventName,{bubbles:!0,composed:!0}));this.dispatchEvent(new CustomEvent("go-back-navigation",{bubbles:!0,composed:!0}))}/**
+     * Disable continue button
+     */},{key:"disableForm",value:function disableForm(){this.disabledNextButton=!0}/**
+     * Enable continue button
+     */},{key:"enableForm",value:function enableForm(){this.disabledNextButton=!1}/**
+     * @description Dispatchs an event when help icon is tapped
+     * @param {Object} event on-tap event inside dom-repeat
+     * @event 'simulator-help-btn-tapped-event'
+     */},{key:"helpBtnTapped",value:function helpBtnTapped(event){this._dispatch("simulator-help-btn-tapped-event",event.model.index)}/**
+     * Dispatches a custom event with name and detail
+     * @param {String} name
+     * @param {any} detail
+     */},{key:"_dispatch",value:function _dispatch(name,detail){this.dispatchEvent(new CustomEvent(name,{bubbles:!0,composed:!0,detail:detail}))}}],[{key:"is",get:function get(){return"cells-step-deposits-offer-page"}},{key:"properties",get:function get(){return{stepTitle:String,hideHeader:{type:Boolean,computed:"_computeHideHeader(collapsed)"},changeLabel:String,headerImageSrc:String,productSummaryText:String,inputCurrencyHeader:String,inputCurrencyDescription:String,enterAmountHeader:String,amount:{type:Object,value:function value(){return{}}},amountLabel:String,max:Number,min:Number,amountInfoMessage:{type:String,value:"cells-step-deposits-offer-page-info-limit-amount"},sliderValues:{type:Array,value:function value(){return[]}},selectedSliderIndex:{type:Number,value:0},_selectedSliderLabel:{type:String,computed:"_computeSelectedSliderLabel(sliderValues, selectedSliderIndex)"},infoMessage:String,infoMessageHeading:{type:String},changeDataText:{type:String,value:"cells-step-deposits-offer-page-info-message-more"},radioGroupTitle:String,liquidationItems:Array,selectedLiquidation:{type:Number,notify:!0},totalInterests:Object,rate:Number,_operation:{type:Object,computed:"_computeOperation(totalInterests, rate)"},_selectedLiquidationName:{type:String,computed:"_computeSelectedLiquidationName(liquidationItems, selectedLiquidation)"},_totalBenefits:{type:Object,computed:"_computeAmountForKeyValues(totalInterests)"},totalGrossBenefits:{type:Object},_totalToReceive:{type:Object,computed:"_computeAmountForKeyValues(totalGrossBenefits)"},selectedCurrency:{type:Object,observer:"_currencyChanged"},maxAvailableBalance:{type:Number},isFatcaActive:{type:Boolean,value:!1},openModalButtonLabel:String,openModalText:String,_hasEnoughBalance:{type:Boolean,computed:"_computeHasEnoughBalance(maxAvailableBalance, min)"},notEnoughBalanceText:{type:String,value:"deposits-offer-page-not-enough-balance"},errorIcon:{type:String,value:"coronita:alert"},iconSize:{type:String,value:"icon-size-16"},/**
+         * flag to known if the component has changes
+         * @type {Boolean}
+         * @private
+         */_hasChanges:{type:Boolean,value:!1},/**
+         * Flag to control if formatting of the initial amount is not necessary
+         * @type {Boolean}
+         */setInitialDecimals:{type:Boolean,value:!1},/**
+         * IF Enabled the value of the input will change to the output
+         * on blur. Turning "0" into "0.00"
+         * @type {Boolean}
+         */autoFormat:{type:Boolean,value:!1},/** flag to hide sticky container
+         * @type {Boolean}
+         */_hideSticky:{type:Boolean,value:!1},/** Flag to disable/enable next button
+         * @type {Boolean}
+         */disabledNextButton:{type:Boolean,value:!1},/** Show/Hide error message
+         * @type {Boolean}
+         */showErrorMessage:{type:Boolean,value:!1},/** Deposit list
+         * @type {Array}
+         */depositList:{type:Array,value:function value(){return[]},notify:!0},/**
+         * Hide / Show offer data
+         * @type {Boolean}
+         */showOfferData:{type:Boolean,value:!1},/** Offer data deposit
+         * @type {Object}
+         */offerData:{type:Object,notify:!0,value:function value(){return{}}},/** Summary view with term
+         * @type {Boolean}
+         */summaryViewWithTerm:{type:Boolean,value:!1},/** Summary view title
+         * @type {String}
+         */summaryViewTitle:{type:String,computed:"_computeSummaryViewTitleName(summaryViewWithTerm, _selectedSliderLabel)"},/**
+         * Hide header button
+         * @type {Boolean}
+         */disableChange:{type:Boolean,value:!1},/**
+         * Rate icon
+         * @type {String}
+         */rateIcon:{type:String,value:"coronita:help"},/**
+         * Amount changed event name
+         * @type {String}
+         */amountChangedEventName:{type:String,value:""},/**
+         * Amount sub header
+         * @type {String}
+         */amountSubHeader:{type:String,value:""}}}},{key:"template",get:function get(){return html(_templateObject_7add5920ef2011eaab893dabf4ddef4d())}}]);return CellsStepDepositsOfferPage}(Polymer.mixinBehaviors([CellsBehaviors.i18nBehavior,CellsBehaviors.StepBehavior],Polymer.Element));/**
+    `<cells-step-deposits-offer-page>` Description.
+
+    Example:
+
+    ```html
+    <cells-step-deposits-offer-page></cells-step-deposits-offer-page>
+    ```
+
+    ## API
+
+    **Properties**:
+
+    | Name | Type | Description | Binding | DefaultValue |
+    | --- | --- | --- | --- |
+    | stepTitle | String | Title of the step | IN | |
+    | hideHeader | Boolean | Flag to hide header | IN | true |
+    | headerImageSrc | String | Image URL to show in cover | IN | |
+    | productSummaryText | String | Text shown after the image | IN | |
+    | inputCurrencyHeader | String | Header of currency input | IN | |
+    | inputCurrencyDescription | String | Description of currency input | IN | |
+    | enterAmountHeader | String | Header of enter amount component | IN | |
+    | amount | {amount, currency} | Amount object that user inputs | IN | |
+    | amountLabel | String | Amount input placeholder | IN | |
+    | max | Number | Max value to limit amount input | IN | |
+    | min | Number | Min value to limit amount input | IN | |
+    | amountInfoMessage | String | Info message shown to validate amount input | IN | cells-step-deposits-offer-page-info-limit-amount |
+    | sliderValues | Array | Array with values for slider input | IN | [] |
+    | selectedSliderIndex | Number | Index of selected in sliderValues array | OUT | |
+    | infoMessage | String | Info message shown before the confirmation area | IN | |
+    | changeDataText | String | Link to show in info message as "more info" | IN | cells-step-deposits-offer-page-info-message-more |
+    | radioGroupTitle | String | Title of the radio group | IN | |
+    | liquidationItems | Array | Array to compute radio buttons | IN | |
+    | selectedLiquidation | Number | Index of selected radio button | IN/OUT | |
+    | totalInterests | {amount, currency} | Amount to show in confirmation area | IN | |
+    | rate | Number | TREA | IN | |
+    | totalGrossBenefits | `{amount, currency}` | Total of benefits earned with the deposit | IN | |
+    | currencies | Array | Array of currencies to show in offer page | IN | Array of PEN and USD objects |
+    | selectedCurrency | `{id, name, rightLabel, labelImg.src}` | Currency selected by user | |
+    | maxAvailableBalance | Number | User Available balance to check against amount input | IN | undefined |
+
+
+    **Methods**:
+
+    | Name | Description | Input | Output |
+    | --- | --- | --- | --- |
+    | isValid         | Valid when all user inputs are set and object shown in summary-view is built | | |
+    | reset           | Resets all values                                                            | | |
+    | checkHasChanges | check if the offer page has changes in data                                  | | |
+
+
+    ## Styling
+
+    The following custom properties and mixins are available for styling:
+
+    ### Custom Properties
+    | Custom Property         | Selector       | CSS Property                        | Value                                                            |
+    | ----------------------- | -------------- | ----------------------------------- | ---------------------------------------------------------------- |
+    | --cells-fontDefault     | :host >        | font-family                         | sans-serif                                                       |
+    | --bbva-600              | :host >        | --cells-input-slider-timeline-color | ![#121212](https://placehold.it/15/121212/000000?text=+) #121212 |
+    | --bbva-600              | :host >        | --cells-paper-slider-text-color     | ![#121212](https://placehold.it/15/121212/000000?text=+) #121212 |
+    | --bbva-600              | :host >        | --cells-input-slider-timeline-color | ![#121212](https://placehold.it/15/121212/000000?text=+) #121212 |
+    | --bbva-600              | :host          | --cells-input-slider-timeline-color | ![#121212](https://placehold.it/15/121212/000000?text=+) #121212 |
+    | --bbva-600              | :host          | --cells-paper-slider-text-color     | ![#121212](https://placehold.it/15/121212/000000?text=+) #121212 |
+    | --cells-text-size-15    | :host          | font-size                           | .9375rem                                                         |
+    | --bbva-600              | :host          | color                               | ![#121212](https://placehold.it/15/121212/000000?text=+) #121212 |
+    | --cells-text-size-15    | :host          | font-size                           | .9375rem                                                         |
+    | --bbva-dark-medium-blue | :host          | color                               | ![#1973b8](https://placehold.it/15/1973b8/000000?text=+) #1973b8 |
+    | --cells-font-size-15    | :host          | font-size                           | rem(15px)                                                        |
+    | --bbva-600              | :host          | color                               | ![#121212](https://placehold.it/15/121212/000000?text=+) #121212 |
+    | --bbva-600              | :host          | color                               | ![#121212](https://placehold.it/15/121212/000000?text=+) #121212 |
+    | --bbva-600              | :host          | --cells-input-slider-timeline-color | ![#121212](https://placehold.it/15/121212/000000?text=+) #121212 |
+    | --bbva-600              | :host          | color                               | ![#121212](https://placehold.it/15/121212/000000?text=+) #121212 |
+    | --cells-text-size-15    | :host          | font-size                           | .9375rem                                                         |
+    | --bbva-600              |                | --cells-input-slider-timeline-color | ![#121212](https://placehold.it/15/121212/000000?text=+) #121212 |
+    | --cells-text-size-15    | .list-title >  | font-size                           | .9375rem                                                         |
+    | --bbva-200              | .list-title >  | background-color                    | ![#E9E9E9](https://placehold.it/15/E9E9E9/000000?text=+) #E9E9E9 |
+    | --cells-text-size-15    | .list-title    | font-size                           | .9375rem                                                         |
+    | --cells-text-size-15    |                | font-size                           | .9375rem                                                         |
+    | --bbva-white            |                | --cells-key-values-color            | ![#fff](https://placehold.it/15/fff/000000?text=+) #fff          |
+    | --cells-text-size-15    |                | font-size                           | .9375rem                                                         |
+    | --cells-text-size-15    |                | font-size                           | .9375rem                                                         |
+    ### @apply
+    | Mixins                           | Selector                                 | Value |
+    | -------------------------------- | ---------------------------------------- | ----- |
+    | --cells-fontDefaultMedium        | :host                                    | {}    |
+    | --cells-fontDefaultMedium        | :host                                    | {}    |
+    | --cells-step-deposits-offer-page | :host                                    | {}    |
+    | --cells-fontDefaultLight         | .list-title                              | {}    |
+    | --cells-fontDefaultMedium        | .offer__currency > .currency-description | {}    |
+    | --cells-fontDefaultLight         |                                          | {}    |
+
+
+    * @customElement
+    * @polymer
+    * @extends {Polymer.Element}
+    * @demo demo/index.html
+  */customElements.define(CellsStepDepositsOfferPage.is,CellsStepDepositsOfferPage)}</script></dom-module></div></body></html>

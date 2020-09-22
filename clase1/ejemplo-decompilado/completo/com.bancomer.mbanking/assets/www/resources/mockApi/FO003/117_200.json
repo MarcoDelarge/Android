@@ -1,0 +1,50 @@
+{
+    "data": {
+        "id": "117",
+        "alias": "TEST007RG67IU",
+        "operationType": {
+            "id": "INTERNAL_TRANSFER",
+            "description": "TRANSFERENCIAS A TERCEROS"
+        },
+        "notification": {
+            "notificationDay": 0,
+            "isActive": false,
+            "contactInformation": {
+                "contactDetailId": "0"
+            }
+        },
+        "contract": {
+            "number": "00110130000210411744",
+            "numberType": {
+                "id": "CCC",
+                "name": "CUSTOMER ACCOUNT CODE"
+            },
+            "productType": {
+                "id": "ACCOUNT",
+                "name": "ACCOUNT"
+            }
+        },
+        "operationDetail": {
+            "receiver": {
+                "contract": {
+                    "number": "00110130000105047646",
+                    "numberType": {
+                        "id": "CCC",
+                        "name": "CCC"
+                    },
+                    "productType": {
+                        "id": "ACCOUNT",
+                        "name": "ACCOUNT"
+                    }
+                },
+                "holder": {
+                    "holderName": "GLENIA ALEJANDRA CARDONA BOTELLO"
+                }
+            }
+        },
+        "operationImport": {
+            "currency": "PEN",
+            "amount": 50
+        }
+    }
+}

@@ -1,0 +1,8 @@
+{
+    "version": 1,
+    "severity": "FATAL",
+    "http-status": 404,
+    "error-code": "161",
+    "consumer-request-id": "5075a3dd-6eb9-4cea-a75e-5574ec009305",
+    "system-error-code": "not found"
+}

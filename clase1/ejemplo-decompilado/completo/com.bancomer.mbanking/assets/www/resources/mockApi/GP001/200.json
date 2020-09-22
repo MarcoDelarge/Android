@@ -1,0 +1,96 @@
+{
+    "data": [
+        {
+            "id": "FN6ECS66753B5HGQVAZ03TBDP7EH2BTRE1FQWCYMMP4STKECCXS0",
+            "applicationDate": "2018-08-30",
+            "status": {
+                "id": "ACCEPTED"
+            },
+            "receiverContract": {
+                "product": {
+                    "productType": {
+                        "specificProductType": {
+                            "id": "MzU3OTA3MjE4ODE2MzQ1Mjc3NTk"
+                        }
+                    }
+                },
+                "numberType": {
+                    "id": "PAN",
+                    "name": "N\ufffdmero de cuenta principal. Consiste en n\ufffdmeros de 14, 15 o 16 d\ufffdgitos que est\ufffdn grabados y / o codificados en una tarjeta de pl\ufffdstico que identifica al emisor y la cuenta particular del titular de la tarjeta."
+                },
+                "id": "0BQM8MRN0CRWP0H60Z6QCWDJTM",
+                "number": "5432866558799680"
+            },
+            "senderContract": {
+                "bank": {
+                    "id": "M9SQ0SJKDER6Z1HP8FTQR7WNH0",
+                    "name": "SANTANDER"
+                }
+            }
+        },
+        {
+            "id": "ER5PTH6ERW8GG1DEQ83AG2XWZ7QMJX6JZ2RRZC84M4FMV2YW08RG",
+            "applicationDate": "2018-08-29",
+            "status": {
+                "id": "ACCEPTED",
+                "description": "PENDIENTE DE ENVIO"
+            },
+            "receiverContract": {
+                "product": {
+                    "productType": {
+                        "specificProductType": {
+                            "id": "3M833Z6X6YTM2G1FQC2ZET4ST0"
+                        }
+                    }
+                },
+                "numberType": {
+                    "id": "PAN",
+                    "name": "N\ufffdmero de cuenta principal. Consiste en n\ufffdmeros de 14, 15 o 16 d\ufffdgitos que est\ufffdn grabados y / o codificados en una tarjeta de pl\ufffdstico que identifica al emisor y la cuenta particular del titular de la tarjeta."
+                },
+                "id": "0BQM8MRN0CRWP0H60Z6QCWDJTM",
+                "number": "4513568978094638"
+            },
+            "senderContract": {
+                "bank": {
+                    "id": "28BCS18M9V40DWWPMJEVVJX1ZM",
+                    "name": "HSBC"
+                }
+            }
+        },
+        {
+            "id": "P070RC35ZVJCCMN7Z6HQY45KD3A6WARPDAMTA2KJDFFV4H80KYP0",
+            "applicationDate": "2018-08-28",
+            "status": {
+                "id": "ACCEPTED",
+                "description": "PENDIENTE DE ENVIO"
+            },
+            "receiverContract": {
+                "product": {
+                    "productType": {
+                        "specificProductType": {
+                            "id": "3J833Z6X6YTM2G1FQC2ZET4ST0"
+                        }
+                    }
+                },
+                "numberType": {
+                    "id": "PAN",
+                    "name": "N\ufffdmero de cuenta principal. Consiste en n\ufffdmeros de 14, 15 o 16 d\ufffdgitos que est\ufffdn grabados y / o codificados en una tarjeta de pl\ufffdstico que identifica al emisor y la cuenta particular del titular de la tarjeta."
+                },
+                "id": "0BQM8MRN0CRWP0H60Z6QCWDJTM",
+                "number": "4132589665448852"
+            },
+            "senderContract": {
+                "bank": {
+                    "id": "V3G01WZNTQT02N9WEEGV819WB0",
+                    "name": "BANAMEX"
+                }
+            }
+        }
+    ],
+    "pagination": {
+        "links": {
+            "first": "/customerServices/v0/payroll-portabilities?paginationKey=01",
+            "next": "/customerServices/v0/payroll-portabilities?paginationKey=2"
+        }
+    }
+}

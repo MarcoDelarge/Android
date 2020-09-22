@@ -1,0 +1,12 @@
+{
+	"data": {
+		"blockId": "INTERNAL",
+		"name": "A SOLICITUD DEL BBVA",
+		"blockDate": "2018-01-23T11:48:59.000-0600",
+		"reason": {
+			"id": "CT",
+			"name": "CANCEL. POR BANCO"
+		},
+		"reference": "3588"
+	}
+}

@@ -1,0 +1,1035 @@
+<html><head></head><body><div hidden="" by-polymer-bundler=""><script>/*
+  * This mixin lets you travel faster than light speed, almost.
+  * @polymer
+  * @mixinFunction
+  *
+  */window.CellsBehaviors=window.CellsBehaviors||{};CellsBehaviors.GlomoModalManagerBehavior={properties:{/**
+      * List of the modals in the page
+      * @type {Object}
+      */_modalList:{type:Object,value:function value(){return{}}}},/**
+    * Register each modal in _modalList
+    */registerModal:function registerModal(payload){if(payload&&payload.index&&payload.node){var index=payload.index,node=payload.node;if(this._modalList[index]===void 0){this._modalList[index]=node}else{console.warn("Modal ".concat(index," is already registered"))}}},/**
+    * Close the modal opened
+    */closeModal:function closeModal(){var modalOpened=Object.values(this._modalList).filter(function(item){return!0===item.openModal});if(0<modalOpened.length){modalOpened[0].set("openModal",!1)}else{this.dispatchEvent(new CustomEvent("modal-list-opened-void",{bubbles:!0,composed:!0}))}}};</script><dom-module id="glomo-life-insurance-dm" assetpath="glomo-life-insurance-dm/"><template><cells-generic-dp></cells-generic-dp></template><script>var GlomoLifeInsuranceDm=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(GlomoLifeInsuranceDm,_Polymer$mixinBehavio);function GlomoLifeInsuranceDm(){babelHelpers.classCallCheck(this,GlomoLifeInsuranceDm);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(GlomoLifeInsuranceDm).apply(this,arguments))}babelHelpers.createClass(GlomoLifeInsuranceDm,[{key:"_boot",/**
+   * Active the steps
+   */value:function _boot(payload){if(payload&&payload.value){this.dispatchEvent(new CustomEvent("active-steps",{detail:!0}))}else{if(!this.avoidRestartFromModalHelp){this.set("headerTitle","glomo-life-insurance-main-header-title");this.set("headerClass","life-insurance");this.set("ocOfferId","");this.set("productId","");this.set("planId","");this.set("initialOffer",{});this.set("coverages",[]);this.set("originalCoverages",[]);this.set("paymentOptions",[]);this.set("oldPaymentOptions",[]);this.set("beneficiaries",[]);this.set("questionsPass",!1);this.set("showHealtQuestions",!1);this.set("setCoupon","");this.set("appliedCoupon",!1);this.dispatchEvent(new CustomEvent("assign-initial-properties",{detail:{maximumAmountInsurance:void 0,minimumAmountInsurance:void 0,multipliesAmountInsurance:0,paymentFrequencyOptions:[],paymentFrequencySelected:{},paymentFrecuencyAmount:0,incrementPercentage:0,policyDuration:0,amountFree:0,currencyCode:"",mainCoverages:[],additionalCoverages:[],mainCoveragesQuantity:{},aditionalCoveragesQuantity:{},couponSelected:"",promotionMessage:[],promotionInfoMessages:[]}}));this.dispatchEvent(new CustomEvent("clean-reset-flow"))}else{this.avoidRestartFromModalHelp=!1}}}/**
+   * Show half modal
+   * @event 'life-insurance-open-confirm' event for open half modal in error
+   * @event 'life-insurance-close-confirm' event for close half modal in error
+   */},{key:"showConfirmEvent",value:function showConfirmEvent(isClosed){var eventName=isClosed?"life-insurance-open-confirm":"life-insurance-close-confirm";this.dispatchEvent(new CustomEvent(eventName))}/**
+   * Obtain the Id oc offer
+   * @param {Object} payload
+   */},{key:"setOcOfferData",value:function setOcOfferData(payload){this._showSpinner();this.dispatchEvent(new CustomEvent("page-loaded"));this.set("ocOfferId",payload.offerId);this.requestTdcList();this.requestEmailUser();this.requestDetailOffer();this.requestDocumentsList();this.set("toRequestCallMeBack.cardId",payload.cardId);this.set("toRequestCallMeBack.offerId",payload.offerId);this._sendAppsFlyerLifeInsurance("detalle_oferta_vida",{})}/**
+   * Method for saliciting data set on the property toCallMeBAck
+   */},{key:"_requestCallMeBackDM",value:function _requestCallMeBackDM(){var request=this.toRequestCallMeBack;this.dispatchEvent(new CustomEvent("send-to-main-to-call",{detail:{offerId:request.offerId,number:request.cardId,customerType:request.customerType}}));this.avoidRestartFromModalHelp=!0}/**
+   * Method to request the list of documents
+   */},{key:"requestDocumentsList",value:function requestDocumentsList(){this.dispatchEvent(new CustomEvent("request-document-list"))}/**
+   * Request the initial offer
+   */},{key:"requestDetailOffer",value:function requestDetailOffer(){this.dispatchEvent(new CustomEvent("request-initial-offer",{detail:{offerId:this.ocOfferId}}))}/**
+   * Set initial offer data
+   * @param {Object} payload
+   */},{key:"setInitialOfferData",value:function setInitialOfferData(payload){this.set("initialOffer",payload);this.set("paymentOptions",payload.paymentOptions);this.set("planSelected",payload.renewalType);this.set("productId",payload.product.id);this.set("planId",payload.product.plan.id);this.set("originalCoverages",payload.product.plan.coverages);this.requestHealtQuestions();this.createCoverages(payload.product.plan.coverages);this.setPropertiesAmountStep();this._hideSpinner();this.set("firstInteractionHappened",!1);this.set("initialOfferLoaded",!0);this.set("incrementLifeInsuranceAppsFlyer",payload.renewalType.description)}/**
+   * Properties for Amount step
+   */},{key:"setPropertiesAmountStep",value:function setPropertiesAmountStep(){var localSelect=this.t("glomo-life-insurance-main-promotion-payment-select"),localAnnual=this.t("glomo-life-insurance-main-promotion-payment-annual-payment"),paymentOps=[];if(this.initialOffer&&this.initialOffer.paymentOptions){this.initialOffer.paymentOptions.forEach(function(item){var mapedItem={id:item.id,title:item.name};paymentOps.push(mapedItem)});var body={maximumAmountInsurance:this.initialOffer.maximumInsurancedAmount.amount,minimumAmountInsurance:this.initialOffer.minimumInsurancedAmount.amount,multipliesAmountInsurance:this.initialOffer.intervalInsurancedAmount.amount,insuranceAmountSelected:this.initialOffer.suggestedInsuredAmount.amount,paymentFrequencyOptions:paymentOps,paymentFrequencySelected:{id:this.initialOffer.suggestedPaymentOption.id,selected:this.initialOffer.suggestedPaymentOption.name},paymentFrecuencyAmount:this.initialOffer.suggestedPaymentOption.paymentAmount,incrementPercentage:"".concat(this.initialOffer.renewalType.unit.percentage,"%"),policyDuration:this.initialOffer.policyDuration.number,amountFree:this.initialOffer.policyDuration.number,currencyCode:this.initialOffer.suggestedInsuredAmount.currency,mainCoverages:this.mainCoverages,additionalCoverages:this.additionalCoverages,couponValid:!0,couponApplied:!1,textPrimaryBtn:"glomo-life-insurance-main-go-questionnaire",promotionMessage:[{icon:"glomo:life_insurance_gift",size:40,message:"<span class=font-bold>".concat(localSelect,"</span> ").concat(localAnnual)}],promotionInfoMessages:[{type:"info",icon:"coronita:info",message:"".concat(this.t("glomo-life-insurance-main-renewal-info")," ").concat(this.initialOffer.policyDuration.number," ").concat(this.t("glomo-life-insurance-main-renewal-info-year"))}]};this.dispatchEvent(new CustomEvent("assign-initial-properties",{detail:body}))}}/**
+   * Create the format for coverages
+   * @param {Object} payload
+   */},{key:"createCoverages",value:function createCoverages(payload){if(payload[0]&&payload[1]&&payload[3]){var mainCoverages=[{id:this.coveragesCodes.death,name:this.t(this.coverageDeathName),description:this.t(this.coverageDeathDescription),resumen:this.t(this.coverageDeathResumen),icon:"coronita:help",unit:payload.filter(function(item){return"0046"===item.id})[0].unit},{id:this.coveragesCodes.expenses,name:this.t(this.coverageExpensesName),description:this.t(this.coverageExpensesDescription),resumen:this.t(this.coverageExpensesResumen),icon:"coronita:help",unit:payload.filter(function(item){return"0132"===item.id})[0].unit}],additionalCoverages=[{id:this.coveragesCodes.accidental,name:this.t(this.coverageAccidentalName),description:this.t(this.coverageAccidentalDescription),resumen:this.t(this.coverageAccidentalName),icon:"coronita:help",unit:payload.filter(function(item){return"0069"===item.id})[0].unit}];this.set("coverages",mainCoverages.concat(additionalCoverages));this.set("mainCoverages",mainCoverages);this.set("additionalCoverages",additionalCoverages);this.dispatchEvent(new CustomEvent("assign-initial-properties",{detail:{mainCoverages:this.mainCoverages,additionalCoverages:this.additionalCoverages,mainCoveragesQuantity:{title:"glomo-life-insurance-main-total-delivery",quantity:{amount:payload.filter(function(item){return"0046"===item.id})[0].unit.amount+payload.filter(function(item){return"0132"===item.id})[0].unit.amount,currencyCode:this.initialOffer.suggestedInsuredAmount.currency}},aditionalCoveragesQuantity:{title:"glomo-life-insurance-main-accident-case",quantity:{amount:payload.filter(function(item){return"0046"===item.id})[0].unit.amount+payload.filter(function(item){return"0132"===item.id})[0].unit.amount+payload.filter(function(item){return"0069"===item.id})[0].unit.amount,currencyCode:this.initialOffer.suggestedInsuredAmount.currency}}}}))}}/**
+   * Change amount for payment option
+   * @param {Object} payload
+   */},{key:"changePayementFrequency",value:function changePayementFrequency(payload){var _this=this;if(!this.isFirstLoad){this._persistData(babelHelpers.defineProperty({},this.ANALYTICS_CONST.APP_STARTED,"monto asegurado"));this.isFirstLoad=!0;this.dispatchEvent(new CustomEvent("app-initial",{bubbles:!0,composed:!0}))}if(Object.entries(payload).length){this._persistData(babelHelpers.defineProperty({},this.ANALYTICS_CONST.PAYMENT_TYPE,payload.selected?payload.selected.toLowerCase():""))}this.paymentOptions.forEach(function(item){if(item.id===payload.id){_this.set("paymentFrequencySelected",payload);_this.set("paymentSelected",item.paymentAmount);_this.dispatchEvent(new CustomEvent("change-payment-amount",{detail:item.paymentAmount}));_this.setTdcData(_this.TDCS,item.paymentAmount)}});this._fireAppStartedEvent()}/**
+   * Change plan type
+   * @param {Object} payload
+   */},{key:"changePlanType",value:function changePlanType(payload){var startedStep="";switch(payload.value){case 0:startedStep=this.GROWING_PLAN;this.set("planSelected",this.initialOffer.renewalType);this.set("incrementLifeInsuranceAppsFlyer",this.planSelected.description);break;case 1:startedStep=this.FIXED_PLAN;this.set("planSelected",this.fixedPlan);this.set("incrementLifeInsuranceAppsFlyer",this.planSelected.description);break;}this._persistData(babelHelpers.defineProperty({},this.ANALYTICS_CONST.APP_STARTED,startedStep));this._fireAppStartedEvent()}/**
+   * Method to ask for health questions
+   */},{key:"requestHealtQuestions",value:function requestHealtQuestions(){this.dispatchEvent(new CustomEvent("request-healt-questionaire",{detail:{productId:this.productId,planId:this.planId}}))}/**
+   * Method to launch the request for the recalculation of the offer
+   */},{key:"requestRecalculateOffer",value:function requestRecalculateOffer(){if(this.initialOffer&&this.initialOffer.product.id){this._showSpinner();this.set("planSelected.unit.amount",this.insuranceAmountSelected);this.set("planSelected.unit.currency",this.initialOffer.suggestedInsuredAmount.currency);this.set("oldPaymentOptions",this.paymentOptions);var body={product:{id:this.initialOffer.product.id,plan:{id:this.initialOffer.product.plan.id,planType:this.initialOffer.product.plan.planType,coverages:this.originalCoverages}},insuredAmount:{amount:this.insuranceAmountSelected,currency:this.initialOffer.suggestedInsuredAmount.currency},policyDuration:this.initialOffer.policyDuration,selectedPaymentOption:{id:this.paymentFrequencySelected.id},renewalType:this.planSelected,deliveryMethod:[{id:"EMAIL",deliveryType:"VIRTUAL",documentType:"CONTRACT"}]};if(this.setCoupon){Object.assign(body,{coupon:{id:this.setCoupon}})}this.dispatchEvent(new CustomEvent("request-recalculate-offer",{detail:{quotationId:this.initialOffer.quotationId,bodyOffer:body}}))}}/**
+   * Method to receive and set the recalculated offer
+   * @param {Object} payload
+   */},{key:"setRecalculateOffer",value:function setRecalculateOffer(payload){var _this2=this;if(!this.appliedCoupon){this.createCoverages(payload.data.product.plan.coverages);this.set("originalCoverages",payload.data.product.plan.coverages);this.set("paymentOptions",payload.data.paymentOptions);this.couponBeenApplied(payload.data.paymentOptions);this.paymentOptions.forEach(function(item){if(item.id===payload.data.selectedPaymentOption.id){_this2.set("paymentSelected",item.paymentAmount);_this2.set("paymentFrequencySelected",{id:item.id,selected:item.name});_this2.dispatchEvent(new CustomEvent("assign-initial-properties",{detail:{paymentFrequencySelected:{id:item.id,selected:item.name},paymentFrecuencyAmount:item.paymentAmount}}))}})}this._hideSpinner()}/**
+   * Verify if the coupon is been applied
+   * @param {Array} paymentOptions
+   */},{key:"couponBeenApplied",value:function couponBeenApplied(paymentOptions){var discountExist=paymentOptions[0].paymentAmount.amount<this.oldPaymentOptions[0].paymentAmount.amount;this.set("appliedCoupon",this.setCoupon&&discountExist);var typeHired="";if(this.setCoupon){typeHired=this.appliedCoupon?this.setCoupon:"";this.dispatchEvent(new CustomEvent("assign-initial-properties",{detail:{couponValid:this.appliedCoupon,couponApplied:this.appliedCoupon}}));this.set("oldPaymentOptions",paymentOptions)}this._persistData(babelHelpers.defineProperty({},this.ANALYTICS_CONST.TYPE_HIRED,typeHired))}/**
+   * Continue with healt questions
+   */},{key:"continuesStepAmount",value:function continuesStepAmount(){var persistData={};if(!this.firstInteractionHappened){persistData[this.ANALYTICS_CONST.APP_STARTED]="cuestionario";this._persistData(persistData);this._fireAppStartedEvent()}persistData[this.ANALYTICS_CONST.TYPOLOGY]=this.planSelected&&this.planSelected.id?"FIXED"===this.planSelected.id?this.FIXED_PLAN:this.GROWING_PLAN:this.GROWING_PLAN;persistData[this.ANALYTICS_CONST.AMOUNT]=this.get("insuranceAmountSelected")?this.get("insuranceAmountSelected"):0;persistData[this.ANALYTICS_CONST.PAYMENT_AMOUNT]=this.get("paymentSelected.amount")?this.get("paymentSelected.amount"):0;this._persistData(persistData);this.set("firstInteractionHappened",!1);this.set("_indicateMainScreen",!1);if(!this.questionsPass){this.set("showHealtQuestions",!0);this._sendAppsFlyerLifeInsurance("cuestionario_vida",{af_content_type:this.incrementLifeInsuranceAppsFlyer,af_cupon_code:this.cuponLifeInsuranceAppsFlyer})}else{this.set("headerClass","header--dark");this.dispatchEvent(new CustomEvent("collapse-amount-step",{bubbles:!0,composed:!0}))}}/**
+   * Method to collapse the step to enter the amount after answering the questionnaire
+   * @param {Obeject} payload
+   */},{key:"setAnswersQuestions",value:function setAnswersQuestions(payload){if(payload.stepInputAmount){this.set("questionsPass",!0);this.set("headerClass","header--dark");this.dispatchEvent(new CustomEvent("assign-initial-properties",{detail:{questionsPass:this.questionsPass,textPrimaryBtn:"glomo-life-insurance-main-continue"}}));this._sendAppsFlyerLifeInsurance("beneficiarios_vida",{af_content_type:this.incrementLifeInsuranceAppsFlyer,af_cupon_code:this.cuponLifeInsuranceAppsFlyer})}}/**
+   * Open amount step
+   */},{key:"changeStepAmount",value:function changeStepAmount(){this.set("headerClass","life-insurance")}/**
+   * Open modal for input data of beneficiary
+   */},{key:"openBeneficiaryInput",value:function openBeneficiaryInput(){if(4>this.beneficiaries.length){this.set("openModalBeneficiary",!0);this.dispatchEvent(new CustomEvent("show-add-beneficiary",{detail:this.beneficiaries.length}))}}/**
+   * Set new beneficiary & reset the percentage of the others if exist
+   * @param {Object} payload
+   */},{key:"setNewBeneficiary",value:function setNewBeneficiary(payload){var array=this.beneficiaries;this.set("beneficiaries",[]);switch(array.length){case 0:payload.benefitPercentage=100;break;case 1:array[0].benefitPercentage=50;payload.benefitPercentage=50;break;case 2:array[0].benefitPercentage=50;array[1].benefitPercentage=25;payload.benefitPercentage=25;break;case 3:array[0].benefitPercentage=25;array[1].benefitPercentage=25;array[2].benefitPercentage=25;payload.benefitPercentage=25;break;}array.push(payload);this.set("beneficiaries",array)}/**
+   * Edit beneficiaries percentage
+   */},{key:"editPercentages",value:function editPercentages(){this.dispatchEvent(new CustomEvent("show-edit-percentage",{detail:{beneficiaries:this.beneficiaries}}))}/**
+   * Method to save the beneficiaries already edited
+   * @param {Object} payload
+   */},{key:"setEditedPercentages",value:function setEditedPercentages(payload){var _this3=this;this.set("beneficiaries",[]);setTimeout(function(){_this3.set("beneficiaries",payload.beneficiaries)},10);this.set("percentageModifieds",payload.edited)}/**
+   * Method to send the data of the beneficiaries to edit them
+   * @param {Object} payload
+   */},{key:"editBeneficiary",value:function editBeneficiary(payload){var index=parseInt(payload.beneficiaryId),beneficiary=this.beneficiaries[index];this.set("openModalBeneficiary",!0);this.dispatchEvent(new CustomEvent("edit-beneficiary-data",{detail:{edit:!0,id:index,benefit:beneficiary}}))}/**
+   * Method to save the data of the edited beneficiary
+   * @param {Object} payLoad
+   */},{key:"setBeneficiaryEdited",value:function setBeneficiaryEdited(payLoad){var array=this.beneficiaries;this.set("beneficiaries",[]);array.splice(payLoad.position,1,payLoad.beneficiary);this.set("beneficiaries",array)}/**
+   * Show alert for delete beneficiary
+   */},{key:"deleteBeneficiary",value:function deleteBeneficiary(payload){this.set("beneficiaryToDelete",payload.beneficiaryId);this.dispatchEvent(new CustomEvent("open-modal-confirm"))}/**
+   * Confirm delete beneficiary & reset percentage of another beneficiaries if exist
+   */},{key:"confirmDeleteBeneficiary",value:function confirmDeleteBeneficiary(){var array=this.beneficiaries;this.set("beneficiaries",[]);array.splice(this.beneficiaryToDelete,1);switch(array.length){case 1:array[0].benefitPercentage=100;break;case 2:array[0].benefitPercentage=50;array[1].benefitPercentage=50;break;case 3:array[0].benefitPercentage=50;array[1].benefitPercentage=25;array[2].benefitPercentage=25;break;}this.set("beneficiaries",array)}/**
+   * Method to obtain user credit cards
+   */},{key:"requestTdcList",value:function requestTdcList(){this.dispatchEvent(new CustomEvent("request-credit-card-list"))}/**
+   * Method to obtain user accounts
+   */},{key:"requestAccountsData",value:function requestAccountsData(){this.dispatchEvent(new CustomEvent("request-accounts-data"))}/**
+   * Method to assign the obtained credit cards
+   * @param {Array} payload
+   */},{key:"setTdcData",value:function setTdcData(payload,paymentSelected){var _this4=this;this.set("TDCS",payload);var paymentSelectedamount=paymentSelected;this.set("customerAccounts",[]);var tdcList=Object.values(payload).filter(function(card){return(card.alias||card.title.name)&&card.number&&card.availableBalance&&"CREDIT_CARD"===card.cardType.id}).map(function(item){var mappedCard={id:item.number,cardType:item.cardType,document:_this4.documentCreditCard,name:item.alias?item.alias:item.title.name,availableBalance:item.availableBalance,description:{value:_this4.fiveDigitsFormat(item.number),masked:!0},primaryAmount:{amount:item.availableBalance.currentBalances[0].amount,currency:item.availableBalance.currentBalances[0].currency}};if(paymentSelectedamount&&item.availableBalance.currentBalances[0].amount<paymentSelectedamount.amount||0>=item.availableBalance.currentBalances[0].amount){mappedCard.hasTextMessage=!0;mappedCard.disabled=!0}return mappedCard});this.set("customerAccounts",tdcList);if(paymentSelected){this.setAccountsData(this.TDDS,paymentSelectedamount)}else{this.dispatchEvent(new CustomEvent("request-accounts-data"))}}/**
+   * Method to assign the obtained accounts
+   * @param {Array} payload
+   */},{key:"setAccountsData",value:function setAccountsData(payload,paymentSelected){var _this5=this;this.set("TDDS",payload);var accounts=this.customerAccounts;this.set("customerAccounts",[]);var mappedAccounts=payload.filter(function(complete){return(complete.alias||complete.title.name)&&complete.accountId&&complete.number&&complete.availableBalance}).map(function(item){var mappedAccount={id:item.number,cardType:item.cardType,document:_this5.documentDebitCard,name:item.alias?item.alias:item.title.name,availableBalance:item.availableBalance,description:{value:_this5.fiveDigitsFormat(item.number),masked:!0}};if(paymentSelected&&item.availableBalance.currentBalances[0].amount<paymentSelected.amount||0>=item.availableBalance.currentBalances[0].amount){mappedAccount.hasTextMessage=!0;mappedAccount.disabled=!0}mappedAccount.primaryAmount={amount:item.availableBalance.currentBalances[0].amount,currency:item.availableBalance.currentBalances[0].currency};return mappedAccount});this.set("customerAccounts",accounts.concat(mappedAccounts));this.dispatchEvent(new CustomEvent("send-accounts-data",{detail:this.customerAccounts}))}/**
+   * Verify if amount is valid
+   * @param {Object} payload
+   */},{key:"verifyAccountSelected",value:function verifyAccountSelected(payload){if(this.paymentSelected.amount>payload.primaryAmount.amount){this.set("stepAccounts",!1)}else{this.set("accountSelected",payload);this.set("stepAccounts",!0);this._sendAppsFlyerLifeInsurance("envio_vida",{af_content_type:this.incrementLifeInsuranceAppsFlyer,af_cupon_code:this.cuponLifeInsuranceAppsFlyer})}}/**
+   * Request the user's Email
+   */},{key:"requestEmailUser",value:function requestEmailUser(){this.dispatchEvent(new CustomEvent("request-user-email"))}/**
+   * Method to show the alert of the contractual documentation
+   */},{key:"showContractualDocumentation",value:function showContractualDocumentation(){var typeMessage={icon:"coronita:help",type:"info",primaryModalButtonText:this.t(this.contractualButton)},messageDetail={heading:this.t(this.contractualHeading),alert:this.t(this.contractualAlert)};this.dispatchEvent(new CustomEvent("open-modal-alert",{detail:Object.assign(typeMessage,messageDetail)}))}/**
+   * Continue whit terms step
+   */},{key:"constinueTermsStep",value:function constinueTermsStep(){this.set("activeTerms",!0);this._sendAppsFlyerLifeInsurance("tyc_vida",{af_content_type:this.incrementLifeInsuranceAppsFlyer,af_cupon_code:this.cuponLifeInsuranceAppsFlyer})}/**
+   * Information for terms step
+   * @param {Object} paymentFrequencySelected
+   * @param {Object} paymentSelected
+   * @param {Object} accountSelected
+   */},{key:"_detailsPaymentForTerms",value:function _detailsPaymentForTerms(paymentFrequencySelected,paymentSelected,accountSelected){if(paymentFrequencySelected&&paymentSelected&&accountSelected){var termsInfo={frequency:paymentFrequencySelected.selected,amount:paymentSelected.amount,currency:paymentSelected.currency,description:(accountSelected.description||{}).value,name:accountSelected.name,document:accountSelected.document};return termsInfo}}/**
+   * Show notice message
+   * @param {Object} payload
+   */},{key:"showNoticeMessage",value:function showNoticeMessage(payload){this.set("showNoticeModal",!0);this.dispatchEvent(new CustomEvent("show-select-notice",{detail:{notice:payload.noticeCode?payload.noticeCode:payload.notice,document:payload.doc?payload.doc:payload.document?payload.document:""}}));if(payload.noticeCode&&"LIN005"===payload.noticeCode&&this._indicateMainScreen){this._persistData(babelHelpers.defineProperty({},this.ANALYTICS_CONST.APP_STARTED,"restricciones y exclusiones"));this._fireAppStartedEvent()}}/**
+   * Show help information for coverages
+   * @param {String} payload
+   */},{key:"showCoveragesHelp",value:function showCoveragesHelp(payload){this.dispatchEvent(new CustomEvent("show-coverages-help",{detail:{help:payload}}))}/**
+   * Create the body for the close offer
+   */},{key:"_objectForCloseOffer",value:function _objectForCloseOffer(){this.set("planSelected.unit.amount",this.insuranceAmountSelected);this.set("planSelected.unit.currency",this.initialOffer.suggestedInsuredAmount.currency);var body={product:{id:this.initialOffer.product.id,plan:{id:this.initialOffer.product.plan.id,planType:this.initialOffer.product.plan.planType,coverages:this.originalCoverages}},insuredAmount:{amount:this.insuranceAmountSelected,currency:this.initialOffer.suggestedInsuredAmount.currency},policyDuration:this.initialOffer.policyDuration,selectedPaymentOption:{id:this.paymentFrequencySelected.id},renewalType:this.planSelected,deliveryMethod:[{id:"EMAIL",deliveryType:"VIRTUAL",documentType:"CONTRACT"}],beneficiaries:this.beneficiaries};if(this.setCoupon){Object.assign(body,{coupon:{id:this.setCoupon}})}return body}/**
+   * Create the body for the issue policy
+   */},{key:"_objectForIssue",value:function _objectForIssue(){var numberId=16===this.accountSelected.id.length?"02":20===this.accountSelected.id.length?"01":"00",body={paymentMethod:{offerId:this.ocOfferId,contractId:this.contractId,paymentType:this.paymentType,number:this.accountSelected.id,id:numberId,numberType:{id:this.paymentId},product:{id:this.productIssueId},relationType:{id:this.paymentId}}};return body}/**
+   * Make the request to purchase life insurance
+   */},{key:"makeInsuranceRequest",value:function makeInsuranceRequest(){this._showSpinner();this._fireAppStepEvent("app-step-8");var bodyClose=this._objectForCloseOffer();this.dispatchEvent(new CustomEvent("send-insurance-request",{detail:{quotationId:this.initialOffer.quotationId,bodyOffer:bodyClose}}));this.dispatchEvent(new CustomEvent("persistence-data-success",{detail:{headerTitle:this.t("glomo-life-insurance-main-header-title"),coverages:this.coverages,paymentOpSel:{name:this.paymentDetailTerms.frequency,paymentAmount:{amount:this.paymentDetailTerms.amount,currency:this.paymentDetailTerms.currency}},aplyCupon:this.appliedCoupon,cardSelected:this.accountSelected,planType:this.planSelected,email:this.emailUser}}));this.refreshDash();this._sendAppsFlyerLifeInsurance("exito_contratacion_vida",{af_content_type:this.incrementLifeInsuranceAppsFlyer,af_cupon_code:this.cuponLifeInsuranceAppsFlyer})}/**
+   * Make the request to issue policy
+   */},{key:"requestIssuePolicy",value:function requestIssuePolicy(){var bodyIssue=this._objectForIssue();this.dispatchEvent(new CustomEvent("request-issue-policy",{detail:{quotationId:this.initialOffer.quotationId,body:bodyIssue}}))}/**
+   * Refresh the dashboard
+   */},{key:"refreshDash",value:function refreshDash(){this.dispatchEvent(new CustomEvent("refresh-oc-dashboard",{detail:{productType:"CAMPAIGNS",productNumber:this.ocOfferId}}))}/**
+   * Redirects to the error screen in case of not being able to hire
+   */},{key:"errorCloseOffer",value:function errorCloseOffer(){this._persistData(babelHelpers.defineProperty({},this.ANALYTICS_CONST.ERROR_MESSAGE,"error servicio"));this._fireAppStepEvent("mark-site-error");this.dispatchEvent(new CustomEvent("error-close-offer",{detail:{headerTitleText:this.t(this.errorHeaderText),title:this.t(this.errorTitleText),failureText:this.t(this.errorFailureText),isBlockingError:!0,primaryButtonText:this.t(this.errorPrimaryBtn),secondaryButtonText:this.t(this.errorSecondBtn)}}));this._hideSpinner()}/**
+   * Fires app started event when help button is clicked
+   */},{key:"showHelpClicked",value:function showHelpClicked(e){var type=e.help?e.help:"",helpValue=this.typeHelps.find(function(item){return item.type===type});if(helpValue){this._persistData(babelHelpers.defineProperty({},this.ANALYTICS_CONST.APP_STARTED,helpValue.value));this._fireAppStartedEvent()}this.avoidRestartFromModalHelp=!0}/**
+   * Fires app started event when payment modal is opened
+   */},{key:"paymentModalOpened",value:function paymentModalOpened(){this._persistData(babelHelpers.defineProperty({},this.ANALYTICS_CONST.APP_STARTED,"tipo de pago"));this._fireAppStartedEvent()}/**
+   * Dispatches app started event only if user has not had first interaction
+   * and initial offer has been loaded
+  */},{key:"_fireAppStartedEvent",value:function _fireAppStartedEvent(){if(!this.firstInteractionHappened&&this.initialOfferLoaded){this.dispatchEvent(new CustomEvent("app-started",{bubbles:!0,composed:!0,detail:this.data}));this.set("firstInteractionHappened",!0)}}/**
+   * Dispatches step events with updated suggested and payment amount
+   */},{key:"_fireAppStepEvent",value:function _fireAppStepEvent(eventName){this.dispatchEvent(new CustomEvent(eventName,{detail:this.data}))}/**
+   * Exit the offer
+   */},{key:"exitOffer",value:function exitOffer(){this.dispatchEvent(new CustomEvent("return-to-dashboard"))}/**
+   * Event for show spinner
+   */},{key:"_showSpinner",value:function _showSpinner(){this.dispatchEvent(new CustomEvent("show-spinner"))}/**
+   * Event for hide spinner
+   */},{key:"_hideSpinner",value:function _hideSpinner(){this.dispatchEvent(new CustomEvent("hide-spinner"))}/**
+   * Get coupon the Life Insurance
+   * @param {String} coupon
+   */},{key:"_couponGetAppsFlyer",value:function _couponGetAppsFlyer(coupon){this.set("cuponLifeInsuranceAppsFlyer",coupon)}/**
+   * Method for get event the beneficiaries
+   */},{key:"_paymentLifeAppsFlyer",value:function _paymentLifeAppsFlyer(){this._sendAppsFlyerLifeInsurance("pago_vida",{af_content_type:this.incrementLifeInsuranceAppsFlyer,af_cupon_code:this.cuponLifeInsuranceAppsFlyer})}/**
+   * Method for reject offert AppsFlyer
+   */},{key:"_rejectOfferAppsFlyer",value:function _rejectOfferAppsFlyer(){this._sendAppsFlyerLifeInsurance("rechazo_contratacion_vida",{af_content_type:this.incrementLifeInsuranceAppsFlyer,af_cupon_code:this.cuponLifeInsuranceAppsFlyer})}/**
+   * Event for AppsFlyer in Life Insurance
+   * @param {String} eventName
+   * @param {Object} eventValue
+   */},{key:"_sendAppsFlyerLifeInsurance",value:function _sendAppsFlyerLifeInsurance(eventName,eventValue){this.dispatchEvent(new CustomEvent("apps-flyer-life-insurance",{detail:{eventName:eventName,eventValue:eventValue}}))}/**
+   * Method that fire app-step-2 questionnaire
+   * @param {Boolean} data that receive from event in modal health
+   */},{key:"_fireAnalyticsHealthQuestionnaire",value:function _fireAnalyticsHealthQuestionnaire(data){if(data){this._fireAppStepEvent("app-step-2")}}/**
+   * @description Method that receive step and send analytics for steps, like: app-step-2
+   * @param {String} step
+   */},{key:"_fireAnalyticsStep",value:function _fireAnalyticsStep(step){if(step){if("last"===step){this._fireAppStepEvent("app-step-7")}else{if(!isNaN(step)){if(1===parseInt(step)){this.set("_indicateMainScreen",!0);this._fireAppStepEvent("app-initial")}else{this._fireAppStepEvent("app-step-".concat(parseInt(step)+1))}}}}}/**
+   * @description Method that receive step (in back) and send analytics for steps, like: app-step-2
+   * @param {Object} element
+   */},{key:"_fireAnalyticsBackStep",value:function _fireAnalyticsBackStep(element){if(element&&element.currentStep){var step=element.currentStep;if("last"===step){this._fireAppStepEvent("app-step-7")}else{if(!isNaN(step)){if(1===parseInt(step)){this.set("_indicateMainScreen",!0);this._fireAppStepEvent("app-initial")}else{this._fireAppStepEvent("app-step-".concat(parseInt(step)+1))}}}}}/**
+   * @description Method that receive completed step and persist operation number
+   * @param {Event} e event object
+   */},{key:"_fireAnalyticsCompleted",value:function _fireAnalyticsCompleted(e){this._persistData(babelHelpers.defineProperty({},this.ANALYTICS_CONST.OPERATION_NUMBER,e.operationNumber?e.operationNumber:""));this._fireAppStepEvent("app-completed")}/**
+   * @description Method that receive step completed rejected step
+   */},{key:"_fireAnalyticsCompletedRejected",value:function _fireAnalyticsCompletedRejected(){this._fireAppStepEvent("app-completed-rejected")}/**
+   * @description Launch the app started when there is an interaction with input amount
+   */},{key:"_analyticsRecalculateOffer",value:function _analyticsRecalculateOffer(){this._persistData(babelHelpers.defineProperty({},this.ANALYTICS_CONST.APP_STARTED,"monto asegurado"));this._fireAppStartedEvent()}/**
+   * @description Launch the app started when there is an interaction with input coupon
+   */},{key:"_analyticsRecalculateCoupon",value:function _analyticsRecalculateCoupon(){this._persistData(babelHelpers.defineProperty({},this.ANALYTICS_CONST.APP_STARTED,"cupon beneficiario"));this._fireAppStartedEvent()}/**
+   * @description Launch the app started when there is an interaction with icon that clean input amount
+   */},{key:"_analyticsResetInput",value:function _analyticsResetInput(){this._persistData(babelHelpers.defineProperty({},this.ANALYTICS_CONST.APP_STARTED,"limpiar monto"));this._fireAppStartedEvent()}/**
+   * @description Send page visit and reset screen main flag
+   */},{key:"closeModalQuestionnaire",value:function closeModalQuestionnaire(){this.set("_indicateMainScreen",!0);this._fireAppStepEvent("app-initial")}/**
+   * @description Method that persist data for analytics
+   * @param {Object} data
+   */},{key:"_persistData",value:function _persistData(data){if(!this.data){this.data={}}Object.assign(this.data,data)}/**
+   * @description method to clean any string (remove accent, special characters)
+   * @param {String} data data that clean
+   */},{key:"_cleanString",value:function _cleanString(data){return data?data.normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-zA-Z0-9 ]/g,"").toLowerCase():""}}],[{key:"is",get:function get(){return"glomo-life-insurance-dm"}},{key:"properties",get:function get(){return{/**
+       * Text for app header
+       * @type {String}
+       */headerTitle:{type:String,value:"glomo-life-insurance-main-header-title",notify:!0},/**
+       * Class for app header
+       * @type {String}
+       */headerClass:{type:String,value:"life-insurance",notify:!0},/**
+       * Id offer for life insurance
+       * @type {String}
+       */ocOfferId:{type:String},/**
+       * Id of product
+       * @type {String}
+       */productId:{type:String,notify:!0},/**
+       * Id of plan
+       * @type {String}
+       */planId:{type:String,notify:!0},/**
+       * Initial offer for the insurance
+       * @type {Object}
+       */initialOffer:{type:Object,value:{}},/**
+       * Plan fixed for insurance
+       * @type {Object}
+       */fixedPlan:{type:Object,value:{id:"FIXED",description:"Fijo, sin incremento",unit:{unitType:"AMOUNT"}}},/**
+       * Coverages for life insurance
+       * @type {Array}
+       */coverages:{type:Array,value:function value(){return[]}},/**
+       * Main coverages for life insurance
+       * @type {Array}
+       */mainCoverages:{type:Array,value:function value(){return[]}},/**
+       * Aditional coverages for life insurance
+       * @type {Array}
+       */additionalCoverages:{type:Array,value:function value(){return[]}},/**
+       * Original coverages for life insurance
+       * @type {Array}
+       */originalCoverages:{type:Array},/**
+       * Payments options for insurance
+       * @type {Array}
+       */paymentOptions:{type:Array,value:[]},/**
+       * Old payments options for insurance
+       * @type {Array}
+       */oldPaymentOptions:{type:Array,value:[]},/**
+       * Interval for choice an amount
+       * @type {Number}
+       */insuranceAmountSelected:{type:Number},/**
+       * Payment amount selected
+       * @type {Object}
+       */paymentSelected:{type:Object,notify:!0},/**
+       * Payment frequency selected
+       * @type {Object}
+       */paymentFrequencySelected:{type:Object},/**
+       * Plan type selected
+       * @type {Object}
+       */planSelected:{type:Object,notify:!0},/**
+       * Show healt questions for insurance
+       * @type {Boolean}
+       */showHealtQuestions:{type:Boolean,notify:!0,value:!1},/**
+       * Questions answered
+       * @type {Boolean}
+       */questionsPass:{type:Boolean,value:!1},/**
+       * Indicate if beneficiaries step is active
+       * @type {Boolean}
+       */activeBeneficiaries:{type:Boolean,notify:!0,value:!1},/**
+       * Open modal for enter beneficiary data
+       * @type {Boolean}
+       */openModalBeneficiary:{type:Boolean,notify:!0,value:!1},/**
+       * Beneficiaries for life insurance
+       * @type {Array}
+       */beneficiaries:{type:Array,notify:!0,value:[]},/**
+       * Beneficiary to delete
+       * @type {Number}
+       */beneficiaryToDelete:{type:Number},/**
+       * Flag to know if the percentages of beneficiaries have changed
+       * @type {Boolean}
+       */percentageModifieds:{type:Boolean,value:!1},/**
+       * Message for the delete alert beneficiary
+       * @type {String}
+       */contentModal:{type:String,value:"glomo-life-insurance-main-beneficiary-content",notify:!0},/**
+       * Message for the first alert button to delete beneficiary
+       * @type {String}
+       */firstButtonModal:{type:String,value:"glomo-life-insurance-main-continue",notify:!0},/**
+       * Message for the second alert button to delete beneficiary
+       * @type {String}
+       */secondButtonModal:{type:String,value:"glomo-life-insurance-main-cancel",notify:!0},/**
+       * Message for product step
+       * @type {String}
+       */productSelectorMessage:{type:String,value:"glomo-life-insurance-main-product-step-message",notify:!0},/**
+       * Customer accounts
+       * @type {Array}
+       */customerAccounts:{type:Array,notify:!0},/**
+       * Indicate if accounts step is collapsed
+       * @type {Boolean}
+       */stepAccounts:{type:Boolean,notify:!0},/**
+       * Account selecter for payment
+       * @type {Object}
+       */accountSelected:{type:Object},/**
+       * Email user
+       * @type {String}
+       */emailUser:{type:String},/**
+       * Indicate if shipping step is active
+       * @type {Boolean}
+       */activeTerms:{type:Boolean,notify:!0,value:!1},/**
+       * Information for terms step
+       * @type {Object}
+       */paymentDetailTerms:{type:Object,notify:!0,computed:"_detailsPaymentForTerms(paymentFrequencySelected, paymentSelected, accountSelected)"},/**
+       * Open modal for notices
+       * @type {Boolean}
+       */showNoticeModal:{type:Boolean,notify:!0},/**
+       * Contract Id for issue policy
+       * @type {String}
+       */contractId:{type:String,value:"01"},/**
+       * Payment type for issue policy
+       * @type {String}
+       */paymentType:{type:String,value:"DIRECT_DEBIT"},/**
+       * Payment id for issue policy
+       * @type {String}
+       */paymentId:{type:String,value:"PAYING_ACCOUNT"},/**
+       * Product id for issue policy
+       * @type {String}
+       */productIssueId:{type:String,value:"ACCOUNT"},/**
+       * Codes for the coverages
+       * @type {Object}
+       */coveragesCodes:{type:Object,value:{death:"001",expenses:"002",accidental:"003"}},/**
+       * Name for the death coverage
+       * @type {String}
+       */coverageDeathName:{type:String,value:"glomo-life-insurance-main-death-coverage"},/**
+       * Description for the death coverage
+       * @type {String}
+       */coverageDeathDescription:{type:String,value:"glomo-life-insurance-main-death-coverage-description"},/**
+       * Resumen for the death coverage
+       * @type {String}
+       */coverageDeathResumen:{type:String,value:"glomo-life-insurance-main-death-coverage-resumen"},/**
+       * Name for the expenses coverage
+       * @type {String}
+       */coverageExpensesName:{type:String,value:"glomo-life-insurance-main-funeral-expenses-coverage"},/**
+       * Description for the expenses coverage
+       * @type {String}
+       */coverageExpensesDescription:{type:String,value:"glomo-life-insurance-main-funeral-expenses-coverage-description"},/**
+       * Resumen for the expenses coverage
+       * @type {String}
+       */coverageExpensesResumen:{type:String,value:"glomo-life-insurance-main-funeral-expenses-coverage-resumen"},/**
+       * Name for the accidental coverage
+       * @type {String}
+       */coverageAccidentalName:{type:String,value:"glomo-life-insurance-main-accidental-death-coverage"},/**
+       * Description for the accidental coverage
+       * @type {String}
+       */coverageAccidentalDescription:{type:String,value:"glomo-life-insurance-main-accidental-death-coverage-description"},/**
+       * Text for amount button
+       * @type {String}
+       */buttonAmountText:{type:String,value:"glomo-life-insurance-main-continue"},/**
+       * Text for contractal modal btn
+       * @type {String}
+       */contractualButton:{type:String,value:"glomo-life-insurance-main-contractual-btn"},/**
+       * Heading text for contractual modal
+       * @type {String}
+       */contractualHeading:{type:String,value:"glomo-life-insurance-main-contractual-title"},/**
+       * Alert text for contractual modal
+       * @type {String}
+       */contractualAlert:{type:String,value:"glomo-life-insurance-main-contractual-content"},/**
+       * Header text for error page
+       * @type {String}
+       */errorHeaderText:{type:String,value:"glomo-life-insurance-main-error-header"},/**
+       * Title text for error page
+       * @type {String}
+       */errorTitleText:{type:String,value:"glomo-life-insurance-main-error-title"},/**
+       * Message text for error page
+       * @type {String}
+       */errorFailureText:{type:String,value:"glomo-life-insurance-main-error-message"},/**
+       * Primary button text for error page
+       * @type {String}
+       */errorPrimaryBtn:{type:String,value:"glomo-life-insurance-main-error-primary-btn"},/**
+       * Secondary button text for error page
+       * @type {String}
+       */errorSecondBtn:{type:String,value:"glomo-life-insurance-main-cancel"},/**
+       * Kinship list for Life insurance
+       * @type {Array}
+       */kinshipList:{type:Array,notify:!0,value:[{id:"0001",description:"TITULAR MASCULINO"},{id:"0002",description:"TITULAR  FEMENINO"},{id:"0003",description:"CONYUGE"},{id:"0004",description:"HIJO"},{id:"0005",description:"CONCUBINARIO"},{id:"0006",description:"OTRO"},{id:"0007",description:"PADRE"},{id:"0008",description:"MADRE"},{id:"0009",description:"SUEGROS"},{id:"0010",description:"ABUELO/ABUELA"},{id:"0012",description:"HERMANO"},{id:"0033",description:"AMIGO"},{id:"0022",description:"SUEGRO/A"}]},/**
+       * Coupon selected
+       * @type {String}
+       */setCoupon:String,/**
+       * Applied coupon discount
+       * @type {Boolean}
+       */appliedCoupon:{type:Boolean,value:!1},/**
+       * Documento to show whit credit card
+       * @type {String}
+       */documentCreditCard:{type:String,value:"FORMATO PARA CONTRATAR CARGOS RECURRENTES"},/**
+       * Document to show whit debit card
+       * @type {String}
+       */documentDebitCard:{type:String,value:"FORMATO DE DOMICILIACION"},/**
+       * @desc indicates if the first interaction with the user already happened
+       * @type {Boolean}
+       */firstInteractionHappened:Boolean,/**
+       * @desc indicates if the initial offer has been loaded
+       * @type {Boolean}
+       */initialOfferLoaded:Boolean,/**
+       * @description Object to send to CallMeBack
+       * @type {Object}
+       */toRequestCallMeBack:{type:Object,value:function value(){return{cardId:"",offerId:"",customerType:"INS"}}},/**
+       * @description Coupon value for AppsFlyer
+       * @type {String}
+       */cuponLifeInsuranceAppsFlyer:{type:String},/**
+       * @description Increment type for AppsFlyer
+       */incrementLifeInsuranceAppsFlyer:{type:String},/**
+       * @description Object for save the credit cards
+       * @type Object
+       */TDCS:Object,/**
+       * @description Object for save the debit cards
+       * @type Object
+       */TDDS:Object,/**
+       * @description data to save information to binding
+       * @type {Object}
+       */data:{type:Object,value:function value(){return{}}},/**
+       * @desciption array with different messages for app started analytic
+       * @type {Array}
+       */typeHelps:{type:Array,value:[{type:"001",value:"info fallecimiento"},{type:"002",value:"info gastos funerarios"},{type:"003",value:"info fallecimiento accidental"},{type:"LIH004",value:"info plan creciente"},{type:"LIH005",value:"info plan fijo"}],readOnly:!0},/**
+       * @description Indicate if user is stay in main screen or not
+       * @type {Boolean}
+       */_indicateMainScreen:{type:Boolean,value:!0},/**
+       * @description constants that mangement for app started analytic
+       */ANALYTICS_CONST:{type:Object,value:{APP_STARTED:"appStartedStep",PAYMENT_TYPE:"insurancePaymentType",TYPE_HIRED:"insuranceTypeHired",TYPOLOGY:"insuranceTypology",AMOUNT:"insuranceAmount",PAYMENT_AMOUNT:"insurancePaymentAmount",OPERATION_NUMBER:"operationNumber",ERROR_MESSAGE:"errorMessage"},readOnly:!0},/**
+       * @description const that contain the following text: 'plan creciente'
+       * @type {String}
+       */GROWING_PLAN:{type:String,value:"plan creciente",readOnly:!0},/**
+       * @description const that contain the following text: 'plan fijo'
+       * @type {String}
+       */FIXED_PLAN:{type:String,value:"plan fijo",readOnly:!0},/**
+       * @description indicator that indicates if it is the first load or not of the screen
+       * @type {Boolean}
+       */isFirstLoad:{type:Boolean,value:!1},/**
+       * @description indicator to avoid loading the page when opening a moodal help
+       * @type {Boolean}
+       */avoidRestartFromModalHelp:{type:Boolean,value:!1}}}}]);return GlomoLifeInsuranceDm}(Polymer.mixinBehaviors([CellsBehaviors.CellsGlomoUtilsBehavior,CellsBehaviors.i18nBehavior,CellsBehaviors.GlomoModalManagerBehavior],Polymer.Element));customElements.define(GlomoLifeInsuranceDm.is,GlomoLifeInsuranceDm);</script></dom-module><dom-module id="glomo-life-insurance-main-styles" assetpath="glomo-life-insurance-main/"><template><style>:host{display:block;box-sizing:border-box;font-family:var(--cells-fontDefault, sans-serif);@apply --glomo-life-insurance-main;--glomo-oc-life-insurance:{--cells-key-values-value:{text-align:center;};};}:host .separator-s{height:1px;background:var(--bbva-200, #E9E9E9);width:40px;margin:0 auto;@apply --glomo-life-insurance-main-separator-small;}:host .answer-questionnaire{margin:30px 0 0;color:var(--bbva-600, #121212);font-style:italic;font-weight:300;@apply --glomo-life-insurance-main-to-continue;}:host .answer-questionnaire span{font-weight:500;}:host .header-colapsed{--cells-step-header:{background:var(--bbva-core-blue, #004481);padding:30px;};--cells-step-header-title:{font-weight:500;color:var(--bbva-white, #ffffff);font-size:16px;};--cells-step-header-button-text:{color:var(--bbva-light-blue, #5BBEFF);padding:0;text-align:right;};--cells-st-button-m-min-height:14px;--cells-step-iron-collapse-expanded-resume:{padding:0;};@apply --glomo-life-insurance-main-header-colapsed;}:host .resumen-step{padding:0;background:var(--bbva-core-blue, #004481);@apply --glomo-life-insurance-main-resumen-step;}:host .separator-resumen{margin:10px 290px 0 30px;height:1px;background:var(--bbva-200, #E9E9E9);opacity:0.4;@apply --glomo-life-insurance-main-separator-resumen;}:host .separator-resumen-s{margin:0 290px 0 30px;height:1px;background:var(--bbva-200, #E9E9E9);opacity:0.4;@apply --glomo-life-insurance-main-separator-resumen-small;}:host .separator-resumen-l{margin:0 30px 0 30px;height:1px;background:var(--bbva-200, #E9E9E9);opacity:0.4;@apply --glomo-life-insurance-main-separator-resumen-large;}:host .insured-amount-resumen{--cells-key-values-key:{color:var(--bbva-white, #ffffff);font-size:14px;font-weight:300;padding-left:30px;padding-bottom:10px;};--cells-key-values-value-simple:{padding-left:30px;padding-bottom:20px;};@apply --glomo-life-insurance-main-insured-amount-resumen;}:host .insured-amount-resumen cells-atom-amount{color:var(--bbva-white, #ffffff);font-weight:lighter;padding-left:30px;padding-bottom:20px;@apply --glomo-life-insurance-main-cell-atom-amount;}:host .coverages-title-resumen{font-size:16px;margin:0;padding:20px 0 10px 30px;font-weight:500;color:var(--bbva-white, #ffffff);@apply --glomo-life-insurance-main-coverages-title-resumen;}:host .coverages-resumen{padding:0 30px 10px;--cells-key-values-key:{color:var(--bbva-white, #ffffff);font-size:14px;font-weight:300;width:14.5em;};--cells-key-values-value:{color:var(--bbva-white, #ffffff);font-size:14px;font-weight:300;};@apply --glomo-life-insurance-main-coverages-resumen;}:host .payment-selected-resumen{padding:20px 30px 10px;--cells-key-values-key:{color:var(--bbva-white, #ffffff);font-size:14px;font-weight:300;width:14.5em;};--cells-key-values-value:{color:var(--bbva-white, #ffffff);font-size:14px;font-weight:300;};@apply --glomo-life-insurance-main-payment-selected-resume;}:host .plan-type-resumen{padding:0 30px;--cells-key-values-key:{color:var(--bbva-white, #ffffff);font-size:14px;font-weight:300;padding-bottom:30px;width:14.5em;};--cells-key-values-value:{color:var(--bbva-white, #ffffff);font-size:14px;text-align:right;font-weight:300;padding-bottom:30px;};@apply --glomo-life-insurance-main-plan-type-resumen;}:host .aditional-benefits-resumen{--cells-key-values-key:{padding-top:20px;padding-bottom:20px;padding-left:30px;font-size:16px;font-weight:500;color:var(--bbva-white, #ffffff);text-transform:uppercase;};--cells-key-values-value-item:{color:var(--bbva-white, #ffffff);font-weight:100;font-size:14px;padding-left:30px;padding-bottom:30px;};@apply --glomo-life-insurance-main-aditional-benefits-resumen;}:host .applied-promotion{margin:0;padding-left:30px;padding-bottom:14px;font-size:14px;font-weight:300;color:var(--bbva-white, #ffffff);@apply --glomo-life-insurance-main-applied-promotion;}:host .applied-promotion span{padding-left:10px;}:host .offer-footer{--cells-glomo-offer-footer-content-button:{width:175px;height:50px;justify-content:center;--cells-st-button-bg-color:var(--bbva-medium-blue);--cells-st-button-bg-color-hover:var(--bbva-medium-blue);--cells-st-button-bg-color-focus:var(--bbva-medium-blue);};--cells-glomo-offer-footer-bottom-wrapper:{color:var(--bbva-medium-blue, #1973B8);};--cells-glomo-offer-footer-section-sticky-detached:{box-shadow:0 -2px 3px 0 rgba(0,0,0,0.15);};--cells-glomo-offer-footer-calculation-wrapper:{padding:0;};}:host .blue-font{color:var(--bbva-medium-blue, #1973B8);font-weight:bold;}:host .footer-more-content{margin:0 0 20px;}:host([hidden]), [hidden]{display:none !important;}*, *:before, *:after{box-sizing:inherit;}.centered{display:flex;justify-content:center;align-items:center;padding-bottom:30px;margin-top:-30px;@apply --glomo-life-insurance-main-centered;}.centered .subtext{font-size:var(--cells-st-button-subtext-size, 20px);@apply --cells-st-button-subtext;}</style></template></dom-module><dom-module id="glomo-oc-life-insurance-styles" assetpath="glomo-oc-life-insurance/"><template><style>:host{display:block;box-sizing:border-box;font-family:var(--cells-fontDefault, sans-serif);@apply --glomo-oc-life-insurance;--glomo-customized-card-title:{text-transform:uppercase;};}:host([hidden]), [hidden]{display:none !important;}*, *:before, *:after{box-sizing:inherit;}.main-content{background:#7A67C5;--cells-glomo-page-content-header:{font-size:18px;color:var(--bbva-white, #FFFFFF);text-align:center;line-height:24px;font-weight:lighter;margin:30px 0;};}.page-content-slot{text-align:center;}.amount-rank{color:var(--bbva-white, #ffffff);text-align:center;--cells-key-values-key:{font-size:18px;color:var(--bbva-white, #FFFFFF);text-align:center;line-height:24px;font-weight:lighter;};}.amount-rank span{font-size:18px;font-weight:300;}.amount-rank cells-atom-amount{margin:0;padding-bottom:30px;font-size:18px;font-weight:500;line-height:24px;}.input-amount{color:var(--bbva-white, #ffffff);--cells-molecule-amount-input-background-color:#6553B7;--cells-molecule-amount-input-field-wrapper:{height:100px;box-sizing:inherit;};--cells-molecule-amount-input-text-field:{height:97px;};--cells-molecule-amount-input-input:{font-size:36px;height:100% !important;};--cells-molecule-amount-input-has-content-padding:43px 20px 12px 0;--cells-molecule-amount-input-input-color:var(--bbva-white, #ffffff);--cells-molecule-amount-input-icon:{color:var(--bbva-white, #ffffff);z-index:0;top:40px;};--cells-molecule-amount-input-label:{color:var(--bbva-white, #ffffff);opacity:1;z-index:auto;font-size:24px;padding-top:30px;padding-left:30px;};--cells-molecule-amount-input-floated-label:{color:var(--bbva-white, #ffffff);opacity:1;font-size:14px;font-style:100;text-align:left;};--cells-molecule-amount-input-has-content:{border-bottom-color:var(--bbva-white, #ffffff);};--cells-molecule-amount-input-border-bottom:var(--bbva-white, #ffffff);--cells-molecule-amount-input-currency-label-left:{margin:0;font-size:22px;position:relative;top:-10px;color:var(--cells-glomo-offer-edit-amount-input-currency-label-left-color, var(--bbva-white));};}.input-amount-wrong{color:var(--bbva-600, #121212);--cells-molecule-amount-input-background-color:var(--bbva-white-coral, #FCDFDF);--cells-molecule-amount-input-field-wrapper:{height:97px;};--cells-molecule-amount-input-text-field:{height:97px;};--cells-molecule-amount-input-input:{font-size:36px;};--cells-molecule-amount-input-has-content-padding:43px 20px 12px 0;--cells-molecule-amount-input-input-color:var(--bbva-600, #121212);--cells-molecule-amount-input-icon:{color:var(--bbva-600, #121212);z-index:0;top:40px;};--cells-molecule-amount-input-label:{color:var(--bbva-600, #121212);opacity:1;z-index:auto;font-size:19px;padding-top:30px;padding-left:30px;};--cells-molecule-amount-input-floated-label:{color:var(--bbva-600, #121212);opacity:1;font-size:14px;font-style:100;};--cells-molecule-amount-input-has-content:{border-bottom-color:var(--bbva-dark-red, #B92A45);};--cells-molecule-amount-input-border-bottom:var(--bbva-dark-red, #B92A45);--cells-molecule-amount-input-currency-label-left:{margin:0;font-size:22px;position:relative;top:-10px;};}.quantity-multiples{color:var(--bbva-white, #ffffff);text-align:left;margin:0;padding-top:10px;padding-right:37px;font-size:14px;font-weight:300;}.quantity-multiples span{padding-left:10px;}.consult-guide{text-align:center;margin:0;font-size:14px;color:var(--bbva-white, #ffffff);--cells-key-values-key:{color:var(--bbva-white, #ffffff);font-size:14px;font-weight:300;margin:30px 0 0 0;};}.consult-guide span{font-size:14px;font-weight:500;}.separator-l{height:1px;margin:0 30px;background:var(--bbva-200, #E9E9E9);}.coverage-quantity{--glomo-list-coverages-separator:{margin-bottom:30px;};--glomo-list-coverages-main-quantity__title:{font-weight:500;};--glomo-list-coverages-aditional-coverages:{padding-top:0;};--glomo-list-coverages-aditional-quantity__title:{padding-top:30px;};}.payment-option{margin:30px;--cells-molecule-input-field-min-height:60px;--cells-molecule-input-field-label:{z-index:0;};}.coupon-input{margin:30px;--cells-molecule-input-field-min-height:60px;--cells-st-button-transparent_-_color:var(--bbva-500, #666666);--cells-molecule-input-field-label_-_z-index:0;}.wrong{--cells-molecule-input-border-bottom:var(--bbva-dark-red, #B92A45);--cells-molecule-amount-input-focused:{border-bottom:1px solid var(--bbva-dark-red, #B92A45);};--cells-molecule-input-has-content-wrapper:{border-bottom:1px solid var(--bbva-dark-red, #B92A45);};--cells-molecule-input-background-color:var(--bbva-white-coral, #FCDFDF);}.coupon-alert{margin:0 0 30px 30px;color:var(--bbva-dark-red, #B92A45);font-size:14px;--cells-atom-icon:{color:var(--bbva-light-red, #E77D8E);};}.plan-type-radio-group{margin-bottom:30px;}.plan-type-group{--cells-radio-group:{margin:30px 60px 30px 30px;};--cells-radio-button:{margin:0;padding:0;};--cells-key-values-key:{color:var(--bbva-600, #121212);font-size:13.5px;font-weight:500;};--cells-key-values-value:{color:var(--bbva-600, #121212);font-size:14px;font-weight:400;};--cells-radio-button-radio-check-size:10px;--cells-radio-button-radio-check-background-color:var(--bbva-medium-blue, #1973B8);}.plan-type-group p{margin:0;font-size:14px;font-style:italic;color:var(--bbva-500, #666666);margin-right:60px;margin-bottom:30px;}.info-increase-plan{position:absolute;margin-top:4px;margin-left:10.8em;z-index:0;--cells-atom-icon-iron-icon:{color:var(--bbva-medium-blue, #1973B8);};}.info-fixed-plan{margin-left:10.5em;position:relative;top:-50px;--cells-atom-icon-iron-icon:{color:var(--bbva-medium-blue, #1973B8);};}.hide-currency-code{--cells-atom-amount-currency-left:{display:none;};}.coupon-been-applied{margin:30px;--cells-key-values-key:{font-size:14px;color:var(--bbva-600, #121212);};--cells-key-values-value:{color:var(--bbva-medium-blue0, #1973B8);font-size:14px;font-weight:bold;};}</style></template></dom-module><dom-module id="glomo-list-coverages-styles" assetpath="glomo-list-coverages/"><template><style>:host{display:block;box-sizing:border-box;font-family:var(--cells-fontDefault, sans-serif);@apply --glomo-list-coverages;}:host([hidden]), [hidden]{display:none !important;}*, *:before, *:after{box-sizing:inherit;}.coverages-title{font-size:16px;color:#121212;text-align:center;line-height:22px;margin:30px;font-weight:lighter;@apply --glomo-list-coverages-title;}.main-coverages{--cells-product-item:{padding:0 30px 30px 30px;};--cells-product-item-item-label:{font-size:14px;color:var(--bbva-600, #121212);};--cells-product-item-item-primary-amount:{font-weight:inherit;};--cells-product-item-active-background-color:var(--bbva-white, #ffffff);--cells-product-item-item-additional:{display:none;};@apply --glomo-list-coverages-main-coverages;}.main-coverages__description{--cells-key-values-key-color:#121212;@apply --glomo-list-coverages-main-coverages__description;}.main-coverages__icon{--iron-icon:{color:var(--bbva-medium-blue, #1973B8);left:5px;};--cells-atom-icon-iron-icon:{color:var(--bbva-medium-blue, #1973B8);left:5px;};@apply --glomo-list-coverages-main-coverages__icon;}.separator{height:1px;margin-left:160px;margin-right:160px;background:var(--bbva-200, #E9E9E9);@apply --glomo-list-coverages-separator;}.main-quantity{text-align:center;@apply --glomo-list-coverages-main-quantity;--cells-key-values-key:{color:var(--bbva-600, #121212);margin-top:30px;@apply --glomo-list-coverages-main-quantity__title;};}.main-quantity__amount{padding-bottom:30px;display:block;@apply --glomo-list-coverages-main-quantity__amount;}.aditional-coverages{--cells-product-item:{padding:30px 30px 0 30px;};--cells-product-item-item-label:{font-size:14px;color:var(--bbva-600, #121212);};--cells-product-item-item-primary-amount:{font-weight:inherit;};--cells-product-item-active-background-color:var(--bbva-white, #ffffff);--cells-product-item-item-additional:{display:none;};@apply --glomo-list-coverages-aditional-coverages;}.aditional-coverages__description{--cells-key-values-key-color:#121212;@apply --glomo-list-coverages-aditional-coverages__description;}.aditional-coverages__icon{--iron-icon:{color:var(--bbva-medium-blue, #1973B8);left:5px;};--cells-atom-icon-iron-icon:{color:var(--bbva-medium-blue, #1973B8);left:5px;};@apply --glomo-list-coverages-aditional-coverages__icon;}.aditional-quantity{text-align:center;@apply --glomo-list-coverages-aditional-quantity;--cells-key-values-key:{color:var(--bbva-600, #121212);margin-top:30px;font-weight:lighter;@apply --glomo-list-coverages-aditional-quantity__title;};}.aditional-quantity__amount{padding-bottom:30px;font-weight:lighter;display:block;@apply --glomo-list-coverages-aditional-quantity__amount;}</style></template></dom-module><dom-module id="glomo-list-coverages" assetpath="glomo-list-coverages/"><template><style include="glomo-list-coverages-styles glomo-list-coverages-shared-styles"></style><slot></slot><template is="dom-if" if="{{coveragesTitle}}"><p class="coverages-title">[[coveragesTitle]]</p></template><template is="dom-repeat" items="[[mainCoverages]]" as="coverage" mutable-data=""><cells-product-item class="main-coverages" name="[[coverage.name]]" local-currency="[[coverage.unit.currency]]" primary-amount="[[coverage.unit]]"><cells-key-values class="main-coverages__description inline" slot="text-below-image" key="[[coverage.description]]"><template is="dom-if" if="{{coverage.icon}}"><cells-atom-icon id="[[coverage.id]]" slot="after-key" icon="[[coverage.icon]]" class="main-coverages__icon icon-size-18" on-tap="_descriptionIconPressed"></cells-atom-icon></template></cells-key-values></cells-product-item></template><div class="separator"></div><template is="dom-if" if="[[mainQuantity]]"><cells-key-values class="main-quantity" key="[[mainQuantity.title]]"><cells-atom-amount slot="before-value" class="main-quantity__amount amount-huge" amount="[[mainQuantity.quantity.amount]]" currency-code="[[mainQuantity.quantity.currencyCode]]" local-currency="[[localCurrency]]" language="[[language]]"></cells-atom-amount></cells-key-values></template><div class="separator"></div><template is="dom-repeat" items="[[aditionalCoverages]]" as="coverage" mutable-data=""><cells-product-item class="aditional-coverages" name="[[coverage.name]]" local-currency="[[coverage.unit.currency]]" primary-amount="[[coverage.unit]]"><cells-key-values class="aditional-coverages__description inline" slot="text-below-image" key="[[coverage.description]]"><template is="dom-if" if="{{coverage.icon}}"><cells-atom-icon id="[[coverage.id]]" slot="after-key" icon="[[coverage.icon]]" class="aditional-coverages__icon icon-size-18" on-tap="_descriptionIconPressed"></cells-atom-icon></template></cells-key-values></cells-product-item></template><template is="dom-if" if="[[aditionalQuantity]]"><cells-key-values class="aditional-quantity" key="[[aditionalQuantity.title]]"><cells-atom-amount slot="before-value" class="aditional-quantity__amount amount-large" amount="[[aditionalQuantity.quantity.amount]]" currency-code="[[aditionalQuantity.quantity.currencyCode]]" local-currency="[[localCurrency]]" language="[[language]]"></cells-atom-amount></cells-key-values></template></template><script>var GlomoListShowCoverages=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(GlomoListShowCoverages,_Polymer$mixinBehavio);function GlomoListShowCoverages(){babelHelpers.classCallCheck(this,GlomoListShowCoverages);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(GlomoListShowCoverages).apply(this,arguments))}babelHelpers.createClass(GlomoListShowCoverages,[{key:"_descriptionIconPressed",/**
+   * Dispatch event when the icon is pressed
+   * @param {Object} event
+   */value:function _descriptionIconPressed(event){this.dispatchEvent(new CustomEvent("coverage-description-icon",{bubbles:!0,composed:!0,detail:event.target.id}))}}],[{key:"is",get:function get(){return"glomo-list-coverages"}},{key:"properties",get:function get(){return{language:String,localCurrency:String,/**
+       * Tittle for coverages
+       * @type {String}
+       */coveragesTitle:String,/**
+       * Main coverages
+       * @type {Array}
+       */mainCoverages:{type:Array,value:function value(){return[]}},/**
+       * Main quantity
+       * @type {Object}
+       */mainQuantity:{type:Object,value:function value(){}},/**
+       * Aditional coverages
+       * @type {Array}
+       */aditionalCoverages:{type:Array,value:function value(){return[]}},/**
+       * Aditional quantity
+       * @type {Object}
+       */aditionalQuantity:{type:Object,value:function value(){}}}}}]);return GlomoListShowCoverages}(Polymer.mixinBehaviors([CellsBehaviors.i18nBehavior],Polymer.Element));customElements.define(GlomoListShowCoverages.is,GlomoListShowCoverages);</script></dom-module><dom-module id="glomo-customized-card-styles" assetpath="glomo-customized-card/"><template><style>:host{display:block;box-sizing:border-box;font-family:var(--cells-fontDefault, sans-serif);@apply --glomo-customized-card;}:host([hidden]), [hidden]{display:none !important;}*, *:before, *:after{box-sizing:inherit;}.title{font-size:16px;font-weight:500;margin:30px 30px 0 30px;@apply --glomo-customized-card-title;}.subtitle{font-size:14px;margin:30px 30px 0 30px;@apply --glomo-customized-card-subtitle;}.promotion{margin:30px 30px 30px 30px;background:var(--bbva-100, #F4F4F4);@apply --glomo-customized-card-promotion;--cells-key-values-inline-key:{padding:20px 30px;@apply --glomo-customized-card-promotion__icon;};--cells-key-values-inline-value:{font-size:14px;margin:0;padding-right:62px;text-align:left;position:relative;bottom:20px;@apply --glomo-customized-card-promotion__message;};}.messages{margin:0 30px 30px 30px;@apply --glomo-customized-card-messages;}.font-bold{font-size:14px;font-weight:500;@apply --glomo-customized-card-font-bold;}</style></template></dom-module><dom-module id="glomo-customized-card" assetpath="glomo-customized-card/"><template><style include="glomo-customized-card-styles glomo-customized-card-shared-styles"></style><template is="dom-if" if="[[customizedCardTitle]]"><p class="title">[[customizedCardTitle]]</p></template><template is="dom-if" if="[[customizedCardSubtitle]]"><p class="subtitle">[[customizedCardSubtitle]]</p></template><template is="dom-repeat" items="[[promotionMessages]]" as="promotion"><div class="promotion"><cells-key-values class="inline"><cells-atom-icon slot="before-key" class$="icon-size-[[promotion.size]]" icon="[[promotion.icon]]"></cells-atom-icon><span slot="before-value" inner-h-t-m-l="[[t(promotion.message)]]"></span></cells-key-values></div></template><slot class="customized-content" name="customized-content"></slot><template is="dom-repeat" items="[[infoMessages]]" as="message"><cells-icon-message class="messages" type="[[message.type]]" icon="[[message.icon]]" heading="[[t(message.title)]]" message="[[t(message.message)]]"></cells-icon-message></template><slot class="aditional-content" name="aditional-content"></slot></template><script>var GlomoCustomizedCard=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(GlomoCustomizedCard,_Polymer$mixinBehavio);function GlomoCustomizedCard(){babelHelpers.classCallCheck(this,GlomoCustomizedCard);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(GlomoCustomizedCard).apply(this,arguments))}babelHelpers.createClass(GlomoCustomizedCard,null,[{key:"is",get:function get(){return"glomo-customized-card"}},{key:"properties",get:function get(){return{/**
+       * Title for glomo-customized-card component
+       * @type {String}
+       */customizedCardTitle:String,/**
+       * Subtitle for glomo-customized-card component
+       * @type {String}
+       */customizedCardSubtitle:String,/**
+       * Lis of promotion messages
+       * @type {Array}
+       */promotionMessages:{type:Array,value:function value(){return[]}},/**
+       * List of messages
+       * @type {Array}
+       */infoMessages:{type:Array,value:function value(){return[]}}}}}]);return GlomoCustomizedCard}(Polymer.mixinBehaviors([CellsBehaviors.i18nBehavior],Polymer.Element));customElements.define(GlomoCustomizedCard.is,GlomoCustomizedCard);</script></dom-module><dom-module id="glomo-oc-life-insurance" assetpath="glomo-oc-life-insurance/"><template><style include="glomo-oc-life-insurance-styles glomo-oc-life-insurance-shared-styles"></style><cells-glomo-page-content class="main-content" show-icon="" icon="[[iconPageContent]]" content-icon-width="[[iconPageContentWidth]]" content-icon-height="[[iconPageContentHeight]]" header="[[t(pageContentHeader)]]" show-header=""><div class="page-content-slot" slot="after_content"><cells-key-values class="amount-rank" key="[[t(amountRankTitle)]]"><cells-atom-amount amount="[[minimumAmountInsurance]]" currency-code="[[currencyCode]]" local-currency="[[localCurrency]]" language="[[languageAmount]]"></cells-atom-amount><span>[[t('glomo-oc-life-insurance-and')]]</span><cells-atom-amount amount="[[maximumAmountInsurance]]" currency-code="[[currencyCode]]" local-currency="[[localCurrency]]" language="[[languageAmount]]"></cells-atom-amount></cells-key-values><cells-molecule-amount-input id="inputAmount" class$="[[classInputAmount]]" label="[[t(inputAmountLabel)]]" icon-code="coronita:close" currency-code="[[currencyCode]]" local-currency="[[localCurrency]]" language="[[languageAmount]]" amount="{{insuranceAmountSelected}}" set-amount="{{insuranceAmountSelected}}" on-blur="_updateSelectedAmount" on-focus="_changeAmount" on-keyup="_updateSelectedAmount"></cells-molecule-amount-input><template is="dom-if" if="[[messageMaxAmount]]"><p class="quantity-multiples"><cells-atom-icon icon="coronita:alert" class="icon-size-18"></cells-atom-icon><span>[[t(maximumAmountMessage)]]<cells-atom-amount amount="[[maximumAmountInsurance]]" currency-code="[[currencyCode]]" local-currency="[[localCurrency]]" language="[[languageAmount]]" decimals-hidden=""></cells-atom-amount>[[t('glomo-oc-life-insurance-in-multiples-of')]]<cells-atom-amount amount="[[multipliesAmountInsurance]]" currency-code="[[currencyCode]]" local-currency="[[localCurrency]]" language="[[languageAmount]]" decimals-hidden=""></cells-atom-amount>.</span></p></template><template is="dom-if" if="[[messageMinAmount]]"><p class="quantity-multiples"><cells-atom-icon icon="coronita:alert" class="icon-size-18"></cells-atom-icon><span>[[t(minimumAmountMessage)]]<cells-atom-amount amount="[[minimumAmountInsurance]]" currency-code="[[currencyCode]]" local-currency="[[localCurrency]]" language="[[languageAmount]]" decimals-hidden=""></cells-atom-amount>[[t('glomo-oc-life-insurance-in-multiples-of')]]<cells-atom-amount amount="[[multipliesAmountInsurance]]" currency-code="[[currencyCode]]" local-currency="[[localCurrency]]" language="[[languageAmount]]" decimals-hidden=""></cells-atom-amount>.</span></p></template><template is="dom-if" if="[[messageAmount]]"><p class="quantity-multiples"><cells-atom-icon icon="coronita:info" class="icon-size-18"></cells-atom-icon><span>[[t(multipliesAmountMessage)]]<cells-atom-amount class="hide-currency-code" amount="[[multipliesAmountInsurance]]" currency-code="[[currencyCode]]" local-currency="[[localCurrency]]" language="[[languageAmount]]" decimals-hidden=""></cells-atom-amount>.</span></p></template><cells-key-values class="consult-guide" key="[[t(guideTitle)]]"><span id="[[opHelpInsuranceAmount]]" on-tap="_showNotice">[[t(guideDescription)]]</span></cells-key-values></div></cells-glomo-page-content><glomo-list-coverages class="coverage-quantity" language="[[languageAmount]]" local-currency="[[localCurrency]]" coverages-title="[[t(coveragesTitle)]]" main-coverages="[[mainCoverages]]" main-quantity="[[mainCoveragesQuantity]]" aditional-coverages="[[aditionalCoverages]]" aditional-quantity="[[aditionalCoveragesQuantity]]"></glomo-list-coverages><div class="separator-l"></div><glomo-customized-card customized-card-title="[[t('glomo-oc-life-insurance-frequency-title')]]" customized-card-subtitle="[[t('glomo-oc-life-insurance-frequency-subtitle')]]" promotion-messages="[[promotionMessage]]" info-messages="[[promotionInfoMessages]]"><div slot="customized-content"><cells-molecule-input class="payment-option" label="[[t('glomo-oc-life-insurance-frequency-label')]]" icon-size="28" icon="coronita:unfold" icon-visibility="always" icon-action="event" type="text" readonly="" value="[[paymentFrequencySelected]]" on-cells-molecule-input-icon-tap="_openModalPayment"></cells-molecule-input></div></glomo-customized-card><div class="separator-l"></div><glomo-customized-card customized-card-title="[[t('glomo-oc-life-insurance-plan-type-title')]]" customized-card-subtitle="[[t('glomo-oc-life-insurance-plan-type-subtitle')]]"><div class="plan-type-radio-group" slot="customized-content"><cells-radio-group class="plan-type-group" on-cells-radio-group-selected-changed="_changePlan" selected="0"><cells-radio-button><cells-key-values key="[[t('glomo-oc-life-insurance-incremental-title')]] [[incrementPercentage]]" value="[[t('glomo-oc-life-insurance-incremental-subtitle')]]"></cells-key-values><p>[[t('glomo-oc-life-insurance-incremental-description')]]</p></cells-radio-button><cells-atom-icon id="[[opHelpIncrementalPlan]]" on-tap="_showHelp" class="info-increase-plan icon-size-20" icon="coronita:help"></cells-atom-icon><cells-radio-button><cells-key-values key="[[t('glomo-oc-life-insurance-fixed-title')]]" value="[[t('glomo-oc-life-insurance-fixed-subtitle')]]"></cells-key-values></cells-radio-button><cells-atom-icon id="[[opHelpFixedPlan]]" on-tap="_showHelp" class="info-fixed-plan icon-size-20" icon="coronita:help"></cells-atom-icon></cells-radio-group></div></glomo-customized-card><div class="separator-l"></div><glomo-customized-card customized-card-title="[[t('glomo-oc-life-insurance-additional-benefits-title')]]" customized-card-subtitle="[[t(couponSubTitleText)]]"><div slot="customized-content"><template is="dom-if" if="[[!couponApplied]]"><cells-molecule-input id="couponInput" class$="coupon-input [[couponClass]]" label="[[t('glomo-oc-life-insurance-additional-benefits-label')]]" icon-size="22" icon="coronita:close" value="{{couponSelected}}" allowed-chars="[a-zA-Z0-9]" on-blur="_calculateCoupon" on-keyup="_calculateCoupon"></cells-molecule-input><template is="dom-if" if="[[!couponValid]]"><p class="coupon-alert"><cells-atom-icon class="icon-size-16" icon="coronita:alert"></cells-atom-icon>[[t('glomo-oc-life-insurance-coupon-wrong')]]</p></template></template><template is="dom-if" if="[[couponApplied]]"><cells-key-values class="coupon-been-applied inline" key="[[couponAppliedText]]"><span slot="before-value" on-tap="_deleteCode">[[t(deleteCouponButtonText)]]</span></cells-key-values></template></div></glomo-customized-card><div class="separator-l"></div></template><script>var GlomoOcLifeInsurance=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(GlomoOcLifeInsurance,_Polymer$mixinBehavio);function GlomoOcLifeInsurance(){babelHelpers.classCallCheck(this,GlomoOcLifeInsurance);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(GlomoOcLifeInsurance).apply(this,arguments))}babelHelpers.createClass(GlomoOcLifeInsurance,[{key:"ready",/**
+   * Use ready for set reset event of input amount
+   */value:function ready(){babelHelpers.get(babelHelpers.getPrototypeOf(GlomoOcLifeInsurance.prototype),"ready",this).call(this);this.$.inputAmount.shadowRoot.querySelector("#icon-wrapper").addEventListener("click",this._resetInputAmount.bind(this))}/**
+   * Method that fire an event when reset value of input amout
+   */},{key:"_resetInputAmount",value:function _resetInputAmount(){this.dispatchEvent(new CustomEvent("reset-input-focus",{bubbles:!0,composed:!0}))}/**
+   * Verify the styles for the cells-molecule-amount-input
+   * @param {Number} correctAmountSelected
+   */},{key:"_classInputAmount",value:function _classInputAmount(correctAmountSelected){return correctAmountSelected?this.inputAmount:this.inputAmountWrong}/**
+   * Verify id the amount selected is correct
+   * @param {Number} insuranceAmountSelected
+   */},{key:"_verifyAmountSelected",value:function _verifyAmountSelected(insuranceAmountSelected,multipliesAmountInsurance,minimumAmountInsurance,maximumAmountInsurance){return insuranceAmountSelected&&0===insuranceAmountSelected%multipliesAmountInsurance&&insuranceAmountSelected>=minimumAmountInsurance&&insuranceAmountSelected<=maximumAmountInsurance}/**
+   * Hide de secction of payment amount
+   */},{key:"_changeAmount",value:function _changeAmount(){this.set("showFooter",!1)}/**
+   * Dispatch event for recalculate the offer
+   */},{key:"_updateSelectedAmount",value:function _updateSelectedAmount(event){if("blur"===event.type||13===event.keyCode){this.set("showFooter",!0);if(this.insuranceAmountSelected!==this.oldInsuranceAmountSelected&&this.correctAmountSelected){this.set("oldInsuranceAmountSelected",this.insuranceAmountSelected);this.dispatchEvent(new CustomEvent("update-selected-amount",{bubbles:!0,composed:!0}))}}}/**
+   * Show message for a maximum amount selected
+   * @param {Number} insuranceAmountSelected
+   */},{key:"_showMessageMaxAmount",value:function _showMessageMaxAmount(insuranceAmountSelected){return insuranceAmountSelected>this.maximumAmountInsurance}/**
+   * Show message for a minimum amount selected
+   * @param {Number} insuranceAmountSelected
+   */},{key:"_showMessageMinAmount",value:function _showMessageMinAmount(insuranceAmountSelected){return insuranceAmountSelected<this.minimumAmountInsurance}/**
+   * Show message for a correct amount
+   * @param {Boolean} messageMaxAmount
+   * @param {Boolean} messageMinAmount
+   */},{key:"_showMessageAmount",value:function _showMessageAmount(messageMaxAmount,messageMinAmount){return!messageMaxAmount&&!messageMinAmount}/**
+   * Open the modal of payment options
+   */},{key:"_openModalPayment",value:function _openModalPayment(){this.dispatchEvent(new CustomEvent("middle-modal-payment-list-state",{bubbles:!0,composed:!0,detail:!0}))}/**
+   * Change plan type selected
+   * @param {Object} e
+   */},{key:"_changePlan",value:function _changePlan(e){this.dispatchEvent(new CustomEvent("change-plan-type",{bubbles:!0,composed:!0,detail:e.detail}))}/**
+   * Dispatch event to show a notice message
+   * @param {Object} event
+   */},{key:"_showNotice",value:function _showNotice(event){this.dispatchEvent(new CustomEvent("show-notice-message",{bubbles:!0,composed:!0,detail:{noticeCode:event.target.id}}))}/**
+   * Dispatch event to show a help message
+   * @param {Object} event
+   */},{key:"_showHelp",value:function _showHelp(event){this.dispatchEvent(new CustomEvent("show-help-message",{bubbles:!0,composed:!0,detail:{help:event.target.id}}))}/**
+   * Computed method for classInputAmount
+   * @param {Boolean} coupon
+   */},{key:"_isCouponValid",value:function _isCouponValid(coupon){return coupon?"":"wrong"}/**
+   * Dispatch event for calculate coupon
+   */},{key:"_calculateCoupon",value:function _calculateCoupon(event){if("blur"===event.type||13===event.keyCode){this.dispatchEvent(new CustomEvent("calculate-offer-coupon",{bubbles:!0,composed:!0}))}}/**
+   * Delete the code for discount
+   */},{key:"_deleteCode",value:function _deleteCode(){this.dispatchEvent(new CustomEvent("delete-code-discount",{bubbles:!0,composed:!0}))}}],[{key:"is",get:function get(){return"glomo-oc-life-insurance"}},{key:"properties",get:function get(){return{/**
+       * Icon for page content component
+       * @type {String}
+       */iconPageContent:{type:String,value:"glomo:life_insurance_sunset"},/**
+       * Icon for page content component
+       * @type {String}
+       */iconPageContentWidth:{type:Number,value:93},/**
+       * Icon for page content component
+       * @type {String}
+       */iconPageContentHeight:{type:Number,value:93},/**
+       * Header for page contennt component
+       * @type {String}
+       */pageContentHeader:{type:String,value:"glomo-oc-life-insurance-header"},/**
+       * Title for amount rank
+       * @type {String}
+       */amountRankTitle:{type:String,value:"glomo-oc-life-insurance-rank"},/**
+       * Label for input amount
+       * @type {String}
+       */inputAmountLabel:{type:String,value:"glomo-oc-life-insurance-what-amount-do-you-want"},/**
+       * Minimum amount for insurance
+       * @type {Number}
+       */minimumAmountInsurance:Number,/**
+       * Maximum amount for insurance
+       * @type {Number}
+       */maximumAmountInsurance:Number,/**
+       * Multiplies amount for insurance
+       * @type {Number}
+       */multipliesAmountInsurance:Number,/**
+       * Amount selected for insurance
+       * @type {Number}
+       */insuranceAmountSelected:{type:Number,notify:!0},/**
+       * old value for amount selected
+       * @type {Number}
+       */oldInsuranceAmountSelected:Number,/**
+       * Currency code
+       * @type {String}
+       */currencyCode:String,/**
+       * Local currency
+       * @type {String}
+       */localCurrency:String,/**
+       * Language for amount
+       * @type {String}
+       */languageAmount:String,/**
+       * Class for molecule input amount
+       * @type {String}
+       */classInputAmount:{type:String,computed:"_classInputAmount(correctAmountSelected)"},/**
+       * Show message when life amount is exceeded
+       * @type {Boolean}
+       */messageMaxAmount:{type:Boolean,computed:"_showMessageMaxAmount(insuranceAmountSelected)"},/**
+       * Show message when life amount is missing
+       * @type {Boolean}
+       */messageMinAmount:{type:Boolean,computed:"_showMessageMinAmount(insuranceAmountSelected)"},/**
+       * Show message when life amount is correct
+       * @type {Boolean}
+       */messageAmount:{type:Boolean,computed:"_showMessageAmount(messageMaxAmount, messageMinAmount)"},/**
+       * Option code for show help for how choose life insurance amount
+       * @type {String}
+       */opHelpInsuranceAmount:{type:String,value:"LIN001"},/**
+       * Main coverages for life insurance
+       * @type {Array}
+       */mainCoverages:{type:Array,value:function value(){return[]}},/**
+       * Quantity for main coverages
+       * @type {Object}
+       */mainCoveragesQuantity:{type:Object,value:function value(){}},/**
+       * Aditional coverages for life insurance
+       * @type {Array}
+       */aditionalCoverages:{type:Array,value:function value(){return[]}},/**
+       * Quantity for aditional coverages
+       * @type {Object}
+       */aditionalCoveragesQuantity:{type:Object,value:function value(){}},/**
+       * Promotion message for coupon
+       * @type {Array}
+       */promotionMessage:{type:Array,value:function value(){return[]}},/**
+       * Message type info for coupon
+       * @type {Array}
+       */promotionInfoMessages:{type:Array,value:function value(){return[]}},/**
+       * Frequency selected for payment
+       * @type {String}
+       */paymentFrequencySelected:String,/**
+       * Option code for show help for incremental plan type
+       * @type {String}
+       */opHelpIncrementalPlan:{type:String,value:"LIH004"},/**
+       * Option code for show help for fixed plan type
+       * @type {String}
+       */opHelpFixedPlan:{type:String,value:"LIH005"},/**
+       * Indicate if the coupon is valid
+       * @type {Boolean}
+       */couponValid:{type:Boolean,value:!1},/**
+       * Coupon class
+       * @type {String}
+       */couponClass:{type:String,computed:"_isCouponValid(couponValid)"},/**
+       * Coupon introduced
+       * @type {String}
+       */couponSelected:{type:String,notify:!0},/**
+       * Indicate if the coupon are been applied
+       * @type {Boolean}
+       */couponApplied:Boolean,/**
+       * Show sticky footer
+       * @type {Boolean}
+       */showFooter:Boolean,/**
+       * Percentage for incremental plan
+       * @type {String}
+       */incrementPercentage:String,/**
+       * Amount selected is correct
+       * @type {Boolean}
+       */correctAmountSelected:{type:Boolean,computed:"_verifyAmountSelected(insuranceAmountSelected, multipliesAmountInsurance, minimumAmountInsurance, maximumAmountInsurance)"},/**
+       * Message for the maximum amount
+       * @type {String}
+       */maximumAmountMessage:{type:String,value:"glomo-oc-life-insurance-maximum-amount-message"},/**
+       * Message for the minimum amount
+       * @type {String}
+       */minimumAmountMessage:{type:String,value:"glomo-oc-life-insurance-minimum-amount-message"},/**
+       * Message for the multiplies amount
+       * @type {String}
+       */multipliesAmountMessage:{type:String,value:"glomo-oc-life-insurance-quantities-in-multiples"},/**
+       * Text for guide title
+       * @type {String}
+       */guideTitle:{type:String,value:"glomo-oc-life-insurance-consult-guide"},/**
+       * Text for guide description
+       * @type {String}
+       */guideDescription:{type:String,value:"glomo-oc-life-insurance-how-to-choose-the-insured-amount"},/**
+       * Text for coverages title
+       * @type {String}
+       */coveragesTitle:{type:String,value:"glomo-oc-life-insurance-coverages-title"},/**
+       * Text for subtitle in coupon section
+       * @type {String}
+       */couponSubTitleText:{type:String,value:"glomo-oc-life-insurance-additional-benefits-subtitle"},/**
+       * Text for message when the coupon is applied
+       * @type {String}
+       */couponAppliedText:{type:String,value:"glomo-oc-life-insurance-coupon-applied-text"},/**
+       * Text for delete coupon button
+       * @type {String}
+       */deleteCouponButtonText:{type:String,value:"glomo-oc-life-insurance-delete-button-coupon"},/**
+       * Class for input amount
+       */inputAmount:{type:String,value:"input-amount"},/**
+       * Class wrong for input amount
+       */inputAmountWrong:{type:String,value:"input-amount-wrong"}}}}]);return GlomoOcLifeInsurance}(Polymer.mixinBehaviors([CellsBehaviors.i18nBehavior,CellsBehaviors.CellsGlomoUtilsBehavior],Polymer.Element));customElements.define(GlomoOcLifeInsurance.is,GlomoOcLifeInsurance);</script></dom-module><dom-module id="glomo-life-insurance-main" assetpath="glomo-life-insurance-main/"><template><style include="glomo-life-insurance-main-styles glomo-life-insurance-main-shared-styles"></style><cells-step step-title="[[t('glomo-life-insurance-main-your-insurance')]]" class="header-colapsed" change-label="[[t('glomo-life-insurance-main-change')]]" hide-header="[[!collapsed]]" collapsed="[[collapsed]]" active="{{active}}" current-step="[[currentStep]]" max-steps="[[maxSteps]]" fixed="[[fixed]]" class-to-toggle="step-active" disable-change="{{_changeHidden}}" previous="[[previous]]" next="[[next]]" scrolled="[[scrolled]]" decorated="[[decorated]]"><div slot="full"><glomo-oc-life-insurance class="life-offer" page-content-header="[[t('glomo-life-insurance-main-header')]]" amount-rank-title="[[t('glomo-life-insurance-main-you-can-choise')]]" input-amount-label="[[t('glomo-life-insurance-main-what-amount-do-you-want')]]" maximum-amount-message="[[t('glomo-life-insurance-main-maximum-amount-message')]]" minimum-amount-message="[[t('glomo-life-insurance-main-minimum-amount-message')]]" guide-title="[[t('glomo-life-insurance-main-consult-guide')]]" guide-description="[[t('glomo-life-insurance-main-how-to-choose-the-insured-amount')]]" multiplies-amount-message="[[t('glomo-life-insurance-main-quantities-in-multiples')]]" coverages-title="[[t('glomo-life-insurance-main-amount-requested-includes-coverages')]]" coupon-sub-title-text="[[t(couponSubTitleText)]]" coupon-applied="[[couponApplied]]" coupon-valid="[[couponValid]]" coupon-selected="{{couponSelected}}" coupon-applied-text="[[t('glomo-life-insurance-main-benefit-apply')]]" delete-coupon-button-text="[[t('glomo-life-insurance-main-delete')]]" currency-code="[[currencyCode]]" local-currency="[[localCurrency]]" language-amount="[[localeAmount]]" insurance-amount-selected="{{insuranceAmountSelected}}" minimum-amount-insurance="[[minimumAmountInsurance]]" maximum-amount-insurance="[[maximumAmountInsurance]]" multiplies-amount-insurance="[[multipliesAmountInsurance]]" main-coverages="[[mainCoverages]]" main-quantity="[[mainCoveragesQuantity]]" main-coverages-quantity="[[mainCoveragesQuantity]]" aditional-coverages="[[additionalCoverages]]" aditional-coverages-quantity="[[aditionalCoveragesQuantity]]" promotion-message="[[promotionMessage]]" promotion-info-messages="[[promotionInfoMessages]]" payment-frequency-selected="[[paymentFrequencySelected.selected]]" increment-percentage="[[incrementPercentage]]" on-amount-input-focus="_hideStickyFooter" on-dispatched-blur="_showStickyFooter" on-cells-molecule-input-focus="_hideStickyFooter" on-cells-molecule-input-blur="_showStickyFooter" on-delete-code-discount="_deleteDiscount"></glomo-oc-life-insurance><cells-glomo-offer-footer class="offer-footer" scroll="[[templateContentScroll]]" preceding-height="[[offerEditHeight]]" local-currency="[[localCurrency]]" language="[[localeAmount]]" show-payment-text="true" payment-text="[[t('glomo-life-insurance-main-your-payment')]] [[paymentFrequencySelected.selected]] [[t('glomo-life-insurance-main-could-be')]]" primary-button-text="[[t(textPrimaryBtn)]]" disabled-primary-button="[[disablePrimaryBtn]]" monthly-payment="[[paymentFrecuencyAmount]]" bottom-text="[[t('glomo-i-want-call-me-back')]]" calculation-text="<slot name='more-content'></slot>" on-button-clicked="_continueAmountStep" on-bottom-text-clicked="_requestCallMeBack" hidden$="[[enableSticky]]" enable-sticky=""><div slot="more-content"><p class="footer-more-content">[[t('glomo-life-insurance-main-apply')]] <span class="blue-font" id="[[opGeneralConditions]]" data-doc$="[[generalConditionsDocument]]" on-tap="_showNotice">[[t('glomo-life-insurance-main-restriction-exclutions')]] </span>[[t('glomo-life-insurance-main-doubts-clarifications')]] [[insurancesURL]] [[t('glomo-life-insurance-main-or-call')]]<br><span class="blue-font" id="[[cdmxNumber]]" on-tap="_requestCall">[[cdmxNumber]]</span></p><p class="footer-more-content">[[t('glomo-life-insurance-main-operated-registered')]]</p><div class="separator-s"></div><p class="answer-questionnaire">[[t('glomo-life-insurance-main-to-continue')]] <span>[[t('glomo-life-insurance-main-to-continue-answer-questionnaire')]]</span></p></div></cells-glomo-offer-footer></div><div slot="filled" class="resumen-step"><cells-key-values class="insured-amount-resumen" key="[[t('glomo-life-insurance-main-insurance-amount')]]"><cells-atom-amount class="amount-huge" amount="[[insuranceAmountSelected]]" currency-code="[[currencyCode]]" local-currency="[[localCurrency]]" language="[[localeAmount]]"></cells-atom-amount></cells-key-values><div class="separator-resumen-s"></div><p class="coverages-title-resumen">[[t('glomo-life-insurance-main-coverages-resumen')]]</p><template is="dom-repeat" items="[[mainCoverages]]" mutable-data=""><cells-key-values class="coverages-resumen inline" key="[[item.resumen]]"><cells-atom-amount slot="before-value" amount="[[item.unit.amount]]" currency-code="[[item.unit.currency]]" local-currency="[[item.unit.currency]]" language="[[localeAmount]]"></cells-atom-amount></cells-key-values></template><template is="dom-repeat" items="[[additionalCoverages]]" mutable-data=""><cells-key-values class="coverages-resumen inline" key="[[item.resumen]]"><cells-atom-amount slot="before-value" amount="[[item.unit.amount]]" currency-code="[[item.unit.currency]]" local-currency="[[item.unit.currency]]" language="[[localeAmount]]"></cells-atom-amount></cells-key-values></template><div class="separator-resumen"></div><cells-key-values class="payment-selected-resumen inline" key="[[t('glomo-life-insurance-main-payment')]] [[paymentFrequencySelected.selected]]"><cells-atom-amount slot="before-value" amount="[[paymentFrecuencyAmount.amount]]" currency-code="[[paymentFrecuencyAmount.currency]]" local-currency="[[paymentFrecuencyAmount.currency]]" language="[[localeAmount]]"></cells-atom-amount></cells-key-values><template is="dom-if" if="[[appliedPromotion]]"><p class="applied-promotion"><cells-atom-icon icon="coronita:info"></cells-atom-icon><span>[[amountFree]] [[t('glomo-life-insurance-main-apply-promotion')]]</span></p></template><cells-key-values class="plan-type-resumen inline" key="[[t('glomo-oc-life-insurance-plan-type-title')]]" value="[[planTypeSelected.description]]"></cells-key-values><template is="dom-if" if="[[couponApplied]]"><div class="separator-resumen-s"></div><cells-key-values class="aditional-benefits-resumen" key="[[t('glomo-oc-life-insurance-additional-benefits-title')]]" value="[[t('glomo-life-insurance-main-benefit-resumen')]]"></cells-key-values></template><div class="separator-resumen-l"></div></div></cells-step></template><script>var GlomoLifeInsuranceMain=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(GlomoLifeInsuranceMain,_Polymer$mixinBehavio);function GlomoLifeInsuranceMain(){babelHelpers.classCallCheck(this,GlomoLifeInsuranceMain);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(GlomoLifeInsuranceMain).apply(this,arguments))}babelHelpers.createClass(GlomoLifeInsuranceMain,[{key:"assignProperties",/**
+   * Assign values to the properties
+   * @param {Object} data
+   */value:function assignProperties(data){var _this=this;if(data){Object.keys(data).forEach(function(key){_this.set(key,data[key])})}}/**
+   * Status for a primary button depending the amount selected
+   * @param {Number} insuranceAmountSelected
+   */},{key:"_disablePrimBtn",value:function _disablePrimBtn(insuranceAmountSelected){return 0===insuranceAmountSelected%this.multipliesAmountInsurance?this.maximumAmountInsurance>=insuranceAmountSelected&&this.minimumAmountInsurance<=insuranceAmountSelected?!1:!0:!0}/**
+   * Dispatch event to show a notice message
+   * @param {Object} event
+   */},{key:"_showNotice",value:function _showNotice(event){this.dispatchEvent(new CustomEvent("show-notice-message",{bubbles:!0,composed:!0,detail:{noticeCode:event.target.id,doc:event.target.dataset.doc}}))}/**
+   * Dispatch event to request call
+   * @param {Object} event
+   */},{key:"_requestCall",value:function _requestCall(event){this.dispatchEvent(new CustomEvent("request-call",{bubbles:!0,composed:!0,detail:{phoneNumber:event.target.id}}))}/**
+   * Select the payment option
+   * @param {Object} event
+   */},{key:"listPaymentsModal",value:function listPaymentsModal(event){this.dispatchEvent(new CustomEvent("middle-modal-payment-list-state",{bubbles:!0,composed:!0,detail:!1}));this.set("paymentFrequencySelected",event)}/**
+   * Continue with the next step
+   */},{key:"_continueAmountStep",value:function _continueAmountStep(){this.dispatchEvent(new CustomEvent("continue-amount-step",{bubbles:!0,composed:!0}))}/**
+   * @desc set scroll height
+   */},{key:"_templateContentScrollChanged",value:function _templateContentScrollChanged(){this.set("offerEditHeight",this.$$("glomo-oc-life-insurance").scrollHeight)}/**
+   * Hide the sticky footer
+   */},{key:"_hideStickyFooter",value:function _hideStickyFooter(){this.set("enableSticky",!0)}/**
+   * Show the sticky footer
+   */},{key:"_showStickyFooter",value:function _showStickyFooter(){this.set("enableSticky",!1)}/**
+   * Request the call me back
+   */},{key:"_requestCallMeBack",value:function _requestCallMeBack(){this.dispatchEvent(new CustomEvent("call-me-back",{bubbles:!0,composed:!0}))}/**
+   * Verify the text to show if the coupon is applied
+   * @param {Boolean} couponApplied
+   */},{key:"_showCouponSubTitle",value:function _showCouponSubTitle(couponApplied){this.couponSelected=couponApplied?this.couponSelected:"";this.dispatchEvent(new CustomEvent("apps-flyer-get-cupon",{detail:this.couponSelected}));return couponApplied?"":"glomo-life-insurance-main-have-discount"}/**
+   * Delete coupon
+   */},{key:"_deleteDiscount",value:function _deleteDiscount(){this.set("couponSelected","");this.set("couponApplied",!1);this.set("couponValid",!0);this.dispatchEvent(new CustomEvent("delete-discount-recalculate-offer",{detail:this.couponApplied,bubbles:!0,composed:!0}))}}],[{key:"is",get:function get(){return"glomo-life-insurance-main"}},{key:"properties",get:function get(){return{/**
+       * Minimum amount for insurance
+       * @type {Number}
+       */minimumAmountInsurance:Number,/**
+       * Maximum amount for insurance
+       * @type {Number}
+       */maximumAmountInsurance:Number,/**
+       * Multiplies amount for insurance
+       * @type {Number}
+       */multipliesAmountInsurance:Number,/**
+       * Amount selected for insurance
+       * @type {Number}
+       */insuranceAmountSelected:{type:Number,notify:!0},/**
+       * Disable button when the insurance amoun isn't sufficient
+       * @type {Boolean}
+       */disablePrimaryBtn:{type:Boolean,computed:"_disablePrimBtn(insuranceAmountSelected)"},/**
+       * Main coverages for the insurance
+       * @type {Array}
+       */mainCoverages:{type:Array,value:function value(){return[]}},/**
+       * Quantity for main coverages
+       * @type {Object}
+       */mainCoveragesQuantity:{type:Object,value:function value(){}},/**
+       * Aditional coverages for the insurance
+       * @type {Array}
+       */additionalCoverages:{type:Array,value:function value(){return[]}},/**
+       * Quantity for aditional coverages
+       * @type {Object}
+       */aditionalCoveragesQuantity:{type:Object,value:function value(){}},/**
+       * Promotion message for coupon
+       * @type {Array}
+       */promotionMessage:{type:Array,value:function value(){return[]}},/**
+       * Message type info for coupon
+       * @type {Array}
+       */promotionInfoMessages:{type:Array,value:function value(){return[]}},/**
+       * @desc show and hide sticky footer
+       * @type {Boolean}
+       */enableSticky:Boolean,/**
+       * Show calculation in footer
+       */showCalculation:Boolean,/**
+       * @desc scroll
+       * @type {Object}
+       */templateContentScroll:{type:"Object",observer:"_templateContentScrollChanged"},/**
+       * @desc scroll height of edit offer component
+       * @type {Number}
+       */offerEditHeight:Number,/**
+       * Frequency of payments for insurance
+       * @type {Object}
+       */paymentFrequencySelected:{type:Object,notify:!0},/**
+       * Amount for the payment frequency
+       * @type {Object}
+       */paymentFrecuencyAmount:{type:Object},/**
+       * Phone number for CDMX
+       * @type {String}
+       */cdmxNumber:String,/**
+       * Phone number for Republic
+       * @type {String}
+       */republicNumber:String,/**
+       * Text for the primary button
+       * @type {String}
+       */textPrimaryBtn:String,/**
+       * Applied promotion in the selected payment option
+       * @type {Boolean}
+       */appliedPromotion:Boolean,/**
+       * Plan type selected for insurance
+       * @type {Object}
+       */planTypeSelected:{type:Object},/**
+       * Local currency
+       * @type {String}
+       */localCurrency:String,/**
+       * Currency code
+       * @type {String}
+       */currencyCode:String,/**
+       * Locale for amount
+       * @type {String}
+       */localeAmount:String,/**
+       * Types of frequency options payment for insurance
+       * @type {Array}
+       */paymentFrequencyOptions:{type:Array,value:function value(){return[]},notify:!0},/**
+       * Percentage for incremental plan
+       * @type {String}
+       */incrementPercentage:String,/**
+       * Total for free amounts
+       * @type {String}
+       */amountFree:String,/**
+       * Option code for show general conditions
+       * @type {String}
+       */opGeneralConditions:{type:String,value:"LIN005"},/**
+       * Document to show in general conditions
+       * @type {String}
+       */generalConditionsDocument:{type:String,value:"CONDICIONES GENERALES VIDA SEGURA BANCOMER"},/**
+       * Coupon selected
+       * @type {String}
+       */couponSelected:{type:String,notify:!0},/**
+       * Indicate if the coupon is valid
+       * @type {Boolean}
+       */couponValid:Boolean,/**
+       * Indicate if the coupon has been applied
+       */couponApplied:Boolean,/**
+       * Subtitle for coupon section
+       * @type {String}
+       */couponSubTitleText:{type:String,computed:"_showCouponSubTitle(couponApplied)"},/**
+       * web page insurances
+       */insurancesURL:String}}}]);return GlomoLifeInsuranceMain}(Polymer.mixinBehaviors([CellsBehaviors.i18nBehavior,CellsBehaviors.CellsGlomoStepBehavior,CellsBehaviors.CellsGlomoMainStepBehavior,CellsBehaviors.CellsGlomoUtilsBehavior],Polymer.Element));customElements.define(GlomoLifeInsuranceMain.is,GlomoLifeInsuranceMain);</script></dom-module><dom-module id="glomo-life-insurance-beneficiaries-step-styles" assetpath="glomo-life-insurance-beneficiaries-step/"><template><style>@charset "UTF-8";:host{display:block;box-sizing:border-box;font-family:var(--cells-fontDefault, sans-serif);@apply --glomo-life-insurance-beneficiaries-step;}:host cells-atom-amount{--cells-atom-amount-sr:{height:0;margin:0;position:relative;};}:host .benef-title{margin:0;font-size:16px;padding:50px 30px 30px 30px;font-weight:bold;text-transform:uppercase;@apply --glomo-life-insurance-beneficiaries-step-title;}:host .howmany-benef{--cells-key-values-key:{margin:0;padding-left:30px;padding-right:30px;padding-bottom:30px;width:300px;line-height:20px;color:#4A4A4A;};@apply --glomo-life-insurance-beneficiaries-step-howmany-benef;}:host .howmany-benef span{color:var(--bbva-medium-blue, #1973B8);font-weight:bold;}:host .howmany-benef p{margin:0;color:#4A4A4A;font-size:14px;padding-left:30px;padding-bottom:30px;}:host .separator-l{height:1px;margin-left:30px;margin-right:30px;background:var(--bbva-200, #E9E9E9);@apply --glomo-life-insurance-beneficiaries-step-separator-large;}:host .action-beneficiary{padding:20px 30px 20px 30px;font-size:18px;color:var(--bbva-medium-blue, #1973B8);font-weight:500;@apply --glomo-life-insurance-beneficiaries-step-action-beneficiary;}:host .action-beneficiary span{position:relative;top:-8px;padding-left:20px;}:host .action-beneficiary:active{background:var(--bbva-200, #E9E9E9);opacity:0.4;padding:20px 30px 20px 30px;font-size:18px;color:var(--bbva-medium-blue, #1973B8);font-weight:500;@apply --glomo-life-insurance-beneficiaries-step-action-beneficiary__active;}:host .action-beneficiary:active span{position:relative;top:-8px;padding-left:20px;}:host .total-percentage{margin:30px;--cells-key-values-key:{color:var(--bbva-600, #121212);font-size:16px;};@apply --glomo-life-insurance-beneficiaries-step-total-percentage;}:host .total-percentage span{font-size:14px;float:right;}:host .total-percentage p{margin:0;font-size:20px;}:host .wrong-percentage{margin:11px 30px 0 30px;font-style:italic;color:var(--bbva-light-red, #E77D8E);--cells-key-values-key:{color:var(--bbva-dark-red, #B92A45);font-size:14px;padding-left:21px;};--cells-key-values-value:{color:var(--bbva-dark-red, #B92A45);font-size:14px;};@apply --glomo-life-insurance-beneficiaries-step-wrong-percentage;}:host .wrong-percentage cells-key-values{position:relative;padding-left:20px;top:-16px;}:host .wrong-percentage span{font-size:14px;}:host .wrong-percentage p{margin:0;}:host .show-beneficiary{margin:20px 30px;--cells-key-values-key:{color:var(--bbva-600, #121212);font-size:14px;font-weight:500;padding-top:20px;padding-bottom:9px;};--cells-key-values-value:{color:var(--bbva-medium-blue, #1973B8);font-size:14px;display:-webkit-inline-box;};--cells-key-values-inline-value:{display:inline;};@apply --glomo-life-insurance-beneficiaries-step-show-beneficiary;}:host .show-beneficiary p{margin:0;}:host .show-beneficiary span{padding-left:20px;}:host .beneficiaries-repeat{padding-bottom:10px;@apply --glomo-life-insurance-beneficiaries-step-beneficiaries-repeat;}:host .percentage-beneficiary{color:var(--bbva-600, #121212);padding:0 42px 0 10px;@apply --glomo-life-insurance-beneficiaries-step-percentage-beneficiary;}:host .beneficiary-relation{margin:0;color:var(--bbva-600, #121212);font-size:14px;font-weight:300;font-style:italic;@apply --glomo-life-insurance-beneficiaries-step-beneficiary-relation;}:host .continue-btn{text-align:center;margin:30px;@apply --glomo-life-insurance-beneficiaries-step-continue-btn;}:host .continue-btn button{height:50px;}:host .header-colapsed{--cells-step-header:{background:var(--bbva-core-blue, #004481);padding:30px 30px 20px 30px;};--cells-step-header-title:{font-weight:500;color:var(--bbva-white, #ffffff);font-size:16px;};--cells-step-header-button-text:{color:var(--bbva-light-blue, #5BBEFF);padding:0;text-align:right;};--cells-st-button-m-min-height:14px;--cells-step-iron-collapse-expanded-resume:{padding:0;};@apply --glomo-life-insurance-beneficiaries-step-header-colapsed;}:host .resumen-step{padding:0;background:var(--bbva-core-blue, #004481);@apply --glomo-life-insurance-beneficiaries-step-resumen-step;}:host .beneficiary-resumen{padding-left:30px;padding-bottom:20px;padding-right:30px;--cells-key-values-key:{color:var(--bbva-white, #FFFFFF);font-size:14px;font-weight:300;};--cells-key-values-value:{color:var(--bbva-white, #FFFFFF);font-size:14px;font-weight:300;};@apply --glomo-life-insurance-beneficiaries-step-beneficiary-resumen;}:host .beneficiary-resumen p{margin:0;padding-top:9px;font-style:italic;}:host .separator-resumen-l{margin:0 30px 0 30px;height:1px;background:var(--bbva-200, #E9E9E9);opacity:0.4;@apply --glomo-life-insurance-beneficiaries-step-separator-resumen-large;}:host([hidden]), [hidden]{display:none !important;}*, *:before, *:after{box-sizing:inherit;}:host(:not([active])){background:rgba(189, 189, 189, 0.2);pointer-events:none;@apply --glomo-life-insurance-beneficiaries-step-not-active;}:host(:not([active])) .benef-title{margin:0;font-size:16px;padding:50px 30px 30px 30px;font-weight:bold;text-transform:uppercase;color:var(--bbva-400, #BDBDBD);@apply --glomo-life-insurance-beneficiaries-step-title-not-active;}:host(:not([active])) .howmany-benef{--cells-key-values-key:{margin:0;padding-left:30px;padding-right:30px;padding-bottom:30px;width:300px;line-height:20px;color:var(--bbva-400, #BDBDBD);};@apply --glomo-life-insurance-beneficiaries-step-howmany-benef-not-active;}:host(:not([active])) .howmany-benef span{color:var(--bbva-400, #BDBDBD);font-weight:bold;}:host(:not([active])) .howmany-benef p{margin:0;color:var(--bbva-400, #BDBDBD);font-size:14px;padding-left:30px;padding-bottom:30px;}:host(:not([active])) .action-beneficiary{padding:20px 30px 20px 30px;font-size:18px;color:var(--bbva-400, #BDBDBD);font-weight:500;@apply --glomo-life-insurance-beneficiaries-step-action-beneficiary-not-active;}:host(:not([active])) .action-beneficiary span{position:relative;top:-8px;padding-left:20px;}:host(:not([active])) .action-beneficiary cells-atom-icon{opacity:0.2;}.centered{display:flex;justify-content:center;align-items:center;padding:0;@apply --glomo-life-insurance-beneficiaries-step-centered;}</style></template></dom-module><dom-module id="glomo-life-insurance-beneficiaries-step" assetpath="glomo-life-insurance-beneficiaries-step/"><template><style include="glomo-life-insurance-beneficiaries-step-styles glomo-life-insurance-beneficiaries-step-shared-styles"></style><cells-step step-title="[[t('glomo-life-insurance-beneficiaries-step-beneficiaries')]]" class="header-colapsed" change-label="[[t('glomo-life-insurance-beneficiaries-step-change')]]" hide-header="[[!collapsed]]" collapsed="[[collapsed]]" active="{{active}}" current-step="[[currentStep]]" max-steps="[[maxSteps]]" fixed="[[fixed]]" class-to-toggle="step-active" disable-change="{{_changeHidden}}" previous="[[previous]]" next="[[next]]" scrolled="[[scrolled]]" decorated="[[decorated]]"><div slot="full"><p class="benef-title">[[t('glomo-life-insurance-beneficiaries-step-beneficiaries')]]</p><cells-key-values class="howmany-benef" key="[[t('glomo-life-insurance-beneficiaries-step-how-many-beneficiaries')]]"><p>[[t('glomo-life-insurance-beneficiaries-step-to-consider')]] <span id="[[opCodeBeneficiary]]" on-tap="beneficiariesConditions">[[t('glomo-life-insurance-beneficiaries-step-conditions')]]</span></p></cells-key-values><template is="dom-if" if="{{_showUpSeparator(beneficiaries)}}"><div class="separator-l"></div></template><template is="dom-repeat" items="{{beneficiaries}}" mutable-data=""><div class="show-beneficiary"><cells-key-values class="inline" key="[[_nameTruncate(item.firstName, item.lastName, item.secondLastName)]]"><p><span class="percentage-beneficiary">[[item.benefitPercentage]]%</span><cells-atom-icon id="[[index]]" icon="coronita:edit" class="icon-size-18" on-tap="editBeneficiary"></cells-atom-icon><span><cells-atom-icon id="[[index]]" icon="coronita:trash" class="icon-size-18" on-tap="deleteBeneficiary"></cells-atom-icon></span></p></cells-key-values><p class="beneficiary-relation">[[item.relationType.selected]]</p></div><div class="separator-l"></div></template><template is="dom-if" if="[[showEditBtn]]"><div class="action-beneficiary" on-tap="editPercentage"><cells-atom-icon icon="glomo:life_insurance_edit" class="icon-size-40"></cells-atom-icon><span>[[t('glomo-life-insurance-beneficiaries-step-edit-beneficiary')]]</span></div><div class="separator-l"></div></template><template is="dom-if" if="[[showAddBtn]]"><div class="action-beneficiary" on-tap="addBeneficiary"><cells-atom-icon icon="glomo:life_insurance_add" class="icon-size-40"></cells-atom-icon><span>[[t('glomo-life-insurance-beneficiaries-step-add-beneficiary')]]</span></div><div class="separator-l"></div></template><template is="dom-if" if="[[showPercentage]]"><cells-key-values class="total-percentage inline" key="[[t('glomo-life-insurance-beneficiaries-step-total-percentage')]]"><p slot="before-value">[[totalPercentage]]<span>%</span></p></cells-key-values></template><template is="dom-if" if="[[remainingMessage]]"><div class="wrong-percentage"><cells-atom-icon icon="coronita:alert"></cells-atom-icon><cells-key-values class="inline" key="[[t('glomo-life-insurance-beneficiaries-step-remaining-percentage')]]"><p slot="before-value">[[remainingPercentage]]<span>%</span></p></cells-key-values></div></template><div class="continue-btn"><cells-st-button class="secondary"><button disabled$="[[disablePrimaryBtn]]" on-tap="continueBeneficiariesStep">[[t('glomo-life-insurance-beneficiaries-step-btn-continue')]]</button></cells-st-button><cells-st-button class="link centered"><button on-tap="_requestCallMeBack" disabled="[[!active]]">[[t('glomo-i-want-callme-back')]]</button></cells-st-button></div></div><div slot="filled" class="resumen-step"><div class="beneficiaries-repeat"><template is="dom-repeat" items="{{beneficiaries}}" mutable-data=""><cells-key-values class="beneficiary-resumen inline" key="[[item.firstName]] [[item.lastName]] [[item.secondLastName]]" value="[[item.benefitPercentage]]%"><p slot="after-key">[[item.relationType.selected]]</p></cells-key-values></template></div><div class="separator-resumen-l"></div></div></cells-step></template><script>var GlomoLifeInsuranceBeneficiariesStep=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(GlomoLifeInsuranceBeneficiariesStep,_Polymer$mixinBehavio);function GlomoLifeInsuranceBeneficiariesStep(){babelHelpers.classCallCheck(this,GlomoLifeInsuranceBeneficiariesStep);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(GlomoLifeInsuranceBeneficiariesStep).apply(this,arguments))}babelHelpers.createClass(GlomoLifeInsuranceBeneficiariesStep,[{key:"_showUpSeparator",/**
+   * Show separator
+   * @param {Array} beneficiaries
+   */value:function _showUpSeparator(beneficiaries){return 1>=beneficiaries.length}/**
+   * Truncate the name for show
+   * @param {String} name
+   * @param {String} surname
+   * @param {String} secondSurname
+   */},{key:"_nameTruncate",value:function _nameTruncate(name,surname,secondSurname){var fullName="".concat(name," ").concat(surname," ").concat(secondSurname);return"".concat(fullName.slice(0,17),"...")}/**
+   * Show or hide add beneficiary button
+   * @param {Array} beneficiaries
+   */},{key:"_showAddBeneficiary",value:function _showAddBeneficiary(beneficiaries){return 4>beneficiaries.length}/**
+   * Show or hide edit beneficiary button
+   * @param {Array} beneficiaries
+   */},{key:"_showEditBeneficiary",value:function _showEditBeneficiary(beneficiaries){return 1<beneficiaries.length}/**
+   * Show or hide total percentage assign
+   * @param {Array} beneficiaries
+   */},{key:"_showPercentage",value:function _showPercentage(beneficiaries){return 0<beneficiaries.length}/**
+   * Calculate the total of the percentage assign
+   * @param {Array} beneficiaries
+   */},{key:"_calculateTotalPercentage",value:function _calculateTotalPercentage(beneficiaries){var totalPercentage=0;beneficiaries.base.forEach(function(element){totalPercentage=element.benefitPercentage+totalPercentage});return totalPercentage}/**
+   * Calculate the remaining percentage assign
+   * @param {Number} totalPercentage
+   */},{key:"_calculateRemainingPercentage",value:function _calculateRemainingPercentage(totalPercentage){return 100-totalPercentage}/**
+   * Show the message for a remaining percentage
+   * @param {Number} totalPercentage
+   */},{key:"_showRemainingMessage",value:function _showRemainingMessage(totalPercentage){if(0<this.beneficiaries.length){return 100>totalPercentage}}/**
+   * Enable or disable button depending the number of beneficiaries
+   * @param {Array} beneficiaries
+   */},{key:"_enableBtn",value:function _enableBtn(beneficiaries){return 0<beneficiaries.length?4>=beneficiaries.length?100===this.totalPercentage?!1:!0:!0:!0}/**
+   * Dispatch event for edit beneficiary
+   * @param {Object} event
+   */},{key:"editBeneficiary",value:function editBeneficiary(event){this.dispatchEvent(new CustomEvent("edit-beneficiary",{bubbles:!0,composed:!0,detail:{beneficiaryId:event.target.id}}))}/**
+   * Dispatch event for delete beneficiary
+   * @param {Object} event
+   */},{key:"deleteBeneficiary",value:function deleteBeneficiary(event){this.dispatchEvent(new CustomEvent("delete-beneficiary",{bubbles:!0,composed:!0,detail:{beneficiaryId:event.target.id}}))}/**
+   * Dispantch event for edit percentage
+   */},{key:"editPercentage",value:function editPercentage(){this.dispatchEvent(new CustomEvent("edit-percentage",{bubbles:!0,composed:!0}))}/**
+   * Dispatch event for add new beneficiary
+   */},{key:"addBeneficiary",value:function addBeneficiary(){this.dispatchEvent(new CustomEvent("add-new-beneficiary",{bubbles:!0,composed:!0}))}/**
+   * Dispatch event for beneficiary conditions
+   * @param {Object} event
+   */},{key:"beneficiariesConditions",value:function beneficiariesConditions(event){this.dispatchEvent(new CustomEvent("show-benef-condition",{bubbles:!0,composed:!0,detail:{noticeCode:event.target.id}}))}/**
+   * Continue whit the next step
+   */},{key:"continueBeneficiariesStep",value:function continueBeneficiariesStep(){this.dispatchEvent(new CustomEvent("continue-next-step",{bubbles:!0,composed:!0}))}/**
+   * Request the Call Me Back
+   */},{key:"_requestCallMeBack",value:function _requestCallMeBack(){this.dispatchEvent(new CustomEvent("call-me-back",{bubbles:!0,composed:!0}))}}],[{key:"is",get:function get(){return"glomo-life-insurance-beneficiaries-step"}},{key:"properties",get:function get(){return{/**
+       * Collapse the step when is completed
+       * @type {Boolean}
+       */collapsedStep:{type:Boolean,notify:!0},/**
+       * Active the step
+       * @type {Boolean}
+       */active:{type:Boolean,reflectToAttribute:!0},/**
+       * Beneficiaries for the insurance
+       * @type {Array}
+       */beneficiaries:{type:Array,value:[]},/**
+       * Show add beneficiary button
+       * @type {Boolean}
+       */showAddBtn:{type:Boolean,computed:"_showAddBeneficiary(beneficiaries)"},/**
+       * Show edit beneficiary button
+       * @type {Boolean}
+       */showEditBtn:{type:Boolean,computed:"_showEditBeneficiary(beneficiaries)"},/**
+       * Show total percentage
+       * @type {Boolean}
+       */showPercentage:{type:Boolean,computed:"_showPercentage(beneficiaries)"},/**
+       * Total percentage assign
+       * @type {Number}
+       */totalPercentage:{type:Number,computed:"_calculateTotalPercentage(beneficiaries.*)"},/**
+       * Total percentage assign
+       * @type {Number}
+       */remainingPercentage:{type:Number,computed:"_calculateRemainingPercentage(totalPercentage)"},/**
+       * Show remaining percentage message
+       * @type {Boolean}
+       */remainingMessage:{type:Boolean,computed:"_showRemainingMessage(totalPercentage)"},/**
+       * Disable button property
+       * @type {Boolean}
+       */disablePrimaryBtn:{type:Boolean,computed:"_enableBtn(beneficiaries)"},/**
+       * Option code for beneficiaries
+       * @type {String}
+       */opCodeBeneficiary:{type:String,value:"LIN003"}}}}]);return GlomoLifeInsuranceBeneficiariesStep}(Polymer.mixinBehaviors([CellsBehaviors.i18nBehavior,CellsBehaviors.CellsGlomoStepBehavior,CellsBehaviors.CellsGlomoMainStepBehavior],Polymer.Element));customElements.define(GlomoLifeInsuranceBeneficiariesStep.is,GlomoLifeInsuranceBeneficiariesStep);</script></dom-module><dom-module id="glomo-life-insurance-shipping-step-styles" assetpath="glomo-life-insurance-shipping-step/"><template><style>:host{display:block;box-sizing:border-box;font-family:var(--cells-fontDefault, sans-serif);@apply --glomo-life-insurance-shipping-step;}:host .shipping-title{--cells-key-values-key:{padding-top:50px;padding-left:30px;padding-bottom:30px;text-transform:uppercase;font-weight:bold;font-size:16px;color:var(--bbva-600, #121212);};}:host .shipping-title p{color:var(--bbva-600, #121212);margin:0 30px 30px;font-size:14px;}:host .shipping-title span{font-size:14px;font-weight:bold;color:var(--bbva-medium-blue, #1973B8);}:host .delivery-email{padding-left:30px;padding-right:30px;--cells-checkbox-button-label:{color:var(--bbva-600, #121212);};--cells-checkbox-button-checkbox-size:30px;--cells-molecule-mask:{font-style:italic;};}:host .send-doc-info{margin:30px;padding:30px;--cells-icon-message-header:{color:var(--bbva-600, #121212);font-size:14px;};--cells-icon-message-message:{color:var(--bbva-600, #121212);font-size:14px;};}:host .continue-btn{text-align:center;margin:30px;}:host .continue-btn button{height:50px;}:host .resumen-step{padding:0;background:var(--bbva-core-blue, #004481);}:host .header-colapsed{--cells-step-header:{background:var(--bbva-core-blue, #004481);padding:rem(30px) rem(10px) rem(30px);};--cells-step-header-title:{font-weight:500;color:var(--bbva-white, #ffffff);font-size:16px;};--cells-step-header-button-text:{color:var(--bbva-light-blue, #5BBEFF);padding:0;text-align:right;};--cells-st-button-m-min-height:14px;--cells-step-iron-collapse-expanded-resume:{padding:0;};}:host .separator-resumen-l{margin:0 30px 0 30px;height:1px;background:var(--bbva-200, #E9E9E9);opacity:0.4;}:host .delivery-email-resumen{margin:0;padding-top:12px;padding-left:30px;padding-bottom:30px;font-size:14px;font-weight:lighter;color:var(--bbva-white, #ffffff);font-style:italic;}:host .delivery-email-resumen cells-atom-icon{color:var(--bbva-white, #ffffff);}:host .delivery-email-resumen cells-molecule-mask{align-items:baseline;padding-left:26px;color:var(--bbva-white, #ffffff);}:host .delivery-email-resumen span{padding-left:10px;}:host([hidden]), [hidden]{display:none !important;}*, *:before, *:after{box-sizing:inherit;}:host(:not([active])){background:rgba(189, 189, 189, 0.2);pointer-events:none;}:host(:not([active])) .shipping-title{--cells-key-values-key:{padding-top:50px;padding-left:30px;padding-bottom:30px;color:var(--bbva-400, #BDBDBD);text-transform:uppercase;font-weight:bold;font-size:16px;};}:host(:not([active])) .shipping-title p{margin:0 30px 30px;color:var(--bbva-400, #BDBDBD);font-size:14px;}:host(:not([active])) .shipping-title span{font-size:14px;font-weight:bold;color:var(--bbva-400, #BDBDBD);}:host(:not([active])) .delivery-email{padding-left:30px;padding-right:30px;--cells-checkbox-button-label:{color:var(--bbva-600, #121212);opacity:1;};--cells-checkbox-button:{opacity:0.2;};--cells-checkbox-button-checkbox-size:30px;--cells-molecule-mask:{font-style:italic;opacity:1;};}:host(:not([active])) .send-doc-info{margin:30px;padding:30px;--cells-icon-message-background-color-info:rgba(211, 211, 211, 0.12);--cells-icon-message-icon-color-info:var(--bbva-400, #BDBDBD);--cells-icon-message-header:{color:var(--bbva-400, #BDBDBD);font-size:14px;};--cells-icon-message-message:{color:var(--bbva-400, #BDBDBD);font-size:14px;};}:host(:not([active])) .continue-btn{text-align:center;--cells-st-button-bg-color-secondary:var(--bbva-200, #E9E9E9);margin:30px;}:host(:not([active])) .continue-btn button{height:50px;}.centered{display:flex;justify-content:center;align-items:center;padding-bottom:30px;@apply --glomo-life-insurance-shipping-step-centered;}.centered .subtext{font-size:var(--cells-st-button-subtext-size, 20px);@apply --cells-st-button-subtext;}</style></template></dom-module><dom-module id="glomo-life-insurance-shipping-step" assetpath="glomo-life-insurance-shipping-step/"><template><style include="glomo-life-insurance-shipping-step-styles glomo-life-insurance-shipping-step-shared-styles"></style><cells-step step-title="[[t('glomo-life-insurance-shipping-step-title')]]" class="header-colapsed" change-label="[[t('glomo-life-insurance-shipping-step-change')]]" hide-header="[[!collapsed]]" collapsed="[[collapsed]]" active="{{active}}" current-step="[[currentStep]]" max-steps="[[maxSteps]]" fixed="[[fixed]]" class-to-toggle="step-active" disable-change="{{_changeHidden}}" previous="[[previous]]" next="[[next]]" scrolled="[[scrolled]]" decorated="[[decorated]]"><div slot="full"><cells-key-values class="shipping-title" key="[[t('glomo-life-insurance-shipping-step-title')]]"><p slot="before-value">[[t('glomo-life-insurance-shipping-step-choice')]] <span on-tap="showContractual">[[t('glomo-life-insurance-shipping-step-contractual')]] </span>[[t('glomo-life-insurance-shipping-step-to-email')]]</p></cells-key-values><cells-checkbox-button class="delivery-email" icon-size="16" on-checked-changed="_checkTerm">[[t('glomo-life-insurance-shipping-step-delivery-option')]]<br><cells-molecule-mask value="[[emailUser]]" mask-chars="•" visible-chars="13" masked=""></cells-molecule-mask></cells-checkbox-button><cells-icon-message class="send-doc-info" type="info" icon="coronita:info" icon-size="24" heading="[[t('glomo-life-insurance-shipping-step-info-title')]] [[insurancesWebPage]]" message="[[t('glomo-life-insurance-shipping-step-info-message')]] [[cdmxPhone]]"></cells-icon-message><div class="continue-btn"><cells-st-button class="secondary"><button on-tap="continueShippingStep" disabled$="[[activeBtn]]">[[t('glomo-life-insurance-shipping-step-btn-continue')]]</button></cells-st-button><cells-st-button class="link centered"><button on-tap="_requestCallMeBack" disabled="[[!active]]">[[t('glomo-i-want-callme-back')]]</button></cells-st-button></div></div><div slot="filled" class="resumen-step"><p class="delivery-email-resumen"><cells-atom-icon icon="coronita:info"></cells-atom-icon><span>[[t('glomo-life-insurance-shipping-step-will-shippied-resumen')]]</span><cells-molecule-mask value="[[emailUser]]" mask-chars="•" visible-chars="13" masked=""></cells-molecule-mask></p><div class="separator-resumen-l"></div></div></cells-step></template><script>var GlomoLifeInsuranceShippingStep=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(GlomoLifeInsuranceShippingStep,_Polymer$mixinBehavio);function GlomoLifeInsuranceShippingStep(){babelHelpers.classCallCheck(this,GlomoLifeInsuranceShippingStep);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(GlomoLifeInsuranceShippingStep).apply(this,arguments))}babelHelpers.createClass(GlomoLifeInsuranceShippingStep,[{key:"continueShippingStep",/**
+   * Continue whit next step
+   */value:function continueShippingStep(){this.dispatchEvent(new CustomEvent("continue-next-step",{bubbles:!0,composed:!0}))}/**
+   * Show modal for contractual documentation
+   */},{key:"showContractual",value:function showContractual(){this.dispatchEvent(new CustomEvent("show-contractual-documentation",{bubbles:!0,composed:!0}))}/**
+   * Verify if the checkbox is checked
+   * @param {Object} event
+   */},{key:"_checkTerm",value:function _checkTerm(event){this.set("activeBtn",!event.detail.value)}/**
+   * Request the Call Me Back
+   */},{key:"_requestCallMeBack",value:function _requestCallMeBack(){this.dispatchEvent(new CustomEvent("call-me-back",{bubbles:!0,composed:!0}))}}],[{key:"is",get:function get(){return"glomo-life-insurance-shipping-step"}},{key:"properties",get:function get(){return{/**
+       * Collapse the step when is completed
+       * @type {Boolean}
+       */collapsedStep:{type:Boolean,notify:!0,value:!1},/**
+       * Active the step
+       * @type {Boolean}
+       */active:{type:Boolean,reflectToAttribute:!0},/**
+       * Email user
+       * @type {String}
+       */emailUser:{type:String,notify:!0},activeBtn:Boolean,/**
+       * Web Page Seguros
+       * @type {String}
+       */insurancesWebPage:String,/**
+       * Phone Number Seguros
+       * @type {String}
+       */cdmxPhone:String}}}]);return GlomoLifeInsuranceShippingStep}(Polymer.mixinBehaviors([CellsBehaviors.i18nBehavior,CellsBehaviors.CellsGlomoStepBehavior,CellsBehaviors.CellsGlomoMainStepBehavior],Polymer.Element));customElements.define(GlomoLifeInsuranceShippingStep.is,GlomoLifeInsuranceShippingStep);</script></dom-module><dom-module id="glomo-life-insurance-terms-step-styles" assetpath="glomo-life-insurance-terms-step/"><template><style>:host{display:block;box-sizing:border-box;font-family:var(--cells-fontDefault, sans-serif);@apply --glomo-life-insurance-terms-step;}:host cells-atom-amount{--cells-atom-amount-sr:{height:0;margin:0;position:relative;};}:host .term-title{margin:0;text-transform:uppercase;font-weight:bold;font-size:16px;padding:50px 30px 30px;@apply --glomo-life-insurance-terms-step-title;}:host .check-container{display:flex;display:-webkit-box;margin:0 30px 30px;font-size:14px;--cells-checkbox-button:{padding:0;width:32px;height:32px;};--cells-checkbox-button-checkbox-size:30px;--cells-checkbox-button-icon-color-checked:var(--bbva-medium-blue, #1973B8);--cells-checkbox-button-body-label:{display:none;};--cells-molecule-mask:{font-style:italic;padding-top:5px;};@apply --glomo-life-insurance-terms-step-check-container;}:host .check-container p{margin:3px 0 0 10px;}:host .blue-font{font-weight:bold;color:var(--bbva-medium-blue, #1973B8);text-transform:lowercase;@apply --glomo-life-insurance-terms-step-blue-font;}:host .any-omission{padding:0 30px;position:relative;top:-20px;--cells-icon-message-color:var(--bbva-light-blue, #5BBEFF);--cells-icon-message-message:{color:var(--bbva-500, #666666);font-size:14px;font-style:italic;};@apply --glomo-life-insurance-terms-step-any-omission;}:host .continue-message{margin:30px;padding:30px;--cells-icon-message-background-color-info:rgba(91, 190, 255, 0.1);@apply --glomo-life-insurance-terms-step-continue-message;}:host .continue-btn{text-align:center;margin:30px;@apply --glomo-life-insurance-terms-step-continue-btn;}:host .continue-btn button{height:50px;}:host .header-collapsed{--cells-step-header:{background:var(--bbva-core-blue, #004481);padding:30px 30px 20px 30px;};--cells-step-header-title:{font-weight:500;color:var(--bbva-white, #ffffff);font-size:16px;};--cells-step-header-button-text:{color:var(--bbva-light-blue, #5BBEFF);padding:0;text-align:right;};--cells-st-button-m-min-height:14px;--cells-step-iron-collapse-expanded-resume:{padding:0;};@apply --glomo-life-insurance-terms-step-header-collapsed;}:host .resumen-step{padding:0;background:var(--bbva-core-blue, #004481);@apply --glomo-life-insurance-terms-step-resumen-step;}:host .terms-accepted-resumen{margin:0 30px 0 30px;color:var(--bbva-white, #FFFFFF);font-style:italic;font-weight:100;@apply --glomo-life-insurance-terms-step-terms-accepted-resumen;}:host .terms-accepted-resumen span{padding-left:10px;}:host([hidden]), [hidden]{display:none !important;}*, *:before, *:after{box-sizing:inherit;}:host(:not([active])){background:rgba(189, 189, 189, 0.2);pointer-events:none;@apply --glomo-life-insurance-terms-step-not-active;}:host(:not([active])) .term-title{margin:0;text-transform:uppercase;font-weight:bold;font-size:16px;padding:50px 30px 30px;color:var(--bbva-400, #BDBDBD);@apply --glomo-life-insurance-terms-step-title-not-active;}:host(:not([active])) .check-container{display:flex;margin:0 30px 30px;font-size:14px;color:var(--bbva-400, #BDBDBD);--cells-checkbox-button:{padding:0;width:32px;height:32px;opacity:0.2;};--cells-checkbox-button-checkbox-size:30px;--cells-checkbox-button-icon-color-checked:var(--bbva-medium-blue, #1973B8);--cells-checkbox-button-body-label:{display:none;};--cells-molecule-mask:{font-style:italic;padding-top:5px;};@apply --glomo-life-insurance-terms-step-check-container-not-active;}:host(:not([active])) .check-container p{margin:3px 0 0 10px;}:host(:not([active])) .blue-font{font-weight:bold;color:var(--bbva-400, #BDBDBD);@apply --glomo-life-insurance-terms-step-blue-font-not-active;}:host(:not([active])) .any-omission{padding:0 30px 10px;position:relative;top:-20px;--cells-icon-message-color:var(--bbva-400, #BDBDBD);--cells-icon-message-message:{color:var(--bbva-400, #BDBDBD);font-size:14px;font-style:italic;};@apply --glomo-life-insurance-terms-step-any-omission-not-active;}:host(:not([active])) .continue-message{margin:30px;padding:30px;--cells-icon-message-background-color-info:rgba(211, 211, 211, 0.12);--cells-icon-message-icon-color-info:var(--bbva-400, #BDBDBD);--cells-icon-message-message:{color:var(--bbva-400, #BDBDBD);font-size:14px;};@apply --glomo-life-insurance-terms-step-continue-message-not-active;}:host(:not([active])) .continue-btn{text-align:center;--cells-st-button-bg-color-secondary:var(--bbva-200, #E9E9E9);margin:30px;@apply --glomo-life-insurance-terms-step-continue-btn-not-active;}:host(:not([active])) .continue-btn button{height:50px;}:host([active][collapsed]){padding-bottom:110px;}.font-middle{font-size:13px;--cells-molecule-mask-content:{margin:10px 0 0 0;padding:0;};}</style></template></dom-module><dom-module id="glomo-life-insurance-terms-step" assetpath="glomo-life-insurance-terms-step/"><template><style include="glomo-life-insurance-terms-step-styles glomo-life-insurance-terms-step-shared-styles"></style><cells-step step-title="[[t('glomo-life-insurance-terms-step-title')]]" class="header-collapsed" change-label="[[t('glomo-life-insurance-terms-step-consult')]]" hide-header="[[!collapsed]]" collapsed="[[collapsed]]" active="{{active}}" current-step="[[currentStep]]" max-steps="[[maxSteps]]" fixed="[[fixed]]" class-to-toggle="step-active" disable-change="{{_changeHidden}}" previous="[[previous]]" next="[[next]]" scrolled="[[scrolled]]" decorated="[[decorated]]"><div slot="full"><p class="term-title">[[t('glomo-life-insurance-terms-step-title')]]</p><div class="check-container"><cells-checkbox-button icon-size="[[checkIconSize]]" on-checked-changed="_checkTerm"></cells-checkbox-button><p>[[t('glomo-life-insurance-terms-step-confirm-information-true')]]</p></div><cells-icon-message class="any-omission inline" icon="coronita:info" message="[[t('glomo-life-insurance-terms-step-any-omission')]]" icon-size="[[checkIconSize]]"></cells-icon-message><div class="check-container"><cells-checkbox-button icon-size="[[checkIconSize]]" on-checked-changed="_checkTerm"></cells-checkbox-button><p>[[t('glomo-life-insurance-terms-step-i-accept-the')]] <span id="[[opCodeConditions]]" data-doc$="[[t('glomo-life-insurance-terms-step-doc-conditions')]]" class="blue-font" on-tap="showNotices">[[t('glomo-life-insurance-terms-step-terms-conditions')]] </span>[[t('glomo-life-insurance-terms-step-insurance')]]</p></div><div class="check-container"><cells-checkbox-button icon-size="[[checkIconSize]]" on-checked-changed="_checkTerm"></cells-checkbox-button><p>[[t('glomo-life-insurance-terms-step-give-consent')]] <span id="[[opCodePrivacy]]" class="blue-font" on-tap="showNotices">[[t('glomo-life-insurance-terms-step-notice-privacy')]] </span>.</p></div><div class="check-container"><cells-checkbox-button icon-size="[[checkIconSize]]" on-checked-changed="_checkTerm"></cells-checkbox-button><p>[[t('glomo-life-insurance-terms-step-i-authorize')]] <span id="[[opCodePayment]]" data-doc$="[[paymentOption.document]]" class="blue-font" on-tap="showNotices">[[t('glomo-life-insurance-terms-step-payment-terms')]] [[paymentOption.frequency]] </span>[[t('glomo-life-insurance-terms-step-of')]]<cells-atom-amount amount="[[paymentOption.amount]]" currency-code="[[paymentOption.currency]]" local-currency="[[paymentOption.currency]]" language="[[language]]"></cells-atom-amount>[[t('glomo-life-insurance-terms-step-in-my')]] [[paymentOption.name]]<cells-molecule-mask class="font-middle" value="[[paymentOption.description]]" mask-chars="•" visible-chars="4" masked=""></cells-molecule-mask></p></div><div class="continue-btn"><cells-st-button class="secondary"><button disabled="[[disabledButton]]" on-tap="_continueTermsBtn">[[t('glomo-life-insurance-terms-step-continue')]]</button></cells-st-button></div></div><div slot="filled" class="resumen-step"><template is="dom-if" if="[[!disabledButton]]"><p class="terms-accepted-resumen"><cells-atom-icon icon="coronita:correct"></cells-atom-icon><span>[[t('glomo-life-insurance-terms-step-accepted-terms')]]</span></p></template></div></cells-step></template><script>var GlomoLifeInsuranceTermsStep=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(GlomoLifeInsuranceTermsStep,_Polymer$mixinBehavio);function GlomoLifeInsuranceTermsStep(){babelHelpers.classCallCheck(this,GlomoLifeInsuranceTermsStep);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(GlomoLifeInsuranceTermsStep).apply(this,arguments))}babelHelpers.createClass(GlomoLifeInsuranceTermsStep,[{key:"_checkTerm",/**
+   * Check if the term is accepted
+   * @param {Object} event
+   */value:function _checkTerm(event){return event.detail.value?this.termsAccepted++:this.termsAccepted--}/**
+   * Check if all terms are accepted
+   * @param {Number} termsAccepted
+   */},{key:"_disabledContinue",value:function _disabledContinue(termsAccepted){return!(termsAccepted===this.minTermsAccepted)}/**
+   * Continue whit the next step
+   */},{key:"_continueTermsBtn",value:function _continueTermsBtn(){this.dispatchEvent(new CustomEvent("continue-next-step",{bubbles:!0,composed:!0}))}/**
+   * Show notice message
+   * @param {Object} event
+   */},{key:"showNotices",value:function showNotices(event){this.dispatchEvent(new CustomEvent("show-notice-message",{bubbles:!0,composed:!0,detail:{noticeCode:event.target.id,doc:event.target.dataset.doc}}))}}],[{key:"is",get:function get(){return"glomo-life-insurance-terms-step"}},{key:"properties",get:function get(){return{/**
+       * Collapse the step when is completed
+       * @type {Boolean}
+       */collapsedStep:{type:Boolean,notify:!0},/**
+       * Active the step
+       * @type {Boolean}
+       */active:{type:Boolean,reflectToAttribute:!0},/**
+       * Size for the icon checked
+       * @type {Number}
+       */checkIconSize:{type:Number,value:16},/**
+       * User email
+       * @type {String}
+       */emailUser:{type:String},/**
+       * Payment option selected
+       * @type {Object}
+       */paymentOption:Object,/**
+       * Number of terms accepted
+       * @type {Number}
+       */termsAccepted:{type:Number,value:0},/**
+       * Button disabled or enabled to continue
+       * @type {Boolean}
+       */disabledButton:{type:Boolean,computed:"_disabledContinue(termsAccepted)"},/**
+       * Language for cells-atom-amount
+       * @type {String}
+       */language:{type:String},/**
+       * Number minimum for terms
+       * @type {Number}
+       */minTermsAccepted:{type:Number,value:0},/**
+       * Number of visibles chars
+       * @type {Number}
+       */visibleChars:{type:Number,value:15},/**
+       * Option code for conditions
+       * @type {String}
+       */opCodeConditions:{type:String,value:"LIN005"},/**
+       * Option code for payment
+       * @type {String}
+       */opCodePayment:{type:String,value:"LIN006"},/**
+       * Option code for privacy
+       * @type {String}
+       */opCodePrivacy:{type:String,value:"LIN004"}}}}]);return GlomoLifeInsuranceTermsStep}(Polymer.mixinBehaviors([CellsBehaviors.i18nBehavior,CellsBehaviors.CellsGlomoMainStepBehavior,CellsBehaviors.CellsGlomoStepBehavior],Polymer.Element));customElements.define(GlomoLifeInsuranceTermsStep.is,GlomoLifeInsuranceTermsStep);</script></dom-module><dom-module id="glomo-middle-modal-list-styles" assetpath="glomo-middle-modal-list/"><template><style>:host{display:block;box-sizing:border-box;font-family:var(--cells-fontDefault, sans-serif);@apply --glomo-middle-modal-list;}:host([hidden]), [hidden]{display:none !important;}*, *:before, *:after{box-sizing:inherit;}cells-middle-modal{--cells-glomo-list-modal-item-title-container:{width:100%;};--cells-glomo-list-modal-item:{height:-webkit-fit-content;height:-moz-fit-content;height:fit-content;line-height:24px;align-items:center;overflow:hidden;padding:15px 30px;};--cells-glomo-list-modal-ul:{padding:15px 0;};--cells-middle-modal-md-content:{padding:0;};--cells-middle-modal-md-modal:{min-width:280px;width:280px;};--cells-middle-modal-md-overlay-background-color:var(--bbva-navy);--cells-middle-modal-md-overlay-opacity:0.9;--cells-glomo-list-modal-max-height-scroll:75vh;}</style></template></dom-module><dom-module id="glomo-middle-modal-list" assetpath="glomo-middle-modal-list/"><template><style include="glomo-middle-modal-list-styles glomo-middle-modal-list-shared-styles"></style><slot></slot><cells-middle-modal close-on-click="[[closeOnClick]]" open="{{isModalOpen}}"><cells-glomo-list-modal data="[[modalList]]" on-cells-glomo-list-modal-selected="_itemListSelected" icon="[[icon]]"></cells-glomo-list-modal></cells-middle-modal></template><script>var GlomoMiddleModalList=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(GlomoMiddleModalList,_Polymer$mixinBehavio);function GlomoMiddleModalList(){babelHelpers.classCallCheck(this,GlomoMiddleModalList);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(GlomoMiddleModalList).apply(this,arguments))}babelHelpers.createClass(GlomoMiddleModalList,[{key:"_itemListSelected",/**
+   * @description Catch selected item
+   * @param {Object} event selected item detail
+   * @event modal-list-item-selected
+   */value:function _itemListSelected(event){this.dispatchEvent(new CustomEvent("modal-list-item-selected",{detail:event.detail,bubbles:!0}))}}],[{key:"is",get:function get(){return"glomo-middle-modal-list"}},{key:"properties",get:function get(){return{/**
+       * @type {Boolean}
+       * @description enable close on click background
+       */closeOnClick:Boolean,/**
+       * @type {Boolean}
+       * @description is modal open flag
+       */isModalOpen:Boolean,/**
+       * @type {String}
+       * @description icon name
+       */icon:String,/**
+       * @type {Array}
+       * @description List data
+       */modalList:Array}}}]);return GlomoMiddleModalList}(Polymer.mixinBehaviors([CellsBehaviors.i18nBehavior],Polymer.Element));customElements.define(GlomoMiddleModalList.is,GlomoMiddleModalList);</script></dom-module><dom-module id="cells-glomo-dm-lifehealth-insurances" assetpath="cells-glomo-dm-lifehealth-insurances/"><template></template><script>var CellsGlomoDmLifehealthInsurances=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(CellsGlomoDmLifehealthInsurances,_Polymer$mixinBehavio);function CellsGlomoDmLifehealthInsurances(){babelHelpers.classCallCheck(this,CellsGlomoDmLifehealthInsurances);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(CellsGlomoDmLifehealthInsurances).apply(this,arguments))}babelHelpers.createClass(CellsGlomoDmLifehealthInsurances,[{key:"requestInitialOffer",/**
+   * Function to make the request for the initial offer
+   * @param {Object} payload 
+   */value:function requestInitialOffer(payload){var endpoint="offers/".concat(payload.offerId);this.requestBuilder(this.resource,endpoint,"GET",this.GET_INITIAL_OFFER_OP_CODE,{},{})}/**
+   * Method to make the request for the offer recalculated
+   * @param {Object} payload 
+   */},{key:"reuqestRecalculateOffer",value:function reuqestRecalculateOffer(payload){var endpoint="quotations/".concat(payload.quotationId);this.requestBuilder(this.resource,endpoint,"PATCH",this.PATCH_RECALCULATE_OFFER,payload.bodyOffer,{})}/**
+   * Method to close the insurance offer
+   * @param {Object} payload 
+   */},{key:"requestCloseOffer",value:function requestCloseOffer(payload){var endpoint="quotations/".concat(payload.quotationId);this.requestBuilder(this.resource,endpoint,"PUT",this.PUT_CLOSE_QUOTATION_OFFER,payload.bodyOffer,{})}/**
+   * common success response handler which calls the respective method for response handling based on opCode
+   * @param {Object} - response payload
+   */},{key:"successResponseHandler",value:function successResponseHandler(payload){if(!this.isEmptyObject(payload)){var responsePayload=this.extractResponsePayload(payload),handledResponse=!0;switch(responsePayload.opCode){case this.GET_INITIAL_OFFER_OP_CODE:this.handledGetInitialOfferSuccess(responsePayload);break;case this.PATCH_RECALCULATE_OFFER:this.handledPatchRecalculateOfferSuccess(responsePayload);break;case this.PUT_CLOSE_QUOTATION_OFFER:this.handledPutCloseOfferSuccess(responsePayload);break;default:handledResponse=!1;break;}if(handledResponse){this.cleanGlobalRespChannel()}}}/**
+   * common failure response handler which calls the respective method for response handling based on opCode
+   * @param {Object} - response payload
+   */},{key:"errorResponseHandler",value:function errorResponseHandler(payload){var responsePayload=this.extractResponsePayload(payload),handledResponse=!0;switch(responsePayload.opCode){case this.GET_INITIAL_OFFER_OP_CODE:this.handledGetInitialOfferFailure(responsePayload);break;case this.PATCH_RECALCULATE_OFFER:this.handledPatchRecalculateOfferFailure(responsePayload);break;case this.PUT_CLOSE_QUOTATION_OFFER:this.handledPutCloseOfferFailure(responsePayload);break;default:handledResponse=!1;break;}if(handledResponse){this.cleanGlobalErrorChannel()}}/**
+   * Function to receive the correct answer from the initial offer
+   * @param {Object} responsePayload 
+   */},{key:"handledGetInitialOfferSuccess",value:function handledGetInitialOfferSuccess(responsePayload){var status=responsePayload.status;if(200===status){var responseData=this.extractSuccessResponse(responsePayload);this.dispatchEvent(new CustomEvent("initial-offer-from-dm",{detail:responseData}))}}/**
+   * Function to receive the error answer from the initial offer
+   * @param {Object} responsePayload 
+   */},{key:"handledGetInitialOfferFailure",value:function handledGetInitialOfferFailure(responsePayload){this.dispatchEvent(new CustomEvent("initial-offer-error-from-dm"))}/**
+   * Function to receive the correct answer from the offer recalculated
+   * @param {Object} responsePayload 
+   */},{key:"handledPatchRecalculateOfferSuccess",value:function handledPatchRecalculateOfferSuccess(responsePayload){var status=responsePayload.status;if(200===status){var responseData=responsePayload.response_body;this.dispatchEvent(new CustomEvent("recalculate-offer-from-dm",{detail:responseData}))}}/**
+   * Function to receive the error answer from the offer recalculated
+   * @param {Object} responsePayload 
+   */},{key:"handledPatchRecalculateOfferFailure",value:function handledPatchRecalculateOfferFailure(responsePayload){this.dispatchEvent(new CustomEvent("recalculate-offer-error-from-dm"))}/**
+   * Function to close the offer
+   * @param {Object} responsePayload 
+   */},{key:"handledPutCloseOfferSuccess",value:function handledPutCloseOfferSuccess(responsePayload){var status=responsePayload.status;if(200===status){var responseData=responsePayload.response_body;this.dispatchEvent(new CustomEvent("close-offer-from-dm",{detail:responseData}))}}/**
+   * Function to catch error in offer closed
+   * @param {Object} responsePayload 
+   */},{key:"handledPutCloseOfferFailure",value:function handledPutCloseOfferFailure(responsePayload){this.dispatchEvent(new CustomEvent("close-offer-error-from-dm"))}}],[{key:"is",get:function get(){return"cells-glomo-dm-lifehealth-insurances"}},{key:"properties",get:function get(){return{/**
+       * resource used in API
+       * @type {String}
+       */resource:{type:String,value:"lifehealth-insurances"},/**
+       * Code for the initial offer
+       * @type {String}
+       */GET_INITIAL_OFFER_OP_CODE:{type:String,value:"LHI001"},/**
+       * Code for the offer recalculated
+       * @type {String}
+       */PATCH_RECALCULATE_OFFER:{type:String,value:"LHI002"},/**
+       * Code for close the offer
+       */PUT_CLOSE_QUOTATION_OFFER:{type:String,value:"LHI003"},/**
+       * chache storage to reduce network calls
+       * @type {Object}
+       */globalCacheStorage:{type:Object},/**
+       * global serve config retrieved from native
+       */globalServerConfig:{type:Object}}}}]);return CellsGlomoDmLifehealthInsurances}(Polymer.mixinBehaviors([CellsBehaviors.CellsGlomoDmBehavior,CellsBehaviors.CellsGlomoDiacriticsBehavior,CellsBehaviors.CellsGlomoUtilsBehavior],Polymer.Element));customElements.define(CellsGlomoDmLifehealthInsurances.is,CellsGlomoDmLifehealthInsurances);</script></dom-module><dom-module id="cells-glomo-dm-insurances-questionnaires" assetpath="cells-glomo-dm-insurances-questionnaires/"><template></template><script>var CellsGlomoDmInsurancesQuestionnaires=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(CellsGlomoDmInsurancesQuestionnaires,_Polymer$mixinBehavio);function CellsGlomoDmInsurancesQuestionnaires(){babelHelpers.classCallCheck(this,CellsGlomoDmInsurancesQuestionnaires);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(CellsGlomoDmInsurancesQuestionnaires).apply(this,arguments))}babelHelpers.createClass(CellsGlomoDmInsurancesQuestionnaires,[{key:"requestHealtQuestions",/**
+   * Function to make the request of the health questions
+   */value:function requestHealtQuestions(payload){var endpoint="templates?product.id=".concat(payload.productId,"&plan.id=").concat(payload.planId);this.requestBuilder(this.resource,endpoint,"GET",this.GET_HEALT_QUESTIONS_OP_CODE,{},{})}/**
+   * Function to make the requesto for validating the questions
+   * @param {*} payload 
+   */},{key:"requestValidateHealtQuestions",value:function requestValidateHealtQuestions(payload){var endpoint="questionnaires/validate";this.requestBuilder(this.resource,endpoint,"POST",this.POST_HEALT_QUESTIONS_VALIDATE_OP_CODE,payload.body,{})}/**
+   * common success response handler which calls the respective method for response handling based on opCode
+   * @param {Object} - response payload
+   */},{key:"successResponseHandler",value:function successResponseHandler(payload){if(!this.isEmptyObject(payload)){var responsePayload=this.extractResponsePayload(payload),handledResponse=!0;switch(responsePayload.opCode){case this.GET_HEALT_QUESTIONS_OP_CODE:this.handledGetHealtQuestionsSuccess(responsePayload);break;case this.POST_HEALT_QUESTIONS_VALIDATE_OP_CODE:this.handledPostHealtQuestionsValidateSuccess(responsePayload);break;default:handledResponse=!1;break;}if(handledResponse){this.cleanGlobalRespChannel()}}}/**
+   * common failure response handler which calls the respective method for response handling based on opCode
+   * @param {Object} - response payload
+   */},{key:"errorResponseHandler",value:function errorResponseHandler(payload){var responsePayload=this.extractResponsePayload(payload),handledResponse=!0;switch(responsePayload.opCode){case this.GET_HEALT_QUESTIONS_OP_CODE:this.handledGetHealtQuestionsFailure(responsePayload);break;case this.POST_HEALT_QUESTIONS_VALIDATE_OP_CODE:this.handledPostHealtQuestionsValidateFailure(responsePayload);break;default:handledResponse=!1;break;}if(handledResponse){this.cleanGlobalErrorChannel()}}/**
+   * Function to receive the correct answer from the healt questions
+   * @param {Object} responsePayload 
+   */},{key:"handledGetHealtQuestionsSuccess",value:function handledGetHealtQuestionsSuccess(responsePayload){var status=responsePayload.status;if(200===status){var responseData=this.extractSuccessResponse(responsePayload);this.dispatchEvent(new CustomEvent("healt-questions-from-dm",{detail:responseData}))}}/**
+   * Function to receive the error answer from the healt questions
+   * @param {Object} responsePayload 
+   */},{key:"handledGetHealtQuestionsFailure",value:function handledGetHealtQuestionsFailure(responsePayload){this.dispatchEvent(new CustomEvent("healt-questions-error-from-dm"))}/**
+   * Function to receive the correct answer from validating the healt questions
+   * @param {Object} responsePayload 
+   */},{key:"handledPostHealtQuestionsValidateSuccess",value:function handledPostHealtQuestionsValidateSuccess(responsePayload){var status=responsePayload.status;if(204===status){this.dispatchEvent(new CustomEvent("healt-questions-validate-from-dm"))}}/**
+   * Function to receive the error answer from validating the healt questions
+   * @param {Object} responsePayload 
+   */},{key:"handledPostHealtQuestionsValidateFailure",value:function handledPostHealtQuestionsValidateFailure(responsePayload){var status=responsePayload.status;if(409===status){this.dispatchEvent(new CustomEvent("healt-questions-validate-error-from-dm"))}}}],[{key:"is",get:function get(){return"cells-glomo-dm-insurances-questionnaires"}},{key:"properties",get:function get(){return{/**
+       * resource used in API
+       * @type {String}
+       */resource:{type:String,value:"insurances-questionnaires"},/**
+       * Code for the list of health questions
+       * @type {String}
+       */GET_HEALT_QUESTIONS_OP_CODE:{type:String,value:"IHQ001"},/**
+       * Code for validating the questions
+       */POST_HEALT_QUESTIONS_VALIDATE_OP_CODE:{type:String,value:"IHQ002"},/**
+       * chache storage to reduce network calls
+       * @type {Object}
+       */globalCacheStorage:{type:Object},/**
+       * global serve config retrieved from native
+       */globalServerConfig:{type:Object}}}}]);return CellsGlomoDmInsurancesQuestionnaires}(Polymer.mixinBehaviors([CellsBehaviors.CellsGlomoDmBehavior,CellsBehaviors.CellsGlomoDiacriticsBehavior,CellsBehaviors.CellsGlomoUtilsBehavior],Polymer.Element));customElements.define(CellsGlomoDmInsurancesQuestionnaires.is,CellsGlomoDmInsurancesQuestionnaires);</script></dom-module><dom-module id="cells-glomo-dm-insurances" assetpath="cells-glomo-dm-insurances/"><template></template><script>var CellsGlomoDmInsurances=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(CellsGlomoDmInsurances,_Polymer$mixinBehavio);function CellsGlomoDmInsurances(){babelHelpers.classCallCheck(this,CellsGlomoDmInsurances);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(CellsGlomoDmInsurances).apply(this,arguments))}babelHelpers.createClass(CellsGlomoDmInsurances,[{key:"requestQuotationsIssuePolicy",/**
+   * Request the issue policy for the closed quotation
+   * @param {Object} payload
+   */value:function requestQuotationsIssuePolicy(payload){var endpoint="quotations/".concat(payload.quotationId,"/issue-policy");this.requestBuilder(this.resource,endpoint,"POST",this.POST_QUOTATIONS_ISSUE_POLICY_OP_CODE,payload.body,{})}/**
+   * Request Financial Health Insurances Data
+   * @param {Object} payload
+   */},{key:"requestFinancialHealthInsurances",value:function requestFinancialHealthInsurances(){var endpoint="suggest-insurances";this.requestBuilder(this.resource,endpoint,"GET",this.GET_FINANCIAL_HEALTH_INSURANCES_OP_CODE,{},{})}/**
+   * common success response handler which calls the respective method for response handling based on opCode
+   * @param {Object} - response payload
+   */},{key:"successResponseHandler",value:function successResponseHandler(payload){if(!this.isEmptyObject(payload)){var responsePayload=this.extractResponsePayload(payload),handledResponse=!0;switch(responsePayload.opCode){case this.POST_QUOTATIONS_ISSUE_POLICY_OP_CODE:this.handleGetIssuePolicySuccess(responsePayload);break;case this.GET_FINANCIAL_HEALTH_INSURANCES_OP_CODE:this.handleFinancialHealthInsurancesSuccess(responsePayload);break;default:handledResponse=!1;break;}if(handledResponse){this.cleanGlobalRespChannel()}}}/**
+   * common failure response handler which calls the respective method for response handling based on opCode
+   * @param {Object} - response payload
+   */},{key:"errorResponseHandler",value:function errorResponseHandler(payload){var responsePayload=this.extractResponsePayload(payload),handledResponse=!0;switch(responsePayload.opCode){case this.POST_QUOTATIONS_ISSUE_POLICY_OP_CODE:this.handleGetIssuePolicyFailure(responsePayload);break;case this.GET_FINANCIAL_HEALTH_INSURANCES_OP_CODE:this.handleFinancialHealthInsurancesFailure(responsePayload);break;default:handledResponse=!1;break;}if(handledResponse){this.cleanGlobalErrorChannel()}}/**
+   * Function to receive the correct answer from the issue policy
+   * @param {Object} responsePayload
+   */},{key:"handleGetIssuePolicySuccess",value:function handleGetIssuePolicySuccess(responsePayload){var status=responsePayload.status;if(200===status){var responseData=this.extractSuccessResponse(responsePayload);this.dispatchEvent(new CustomEvent("issue-policy-from-dm",{detail:responseData}))}}/**
+   * Function to receive the error answer from the issue policy
+   * @param {Object} responsePayload
+   */},{key:"handleGetIssuePolicyFailure",value:function handleGetIssuePolicyFailure(responsePayload){this.fireStandardError("issue-policy-error-from-dm",responsePayload)}/**
+   * handles get financial health request success response
+   * @param {Object} - response payload
+   */},{key:"handleFinancialHealthInsurancesSuccess",value:function handleFinancialHealthInsurancesSuccess(responsePayload){var status=responsePayload.status;if(200===status){var responseData=this.extractSuccessResponse(responsePayload);this.dispatchEvent(new CustomEvent("financial-health-insurances-details-from-dm",{bubbles:!0,composed:!0,detail:responseData}))}}/**
+   * handles get financial health request failure response
+   * @param {Object} - response payload
+   */},{key:"handleFinancialHealthInsurancesFailure",value:function handleFinancialHealthInsurancesFailure(responsePayload){var responseData=this.extractFailureResponse(responsePayload);this.dispatchEvent(new CustomEvent("financial-health-insurances-details-data-error",{bubbles:!0,composed:!0,detail:responseData}))}}],[{key:"is",get:function get(){return"cells-glomo-dm-insurances"}},{key:"properties",get:function get(){return{/**
+       * resource used in API
+       * @type {String}
+       */resource:{type:String,value:"insurances"},/**
+       * Code for obtain the issue policy
+       */POST_QUOTATIONS_ISSUE_POLICY_OP_CODE:{type:String,value:"IQIP001"},/**
+       * Code for obtain the Financial Health Insurances
+       */GET_FINANCIAL_HEALTH_INSURANCES_OP_CODE:{type:String,value:"FHI001"},/**
+       * cache storage to reduce network calls
+       * @type {Object}
+       */globalCacheStorage:{type:Object},/**
+       * global server config retrieved from native
+       * @type {Object}
+       */globalServerConfig:{type:Object}}}}]);return CellsGlomoDmInsurances}(Polymer.mixinBehaviors([CellsBehaviors.CellsGlomoDmBehavior,CellsBehaviors.CellsGlomoDiacriticsBehavior,CellsBehaviors.CellsGlomoUtilsBehavior],Polymer.Element));customElements.define(CellsGlomoDmInsurances.is,CellsGlomoDmInsurances);</script></dom-module></div></body></html>

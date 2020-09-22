@@ -1,0 +1,31 @@
+{
+  "data": {
+    "availableFundPosition": {
+      "amount": "10596.4",
+      "currency": "PEN"
+    },
+    "country": {
+      "id": "PE",
+      "name": "Perú"
+    },
+    "currency": {
+      "id": "PEN",
+      "name": "SOLES"
+    },
+    "fundId": "0141",
+    "fundPosition": {
+      "amount": "10596.4",
+      "currency": "PEN"
+    },
+    "netAssetValue": {
+      "amount": "141.87360024",
+      "currency": "PEN"
+    },
+    "netAssetValueDate": "2018-05-21T12:00:00.000-0500",
+    "ownedShares": "74.68901913000001",
+    "title": {
+      "id": "0141",
+      "name": "BBVA CASH SOLES"
+    }
+  }
+}

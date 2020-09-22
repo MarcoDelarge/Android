@@ -1,0 +1,34 @@
+
+{
+    "data": [{
+      "id": "234567893456789034567890",
+      "alias": "Honda City Car 20099",
+      "operationDate": "2019-03-28T10:51:00.000-05:00",
+      "operationNumber": "8937220783623",
+      "category": {
+        "id": "CAR",
+        "name": "Car"
+      },
+      "isScheduled": true,
+      "scheduledDeposit": {
+        "depositAmount": {
+          "amount": 5267.78,
+          "currency": "MXN"
+        }
+      },
+      "status": "ACTIVE",
+      "relatedContract": {
+        "id": "omv8j3jwndoh2f3834gtrg",
+        "number": "1234567890098765",
+        "product": {
+          "productType": {
+            "id": "ACCOUNTS"
+          },
+          "numberType": {
+            "id": "SIMPLE_ACCOUNT"
+          }
+        }
+      },
+      "priority": "1"
+    }]
+  }

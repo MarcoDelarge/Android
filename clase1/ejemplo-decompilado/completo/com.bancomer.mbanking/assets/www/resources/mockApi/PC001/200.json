@@ -1,0 +1,238 @@
+{
+    "data": [
+        {
+            "id": "57MXZ6G4BHYQ4VA2QCM50A72MW",
+            "openingDate": "2018-05-08",
+            "ticketNumber": "1805000042",
+            "operationNumber": "6817369477",
+            "claimedAmount": {
+                "amount": 177.82,
+                "currency": "MXN"
+            },
+            "contract": {
+                "id": "0B8E96G4DZ6WKKCPK0B1NC5AGVA34KBTMCE0A4KW4H0B8R21QJY0",
+                "number": 4180780400479276,
+                "product": {
+                    "numberType": {
+                        "id": "PAN",
+                        "name": "Número de cuenta principal. Consiste en números de 14, 15 o 16 dígitos que están grabados y / o codificados en una tarjeta de plástico que identifica al emisor y la cuenta particular del titular de la tarjeta."
+                    },
+                    "productType": {
+                        "id": "CARDS",
+                        "name": "TARJETA DE CREDITO"
+                    }
+                }
+            },
+            "status": {
+                "id": "APPROVED",
+                "name": "A Favor",
+                "description": "El cargo de tu aclaraciOn se ha abonado a tu cuenta, identificalo en tus movimientos como 'DEPOSITO POR CORRECCION'",
+                "date": "2018-05-08"
+            }
+        },
+        {
+            "id": "7Y6V0Y6J627RH9ZS5YY9WAXTWNT9E259J20S2PPR1YRNTFVA1ZCX8CJDFAHHR18JFGJ41D3086YBR",
+            "openingDate": "2018-04-11",
+            "ticketNumber": "1804000092",
+            "operationNumber": "6816121942",
+            "transaction": {
+                "transactionType": {
+                    "id": "CASH_WITHDRAWAL"
+                }
+            },
+            "claimedAmount": {
+                "amount": 3000.2,
+                "currency": "MXN"
+            },
+            "contract": {
+                "id": "FMDV8EZ60GB4HCR6R67P5HCT27A34KBTMCE0A4KW4H0B8R21QJY0",
+                "number": 4555143000187856,
+                "product": {
+                    "numberType": {
+                        "id": "PAN",
+                        "name": "Número de cuenta principal. Consiste en números de 14, 15 o 16 dígitos que están grabados y / o codificados en una tarjeta de plástico que identifica al emisor y la cuenta particular del titular de la tarjeta."
+                    },
+                    "productType": {
+                        "id": "CARDS",
+                        "name": "TARJETA DE CREDITO"
+                    }
+                }
+            },
+            "status": {
+                "id": "IN_PROGRESS",
+                "name": "En Proceso",
+                "description": "Estamos atendiendo tu aclaración y te responderemos antes del 26 de abril de 2018"
+            }
+        },
+        {
+            "id": "7Y6V0Y6J627RH9ZS5YY9WAXTWNT9E259J20S2PPR1YRNTFVA1ZCX8CJDFAHHR18JFGJ41D3086YBR",
+            "openingDate": "2018-04-11",
+            "ticketNumber": "1804000092",
+            "operationNumber": "6816121942",
+            "transaction": {
+                "transactionType": {
+                    "id": "CASH_WITHDRAWAL"
+                }
+            },
+            "claimedAmount": {
+                "amount": 2000.2,
+                "currency": "MXN"
+            },
+            "contract": {
+                "id": "FMDV8EZ60GB4HCR6R67P5HCT27A34KBTMCE0A4KW4H0B8R21QJY0",
+                "number": 4555143000187855,
+                "product": {
+                    "numberType": {
+                        "id": "PAN",
+                        "name": "Número de cuenta principal. Consiste en números de 14,15 o 16 dígitos que están grabados y / o codificados en una tarjeta de plástico que identifica al emisor y la cuenta particular del titular de la tarjeta."
+                    },
+                    "productType": {
+                        "id": "CARDS",
+                        "name": "TARJETA DE CREDITO"
+                    }
+                }
+            },
+            "status": {
+                "id": "IN_PROGRESS",
+                "name": "En Proceso",
+                "description": "Estamos atendiendo tu aclaración y te responderemos antes del 26 de abril de 2018"
+            }
+        },
+        {
+            "id": "7Y6V0Y6J627RH9ZS5YY9WAXTWNT9E259J20S2PPR1YRNTFVA1ZCX8CJDFAHHR18JFGJ41D3086YBR",
+            "openingDate": "2018-04-11",
+            "ticketNumber": "1804000092",
+            "operationNumber": "6816121942",
+            "transaction": {
+                "transactionType": {
+                    "id": "CASH_WITHDRAWAL"
+                }
+            },
+            "claimedAmount": {
+                "amount": 1000.2,
+                "currency": "MXN"
+            },
+            "contract": {
+                "id": "FMDV8EZ60GB4HCR6R67P5HCT27A34KBTMCE0A4KW4H0B8R21QJY0",
+                "number": 4555143000187857,
+                "product": {
+                    "numberType": {
+                        "id": "PAN",
+                        "name": "Número de cuenta principal. Consiste en números de 14, 15 o 16 dígitos que están grabados y / o codificados en una tarjeta de plástico que identifica al emisor y la cuenta particular del titular de la tarjeta."
+                    },
+                    "productType": {
+                        "id": "CARDS",
+                        "name": "TARJETA DE CREDITO"
+                    }
+                }
+            },
+            "status": {
+                "id": "APPROVED",
+                "name": "En Proceso",
+                "description": "Estamos atendiendo tu aclaración y te responderemos antes del 26 de abril de 2018"
+            }
+        },
+        {
+            "id": "7Y6V0Y6J627RH9ZS5YY9WAXTWNT9E259J20S2PPR1YRNTFVA1ZCX8CJDFAHHR18JFGJ41D3086YBR",
+            "openingDate": "2018-05-11",
+            "ticketNumber": "1804000092",
+            "operationNumber": "6816121942",
+            "transaction": {
+                "transactionType": {
+                    "id": "CASH_WITHDRAWAL"
+                }
+            },
+            "claimedAmount": {
+                "amount": 4000.2,
+                "currency": "MXN"
+            },
+            "contract": {
+                "id": "FMDV8EZ60GB4HCR6R67P5HCT27A34KBTMCE0A4KW4H0B8R21QJY0",
+                "number": 4555143000187855,
+                "product": {
+                    "numberType": {
+                        "id": "PAN",
+                        "name": "Número de cuenta principal. Consiste en números de 14, 15 o 16 dígitos que están grabados y / o codificados en una tarjeta de plástico que identifica al emisor y la cuenta particular del titular de la tarjeta."
+                    },
+                    "productType": {
+                        "id": "CARDS",
+                        "name": "TARJETA DE CREDITO"
+                    }
+                }
+            },
+            "status": {
+                "id": "IN_PROGRESS",
+                "name": "En Proceso",
+                "description": "Estamos atendiendo tu aclaración y te responderemos antes del 26 de abril de 2018"
+            }
+        },
+        {
+            "id": "7Y6V0Y6J627RH9ZS5YY9WAXTWNT9E259J20S2PPR1YRNTFVA1ZCX8CJDFAHHR18JFGJ41D3086YBR",
+            "openingDate": "2018-04-11",
+            "ticketNumber": "1804000092",
+            "operationNumber": "6816121942",
+            "transaction": {
+                "transactionType": {
+                    "id": "CASH_WITHDRAWAL"
+                }
+            },
+            "claimedAmount": {
+                "amount": 1000.2,
+                "currency": "MXN"
+            },
+            "contract": {
+                "id": "FMDV8EZ60GB4HCR6R67P5HCT27A34KBTMCE0A4KW4H0B8R21QJY0",
+                "number": 4555143000187857,
+                "product": {
+                    "numberType": {
+                        "id": "PAN",
+                        "name": "Número de cuenta principal. Consiste en números de 14, 15 o 16 dígitos que están grabados y / o codificados en una tarjeta de plástico que identifica al emisor y la cuenta particular del titular de la tarjeta."
+                    },
+                    "productType": {
+                        "id": "CARDS",
+                        "name": "TARJETA DE CREDITO"
+                    }
+                }
+            },
+            "status": {
+                "id": "IN_PROGRESS",
+                "name": "En Proceso",
+                "description": "Estamos atendiendo tu aclaración y te responderemos antes del 26 de abril de 2018"
+            }
+        },
+        {
+            "id": "7Y6V0Y6J627RH9ZS5YY9WAXTWNT9E259J20S2PPR1YRNTF",
+            "openingDate": "2018-04-11",
+            "ticketNumber": "1804000090",
+            "operationNumber": "6816321943",
+            "transaction": {
+                "transactionType": {
+                    "id": "CASH_WITHDRAWAL"
+                }
+            },
+            "claimedAmount": {
+                "amount": 1003.5,
+                "currency": "MXN"
+            },
+            "contract": {
+                "id": "FMDV8EZ60GB4HCR6R67P5HCT27A34SBTMCE0A4KW4H0B8R21FJY0",
+                "number": 4555143000487853,
+                "product": {
+                    "numberType": {
+                        "id": "PAN",
+                        "name": "Número de cuenta principal. Consiste en números de 14, 15 o 16 dígitos que están grabados y / o codificados en una tarjeta de plástico que identifica al emisor y la cuenta particular del titular de la tarjeta."
+                    },
+                    "productType": {
+                        "id": "CARDS",
+                        "name": "TARJETA DE CREDITO"
+                    }
+                }
+            },
+            "status": {
+                "id": "DENIED",
+                "name": "No procede",
+                "date": "2018-05-09"
+            }
+        }
+    ]
+}

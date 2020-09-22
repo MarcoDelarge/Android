@@ -1,0 +1,95 @@
+<html><head></head><body><div hidden="" by-polymer-bundler=""><dom-module id="glomo-life-insurance-edit-percentage-styles" assetpath="glomo-life-insurance-edit-percentage/"><template><style>:host{display:block;box-sizing:border-box;font-family:var(--cells-fontDefault, sans-serif);@apply --glomo-life-insurance-edit-percentage;}:host([hidden]), [hidden]{display:none !important;}*, *:before, *:after{box-sizing:inherit;}.total-container{width:296px;height:13px;position:absolute;background:var(--bbva-200);-webkit-transform:skew(-20deg);transform:skew(-20deg);}.barra-gold{height:12px;display:inline-block;background:var(--bbva-gold);-webkit-transform:skew(-20deg);transform:skew(-20deg);}.barra-aqua{height:12px;display:inline-block;margin-left:-3px;background:var(--bbva-aqua);-webkit-transform:skew(-20deg);transform:skew(-20deg);}.barra-blue{height:12px;display:inline-block;margin-left:-3px;background:var(--bbva-medium-blue);-webkit-transform:skew(-20deg);transform:skew(-20deg);}.barra-coral{height:12px;display:inline-block;margin-left:-3px;background:var(--bbva-coral);-webkit-transform:skew(-20deg);transform:skew(-20deg);}.barras-container{width:301px;margin-bottom:7px;margin-left:auto;margin-right:auto;}.percentage-container{width:300px;margin-left:auto;margin-right:auto;margin-bottom:30px;}.shadow{width:20px;opacity:0.2;background-image:linear-gradient(-180deg, transparent 0%, #000000 100%);height:10px;position:relative;bottom:-13px;left:-10px;-webkit-transform:skew(55deg);transform:skew(55deg);}.separator{width:300px;height:2px;background:var(--bbva-200);margin-left:auto;margin-right:auto;}.beneficiary-container{width:300px;margin-left:auto;margin-right:auto;margin-top:30px;}.beneficiary-container-other{width:300px;margin-left:auto;margin-right:auto;margin-top:20px;padding-top:20px;}.percentage-molecule{width:80px;--cells-molecule-amount-input-icon:{display:none;};--cells-molecule-amount-input-text-field_-_height:49px;--cells-molecule-amount-input-has-content-padding:1rem 0 1rem 0.75rem;--cells-molecule-amount-input-has-content:{width:80px;font-size:18px;};--cells-molecule-amount-input-currency-label:{float:right;padding:16px 20px 0 0;};float:right;}.text-alert{margin:0;padding-top:5px;padding-bottom:5px;text-align:center;color:var(--bbva-dark-red);font-style:italic;font-weight:500;}.bullet-gold{width:12px;height:0px;border-right:3px solid transparent;border-bottom:8px solid var(--bbva-gold);display:inline-block;margin-bottom:22px;}.bullet-aqua{width:12px;height:0px;border-right:3px solid transparent;border-bottom:8px solid var(--bbva-aqua);display:inline-block;margin-bottom:22px;}.bullet-blue{width:12px;height:0px;border-right:3px solid transparent;border-bottom:8px solid var(--bbva-medium-blue);display:inline-block;margin-bottom:22px;}.bullet-coral{width:12px;height:0px;border-right:3px solid transparent;border-bottom:8px solid var(--bbva-coral);display:inline-block;margin-bottom:22px;}.st-btn{--cells-st-button-bg-color:var(--bbva-medium-blue);}.display-inline-block{display:inline-block;}.padding-left-11{padding-left:11px;}.font-size-22{font-size:22px;}.float-right{float:right;}.button-container{margin-top:52px;margin-bottom:30px;text-align:center;}.percentage-title{font-weight:500;font-size:18px;text-align:center;margin:0;padding-top:50px;padding-bottom:15px;padding-left:30px;padding-right:30px;}.percentage-quantity{text-align:center;font-size:52px;margin:0;padding-top:15px;}.percentage-quantity-text{text-align:center;margin:0;padding-bottom:15px;}.percentage-container-text{margin:0;font-size:20px;display:inline-block;}.beneficiary-data{margin:0;line-height:20px;}.beneficiary-relationship{margin:0;color:var(--bbva-500);font-style:italic;padding-top:5px;}.wrong-percentage{color:var(--bbva-dark-red);}</style></template></dom-module><dom-module id="glomo-life-insurance-edit-percentage" assetpath="glomo-life-insurance-edit-percentage/"><template><style include="glomo-life-insurance-edit-percentage-styles glomo-life-insurance-edit-percentage-shared-styles"></style><slot></slot><p class="percentage-title">[[t('glomo-life-insurance-edit-percentage-percentage-for-beneficiaries')]]</p><template is="dom-if" if="[[messagePercentageLeftover]]"><p class="text-alert"><cells-atom-icon icon="coronita:alert"></cells-atom-icon><span class="padding-left-11">[[t('glomo-life-insurance-edit-percentage-leftover')]]</span> [[percentageLeftover]]%</p></template><template is="dom-if" if="[[alertIfZero]]"><p class="text-alert"><cells-atom-icon icon="coronita:alert"></cells-atom-icon><span class="padding-left-11">[[t('glomo-life-insurance-edit-percentage-all-beneficiaries')]]</span></p></template><template is="dom-if" if="[[messagePercentageMissing]]"><p class="text-alert"><cells-atom-icon icon="coronita:alert"></cells-atom-icon><span class="padding-left-11">[[t('glomo-life-insurance-edit-percentage-missing')]]</span> [[percentageMissing]]%</p></template><p class$="percentage-quantity [[wrongPercentage]]">[[totalPercentageAssigned]]<sup class="font-size-22">%</sup></p><p class$="percentage-quantity-text [[totalAssigned]]">[[t('glomo-life-insurance-edit-percentage-total-assigned')]]</p><template is="dom-if" if="[[showPercentageGraph]]"><div class="barras-container"><div class="shadow"></div><div class="total-container"></div><template is="dom-if" if="[[beneficiaries.0]]"><div class="barra-gold" style$="width: [[percentageGold]]px;"></div></template><template is="dom-if" if="[[beneficiaries.1]]"><div class="barra-aqua" style$="width: [[percentageAqua]]px;"></div></template><template is="dom-if" if="[[beneficiaries.2]]"><div class="barra-blue" style$="width: [[percentageBlue]]px;"></div></template><template is="dom-if" if="[[beneficiaries.3]]"><div class="barra-coral" style$="width: [[percentageCoral]]px;"></div></template></div></template><div class="percentage-container"><p class="percentage-container-text" inner-h-t-m-l="[[t('glomo-life-insurance-edit-percentage-zero')]]"></p><p class="percentage-container-text float-right" inner-h-t-m-l="[[t('glomo-life-insurance-edit-percentage-one-hundred')]]"></p></div><div class="separator"></div><template is="dom-if" if="[[beneficiaries.0]]"><div class="beneficiary-container"><div class="bullet-gold"></div><div class="display-inline-block"><p class="beneficiary-data">[[tuncateName(beneficiaries.0.firstName, beneficiaries.0.lastName, beneficiaries.0.secondLastName)]]<br><span class="beneficiary-relationship">[[beneficiaries.0.relationType.selected]]</span></p></div><cells-molecule-amount-input class="percentage-molecule" language="mx" currency-code="%" max="3" amount="{{percentageBeneficiaryOne}}" set-amount="{{percentageBeneficiaryOne}}" numeral-positive-only="true"></cells-molecule-amount-input></div></template><template is="dom-if" if="[[beneficiaries.1]]"><div class="beneficiary-container-other"><div class="bullet-aqua"></div><div class="display-inline-block"><p class="beneficiary-data">[[tuncateName(beneficiaries.1.firstName, beneficiaries.1.lastName, beneficiaries.1.secondLastName)]]<br><span class="beneficiary-relationship">[[beneficiaries.1.relationType.selected]]</span></p></div><cells-molecule-amount-input class="percentage-molecule" language="mx" currency-code="%" max="3" amount="{{percentageBeneficiaryTwo}}" set-amount="{{percentageBeneficiaryTwo}}" numeral-positive-only="true"></cells-molecule-amount-input></div></template><template is="dom-if" if="[[beneficiaries.2]]"><div class="beneficiary-container-other"><div class="bullet-blue"></div><div class="display-inline-block"><p class="beneficiary-data">[[tuncateName(beneficiaries.2.firstName, beneficiaries.2.lastName, beneficiaries.2.secondLastName)]]<br><span class="beneficiary-relationship">[[beneficiaries.2.relationType.selected]]</span></p></div><cells-molecule-amount-input class="percentage-molecule" language="mx" currency-code="%" max="3" amount="{{percentageBeneficiaryThree}}" set-amount="{{percentageBeneficiaryThree}}" numeral-positive-only="true"></cells-molecule-amount-input></div></template><template is="dom-if" if="[[beneficiaries.3]]"><div class="beneficiary-container-other"><div class="bullet-coral"></div><div class="display-inline-block"><p class="beneficiary-data">[[tuncateName(beneficiaries.3.firstName, beneficiaries.3.lastName, beneficiaries.3.secondLastName)]]<br><span class="beneficiary-relationship">[[beneficiaries.3.relationType.selected]]</span></p></div><cells-molecule-amount-input class="percentage-molecule" language="mx" currency-code="%" max="3" amount="{{percentageBeneficiaryFour}}" set-amount="{{percentageBeneficiaryFour}}" numeral-positive-only="true"></cells-molecule-amount-input></div></template><div class="button-container"><cells-st-button class="st-btn"><button id="continue-process" disabled="" on-click="sendEditedPercentages">[[t('glomo-life-insurance-edit-percentage-st-btn')]]</button></cells-st-button></div></template><script>var GlomoLifeInsuranceEditPercentage=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(GlomoLifeInsuranceEditPercentage,_Polymer$mixinBehavio);function GlomoLifeInsuranceEditPercentage(){babelHelpers.classCallCheck(this,GlomoLifeInsuranceEditPercentage);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(GlomoLifeInsuranceEditPercentage).apply(this,arguments))}babelHelpers.createClass(GlomoLifeInsuranceEditPercentage,[{key:"_boot",/**
+   * Method to assign the header text
+   */value:function _boot(){this.set("headerTitleText",this.t("glomo-life-insurance-edit-percentage-header"))}/**
+   * Method to clean the beneficiaries
+   */},{key:"_cleanBeneficiaries",value:function _cleanBeneficiaries(){this.set("beneficiaries",[])}/**
+   * Set the percentages of each beneficiary
+   * @param {Object} payLoad
+   */},{key:"setBeneficyaris",value:function setBeneficyaris(payLoad){this._cleanBeneficiaries();this.set("beneficiaries",payLoad.beneficiaries);this.set("percentageBeneficiaryOne",payLoad.beneficiaries[0]?payLoad.beneficiaries[0].benefitPercentage:void 0);this.set("percentageBeneficiaryTwo",payLoad.beneficiaries[1]?payLoad.beneficiaries[1].benefitPercentage:void 0);this.set("percentageBeneficiaryThree",payLoad.beneficiaries[2]?payLoad.beneficiaries[2].benefitPercentage:void 0);this.set("percentageBeneficiaryFour",payLoad.beneficiaries[3]?payLoad.beneficiaries[3].benefitPercentage:void 0)}/**
+   * Method to truncate the name of the beneficiary
+   * @param {String} name
+   * @param {String} lastName
+   * @param {String} secondLastName
+   */},{key:"tuncateName",value:function tuncateName(name,lastName,secondLastName){var complete="".concat(name," ").concat(lastName," ").concat(secondLastName);if(21<complete.length){return complete.substr(0,21)+"..."}else{return complete}}/**
+   * Method to calculate the total assigned percentage
+   * @param {Number} beneficiaryOne
+   * @param {Number} beneficiaryTwo
+   * @param {Number} beneficiaryThree
+   * @param {Number} beneficiaryFour
+   */},{key:"calculateTotalPercentage",value:function calculateTotalPercentage(beneficiaryOne,beneficiaryTwo,beneficiaryThree,beneficiaryFour){var total=(beneficiaryOne||0)+(beneficiaryTwo||0)+(beneficiaryThree||0)+(beneficiaryFour||0);if(100===total){this.set("wrongPercentage","");this.set("totalAssigned","text-color-500");this.$$("#continue-process").removeAttribute("disabled")}this.existZero();return total}/**
+   * Method to calculate the excess percentage
+   * @param {Number} totalPercentageAssigned
+   */},{key:"showMessageLeftoover",value:function showMessageLeftoover(totalPercentageAssigned){if(100<totalPercentageAssigned){this.set("messagePercentageLeftover",!0);this.$$("#continue-process").setAttribute("disabled",!0);this.set("wrongPercentage",this.WRONG_PERCENTAGE);this.set("totalAssigned",this.WRONG_PERCENTAGE)}else{this.set("messagePercentageLeftover",!1);this.set("alertIfZero",!1)}return totalPercentageAssigned-100}/**
+   * Method to calculate the missing percentage
+   * @param {Number} totalPercentageAssigned
+   */},{key:"showMessageMissing",value:function showMessageMissing(totalPercentageAssigned){if(100>totalPercentageAssigned){this.set("messagePercentageMissing",!0);this.$$("#continue-process").setAttribute("disabled",!0);this.set("wrongPercentage",this.WRONG_PERCENTAGE);this.set("totalAssigned",this.WRONG_PERCENTAGE)}else{this.set("messagePercentageMissing",!1);this.set("alertIfZero",!1)}return 100-totalPercentageAssigned}/**
+   * method to show message if exist a zero percent
+   */},{key:"existZero",value:function existZero(){var someoneZero=0===this.percentageBeneficiaryOne||0===this.percentageBeneficiaryTwo||0===this.percentageBeneficiaryThree||0===this.percentageBeneficiaryFour;this.set("alertIfZero",someoneZero);this.set("messagePercentageMissing",!1);this.set("messagePercentageLeftover",!1);if(someoneZero){this.$$("#continue-process").setAttribute("disabled",!0)}}/**
+   * Method to calculate the width of the golden graph
+   * @param {Number} percentageBeneficiaryOne
+   */},{key:"calculateWidth",value:function calculateWidth(percentageBeneficiary){return 300*percentageBeneficiary/100}/**
+   * Method to send the beneficiaries with the edited percentage
+   */},{key:"sendEditedPercentages",value:function sendEditedPercentages(){var beneficiaries=this.beneficiaries;if(beneficiaries[0]){beneficiaries[0].benefitPercentage=this.percentageBeneficiaryOne}if(beneficiaries[1]){beneficiaries[1].benefitPercentage=this.percentageBeneficiaryTwo}if(beneficiaries[2]){beneficiaries[2].benefitPercentage=this.percentageBeneficiaryThree}if(beneficiaries[3]){beneficiaries[3].benefitPercentage=this.percentageBeneficiaryFour}this.dispatchEvent(new CustomEvent("send-edited-percentages",{detail:{beneficiaries:this.beneficiaries,edited:!0}}))}/**
+   * Method to see if the percentage is correct
+   * @param {Boolean} messagePercentageLeftover
+   */},{key:"isPercentageCorrect",value:function isPercentageCorrect(messagePercentageLeftover){return!messagePercentageLeftover}}],[{key:"is",get:function get(){return"glomo-life-insurance-edit-percentage"}},{key:"properties",get:function get(){return{/**
+       * Title of the page header
+       * @type {String}
+       */headerTitleText:{type:String,notify:!0},/**
+       * Beneficiaries added
+       * @type {Array}
+       */beneficiaries:{type:Array,value:[]},/**
+       * Total percentage assigned
+       * @type {Number}
+       */totalPercentageAssigned:{type:Number,computed:"calculateTotalPercentage(percentageBeneficiaryOne, percentageBeneficiaryTwo, percentageBeneficiaryThree, percentageBeneficiaryFour)"},/**
+       * Percentage of the first beneficiary
+       * @type {Number}
+       */percentageBeneficiaryOne:Number,/**
+       * Percentage of the second beneficiary
+       * @type {Number}
+       */percentageBeneficiaryTwo:Number,/**
+       * Percentage of the third beneficiary
+       * @type {Number}
+       */percentageBeneficiaryThree:Number,/**
+       * Percentage of the fourth beneficiary
+       * @type {Number}
+       */percentageBeneficiaryFour:Number,/**
+       * Excess percentage
+       * @type {Number}
+       */percentageLeftover:{type:Number,computed:"showMessageLeftoover(totalPercentageAssigned)"},/**
+       * Flag to show the message of percentage left over
+       * @type {Boolean}
+       */messagePercentageLeftover:{type:Boolean,value:!1},/**
+       * Missing percentage
+       * @type {Number}
+       */percentageMissing:{type:Number,computed:"showMessageMissing(totalPercentageAssigned)"},/**
+       * Flag to show the missing percentage message
+       * @type {Boolean}
+       */messagePercentageMissing:{type:Boolean,value:!1},/**
+       * Size of the golden graph
+       * @type {Number}
+       */percentageGold:{type:Number,computed:"calculateWidth(percentageBeneficiaryOne)"},/**
+       * Size of the aqua chart
+       * @type {Number}
+       */percentageAqua:{type:Number,computed:"calculateWidth(percentageBeneficiaryTwo)"},/**
+       * Size of the blue graph
+       * @type {Number}
+       */percentageBlue:{type:Number,computed:"calculateWidth(percentageBeneficiaryThree)"},/**
+       * Size of the coral graph
+       * @type {Number}
+       */percentageCoral:{type:Number,computed:"calculateWidth(percentageBeneficiaryFour)"},/**
+       * Clase para porcentaje erroneo
+       * @type {String}
+       */wrongPercentage:{type:String,value:""},/**
+       * Class for the color of the percentage total
+       * @type {String}
+       */totalAssigned:{type:String,value:"text-color-500"},/**
+       * Flag to show percentage graph
+       * @type {Boolean}
+       */showPercentageGraph:{type:Boolean,computed:"isPercentageCorrect(messagePercentageLeftover, messagePercentageMissing)"},/**
+       * Flag to show alert if a beneficiary have 0%
+       * @type {Boolean}
+       */alertIfZero:{type:Boolean,computed:!1},/**
+       * class of wrong percentage
+       * @type {String}
+       */WRONG_PERCENTAGE:{type:String,value:"wrong-percentage"}}}}]);return GlomoLifeInsuranceEditPercentage}(Polymer.mixinBehaviors([CellsBehaviors.i18nBehavior],Polymer.Element));customElements.define(GlomoLifeInsuranceEditPercentage.is,GlomoLifeInsuranceEditPercentage);</script></dom-module></div></body></html>

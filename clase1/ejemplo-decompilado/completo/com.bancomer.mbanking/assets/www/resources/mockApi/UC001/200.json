@@ -1,0 +1,134 @@
+{
+  "data" : {
+    "id" : "P4EJMVAN2NE93GW6AHXVKGQQH63EFYF513P71KBMNKS483RTDJ8G",
+    "offerType" : {
+      "id" : "CARD_UPGRADE",
+      "name" : "Ascenso de Tarjeta"
+    },
+    "details" : {
+      "suggestedAmount" : {
+        "amount" : 61000,
+        "currency" : "MXN"
+      },
+      "cardType" : {
+        "id" : "CREDIT_CARD",
+        "name" : "Tarjeta de Crédito"
+      },
+      "title" : {
+        "id" : "PLATINUM",
+        "name" : "PLATINUM"
+      },
+      "differencePreviousAmount" : {
+        "amount" : 1000,
+        "currency" : "MXN"
+      },
+      "image" : {
+        "id" : "FRONT_CARD",
+        "name" : "Front face of the card",
+        "url" : "https:\/\/openapi.bbva.com\/ccds\/covers?pg=AP&bin=477214&default_image=true&v=4&country=mx&app_id=com.bbva.glomo_mx"
+      },
+      "fees" : {
+        "itemizeFees" : [
+          {
+            "itemizeFeeUnit" : {
+              "import" : {
+                "amount" : 2105,
+                "currency" : "MXN"
+              }
+            },
+            "name" : "Direct Periodic",
+            "mode" : {
+              "id" : "AMOUNT",
+              "name" : "amount"
+            },
+            "feeType" : "DIRECT_PERIODIC"
+          }
+        ]
+      }
+    },
+    "isEditable" : false,
+    "rates" : [
+      {
+        "unit" : {
+          "percentage" : 40.399999999999999
+        },
+        "calculationDate" : "2018-12-20",
+        "mode" : {
+          "id" : "PERCENTAGE",
+          "name" : "CAT Ofertado"
+        },
+        "rateType" : {
+          "id" : "CAT Ofertado",
+          "name" : "CAT Ofertado"
+        }
+      },
+      {
+        "mode" : {
+          "id" : "PERCENTAGE",
+          "name" : "Tasa Anual Ofertada"
+        },
+        "unit" : {
+          "percentage" : 30.379999999999999
+        },
+        "rateType" : {
+          "id" : "Tasa Anual Ofertada",
+          "name" : "Tasa Anual Ofertada"
+        }
+      },
+      {
+        "mode" : {
+          "id" : "PERCENTAGE",
+          "name" : "Tasa Anual Ponderada"
+        },
+        "unit" : {
+          "percentage" : 35.200000000000003
+        },
+        "rateType" : {
+          "id" : "Tasa Anual Ponderada",
+          "name" : "Tasa Anual Ponderada"
+        }
+      },
+      {
+        "mode" : {
+          "id" : "PERCENTAGE",
+          "name" : "CAT origen"
+        },
+        "unit" : {
+          "percentage" : 33
+        },
+        "rateType" : {
+          "id" : "CAT origen",
+          "name" : "CAT origen"
+        }
+      },
+      {
+        "unit" : {
+          "percentage" : 7
+        },
+        "calculationDate" : "2018-12-20",
+        "mode" : {
+          "id" : "PERCENTAGE",
+          "name" : "Tasa Descuento"
+        },
+        "rateType" : {
+          "id" : "Tasa Descuento",
+          "name" : "Tasa Descuento"
+        }
+      },
+      {
+        "unit" : {
+          "percentage" : 18
+        },
+        "calculationDate" : "2019-01-29",
+        "mode" : {
+          "id" : "PERCENTAGE",
+          "name" : "Percentage Points"
+        },
+        "rateType" : {
+          "id" : "Percentage Points",
+          "name" : "Percentage Points"
+        }
+      }
+    ]
+  }
+}

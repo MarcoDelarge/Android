@@ -1,0 +1,29 @@
+{
+  "data": {
+    "offerType": {
+      "id": "CARD_HOLDER",
+      "name": "Card Holder"
+    },
+    "details": {
+      "title": {
+        "id": "AZUL",
+        "name": "AZUL"
+      },
+      "image": {
+        "id": "CARD_HOLDER",
+        "name": "Card Holder",
+        "url": "https://openapi.bbva.com/ccds/covers??pg=PT&bin=477291&default_image=true&v=4&country=mx&app_id=com.bbva.glomo_mx"
+      },
+      "limitAmount": {
+        "amount": 4525,
+        "currency": "MXN"
+      },
+      "product": {
+        "id": "0TDC",
+        "subproduct": {
+          "id": "AV"
+        }
+      }
+    }
+  }
+}

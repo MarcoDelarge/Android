@@ -1,0 +1,186 @@
+<html><head></head><body><div hidden="" by-polymer-bundler=""><dom-module id="cells-shap-terms-conditions-card-styles" assetpath="cells-shap-terms-conditions-card/"><template><style>:host{display:block;box-sizing:border-box;font-family:var(--cells-fontDefault, sans-serif);padding:1.875rem;--iron-image-placeholder:{background-color:#FFF;background-size:100% 100%;background-size:cover;};--cells-molecule-card-cover-iron-image-placeholder:{background-color:#FFF;background-size:100% 100%;background-size:cover;};@apply --cells-shap-terms-conditions-card;}:host p{font-size:var(--cells-text-size-14, 0.875rem);line-height:1.5rem;color:var(--bbva-600, #121212);@apply --cells-shap-terms-conditions-card--paragraph;}:host .main-image-container{width:8.75rem;margin:0 auto;position:relative;@apply --cells-shap-terms-conditions-card--main-image-container;}:host .image-union{position:relative;margin-top:1.25rem;margin-left:1.1875rem;@apply --cells-shap-terms-conditions-card--image-union;}:host .image-union--path-1{width:0.0625rem;height:1.25rem;background:var(--bbva-500, #666666);@apply --cells-shap-terms-conditions-card--image-union-path-1;}:host .image-union--path-2{width:1.25rem;height:1px;background:var(--bbva-500, #666666);@apply --cells-shap-terms-conditions-card--image-union-path-2;}:host .card-image-small{left:3.75rem;position:absolute;top:7.1875rem;@apply --cells-shap-terms-conditions-card--card-image-small;}:host .card-text{text-align:left;margin-bottom:2.1875rem;@apply --cells-shap-terms-conditions-card--card-text;}:host .card-text h1{font-size:var(--cells-text-size-16, 1rem);margin:30px 0px 20px 0px;padding:0;@apply --cells-shap-terms-conditions-card--card-text-h1;}:host .accept-section{margin-top:0.25rem;-webkit-box-align:center;align-items:center;display:-webkit-box;display:flex;-webkit-box-pack:left;justify-content:left;@apply --cells-shap-terms-conditions-card--accept-section;}:host .accept-section .accept-section-label{margin:0;text-align:left;-webkit-box-flex:1;flex:1;@apply --cells-shap-terms-conditions-card--accept-section-label;}:host .accept-section cells-checkbox-button{padding:0;@apply --cells-shap-terms-conditions-card--accept-section-checkox;}:host([show-associated-card]) .main-image-container{height:9.375rem;@apply --cells-shap-terms-conditions-card--main-image-container--associated-card;}:host([hidden]), [hidden]{display:none !important;}*, *:before, *:after{box-sizing:inherit;}*:focus{@apply --cells-global-focus;}*:active{@apply --cells-global-active;}</style></template></dom-module><dom-module id="cells-shap-terms-conditions-card" assetpath="cells-shap-terms-conditions-card/"><template><style include="cells-shap-terms-conditions-card-styles cells-shap-terms-conditions-card-shared-styles"></style><div class="main-image-container"><cells-molecule-card-cover-ccds-wrapper width="140" preload="" fade="" alt="[[t(card.cardHolder)]]" placeholder="[[_placeHolderImagePath]]" image-src="[[_imageUrl]]"></cells-molecule-card-cover-ccds-wrapper><template is="dom-if" if="[[showAssociatedCard]]"><div class="image-union"><div class="image-union--path-1"></div><div class="image-union--path-2"></div></div><cells-molecule-card-cover-ccds-wrapper class="card-image-small" width="60" image-src="[[_placeHolderImagePath]]"></cells-molecule-card-cover-ccds-wrapper></template></div><div class="card-text"><h1>[[t(headingTerms)]]</h1><p>[[t(paragraphTerms)]]</p></div><div class="accept-section"><cells-checkbox-button id="checkboxTerms" icon-check="coronita:checkmark"></cells-checkbox-button><p class="accept-section-label">[[t(checkLabelText)]]</p></div></template><script>var CellsShapTermsConditionsCard=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(CellsShapTermsConditionsCard,_Polymer$mixinBehavio);function CellsShapTermsConditionsCard(){babelHelpers.classCallCheck(this,CellsShapTermsConditionsCard);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(CellsShapTermsConditionsCard).apply(this,arguments))}babelHelpers.createClass(CellsShapTermsConditionsCard,[{key:"reset",/**
+   * Reset status of data
+   *
+   * @param {Object} state
+   */value:function reset(state){if(!(state||{}).value){this.card={};this.$.checkboxTerms.checked=!1}}/**
+   * Obtain image to show in component
+   *
+   * @param {Object} card
+   * @returns {String} URL location of illustration
+   */},{key:"_computeImageUrl",value:function _computeImageUrl(card,defaultCardImage,_placeHolderImagePath){return defaultCardImage?_placeHolderImagePath:this._getCardImageUrl(card)}/**
+   * Obtain card image to show in component
+   *
+   * @param {Object} card, model retrieved from global apis
+   * @returns {String} URL remote of illustration
+   */},{key:"_getCardImageUrl",value:function _getCardImageUrl(card){var _this=this,images=((card||{}).detail||{}).images||[],_ref=images.find(function(img){return img.id===_this._frontCardId})||{},url=_ref.url;return url||""}/**
+   * Set relative path form local image url
+   * Observes placeholderImageUrl
+   * @param {String} placeholderImageUrl
+   */},{key:"_onPlaceholderImageUrlChanged",value:function _onPlaceholderImageUrlChanged(placeholderImageUrl){this._placeHolderImagePath=this.resolveUrl(placeholderImageUrl,this.rootPath)}}],[{key:"is",get:function get(){return"cells-shap-terms-conditions-card"}},{key:"properties",get:function get(){return{/**
+       * Data of card to show up
+       * @type {Object}
+       */card:Object,/**
+       * Label to show in checkbox
+       * @type {String}
+       */checkLabelText:String,/**
+       * Toogle show up associated card
+       * @type {Boolean}
+       * @default true
+       */showAssociatedCard:{type:Boolean,value:!1,reflectToAttribute:!0},/**
+       * Flag indicating if card image should display
+       * it display a default image instead of card image
+       * @type {Boolean}
+       * @default false
+       */defaultCardImage:{type:Boolean,value:!1},/**
+       * Locale of heading
+       * @type {String}
+       */headingTerms:String,/**
+       * Locale of body
+       * @type {String}
+       */paragraphTerms:String,/**
+       * Illustration to show up
+       * @type {String}
+       * @default 'images/cards/blank_card.png'
+       */placeholderImageUrl:{type:String,value:"images/cards/blank_card.png",observer:"_onPlaceholderImageUrlChanged"},/**
+       * Id corresponding to Front Card
+       * @type {String}
+       * @readonly
+       */_frontCardId:{type:String,value:"FRONT_CARD",readOnly:!0},/**
+       * Image url
+       * @type {String}
+       */_imageUrl:{type:String,computed:"_computeImageUrl(card, defaultCardImage, _placeHolderImagePath)"},/**
+       * Resolved url
+       * @type {String}
+       */_placeHolderImagePath:{type:String}}}}]);return CellsShapTermsConditionsCard}(Polymer.mixinBehaviors([CellsBehaviors.i18nBehavior],Polymer.Element));customElements.define(CellsShapTermsConditionsCard.is,CellsShapTermsConditionsCard);</script></dom-module><dom-module id="shopping-opx-card-generate-terms-dm" assetpath="shopping-opx-card-generate-terms-dm/"><template><cells-dm-global-apis-cards id="dm" host="[[host]]" card-id="{{cardId}}" cards-api-version="[[cardsApiVersion]]" required-token="[[requiredToken]]" native="[[native]]" on-post-cards="_onPostCards" on-error-on-post-cards="_onError" on-tsec-invalid="_onError" on-tsec-expired="_closeLoader" on-tsec-cancelled="_onError"></cells-dm-global-apis-cards></template><script>/* global moment */var ShoppingOpxCardGenerateTermsDm=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(ShoppingOpxCardGenerateTermsDm,_Polymer$mixinBehavio);function ShoppingOpxCardGenerateTermsDm(){babelHelpers.classCallCheck(this,ShoppingOpxCardGenerateTermsDm);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(ShoppingOpxCardGenerateTermsDm).apply(this,arguments))}babelHelpers.createClass(ShoppingOpxCardGenerateTermsDm,[{key:"handleBackButton",/**
+   * Handle phisical back button action
+   *
+   * @param {Object} params
+   */value:function handleBackButton(params){var eventName="navigate-to-previous-page",_ref=((params||{}).value||{}).cancelledNavigation||{},currentPage=_ref.currentPage;if(!currentPage||"cardGenerateTerms"===currentPage){if(this.isErrorModalOpened){eventName="close-error-modal";this.isErrorModalOpened=!1}this._dispatch(eventName)}}/**
+   * Init post service for generate new virtual card
+   *
+   * @event post-cards-init
+   * @memberof ShoppingOpxCardGenerateTermsDm
+   */},{key:"generateVirtualCard",value:function generateVirtualCard(){var detail=this._generateCardModel(this._card);this._openLoader();this.$.dm.postCards(detail)}/**
+   * Reset state on navigate
+   *
+   * @param {*} state
+   * @memberof ShoppingOpxCardGenerateTermsDm
+   */},{key:"reset",value:function reset(state){if(!(state||{}).value){this._dispatch("is-button-active-changed",!1)}else{this.isButtonActive=!1}}/**
+   * Reset state of component
+   *
+   * @memberof ShoppingOpxCardGenerateTermsDm
+   */},{key:"resetComponent",value:function resetComponent(){this.isButtonActive=!1}/**
+   * Indicate if button can be enabled
+   *
+   * @param {Object} checkbox
+   */},{key:"canGenerateCard",value:function canGenerateCard(checkbox){this.isButtonActive=checkbox.checked}/**
+   * Search a card in financial overview contracts list and return
+   * corresponding card if exist
+   *
+   * @param {String} cardId
+   * @event shopping-opx-card-generate-terms--card-found
+   * @returns {Object} card
+   * @memberof ShoppingOpxCardGenerateTermsDm
+   */},{key:"_getCard",value:function _getCard(cardId){var cardFound;if(this.foContracts&&this.foContracts.length){cardFound=this.foContracts.filter(function(product){return"CARD"===product.productType||"CARDS"===product.productType}).find(function(card){return card.id&&card.id===cardId})||{};this._dispatch(ShoppingOpxCardGenerateTermsDm.EVENTS.CARD_FOUND,cardFound)}return cardFound||{}}/**
+   * Generate a model specific for service of post card
+   *
+   * This method should be removed cause this functionality must be inside service component
+   *
+   * @param {Object} card Card Model inside contracts of financial overview
+   * @returns {Object} Card model specific for post in service
+   * @memberof ShoppingOpxCardGenerateTermsDm
+   */},{key:"_generateCardModel",value:function _generateCardModel(card){return{cardType:{id:"".concat(card.subProductType.id)},physicalSupport:{id:"VIRTUAL"},title:{id:"WALLET_VIRTUAL"},relatedContracts:[{contractId:"".concat(card.id),number:"".concat(card.number),product:{id:"CARDS"},relationType:{id:"LINKED_WITH"}}]}}/**
+   * Method for simplify send events
+   *
+   * @param {String} eventName
+   * @param {Object} detail
+   * @memberof ShoppingOpxCardGenerateTermsDm
+   */},{key:"_dispatch",value:function _dispatch(eventName,detail){this.dispatchEvent(new CustomEvent(eventName,{bubbles:!0,composed:!0,detail:detail}))}/**
+   * Helper sending event to open veil
+   */},{key:"_openLoader",value:function _openLoader(){this._dispatch(ShoppingOpxCardGenerateTermsDm.EVENTS.OPEN_CONTROL_VEIL)}/**
+   * Helper sending event to close veil
+   */},{key:"_closeLoader",value:function _closeLoader(){this._dispatch(ShoppingOpxCardGenerateTermsDm.EVENTS.CLOSE_CONTROL_VEIL)}/**
+   * @desc handle modal errors. Used in glomo-alert-manager.
+   *
+   * @param {*} response
+   * @event close-control-veil
+   * @memberof ShoppingOpxCardGenerateTermsDm
+   */},{key:"_onError",value:function _onError(response){var code=(response.detail||response||{})["error-code"],status=(response.detail||response||{})["http-status"];this._closeLoader();if(status===this.httpStatusInfoPage&&this.httpErrorCodesInfoPage.includes(code)){this._dispatch(ShoppingOpxCardGenerateTermsDm.EVENTS.ERROR_INFO)}else{this._openModal("ERROR",code)}}/**
+   * Handle card generate response
+   *
+   * @param {Object} detail response from service POST cards
+   * @event shopping-opx-card-generate-terms--card-generated-success
+   * @event close-control-veil
+   * @memberof ShoppingOpxCardGenerateTermsDm
+   */},{key:"_onPostCards",value:function _onPostCards(_ref2){var detail=_ref2.detail,parsedReponse=this._parseCardResponse(this._card,detail);this._closeLoader();this._dispatch(ShoppingOpxCardGenerateTermsDm.EVENTS.PG_RELOAD);this._dispatch(ShoppingOpxCardGenerateTermsDm.EVENTS.CARD_GENERATED,detail);this._dispatch(ShoppingOpxCardGenerateTermsDm.EVENTS.CARD_GENERATED_PARSED,parsedReponse)}/**
+  * Format date, parse card alias and get card number
+  *
+  * @param {Object} card Card Model inside contracts of financial overview
+  * @param {Object} response from service POST cards
+  */},{key:"_parseCardResponse",value:function _parseCardResponse(card,response){var alias=(card.title||{}).name||card.alias||(card.product||{}).name,date=this._getFormatedDate(response.activationDate),number=(card.number||"").slice(-4),dateCalculate=this._getDateCalculate();return Object.assign({},response,{alias:alias,date:date,number:number,dateCalculate:dateCalculate})}/**
+  * Return date
+  */},{key:"_getDateCalculate",value:function _getDateCalculate(){return moment().format("D MMMM YYYY HH:mm:ss [h]")}/**
+  * Format input date with moment
+  * https://momentjs.com/
+  *
+  * @param {String} date service response
+  */},{key:"_getFormatedDate",value:function _getFormatedDate(date){return date?moment(date).locale(this.locale).format(this.dateFormat):void 0}/**
+   * Create event for glomo-alert-manager
+   * @param {String} type of modal: EXIT, ERROR
+   * @param {String} message into the body of the modal
+   * @param {Boolean} showAcceptText primary button text or check condition to show default
+   * @param {Boolean} showCancelText cancel button text or check condition to show default
+   * @param {String} className
+   * @param {String} icon
+   */},{key:"_openModal",value:function _openModal(type,code){var CODE="".concat(type,"-CARD-GENERATE-TERMS"),resultError=this._getErrorFromCode(code),titleMessage="alert-GENERIC-ERROR-subtext-1",message=this.t("alert-error-code","",{p0:code});if(resultError){titleMessage=resultError.error_title_message;message=resultError.error_message}var detail={code:CODE,selectedConfig:{className:"error",openMaximized:!1,iconOnlyFullHeight:!0,acceptBtLabel:"alert-DATA-ERROR-cancel",template:{type:"paragraphs",values:[{icon:"coronita:alert",class:"spacing"},{text:titleMessage,class:"spacing"}].concat(babelHelpers.toConsumableArray(code&&[{text:message,class:"grey"}]||[]))}}};this.isErrorModalOpened=!0;this._dispatch(ShoppingOpxCardGenerateTermsDm.EVENTS[type],detail)}/**
+   * Method to get an error from a code
+   * @param {String} code to search error in the error array
+   * @returns {Object} result after searching code in the error array
+   * @memberof ShoppingOpxCardGenerateTermsDm
+   */},{key:"_getErrorFromCode",value:function _getErrorFromCode(code){return this._getErrors().find(function(item){return item.error_code===code})}/**
+   * @returns {Array} Array of errors that can occurr
+   * @memberof ShoppingOpxCardGenerateTermsDm
+   */},{key:"_getErrors",value:function _getErrors(){return[{error_code:ShoppingOpxCardGenerateTermsDm.ERROR_CODES.INCOMPLETE_FILE,error_title_message:this.t("notperformed-operation--heading"),error_message:this.t("alert-INCOMPLETE-FILE-ERROR-subtext")}]}}],[{key:"is",get:function get(){return"shopping-opx-card-generate-terms-dm"}},{key:"EVENTS",get:function get(){return{CARD_FOUND:"card-found",CARD_GENERATED:"card-generated-success",CARD_GENERATED_PARSED:"card-generated-parsed-success",CLOSE_CONTROL_VEIL:"close-control-veil",OPEN_CONTROL_VEIL:"open-control-veil",ERROR:"error-on-generate-card",PG_RELOAD:"global-request-update-pg",ERROR_INFO:"error-info-on-generate-card"}}},{key:"ERROR_CODES",get:function get(){return{INCOMPLETE_FILE:"MPE4069"}}},{key:"properties",get:function get(){return{/**
+       * Card Id
+       * @type {String}
+       */cardId:{type:String},/**
+       * Card Model obtained from financial overview
+       * @type {Object}
+       */_card:{type:Object,computed:"_getCard(cardId)"},/**
+       * Contracts from financialOverview
+       * @type {Array}
+       */foContracts:{type:Array},/** SERVICE CONFIG */ /**
+       * Host of request
+       * @type {String}
+       */host:{type:String},/**
+       * Cards API version
+       * @type {String}
+       */cardsApiVersion:{type:String},/**
+       * Native request config
+       * @type {String}
+       */native:{type:Boolean},/**
+       * requiredToken, 'jwt' or 'tsec' or empty
+       * @type {String}
+       * @default 'tsec'
+       */requiredToken:{type:String,value:"tsec"},/**
+       * Flag indicating if error modal is opened
+       * @type {Boolean}
+       * @default false
+       */isErrorModalOpened:{type:Boolean,value:!1},/**
+       * Flag indicating if button is enabled
+       * @type {Boolean}
+       * @default false
+       */isButtonActive:{type:Boolean,notify:!0},/**
+      * define the locale for i18 dates purposes
+      * @type {String}
+      */locale:{type:String,value:document.documentElement.lang||"en"},/**
+       * Dateformat formats:[https://momentjs.com/docs/#/displaying/format/]
+       * @type {String}
+       * @default 'LLL'
+       */dateFormat:{type:String,value:"LLL"},/**
+       * http status to show the error info page
+       * @type {Number}
+       */httpStatusInfoPage:{type:Number,value:409},/**
+       * http error-code to show the error info page
+       * @type {Array}
+       */httpErrorCodesInfoPage:{type:Array,value:["MPE4077","MPE4078"]}}}}]);return ShoppingOpxCardGenerateTermsDm}(Polymer.mixinBehaviors([CellsBehaviors.i18nBehavior],Polymer.Element));customElements.define(ShoppingOpxCardGenerateTermsDm.is,ShoppingOpxCardGenerateTermsDm);</script></dom-module></div></body></html>

@@ -1,0 +1,10 @@
+{
+    "version": 1,
+    "severity": "FATAL",
+    "http-status": 400,
+    "error-code": "01179005",
+    "error-message": "Parámetros obligatorios no informados",
+    "consumer-request-id": "f769f1df-d100-4326-b3f0-ae61ef6f3e5f",
+    "system-error-code": "mandatoryParametersMissing",
+    "system-error-description": "Parámetros obligatorios no informados"
+}

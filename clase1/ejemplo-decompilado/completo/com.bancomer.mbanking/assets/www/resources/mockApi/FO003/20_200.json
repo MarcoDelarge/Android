@@ -1,0 +1,78 @@
+{
+    "data": {
+        "id": "20",
+        "alias": "TRANS. OTROS BANCOS S/. A S/.",
+        "shortAlias": "S/. A S/.",
+        "operationType": {
+            "id": "INTERBANK_TRANSFER",
+            "description": "TRANSFERENCIAS INTERBANCARIAS"
+        },
+        "notification": {
+            "notificationDay": 0,
+            "isActive": false,
+            "contactInformation": {
+                "contactDetailId": "0"
+            }
+        },
+        "contract": {
+            "number": "001102410299972349",
+            "numberType": {
+                "id": "CCC",
+                "name": "CUSTOMER ACCOUNT CODE"
+            },
+            "productType": {
+                "id": "ACCOUNT",
+                "name": "ACCOUNT"
+            }
+        },
+        "operationDetail": {
+            "receiver": {
+                "contract": {
+                    "number": "00219411114944106092",
+                    "isOwner": false,
+                    "numberType": {
+                        "id": "PAN",
+                        "name": "PRIMARY ACCOUNT NUMBER"
+                    },
+                    "bank": {
+                        "id": "002",
+                        "name": "CREDITO DEL PERU"
+                    },
+                    "productType": {
+                        "id": "CARD",
+                        "name": "CARD"
+                    }
+                },
+                "holder": {
+                    "holderName": "ANGELITO",
+                    "identityDocuments": [
+                        {
+                            "documentNumber": "76777999",
+                            "documentType": {
+                                "id": "DNI"
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        "operationImport": {
+            "currency": "PEN",
+            "amount": 10
+        },
+        "availableChannels": [
+            {
+                "availableChannel": {
+                    "id": "BMOV",
+                    "name": "BANCA MOVIL"
+                }
+            },
+            {
+                "availableChannel": {
+                    "id": "BNET",
+                    "name": "BANCA POR INTERNET"
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,63 @@
+{
+    "data" : {
+      "operationType" : {
+        "id" : "SERVICE_PAYMENT",
+        "description" : "PAGO DE SERVICIOS"
+      },
+      "alias" : "PAGO PASVELA",
+      "id" : "252",
+      "notification" : {
+        "contactInformation" : {
+          "contactDetailId" : "0"
+        },
+        "notificationDay" : 10,
+        "isActive" : true
+      },
+      "shortAlias" : "PASVELA",
+      "operationDetail" : {
+        "service" : {
+          "id" : "00110010001588000",
+          "name" : "PASVELA"
+        },
+        "additionalFields" : [
+          {
+            "additionalPaymentField" : {
+              "id" : "45303255"
+            }
+          }
+        ],
+        "bill" : {
+          "id" : "45303255",
+          "reference" : "45303255"
+        }
+      },
+      "contract" : {
+        "number" : "001101300201031947",
+        "productType" : {
+          "id" : "ACCOUNT",
+          "name" : "ACCOUNT"
+        },
+        "numberType" : {
+          "id" : "CCC",
+          "name" : "CUSTOMER ACCOUNT CODE"
+        }
+      },
+      "operationImport" : {
+        "amount" : 0
+      },
+      "availableChannels" : [
+        {
+          "availableChannel" : {
+            "id" : "BMOV",
+            "name" : "BANCA MOVIL"
+          }
+        },
+        {
+          "availableChannel" : {
+            "id" : "BNET",
+            "name" : "BANCA POR INTERNET"
+          }
+        }
+      ]
+    }
+}

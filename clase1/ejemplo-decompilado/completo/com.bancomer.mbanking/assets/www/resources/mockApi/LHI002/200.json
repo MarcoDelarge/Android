@@ -1,0 +1,99 @@
+{
+  "data": {
+    "id": "563445",
+    "product": {
+      "plan": {
+        "coverages": [
+          {
+            "id": "0046",
+            "description": "FALLECIMIENTO",
+            "unit": {
+              "unitType": "AMOUNT",
+              "amount": 100000,
+              "currency": "MXN"
+            }
+          },
+          {
+            "id": "0069",
+            "description": "MUERTE ACCIDENTAL",
+            "unit": {
+              "unitType": "AMOUNT",
+              "amount": 100000,
+              "currency": "MXN"
+            }
+          },
+          {
+            "id": "0107",
+            "description": "MUERTE ACCIDENTAL COLECTIVA",
+            "unit": {
+              "unitType": "AMOUNT",
+              "amount": 0,
+              "currency": "MXN"
+            }
+          },
+          {
+            "id": "0132",
+            "description": "GASTOS FUNERARIOS",
+            "unit": {
+              "unitType": "AMOUNT",
+              "amount": 5000,
+              "currency": "MXN"
+            }
+          }
+        ]
+      }
+    },
+    "insuredAmount": {
+      "amount": 100000,
+      "currency": "MXN"
+    },
+    "policyDuration": {
+      "id": "YEARS",
+      "number": 1
+    },
+    "selectedPaymentOption": {
+      "id": "MONTHLY"
+    },
+    "paymentOptions": [
+      {
+        "id": "ANNUAL",
+        "name": "ANUAL",
+        "paymentAmount": {
+          "amount": 1067.05,
+          "currency": "MXN"
+        }
+      },
+      {
+        "id": "MONTHLY",
+        "name": "MENSUAL",
+        "paymentAmount": {
+          "amount": 97,
+          "currency": "MXN"
+        }
+      },
+      {
+        "id": "BIANNUAL",
+        "name": "SEMESTRAL",
+        "paymentAmount": {
+          "amount": 562.63,
+          "currency": "MXN"
+        }
+      },
+      {
+        "id": "QUARTERLY",
+        "name": "TRIMESTRAL",
+        "paymentAmount": {
+          "amount": 291.01,
+          "currency": "MXN"
+        }
+      }
+    ],
+    "deliveryMethod": [
+      {
+        "id": "EMAIL",
+        "deliveryType": "VIRTUAL",
+        "documentType": "CONTRACT"
+      }
+    ]
+  }
+}

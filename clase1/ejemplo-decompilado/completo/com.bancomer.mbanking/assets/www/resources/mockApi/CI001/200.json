@@ -1,0 +1,413 @@
+{
+    "data": [
+        {
+            "id": "00100004",
+            "transactionId": "00100004",
+            "terms": {
+                "number": 3,
+                "pending": 1,
+                "frequency": "MONTHLY"
+            },
+            "capital": {
+                "amount": 368.25,
+                "currency": "USD"
+            },
+            "total": {
+                "amount": 350,
+                "currency": "USD"
+            },
+            "scheduledPayments": [
+                {
+                    "maturityDate": "2018-05-30",
+                    "total": {
+                        "amount": 122.75,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "maturityDate": "2018-07-02",
+                    "total": {
+                        "amount": 122.75,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "maturityDate": "2018-07-30",
+                    "total": {
+                        "amount": 122.75,
+                        "currency": "USD"
+                    }
+                }
+            ],
+            "amortizedAmount": {
+                "amount": 122.75,
+                "currency": "USD"
+            },
+            "financingType": {
+                "id": "MONTHS_WITH_INTERESTS",
+                "name": "MONTHS_WITH_INTERESTS"
+            },
+            "outstandingBalance": {
+                "amount": 0.0,
+                "currency": "USD"
+            },
+            "amortizedPercentage": 33.3333,
+            "description": "BBVA",
+            "startDate": "2018-04-17T00:00:00.000-0500",
+            "firstInstallmentDate": "0001-01-01",
+            "operationDate": "2018-05-22",
+            "firstInstallment": {
+                "amount": 122.75,
+                "currency": "USD"
+            }
+        },
+        {
+            "id": "00200003",
+            "transactionId": "00200003",
+            "terms": {
+                "number": 3,
+                "pending": 2,
+                "frequency": "MONTHLY"
+            },
+            "capital": {
+                "amount": 3588.15,
+                "currency": "USD"
+            },
+            "total": {
+                "amount": 3400,
+                "currency": "USD"
+            },
+            "scheduledPayments": [
+                {
+                    "maturityDate": "2018-06-15",
+                    "total": {
+                        "amount": 1196.05,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "maturityDate": "2018-07-16",
+                    "total": {
+                        "amount": 1196.05,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "maturityDate": "2018-08-15",
+                    "total": {
+                        "amount": 1196.05,
+                        "currency": "USD"
+                    }
+                }
+            ],
+            "amortizedAmount": {
+                "amount": 2392.1,
+                "currency": "USD"
+            },
+            "financingType": {
+                "id": "MONTHS_WITH_INTERESTS",
+                "name": "MONTHS_WITH_INTERESTS"
+            },
+            "outstandingBalance": {
+                "amount": 1196.05,
+                "currency": "USD"
+            },
+            "amortizedPercentage": 66.6666,
+            "description": "BBVA",
+            "startDate": "2018-06-04T00:00:00.000-0500",
+            "firstInstallmentDate": "0001-01-01",
+            "operationDate": "2018-06-04",
+            "firstInstallment": {
+                "amount": 1196.05,
+                "currency": "USD"
+            }
+        },
+        {
+            "id": "00200004",
+            "transactionId": "00200004",
+            "terms": {
+                "number": 5,
+                "pending": 4,
+                "frequency": "MONTHLY"
+            },
+            "capital": {
+                "amount": 548.8,
+                "currency": "PEN"
+            },
+            "total": {
+                "amount": 500,
+                "currency": "PEN"
+            },
+            "scheduledPayments": [
+                {
+                    "maturityDate": "2018-06-15",
+                    "total": {
+                        "amount": 109.76,
+                        "currency": "PEN"
+                    }
+                },
+                {
+                    "maturityDate": "2018-07-16",
+                    "total": {
+                        "amount": 109.76,
+                        "currency": "PEN"
+                    }
+                },
+                {
+                    "maturityDate": "2018-08-15",
+                    "total": {
+                        "amount": 109.76,
+                        "currency": "PEN"
+                    }
+                },
+                {
+                    "maturityDate": "2018-09-17",
+                    "total": {
+                        "amount": 109.76,
+                        "currency": "PEN"
+                    }
+                },
+                {
+                    "maturityDate": "2018-10-15",
+                    "total": {
+                        "amount": 109.76,
+                        "currency": "PEN"
+                    }
+                }
+            ],
+            "amortizedAmount": {
+                "amount": 439.04,
+                "currency": "PEN"
+            },
+            "financingType": {
+                "id": "MONTHS_WITH_INTERESTS",
+                "name": "MONTHS_WITH_INTERESTS"
+            },
+            "outstandingBalance": {
+                "amount": 109.76,
+                "currency": "PEN"
+            },
+            "amortizedPercentage": 80,
+            "description": "BBVA",
+            "startDate": "2018-06-04T00:00:00.000-0500",
+            "firstInstallmentDate": "0001-01-01",
+            "operationDate": "2018-06-04",
+            "firstInstallment": {
+                "amount": 109.76,
+                "currency": "PEN"
+            }
+        },
+        {
+            "id": "00200006",
+            "transactionId": "00200006",
+            "terms": {
+                "number": 3,
+                "pending": 2,
+                "frequency": "MONTHLY"
+            },
+            "capital": {
+                "amount": 316.59,
+                "currency": "PEN"
+            },
+            "total": {
+                "amount": 300,
+                "currency": "PEN"
+            },
+            "scheduledPayments": [
+                {
+                    "maturityDate": "2018-06-15",
+                    "total": {
+                        "amount": 105.53,
+                        "currency": "PEN"
+                    }
+                },
+                {
+                    "maturityDate": "2018-07-16",
+                    "total": {
+                        "amount": 105.53,
+                        "currency": "PEN"
+                    }
+                },
+                {
+                    "maturityDate": "2018-08-15",
+                    "total": {
+                        "amount": 105.53,
+                        "currency": "PEN"
+                    }
+                }
+            ],
+            "amortizedAmount": {
+                "amount": 211.06,
+                "currency": "PEN"
+            },
+            "financingType": {
+                "id": "MONTHS_WITH_INTERESTS",
+                "name": "MONTHS_WITH_INTERESTS"
+            },
+            "outstandingBalance": {
+                "amount": 105.53,
+                "currency": "PEN"
+            },
+            "amortizedPercentage": 66.6666,
+            "description": "BBVA",
+            "startDate": "2018-06-04T00:00:00.000-0500",
+            "firstInstallmentDate": "0001-01-01",
+            "operationDate": "2018-06-04",
+            "firstInstallment": {
+                "amount": 105.53,
+                "currency": "PEN"
+            }
+        },
+        {
+            "id": "00200007",
+            "transactionId": "00200007",
+            "terms": {
+                "number": 5,
+                "pending": 4,
+                "frequency": "MONTHLY"
+            },
+            "capital": {
+                "amount": 548.8,
+                "currency": "USD"
+            },
+            "total": {
+                "amount": 500,
+                "currency": "USD"
+            },
+            "scheduledPayments": [
+                {
+                    "maturityDate": "2018-06-15",
+                    "total": {
+                        "amount": 109.76,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "maturityDate": "2018-07-16",
+                    "total": {
+                        "amount": 109.76,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "maturityDate": "2018-08-15",
+                    "total": {
+                        "amount": 109.76,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "maturityDate": "2018-09-17",
+                    "total": {
+                        "amount": 109.76,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "maturityDate": "2018-10-15",
+                    "total": {
+                        "amount": 109.76,
+                        "currency": "USD"
+                    }
+                }
+            ],
+            "amortizedAmount": {
+                "amount": 439.04,
+                "currency": "USD"
+            },
+            "financingType": {
+                "id": "MONTHS_WITH_INTERESTS",
+                "name": "MONTHS_WITH_INTERESTS"
+            },
+            "outstandingBalance": {
+                "amount": 109.76,
+                "currency": "USD"
+            },
+            "amortizedPercentage": 80,
+            "description": "BBVA",
+            "startDate": "2018-06-04T00:00:00.000-0500",
+            "firstInstallmentDate": "0001-01-01",
+            "operationDate": "2018-06-04",
+            "firstInstallment": {
+                "amount": 109.76,
+                "currency": "USD"
+            }
+        },
+        {
+            "id": "00300005",
+            "transactionId": "00300005",
+            "terms": {
+                "number": 4,
+                "pending": 3,
+                "frequency": "MONTHLY"
+            },
+            "capital": {
+                "amount": 429.2,
+                "currency": "USD"
+            },
+            "total": {
+                "amount": 400,
+                "currency": "USD"
+            },
+            "scheduledPayments": [
+                {
+                    "maturityDate": "2018-07-02",
+                    "total": {
+                        "amount": 107.3,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "maturityDate": "2018-07-30",
+                    "total": {
+                        "amount": 107.3,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "maturityDate": "2018-08-31",
+                    "total": {
+                        "amount": 107.3,
+                        "currency": "USD"
+                    }
+                },
+                {
+                    "maturityDate": "2018-10-01",
+                    "total": {
+                        "amount": 107.3,
+                        "currency": "USD"
+                    }
+                }
+            ],
+            "amortizedAmount": {
+                "amount": 321.9,
+                "currency": "USD"
+            },
+            "financingType": {
+                "id": "MONTHS_WITH_INTERESTS",
+                "name": "MONTHS_WITH_INTERESTS"
+            },
+            "outstandingBalance": {
+                "amount": 107.3,
+                "currency": "USD"
+            },
+            "amortizedPercentage": 75,
+            "description": "BBVA",
+            "startDate": "2018-06-22T00:00:00.000-0500",
+            "firstInstallmentDate": "0001-01-01",
+            "operationDate": "2018-06-22",
+            "firstInstallment": {
+                "amount": 107.3,
+                "currency": "USD"
+            }
+        }
+    ],
+    "pagination": {
+        "links": {
+            "first": "/cards/v0/cards/aWt6cGRqNGY1ZzFwcXprMg==/installments-plans",
+            "last": "/cards/v0/cards/aWt6cGRqNGY1ZzFwcXprMg==/installments-plans?paginationKey=LAST",
+            "next": "/cards/v0/cards/aWt6cGRqNGY1ZzFwcXprMg==/installments-plans?paginationKey=491911000145238100300005&pageSize=100"
+        },
+        "pageSize": 100
+    }
+}

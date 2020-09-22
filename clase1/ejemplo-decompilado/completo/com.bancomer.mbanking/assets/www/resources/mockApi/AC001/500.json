@@ -1,0 +1,11 @@
+{
+    "version": 1,
+    "severity": "error",
+    "http-status": 500,
+    "error-code": "FME2059",
+    "error-message": "El número de Cuenta es incorrecto.",
+    "consumer-request-id": "e0a4c25b-09ea-42b6-bf51-bf5e159a5fc2",
+    "system-error-code": "wrongAccountNumber",
+    "system-error-description": "El número de Cuenta es incorrecto.",
+    "system-error-cause": "MPE5114: NUMERO DE CUENTA INVALIDA"
+}

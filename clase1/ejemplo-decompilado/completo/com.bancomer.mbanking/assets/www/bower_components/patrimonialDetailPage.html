@@ -1,0 +1,17 @@
+<html><head></head><body><div hidden="" by-polymer-bundler=""><dom-module id="glomo-equity-contract-detail-dm" assetpath="glomo-equity-contract-detail-dm/"><template></template><script>var GlomoEquityContractDetailDm=/*#__PURE__*/function(_Polymer$mixinBehavio){babelHelpers.inherits(GlomoEquityContractDetailDm,_Polymer$mixinBehavio);function GlomoEquityContractDetailDm(){babelHelpers.classCallCheck(this,GlomoEquityContractDetailDm);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(GlomoEquityContractDetailDm).apply(this,arguments))}babelHelpers.createClass(GlomoEquityContractDetailDm,[{key:"_requestPrivateBanking",/**
+   * function to dispatch the events when the page is ready
+   * @param {String} contractId
+   */value:function _requestPrivateBanking(newContract,oldContract){if(newContract&&newContract!==oldContract){this._dispatchPrivateBankingEvent("show-spinner");this._dispatchPrivateBankingEvent("portfolios-request",newContract)}}/**
+   * Handle the success payload to prepare it for the component who will receive it
+   * @param {Object} responsePayload
+   */},{key:"handleResponsePayload",value:function handleResponsePayload(responsePayload){this._dispatchPrivateBankingEvent("hide-spinner");this._dispatchPrivateBankingEvent("handled-portfolios",this._portfolioBody(responsePayload))}/**
+   * hanlde payload to return a body param
+   * @param {Object} responsePayload
+   */},{key:"_portfolioBody",value:function _portfolioBody(responsePayload){if(responsePayload&&responsePayload.relatedContracts&&responsePayload.relatedContracts[0]&&responsePayload.relatedContracts[0].number){return[{title:this.t("glomo-equity-contract-detail-dm-general-title"),items:[{key:this.t("glomo-equity-contract-detail-dm-investment-title"),value:this.t("glomo-equity-contract-detail-dm-investment-product")},{key:this.t("glomo-equity-contract-detail-dm-contract-numer"),label:!0,value:responsePayload.number,class:"cursive"}]},{title:this.t("glomo-equity-contract-detail-dm-associated-product"),items:[{key:this.t("glomo-equity-contract-detail-dm-main-account-title"),value:responsePayload.relatedContracts[0].number,label:!0,class:"cursive"}]}]}}/**
+   * dispatch events
+   * @param {Object} event
+   * @param {Object} details
+   */},{key:"_dispatchPrivateBankingEvent",value:function _dispatchPrivateBankingEvent(event){var details=1<arguments.length&&arguments[1]!==void 0?arguments[1]:{};this.dispatchEvent(new CustomEvent(event,{bubbles:!0,composed:!0,detail:details}))}}],[{key:"is",get:function get(){return"glomo-equity-contract-detail-dm"}},{key:"properties",get:function get(){return{/**
+       * Contract id
+       * @type {String}
+       */contractId:{type:String,observer:"_requestPrivateBanking"}}}}]);return GlomoEquityContractDetailDm}(Polymer.mixinBehaviors([CellsBehaviors.i18nBehavior],Polymer.Element));customElements.define(GlomoEquityContractDetailDm.is,GlomoEquityContractDetailDm);</script></dom-module></div></body></html>
