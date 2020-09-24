@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Catos</string>
+    <string name="imagen_1">1</string>
+    <string name="imagen_2">2</string>
+    <string name="imagen_3">3</string>
+    <string name="imagen_4">4</string>
+    <string name="btnA"><![CDATA[>]]></string>
+    <string name="btnAt"><![CDATA[<]]></string>
+</resources>
