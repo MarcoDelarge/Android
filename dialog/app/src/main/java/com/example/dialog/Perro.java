@@ -4,6 +4,7 @@ import android.widget.ImageView;
 
 public class Perro {
 
+
     int img;
     String nombre;
 

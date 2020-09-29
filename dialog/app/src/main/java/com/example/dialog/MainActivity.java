@@ -2,6 +2,7 @@ package com.example.dialog;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.dialog.Pato;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -13,8 +14,11 @@ import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
 
+    HashMap<Integer,Object> l;
+
     ListView ls;
 //    HashMap<Integer,String>perros;
+
     Perro []perros = new Perro[500];
 //    MyAdaptador adptr;
 
@@ -23,13 +27,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Pato p1 = new Pato("mengano","negro",2);
+
+
         generaPerros();
 //        adptr = new MyAdaptador(this,perros);
 
         AlertDialog.Builder albañil = new AlertDialog.Builder(this);
         albañil.setTitle("dialogo 1");
-        albañil.setMessage("");
-
+        albañil.setMessage("albañil set msj");
         albañil.setPositiveButton("tex botton 1", new AlertDialog.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -48,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
         albañil.show();
 
         Toast toasty = Toast.makeText(this,"hola",Toast.LENGTH_SHORT);
@@ -61,6 +66,15 @@ public class MainActivity extends AppCompatActivity {
 //        ls.setAdapter(adptr);
         ls.setAdapter(new MyAdaptador(this,perros));
 
+    }
+
+    public void generaLista(){
+        for (int i = 0; i < 500; i++) {
+            if((Math.random()*10)>5){
+                l.put(i,new Perro(R.drawable.ic_launcher_background,"p"+i));
+            }
+                l.put(i,new Pato("pato"+i,"color"+i,2));
+        }
     }
 
     private void generaPerros(){

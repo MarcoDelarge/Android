@@ -5,9 +5,9 @@ import android.util.Log;
 
 public abstract class Animal {
 
-    String nombre;
-    String color;
-    int patas;
+    private String nombre;
+    private String color;
+    private int patas;
 
     public void comer() {
         Log.i("DORMIR","durmiendo");
@@ -17,7 +17,7 @@ public abstract class Animal {
         Log.i("DORMIR","durmiendo");
     }
 
-    public abstract void saltar();
+    public abstract boolean saltar(boolean i);
 
     public String getNombre() {
         return nombre;
@@ -48,4 +48,6 @@ public abstract class Animal {
         this.color = color;
         this.patas = patas;
     }
+
+    public Animal(){}
 }
