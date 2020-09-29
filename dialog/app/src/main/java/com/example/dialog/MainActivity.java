@@ -14,7 +14,11 @@ import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
 
+<<<<<<< Updated upstream
     HashMap<Integer,Object> l;
+=======
+    Pato p1 = new Pato("luis","axul",2);
+>>>>>>> Stashed changes
 
     ListView ls;
 //    HashMap<Integer,String>perros;
