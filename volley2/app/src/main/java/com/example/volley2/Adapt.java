@@ -50,17 +50,20 @@ public class Adapt extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         if (convertView != null){
             LayoutInflater.from(contexto).inflate(R.layout.usuario, parent, false);
             TextView textView = convertView.findViewById(R.id.texto2);
-            User usuario = usuarios.get(position);
+
+            final User usuario = usuarios.get(position);
             textView.setText(usuario.toString());
             convertView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent i = new Intent(contexto,UsuarioDetail.class);
-                    i.putExtra(extra,0);
+//                    i.putExtra(extra,0);
+//                    i.putExtra(extra,usuarios.get(position));
+                    contexto.startActivity(i);
                 }
             });
         }
