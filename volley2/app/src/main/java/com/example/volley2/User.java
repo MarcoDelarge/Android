@@ -14,7 +14,7 @@ public class User {
     public User(JSONObject jsonObject){
         try {
             this.Uid = jsonObject.getInt("userId");
-            this.id = jsonObject.getInt("Id");
+            this.id = jsonObject.getInt("id");
             this.title = jsonObject.getString("title");
             this.completado = jsonObject.getBoolean("completado");
         } catch (JSONException e) {

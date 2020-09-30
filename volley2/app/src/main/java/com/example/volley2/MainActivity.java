@@ -27,63 +27,76 @@ public class MainActivity extends AppCompatActivity {
     TextView txt;
     ListView lista;
     ArrayList<User>usuarios = new ArrayList<>();
-    Adapt usuarioAdaptador;
+//    Adapt usuarioAdaptador;
+    Adapter2 adapter2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        String url = "https://jsonplaceholder.typicode.com/todos/1";
-        String url2 = "https://jsonplaceholder.typicode.com/todos";
 
 
         txt = findViewById(R.id.txt1);
         lista = findViewById(R.id.lista);
-        usuarioAdaptador = new Adapt(this,usuarios);
+//        usuarioAdaptador = new Adapt(this,usuarios);
+        adapter2 = new Adapter2(this,usuarios);
 
+//        peticion1();
+        peticionArray();
+
+
+    }
+
+    public void peticion1(){
+        String url = "https://jsonplaceholder.typicode.com/todos/1";
         RequestQueue queue = Volley.newRequestQueue(this);
 
-//        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,url, null, new Response.Listener<JSONObject>() {
-//            @Override
-//            public void onResponse(JSONObject response) {
-//                User usr = new User(response);
-//                txt.setText(usr.toString());
-//            }
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                Toast.makeText(MainActivity.this,error.toString(),Toast.LENGTH_LONG);
-//            }
-//        });
-//
-//        queue.add(jsonObjectRequest);
-
-
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET,
-                url2,
-                null,
-                new Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        for (int i = 0; i < response.length(); i++) {
-                            try {
-                                JSONObject jsonObject = response.getJSONObject(i);
-                                User usuario = new User(jsonObject);
-                                usuarios.add(usuario);
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                        lista.setAdapter(usuarioAdaptador);
-                    }
-                }, new Response.ErrorListener(){
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                User usr = new User(response);
+                txt.setText(usr.toString());
+            }
+        }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MainActivity.this, error.toString(),Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this,error.toString(),Toast.LENGTH_LONG);
             }
         });
 
-        queue.add(jsonArrayRequest);
-
+        queue.add(jsonObjectRequest);
     }
+
+    public void peticionArray(){
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url2 = "https://jsonplaceholder.typicode.com/todos";
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET,
+            url2,
+            null,
+            new Response.Listener<JSONArray>() {
+                @Override
+                public void onResponse(JSONArray response) {
+                    for (int i = 0; i < response.length(); i++) {
+                        try {
+                            JSONObject jsonObject = response.getJSONObject(i);
+                            User usuario = new User(jsonObject);
+                            usuarios.add(usuario);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+//                    lista.setAdapter(usuarioAdaptador);
+                    lista.setAdapter(adapter2);
+                }
+            }, new Response.ErrorListener(){
+        @Override
+        public void onErrorResponse(VolleyError error) {
+            Toast.makeText(MainActivity.this, error.toString(),Toast.LENGTH_LONG).show();
+        }
+    });
+
+        queue.add(jsonArrayRequest);}
+
+
 }
