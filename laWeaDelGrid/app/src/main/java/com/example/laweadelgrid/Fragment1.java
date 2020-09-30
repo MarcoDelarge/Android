@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -18,6 +19,7 @@ public class Fragment1 extends Fragment {
     public void setImagenes(int[] imagenes) {
         this.imagenes = imagenes;
     }
+
 
 
     @Nullable
@@ -42,7 +44,6 @@ public class Fragment1 extends Fragment {
         };
 
         for (int i = 0; i < imagenes.length; i++) {
-
             final ImageView img = v.findViewById(views[i]);
             img.setImageResource(imagenes[i]);
             img.setOnClickListener(new View.OnClickListener() {
@@ -53,8 +54,27 @@ public class Fragment1 extends Fragment {
             });
 
         }
-
-
         return v;
     }
+
+
+//    @Nullable
+//    @Override
+//    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+//
+//        ViewGroup v = inflater.inflate(R.layout.testgrid,container,false);
+//        ViewGroup v = inflater.inflate(R.layout.testgrid,container,false);
+//
+//        for (int i = 0; i < imagenes.length; i++) {
+//
+//
+//            View img = inflater.inflate(R.layout.test,null,false);
+//            ImageView imgt = img.findViewById(R.id.testImage);
+//            imgt.setImageResource(imagenes[i]);
+//            v.addView(img);
+//
+//        }
+//
+//        return container;
+//    }
 }

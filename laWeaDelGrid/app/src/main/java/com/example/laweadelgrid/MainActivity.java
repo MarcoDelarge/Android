@@ -3,14 +3,21 @@ package com.example.laweadelgrid;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.GridLayout;
+import android.widget.GridView;
 
 public class MainActivity extends AppCompatActivity {
+
+//    GridView grd;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+//        grd = findViewById(R.id.gridd);
+//        grd.setAdapter();
 
         Fragment1 frag1 = new Fragment1();
         frag1.setImagenes(dameLegs());
